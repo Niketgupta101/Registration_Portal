@@ -1,0 +1,6 @@
+.job_items{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}

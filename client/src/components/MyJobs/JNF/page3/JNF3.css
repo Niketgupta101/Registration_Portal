@@ -1,0 +1,79 @@
+.overallDiv{
+    justify-content: center;
+    width: 100vw !important;
+    padding: auto 18% !important;
+}
+.headerText1{
+    text-align: center;
+    justify-content: center;
+    font-weight : bold;
+    font-size: 30px;
+    text-decoration-line: underline;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+.headerText{
+    text-align: center;
+    justify-content: center;
+    font-weight : bold;
+    font-size: 30px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    display: block;
+    background: rgb(138, 138, 238,0.8);
+    color:rgb(0, 0, 0);
+}
+.fontText{
+    font-size: 20px;
+    color: rgb(0, 87, 168);
+}
+.startText{
+    font-size: 18px !important;
+    margin-bottom: 1rem;
+}
+.startTextBold{
+    color: rgb(0, 87, 168);
+    font-size: 24px;
+    text-decoration-line: underline;
+}
+.startTextBoldSmall{
+    color: black;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.courseName{
+    font-size: 25px;
+    margin-left: 15rem;
+    padding-left: 2rem;
+    align-items: center;
+}
+.courseCheckBox3MSc{
+    margin-inline-start: 32.5rem;
+    display: inline-block;
+    align-items: right;
+    position: sticky;
+}
+.courseCheckBox2MTech{
+    margin-inline-start: 16.5rem;
+    display: inline-block;
+    align-items: right;
+    position: sticky;
+}
+.courseCheckBoxmba{
+    margin-inline-start: 33rem;
+    display: inline-block;
+    align-items: right;
+    position: sticky;
+}
+.courseCheckBox2Msc{
+    margin-inline-start: 27rem;
+    display: inline-block;
+    align-items: right;
+    position: sticky;
+}
+.button{
+    padding-top: 30px;
+}
+.successButton{
+    margin-left: 700px;
+}

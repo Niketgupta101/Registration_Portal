@@ -1,0 +1,32 @@
+.admin_company{
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15%;
+}
+.company_items{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.company_items>div{
+    padding: 1rem 0;
+}
+.admin_company_header{
+    margin-top: 3rem;
+    color: rgb(60, 85, 165);
+    padding: 0.5rem auto;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgb(60, 85, 165);
+}
+.admin_company_header>h1{
+    font-size: 28px;
+}
+
+@media(max-width: 600px)
+{
+    .admin_company{
+        padding: 0;
+    }
+}
