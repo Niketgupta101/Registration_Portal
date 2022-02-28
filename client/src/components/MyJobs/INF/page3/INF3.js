@@ -3,7 +3,7 @@ import { Form } from "reactstrap";
 
 import "./INF3.css";
 
-const INF3 = ({
+const INF3 = ({ 
   setPage,
   threeYearData,
   twoYearData,

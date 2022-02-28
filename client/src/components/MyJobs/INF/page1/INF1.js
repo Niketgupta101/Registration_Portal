@@ -10,9 +10,10 @@ const INF1 = ({
   jobFormData,
   stipendFormData,
   handleCompanyDataChange,
-  handleJobDataChange,
+  handleJobDataChange, 
   handleStipendDataChange,
-  handleCreateNewInf
+  handleCreateNewInf,
+  handleUpdateInfById
 }) => {
 
   return (
@@ -226,7 +227,7 @@ const INF1 = ({
             marginTop: "1.5rem",
           }}
         >
-          <button className="submit_btn" type="submit">
+          <button className="submit_btn" type="submit"  onClick={handleCreateNewInf}>
             Save and Continue
           </button>
         </div>

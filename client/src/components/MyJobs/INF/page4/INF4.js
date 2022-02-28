@@ -3,7 +3,7 @@ import { Form,FormGroup,Label,Col,Input} from 'reactstrap';
 
 import './INF4.css'
 
-const INF4 = ({ 
+const INF4 = ({  
   setPage, 
   resumeShortListingData,
   typeOfTestData,
@@ -13,7 +13,7 @@ const INF4 = ({
   handleTypeOfTestChange,
   handleOtherQualificationsRoundChange,
   handleSelectionDataChange,
-  handleUpdateInfById }) => {
+  handleUpdateInfById }) => { 
 
   return (
     <div className="overallDiv1">
@@ -125,7 +125,7 @@ const INF4 = ({
             Back
         </button>
         <button className="submit_btn" onClick={handleUpdateInfById}>
-            Submit
+            Review and Submit
         </button>
         </div>
     </Form>

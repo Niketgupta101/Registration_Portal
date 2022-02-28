@@ -6,6 +6,7 @@ import INF1 from "./page1/INF1";
 import INF2 from "./page2/INF2";
 import INF3 from "./page3/INF3";
 import INF4 from "./page4/INF4";
+import ReviewInf from "./ReviewInf/ReviewInf"
 
 import "./styles.css";
 
@@ -178,7 +179,7 @@ const Inf = () => {
   };
 
   // ------------------------------------------------------------
-
+(InfData.resumeShortlisting.yes)
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
@@ -400,8 +401,15 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel>
+          <TabPanel value={"5"}>
+            <ReviewInf
+            setPage={setPage}
+            InfData={InfData}
+            handleUpdateInfById={handleUpdateInfById}
+            />
+          </TabPanel>
         </TabContext>
-      </div>
+      </div> 
     </>
   );
 };
