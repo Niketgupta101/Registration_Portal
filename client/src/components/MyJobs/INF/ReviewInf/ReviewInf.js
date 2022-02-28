@@ -10,7 +10,10 @@ const style = { alignItems: "center" };
 class ComponentToPrint extends React.PureComponent {
   render(){
 return (
-  <><h1>print</h1></>
+  <>
+  <ReviewInf />
+  </>
+  
   );
 }
 }
@@ -21,7 +24,7 @@ const ReviewInf = ({
 }) => {
   return (
     <div className="overallDiv1">
-      {/* <div>
+      <div>
         <header className="headerText1">
           INTERNSHIP NOTIFICATION FORM (2021-2022)
         </header>
@@ -875,7 +878,7 @@ const ReviewInf = ({
             Submit
           </button>
         </div>
-      </Form> */}
+      </Form>
     </div>
   );
 };
