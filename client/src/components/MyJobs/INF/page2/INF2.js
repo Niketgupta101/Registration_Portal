@@ -320,7 +320,7 @@ const INF2 = ({
           <button
             className="submit_btn"
             onClick={(e) => e.preventDefault() / setPage("1")}
-          >
+          > 
             Back
           </button>
           <button
