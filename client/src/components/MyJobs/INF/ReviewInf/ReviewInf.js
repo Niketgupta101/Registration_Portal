@@ -1,19 +1,27 @@
 import React from "react";
-import { Form, FormGroup, Label, Col, Input } from "reactstrap";
-
+import { Form, FormGroup, Label, Col } from "reactstrap";
+ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
+ import  { useRef } from 'react';
+ import { useReactToPrint } from 'react-to-print';
 import "./styles.css";
 
 const style = { alignItems: "center" };
 
-
+class ComponentToPrint extends React.PureComponent {
+  render(){
+return (
+  <><h1>print</h1></>
+  );
+}
+}
 const ReviewInf = ({
   InfData,
   setPage,
-  handleUpdateInfById
+  handleFormSubmit
 }) => {
   return (
     <div className="overallDiv1">
-      <div>
+      {/* <div>
         <header className="headerText1">
           INTERNSHIP NOTIFICATION FORM (2021-2022)
         </header>
@@ -160,7 +168,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Select_All"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Select_All}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Select_All}
                   type="checkbox"
                 />
               </td>
@@ -170,7 +178,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Chemical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Chemical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Chemical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -180,7 +188,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Civil_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Civil_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Civil_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -190,7 +198,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Computer_Science_and_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -200,7 +208,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Electrical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electrical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electrical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -212,7 +220,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Electronics_and_Communication_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electronics_and_Communication_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -222,7 +230,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Engineering_Physics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Engineering_Physics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Engineering_Physics}
                   type="checkbox"
                 />
               </td>
@@ -232,7 +240,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Environmental_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Environmental_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Environmental_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -242,7 +250,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mechanical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mechanical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mechanical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -254,7 +262,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mineral_and_Metallurgical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mineral_and_Metallurgical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mineral_and_Metallurgical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -264,7 +272,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mining_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -274,7 +282,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mining_Machinery_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Machinery_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -284,7 +292,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Petroleum_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Petroleum_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Petroleum_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -304,7 +312,7 @@ const ReviewInf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Select_All"
-                  value={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Select_All}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Select_All}
                   type="checkbox"
                 />
               </td>
@@ -314,7 +322,7 @@ const ReviewInf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Computer_Science_and_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -324,7 +332,7 @@ const ReviewInf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Mathematics_and_Computing"
-                  value={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Mathematics_and_Computing}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Mathematics_and_Computing}
                   type="checkbox"
                 />
               </td>
@@ -334,7 +342,7 @@ const ReviewInf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Applied_Geology"
-                  value={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geology}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geology}
                   type="checkbox"
                 />
               </td>
@@ -344,7 +352,7 @@ const ReviewInf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Applied_Geophysics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geophysics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
                 />
               </td>
@@ -363,7 +371,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="C_Cpp_Java_Python_etc"
-                  value={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.C_Cpp_Java_Python_etc}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.C_Cpp_Java_Python_etc}
                   type="checkbox"
                 />
               </td>
@@ -375,7 +383,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="Full_Stack_Development_Frontend_or_Backend"
-                  value={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Full_Stack_Development_Frontend_or_Backend}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Full_Stack_Development_Frontend_or_Backend}
                   type="checkbox"
                 />
               </td>
@@ -385,7 +393,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="Civil_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Civil_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Civil_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -395,7 +403,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="AI_ML_DL_Data_Science"
-                  value={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.AI_ML_DL_Data_Science}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.AI_ML_DL_Data_Science}
                   type="checkbox"
                 />
               </td>
@@ -407,7 +415,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="Business_Data_Analytics_Product_Management"
-                  value={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Business_Data_Analytics_Product_Management}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Business_Data_Analytics_Product_Management}
                   type="checkbox"
                 />
               </td>
@@ -434,7 +442,7 @@ const ReviewInf = ({
               <td className="courseCheckBox3MSc">
                 <input 
                   name="Select_All"
-                  value={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Select_All}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Select_All}
                   type="checkbox"
                 />
               </td>
@@ -444,7 +452,7 @@ const ReviewInf = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Applied_Geology"
-                  value={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geology}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geology}
                   type="checkbox"
                 />
               </td>
@@ -454,7 +462,7 @@ const ReviewInf = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Applied_Geophysics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geophysics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geophysics}
                   type="checkbox"
                 />
               </td>
@@ -472,7 +480,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Select_All"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Select_All}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Select_All}
                   type="checkbox"
                 />
               </td>
@@ -482,7 +490,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Applied_Geology"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geology}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geology}
                   type="checkbox"
                 />
               </td>
@@ -492,7 +500,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Applied_Geophysics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geophysics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
                 />
               </td>
@@ -502,7 +510,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Chemical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Chemical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Chemical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -512,7 +520,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Civil_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Civil_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Civil_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -522,7 +530,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Computer_Science_and_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -532,7 +540,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Data_Analytics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Data_Analytics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Data_Analytics}
                   type="checkbox"
                 />
               </td>
@@ -542,7 +550,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Electrical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electrical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electrical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -554,7 +562,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Electronics_and_Communication_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electronics_and_Communication_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -564,7 +572,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Environmental_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Environmental_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Environmental_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -576,7 +584,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Industrial_Engineering_and_Management"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Industrial_Engineering_and_Management}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Industrial_Engineering_and_Management}
                   type="checkbox"
                 />
               </td>
@@ -586,7 +594,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mechanical_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mechanical_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mechanical_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -598,7 +606,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Fuel_Minerals_and_Metallurgical_Engineering"
-                  value={
+                  checked={
                     InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Fuel_Minerals_and_Metallurgical_Engineering
                   }
                   type="checkbox"
@@ -610,7 +618,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mining_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -620,7 +628,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mining_Machinery_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Machinery_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -630,7 +638,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Petroleum_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Petroleum_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Petroleum_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -642,7 +650,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Pharmaceutical_Science_and_Engineering"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Pharmaceutical_Science_and_Engineering}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Pharmaceutical_Science_and_Engineering}
                   type="checkbox"
                 />
               </td>
@@ -660,7 +668,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Select_All"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Select_All}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Select_All}
                   type="checkbox"
                 />
               </td>
@@ -670,7 +678,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Business_Analytics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Business_Analytics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Business_Analytics}
                   type="checkbox"
                 />
               </td>
@@ -680,7 +688,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Finance"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Finance}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Finance}
                   type="checkbox"
                 />
               </td>
@@ -690,7 +698,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Human_Resources"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Human_Resources}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Human_Resources}
                   type="checkbox"
                 />
               </td>
@@ -700,7 +708,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Marketing"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Marketing}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Marketing}
                   type="checkbox"
                 />
               </td>
@@ -710,7 +718,7 @@ const ReviewInf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Operations"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Operations}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Operations}
                   type="checkbox"
                 />
               </td>
@@ -728,7 +736,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Select_All"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Select_All}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Select_All}
                   type="checkbox"
                 />
               </td>
@@ -738,7 +746,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Chemistry"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Chemistry}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Chemistry}
                   type="checkbox"
                 />
               </td>
@@ -748,7 +756,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Mathematics_and_Computing"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Mathematics_and_Computing}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Mathematics_and_Computing}
                   type="checkbox"
                 />
               </td>
@@ -758,7 +766,7 @@ const ReviewInf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Physics"
-                  value={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Physics}
+                  checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Physics}
                   type="checkbox"
                 />
               </td>
@@ -780,9 +788,9 @@ const ReviewInf = ({
                     <td style={{ flexBasis: "70%"}}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='resume'>Yes</label>
-                            <input className='checkBox' name="Yes" value={InfData.Selection_Procedure.Resume_Shortlisting.Yes} type="checkbox"/></div>
+                            <input className='checkBox' name="Yes" checked={InfData.Selection_Procedure.Resume_Shortlisting.Yes} type="checkbox"/></div>
                             <div className="align"><label className='resume'>No</label>
-                            <input className='checkBox' name="No" value={InfData.Selection_Procedure.Resume_Shortlisting.No} type="checkbox"/></div>
+                            <input className='checkBox' name="No" checked={InfData.Selection_Procedure.Resume_Shortlisting.No} type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -794,13 +802,13 @@ const ReviewInf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div><label className='type'>Technical </label>
-                            <input className='checkBox' name="Technical" value={InfData.Selection_Procedure.Type_Of_Test.Technical} type="checkbox"/></div>
+                            <input className='checkBox' name="Technical" checked={InfData.Selection_Procedure.Type_Of_Test.Technical} type="checkbox"/></div>
                             <div><label className='type'>Aptitude </label>
-                            <input className='checkBox' name="Aptitude" value={InfData.Selection_Procedure.Type_Of_Test.Aptitude} type="checkbox"/></div>
+                            <input className='checkBox' name="Aptitude" checked={InfData.Selection_Procedure.Type_Of_Test.Aptitude} type="checkbox"/></div>
                             <div><label className='type'>Both</label>
-                            <input className='checkBox' name="Technical_and_Aptitude" value={InfData.Selection_Procedure.Type_Of_Test.Both} type="checkbox"/></div>
+                            <input className='checkBox' name="Technical_and_Aptitude" checked={InfData.Selection_Procedure.Type_Of_Test.Both} type="checkbox"/></div>
                             <div><label className='type'>None </label>
-                            <input className='checkBox' name="None" value={InfData.Selection_Procedure.Type_Of_Test.None} type="checkbox"/></div>
+                            <input className='checkBox' name="None" checked={InfData.Selection_Procedure.Type_Of_Test.None} type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -812,11 +820,11 @@ const ReviewInf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='round'>GD </label>
-                            <input className='checkBox' name="GD" value={InfData.Selection_Procedure.Other_Qualification_Rounds.GD} type="checkbox"/></div>
+                            <input className='checkBox' name="GD" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.GD} type="checkbox"/></div>
                             <div className="align"><label className='round'>  Case Study</label>
-                            <input className='checkBox' name="Case_Study" value={InfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} type="checkbox"/></div>
+                            <input className='checkBox' name="Case_Study" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} type="checkbox"/></div>
                             <div className="align"><label className='round'>Interview </label>
-                            <input className='checkBox' name="Interview" value={InfData.Selection_Procedure.Other_Qualification_Rounds.Interview} type="checkbox"/></div>
+                            <input className='checkBox' name="Interview" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.Interview} type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -828,7 +836,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
+              checked={InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
             </h1>
           </Col>
         </FormGroup>
@@ -838,7 +846,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
+              checked={InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
@@ -848,7 +856,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
           <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
+              checked={InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
           </h1>
           </Col>
         </FormGroup>
@@ -863,12 +871,29 @@ const ReviewInf = ({
         <button className="submit_btn" type="submit" onClick={(e) => (e.preventDefault()/setPage("4"))}>
             Edit
           </button>
-          <button className="submit_btn" type="submit" onClick={handleUpdateInfById}>
+          <button className="submit_btn" type="submit" onClick={handleFormSubmit}>
             Submit
           </button>
         </div>
-      </Form>
+      </Form> */}
     </div>
   );
 };
-export default ReviewInf;
+//export default ReviewInf;
+class Example extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <ReactToPrint content={() => this.componentRef}>
+          <PrintContextConsumer>
+            {({ handlePrint }) => (
+              <button onClick={handlePrint}>Print this out!</button>
+            )}
+          </PrintContextConsumer>
+        </ReactToPrint>
+        <ComponentToPrint ref={el => (this.componentRef = el)} />
+      </div>
+    );
+  }
+}
+export default Example;

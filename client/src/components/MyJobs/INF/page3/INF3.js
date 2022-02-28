@@ -39,7 +39,8 @@ const INF3 = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Select_All"
-                  value={threeYearData.Select_All}
+                  checked={threeYearData.Select_All}
+                  onChange={handleThreeYearChange}
                   type="checkbox"
                 />
               </td>
@@ -49,7 +50,7 @@ const INF3 = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Applied_Geology"
-                  value={threeYearData.Applied_Geology}
+                  checked={threeYearData.Applied_Geology}
                   onChange={handleThreeYearChange}
                   type="checkbox"
                 />
@@ -60,7 +61,7 @@ const INF3 = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Applied_Geophysics"
-                  value={threeYearData.Applied_Geophysics}
+                  checked={threeYearData.Applied_Geophysics}
                   onChange={handleThreeYearChange}
                   type="checkbox"
                 />
@@ -79,7 +80,8 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Select_All"
-                  value={twoYearData.Select_All}
+                  checked={twoYearData.Select_All}
+                  onChange={handleTwoYearChange}
                   type="checkbox"
                 />
               </td>
@@ -89,7 +91,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Applied_Geology"
-                  value={twoYearData.Applied_Geology}
+                  checked={twoYearData.Applied_Geology}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -100,7 +102,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Applied_Geophysics"
-                  value={twoYearData.Applied_Geophysics}
+                  checked={twoYearData.Applied_Geophysics}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -111,7 +113,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Chemical_Engineering"
-                  value={twoYearData.Chemical_Engineering}
+                  checked={twoYearData.Chemical_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -122,7 +124,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Civil_Engineering"
-                  value={twoYearData.Civil_Engineering}
+                  checked={twoYearData.Civil_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -133,7 +135,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={twoYearData.Computer_Science_and_Engineering}
+                  checked={twoYearData.Computer_Science_and_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -144,7 +146,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Data_Analytics"
-                  value={twoYearData.Data_Analytics}
+                  checked={twoYearData.Data_Analytics}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -155,7 +157,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Electrical_Engineering"
-                  value={twoYearData.Electrical_Engineering}
+                  checked={twoYearData.Electrical_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -168,7 +170,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Electronics_and_Communication_Engineering"
-                  value={twoYearData.Electronics_and_Communication_Engineering}
+                  checked={twoYearData.Electronics_and_Communication_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -179,7 +181,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Environmental_Engineering"
-                  value={twoYearData.Environmental_Engineering}
+                  checked={twoYearData.Environmental_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -192,7 +194,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Industrial_Engineering_and_Management"
-                  value={twoYearData.Industrial_Engineering_and_Management}
+                  checked={twoYearData.Industrial_Engineering_and_Management}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -203,7 +205,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mechanical_Engineering"
-                  value={twoYearData.Mechanical_Engineering}
+                  checked={twoYearData.Mechanical_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -216,7 +218,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Fuel_Minerals_and_Metallurgical_Engineering"
-                  value={
+                  checked={
                     twoYearData.Fuel_Minerals_and_Metallurgical_Engineering
                   }
                   onChange={handleTwoYearChange}
@@ -229,7 +231,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mining_Engineering"
-                  value={twoYearData.Mining_Engineering}
+                  checked={twoYearData.Mining_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -240,7 +242,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mining_Machinery_Engineering"
-                  value={twoYearData.Mining_Machinery_Engineering}
+                  checked={twoYearData.Mining_Machinery_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -251,7 +253,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Petroleum_Engineering"
-                  value={twoYearData.Petroleum_Engineering}
+                  checked={twoYearData.Petroleum_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -264,7 +266,7 @@ const INF3 = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Pharmaceutical_Science_and_Engineering"
-                  value={twoYearData.Pharmaceutical_Science_and_Engineering}
+                  checked={twoYearData.Pharmaceutical_Science_and_Engineering}
                   onChange={handleTwoYearChange}
                   type="checkbox"
                 />
@@ -283,7 +285,8 @@ const INF3 = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Select_All"
-                  value={twoYearMbaData.Select_All}
+                  checked={twoYearMbaData.Select_All}
+                  onChange={handleTwoYearMbaChange}
                   type="checkbox"
                 />
               </td>
@@ -293,7 +296,7 @@ const INF3 = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Business_Analytics"
-                  value={twoYearMbaData.Business_Analytics}
+                  checked={twoYearMbaData.Business_Analytics}
                   onChange={handleTwoYearMbaChange}
                   type="checkbox"
                 />
@@ -304,7 +307,7 @@ const INF3 = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Finance"
-                  value={twoYearMbaData.Finance}
+                  checked={twoYearMbaData.Finance}
                   onChange={handleTwoYearMbaChange}
                   type="checkbox"
                 />
@@ -315,7 +318,7 @@ const INF3 = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Human_Resources"
-                  value={twoYearMbaData.Human_Resources}
+                  checked={twoYearMbaData.Human_Resources}
                   onChange={handleTwoYearMbaChange}
                   type="checkbox"
                 />
@@ -326,7 +329,7 @@ const INF3 = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Marketing"
-                  value={twoYearMbaData.Marketing}
+                  checked={twoYearMbaData.Marketing}
                   onChange={handleTwoYearMbaChange}
                   type="checkbox"
                 />
@@ -337,7 +340,7 @@ const INF3 = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Operations"
-                  value={twoYearMbaData.Operations}
+                  checked={twoYearMbaData.Operations}
                   onChange={handleTwoYearMbaChange}
                   type="checkbox"
                 />
@@ -356,7 +359,8 @@ const INF3 = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Select_All"
-                  value={twoYearMscData.Select_All}
+                  checked={twoYearMscData.Select_All}
+                  onChange={handleTwoYearMscChange}
                   type="checkbox"
                 />
               </td>
@@ -366,7 +370,7 @@ const INF3 = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Chemistry"
-                  value={twoYearMscData.Chemistry}
+                  checked={twoYearMscData.Chemistry}
                   onChange={handleTwoYearMscChange}
                   type="checkbox"
                 />
@@ -377,7 +381,7 @@ const INF3 = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Mathematics_and_Computing"
-                  value={twoYearMscData.Mathematics_and_Computing}
+                  checked={twoYearMscData.Mathematics_and_Computing}
                   onChange={handleTwoYearMscChange}
                   type="checkbox"
                 />
@@ -388,7 +392,7 @@ const INF3 = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Physics"
-                  value={twoYearMscData.Physics}
+                  checked={twoYearMscData.Physics}
                   onChange={handleTwoYearMscChange}
                   type="checkbox"
                 />

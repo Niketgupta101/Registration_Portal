@@ -11,7 +11,7 @@ import ReviewInf from "./ReviewInf/ReviewInf"
 import "./styles.css";
 
 const Inf = () => {
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState("5");
 
   const companyData = {
     Name_Of_The_Company: "",
@@ -179,7 +179,7 @@ const Inf = () => {
   };
 
   // ------------------------------------------------------------
-(InfData.resumeShortlisting.yes)
+// (InfData.resumeShortlisting.yes)
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
@@ -315,30 +315,15 @@ const Inf = () => {
     }
   };
   console.log(page);
-  // const handleFormSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log({
-  //     companyFormData,
-  //     jobFormData,
-  //     stipendFormData,
-  //     fourYearData,
-  //     fiveYearData,
-  //     skillData,
-  //     threeYearData,
-  //     twoYearData,
-  //     twoYearMbaData,
-  //     twoYearMscData,
-  //     resumeShortListingData,
-  //     typeOfTestData,
-  //     otherQualificationsRoundData,
-  //     selectionFormData,
-  //   });
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log(InfData)
 
-  //   try {
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -405,7 +390,7 @@ const Inf = () => {
             <ReviewInf
             setPage={setPage}
             InfData={InfData}
-            handleUpdateInfById={handleUpdateInfById}
+            handleFormSubmit = {handleFormSubmit}
             />
           </TabPanel>
         </TabContext>
