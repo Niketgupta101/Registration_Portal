@@ -270,7 +270,7 @@ const Inf = () => {
 
     try {
       let response = await createNewInf(InfData);
-
+      console.log(response);
       setInfId(response.data.newInf._id);
       console.log(response);
       setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
@@ -303,17 +303,17 @@ const Inf = () => {
         Eligibility_Criteria: selectionData.Eligibility_Criteria,
       },
     }));
-
+    console.log(InfData, InfId)
     try {
       let response = await updateInfById(InfData, InfId);
 
       console.log(response);
-      setPage(prevPage => prevPage+1);
+      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(page);
   // const handleFormSubmit = async (e) => {
   //   e.preventDefault();
   //   console.log({

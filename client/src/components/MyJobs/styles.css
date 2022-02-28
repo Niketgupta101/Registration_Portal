@@ -1,5 +1,5 @@
 .myJobs_container {
-  width: 100vw;
+  width: 100%;
   min-height: 80vh;
   display: flex;
   justify-content: space-evenly;

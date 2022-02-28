@@ -22,6 +22,7 @@ import UserAuth from "./components/Auth/UserAuth";
 import ForgotPassword from "./components/Password/ForgotPassword";
 import ChangePassword from "./components/Password/ChangePassword";
 import ResetPassword from "./components/Password/ResetPassword";
+import CompanyData from "./components/Admin/Company/CompanyData/CompanyData";
 
 const App = () => {
   return (
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/admin/account" element={<Account />} />
           <Route path="/admin/users" element={<Users />} />
           <Route path="/admin/company" element={<Company />} />
+          <Route path="/admin/company/:id" element={<CompanyData />} />
           <Route path="/admin/jobs" element={<Jobs />} />
           <Route path="/create/inf" element={<Inf />} />
           <Route path="/create/jnf" element={<Jnf />} />

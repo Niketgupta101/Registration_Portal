@@ -57,6 +57,7 @@ const createInf = async (loggedUserId, details,  next) => {
 }
 
 const saveInfById = async (id, details, next) => {
+    console.log({ id, details });
     try {
         let infStatus = await INFstatus.findOne({ infId: id });
 
@@ -68,12 +69,14 @@ const saveInfById = async (id, details, next) => {
 
         let inf = await INF.findOne({ _id: id });
 
+        console.log(inf);
         inf.set({ ...details });
 
         await inf.save();
 
         return { success: true, inf };
     } catch (error) {
+        console.log(error);
         return next(error);
     }
 }

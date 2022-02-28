@@ -48,9 +48,11 @@ exports.sendEmail = async (to, subject, html) => {
     emailTransporter.sendMail(mailOptions, function(error, info) {
         if(error)
         {
+          console.log(error);
             return { success: false, message: 'Mail could not be sent' };
         }
         else{
+          console.log(info);
             return { success: true, message: 'Mail sent successfully' };
         }
     })

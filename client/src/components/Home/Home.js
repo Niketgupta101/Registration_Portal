@@ -8,14 +8,14 @@ const Home = () => {
   const Navigate = useNavigate();
 
 
-  let user = localStorage.getItem('user');
+  // let user = localStorage.getItem('user');
   
-  useEffect(() => {
-    if(!user)
-    {
-      Navigate('/auth');
-    }
-  }, [Navigate, user])
+  // useEffect(() => {
+  //   if(!user)
+  //   {
+  //     Navigate('/auth');
+  //   }
+  // }, [Navigate, user])
   
 
   return (
