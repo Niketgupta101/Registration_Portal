@@ -12,7 +12,7 @@ const jnfSchema = new Schema({
         Designation: { type: String },
         Place_Of_Posting: { type: String }, 
         Job_Description: { 
-            Roles_And_Resposibility: [{ type: String }],
+            type: String
         },
     },
     Salary_Details: {

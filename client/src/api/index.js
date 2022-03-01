@@ -37,6 +37,8 @@ export const getAllInfForUser = (userId) => API.get(`/inf/user/${userId}`);
 
 export const getAllInf = () => API.get(`/inf/admin`);
 
+export const getAllJobs = () => API.get(`/inf/admin/all`);
+
 export const createNewInf = (data) => API.post(`/inf`, data);
 
 export const updateInfById = (data,id) => API.put(`/inf/${id}`, data);

@@ -23,6 +23,7 @@ import ForgotPassword from "./components/Password/ForgotPassword";
 import ChangePassword from "./components/Password/ChangePassword";
 import ResetPassword from "./components/Password/ResetPassword";
 import CompanyData from "./components/Admin/Company/CompanyData/CompanyData";
+import JobData from "./components/Admin/Jobs/JobData/JobData";
 
 const App = () => {
   return (
@@ -34,6 +35,8 @@ const App = () => {
           {/* ------------------------------ User Home --------------------- */}
 
           <Route path="/" element={<Home />} />
+          <Route path="/create/inf" element={<Inf />} />
+          <Route path="/create/jnf" element={<Jnf />} />
 
           {/* ------------------------------ User Auth --------------------- */}
 
@@ -66,8 +69,7 @@ const App = () => {
           <Route path="/admin/company" element={<Company />} />
           <Route path="/admin/company/:id" element={<CompanyData />} />
           <Route path="/admin/jobs" element={<Jobs />} />
-          <Route path="/create/inf" element={<Inf />} />
-          <Route path="/create/jnf" element={<Jnf />} />
+          <Route path="/admin/jobs/job/:id" element={<JobData />} />
         </Routes>
       </div>
     </BrowserRouter>

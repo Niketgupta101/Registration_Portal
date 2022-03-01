@@ -1,30 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getInfById } from '../../../../api';
-import { useNavigate } from 'react-router-dom'
-
+import React from "react";
 import { Form, FormGroup, Label, Col } from "reactstrap";
 import "./styles.css";
 const style = { alignItems: "center" };
 
 
-const JobData = () => {
-    const { id } = useParams();
-    const [InfData, setInfData] = useState();
-    const Navigate = useNavigate();
-
-    useEffect(async () => {
-      const response = await getInfById(id);
-      console.log(response);
-      setInfData(response.data.inf);
-    }, [])
-    
-    console.log({ id, InfData });
-
+const ReviewStructure = ({ InfData, setPage, handleFormSubmit }) => {
   return (
-    <>
-        <div className="JobWithId">
-        {InfData && (<div className="overallDiv1">
+    <div className="overallDiv1">
       <div>
         <header className="headerText1">
           INTERNSHIP NOTIFICATION FORM (2021-2022)
@@ -1168,11 +1150,32 @@ const JobData = () => {
             </h1>
           </Col>
         </FormGroup>
-      </Form>
-    </div>)}
+        <div
+          className="formFlex"
+          style={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            marginTop: "1.5rem",
+          }}
+        >
+          <button
+            className="submit_btn"
+            type="submit"
+            onClick={(e) => e.preventDefault() / setPage("4")}
+          >
+            Edit
+          </button>
+          <button
+            className="submit_btn"
+            type="submit"
+            onClick={handleFormSubmit}
+          >
+            Submit
+          </button>
         </div>
-    </>
-  )
-}
+      </Form>
+    </div>
+  );
+};
 
-export default JobData
+export default ReviewStructure;

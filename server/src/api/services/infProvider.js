@@ -1,12 +1,21 @@
 const { INF, INFstatus } = require('../models/INF');
 const ErrorResponse = require('../utils/errorResponse');
+const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectId;
 
 const fetchInfById = async (id, next) => {
     try {
+        let infStatus = await INFstatus.findOne({ infId: id });
+
+        if(!infStatus)
+        return next( new ErrorResponse('No INF found with given id', 404));
+
+        // if(infStatus.progress !== "incomplete")
+        // return next(new ErrorResponse('No changes are allowed for this inf.', 400));
+
         let inf = await INF.findOne({ _id: id });
 
-        if(!inf)
-        return next( new ErrorResponse('No INF found with given id.', 404));
+        console.log(inf);
 
         return { success: true, inf };
     } catch (error) {
@@ -40,6 +49,7 @@ const fetchAllInf = async (offset, pagelimit, next) => {
 
         return { success: true, infList }; 
     } catch (error) {
+        console.log(error);
         return next(error);
     }
 }
@@ -94,7 +104,7 @@ const submitInfById = async (id, next) => {
 
         await infStatus.save();
 
-        return { success: true, message: "Submitted Successfully", inf };
+        return { success: true, message: "Submitted Successfully", infStatus };
     } catch (error) {
         return next(error);
     }

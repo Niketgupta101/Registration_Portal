@@ -8,8 +8,8 @@ const router = express.Router();
 
 router.post('/', sendContactData);
 
-router.put('/:id', protect, authorizeRoles('Admin'), changeContactStatus);
+router.put('/:id', protect, authorizeRoles, changeContactStatus);
 
-router.delete('/:id', protect, authorizeRoles('Admin'), deleteContactData);
+router.delete('/:id', protect, authorizeRoles, deleteContactData);
 
 module.exports = router;

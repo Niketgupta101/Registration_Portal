@@ -1,17 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { sendConfirmationLink } from '../../api';
 
 
 import './styles.css';
 
 const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
-    const Navigate = useNavigate();
+    // const Navigate = useNavigate();
 
     const handleSendLink = async (e) => {
       e.preventDefault();
       try {
-        const response = await sendConfirmationLink(email);
+        await sendConfirmationLink(email);
         setIsSignIn(true);
         setPage('auth');
       } catch (error) {
