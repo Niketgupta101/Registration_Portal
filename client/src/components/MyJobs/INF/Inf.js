@@ -181,7 +181,10 @@ const Inf = () => {
   };
 
   // ------------------------------------------------------------
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ba2356b6a3ecca9d3277eb1a7873fd4a76274e1
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,

@@ -2,6 +2,7 @@ import { Add } from "@material-ui/icons";
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import Jobs from "../Admin/Jobs/Jobs";
 
 import "./styles.css";
 
@@ -41,7 +42,8 @@ const MyJobs = () => {
             </select>
           </div>
           <div className="jobs_content">
-            <div className="job_card">
+            { Jobs.map(job => (<>
+              <div className="job_card">
               <div className="badge">
                 <h6>Intern</h6>
               </div>
@@ -54,92 +56,14 @@ const MyJobs = () => {
                   <h5><span>Mode</span>: Virtual</h5>
                   <h5><span>Stipend</span>: 10-20k</h5>
                   <h5><span>Provision for PPO</span>: Yes</h5>
-                  <button className="secondary_btn">View more</button>
+                  <div style={{ display: 'flex', justifyContent: 'center'}}>
+                  <button className="secondary_btn"> <a href="" style={{ textDecoration: "none", color: "inherit" }}> View Job</a> </button>
+                  <button className="secondary_btn"> <a href="" style={{ textDecoration: "none", color: "inherit" }}> Download</a> </button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="job_card">
-            <div className="badge" style={{ background: "red"}}>
-                <h6>Job</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>Software Developer</h4>
-                </div>
-                <div className="content_text">
-                  <h5><span>Duration</span>: 2-3 months</h5>
-                  <h5><span>Mode</span>: Virtual</h5>
-                  <h5><span>Stipend</span>: 10-20k</h5>
-                  <h5><span>Provision for PPO</span>: Yes</h5>
-                  <button className="secondary_btn">View more</button>
-                </div>
-              </div>
-            </div><div className="job_card">
-              <div className="badge">
-                <h6>Intern</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>Software Developer</h4>
-                </div>
-                <div className="content_text">
-                  <h5><span>Duration</span>: 2-3 months</h5>
-                  <h5><span>Mode</span>: Virtual</h5>
-                  <h5><span>Stipend</span>: 10-20k</h5>
-                  <h5><span>Provision for PPO</span>: Yes</h5>
-                  <button className="secondary_btn">View more</button>
-                </div>
-              </div>
-            </div><div className="job_card">
-              <div className="badge" style={{ background: "red"}}>
-                <h6>Job</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>Software Developer</h4>
-                </div>
-                <div className="content_text">
-                  <h5><span>Duration</span>: 2-3 months</h5>
-                  <h5><span>Mode</span>: Virtual</h5>
-                  <h5><span>Stipend</span>: 10-20k</h5>
-                  <h5><span>Provision for PPO</span>: Yes</h5>
-                  <button className="secondary_btn">View more</button>
-                </div>
-              </div>
-            </div><div className="job_card">
-              <div className="badge">
-                <h6>Intern</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>Software Developer</h4>
-                </div>
-                <div className="content_text">
-                  <h5><span>Duration</span>: 2-3 months</h5>
-                  <h5><span>Mode</span>: Virtual</h5>
-                  <h5><span>Stipend</span>: 10-20k</h5>
-                  <h5><span>Provision for PPO</span>: Yes</h5>
-                  <button className="secondary_btn">View more</button>
-                </div>
-              </div>
-            </div>
-            <div className="job_card">
-              <div className="badge">
-                <h6>Intern</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>Software Developer</h4>
-                </div>
-                <div className="content_text">
-                  <h5><span>Duration</span>: 2-3 months</h5>
-                  <h5><span>Mode</span>: Virtual</h5>
-                  <h5><span>Stipend</span>: 10-20k</h5>
-                  <h5><span>Provision for PPO</span>: Yes</h5>
-                  <button className="secondary_btn">View more</button>
-                </div>
-              </div>
-            </div>
+            </>)) }
           </div>
         </div>
       </div>
