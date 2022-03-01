@@ -1,4 +1,4 @@
-const { postContactData, updateContactStatus, deleteContactById } = require('../services/contactProvider');
+const { postContactData, updateContactStatus, deleteContactById, fetchAllContacts } = require('../services/contactProvider');
 
 const sendContactData = async (req, res, next) => {
     const details = req.body;
@@ -36,4 +36,14 @@ const deleteContactData = async (req, res, next ) => {
     }
 }
 
-module.exports = { sendContactData, changeContactStatus, deleteContactData };
+const getAllContacts = async (req, res, next) => {
+    try {
+        let response = await fetchAllContacts(next);
+
+        res.status(201).json(response);
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports = { sendContactData, changeContactStatus, deleteContactData, getAllContacts };

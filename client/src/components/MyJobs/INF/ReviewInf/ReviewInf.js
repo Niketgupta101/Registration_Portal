@@ -1,8 +1,5 @@
 import React from "react";
 import { Form, FormGroup, Label, Col } from "reactstrap";
-//  import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
-//  import  { useRef } from 'react';
-//  import { useReactToPrint } from 'react-to-print';
 
 import "./styles.css";
 

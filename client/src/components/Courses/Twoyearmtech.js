@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.css';
 
 
-const twoyearmtech = () => {
+const Twoyearmtech = () => {
   return (
     <div className='box'>
       <main>
@@ -32,4 +32,4 @@ const twoyearmtech = () => {
   )
 }
 
-export default twoyearmtech
+export default Twoyearmtech

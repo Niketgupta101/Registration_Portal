@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.css';
 
 
-const twoyearmba = () => {
+const Twoyearmba = () => {
   return (
     <div className='box'>
       <main>
@@ -21,4 +21,4 @@ const twoyearmba = () => {
   )
 }
 
-export default twoyearmba
+export default Twoyearmba

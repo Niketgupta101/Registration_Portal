@@ -14,7 +14,6 @@ const infSchema = new Schema({
         Job_Description: { type: String },
         Mode_Of_Internship: {
             type: String,           // Virtual (or) Physical
-    
         },
         Place_Of_Posting: String,      // If mode of internship is physical
     },

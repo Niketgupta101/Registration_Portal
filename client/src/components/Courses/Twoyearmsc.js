@@ -3,13 +3,14 @@ import React from 'react';
 import './styles.css';
 
 
-const threeyearmsc = () => {
+const Twoyearmsc = () => {
   return (
     <div className='box'>
       <main>
   <ol class="gradient-list">
-  <li>Applied Geology</li> 
-<li>Applied Geophysics</li>
+  <li>Chemistry </li>
+<li>Mathematics & Computing </li>
+<li>Physics </li>
     
   </ol>
 </main>
@@ -18,4 +19,4 @@ const threeyearmsc = () => {
   )
 }
 
-export default threeyearmsc
+export default Twoyearmsc
