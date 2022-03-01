@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, Col } from "reactstrap";
 //  import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 //  import  { useRef } from 'react';
 //  import { useReactToPrint } from 'react-to-print';
+
 import "./styles.css";
 
 const style = { alignItems: "center" };
@@ -36,7 +37,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Company_Overview.Name_Of_The_Company}
+              xvideos
             </h1>
           </Col>
         </FormGroup>
@@ -68,7 +69,7 @@ const ReviewInf = ({
             Internship Duration
           </Label>
           <Col sm={10}>
-            <h1>
+            <h1 className="inputText">
               {InfData.Intern_Profile.Internship_Duration}
             </h1>
           </Col>
