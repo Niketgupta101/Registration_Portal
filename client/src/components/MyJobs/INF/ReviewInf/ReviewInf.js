@@ -1,12 +1,6 @@
 import React from "react";
 import { Form, FormGroup, Label, Col } from "reactstrap";
-<<<<<<< HEAD
 
-=======
- import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
- import  { useRef } from 'react';
- import { useReactToPrint } from 'react-to-print';
->>>>>>> dd80380d801452b7910efb3bc4949d5c664f1a5c
 import "./styles.css";
 
 const style = { alignItems: "center" };
