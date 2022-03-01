@@ -28,6 +28,8 @@ const Contact = () => {
     setContacts(response.data.contactList);
   }, []);
 
+  console.log(Contacts);
+
   return (
     <>
       <div className="admin_contact_header">

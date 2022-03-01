@@ -14,7 +14,7 @@ const Jobs = () => {
   useEffect(async () => {
     const response = await getAllJobs();
     console.log(response);
-    setJobs(response.data.infList);
+    setJobs(response.data.jobs);
   }, []);
   console.log(jobs);
 
@@ -25,7 +25,7 @@ const Jobs = () => {
           <h1>Jobs</h1>
         </div>
         <div className="job_items">
-          {jobs.map((job) => (
+          {jobs && jobs.map((job) => (
               <div className="job_card" key={job._id} style={{ display: "inline-block" }}>
                 <div className="badge" style={{ background: "red" }}>
                   <h6>Job</h6>

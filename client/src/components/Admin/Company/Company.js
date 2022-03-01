@@ -8,18 +8,18 @@ import { getAllCompanyDetails } from "../../../api";
 const Company = () => {
   const Navigate = useNavigate();
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  // let user = JSON.parse(localStorage.getItem("user"));
 
-  const [Companies, setCompanies] = React.useState();
+  // const [Companies, setCompanies] = React.useState();
 
-  React.useEffect(async () => {
-    if (!user) Navigate("/auth");
+  // React.useEffect(async () => {
+  //   if (!user) Navigate("/auth");
 
-    let response = await getAllCompanyDetails();
+  //   let response = await getAllCompanyDetails();
 
-    console.log(response);
-    setCompanies(response.data.companyList);
-  }, []);
+  //   console.log(response);
+  //   setCompanies(response.data.companyList);
+  // }, []);
 
   return (
     <>
@@ -28,10 +28,12 @@ const Company = () => {
           <h1>Companies</h1>
         </div>
         <div className="company_items">
-          {Companies.map(company => (
+          {/* {Companies.map(company => (
             <div className="job_card">
             </div>
-          ))}
+          ))} */}
+          <div className="job_card">
+          </div>
         </div>
         <Stack spacing={2}>
           <Pagination

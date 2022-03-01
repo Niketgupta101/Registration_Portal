@@ -2,7 +2,7 @@ import { Add } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { getAllInfForUser } from "../../api";
+import { getAllInfForUser, getAllJobs } from "../../api";
 
 import "./styles.css";
 
@@ -13,12 +13,13 @@ const MyJobs = () => {
 
   let user = JSON.parse(localStorage.getItem('user'));
 
-  const [Jobs, setJobs] = useState();
+  const [Jobs, setJobs] = useState({});
 
   useEffect(async () => {
     if(!user)
     Navigate('/auth');
-    let response = await getAllInfForUser(user._id);
+
+    let response = await getAllJobs();
     console.log(response);
     setJobs(response.data.infList);
   }, [])
@@ -55,7 +56,7 @@ const MyJobs = () => {
             </select>
           </div>
           <div className="jobs_content">
-            {/* { Jobs.map(job => (<>
+            { Jobs && Jobs.map(job => (<>
               <div className="job_card">
               <div className="badge">
                 <h6>Intern</h6>
@@ -76,7 +77,7 @@ const MyJobs = () => {
                 </div>
               </div>
             </div>
-            </>)) } */}
+            </>)) }
           </div>
         </div>
       </div>
