@@ -85,9 +85,9 @@
     background: transparent;
     display: inline;
     margin: 0.5rem auto;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    /* position: relative; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
     transition: all ease 0.3s;
 }
 .secondary_btn:hover{

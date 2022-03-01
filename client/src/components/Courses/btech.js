@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.css';
 
 
-const btech = () => {
+const Btech = () => {
   return (
     <div className='box'>
       <main>
@@ -28,4 +28,4 @@ const btech = () => {
   )
 }
 
-export default btech
+export default Btech

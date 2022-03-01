@@ -181,11 +181,6 @@ const Inf = () => {
   };
 
   // ------------------------------------------------------------
-<<<<<<< HEAD
-//(InfData.resumeShortlisting.yes)
-=======
-// (InfData.resumeShortlisting.yes)
->>>>>>> dd80380d801452b7910efb3bc4949d5c664f1a5c
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
