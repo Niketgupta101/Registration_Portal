@@ -1,5 +1,6 @@
 const { JNF, JNFstatus } = require('../models/JNF');
 const ErrorResponse = require('../utils/errorResponse');
+const { fillJNFDoc } = require('../utils/service/createPDF');
 
 const fetchJnfById = async (id, next) => {
     try {
@@ -88,8 +89,10 @@ const submitJnfById = async (id, next) => {
         let jnfStatus = await JNFstatus.findOne({ jnfId: id });
 
         jnfStatus.set({ progress: "submitted" });
-
+        
         await jnfStatus.save();
+
+        await fillJNFDoc(jnf);
 
         return { success: true, message: "Submitted Successfully", jnf };
     } catch (error) {

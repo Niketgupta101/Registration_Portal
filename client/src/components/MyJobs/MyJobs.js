@@ -42,7 +42,7 @@ const MyJobs = () => {
             </select>
           </div>
           <div className="jobs_content">
-            { Jobs.map(job => (<>
+            {/* { Jobs.map(job => (<>
               <div className="job_card">
               <div className="badge">
                 <h6>Intern</h6>
@@ -63,7 +63,7 @@ const MyJobs = () => {
                 </div>
               </div>
             </div>
-            </>)) }
+            </>)) } */}
           </div>
         </div>
       </div>
