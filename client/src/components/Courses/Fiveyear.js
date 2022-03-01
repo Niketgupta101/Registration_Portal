@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.css';
 
 
-const fiveyear = () => {
+const Fiveyear = () => {
   return (
     <div className='box'>
       <main>
@@ -19,4 +19,4 @@ const fiveyear = () => {
   )
 }
 
-export default fiveyear
+export default Fiveyear

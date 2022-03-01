@@ -2,6 +2,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { Input } from "reactstrap";
+
+
 
 import "./styles.css";
 import {
@@ -18,6 +21,9 @@ import Jobs from "../Jobs/Jobs";
 import Account from "../Account/Account";
 import { TabContext, TabPanel } from "@mui/lab";
 import Contact from "./Contact";
+
+import 'bootstrap/dist/css/bootstrap.css';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Home = () => {
   const [value, setValue] = React.useState("Home");
@@ -84,8 +90,36 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+                <div className="d-flex justify-content-center p-5">
+
+</div>
+<div id="setyear">
+  <h4>Set the Graduation Year :</h4>
+<Input
+              id="exampleSelect"
+              name="Internship_Duration"
+              type="select"
+              className="inputText"
+            
+            >
+              <option>
+                2022
+              </option>
+              <option>
+                2023
+              </option>
+              <option>
+                2024
+              </option>
+            </Input>
+              
+              
+                
+              </div>
                 <Contact />
               </div>
+              
+     
             </TabPanel>
             <TabPanel value="Companies"><Company /></TabPanel>
             <TabPanel value="Jobs">
