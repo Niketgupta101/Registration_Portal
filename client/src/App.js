@@ -24,6 +24,12 @@ import ChangePassword from "./components/Password/ChangePassword";
 import ResetPassword from "./components/Password/ResetPassword";
 import CompanyData from "./components/Admin/Company/CompanyData/CompanyData";
 import JobData from "./components/Admin/Jobs/JobData/JobData";
+import Fiveyear from "./components/Courses/Fiveyear";
+import Twoyearmba from "./components/Courses/Twoyearmba";
+import Twoyearmsc from "./components/Courses/Twoyearmsc";
+import Twoyearmtech from "./components/Courses/Twoyearmtech";
+import Btech from "./components/Courses/Btech";
+import Threeyearmsc from "./components/Courses/Threeyearmsc";
 
 const App = () => {
   return (
@@ -70,6 +76,17 @@ const App = () => {
           <Route path="/admin/company/:id" element={<CompanyData />} />
           <Route path="/admin/jobs" element={<Jobs />} />
           <Route path="/admin/jobs/job/:id" element={<JobData />} />
+
+          {/* ------------------------------ Courses--------------------- */}
+          <Route path="/courses/fiveyear" element={<Fiveyear/>}/>
+          <Route path="/courses/threeyearmsc" element={<Threeyearmsc/>}/>
+          <Route path="/courses/twoyearmba" element={<Twoyearmba/>}/>
+          <Route path="/courses/twoyearmsc" element={<Twoyearmsc/>}/>
+          <Route path="/courses/twoyearmtech" element={<Twoyearmtech/>}/>
+          <Route path="/courses/btech" element={<Btech/>}/>
+
+
+          
         </Routes>
       </div>
     </BrowserRouter>
