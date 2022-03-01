@@ -11,7 +11,7 @@ import ReviewInf from "./ReviewInf/ReviewInf"
 import "./styles.css";
 
 const Inf = () => {
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState("5");
 
   const companyData = {
     Name_Of_The_Company: "",
@@ -179,7 +179,7 @@ const Inf = () => {
   };
 
   // ------------------------------------------------------------
-(InfData.resumeShortlisting.yes)
+//(InfData.resumeShortlisting.yes)
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,

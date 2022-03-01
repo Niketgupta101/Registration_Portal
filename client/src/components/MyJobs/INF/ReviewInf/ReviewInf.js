@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Col, Input } from "reactstrap";
+import { Form, FormGroup, Label, Col } from "reactstrap";
 
 import "./styles.css";
 
@@ -25,7 +25,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Company_Overview.Name_Of_The_Company}
+              xvideos
             </h1>
           </Col>
         </FormGroup>
@@ -57,7 +57,7 @@ const ReviewInf = ({
             Internship Duration
           </Label>
           <Col sm={10}>
-            <h1>
+            <h1 className="inputText">
               {InfData.Intern_Profile.Internship_Duration}
             </h1>
           </Col>
@@ -828,7 +828,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
+              {InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
             </h1>
           </Col>
         </FormGroup>
@@ -838,7 +838,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
+              {InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
@@ -848,7 +848,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
           <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
+              {InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
           </h1>
           </Col>
         </FormGroup>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Col, Input } from "reactstrap";
+import { Form, FormGroup, Label, Col } from "reactstrap";
 
 import "./styles.css";
 
@@ -808,7 +808,7 @@ const ReviewJnf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
+              {InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
             </h1>
           </Col>
         </FormGroup>
@@ -818,7 +818,7 @@ const ReviewJnf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
+              {InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
@@ -828,7 +828,7 @@ const ReviewJnf = ({
           </Label>
           <Col sm={10}>
           <h1 className='inputText'>
-              value={InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
+              {InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
           </h1>
           </Col>
         </FormGroup>
