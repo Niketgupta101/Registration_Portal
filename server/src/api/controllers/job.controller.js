@@ -8,6 +8,7 @@ const getAllJobs = async (req, res, next) => {
         let jnfList = await JNF.find().sort({createdAt: -1});
 
         let jobs = { ...infList, ...jnfList };
+        console.log(jobs);
 
         res.status(201).json({ success: true, jobs });
     } catch (error) {

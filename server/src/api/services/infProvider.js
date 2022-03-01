@@ -103,6 +103,8 @@ const submitInfById = async (id, next) => {
         await infStatus.save();
         await fillINFDoc(inf);
 
+        console.log('yes');
+
         return { success: true, message: "Submitted Successfully", infStatus };
     } catch (error) {
         return next(error);
