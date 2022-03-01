@@ -325,7 +325,7 @@ const Inf = () => {
       let response = await submitInf(InfId);
 
       console.log(response);
-      Navigate('/myjobs');
+      // Navigate('/myjobs');
     } catch (error) {
       console.log(error);
     }

@@ -17,8 +17,10 @@
   "dependencies": {
     "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
+    "convertapi": "^1.11.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "docxtemplater": "^3.29.0",
     "dotenv-safe": "^8.2.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.2",
@@ -30,6 +32,7 @@
     "nodemailer": "^6.7.2",
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
+    "pizzip": "^3.1.1",
     "uuid": "^8.3.2"
   },
   "bugs": {

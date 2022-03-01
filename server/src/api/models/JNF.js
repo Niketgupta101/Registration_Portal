@@ -109,6 +109,10 @@ const jnfSchema = new Schema({
         Number_Of_Offers: { lower: Number, higher: Number },
         Eligibility_Criteria: String
     },
+    previewLink: String,
+    downloadLink: String,
+    isIntern: {type: Boolean, default: true},
+    isJob: {type: Boolean, default: false},
     createdAt: {
         type: Date,
         default: Date.now()

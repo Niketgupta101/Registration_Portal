@@ -112,6 +112,10 @@ const infSchema = new Schema({
         Number_Of_Offers: { lower: Number, higher: Number },
         Eligibility_Criteria: String
     },
+    previewLink: String,
+    downloadLink: String,
+    isIntern: {type: Boolean, default: false},
+    isJob: {type: Boolean, default: true},
     createdAt: {
         type: Date,
         default: Date.now()

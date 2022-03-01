@@ -22,7 +22,7 @@ router.post('/', protect, createNewInf);
 
 router.put('/:id', protect, updateInfById);
 
-router.get('/submit/:id', protect, isAccesible, submitInf);
+router.get('/submit/:id', protect, submitInf);
 
 router.delete('/delete/:id', protect, isAccesible, deleteInfById);
 

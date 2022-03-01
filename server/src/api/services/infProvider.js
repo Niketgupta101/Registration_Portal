@@ -1,7 +1,8 @@
+const path = require('path');
 const { INF, INFstatus } = require('../models/INF');
 const ErrorResponse = require('../utils/errorResponse');
-const mongoose = require('mongoose');
-const ObjectId = require('mongodb').ObjectId;
+const { fillINFDoc } = require('../utils/service/createPDF');
+const { uploadFile } = require('../utils/service/upload');
 
 const fetchInfById = async (id, next) => {
     try {
@@ -9,9 +10,6 @@ const fetchInfById = async (id, next) => {
 
         if(!infStatus)
         return next( new ErrorResponse('No INF found with given id', 404));
-
-        // if(infStatus.progress !== "incomplete")
-        // return next(new ErrorResponse('No changes are allowed for this inf.', 400));
 
         let inf = await INF.findOne({ _id: id });
 
@@ -103,6 +101,7 @@ const submitInfById = async (id, next) => {
         infStatus.set({ progress: "submitted" });
 
         await infStatus.save();
+        await fillINFDoc(inf);
 
         return { success: true, message: "Submitted Successfully", infStatus };
     } catch (error) {
