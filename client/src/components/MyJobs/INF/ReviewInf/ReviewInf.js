@@ -5,16 +5,16 @@ import "./styles.css";
 
 const style = { alignItems: "center" };
 
-class ComponentToPrint extends React.PureComponent {
-  render(){
-return (
-  <>
-  <ReviewInf />
-  </>
+// class ComponentToPrint extends React.PureComponent {
+//   render(){
+// return (
+//   <>
+//   <ReviewInf />
+//   </>
   
-  );
-}
-}
+//   );
+// }
+// }
 const ReviewInf = ({
   InfData,
   setPage,
@@ -837,11 +837,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-<<<<<<< HEAD
               {InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
-=======
-              checked={InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
->>>>>>> dd80380d801452b7910efb3bc4949d5c664f1a5c
             </h1>
           </Col>
         </FormGroup>
@@ -851,11 +847,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-<<<<<<< HEAD
               {InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
-=======
-              checked={InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
->>>>>>> dd80380d801452b7910efb3bc4949d5c664f1a5c
             </h1>
           </Col>
         </FormGroup>
@@ -865,11 +857,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
           <h1 className='inputText'>
-<<<<<<< HEAD
               {InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
-=======
-              checked={InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
->>>>>>> dd80380d801452b7910efb3bc4949d5c664f1a5c
           </h1>
           </Col>
         </FormGroup>
@@ -893,20 +881,21 @@ const ReviewInf = ({
   );
 };
 //export default ReviewInf;
-class Example extends React.PureComponent {
-  render() {
-    return (
-      <div>
-        <ReactToPrint content={() => this.componentRef}>
-          <PrintContextConsumer>
-            {({ handlePrint }) => (
-              <button onClick={handlePrint}>Print this out!</button>
-            )}
-          </PrintContextConsumer>
-        </ReactToPrint>
-        <ComponentToPrint ref={el => (this.componentRef = el)} />
-      </div>
-    );
-  }
-}
-export default Example;
+// class Example extends React.PureComponent {
+//   render() {
+//     return (
+//       <div>
+//         <ReactToPrint content={() => this.componentRef}>
+//           <PrintContextConsumer>
+//             {({ handlePrint }) => (
+//               <button onClick={handlePrint}>Print this out!</button>
+//             )}
+//           </PrintContextConsumer>
+//         </ReactToPrint>
+//         <ComponentToPrint ref={el => (this.componentRef = el)} />
+//       </div>
+//     );
+//   }
+// }
+// export default Example;
+export default ReviewInf;

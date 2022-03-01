@@ -7,13 +7,13 @@ const router = express.Router();
 
 router.get('/verifyEmail/:verifyToken', verifyEmail);
 
-router.get('/fetchUser/:id', protect, authorizeRoles('Admin'), fetchUser);
+router.get('/fetchUser/:id', protect, authorizeRoles, fetchUser);
 
 router.put('/editUser/:id', protect, isAccesible, editUser);
 
-router.get('/fetchAllUsers', protect, authorizeRoles('Admin'), getAllUsers);
+router.get('/fetchAllUsers', protect, authorizeRoles, getAllUsers);
 
-router.get('/searchUsersWithInfo/:info', protect, authorizeRoles('Admin'), searchUsers);
+router.get('/searchUsersWithInfo/:info', protect, authorizeRoles, searchUsers);
 
 
 module.exports = router;

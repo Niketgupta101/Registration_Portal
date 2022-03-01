@@ -4,23 +4,23 @@
 
 // import ReviewInf from '../MyJobs/INF/ReviewInf/ReviewInf';
 
-// class Example extends React.PureComponent {
-//   render() {
-//     return (
-//       <div>
-//         <ReactToPrint content={() => this.componentRef}>
-//           <PrintContextConsumer>
-//             {({ handlePrint }) => (
-//               <button onClick={handlePrint}>Print this out!</button>
-//             )}
-//           </PrintContextConsumer>
-//         </ReactToPrint>
-//         <ReviewInf ref={el => (this.componentRef = el)} />
-//       </div>
-//     );
-//   }
-// }
-// export default Example;
+class Example extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <ReactToPrint content={() => this.componentRef}>
+          <PrintContextConsumer>
+            {({ handlePrint }) => (
+              <button onClick={handlePrint}>Print this out!</button>
+            )}
+          </PrintContextConsumer>
+        </ReactToPrint>
+        <ReviewInf ref={el => (this.componentRef = el)} />
+      </div>
+    );
+  }
+}
+export default Example;
 
 
 import React from 'react'

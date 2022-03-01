@@ -6,20 +6,24 @@ const { getInfById, getAllInfForUser, getLatestInfOfUser, getAllInf, createNewIn
 
 const router = express.Router();
 
-router.get('/:id', protect, isAccesible, getInfById);
+router.get('/:id', protect, getInfById);
+
+router.get('/single/:id', protect, getInfById);
 
 router.get('/user/:userId', protect, isAccesible, getAllInfForUser);
 
 router.get('/latest/inf', protect, getLatestInfOfUser);
 
-router.get('/admin', protect, authorizeRoles('Admin'), getAllInf);
+// router.get('/admin', protect, getAllInf);
+
+router.get('/admin/all', protect, getAllInf);
 
 router.post('/', protect, createNewInf);
 
 router.put('/:id', protect, updateInfById);
 
-router.get('/submit/:id', protect, isAccesible, submitInf);
+router.get('/submit/:id', protect, submitInf);
 
-router.delete('/:id', protect, isAccesible, deleteInfById);
+router.delete('/delete/:id', protect, isAccesible, deleteInfById);
 
 module.exports = router;

@@ -10,6 +10,6 @@ router.post('/', saveCompanyDetails);
 
 router.get('/:id', protect, isAccesible, getCompanyDetailsById);
 
-router.get('/all/:pageno/:pagelimit', protect, authorizeRoles('Admin'), getAllCompanyDetails);
+router.get('/all/:pageno/:pagelimit', protect, authorizeRoles, getAllCompanyDetails);
 
 module.exports = router;

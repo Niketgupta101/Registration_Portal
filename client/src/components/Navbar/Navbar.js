@@ -12,7 +12,7 @@ import { Logout, Login } from "@mui/icons-material";
 const Navbar = () => {
   let [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [sideBar, setSideBar] = useState(false)
-  console.log(user);
+  // console.log(user);
   const Navigate = useNavigate();
   const location = useLocation();
 

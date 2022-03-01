@@ -25,7 +25,7 @@
   min-height: 170px;
   position: relative;
   left: 50%;
-  top: 65%;
+  top: 71%;
   transform: translateX(-50%);
   background-color: rgb(60, 85, 165);
   z-index: 1;
@@ -63,4 +63,33 @@
   font-size: 25px;
   text-align: center;
   margin: 3px;
+}
+
+.section{
+  width: 100%;
+  padding: 1rem 13%;
+}
+.header{
+  width: 100%;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgb(60, 85, 165);
+}
+.header>h2{
+  font-size: 30px;
+  color: rgb(60, 85, 165);
+  font-weight: 700;
+}
+.aboutus_content{
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.701);
+  padding: 0 2rem;
+  text-align: justify;
+}
+.batches_array tr{
+  justify-content: left;
+}
+.batches_array tr>th{
+  width: 150px;
 }

@@ -1,6 +1,7 @@
 import { TabContext, TabPanel } from "@mui/lab";
 import React, { useState } from "react";
-import { createNewInf, updateInfById } from "../../../api";
+import { createNewInf, submitInf, updateInfById } from "../../../api";
+import { useNavigate } from 'react-router-dom';
 
 import INF1 from "./page1/INF1";
 import INF2 from "./page2/INF2";
@@ -11,7 +12,8 @@ import ReviewInf from "./ReviewInf/ReviewInf"
 import "./styles.css";
 
 const Inf = () => {
-  const [page, setPage] = useState("5");
+  const [page, setPage] = useState("1");
+  const Navigate = useNavigate();
 
   const companyData = {
     Name_Of_The_Company: "",
@@ -282,7 +284,7 @@ const Inf = () => {
   const handleUpdateInfById = async (e) => {
     e.preventDefault();
 
-    setInfData((prevData) => ({
+    await setInfData((prevData) => ({
       ...prevData,
       Eligible_Courses_And_Disciplines: {
         ...prevData.Eligible_Courses_And_Disciplines,
@@ -316,9 +318,13 @@ const Inf = () => {
   console.log(page);
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(InfData)
+    console.log(InfData);
 
     try {
+      let response = await submitInf(InfId);
+
+      console.log(response);
+      // Navigate('/myjobs');
     } catch (error) {
       console.log(error);
     }

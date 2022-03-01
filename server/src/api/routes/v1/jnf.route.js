@@ -12,7 +12,7 @@ router.get('/user/:userId', protect, isAccesible, getAllJnfForUser);
 
 router.get('/latest/jnf', protect, getLatestJnfOfUser);
 
-router.get('/admin', protect, authorizeRoles('Admin'), getAllJnf);
+router.get('/admin', protect, authorizeRoles, getAllJnf);
 
 router.post('/', protect, isAccesible, createNewJnf);
 

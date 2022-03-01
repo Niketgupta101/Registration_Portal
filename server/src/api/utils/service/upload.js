@@ -13,7 +13,7 @@ const drive = google.drive({
 });
 
 exports.uploadFile = async (filePath) => {
-
+  console.log(filePath)
   try {
     const response = await drive.files.create({
       requestBody: {
@@ -28,6 +28,7 @@ exports.uploadFile = async (filePath) => {
 
     return { success: true, message: 'File uploaded successfully', data: response.data }
   } catch (error) {
+    console.log(error);
     return { success: true, message: 'File could not be uploaded' }
   }
 };
