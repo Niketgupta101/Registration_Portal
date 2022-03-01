@@ -179,7 +179,11 @@ const Inf = () => {
   };
 
   // ------------------------------------------------------------
+<<<<<<< HEAD
 //(InfData.resumeShortlisting.yes)
+=======
+// (InfData.resumeShortlisting.yes)
+>>>>>>> dd80380d801452b7910efb3bc4949d5c664f1a5c
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
@@ -271,7 +275,7 @@ const Inf = () => {
 
     try {
       let response = await createNewInf(InfData);
-
+      console.log(response);
       setInfId(response.data.newInf._id);
       console.log(response);
       setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
@@ -304,41 +308,26 @@ const Inf = () => {
         Eligibility_Criteria: selectionData.Eligibility_Criteria,
       },
     }));
-
+    console.log(InfData, InfId)
     try {
       let response = await updateInfById(InfData, InfId);
 
       console.log(response);
-      setPage(prevPage => prevPage+1);
+      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }
   };
+  console.log(page);
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log(InfData)
 
-  // const handleFormSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log({
-  //     companyFormData,
-  //     jobFormData,
-  //     stipendFormData,
-  //     fourYearData,
-  //     fiveYearData,
-  //     skillData,
-  //     threeYearData,
-  //     twoYearData,
-  //     twoYearMbaData,
-  //     twoYearMscData,
-  //     resumeShortListingData,
-  //     typeOfTestData,
-  //     otherQualificationsRoundData,
-  //     selectionFormData,
-  //   });
-
-  //   try {
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -405,7 +394,7 @@ const Inf = () => {
             <ReviewInf
             setPage={setPage}
             InfData={InfData}
-            handleUpdateInfById={handleUpdateInfById}
+            handleFormSubmit = {handleFormSubmit}
             />
           </TabPanel>
         </TabContext>

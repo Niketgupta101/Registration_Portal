@@ -11,11 +11,11 @@ exports.registerUser = async (user, next) => {
         if(oldUser)
         return next(new ErrorResponse("Email Id already in use.", 400));
 
-        // user.emailVerifyToken = uuidv4();
+        user.emailVerifyToken = uuidv4();
 
         const newUser = await User.create(user);
 
-        // sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
+        sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
 
         const token = newUser.getSignedToken();
 

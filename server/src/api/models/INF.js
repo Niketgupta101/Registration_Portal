@@ -11,10 +11,7 @@ const infSchema = new Schema({
     Intern_Profile: {
         Internship_Duration: { type: String },
         Job_Designation: { type: String },
-        Job_Description: { 
-            Resposibility_Of_Job: { type: String },
-            Skills_Required: [{ type: String }]
-        },
+        Job_Description: { type: String },
         Mode_Of_Internship: {
             type: String,           // Virtual (or) Physical
     

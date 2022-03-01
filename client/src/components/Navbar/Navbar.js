@@ -47,8 +47,8 @@ const Navbar = () => {
                 <AccountCircle />
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px"}}>{user.Name}</h5>
               </IconButton>
-              <IconButton size="medium" color="inherit">
-                <Button color="inherit" onClick={handleLogout}>Logout</Button>
+              <IconButton size="medium" color="inherit"  onClick={handleLogout} style={{ fontSize: "16px"}}>
+                Logout
               </IconButton>
               </>
               ):(
