@@ -37,7 +37,7 @@ export const getAllInfForUser = (userId) => API.get(`/inf/user/${userId}`);
 
 export const getAllInf = () => API.get(`/inf/admin`);
 
-export const getAllJobs = () => API.get(`/inf/admin/all`);
+// export const getAllJobs = () => API.get(`/inf/admin/all`);
 
 export const createNewInf = (data) => API.post(`/inf`, data);
 
@@ -65,8 +65,18 @@ export const deleteJnfById = (id) => API.delete(`jnf/${id}`);
 
 // ----------------------- Contact -----------------------------------
 
+export const getAllContacts = () => API.get('/all');
+
 export const postContactData = (id) => API.post(`contact/`);
 
 export const updateContactStatus = (id) => API.put(`contact/${id}`);
 
 export const deleteContactById = (id) => API.delete(`contact/${id}`);
+
+// ------------------------ Jobs ------------------------------------
+
+export const getAllJobs = () => API.get('/all');
+
+export const updateGraduationYear = (data) => API.put('/admin', data);
+
+export const getGraduationYear = () => API.get('/year');

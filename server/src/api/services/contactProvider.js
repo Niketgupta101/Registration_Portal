@@ -46,4 +46,14 @@ const deleteContactData = async (id, next) => {
     }
 }
 
-module.exports = { postContactData, updateContactStatus, deleteContactData }
+const fetchAllContacts = async (next) => {
+    try {
+        let contactList = await Contact.find().sort({ createdAt: -1 });
+
+        return { success: true, contactList };
+    } catch (error) {
+        return next(error);
+    }
+}
+
+module.exports = { postContactData, updateContactStatus, deleteContactData, fetchAllContacts };

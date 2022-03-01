@@ -6,7 +6,8 @@ const contactSchema = new Schema({
     email: { type: String, required: true },
     contactNo: { type: Number, minlength: 10 , required: true },
     message: { type: String, required: true },
-    progress: { type: String, enum: [ 'Pending', 'Resolved' ], default: 'Pending' } 
+    progress: { type: String, enum: [ 'Pending', 'Resolved' ], default: 'Pending' }, 
+    createdAt: { type: Date, default: Date.now() }
 });
 
 module.exports = mongoose.model('Contact', contactSchema);
