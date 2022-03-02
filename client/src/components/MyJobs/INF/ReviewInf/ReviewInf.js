@@ -918,16 +918,17 @@ const ReviewInf = ({
           className="formFlex"
           style={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "row-reverse",
             marginTop: "1.5rem",
           }}
         > 
+           <button className="submit_btn" type="submit" onClick={handleFormSubmit}>
+            Submit
+          </button>
         <button className="submit_btn" type="submit" onClick={(e) => (e.preventDefault()/setPage("4"))}>
             Edit
           </button>
-          <button className="submit_btn" type="submit" onClick={handleFormSubmit}>
-            Submit
-          </button>
+       
         </div>
       </Form>
     </div>
