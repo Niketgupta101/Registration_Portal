@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { Pagination, Stack } from "@mui/material";
 import { getAllCompanyDetails } from "../../../api";
+import Loading from "../../Loading/Loading";
 
 const Company = () => {
   const Navigate = useNavigate();
+  const [IsLoading, setIsLoading] = React.useState(false);
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -14,9 +16,9 @@ const Company = () => {
 
   React.useEffect(async () => {
     if (!user) Navigate("/auth");
-
+    setIsLoading(true);
     let response = await getAllCompanyDetails();
-
+    setIsLoading(false);
     console.log(response);
     setCompanies(response.data.companyList);
   }, []);
@@ -58,6 +60,7 @@ const Company = () => {
           />
         </Stack>
       </div>
+      {IsLoading && <Loading />}
     </>
   );
 };

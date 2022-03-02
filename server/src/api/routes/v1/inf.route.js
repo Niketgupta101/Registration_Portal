@@ -14,8 +14,6 @@ router.get('/user/:userId', protect, getAllInfForUser);
 
 router.get('/latest', protect, getLatestInfOfUser);
 
-// router.get('/admin', protect, getAllInf);
-
 router.get('/admin/all', protect, getAllInf);
 
 router.post('/', protect, createNewInf);

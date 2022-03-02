@@ -9,11 +9,15 @@ import { getAllInf, getAllJobs } from "../../../api/index";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const Navigate = useNavigate();
 
   useEffect(async () => {
+    setIsLoading(true);
     const response = await getAllJobs();
     console.log(response);
+    setIsLoading(false);
+
     setJobs(response.data.jobs);
   }, []);
   console.log(jobs);
@@ -35,18 +39,22 @@ const Jobs = () => {
                     <h4>Software Developer</h4>
                   </div>
                   <div className="content_text">
-                    <h5>
-                      <span>Duration</span>: 2-3 months
-                    </h5>
-                    <h5>
-                      <span>Mode</span>: Virtual
-                    </h5>
-                    <h5>
-                      <span>Stipend</span>: 10-20k
-                    </h5>
-                    <h5>
-                      <span>Provision for PPO</span>: Yes
-                    </h5>
+                  <h5>
+                        <span>Company</span>:{" "}
+                        {job?.Company_Overview?.Name_Of_The_Company}
+                      </h5>
+                      <h5>
+                        <span>Mode</span>:{" "}
+                        {job?.Intern_Profile?.Mode_Of_Internship}
+                      </h5>
+                      <h5>
+                        <span>Stipend</span>:{" "}
+                        {job.Salary_Details.Salary_Per_Month}
+                      </h5>
+                      <h5>
+                        <span>Provision for PPO</span>:{" "}
+                        {job.Salary_Details.PPO_provision_on_performance_basis}
+                      </h5>
                     <div
                         style={{ display: "flex", justifyContent: "center" }}
                       >

@@ -40,8 +40,6 @@ export const getAllInfForUser = (userId) => API.get(`/inf/user/${userId}`);
 
 export const getAllInf = () => API.get(`/inf/admin`);
 
-// export const getAllJobs = () => API.get(`/inf/admin/all`);
-
 export const createNewInf = (data) => API.post(`/inf`, data);
 
 export const updateInfById = (data,id) => API.put(`/inf/${id}`, data);
@@ -54,7 +52,7 @@ export const getLatestInfOfUser = () => API.get('/inf/latest');
 
 // ---------------------- JNF -----------------------------------
 
-export const getJnfById = (id) => API.get(`/jnf/${id}`);
+export const getjnfById = (id) => API.get(`/jnf/${id}`);
 
 export const getAllJnfForUser = (userId) => API.get(`/jnf/user/${userId}`);
 
@@ -62,11 +60,13 @@ export const getAllJnf = () => API.get(`/jnf/admin`);
 
 export const createNewJnf = (data) => API.post(`/jnf`, data);
 
-export const updateJnfById = (id) => API.put(`jnf/${id}`);
+export const updateJnfById = (data,id) => API.put(`/jnf/${id}`, data);
 
-export const submitJnf = (id) => API.get(`jnf/submit/${id}`);
+export const submitJnf = (id) => API.get(`/jnf/submit/${id}`);
 
-export const deleteJnfById = (id) => API.delete(`jnf/${id}`);
+export const deleteJnfById = (id) => API.delete(`/jnf/${id}`);
+
+export const getLatestJnfOfUser = () => API.get('/jnf/latest');
 
 // ----------------------- Contact -----------------------------------
 

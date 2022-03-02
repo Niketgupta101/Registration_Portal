@@ -1,25 +1,27 @@
 const express = require('express');
 
-const { protect, isAccesible, authorizeRoles } = require('../../middlewares/auth');
+const { protect, isAccesible } = require('../../middlewares/auth');
 
 const { getJnfById, getAllJnfForUser, getLatestJnfOfUser, getAllJnf, createNewJnf, updateJnfById, deleteJnfById, submitJnf } = require('../../controllers/jnf.controller');
 
 const router = express.Router();
 
-router.get('/:id', protect, isAccesible, getJnfById);
+router.get('/:id', protect, getJnfById);
+
+router.get('/single/:id', protect, getJnfById);
 
 router.get('/user/:userId', protect, getAllJnfForUser);
 
-router.get('/latest/jnf', protect, getLatestJnfOfUser);
+router.get('/latest', protect, getLatestJnfOfUser);
 
-router.get('/admin', protect, authorizeRoles, getAllJnf);
+router.get('/admin/all', protect, getAllJnf);
 
-router.post('/', protect, isAccesible, createNewJnf);
+router.post('/', protect, createNewJnf);
 
-router.put('/:id', protect, isAccesible, updateJnfById);
+router.put('/:id', protect, updateJnfById);
 
-router.get('/submit/:id', protect, isAccesible, submitJnf);
+router.get('/submit/:id', protect, submitJnf);
 
-router.delete('/:id', protect, isAccesible, deleteJnfById);
+router.delete('/delete/:id', protect, isAccesible, deleteJnfById);
 
 module.exports = router;

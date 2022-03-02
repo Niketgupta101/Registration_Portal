@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { getAllInfForUser, getAllJobs, getAllJnfForUser, getAllPendingJobsForUser } from "../../api";
+import Loading from "../Loading/Loading";
 
 import "./styles.css";
 
 const MyJobs = () => {
+  const [IsLoading, setIsLoading] = useState(false)
   const [isPopUp, setIsPopUp] = useState(false);
 
   const [Filter, setFilter] = useState("All Jobs");
@@ -19,7 +21,7 @@ const MyJobs = () => {
 
   useEffect(async () => {
     if (!user) Navigate("/auth");
-
+    setIsLoading(true);
     if (Filter === "All Jobs") {
       let response = await getAllJobs();
       console.log(response);
@@ -40,6 +42,7 @@ const MyJobs = () => {
       console.log(response);
       setJobs(response.data.jobs);
     }
+    setIsLoading(false);
   }, [Filter]);
   console.log(Jobs);
 
@@ -116,7 +119,20 @@ const MyJobs = () => {
                         <span>Provision for PPO</span>:{" "}
                         {job.Salary_Details.PPO_provision_on_performance_basis}
                       </h5>
-                      <div
+                      {Filter === 'Pending Job Form' ? (<div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        <button className="secondary_btn">
+                          {" "}
+                          <a
+                            href={job.previewLink}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                          >
+                            {" "}
+                            Continue
+                          </a>{" "}
+                        </button>
+                      </div>) : (<div
                         style={{ display: "flex", justifyContent: "center" }}
                       >
                         <button className="secondary_btn">
@@ -139,7 +155,7 @@ const MyJobs = () => {
                             Download
                           </a>{" "}
                         </button>
-                      </div>
+                      </div>)}
                     </div>
                   </div>
                 </div>
@@ -147,6 +163,7 @@ const MyJobs = () => {
           </div>
         </div>
       </div>
+      {IsLoading && <Loading />}
     </>
   );
 };

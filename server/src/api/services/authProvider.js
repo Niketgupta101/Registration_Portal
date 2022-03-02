@@ -13,9 +13,11 @@ exports.registerUser = async (user, next) => {
 
         user.emailVerifyToken = uuidv4();
 
+        // user.isemailVerified = true ;
+
         const newUser = await User.create(user);
 
-        sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
+        // sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
 
         const token = newUser.getSignedToken();
 

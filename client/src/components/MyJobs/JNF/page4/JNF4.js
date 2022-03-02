@@ -13,8 +13,7 @@ const JNF4 = ({
   handleTypeOfTestChange,
   handleOtherQualificationsRoundChange,
   handleSelectionDataChange,
-  handleFormSubmit,
-  handleUpdateInfById,
+  handleUpdateJnfById,
 }) => {
   return (
     <div className="overallDiv1">
@@ -253,7 +252,7 @@ const JNF4 = ({
           >
             Back
           </button>
-          <button className="submit_btn" onClick={handleUpdateInfById}>
+          <button className="submit_btn" onClick={handleUpdateJnfById}>
             Submit
           </button>
         </div>

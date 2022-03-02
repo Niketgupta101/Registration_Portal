@@ -32,7 +32,7 @@ const jnfSchema = new Schema({
             Environmental_Engineering: { type: Boolean, default: false },
             Mechanical_Engineering: { type: Boolean, default: false },
             Mineral_and_Metallurgical_Engineering: { type: Boolean, default: false },
-            Mining_Engineering: false,
+            Mining_Engineering: { type: Boolean, default: false },
             Mining_Machinery_Engineering: { type: Boolean, default: false },
             Petroleum_Engineering: { type: Boolean, default: false },
         },
@@ -78,7 +78,7 @@ const jnfSchema = new Schema({
             Select_All: { type: Boolean, default: false },
             Business_Analytics: { type: Boolean, default: false },
             Finance: { type: Boolean, default: false },
-            Human_Resources: false,
+            Human_Resources: { type: Boolean, default: false },
             Marketing: { type: Boolean, default: false },
             Operations: { type: Boolean, default: false },
         },
@@ -111,8 +111,8 @@ const jnfSchema = new Schema({
     },
     previewLink: String,
     downloadLink: String,
-    isIntern: {type: Boolean, default: true},
-    isJob: {type: Boolean, default: false},
+    isIntern: {type: Boolean, default: false},
+    isJob: {type: Boolean, default: true},
     createdAt: {
         type: Date,
         default: Date.now()

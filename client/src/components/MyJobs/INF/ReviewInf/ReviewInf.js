@@ -34,7 +34,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              xvideos
+              {InfData.Company_Overview.Name_Of_The_Company}
             </h1>
           </Col>
         </FormGroup>
@@ -865,7 +865,7 @@ const ReviewInf = ({
           className="formFlex"
           style={{
             display: "flex",
-            flexDirection: "row-reverse",
+            flexDirection: "row",
             marginTop: "1.5rem",
           }}
         > 

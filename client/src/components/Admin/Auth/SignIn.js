@@ -15,13 +15,42 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import useStyles from "./styles";
 import { login } from "../../../api";
+import { useNavigate } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const SignIn = () => {
+  // ---------------------------- Error handling
+
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [errorOpen, setErrorOpen] = useState(false);
+
+  const handleSuccessClick = () => {
+    setSuccessOpen(true);
+  };
+  const handleErrorClick = () => {
+    setErrorOpen(true);
+  };
+
+  const handleSuccessClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSuccessOpen(false);
+  };
+  const handleErrorClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setErrorOpen(false);
+  };
+
+  // ---------------------------------------------
+
   const classes = useStyles();
+  const Navigate = useNavigate();
 
   const [AuthData, setAuthData] = useState({
     emailIdOrUsername: '',
@@ -35,24 +64,31 @@ const SignIn = () => {
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
 
-    let response = await login(AuthData);
+    try {
+      let response = await login(AuthData);
+      handleSuccessClick();
     console.log(response);
+    Navigate('/admin');
+    } catch (error) {
+      handleErrorClick();
+    }
   }
 
-  // const vertical = "bottom",
-  // horizontal = "left";
+  const vertical = "bottom",
+  horizontal = "left";
+
 
   return (
     <Container component="main" maxWidth="xs">
       <Stack spacing={2} sx={{ width: "100%" }}>
         <Snackbar
-        // anchorOrigin={{ vertical, horizontal }}
-        // open={successOpen}
-        // autoHideDuration={6000}
-        // onClose={handleSuccessClose}
+        anchorOrigin={{ vertical, horizontal }}
+        open={successOpen}
+        autoHideDuration={6000}
+        onClose={handleSuccessClose}
         >
           <Alert
-            // onClose={handleSuccessClose}
+            onClose={handleSuccessClose}
             severity="success"
             sx={{ width: "100%" }}
           >
@@ -60,13 +96,13 @@ const SignIn = () => {
           </Alert>
         </Snackbar>
         <Snackbar
-        // anchorOrigin={{ vertical, horizontal }}
-        // open={errorOpen}
-        // autoHideDuration={6000}
-        // onClose={handleErrorClose}
+        anchorOrigin={{ vertical, horizontal }}
+        open={errorOpen}
+        autoHideDuration={6000}
+        onClose={handleErrorClose}
         >
           <Alert
-            // onClose={handleErrorClose}
+            onClose={handleErrorClose}
             severity="error"
             sx={{ width: "100%" }}
           >
@@ -86,7 +122,7 @@ const SignIn = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                name="email"
+                name="emailIdOrUsername"
                 label="Email-Id"
                 variant="filled"
                 value={AuthData.emailIdOrUsername}

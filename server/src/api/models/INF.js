@@ -113,8 +113,8 @@ const infSchema = new Schema({
     },
     previewLink: String,
     downloadLink: String,
-    isIntern: {type: Boolean, default: false},
-    isJob: {type: Boolean, default: true},
+    isIntern: {type: Boolean, default: true},
+    isJob: {type: Boolean, default: false},
     createdAt: {
         type: Date,
         default: Date.now()

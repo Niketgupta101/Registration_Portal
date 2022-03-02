@@ -8,11 +8,12 @@ import INF2 from "./page2/INF2";
 import INF3 from "./page3/INF3";
 import INF4 from "./page4/INF4";
 import ReviewInf from "./ReviewInf/ReviewInf";
-import { getLatestInfOfUser } from '../../../api/index';
 
 import "./styles.css";
+import Loading from "../../Loading/Loading";
 
 const Inf = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState("1");
   const Navigate = useNavigate();
 
@@ -25,12 +26,12 @@ const Inf = () => {
     Internship_Duration: "",
     Job_Designation: "",
     Job_Description: "",
-    Mode_Of_Internship: "",
+    Mode_Of_Internship: "Virtual",
     Place_Of_Posting: "",
   };
   const stipendData = {
     Salary_Per_Month: "",
-    PPO_provision_on_performance_basis: "",
+    PPO_provision_on_performance_basis: "Yes",
     CTC: "",
   };
 
@@ -272,7 +273,10 @@ const Inf = () => {
     }));
 
     try {
+      setIsLoading(true);
       let response = await createNewInf(InfData);
+      setIsLoading(false);
+
       console.log(response);
       setInfId(response.data.newInf._id);
       console.log(response);
@@ -309,7 +313,9 @@ const Inf = () => {
     console.log(selectionFormData)
     console.log(InfData, InfId)
     try {
+      setIsLoading(true);
       let response = await updateInfById(InfData, InfId);
+      setIsLoading(false);
 
       console.log(response);
       setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
@@ -318,13 +324,15 @@ const Inf = () => {
     }
   };
   console.log(page);
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log(InfData);
 
     try {
+      setIsLoading(true);
       let response = await submitInf(InfId);
-
+      setIsLoading(false);
       console.log(response);
       Navigate('/myjobs');
     } catch (error) {
@@ -411,6 +419,7 @@ const Inf = () => {
           </TabPanel>
         </TabContext>
       </div> 
+        {isLoading && <Loading />}
     </>
   );
 };

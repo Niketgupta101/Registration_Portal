@@ -13,7 +13,7 @@ const JNF1 = ({
   handleCompanyDataChange,
   handleJobDataChange,
   handleSalaryDataChange,
-  handleCreateNewInf
+  handleCreateNewJnf
 }) => {
 
   return (
@@ -23,10 +23,10 @@ const JNF1 = ({
           JOB NOTIFICATION FORM (2021-2022)
         </header>
       </div>
-      <Form onSubmit={handleCreateNewInf}>
+      <Form onSubmit={handleCreateNewJnf}>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Name of the Company
+            Name of the Company <span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -36,12 +36,14 @@ const JNF1 = ({
               className="inputText"
               value={companyFormData.Name_Of_The_Company}
               onChange={handleCompanyDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Category/Sector
+            Category/Sector<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -51,12 +53,15 @@ const JNF1 = ({
               className="inputText"
               value={companyFormData.Category_Or_Sector}
               onChange={handleCompanyDataChange}
+              required
+              autoComplete="off"
+
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Website
+            Website<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -66,6 +71,8 @@ const JNF1 = ({
               className="inputText"
               value={companyFormData.Website}
               onChange={handleCompanyDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
@@ -74,7 +81,7 @@ const JNF1 = ({
         </div>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Job Designation
+            Job Designation<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -84,12 +91,14 @@ const JNF1 = ({
               type="text"
               value={jobFormData.Job_Designation}
               onChange={handleJobDataChange}
+              required
+              autoComplete="off"
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Job Description
+            Job Description<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -99,12 +108,14 @@ const JNF1 = ({
               className="inputText"
               value={jobFormData.Job_Description}
               onChange={handleJobDataChange}
+              required
+              autoComplete="off"
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Place of posting
+            Place of posting<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -114,6 +125,8 @@ const JNF1 = ({
               className="inputText"
               value={jobFormData.Place_Of_Posting}
               onChange={handleJobDataChange}
+              required
+              autoComplete="off"
             />
           </Col>
         </FormGroup>
@@ -127,7 +140,7 @@ const JNF1 = ({
             text-colour="blue"
             className="fontText"
           >
-            CTC (in lpa)
+            CTC (in lpa)<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -137,12 +150,14 @@ const JNF1 = ({
               className="inputText"
               value={salaryFormData.CTC}
               onChange={handleSalaryDataChange}
+              required
+              autoComplete="off"
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            CTC Breakup
+            CTC Breakup<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -152,12 +167,14 @@ const JNF1 = ({
               className="inputText"
               value={salaryFormData.CTC_Breakup}
               onChange={handleSalaryDataChange}
+              required
+              autoComplete="off"
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Bond Details (if any)
+            Bond Details (if any)<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -167,6 +184,8 @@ const JNF1 = ({
               className="inputText"
               value={salaryFormData.Bond_Details}
               onChange={handleSalaryDataChange}
+              required
+              autoComplete="off"
             />
           </Col>
         </FormGroup>

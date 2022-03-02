@@ -26,7 +26,7 @@ const INF1 = ({
       <Form onSubmit={handleCreateNewInf}>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Name of the Company
+            Name of the Company <span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -36,12 +36,14 @@ const INF1 = ({
               className="inputText"
               value={companyFormData.Name_Of_The_Company}
               onChange={handleCompanyDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Category/Sector
+            Category/Sector<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -51,12 +53,14 @@ const INF1 = ({
               className="inputText"
               value={companyFormData.Category_Or_Sector}
               onChange={handleCompanyDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Website
+            Website<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -66,6 +70,8 @@ const INF1 = ({
               className="inputText"
               value={companyFormData.Website}
               onChange={handleCompanyDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
@@ -74,7 +80,7 @@ const INF1 = ({
         </div>
         <FormGroup row style={style}>
           <Label for="exampleSelect" sm={2} className="fontText">
-            Internship Duration
+            Internship Duration<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -84,6 +90,8 @@ const INF1 = ({
               className="inputText"
               value={jobFormData.Internship_Duration}
               onChange={handleJobDataChange}
+              autoComplete="off"
+              required
             >
               <option>
                 Jan – June 2022 Dual Degree/ Integrated M. Tech courses only
@@ -102,7 +110,7 @@ const INF1 = ({
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Job Designation
+            Job Designation<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -112,12 +120,14 @@ const INF1 = ({
               type="text"
               value={jobFormData.Job_Designation}
               onChange={handleJobDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Job Description
+            Job Description<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -127,12 +137,14 @@ const INF1 = ({
               className="inputText"
               value={jobFormData.Job_Description}
               onChange={handleJobDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleSelect" sm={2} className="fontText">
-            Mode of Internship
+            Mode of Internship<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -142,6 +154,8 @@ const INF1 = ({
               className="inputText"
               value={jobFormData.Mode_Of_Internship}
               onChange={handleJobDataChange}
+              autoComplete="off"
+              required
             >
               <option>Virtual</option>
               <option>Physical</option>
@@ -150,7 +164,7 @@ const INF1 = ({
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            Place of posting (in case of Physical internship)
+            Place of posting (in case of Physical internship)<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -160,6 +174,8 @@ const INF1 = ({
               className="inputText"
               value={jobFormData.Place_Of_Posting}
               onChange={handleJobDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
@@ -173,7 +189,7 @@ const INF1 = ({
             text-colour="blue"
             className="fontText"
           >
-            Stipend per month
+            Stipend per month<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -183,12 +199,14 @@ const INF1 = ({
               className="inputText"
               value={stipendFormData.Salary_Per_Month}
               onChange={handleStipendDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleSelect" sm={2} className="fontText">
-            PPO provision on performance basis
+            PPO provision on performance basis<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -198,6 +216,8 @@ const INF1 = ({
               className="inputText"
               value={stipendFormData.PPO_provision_on_performance_basis}
               onChange={handleStipendDataChange}
+              autoComplete="off"
+              required
             >
               <option>Yes</option>
               <option>No</option>
@@ -206,7 +226,7 @@ const INF1 = ({
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            CTC for PPO selects
+            CTC for PPO selects<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -216,6 +236,8 @@ const INF1 = ({
               className="inputText"
               value={stipendFormData.CTC}
               onChange={handleStipendDataChange}
+              autoComplete="off"
+              required
             />
           </Col>
         </FormGroup>
@@ -227,7 +249,7 @@ const INF1 = ({
             marginTop: "1.5rem",
           }}
         >
-          <button className="submit_btn" type="submit"  onClick={handleCreateNewInf}>
+          <button className="submit_btn" type="submit">
             Save and Continue
           </button>
         </div>

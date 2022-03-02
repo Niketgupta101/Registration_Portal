@@ -13,7 +13,7 @@ const JNF3 = ({
   handleTwoYearChange,
   handleTwoYearMbaChange,
   handleTwoYearMscChange,
-  handleUpdateInfById,
+  handleUpdateJnfById,
 }) => {
   return (
     <div className="overallDiv1">
@@ -404,7 +404,7 @@ const JNF3 = ({
           </button>
           <button
             className="submit_btn"
-            onClick={handleUpdateInfById}
+            onClick={handleUpdateJnfById}
           >
             Save and Continue
           </button>

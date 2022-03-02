@@ -99,7 +99,7 @@ const submitInfById = async (id, next) => {
         infStatus.set({ progress: "submitted" });
 
         await infStatus.save();
-        fillINFDoc(inf);
+        await fillINFDoc(inf);
 
 
         return { success: true, message: "Submitted Successfully", infStatus };

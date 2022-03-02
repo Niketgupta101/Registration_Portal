@@ -48,11 +48,11 @@ const Navbar = () => {
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px"}}>{user.Name}</h5>
               </IconButton>
               <IconButton size="medium" color="inherit"  onClick={handleLogout} style={{ fontSize: "16px"}}>
-                Logout
+              <Logout style={{ color: "white", margin: "0 0.5rem"}}/>Logout
               </IconButton>
               </>
               ):(
-              <Button color="inherit" onClick={handleLogin}>Login</Button>
+              <Button color="inherit" onClick={handleLogin}><Login style={{ color: "white", margin: "0 0.5rem"}}/>Login</Button>
               )}
             </Box>
           </Toolbar>

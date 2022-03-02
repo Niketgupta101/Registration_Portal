@@ -11,6 +11,10 @@ exports.register = async (req, res, next) => {
     if(user.password !== user.confirmPassword)
     return next(new ErrorResponse("Passwords doesn't match", 402));
 
+    if (user.email.matches("^\\S+@gmail\\.com$")) {
+    return next(new ErrorResponse("Invalid Email-Id", 401));
+    }
+
     let userDetails = {
         Name: `${user.firstName} ${user.lastName}`,
         emailId: user.email,

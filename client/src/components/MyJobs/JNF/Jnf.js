@@ -1,14 +1,19 @@
 import { TabContext, TabPanel } from "@mui/lab";
 import React, { useState } from "react";
-import { createNewInf, updateInfById } from "../../../api";
+import { createNewJnf, submitJnf, updateJnfById } from "../../../api";
+import ReviewJnf from './ReviewJnf/ReviewJnf';
 
 import JNF1 from "./page1/JNF1";
 import JNF2 from "./page2/JNF2";
 import JNF3 from "./page3/JNF3";
 import JNF4 from "./page4/JNF4"; 
+import { useNavigate } from 'react-router-dom';
+import Loading from "../../Loading/Loading";
 
 const Jnf = () => {
+  const [ isLoading, setIsLoading ] = useState(false);
   const [page, setPage] = useState("1");
+  const Navigate = useNavigate();
 
   const companyData = {
     Name_Of_The_Company: "",
@@ -207,9 +212,9 @@ const Jnf = () => {
   // --------------------------------------------------
 
   
-  const [InfId, setInfId] = useState("");
+  const [JnfId, setJnfId] = useState("");
 
-  const [InfData, setInfData] = useState({
+  const [JnfData, setJnfData] = useState({
     Company_Overview: companyFormData,
     Job_Details: jobFormData,
     Salary_Details: salaryFormData,
@@ -226,17 +231,17 @@ const Jnf = () => {
       Resume_Shortlisting: resumeShortListingData,
       Type_Of_Test: typeOfTestData,
       Other_Qualification_Rounds: otherQualificationsRoundData,
-      Total_Number_Of_Rounds: selectionData.Total_Number_Of_Rounds,
-      Number_Of_Offers: selectionData.Number_Of_Offers,
-      Eligibility_Criteria: selectionData.Eligibility_Criteria,
+      Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
+      Number_Of_Offers: selectionFormData.Number_Of_Offers,
+      Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
     },
   });
 
-  const handleCreateNewInf = async (e) => {
+  const handleCreateNewJnf = async (e) => {
     e.preventDefault();
     console.log(localStorage.getItem("token"));
 
-    setInfData((prevData) => ({
+    setJnfData((prevData) => ({
       ...prevData,
       Company_Overview: { ...companyFormData },
       Job_Details: { ...jobFormData },
@@ -244,9 +249,10 @@ const Jnf = () => {
     }));
 
     try {
-      let response = await createNewInf(InfData);
-
-      setInfId(response.data.newInf._id);
+      setIsLoading(true);
+      let response = await createNewJnf(JnfData);
+      setIsLoading(false);
+      setJnfId(response.data.newJnf._id);
       console.log(response);
       setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
@@ -254,10 +260,10 @@ const Jnf = () => {
     }
   };
 
-  const handleUpdateInfById = async (e) => {
+  const handleUpdateJnfById = async (e) => {
     e.preventDefault();
 
-    setInfData((prevData) => ({
+    setJnfData((prevData) => ({
       ...prevData,
       Eligible_Courses_And_Disciplines: {
         ...prevData.Eligible_Courses_And_Disciplines,
@@ -273,15 +279,16 @@ const Jnf = () => {
         Resume_Shortlisting: { ...resumeShortListingData},
         Type_Of_Test: { ...typeOfTestData},
         Other_Qualification_Rounds: { ...otherQualificationsRoundData},
-        Total_Number_Of_Rounds: selectionData.Total_Number_Of_Rounds,
-        Number_Of_Offers: selectionData.Number_Of_Offers,
-        Eligibility_Criteria: selectionData.Eligibility_Criteria,
+        Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
+        Number_Of_Offers: selectionFormData.Number_Of_Offers,
+        Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
     }));
 
     try {
-      let response = await updateInfById(InfData, InfId);
-
+      setIsLoading(true);
+      let response = await updateJnfById(JnfData, JnfId);
+      setIsLoading(false);
       console.log(response);
       setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
@@ -289,25 +296,20 @@ const Jnf = () => {
     }
   };
 
-  // const handleFormSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log({
-  //     companyFormData,
-  //     jobFormData,
-  //     salaryFormData,
-  //     fourYearData,
-  //     fiveYearData,
-  //     skillData,
-  //     threeYearData,
-  //     twoYearData,
-  //     twoYearMbaData,
-  //     twoYearMscData,
-  //     resumeShortListingData,
-  //     typeOfTestData,
-  //     otherQualificationsRoundData,
-  //     selectionFormData
-  //   })
-  // }
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log(JnfData);
+
+    try {
+      setIsLoading(true);
+      let response = await submitJnf(JnfId);
+      setIsLoading(false);
+      console.log(response);
+      Navigate('/myjobs');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -321,7 +323,7 @@ const Jnf = () => {
             handleCompanyDataChange={handleCompanyDataChange}
             handleJobDataChange={handleJobDataChange}
             handleSalaryDataChange={handleSalaryDataChange}
-            handleCreateNewInf = {handleCreateNewInf}
+            handleCreateNewJnf = {handleCreateNewJnf}
           />
         </TabPanel>
         <TabPanel value={"2"}>
@@ -333,7 +335,7 @@ const Jnf = () => {
             handleFourYearChange={handleFourYearChange}
             handleFiveYearChange={handleFiveYearChange}
             handleSkillChange={handleSkillChange}
-            handleUpdateInfById = {handleUpdateInfById}
+            handleUpdateJnfById = {handleUpdateJnfById}
           />
         </TabPanel>
         <TabPanel value={"3"}>
@@ -347,7 +349,7 @@ const Jnf = () => {
             handleTwoYearChange={handleTwoYearChange}
             handleTwoYearMbaChange={handleTwoYearMbaChange}
             handleTwoYearMscChange={handleTwoYearMscChange}
-            handleUpdateInfById = {handleUpdateInfById}
+            handleUpdateJnfById = {handleUpdateJnfById}
           />
         </TabPanel>
         <TabPanel value={"4"}>
@@ -361,10 +363,18 @@ const Jnf = () => {
             handleTypeOfTestChange={handleTypeOfTestChange}
             handleOtherQualificationsRoundChange={handleOtherQualificationsRoundChange}
             handleSelectionDataChange={handleSelectionDataChange}
-            handleUpdateInfById = {handleUpdateInfById}
+            handleUpdateJnfById = {handleUpdateJnfById}
           />
         </TabPanel>
+        <TabPanel value={"5"}>
+            <ReviewJnf
+            setPage={setPage}
+            JnfData={JnfData}
+            handleFormSubmit = {handleFormSubmit}
+            />
+        </TabPanel>
       </TabContext>
+      {isLoading && <Loading />}
     </>
   );
 };

@@ -11,7 +11,7 @@ const JNF2 = ({
   handleFourYearChange,
   handleFiveYearChange,
   handleSkillChange,
-  handleUpdateInfById
+  handleUpdateJnfById
  }) => {
   
   return (
@@ -151,7 +151,7 @@ const JNF2 = ({
         <button className="submit_btn" onClick={(e) => (e.preventDefault()/setPage("1"))}>
             Back
         </button>
-        <button className="submit_btn" onClick={handleUpdateInfById}>
+        <button className="submit_btn" onClick={handleUpdateJnfById}>
             Save and Continue
         </button> 
         </div>

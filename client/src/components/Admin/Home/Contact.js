@@ -8,9 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import { getAllContacts } from "../../../api";
+import Loading from "../../Loading/Loading";
 
 const Contact = () => {
   const [expanded, setExpanded] = React.useState(false);
+  const [ isLoading, setIsLoading] = React.useState(false);
   const Navigate = useNavigate();
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -22,7 +24,10 @@ const Contact = () => {
 
   React.useEffect(async () => {
     if (!user) Navigate("/auth");
+
+    setIsLoading(true);
     let response = await getAllContacts();
+    setIsLoading(false);
 
     console.log(response);
     setContacts(response.data.contactList);
@@ -62,6 +67,7 @@ const Contact = () => {
             </Accordion>
         ))}
       </div>
+      {isLoading && <Loading />}
     </>
   );
 };

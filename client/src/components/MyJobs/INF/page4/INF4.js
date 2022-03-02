@@ -17,7 +17,7 @@ const INF4 = ({
 
   return (
     <div className="overallDiv1">
-      <Form>
+      <Form onSubmit={handleUpdateInfById}>
       <div>
           <header className="headerText">
           SELECTION PROCEDURE
@@ -77,7 +77,7 @@ const INF4 = ({
         </table>
         <FormGroup row>
           <Label for="exampleText"sm={2} className="fontText">
-          Total number of rounds
+          Total number of rounds<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -87,12 +87,13 @@ const INF4 = ({
               className='inputText'
               value={selectionFormData.Total_Number_Of_Rounds}
               onChange={handleSelectionDataChange}
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row>
           <Label for="exampleText"sm={2} className="fontText">
-          Number of offers available for IIT(ISM) students (Range would be sufficient)
+          Number of offers available for IIT(ISM) students (Range would be sufficient)<span style={{ color: 'red' }}>*</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -102,6 +103,7 @@ const INF4 = ({
               className='inputText'
               value={selectionFormData.Number_Of_Offers}
               onChange={handleSelectionDataChange}
+              required
             />
           </Col>
         </FormGroup>
@@ -124,7 +126,7 @@ const INF4 = ({
         <button className="submit_btn" onClick={(e) => (e.preventDefault()/setPage("3"))}>
             Back
         </button>
-        <button className="submit_btn" onClick={handleUpdateInfById}>
+        <button className="submit_btn" type="submit">
             Review and Submit
         </button>
         </div>

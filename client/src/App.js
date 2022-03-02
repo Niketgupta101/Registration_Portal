@@ -11,7 +11,6 @@ import ContactUs from "./components/ContactUs/ContactUs";
 
 import AdminHome from "./components/Admin/Home/Home";
 import AdminAuth from "./components/Admin/Auth/SignIn";
-import Users from "./components/Admin/Users/Users";
 import Company from "./components/Admin/Company/Company";
 import Jobs from "./components/Admin/Jobs/Jobs";
 import Inf from "./components/MyJobs/INF/Inf";
@@ -67,7 +66,6 @@ const App = () => {
 
           {/* ------------------------------ Admin Menu --------------------- */}
 
-          <Route path="/admin/users" element={<Users />} />
           <Route path="/admin/company" element={<Company />} />
           <Route path="/admin/jobs" element={<Jobs />} />
 

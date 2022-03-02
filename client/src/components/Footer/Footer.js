@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 import "./styles.css";
 
 const Footer = () => {
+  const Navigate = useNavigate();
   return (
     <><div className="footer">
     <div className="footer_intro">
@@ -15,14 +17,14 @@ const Footer = () => {
       </p>
     </div>
     <div className="footer_menu">
-        <h5>HOME PAGE</h5>
-        <h5>MY JOBS</h5>
-        <h5>COURSES</h5>
-        <h5>CONTACT US</h5>
+        <h5 onClick={() => Navigate('/')}>HOME PAGE</h5>
+        <h5 onClick={() => Navigate('/myjobs')}>MY JOBS</h5>
+        <h5 onClick={() => Navigate('/courses')}>COURSES</h5>
+        <h5 onClick={() => Navigate('/contactus')}>CONTACT US</h5>
     </div>
     <div className="footer_admin">
-      <h5>ADMIN LOGIN</h5>
-      <h5>RULES & REGULATIONS</h5>
+      <h5 onClick={() => Navigate('/admin/signin')}>ADMIN LOGIN</h5>
+      <h5 onClick={() => Navigate('/')}>RULES & REGULATIONS</h5>
     </div>
     <div className="footer_contact_us">
         <h5>CONTACT US</h5>
