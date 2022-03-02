@@ -1,4 +1,4 @@
-.HomePage{
+ .HomePage{
   margin: 0;
   width: 100%;
 }
@@ -7,6 +7,7 @@
   height: 300px;
   position: relative;
   margin-bottom: 9rem;
+ 
 }
 .first_section::before{
     content: ' ';
@@ -73,6 +74,8 @@
 .section{
   width: 100%;
   padding: 1rem 13%;
+
+
 }
 .header{
   width: 100%;
@@ -85,16 +88,77 @@
   color: rgb(60, 85, 165);
   font-weight: 700;
 }
-.aboutus_content{
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.701);
-  padding: 0 2rem;
-  text-align: justify;
-}
+
 .batches_array tr{
   justify-content: left;
 }
 .batches_array tr>th{
   width: 150px;
+} 
+.aboutus_header{
+  text-align: center;
 }
+.aboutus_content
+{
+  text-align: center;
+}
+.aboutus_section{
+  background-image: url("./backgroundimage/snowflakes-background3.png");
+  background-repeat:repeat;
+  /*background-color: aqua;*/
+ 
+ 
+}
+/* .HomePage{
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  position:absolute;
+  width: 100%;
+}
+
+
+
+.bg-image {
+  /* The image used */
+ /* background-image: url("./backgroundimage/bg.jpg");*/
+  
+  /* Add the blur effect */
+  /*filter: blur(2px);*/
+ /* -webkit-filter: blur(2px);*/
+  
+  /* Full height */
+  /*height: 100%; */
+  
+  /* Center and scale the image nicely */
+  /*background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
+
+/* Position text in the middle of the page/image */
+/*.bg-text {
+  background-color: rgb(60, 85, 165); /* Fallback color */
+  /*background-color: rgba(60,85,165,0.7); /* Black w/opacity/see-through */
+  /*color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;*/
+/*}
+.headerabout{
+  text-align: center;
+  font-size: 2rem;
+}
+.content{
+  text-align: center;
+  
+} */
+

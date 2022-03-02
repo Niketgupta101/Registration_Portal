@@ -28,12 +28,13 @@ const Company = () => {
           <h1>Companies</h1>
         </div>
         <div className="company_items">
-          {Companies && Companies.map(company => (
-            <div className="job_card" key={company._id}>
+          {Companies.map(company => (
+            <div className="job_card">
+              <h2>Company Name : {company.name}</h2>
             </div>
-          ))}
-          {/* <div className="job_card">
-          </div> */}
+          ))} 
+          <div className="job_card">
+          </div>
         </div>
         <Stack spacing={2}>
           <Pagination
