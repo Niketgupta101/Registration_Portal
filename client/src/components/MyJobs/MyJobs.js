@@ -99,7 +99,7 @@ const MyJobs = () => {
                     <div className="content_heading">
                       <h4>Software Developer</h4>
                     </div>
-                    <div className="content_text">
+                    <div className="content_text" style={{ fontWeight: '500'}}>
                       <h5>
                         <span>Company</span>:{" "}
                         {job?.Company_Overview?.Name_Of_The_Company}

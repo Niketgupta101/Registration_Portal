@@ -90,6 +90,13 @@
     /* transform: translateX(-50%); */
     transition: all ease 0.3s;
 }
+.content_text>h5{
+  font-weight: 500 !important;
+}
+.content_text>h5>span{
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
 .secondary_btn:hover{
     color: #fff;
     background-color: rgb(60, 85, 165);
