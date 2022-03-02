@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const token = localStorage.getItem("token");
-const API = axios.create({ baseURL: 'http://localhost:5000/v1',
+const API = axios.create({ baseURL: 'https://git.heroku.com/registration-portal-app.git',
     headers: {
         authorization: `Bearer ${JSON.parse(token)}`
     }
