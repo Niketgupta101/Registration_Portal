@@ -72,7 +72,7 @@ export const getLatestJnfOfUser = () => API.get('/jnf/latest');
 
 export const getAllContacts = () => API.get('/contact/all');
 
-export const postContactData = (id) => API.post(`contact/`);
+export const postContactData = (data) => API.post(`/contact`, data);
 
 export const updateContactStatus = (id) => API.put(`contact/${id}`);
 

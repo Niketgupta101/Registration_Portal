@@ -15,12 +15,14 @@ const ContactUs = () => {
   const [formData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: [e.target.value] });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    await postContactData(formData);
+    console.log(formData);
+    let response = await postContactData(formData);
+    console.log(response);
     setFormData({ ...initialData });
   };
   return (
@@ -70,7 +72,7 @@ const ContactUs = () => {
                   onChange={handleChange}
                 />
               </div>
-              <Button variant="contained" endIcon={<SendIcon />} style={{ position: "relative", margin: "1rem 0"}}>
+              <Button type="submit" variant="contained" endIcon={<SendIcon />} style={{ position: "relative", margin: "1rem 0"}}>
                 Send
               </Button>
             </form>
