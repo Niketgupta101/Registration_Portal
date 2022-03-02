@@ -8,7 +8,7 @@ const { getAllJobs, updateGraduationYear, getGraduationYear } = require('../../c
 
 router.get('/all', protect, getAllJobs);
 
-router.put('/admin', protect, authorizeRoles, updateGraduationYear);
+router.put('/year/admin', protect, authorizeRoles, updateGraduationYear);
 
 router.get('/year', getGraduationYear);
 

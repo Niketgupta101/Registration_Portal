@@ -15,12 +15,12 @@ exports.fillINFDoc = async (inf) => {
   );
 
   const zip = new PizZip(content);
+  console.log("here");
 
   const doc = new Docxtemplater(zip, {
     paragraphLoop: true,
     linebreaks: true,
-  });
-
+});
   
   let fourYear = inf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear = inf.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs;
@@ -100,10 +100,14 @@ exports.fillINFDoc = async (inf) => {
   console.log(data);
   doc.render({...inf.Company_Overview,...inf.Intern_Profile,...inf.Salary_Details, ...data})
 
+  console.log("here");
+
   const buf = doc.getZip().generate({
     type: "nodebuffer",
     compression: "DEFLATE",
   });
+
+  console.log("here");
 
   fs.writeFileSync(path.resolve(__dirname, "output.docx"), buf);
 
@@ -115,13 +119,22 @@ exports.fillINFDoc = async (inf) => {
     },
     "docx"
   );
-  await result.saveFiles(path.resolve(__dirname));
+
+  console.log("here");
+
+  await result.saveFiles(__dirname);
+
+  console.log("here");
 
   let response = await uploadFile(path.resolve(__dirname, "output.pdf"));
   console.log(response)
 
+  console.log("here");
+
   let {previewLink} = await generatePreviewUrl(response.data.id);
   let {downloadLink} = await generateDownloadUrl(response.data.id);
+
+  console.log("here");
 
   inf.set({ previewLink, downloadLink });
   console.log(inf);

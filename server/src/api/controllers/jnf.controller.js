@@ -14,7 +14,7 @@ const getJnfById = async (req, res, next) => {
 
 const getAllJnfForUser = async (req, res, next) => {
     const { userId, pageno, pagelimit } = req.params;
-
+    console.log(userId);
     try {
         pageno = pageno || 1;
         pagelimit = pagelimit || 20;

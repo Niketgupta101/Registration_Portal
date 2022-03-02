@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/:id', protect, isAccesible, getJnfById);
 
-router.get('/user/:userId', protect, isAccesible, getAllJnfForUser);
+router.get('/user/:userId', protect, getAllJnfForUser);
 
 router.get('/latest/jnf', protect, getLatestJnfOfUser);
 

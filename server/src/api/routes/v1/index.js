@@ -5,6 +5,7 @@ const companyRoutes = require('./company.route.js');
 const INFRoutes = require('./inf.route.js');
 const JNFRoutes = require('./jnf.route.js');
 const contactRoutes = require('./contact.route');
+const jobRoutes = require('./job.route');
 
 const router = express.Router();
 
@@ -17,5 +18,6 @@ router.use('/company', companyRoutes);
 router.use('/inf', INFRoutes);
 router.use('/jnf', JNFRoutes);
 router.use('/contact', contactRoutes);
+router.use('/jobs', jobRoutes);
 
 module.exports = router;

@@ -2,35 +2,53 @@ import { Add } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { getAllInfForUser, getAllJobs } from "../../api";
+import { getAllInfForUser, getAllJobs, getAllJnfForUser, getAllPendingJobsForUser } from "../../api";
 
 import "./styles.css";
 
 const MyJobs = () => {
   const [isPopUp, setIsPopUp] = useState(false);
 
+  const [Filter, setFilter] = useState("All Jobs");
+
   const Navigate = useNavigate();
 
-  let user = JSON.parse(localStorage.getItem('user'));
+  let user = JSON.parse(localStorage.getItem("user"));
 
-  const [Jobs, setJobs] = useState({});
+  const [Jobs, setJobs] = useState([]);
 
   useEffect(async () => {
-    if(!user)
-    Navigate('/auth');
+    if (!user) Navigate("/auth");
 
-    let response = await getAllJobs();
-    console.log(response);
-    setJobs(response.data.infList);
-  }, [])
-  
+    if (Filter === "All Jobs") {
+      let response = await getAllJobs();
+      console.log(response);
+      setJobs(response.data.jobs);
+    } 
+    else if (Filter === "Internships") {
+      let response = await getAllInfForUser(user._id);
+      console.log(response);
+      setJobs(response.data.infList);
+    }
+    else if (Filter === "FTE's") {
+      let response = await getAllJnfForUser();
+      console.log(response);
+      setJobs(response.data.jnfList);
+    }
+    else if (Filter === "Pending Job Forms") {
+      let response = await getAllPendingJobsForUser();
+      console.log(response);
+      setJobs(response.data.infList);
+    }
+  }, [Filter]);
+  console.log(Jobs);
 
   return (
     <>
       <div className="myJobs_container">
         <div className="job_container">
           <div className="job_header">
-            <h1>All Jobs</h1>
+            <h1>{Filter}</h1>
             <button className="addJob_btn" onClick={() => setIsPopUp(!isPopUp)}>
               <Add style={{ color: "white" }} />
               <h3>Create Job</h3>
@@ -49,35 +67,83 @@ const MyJobs = () => {
             )}
           </div>
           <div className="jobFilter">
-            <select name="Job Filter" id="">
-              <option value="All Jobs">All Jobs</option>
-              <option value="Submitted Jobs">Pending Job forms</option>
-              <option value="Pending Jobs">Finished Job forms</option>
+            <select name="Job Filter" id="" onChange={(e) => setFilter(e.target.value)}>
+              <option value="All Jobs" >
+                All Jobs
+              </option>
+              <option
+                value="Internships"
+              >
+                Pending Job forms
+              </option>
+              <option value="FTE's">
+                FTE's
+              </option>
+              <option
+                value="Pending Jobs Forms"
+              >
+                Finished Job forms
+              </option>
             </select>
           </div>
           <div className="jobs_content">
-            { Jobs && Jobs.map(job => (<>
-              <div className="job_card">
-              <div className="badge">
-                <h6>Intern</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>Software Developer</h4>
-                </div>
-                <div className="content_text">
-                  <h5><span>Duration</span>: {job.Intern_Profile.Intern_Duration}</h5>
-                  <h5><span>Mode</span>: {job.Intern_Profile.Place_Of_Posting}</h5>
-                  <h5><span>Stipend</span>: {job.Salary_Details.Stipend_Per_Month}</h5>
-                  <h5><span>Provision for PPO</span>: {job.Salary_Details.PPO_provision_on_performance_basis}</h5>
-                  <div style={{ display: 'flex', justifyContent: 'center'}}>
-                  <button className="secondary_btn"> <a href={job.previewLink} style={{ textDecoration: "none", color: "inherit" }}> View Job</a> </button>
-                  <button className="secondary_btn"> <a href={job.downloadLink} style={{ textDecoration: "none", color: "inherit" }}> Download</a> </button>
+            {Jobs.map((job) => (
+                <div className="job_card" key={job._id}>
+                  <div
+                    className="badge"
+                    style={{ backgroundColor: !job.isIntern && "red" }}
+                  >
+                    <h6>{job.isIntern ? "Intern" : "FTE"}</h6>
+                  </div>
+                  <div className="card_content">
+                    <div className="content_heading">
+                      <h4>Software Developer</h4>
+                    </div>
+                    <div className="content_text">
+                      <h5>
+                        <span>Company</span>:{" "}
+                        {job?.Company_Overview?.Name_Of_The_Company}
+                      </h5>
+                      <h5>
+                        <span>Mode</span>:{" "}
+                        {job?.Intern_Profile?.Mode_Of_Internship}
+                      </h5>
+                      <h5>
+                        <span>Stipend</span>:{" "}
+                        {job.Salary_Details.Salary_Per_Month}
+                      </h5>
+                      <h5>
+                        <span>Provision for PPO</span>:{" "}
+                        {job.Salary_Details.PPO_provision_on_performance_basis}
+                      </h5>
+                      <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        <button className="secondary_btn">
+                          {" "}
+                          <a
+                            href={job.previewLink}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                          >
+                            {" "}
+                            View Job
+                          </a>{" "}
+                        </button>
+                        <button className="secondary_btn">
+                          {" "}
+                          <a
+                            href={job.downloadLink}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                          >
+                            {" "}
+                            Download
+                          </a>{" "}
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            </>)) }
+            ))}
           </div>
         </div>
       </div>

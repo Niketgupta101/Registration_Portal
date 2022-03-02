@@ -4,6 +4,11 @@ import React from 'react';
 import './styles.css';
 
 const Profile = () => {
+
+  let user = JSON.parse(localStorage.getItem('user'));
+  let company = JSON.parse(localStorage.getItem('company'));
+
+  console.log({ user, company });
     
   return (
     <>
@@ -13,12 +18,6 @@ const Profile = () => {
           <button>Edit</button>
       </div>
       <div className="user_details">
-        {/* <div className="avatar">
-          <h3>Edit</h3>
-          <img src={avatar} alt="" srcset="" >
-
-          </img>
-        </div> */}
         <div className="details">
           <div className="item">
             <h3>Name</h3>

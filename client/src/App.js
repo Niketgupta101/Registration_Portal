@@ -11,7 +11,6 @@ import ContactUs from "./components/ContactUs/ContactUs";
 
 import AdminHome from "./components/Admin/Home/Home";
 import AdminAuth from "./components/Admin/Auth/SignIn";
-import Account from "./components/Admin/Account/Account";
 import Users from "./components/Admin/Users/Users";
 import Company from "./components/Admin/Company/Company";
 import Jobs from "./components/Admin/Jobs/Jobs";
@@ -22,8 +21,6 @@ import UserAuth from "./components/Auth/UserAuth";
 import ForgotPassword from "./components/Password/ForgotPassword";
 import ChangePassword from "./components/Password/ChangePassword";
 import ResetPassword from "./components/Password/ResetPassword";
-import CompanyData from "./components/Admin/Company/CompanyData/CompanyData";
-import JobData from "./components/Admin/Jobs/JobData/JobData";
 import Fiveyear from "./components/Courses/Fiveyear";
 import Twoyearmba from "./components/Courses/Twoyearmba";
 import Twoyearmsc from "./components/Courses/Twoyearmsc";
@@ -70,12 +67,9 @@ const App = () => {
 
           {/* ------------------------------ Admin Menu --------------------- */}
 
-          <Route path="/admin/account" element={<Account />} />
           <Route path="/admin/users" element={<Users />} />
           <Route path="/admin/company" element={<Company />} />
-          <Route path="/admin/company/:id" element={<CompanyData />} />
           <Route path="/admin/jobs" element={<Jobs />} />
-          <Route path="/admin/jobs/job/:id" element={<JobData />} />
 
           {/* ------------------------------ Courses--------------------- */}
           <Route path="/courses/fiveyear" element={<Fiveyear/>}/>

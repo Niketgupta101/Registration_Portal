@@ -22,6 +22,7 @@ const fetchInfById = async (id, next) => {
 }
 
 const fetchAllInfForUser = async (offset, pagelimit, userId, next) => {
+    console.log(userId);
     try {
         let infList = await INFstatus.find({ userId }).populate('infId').sort({ updatedAt: -1 }).skip(offset).limit(pagelimit);
 
@@ -101,7 +102,7 @@ const submitInfById = async (id, next) => {
         infStatus.set({ progress: "submitted" });
 
         await infStatus.save();
-        await fillINFDoc(inf);
+        fillINFDoc(inf);
 
         console.log('yes');
 

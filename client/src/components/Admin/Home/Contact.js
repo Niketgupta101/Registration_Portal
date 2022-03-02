@@ -20,13 +20,13 @@ const Contact = () => {
 
   const [Contacts, setContacts] = React.useState();
 
-  // React.useEffect(async () => {
-  //   if (!user) Navigate("/auth");
-  //   let response = await getAllContacts();
+  React.useEffect(async () => {
+    if (!user) Navigate("/auth");
+    let response = await getAllContacts();
 
-  //   console.log(response);
-  //   setContacts(response.data.contactList);
-  // }, []);
+    console.log(response);
+    setContacts(response.data.contactList);
+  }, []);
 
   console.log(Contacts);
 
@@ -36,7 +36,7 @@ const Contact = () => {
         <h1>Contact Messages</h1>
       </div>
       <div className="admin_contact">
-        {/* {Contacts.map((contact) => (
+        { Contacts && Contacts.map((contact) => (
             <Accordion
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
@@ -60,7 +60,7 @@ const Contact = () => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-        ))} */}
+        ))}
       </div>
     </>
   );

@@ -27,7 +27,7 @@ export const postCompanyDetails = (data) => API.post(`/company`, data);
 
 export const getCompanyDetailsById = (id) => API.get(`/acompany/${id}`);
 
-export const getAllCompanyDetails = () => API.get(`/company`);
+export const getAllCompanyDetails = () => API.get(`/company/all/1/20`);
 
 // --------------------- INF ------------------------------------
 
@@ -65,7 +65,7 @@ export const deleteJnfById = (id) => API.delete(`jnf/${id}`);
 
 // ----------------------- Contact -----------------------------------
 
-export const getAllContacts = () => API.get('/all');
+export const getAllContacts = () => API.get('/contact/all');
 
 export const postContactData = (id) => API.post(`contact/`);
 
@@ -75,8 +75,10 @@ export const deleteContactById = (id) => API.delete(`contact/${id}`);
 
 // ------------------------ Jobs ------------------------------------
 
-export const getAllJobs = () => API.get('/all');
+export const getAllJobs = () => API.get('/jobs/all');
 
-export const updateGraduationYear = (data) => API.put('/admin', data);
+export const getAllPendingJobsForUser = () => API.get('/jobs/pending/all');
 
-export const getGraduationYear = () => API.get('/year');
+export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
+
+export const getGraduationYear = () => API.get('/jobs/year');

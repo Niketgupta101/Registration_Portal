@@ -1,17 +1,18 @@
-const INF = require('../models/INF');
-const JNF = require('../models/JNF');
+const {INF} = require('../models/INF');
+const {JNF} = require('../models/JNF');
 const Year = require('../models/GraduationYear');
 
 const getAllJobs = async (req, res, next) => {
     try {
-        let infList = await INF.find().sort({createdAt: -1});
-        let jnfList = await JNF.find().sort({createdAt: -1});
+        let infList = await INF.find({}).sort({createdAt: -1});
+        let jnfList = await JNF.find({}).sort({createdAt: -1});
 
-        let jobs = { ...infList, ...jnfList };
+        let jobs = [ ...infList, ...jnfList ];
         console.log(jobs);
 
         res.status(201).json({ success: true, jobs });
     } catch (error) {
+        console.log(error);
         next(error);
     }
 }

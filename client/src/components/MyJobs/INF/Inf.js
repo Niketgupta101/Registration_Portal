@@ -182,8 +182,8 @@ const Inf = () => {
 
   // ------------------------------------------------------------
   const selectionData = {
-    Total_Number_Of_Rounds: 0,
-    Number_Of_Offers: 0,
+    Total_Number_Of_Rounds: '',
+    Number_Of_Offers: '',
     Eligibility_Criteria: "",
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
@@ -253,9 +253,9 @@ const Inf = () => {
       Resume_Shortlisting: resumeShortListingData,
       Type_Of_Test: typeOfTestData,
       Other_Qualification_Rounds: otherQualificationsRoundData,
-      Total_Number_Of_Rounds: selectionData.Total_Number_Of_Rounds,
-      Number_Of_Offers: selectionData.Number_Of_Offers,
-      Eligibility_Criteria: selectionData.Eligibility_Criteria,
+      Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
+      Number_Of_Offers: selectionFormData.Number_Of_Offers,
+      Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
     },
   });
 
@@ -300,9 +300,9 @@ const Inf = () => {
         Resume_Shortlisting: { ...resumeShortListingData},
         Type_Of_Test: { ...typeOfTestData},
         Other_Qualification_Rounds: { ...otherQualificationsRoundData},
-        Total_Number_Of_Rounds: selectionData.Total_Number_Of_Rounds,
-        Number_Of_Offers: selectionData.Number_Of_Offers,
-        Eligibility_Criteria: selectionData.Eligibility_Criteria,
+        Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
+        Number_Of_Offers: selectionFormData.Number_Of_Offers,
+        Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
     }));
     console.log(InfData, InfId)

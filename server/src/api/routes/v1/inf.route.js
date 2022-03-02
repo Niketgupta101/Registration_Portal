@@ -10,7 +10,7 @@ router.get('/:id', protect, getInfById);
 
 router.get('/single/:id', protect, getInfById);
 
-router.get('/user/:userId', protect, isAccesible, getAllInfForUser);
+router.get('/user/:userId', protect, getAllInfForUser);
 
 router.get('/latest/inf', protect, getLatestInfOfUser);
 
