@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <>
-    <div className="HomePage">
+    {/* <div className="HomePage">
     <div className="bg-image"></div>
 
 <div className="bg-text">
@@ -56,11 +56,11 @@ The Indian School of Mines was formally opened on 9th December 1926, by Lord Irw
           </div>
     
 
-    </div>
-    <Footer/>
+    </div> */}
+ 
 
 
-      {/* <div className="HomePage">
+      <div className="HomePage">
         <div className="first_section">
           <div className="card">
             <h5>We Are,</h5>
@@ -75,25 +75,16 @@ The Indian School of Mines was formally opened on 9th December 1926, by Lord Irw
           </div>
           <div className="aboutus_content">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates numquam debitis vel laborum magni porro accusantium
-              natus amet quis repudiandae obcaecati hic minima, delectus fuga,
-              in, molestias inventore cum ducimus reprehenderit eum maxime
-              provident alias saepe? Exercitationem voluptas adipisci dolorem
-              voluptatem labore, quia sint voluptates pariatur vero, sit dolorum
-              odit nulla molestiae accusantium illum. Eveniet quisquam nisi
-              libero, pariatur reprehenderit eligendi amet obcaecati veritatis a
-              placeat asperiores nemo, minima id? Quasi aliquid voluptatum nobis
-              repellat mollitia amet excepturi quas ex et, iste totam itaque.
-              Accusantium delectus consequuntur fugit quidem ad consectetur
-              dolor quisquam, ut dolorum, ullam sequi tenetur itaque sed?{" "}
+            The Indian National Congress at its XVII Session of December 1901 passed a resolution stating that “in view of the fact that the tendency of recent legislation namely, The Indian Mines Act VII of 1901, is that all Indian mines must be kept under the supervision of mining experts, the Congress is of opinion that a Government College of Mining Engineering be established in some suitable place in India on the models of the Royal School of Mines in England, Mining Colleges of Japan and at other places in the continent”. The McPherson Committee formed by Govt. of India, recommended the establishment of an institution for imparting education in the fields of Mining and Geology, whose report, submitted in 1920, formed the main basis for establishment of the Indian School of Mines, Dhanbad.
+
+The Indian School of Mines was formally opened on 9th December 1926, by Lord Irwin, the then Viceroy of India to address the need for trained manpower related to mining activities in the country with disciplines of Mining and Applied Geology. In 1967 it was granted the status of a deemed to be university under Section 3 of UGC Act, 1956. Since its establishment, IIT(ISM) has undergone considerable expansion of its activities, and presently it can be considered as a total technology education institute.
             </p>
           </div>
      
         
        </div>
       </div>  
-      <Footer /> */}
+      <Footer />
     </> 
   );
 };
