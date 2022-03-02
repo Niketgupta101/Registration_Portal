@@ -16,13 +16,13 @@
     height: 100%;
     position: absolute;
     opacity: 1;
-    
+    background-image: url('../../Images/20190824_070411.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 .first_section .card{
-  width: 350px;
+  width: 320px;
   min-height: 170px;
   position: relative;
   left: 50%;

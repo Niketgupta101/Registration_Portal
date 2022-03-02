@@ -38,7 +38,7 @@
 }
 .job_card {
   width: 300px;
-  height: 230px;
+  min-height: 230px;
   border-radius: 5px;
   margin: 0.8rem;
   border: 1px solid rgba(0, 0, 0, 0.177);

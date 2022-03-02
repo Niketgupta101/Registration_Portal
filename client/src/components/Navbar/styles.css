@@ -25,12 +25,12 @@ ul{
   margin: 0;
 }
 .menuOutlined{
-  display: block;
+  display: none;
   cursor: pointer;
 }
 .close{
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 .sideMenuBar{
   width: 250px;
@@ -44,6 +44,7 @@ ul{
   box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.306);
   position: fixed;
   top: 0;
+  right: 0;
 }
 .menuContent{
   border-bottom: 1px solid #fff;

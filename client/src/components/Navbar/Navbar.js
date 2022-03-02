@@ -27,6 +27,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.clear();
     setUser(undefined);
+    Navigate('/');
   }
 
   return (
@@ -34,11 +35,26 @@ const Navbar = () => {
       <Box xs={{ flexGrow: 1 }}>
         <AppBar position="static" >
           <Toolbar>
-            {user && (<div className="menuOutlined" onClick={() => (sideBar)? setSideBar(false):setSideBar(true)}>
-              <MenuOutlined />
-            </div>)}
             <img src={logo} alt=""  style={{ width: "6vh", height: "6vh", margin: "auto 0.5rem" }}/>
-            <Typography variant="h6" noWrap component={"div"} sx={{ display: { xs: 'none', sm: 'block' } }}>Registration Portal</Typography>
+            <Box sx={{ display: { xs: 'none', sm: 'flex' }}}>
+              <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/')} style={{ alignItems: "center" }}>
+                {/* <AccountCircle /> */}
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px"}}>Home</h5>
+              </IconButton>
+              <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/myjobs')} style={{ alignItems: "center" }}>
+                {/* <AccountCircle /> */}
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px"}}>My Jobs</h5>
+              </IconButton>
+              <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/courses')} style={{ alignItems: "center" }}>
+                {/* <AccountCircle /> */}
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px"}}>Courses</h5>
+              </IconButton>
+              <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/contactus')} style={{ alignItems: "center" }}>
+                {/* <AccountCircle /> */}
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px"}}>Contact Us</h5>
+              </IconButton>
+            </Box>
+            {/* <Typography variant="h6" noWrap component={"div"} sx={{ display: { xs: 'none', sm: 'block' } }}>Registration Portal</Typography> */}
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs:'none', sm:'flex' }, justifyContent:'flex-end'}}>
               { user ? (
@@ -54,6 +70,11 @@ const Navbar = () => {
               ):(
               <Button color="inherit" onClick={handleLogin}><Login style={{ color: "white", margin: "0 0.5rem"}}/>Login</Button>
               )}
+            </Box>
+            <Box sx={{ display: { xs: 'flex', sm: 'none'}, justifyContent: 'flex-end'}}>
+            <div className="menuOutlined" onClick={() => (sideBar)? setSideBar(false):setSideBar(true)}>
+              <MenuOutlined />
+            </div>
             </Box>
           </Toolbar>
         </AppBar>

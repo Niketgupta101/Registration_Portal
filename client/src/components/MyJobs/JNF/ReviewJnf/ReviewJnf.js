@@ -140,7 +140,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Select_All"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Select_All}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Select_All}
                   type="checkbox"
                   readOnly
                 />
@@ -151,7 +151,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Chemical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Chemical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Chemical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -162,7 +162,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Civil_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Civil_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Civil_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -173,7 +173,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Computer_Science_and_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -184,7 +184,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Electrical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electrical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electrical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -197,7 +197,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Electronics_and_Communication_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electronics_and_Communication_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -208,7 +208,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Engineering_Physics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Engineering_Physics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Engineering_Physics}
                   type="checkbox"
                   readOnly
                 />
@@ -219,7 +219,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Environmental_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Environmental_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Environmental_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -230,7 +230,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mechanical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mechanical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mechanical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -243,7 +243,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mineral_and_Metallurgical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mineral_and_Metallurgical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mineral_and_Metallurgical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -254,7 +254,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mining_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -265,7 +265,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Mining_Machinery_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Machinery_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -276,7 +276,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxBtech">
                 <input
                   name="Petroleum_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Petroleum_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Petroleum_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -297,7 +297,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Select_All"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Select_All}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Select_All}
                   type="checkbox"
                   readOnly
                 />
@@ -308,7 +308,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Computer_Science_and_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -319,7 +319,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Mathematics_and_Computing"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Mathematics_and_Computing}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Mathematics_and_Computing}
                   type="checkbox"
                   readOnly
                 />
@@ -330,7 +330,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Applied_Geology"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geology}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geology}
                   type="checkbox"
                   readOnly
                 />
@@ -341,7 +341,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox5year">
                 <input
                   name="Applied_Geophysics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geophysics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
                   readOnly
                 />
@@ -361,7 +361,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="C_Cpp_Java_Python_etc"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.C_Cpp_Java_Python_etc}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.C_Cpp_Java_Python_etc}
                   type="checkbox"
                   readOnly
                 />
@@ -374,7 +374,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="Full_Stack_Development_Frontend_or_Backend"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Full_Stack_Development_Frontend_or_Backend}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Full_Stack_Development_Frontend_or_Backend}
                   type="checkbox"
                   readOnly
                 />
@@ -385,7 +385,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="Civil_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Civil_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Civil_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -396,7 +396,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="AI_ML_DL_Data_Science"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.AI_ML_DL_Data_Science}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.AI_ML_DL_Data_Science}
                   type="checkbox"
                   readOnly
                 />
@@ -409,7 +409,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxSkill">
                 <input
                   name="Business_Data_Analytics_Product_Management"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Business_Data_Analytics_Product_Management}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Business_Data_Analytics_Product_Management}
                   type="checkbox"
                   readOnly
                 />
@@ -437,7 +437,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox3MSc">
                 <input 
                   name="Select_All"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Select_All}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Select_All}
                   type="checkbox"
                   readOnly
                 />
@@ -448,7 +448,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Applied_Geology"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geology}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geology}
                   type="checkbox"
                   readOnly
                 />
@@ -459,7 +459,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox3MSc">
                 <input
                   name="Applied_Geophysics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geophysics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geophysics}
                   type="checkbox"
                   readOnly
                 />
@@ -478,7 +478,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Select_All"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Select_All}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Select_All}
                   type="checkbox"
                   readOnly
                 />
@@ -489,7 +489,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Applied_Geology"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geology}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geology}
                   type="checkbox"
                   readOnly
                 />
@@ -500,7 +500,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Applied_Geophysics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geophysics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
                   readOnly
                 />
@@ -511,7 +511,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Chemical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Chemical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Chemical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -522,7 +522,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Civil_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Civil_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Civil_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -533,7 +533,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Computer_Science_and_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Computer_Science_and_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -544,7 +544,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Data_Analytics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Data_Analytics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Data_Analytics}
                   type="checkbox"
                   readOnly
                 />
@@ -555,7 +555,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Electrical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electrical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electrical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -568,7 +568,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Electronics_and_Communication_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electronics_and_Communication_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -579,7 +579,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Environmental_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Environmental_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Environmental_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -592,7 +592,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Industrial_Engineering_and_Management"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Industrial_Engineering_and_Management}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Industrial_Engineering_and_Management}
                   type="checkbox"
                   readOnly
                 />
@@ -603,7 +603,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mechanical_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mechanical_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mechanical_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -616,7 +616,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Fuel_Minerals_and_Metallurgical_Engineering"
-                  value={
+                  checked={
                     JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Fuel_Minerals_and_Metallurgical_Engineering
                   }
                   type="checkbox"
@@ -629,7 +629,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mining_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -640,7 +640,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Mining_Machinery_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Machinery_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -651,7 +651,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Petroleum_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Petroleum_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Petroleum_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -664,7 +664,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2MTech">
                 <input
                   name="Pharmaceutical_Science_and_Engineering"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Pharmaceutical_Science_and_Engineering}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Pharmaceutical_Science_and_Engineering}
                   type="checkbox"
                   readOnly
                 />
@@ -683,7 +683,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Select_All"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Select_All}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Select_All}
                   type="checkbox"
                   readOnly
                 />
@@ -694,7 +694,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Business_Analytics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Business_Analytics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Business_Analytics}
                   type="checkbox"
                   readOnly
                 />
@@ -705,7 +705,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Finance"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Finance}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Finance}
                   type="checkbox"
                   readOnly
                 />
@@ -716,7 +716,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Human_Resources"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Human_Resources}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Human_Resources}
                   type="checkbox"
                   readOnly
                 />
@@ -727,7 +727,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Marketing"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Marketing}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Marketing}
                   type="checkbox"
                   readOnly
                 />
@@ -738,7 +738,7 @@ const ReviewJnf = ({
               <td className="courseCheckBoxmba">
                 <input
                   name="Operations"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Operations}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Operations}
                   type="checkbox"
                   readOnly
                 />
@@ -757,7 +757,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Select_All"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Select_All}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Select_All}
                   type="checkbox"
                   readOnly
                 />
@@ -768,7 +768,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Chemistry"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Chemistry}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Chemistry}
                   type="checkbox"
                   readOnly
                 />
@@ -779,7 +779,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Mathematics_and_Computing"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Mathematics_and_Computing}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Mathematics_and_Computing}
                   type="checkbox"
                   readOnly
                 />
@@ -790,7 +790,7 @@ const ReviewJnf = ({
               <td className="courseCheckBox2Msc">
                 <input
                   name="Physics"
-                  value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Physics}
+                  checked={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Physics}
                   type="checkbox"
                   readOnly
                 />
@@ -813,9 +813,9 @@ const ReviewJnf = ({
                     <td style={{ flexBasis: "70%"}}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='resume'>Yes</label>
-                            <input className='checkBox' name="Yes" value={JnfData.Selection_Procedure.Resume_Shortlisting.Yes} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="Yes" checked={JnfData.Selection_Procedure.Resume_Shortlisting.Yes} readOnly type="checkbox"/></div>
                             <div className="align"><label className='resume'>No</label>
-                            <input className='checkBox' name="No" value={JnfData.Selection_Procedure.Resume_Shortlisting.No} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="No" checked={JnfData.Selection_Procedure.Resume_Shortlisting.No} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -827,13 +827,13 @@ const ReviewJnf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div><label className='type'>Technical </label>
-                            <input className='checkBox' name="Technical" value={JnfData.Selection_Procedure.Type_Of_Test.Technical} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="Technical" checked={JnfData.Selection_Procedure.Type_Of_Test.Technical} readOnly type="checkbox"/></div>
                             <div><label className='type'>Aptitude </label>
-                            <input className='checkBox' name="Aptitude" value={JnfData.Selection_Procedure.Type_Of_Test.Aptitude} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="Aptitude" checked={JnfData.Selection_Procedure.Type_Of_Test.Aptitude} readOnly type="checkbox"/></div>
                             <div><label className='type'>Both</label>
-                            <input className='checkBox' name="Technical_and_Aptitude" value={JnfData.Selection_Procedure.Type_Of_Test.Both} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="Technical_and_Aptitude" checked={JnfData.Selection_Procedure.Type_Of_Test.Both} readOnly type="checkbox"/></div>
                             <div><label className='type'>None </label>
-                            <input className='checkBox' name="None" value={JnfData.Selection_Procedure.Type_Of_Test.None} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="None" checked={JnfData.Selection_Procedure.Type_Of_Test.None} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -845,11 +845,11 @@ const ReviewJnf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='round'>GD </label>
-                            <input className='checkBox' name="GD" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.GD} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="GD" checked={JnfData.Selection_Procedure.Other_Qualification_Rounds.GD} readOnly type="checkbox"/></div>
                             <div className="align"><label className='round'>  Case Study</label>
-                            <input className='checkBox' name="Case_Study" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="Case_Study" checked={JnfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} readOnly type="checkbox"/></div>
                             <div className="align"><label className='round'>Interview </label>
-                            <input className='checkBox' name="Interview" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.Interview} readOnly type="checkbox"/></div>
+                            <input className='checkBox' name="Interview" checked={JnfData.Selection_Procedure.Other_Qualification_Rounds.Interview} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>

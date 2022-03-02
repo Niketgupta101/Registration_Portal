@@ -13,7 +13,6 @@ const INF1 = ({
   handleJobDataChange, 
   handleStipendDataChange,
   handleCreateNewInf,
-  handleUpdateInfById
 }) => {
 
   return (
