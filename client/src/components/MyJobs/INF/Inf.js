@@ -306,6 +306,7 @@ const Inf = () => {
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
     }));
+    console.log(selectionFormData)
     console.log(InfData, InfId)
     try {
       let response = await updateInfById(InfData, InfId);
@@ -325,7 +326,7 @@ const Inf = () => {
       let response = await submitInf(InfId);
 
       console.log(response);
-      // Navigate('/myjobs');
+      Navigate('/myjobs');
     } catch (error) {
       console.log(error);
     }

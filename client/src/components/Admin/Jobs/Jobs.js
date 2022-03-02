@@ -47,7 +47,30 @@ const Jobs = () => {
                     <h5>
                       <span>Provision for PPO</span>: Yes
                     </h5>
-                    <button className="secondary_btn" onClick={() =>  (console.log('yes'),Navigate(`/admin/jobs/job/${job.infId._id}`))}>View more</button>
+                    <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        <button className="secondary_btn">
+                          {" "}
+                          <a
+                            href={job.previewLink}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                          >
+                            {" "}
+                            View Job
+                          </a>{" "}
+                        </button>
+                        <button className="secondary_btn">
+                          {" "}
+                          <a
+                            href={job.downloadLink}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                          >
+                            {" "}
+                            Download
+                          </a>{" "}
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>

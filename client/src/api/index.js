@@ -1,7 +1,10 @@
 const axios = require('axios');
 
 const token = localStorage.getItem("token");
+
 const API = axios.create({ baseURL: 'http://localhost:5000/v1',
+credentials: "include",
+    withCredentials: true,
     headers: {
         authorization: `Bearer ${JSON.parse(token)}`
     }

@@ -890,7 +890,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              {InfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
+              {InfData.Selection_Procedure.Total_Number_Of_Rounds}
             </h1>
           </Col>
         </FormGroup>
@@ -900,7 +900,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              {InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
+              {InfData.Selection_Procedure.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
@@ -910,7 +910,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
           <h1 className='inputText'>
-              {InfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
+              {InfData.Selection_Procedure.Eligibility_Criteria}
           </h1>
           </Col>
         </FormGroup>
