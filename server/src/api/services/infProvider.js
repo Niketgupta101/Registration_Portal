@@ -24,7 +24,14 @@ const fetchAllInfForUser = async (userId, next) => {
     try {
         let infList = await INFstatus.find({ userId }).populate('infId').sort({ updatedAt: -1 });
 
-        return { success: true, infList };
+        let jobs = [];
+
+        for(let inf in infList)
+        {
+            jobs.push(infList[inf].infId);
+        }
+
+        return { success: true, jobs };
     } catch (error) {
         return next(error);
     }

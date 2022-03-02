@@ -16,10 +16,20 @@ const fetchJnfById = async (id, next) => {
 }
 
 const fetchAllJnfForUser = async (userId, next) => {
+    console.log(userId);
     try {
-        let jnfList = await JNFstatus.find({ userId }).populate('jnfId').sort({ updatedAt: -1 });
+        let jnfList = await JNF.find({ userId }).sort({ updatedAt: -1 });
 
-        return { success: true, jnfList };
+        console.log(jnfList);
+
+        // let jobs = [];
+
+        // for(let jnf in jnfList)
+        // {
+        //     jobs.push(jnfList[jnf].jnfId);
+        // }
+
+        return { success: true, jobs: jnfList };
     } catch (error) {
         return next(error);
     }

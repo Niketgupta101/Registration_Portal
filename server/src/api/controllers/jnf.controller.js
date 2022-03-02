@@ -13,9 +13,11 @@ const getJnfById = async (req, res, next) => {
 }
 
 const getAllJnfForUser = async (req, res, next) => {
-    let userId = req.params;
+    let {userId} = req.params;
+    console.log(userId);
+
     try {
-        let response = await fetchAllJnfForUser(offset, next);
+        let response = await fetchAllJnfForUser(userId, next);
 
         res.status(201).json(response);
     } catch (error) {

@@ -34,11 +34,11 @@ const MyJobs = () => {
     } else if (Filter === "Internships") {
       let response = await getAllInfForUser(user._id);
       console.log(response);
-      setJobs(response.data.infList.infId);
+      setJobs(response.data.jobs);
     } else if (Filter === "FTE's") {
       let response = await getAllJnfForUser(user._id);
       console.log(response);
-      setJobs(response.data.jnfList.jnfId);
+      setJobs(response.data.jobs);
     } else if (Filter === "Pending Job Forms") {
       let response = await getAllPendingJobsForUser();
       console.log(response);
