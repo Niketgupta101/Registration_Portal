@@ -15,9 +15,9 @@ const fetchJnfById = async (id, next) => {
     }
 }
 
-const fetchAllJnfForUser = async (offset, pagelimit, userId, next) => {
+const fetchAllJnfForUser = async (userId, next) => {
     try {
-        let jnfList = await JNFstatus.find({ userId }).populate('jnfId').sort({ updatedAt: -1 }).skip(offset).limit(pagelimit);
+        let jnfList = await JNFstatus.find({ userId }).populate('jnfId').sort({ updatedAt: -1 });
 
         return { success: true, jnfList };
     } catch (error) {

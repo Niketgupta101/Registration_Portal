@@ -7,15 +7,12 @@ const Docxtemplater = require("docxtemplater");
 const { uploadFile, generateDownloadUrl, generatePreviewUrl } = require("./upload");
 
 exports.fillINFDoc = async (inf) => {
-  console.log("fill inf doc");
-  console.log(__dirname);
   const content = fs.readFileSync(
     path.resolve(__dirname, "INF.docx"),
     "binary"
   );
 
   const zip = new PizZip(content);
-  console.log("here");
 
   const doc = new Docxtemplater(zip, {
     paragraphLoop: true,
@@ -30,7 +27,6 @@ exports.fillINFDoc = async (inf) => {
   let twoYearMba = inf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = inf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = inf.Selection_Procedure;
-  console.log(fourYear);
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes':'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering ? 'Yes':'No',
@@ -97,17 +93,14 @@ exports.fillINFDoc = async (inf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria: selectionProcedure.Eligibility_Criteria
   };
-  console.log(data);
   doc.render({...inf.Company_Overview,...inf.Intern_Profile,...inf.Salary_Details, ...data})
 
-  console.log("here");
 
   const buf = doc.getZip().generate({
     type: "nodebuffer",
     compression: "DEFLATE",
   });
 
-  console.log("here");
 
   fs.writeFileSync(path.resolve(__dirname, "output.docx"), buf);
 
@@ -120,24 +113,17 @@ exports.fillINFDoc = async (inf) => {
     "docx"
   );
 
-  console.log("here");
-
   await result.saveFiles(__dirname);
 
-  console.log("here");
 
   let response = await uploadFile(path.resolve(__dirname, "output.pdf"));
-  console.log(response)
 
-  console.log("here");
 
   let {previewLink} = await generatePreviewUrl(response.data.id);
   let {downloadLink} = await generateDownloadUrl(response.data.id);
 
-  console.log("here");
 
   inf.set({ previewLink, downloadLink });
-  console.log(inf);
   await inf.save();
 };
 
@@ -150,8 +136,6 @@ exports.fillINFDoc = async (inf) => {
 
 
 exports.fillJNFDoc = async (jnf) => {
-  console.log("fill jnf doc");
-  console.log(__dirname);
   const content = fs.readFileSync(
     path.resolve(__dirname, "JNF.docx"),
     "binary"
@@ -173,7 +157,6 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMba = jnf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
-  console.log(fourYear);
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes':'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering ? 'Yes':'No',
@@ -241,7 +224,6 @@ exports.fillJNFDoc = async (jnf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria: selectionProcedure.Eligibility_Criteria
   };
-  console.log(data);
   doc.render({...inf.Company_Overview,...jnf.Job_Details,...jnf.Salary_Details,  ...data,  })
 
   const buf = doc.getZip().generate({
@@ -262,12 +244,10 @@ exports.fillJNFDoc = async (jnf) => {
   await result.saveFiles(path.resolve(__dirname));
 
   let response = await uploadFile(path.resolve(__dirname, "output.pdf"));
-  console.log(response)
 
   let {previewLink} = await generatePreviewUrl(response.data.id);
   let {downloadLink} = await generateDownloadUrl(response.data.id);
 
   jnf.set({ previewLink, downloadLink });
-  console.log(jnf);
   await jnf.save();
 };

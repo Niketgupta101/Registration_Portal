@@ -13,7 +13,6 @@ const fetchInfById = async (id, next) => {
 
         let inf = await INF.findOne({ _id: id });
 
-        console.log(inf);
 
         return { success: true, inf };
     } catch (error) {
@@ -21,10 +20,9 @@ const fetchInfById = async (id, next) => {
     }
 }
 
-const fetchAllInfForUser = async (offset, pagelimit, userId, next) => {
-    console.log(userId);
+const fetchAllInfForUser = async (userId, next) => {
     try {
-        let infList = await INFstatus.find({ userId }).populate('infId').sort({ updatedAt: -1 }).skip(offset).limit(pagelimit);
+        let infList = await INFstatus.find({ userId }).populate('infId').sort({ updatedAt: -1 });
 
         return { success: true, infList };
     } catch (error) {
@@ -38,6 +36,7 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
         return { success: true, inf };
     } catch (error) {
+        console.log(error);
         return next(error);
     }
 }
@@ -66,7 +65,6 @@ const createInf = async (loggedUserId, details,  next) => {
 }
 
 const saveInfById = async (id, details, next) => {
-    console.log({ id, details });
     try {
         let infStatus = await INFstatus.findOne({ infId: id });
 
@@ -78,7 +76,6 @@ const saveInfById = async (id, details, next) => {
 
         let inf = await INF.findOne({ _id: id });
 
-        console.log(inf);
         inf.set({ ...details });
 
         await inf.save();
@@ -104,7 +101,6 @@ const submitInfById = async (id, next) => {
         await infStatus.save();
         fillINFDoc(inf);
 
-        console.log('yes');
 
         return { success: true, message: "Submitted Successfully", infStatus };
     } catch (error) {

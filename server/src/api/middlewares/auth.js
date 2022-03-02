@@ -9,23 +9,18 @@ const protect = async (req, res, next) => {
   if (req.headers.authorization) {
     token = req.headers.authorization.split(" ")[1];
   }
-  console.log(token);
-  console.log(req.params);  
   if (!token) {
     return next(new ErrorResponse("Not authorized to access this route", 401));
   }
 
   const decoded = jwt.verify(token, jwtSecret);
-  console.log(decoded);
 
   try {
     const user = await User.findById(decoded.id);
-    console.log(user);
     if (!user.isemailVerified)
       return next(new ErrorResponse("Email Id is not verified", 401));
 
     if (!user) {
-      console.log("here");
       return next(new ErrorResponse("No user found with this id", 404));
     }
 

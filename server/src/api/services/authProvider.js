@@ -39,7 +39,6 @@ exports.loginUser = async ( emailIdOrUsername, password, next ) => {
 
         const token = user.getSignedToken();
 
-        console.log(user);
 
         return { user, token, company };
     } catch (error) {
@@ -48,7 +47,6 @@ exports.loginUser = async ( emailIdOrUsername, password, next ) => {
 }
 
 exports.forgotPassword = async (emailId, next) => {
-    console.log(emailId);
         try {
             const user = await User.findOne({emailId});
 
