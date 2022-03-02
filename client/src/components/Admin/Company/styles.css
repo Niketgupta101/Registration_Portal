@@ -23,10 +23,43 @@
 .admin_company_header>h1{
     font-size: 28px;
 }
+.job_card {
+    text-align: center;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 5px;
+    margin: 0.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.177);
+    box-shadow: 3px 3px 6px 4px rgba(0, 0, 0, 0.177);
+    transition: all ease 0.3s;
+    background-color: rgb(237, 241, 245,0.5);
+  
+    border-radius: 18px;
+  }
+#companyname{
+    font-weight: bolder;
+    font-size: large;
+    border-bottom: 1px solid black ;
+}
 
+.head{
+    font-weight: bold;
+    line-height: 2px;
+
+    
+
+}
+.contacthr{
+    font-weight: bolder;
+}
 @media(max-width: 600px)
 {
     .admin_company{
         padding: 0;
+    }
+}
+@media(max-width:360px){
+    .job_card{
+        overflow: scroll;
     }
 }
