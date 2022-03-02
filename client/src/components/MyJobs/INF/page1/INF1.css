@@ -1,3 +1,6 @@
+*{
+    background-image: url('./components/Home/backgroundimage/snowflakes-background3.png');
+  }
 .overallDiv1{
     justify-content: center;
     margin: auto 18% !important;
@@ -14,7 +17,11 @@
     margin: 1.5rem auto; 
 }
 .inputText{
-    height: 40px !important;
+    height: 21px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    font-size: 17px !important;                   
+    line-height: 1.1 !important;
 }
 /* .headerText{
     text-align: center;
@@ -27,9 +34,7 @@
     background: rgb(138, 138, 238,0.8);
     color:rgb(0, 0, 0);
 } */
-.fontText{
-    font-size: 16px !important;
-}
+
 .headerText{
     padding: 0.5rem;
     border-bottom: 2px solid rgb(60, 85, 165);
@@ -39,16 +44,7 @@
     font-size: 23px !important;
     margin-top: 1.5rem;
 }
-.inputText{
-    height: 50px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 18px !important;
-}
-.fontText{
-    font-size: 24px;
-    color: rgba(0, 0, 0, 0.823) !important;
-}
+
 Form{
     margin: 2rem auto;
 }

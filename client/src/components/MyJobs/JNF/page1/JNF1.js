@@ -32,6 +32,7 @@ const JNF1 = ({
             <Input
               id="exampleText"
               name="Name_Of_The_Company"
+              required
               type="text"
               className="inputText"
               value={companyFormData.Name_Of_The_Company}
@@ -49,6 +50,7 @@ const JNF1 = ({
             <Input
               id="exampleText"
               name="Category_Or_Sector"
+              required
               type="text"
               className="inputText"
               value={companyFormData.Category_Or_Sector}
@@ -68,6 +70,7 @@ const JNF1 = ({
               id="exampleText"
               name="Website"
               type="text"
+              required
               className="inputText"
               value={companyFormData.Website}
               onChange={handleCompanyDataChange}
@@ -88,6 +91,7 @@ const JNF1 = ({
               id="exampleText"
               name="Job_Designation"
               className="inputText"
+              required
               type="text"
               value={jobFormData.Job_Designation}
               onChange={handleJobDataChange}
@@ -106,6 +110,7 @@ const JNF1 = ({
               name="Job_Description"
               type="text"
               className="inputText"
+              required
               value={jobFormData.Job_Description}
               onChange={handleJobDataChange}
               required
@@ -121,6 +126,7 @@ const JNF1 = ({
             <Input
               id="exampleText"
               name="Place_Of_Posting"
+              required
               type="text"
               className="inputText"
               value={jobFormData.Place_Of_Posting}
@@ -146,6 +152,7 @@ const JNF1 = ({
             <Input
               id="exampleText"
               name="CTC"
+              required
               type="text"
               className="inputText"
               value={salaryFormData.CTC}

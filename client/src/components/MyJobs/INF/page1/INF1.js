@@ -31,9 +31,11 @@ const INF1 = ({
           <Col sm={10}>
             <Input
               id="exampleText"
+              required
               name="Name_Of_The_Company"
               type="text"
               className="inputText"
+              style={{ lineHeight: "0.8"}}
               value={companyFormData.Name_Of_The_Company}
               onChange={handleCompanyDataChange}
               autoComplete="off"
@@ -50,6 +52,7 @@ const INF1 = ({
               id="exampleText"
               name="Category_Or_Sector"
               type="text"
+              required
               className="inputText"
               value={companyFormData.Category_Or_Sector}
               onChange={handleCompanyDataChange}
@@ -65,6 +68,7 @@ const INF1 = ({
           <Col sm={10}>
             <Input
               id="exampleText"
+              required
               name="Website"
               type="text"
               className="inputText"
@@ -86,6 +90,7 @@ const INF1 = ({
             <Input
               id="exampleSelect"
               name="Internship_Duration"
+              required
               type="select"
               className="inputText"
               value={jobFormData.Internship_Duration}
@@ -116,6 +121,7 @@ const INF1 = ({
             <Input
               id="exampleText"
               name="Job_Designation"
+              required
               className="inputText"
               type="text"
               value={jobFormData.Job_Designation}
@@ -134,6 +140,7 @@ const INF1 = ({
               id="exampleText"
               name="Job_Description"
               type="text"
+              required
               className="inputText"
               value={jobFormData.Job_Description}
               onChange={handleJobDataChange}
@@ -151,6 +158,7 @@ const INF1 = ({
               id="exampleSelect"
               name="Mode_Of_Internship"
               type="select"
+              required
               className="inputText"
               value={jobFormData.Mode_Of_Internship}
               onChange={handleJobDataChange}
@@ -194,6 +202,7 @@ const INF1 = ({
           <Col sm={10}>
             <Input
               id="exampleText"
+              required
               name="Salary_Per_Month"
               type="text"
               className="inputText"
@@ -213,6 +222,7 @@ const INF1 = ({
               id="exampleSelect"
               name="PPO_provision_on_performance_basis"
               type="select"
+              required
               className="inputText"
               value={stipendFormData.PPO_provision_on_performance_basis}
               onChange={handleStipendDataChange}

@@ -99,6 +99,7 @@ const INF4 = ({
             <Input
               id="exampleText"
               name="Number_Of_Offers"
+              required
               type="text"
               className='inputText'
               value={selectionFormData.Number_Of_Offers}

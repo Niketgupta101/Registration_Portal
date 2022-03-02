@@ -142,6 +142,7 @@ const ReviewJnf = ({
                   name="Select_All"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -152,6 +153,7 @@ const ReviewJnf = ({
                   name="Chemical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Chemical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -162,6 +164,7 @@ const ReviewJnf = ({
                   name="Civil_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Civil_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -172,6 +175,7 @@ const ReviewJnf = ({
                   name="Computer_Science_and_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -182,6 +186,7 @@ const ReviewJnf = ({
                   name="Electrical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electrical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -194,6 +199,7 @@ const ReviewJnf = ({
                   name="Electronics_and_Communication_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -204,6 +210,7 @@ const ReviewJnf = ({
                   name="Engineering_Physics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Engineering_Physics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -214,6 +221,7 @@ const ReviewJnf = ({
                   name="Environmental_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Environmental_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -224,6 +232,7 @@ const ReviewJnf = ({
                   name="Mechanical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mechanical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -236,6 +245,7 @@ const ReviewJnf = ({
                   name="Mineral_and_Metallurgical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mineral_and_Metallurgical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -246,6 +256,7 @@ const ReviewJnf = ({
                   name="Mining_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -256,6 +267,7 @@ const ReviewJnf = ({
                   name="Mining_Machinery_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -266,6 +278,7 @@ const ReviewJnf = ({
                   name="Petroleum_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Petroleum_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -286,6 +299,7 @@ const ReviewJnf = ({
                   name="Select_All"
                   value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -296,6 +310,7 @@ const ReviewJnf = ({
                   name="Computer_Science_and_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -306,6 +321,7 @@ const ReviewJnf = ({
                   name="Mathematics_and_Computing"
                   value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Mathematics_and_Computing}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -316,6 +332,7 @@ const ReviewJnf = ({
                   name="Applied_Geology"
                   value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geology}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -326,6 +343,7 @@ const ReviewJnf = ({
                   name="Applied_Geophysics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -345,6 +363,7 @@ const ReviewJnf = ({
                   name="C_Cpp_Java_Python_etc"
                   value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.C_Cpp_Java_Python_etc}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -357,6 +376,7 @@ const ReviewJnf = ({
                   name="Full_Stack_Development_Frontend_or_Backend"
                   value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Full_Stack_Development_Frontend_or_Backend}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -367,6 +387,7 @@ const ReviewJnf = ({
                   name="Civil_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Civil_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -377,6 +398,7 @@ const ReviewJnf = ({
                   name="AI_ML_DL_Data_Science"
                   value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.AI_ML_DL_Data_Science}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -389,6 +411,7 @@ const ReviewJnf = ({
                   name="Business_Data_Analytics_Product_Management"
                   value={JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Business_Data_Analytics_Product_Management}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -416,6 +439,7 @@ const ReviewJnf = ({
                   name="Select_All"
                   value={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -426,6 +450,7 @@ const ReviewJnf = ({
                   name="Applied_Geology"
                   value={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geology}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -436,6 +461,7 @@ const ReviewJnf = ({
                   name="Applied_Geophysics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geophysics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -454,6 +480,7 @@ const ReviewJnf = ({
                   name="Select_All"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -464,6 +491,7 @@ const ReviewJnf = ({
                   name="Applied_Geology"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geology}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -474,6 +502,7 @@ const ReviewJnf = ({
                   name="Applied_Geophysics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -484,6 +513,7 @@ const ReviewJnf = ({
                   name="Chemical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Chemical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -494,6 +524,7 @@ const ReviewJnf = ({
                   name="Civil_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Civil_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -504,6 +535,7 @@ const ReviewJnf = ({
                   name="Computer_Science_and_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -514,6 +546,7 @@ const ReviewJnf = ({
                   name="Data_Analytics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Data_Analytics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -524,6 +557,7 @@ const ReviewJnf = ({
                   name="Electrical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electrical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -536,6 +570,7 @@ const ReviewJnf = ({
                   name="Electronics_and_Communication_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -546,6 +581,7 @@ const ReviewJnf = ({
                   name="Environmental_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Environmental_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -558,6 +594,7 @@ const ReviewJnf = ({
                   name="Industrial_Engineering_and_Management"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Industrial_Engineering_and_Management}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -568,6 +605,7 @@ const ReviewJnf = ({
                   name="Mechanical_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mechanical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -582,6 +620,7 @@ const ReviewJnf = ({
                     JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Fuel_Minerals_and_Metallurgical_Engineering
                   }
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -592,6 +631,7 @@ const ReviewJnf = ({
                   name="Mining_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -602,6 +642,7 @@ const ReviewJnf = ({
                   name="Mining_Machinery_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -612,6 +653,7 @@ const ReviewJnf = ({
                   name="Petroleum_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Petroleum_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -624,6 +666,7 @@ const ReviewJnf = ({
                   name="Pharmaceutical_Science_and_Engineering"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Pharmaceutical_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -642,6 +685,7 @@ const ReviewJnf = ({
                   name="Select_All"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -652,6 +696,7 @@ const ReviewJnf = ({
                   name="Business_Analytics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Business_Analytics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -662,6 +707,7 @@ const ReviewJnf = ({
                   name="Finance"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Finance}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -672,6 +718,7 @@ const ReviewJnf = ({
                   name="Human_Resources"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Human_Resources}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -682,6 +729,7 @@ const ReviewJnf = ({
                   name="Marketing"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Marketing}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -692,6 +740,7 @@ const ReviewJnf = ({
                   name="Operations"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Operations}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -710,6 +759,7 @@ const ReviewJnf = ({
                   name="Select_All"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -720,6 +770,7 @@ const ReviewJnf = ({
                   name="Chemistry"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Chemistry}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -730,6 +781,7 @@ const ReviewJnf = ({
                   name="Mathematics_and_Computing"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Mathematics_and_Computing}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -740,6 +792,7 @@ const ReviewJnf = ({
                   name="Physics"
                   value={JnfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Physics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -760,9 +813,9 @@ const ReviewJnf = ({
                     <td style={{ flexBasis: "70%"}}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='resume'>Yes</label>
-                            <input className='checkBox' name="Yes" value={JnfData.Selection_Procedure.Resume_Shortlisting.Yes} type="checkbox"/></div>
+                            <input className='checkBox' name="Yes" value={JnfData.Selection_Procedure.Resume_Shortlisting.Yes} readOnly type="checkbox"/></div>
                             <div className="align"><label className='resume'>No</label>
-                            <input className='checkBox' name="No" value={JnfData.Selection_Procedure.Resume_Shortlisting.No} type="checkbox"/></div>
+                            <input className='checkBox' name="No" value={JnfData.Selection_Procedure.Resume_Shortlisting.No} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -774,13 +827,13 @@ const ReviewJnf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div><label className='type'>Technical </label>
-                            <input className='checkBox' name="Technical" value={JnfData.Selection_Procedure.Type_Of_Test.Technical} type="checkbox"/></div>
+                            <input className='checkBox' name="Technical" value={JnfData.Selection_Procedure.Type_Of_Test.Technical} readOnly type="checkbox"/></div>
                             <div><label className='type'>Aptitude </label>
-                            <input className='checkBox' name="Aptitude" value={JnfData.Selection_Procedure.Type_Of_Test.Aptitude} type="checkbox"/></div>
+                            <input className='checkBox' name="Aptitude" value={JnfData.Selection_Procedure.Type_Of_Test.Aptitude} readOnly type="checkbox"/></div>
                             <div><label className='type'>Both</label>
-                            <input className='checkBox' name="Technical_and_Aptitude" value={JnfData.Selection_Procedure.Type_Of_Test.Both} type="checkbox"/></div>
+                            <input className='checkBox' name="Technical_and_Aptitude" value={JnfData.Selection_Procedure.Type_Of_Test.Both} readOnly type="checkbox"/></div>
                             <div><label className='type'>None </label>
-                            <input className='checkBox' name="None" value={JnfData.Selection_Procedure.Type_Of_Test.None} type="checkbox"/></div>
+                            <input className='checkBox' name="None" value={JnfData.Selection_Procedure.Type_Of_Test.None} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -792,11 +845,11 @@ const ReviewJnf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='round'>GD </label>
-                            <input className='checkBox' name="GD" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.GD} type="checkbox"/></div>
+                            <input className='checkBox' name="GD" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.GD} readOnly type="checkbox"/></div>
                             <div className="align"><label className='round'>  Case Study</label>
-                            <input className='checkBox' name="Case_Study" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} type="checkbox"/></div>
+                            <input className='checkBox' name="Case_Study" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} readOnly type="checkbox"/></div>
                             <div className="align"><label className='round'>Interview </label>
-                            <input className='checkBox' name="Interview" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.Interview} type="checkbox"/></div>
+                            <input className='checkBox' name="Interview" value={JnfData.Selection_Procedure.Other_Qualification_Rounds.Interview} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
