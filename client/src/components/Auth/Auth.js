@@ -153,8 +153,8 @@ const Auth = ({
             )}
             {isSignIn && (
               <Grid container justifyContent="flex-end">
-                <Grid item>
-                  <Button onClick={handleForgotPassword}>forgot password ?</Button>
+                <Grid item id="forget">
+                  <Button  onClick={handleForgotPassword}>forgot password ?</Button>
                 </Grid>
               </Grid>
             )}
