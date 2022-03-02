@@ -5,7 +5,12 @@ import './styles.css';
 
 const Btech = () => {
   return (
-    <div className='box'>
+    <>
+      <div className="user_profile">
+      <div className="profile_header">
+          <h2>BTech</h2>
+   
+      </div>
       <main>
   <ol class="gradient-list">
     <li>Chemical Engineering</li>
@@ -23,8 +28,12 @@ const Btech = () => {
     
   </ol>
 </main>
+      </div>
+    <div className='box'>
+     
  
     </div>
+    </>
   )
 }
 
