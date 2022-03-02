@@ -64,8 +64,10 @@ const saveJnfById = async (id, details, next) => {
         if(!jnfStatus)
         return next( new ErrorResponse('No JNF found with given id', 404));
 
-        if(jnfStatus.progress !== "incomplete")
-        return next(new ErrorResponse('No changes are allowed for this jnf.', 400));
+        console.log(jnfStatus);
+
+        // if(jnfStatus.progress !== "incomplete")
+        // return next(new ErrorResponse('No changes are allowed for this jnf.', 400));
 
         let jnf = await JNF.findOne({ _id: id });
 

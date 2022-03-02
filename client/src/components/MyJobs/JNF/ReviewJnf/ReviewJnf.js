@@ -861,7 +861,7 @@ const ReviewJnf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              {JnfData.Selection_Procedure.Total_Number_Of_Rounds.Total_Number_Of_Rounds}
+              {JnfData.Selection_Procedure.Total_Number_Of_Rounds}
             </h1>
           </Col>
         </FormGroup>
@@ -871,7 +871,7 @@ const ReviewJnf = ({
           </Label>
           <Col sm={10}>
             <h1 className='inputText'>
-              {JnfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
+              {JnfData.Selection_Procedure.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
@@ -881,7 +881,7 @@ const ReviewJnf = ({
           </Label>
           <Col sm={10}>
           <h1 className='inputText'>
-              {JnfData.Selection_Procedure.Eligibility_Criteria.Eligibility_Criteria}
+              {JnfData.Selection_Procedure.Eligibility_Criteria}
           </h1>
           </Col>
         </FormGroup>
