@@ -44,7 +44,6 @@ exports.login = async (req, res, next) => {
 
 exports.forgotPassword = async (req, res, next) => {
     const {emailId} = req.body;
-    console.log(req.body);
     try {
         const response = await forgotPassword(emailId, next);
 

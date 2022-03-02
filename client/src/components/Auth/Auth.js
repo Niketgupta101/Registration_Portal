@@ -96,7 +96,6 @@ const Auth = ({
                     variant="filled"
                     value={AuthData.lastName}
                     onChange={handleAuthChange}
-                    required
                   />
                 </Grid>
               </>

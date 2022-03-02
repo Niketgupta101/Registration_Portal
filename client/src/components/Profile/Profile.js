@@ -8,8 +8,6 @@ const Profile = () => {
   let user = JSON.parse(localStorage.getItem('user'));
   let company = JSON.parse(localStorage.getItem('company'));
 
-  console.log({ user, company });
-    
   return (
     <>
     <div className="user_profile">

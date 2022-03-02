@@ -1,5 +1,5 @@
 import { TabContext, TabPanel } from "@mui/lab";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createNewInf, submitInf, updateInfById } from "../../../api";
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +7,8 @@ import INF1 from "./page1/INF1";
 import INF2 from "./page2/INF2";
 import INF3 from "./page3/INF3";
 import INF4 from "./page4/INF4";
-import ReviewInf from "./ReviewInf/ReviewInf"
+import ReviewInf from "./ReviewInf/ReviewInf";
+import { getLatestInfOfUser } from '../../../api/index';
 
 import "./styles.css";
 
@@ -329,6 +330,15 @@ const Inf = () => {
       console.log(error);
     }
   };
+
+  // -----------------------------------------------------------------
+
+  // useEffect(async() => {
+  //   let response = await getLatestInfOfUser();
+
+  //   console.log(response);
+  // }, [])
+  
 
   return (
     <>

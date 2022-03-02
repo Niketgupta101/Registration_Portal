@@ -13,7 +13,6 @@ const drive = google.drive({
 });
 
 exports.uploadFile = async (filePath) => {
-  console.log(filePath)
   try {
     const response = await drive.files.create({
       requestBody: {

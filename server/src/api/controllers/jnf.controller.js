@@ -13,14 +13,10 @@ const getJnfById = async (req, res, next) => {
 }
 
 const getAllJnfForUser = async (req, res, next) => {
-    const { userId, pageno, pagelimit } = req.params;
+    let userId = req.params;
     console.log(userId);
     try {
-        pageno = pageno || 1;
-        pagelimit = pagelimit || 20;
-        let offset = pagelimit*(pageno - 1);
-
-        let response = await fetchAllJnfForUser(offset, pagelimit, userId, next);
+        let response = await fetchAllJnfForUser(offset, next);
 
         res.status(201).json(response);
     } catch (error) {

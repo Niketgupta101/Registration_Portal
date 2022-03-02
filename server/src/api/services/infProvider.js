@@ -21,10 +21,10 @@ const fetchInfById = async (id, next) => {
     }
 }
 
-const fetchAllInfForUser = async (offset, pagelimit, userId, next) => {
+const fetchAllInfForUser = async (userId, next) => {
     console.log(userId);
     try {
-        let infList = await INFstatus.find({ userId }).populate('infId').sort({ updatedAt: -1 }).skip(offset).limit(pagelimit);
+        let infList = await INFstatus.find({ userId }).populate('infId').sort({ updatedAt: -1 });
 
         return { success: true, infList };
     } catch (error) {
@@ -33,11 +33,13 @@ const fetchAllInfForUser = async (offset, pagelimit, userId, next) => {
 }
 
 const fetchLatestInfOfUser = async (loggedUserId, next) => {
+    console.log(loggedUserId);
     try {
         let inf = await INF.find({ userId: loggedUserId }).sort({ updatedAt: -1 }).limit(1);
 
         return { success: true, inf };
     } catch (error) {
+        console.log(error);
         return next(error);
     }
 }

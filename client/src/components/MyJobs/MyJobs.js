@@ -28,17 +28,17 @@ const MyJobs = () => {
     else if (Filter === "Internships") {
       let response = await getAllInfForUser(user._id);
       console.log(response);
-      setJobs(response.data.infList);
+      setJobs(response.data.infList.infId);
     }
     else if (Filter === "FTE's") {
-      let response = await getAllJnfForUser();
+      let response = await getAllJnfForUser(user._id);
       console.log(response);
-      setJobs(response.data.jnfList);
+      setJobs(response.data.jnfList.jnfId);
     }
     else if (Filter === "Pending Job Forms") {
       let response = await getAllPendingJobsForUser();
       console.log(response);
-      setJobs(response.data.infList);
+      setJobs(response.data.jobs);
     }
   }, [Filter]);
   console.log(Jobs);
@@ -74,15 +74,15 @@ const MyJobs = () => {
               <option
                 value="Internships"
               >
-                Pending Job forms
+                Internships
               </option>
               <option value="FTE's">
                 FTE's
               </option>
               <option
-                value="Pending Jobs Forms"
+                value="Pending Job Forms"
               >
-                Finished Job forms
+                Pending Jobs Forms
               </option>
             </select>
           </div>
