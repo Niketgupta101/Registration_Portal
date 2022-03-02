@@ -34,7 +34,7 @@ const ReviewInf = ({
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              xvideos
+              {InfData.Company_Overview.Name_Of_The_Company}
             </h1>
           </Col>
         </FormGroup>
@@ -171,6 +171,7 @@ const ReviewInf = ({
                   name="Select_All"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -181,6 +182,7 @@ const ReviewInf = ({
                   name="Chemical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Chemical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -191,6 +193,7 @@ const ReviewInf = ({
                   name="Civil_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Civil_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -201,6 +204,7 @@ const ReviewInf = ({
                   name="Computer_Science_and_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -211,6 +215,7 @@ const ReviewInf = ({
                   name="Electrical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electrical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -223,6 +228,7 @@ const ReviewInf = ({
                   name="Electronics_and_Communication_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -233,6 +239,7 @@ const ReviewInf = ({
                   name="Engineering_Physics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Engineering_Physics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -243,6 +250,7 @@ const ReviewInf = ({
                   name="Environmental_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Environmental_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -253,6 +261,7 @@ const ReviewInf = ({
                   name="Mechanical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mechanical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -265,6 +274,7 @@ const ReviewInf = ({
                   name="Mineral_and_Metallurgical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mineral_and_Metallurgical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -275,6 +285,7 @@ const ReviewInf = ({
                   name="Mining_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -285,6 +296,7 @@ const ReviewInf = ({
                   name="Mining_Machinery_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -295,6 +307,7 @@ const ReviewInf = ({
                   name="Petroleum_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs.Petroleum_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -315,6 +328,7 @@ const ReviewInf = ({
                   name="Select_All"
                   checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -325,6 +339,7 @@ const ReviewInf = ({
                   name="Computer_Science_and_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -335,6 +350,7 @@ const ReviewInf = ({
                   name="Mathematics_and_Computing"
                   checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Mathematics_and_Computing}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -345,6 +361,7 @@ const ReviewInf = ({
                   name="Applied_Geology"
                   checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geology}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -355,6 +372,7 @@ const ReviewInf = ({
                   name="Applied_Geophysics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -374,6 +392,7 @@ const ReviewInf = ({
                   name="C_Cpp_Java_Python_etc"
                   checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.C_Cpp_Java_Python_etc}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -386,6 +405,7 @@ const ReviewInf = ({
                   name="Full_Stack_Development_Frontend_or_Backend"
                   checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Full_Stack_Development_Frontend_or_Backend}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -396,6 +416,7 @@ const ReviewInf = ({
                   name="Civil_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Civil_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -406,6 +427,7 @@ const ReviewInf = ({
                   name="AI_ML_DL_Data_Science"
                   checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.AI_ML_DL_Data_Science}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -418,6 +440,7 @@ const ReviewInf = ({
                   name="Business_Data_Analytics_Product_Management"
                   checked={InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring.Business_Data_Analytics_Product_Management}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -445,6 +468,7 @@ const ReviewInf = ({
                   name="Select_All"
                   checked={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -455,6 +479,7 @@ const ReviewInf = ({
                   name="Applied_Geology"
                   checked={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geology}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -465,6 +490,7 @@ const ReviewInf = ({
                   name="Applied_Geophysics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs.Applied_Geophysics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -483,6 +509,7 @@ const ReviewInf = ({
                   name="Select_All"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -493,6 +520,7 @@ const ReviewInf = ({
                   name="Applied_Geology"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geology}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -503,6 +531,7 @@ const ReviewInf = ({
                   name="Applied_Geophysics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Applied_Geophysics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -513,6 +542,7 @@ const ReviewInf = ({
                   name="Chemical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Chemical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -523,6 +553,7 @@ const ReviewInf = ({
                   name="Civil_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Civil_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -533,6 +564,7 @@ const ReviewInf = ({
                   name="Computer_Science_and_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Computer_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -543,6 +575,7 @@ const ReviewInf = ({
                   name="Data_Analytics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Data_Analytics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -553,6 +586,7 @@ const ReviewInf = ({
                   name="Electrical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electrical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -565,6 +599,7 @@ const ReviewInf = ({
                   name="Electronics_and_Communication_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Electronics_and_Communication_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -575,6 +610,7 @@ const ReviewInf = ({
                   name="Environmental_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Environmental_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -587,6 +623,7 @@ const ReviewInf = ({
                   name="Industrial_Engineering_and_Management"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Industrial_Engineering_and_Management}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -597,6 +634,7 @@ const ReviewInf = ({
                   name="Mechanical_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mechanical_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -610,6 +648,7 @@ const ReviewInf = ({
                   checked={
                     InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Fuel_Minerals_and_Metallurgical_Engineering
                   }
+                  readOnly
                   type="checkbox"
                 />
               </td>
@@ -621,6 +660,7 @@ const ReviewInf = ({
                   name="Mining_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -631,6 +671,7 @@ const ReviewInf = ({
                   name="Mining_Machinery_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Mining_Machinery_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -641,6 +682,7 @@ const ReviewInf = ({
                   name="Petroleum_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Petroleum_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -653,6 +695,7 @@ const ReviewInf = ({
                   name="Pharmaceutical_Science_and_Engineering"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_Mtech_Programs.Pharmaceutical_Science_and_Engineering}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -671,6 +714,7 @@ const ReviewInf = ({
                   name="Select_All"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -681,6 +725,7 @@ const ReviewInf = ({
                   name="Business_Analytics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Business_Analytics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -691,6 +736,7 @@ const ReviewInf = ({
                   name="Finance"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Finance}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -701,6 +747,7 @@ const ReviewInf = ({
                   name="Human_Resources"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Human_Resources}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -711,6 +758,7 @@ const ReviewInf = ({
                   name="Marketing"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Marketing}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -721,6 +769,7 @@ const ReviewInf = ({
                   name="Operations"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs.Operations}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -739,6 +788,7 @@ const ReviewInf = ({
                   name="Select_All"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Select_All}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -749,6 +799,7 @@ const ReviewInf = ({
                   name="Chemistry"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Chemistry}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -759,6 +810,7 @@ const ReviewInf = ({
                   name="Mathematics_and_Computing"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Mathematics_and_Computing}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -769,6 +821,7 @@ const ReviewInf = ({
                   name="Physics"
                   checked={InfData.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs.Physics}
                   type="checkbox"
+                  readOnly
                 />
               </td>
             </tr>
@@ -789,9 +842,9 @@ const ReviewInf = ({
                     <td style={{ flexBasis: "70%"}}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='resume'>Yes</label>
-                            <input className='checkBox' name="Yes" checked={InfData.Selection_Procedure.Resume_Shortlisting.Yes} type="checkbox"/></div>
+                            <input className='checkBox' name="Yes" checked={InfData.Selection_Procedure.Resume_Shortlisting.Yes} type="checkbox" readOnly/></div>
                             <div className="align"><label className='resume'>No</label>
-                            <input className='checkBox' name="No" checked={InfData.Selection_Procedure.Resume_Shortlisting.No} type="checkbox"/></div>
+                            <input className='checkBox' name="No" checked={InfData.Selection_Procedure.Resume_Shortlisting.No} type="checkbox" readOnly/></div>
                         </div>
                     </td>
                 </tr>
@@ -803,13 +856,13 @@ const ReviewInf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div><label className='type'>Technical </label>
-                            <input className='checkBox' name="Technical" checked={InfData.Selection_Procedure.Type_Of_Test.Technical} type="checkbox"/></div>
+                            <input className='checkBox' name="Technical" checked={InfData.Selection_Procedure.Type_Of_Test.Technical} readOnly type="checkbox"/></div>
                             <div><label className='type'>Aptitude </label>
-                            <input className='checkBox' name="Aptitude" checked={InfData.Selection_Procedure.Type_Of_Test.Aptitude} type="checkbox"/></div>
+                            <input className='checkBox' name="Aptitude" checked={InfData.Selection_Procedure.Type_Of_Test.Aptitude} readOnly type="checkbox"/></div>
                             <div><label className='type'>Both</label>
-                            <input className='checkBox' name="Technical_and_Aptitude" checked={InfData.Selection_Procedure.Type_Of_Test.Both} type="checkbox"/></div>
+                            <input className='checkBox' name="Technical_and_Aptitude" checked={InfData.Selection_Procedure.Type_Of_Test.Both} readOnly type="checkbox"/></div>
                             <div><label className='type'>None </label>
-                            <input className='checkBox' name="None" checked={InfData.Selection_Procedure.Type_Of_Test.None} type="checkbox"/></div>
+                            <input className='checkBox' name="None" checked={InfData.Selection_Procedure.Type_Of_Test.None} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>
@@ -821,11 +874,11 @@ const ReviewInf = ({
                     <td style={{ flexBasis: "70%"}}>
                         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
                             <div className="align"><label className='round'>GD </label>
-                            <input className='checkBox' name="GD" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.GD} type="checkbox"/></div>
+                            <input className='checkBox' name="GD" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.GD} readOnly type="checkbox"/></div>
                             <div className="align"><label className='round'>  Case Study</label>
-                            <input className='checkBox' name="Case_Study" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} type="checkbox"/></div>
+                            <input className='checkBox' name="Case_Study" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.Case_Study} readOnly type="checkbox"/></div>
                             <div className="align"><label className='round'>Interview </label>
-                            <input className='checkBox' name="Interview" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.Interview} type="checkbox"/></div>
+                            <input className='checkBox' name="Interview" checked={InfData.Selection_Procedure.Other_Qualification_Rounds.Interview} readOnly type="checkbox"/></div>
                         </div>
                     </td>
                 </tr>

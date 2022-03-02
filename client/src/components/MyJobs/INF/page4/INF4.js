@@ -92,12 +92,13 @@ const INF4 = ({
         </FormGroup>
         <FormGroup row>
           <Label for="exampleText"sm={2} className="fontText">
-          Number of offers available for IIT(ISM) students (Range would be sufficient)
+          Number of offers available for IIT(ISM) students (Range would be sufficient) <span style={{ color: "red"}}>*</span>
           </Label>
           <Col sm={10}>
             <Input
               id="exampleText"
               name="Number_Of_Offers"
+              required
               type="text"
               className='inputText'
               value={selectionFormData.Number_Of_Offers}
