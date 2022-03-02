@@ -107,8 +107,8 @@ const infSchema = new Schema({
             Case_Study: { type: Boolean, default: false },
             Interview: { type: Boolean, default: false },
         },
-        Total_Number_Of_Rounds: { type: Number, default: 0 },
-        Number_Of_Offers: { lower: Number, higher: Number },
+        Total_Number_Of_Rounds: { type: String, default: 0 },
+        Number_Of_Offers: String,
         Eligibility_Criteria: String
     },
     previewLink: String,

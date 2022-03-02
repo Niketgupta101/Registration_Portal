@@ -283,7 +283,7 @@ const Jnf = () => {
       let response = await updateInfById(InfData, InfId);
 
       console.log(response);
-      setPage(prevPage => prevPage+1);
+      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }

@@ -8,18 +8,18 @@ import { getAllCompanyDetails } from "../../../api";
 const Company = () => {
   const Navigate = useNavigate();
 
-  // let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("user"));
 
-  // const [Companies, setCompanies] = React.useState();
+  const [Companies, setCompanies] = React.useState();
 
-  // React.useEffect(async () => {
-  //   if (!user) Navigate("/auth");
+  React.useEffect(async () => {
+    if (!user) Navigate("/auth");
 
-  //   let response = await getAllCompanyDetails();
+    let response = await getAllCompanyDetails();
 
-  //   console.log(response);
-  //   setCompanies(response.data.companyList);
-  // }, []);
+    console.log(response);
+    setCompanies(response.data.companyList);
+  }, []);
 
   return (
     <>
@@ -28,29 +28,27 @@ const Company = () => {
           <h1>Companies</h1>
         </div>
         <div className="company_items">
-          {/* {Companies.map(company => (
-            <div className="job_card">
-              <h2>Company Name : </h2>
-            </div>
-          ))}  */}
-
-          <div className="job_card">
-            <div id="companyname"> Xvideos</div>
-            <div><span className="head">Website : </span>www.xvideos.com</div>
-            <div><span className="head">Type : </span>:IT Sector</div>       
+          { Companies && Companies.map(company => (
+            <div className="job_card job_card1">
+            <div id="companyname">{company.name}</div>
+            <div><span className="head">Website : </span>{company.website}</div>
+            <div><span className="head">Type : </span>{company.company_type}</div>       
    
             <div >Primary HR. Details
-              <div><span className="head">Name :</span> Abhishek Jha</div>
-              <div><span className="head">Email :</span> ripakg@chutiyahaiabhishek.com</div>
-              <div><span className="head">Contact Number :</span> xxxxxxxxx</div>
+              <div><span className="head">Name :</span> {company.primary_hr.name}</div>
+              <div><span className="head">Email :</span> {company.primary_hr.emailId}</div>
+              <div><span className="head">Contact Number :</span> {company.primary_hr.contactNo}</div>
             </div>
        
             <div  >Secondary HR. Details
-              <div><span className="head">Name :</span> Abhishek Jha</div>
-              <div><span className="head">Email :</span> ripakg@chutiyahaiabhishek.com</div>
-              <div><span className="head">Contact Number :</span> xxxxxxxxx</div>
+            <div><span className="head">Name :</span> {company.secondary_hr.name}</div>
+              <div><span className="head">Email :</span> {company.secondary_hr.emailId}</div>
+              <div><span className="head">Contact Number :</span> {company.secondary_hr.contactNo}</div>
             </div>
            </div>
+          ))} 
+
+          
         </div>
         <Stack spacing={2}>
           <Pagination
