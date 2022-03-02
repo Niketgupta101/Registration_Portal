@@ -5,18 +5,29 @@ import './styles.css';
 
 const Twoyearmsc = () => {
   return (
-    <div className='box'>
+<>
+<div className="user_profile">
+      <div className="profile_header">
+          <h2>Two Year MSC</h2>
+ 
+   
+      </div>
       <main>
-  <ol class="gradient-list">
-  <li>Chemistry </li>
+<ol class="gradient-list">
+<li>Chemistry </li>
 <li>Mathematics & Computing </li>
 <li>Physics </li>
-    
-  </ol>
+  
+</ol>
 </main>
- 
-    </div>
+
+      </div>
+
+</>
   )
 }
+
+
+
 
 export default Twoyearmsc
