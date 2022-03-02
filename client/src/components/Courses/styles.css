@@ -22,7 +22,7 @@ body {
 }
 
 body {
-  background-color: #fafafa;
+
   color: #1d1f20;
   font-family: "Raleway", sans-serif;
 }
@@ -105,4 +105,32 @@ ol.gradient-list > li:nth-child(10n+10):before {
 }
 ol.gradient-list > li + li {
   margin-top: 2rem;
+}
+user_profile{
+  margin: 0;
+  padding: 2rem 22%;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+
+
+
+}
+.profile_header{
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.buttons{
+  text-align: center;
+
+}
+.bt{
+  margin-bottom: 2rem;
+}
+#btnfirst{
+  margin-top: 1rem;
 }
