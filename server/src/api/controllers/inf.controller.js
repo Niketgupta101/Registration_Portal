@@ -5,7 +5,6 @@ const getInfById = async (req, res, next) => {
 
     try {
         let response = await fetchInfById(id, next);
-        console.log(response);
         res.status(201).json(response);
     } catch (error) {
         next(error);
@@ -13,14 +12,9 @@ const getInfById = async (req, res, next) => {
 }
 
 const getAllInfForUser = async (req, res, next) => {
-    const { userId, pageno, pagelimit } = req.params;
-
+    let {userId} = req.params;
     try {
-        pageno = pageno || 1;
-        pagelimit = pagelimit || 20;
-        let offset = pagelimit*(pageno - 1);
-
-        let response = await fetchAllInfForUser(offset, pagelimit, userId, next);
+        let response = await fetchAllInfForUser(userId, next);
 
         res.status(201).json(response);
     } catch (error) {
@@ -36,6 +30,7 @@ const getLatestInfOfUser = async (req, res, next) => {
         
         res.status(201).json(response);
     } catch (error) {
+        console.log(error);
         next(error);
     }
 }

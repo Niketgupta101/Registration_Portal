@@ -1,7 +1,10 @@
 const axios = require('axios');
 
 const token = localStorage.getItem("token");
+
 const API = axios.create({ baseURL: 'http://localhost:5000/v1',
+credentials: "include",
+    withCredentials: true,
     headers: {
         authorization: `Bearer ${JSON.parse(token)}`
     }
@@ -47,6 +50,8 @@ export const submitInf = (id) => API.get(`/inf/submit/${id}`);
 
 export const deleteInfById = (id) => API.delete(`/inf/${id}`);
 
+export const getLatestInfOfUser = () => API.get('/inf/latest');
+
 // ---------------------- JNF -----------------------------------
 
 export const getJnfById = (id) => API.get(`/jnf/${id}`);
@@ -77,7 +82,7 @@ export const deleteContactById = (id) => API.delete(`contact/${id}`);
 
 export const getAllJobs = () => API.get('/jobs/all');
 
-export const getAllPendingJobsForUser = () => API.get('/jobs/pending/all');
+export const getAllPendingJobsForUser = () => API.get('/jobs/user/pending');
 
 export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
 

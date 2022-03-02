@@ -7,6 +7,8 @@ require('dotenv').config({
 module.exports = {
     env: process.env.NODE_ENV,
     port: process.env.PORT,
+    clientUrl: process.env.CLIENT_URL,
+    serverUrl: process.env.SERVER_URL,
     
     jwtSecret: process.env.JWT_SECRET,
     jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
@@ -16,6 +18,7 @@ module.exports = {
     EmailClientSecret : process.env.EMAIL_CLIENT_SECRET,
     EmailRedirectURL : process.env.EMAIL_REDIRECT_URL,
     EmailRefreshToken : process.env.EMAIL_REFRESH_TOKEN,
+    EmailAccessToken : process.env.EMAIL_ACCESS_TOKEN,
 
     UploadClientId : process.env.UPLOAD_CLIENT_ID,
     UploadClientSecret : process.env.UPLOAD_CLIENT_SECRET,
