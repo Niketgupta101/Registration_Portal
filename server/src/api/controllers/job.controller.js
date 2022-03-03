@@ -16,6 +16,21 @@ const getAllJobs = async (req, res, next) => {
     }
 }
 
+const getAllJobsForUser = async (req, res, next) => {
+    const userId = req.user._id;
+    try {
+        let infList = await INF.find({ userId }).sort({createdAt: -1});
+        let jnfList = await JNF.find({ userId }).sort({createdAt: -1});
+
+        let jobs = [ ...infList, ...jnfList ];
+
+        res.status(201).json({ success: true, jobs });
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+}
+
 const updateGraduationYear = async (req, res, next) => {
     const { graduationYear } = req.body;
     try {
@@ -64,4 +79,4 @@ const getPendingJobForms = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllJobs, updateGraduationYear, getGraduationYear, getPendingJobForms };
+module.exports = { getAllJobs, updateGraduationYear, getGraduationYear, getPendingJobForms, getAllJobsForUser };

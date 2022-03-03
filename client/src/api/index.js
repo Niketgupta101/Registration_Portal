@@ -82,6 +82,8 @@ export const deleteContactById = (id) => API.delete(`contact/${id}`);
 
 export const getAllJobs = () => API.get('/jobs/all');
 
+export const getAllJobsForUser = () => API.get('/jobs/user/all');
+
 export const getAllPendingJobsForUser = () => API.get('/jobs/user/pending');
 
 export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);

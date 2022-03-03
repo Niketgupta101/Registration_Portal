@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getAllInfForUser,
-  getAllJobs,
   getAllJnfForUser,
   getAllPendingJobsForUser,
+  getAllJobsForUser,
 } from "../../api";
 import Loading from "../Loading/Loading";
 
@@ -28,7 +28,7 @@ const MyJobs = () => {
     if (!user) Navigate("/auth");
     setIsLoading(true);
     if (Filter === "All Jobs") {
-      let response = await getAllJobs();
+      let response = await getAllJobsForUser();
       console.log(response);
       setJobs(response.data.jobs);
     } else if (Filter === "Internships") {
