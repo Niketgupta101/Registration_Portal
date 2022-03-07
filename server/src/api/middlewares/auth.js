@@ -12,10 +12,9 @@ const protect = async (req, res, next) => {
   if (!token) {
     return next(new ErrorResponse("Not authorized to access this route", 401));
   }
-
-  const decoded = jwt.verify(token, jwtSecret);
-
+  
   try {
+    const decoded = jwt.verify(token, jwtSecret);
     const user = await User.findById(decoded.id);
     if (!user.isemailVerified)
       return next(new ErrorResponse("Email Id is not verified", 401));

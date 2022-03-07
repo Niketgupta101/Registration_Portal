@@ -20,33 +20,31 @@ const MyJobs = () => {
 
   const Navigate = useNavigate();
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const [Jobs, setJobs] = useState([]);
 
   useEffect(async () => {
     if (!user) Navigate("/auth");
-    setIsLoading(true);
-    if (Filter === "All Jobs") {
-      let response = await getAllJobsForUser();
-      console.log(response);
-      setJobs(response.data.jobs);
-    } else if (Filter === "Internships") {
-      let response = await getAllInfForUser(user._id);
-      console.log(response);
-      setJobs(response.data.jobs);
-    } else if (Filter === "FTE's") {
-      let response = await getAllJnfForUser(user._id);
-      console.log(response);
-      setJobs(response.data.jobs);
-    } else if (Filter === "Pending Job Forms") {
-      let response = await getAllPendingJobsForUser();
-      console.log(response);
-      setJobs(response.data.jobs);
+    else {
+      setUser(JSON.parse(localStorage.getItem("user")));
+      setIsLoading(true);
+      if (Filter === "All Jobs") {
+        let response = await getAllJobsForUser();
+        setJobs(response.data.jobs);
+      } else if (Filter === "Internships") {
+        let response = await getAllInfForUser(user._id);
+        setJobs(response.data.jobs);
+      } else if (Filter === "FTE's") {
+        let response = await getAllJnfForUser(user._id);
+        setJobs(response.data.jobs);
+      } else if (Filter === "Pending Job Forms") {
+        let response = await getAllPendingJobsForUser();
+        setJobs(response.data.jobs);
+      }
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, [Filter]);
-  console.log(Jobs);
 
   return (
     <>
@@ -122,15 +120,16 @@ const MyJobs = () => {
                         </>
                       ) : (
                         <>
-                          <span>CTC</span>:{" "}
-                          {job.Salary_Details.CTC}
+                          <span>CTC</span>: {job.Salary_Details.CTC}
                         </>
                       )}
                     </h5>
-                    {job.isIntern && (<h5>
-                      <span>Provision for PPO</span>:{" "}
-                      {job.Salary_Details.PPO_provision_on_performance_basis}
-                    </h5>)}
+                    {job.isIntern && (
+                      <h5>
+                        <span>Provision for PPO</span>:{" "}
+                        {job.Salary_Details.PPO_provision_on_performance_basis}
+                      </h5>
+                    )}
                     {Filter === "Pending Job Form" ? (
                       <div
                         style={{ display: "flex", justifyContent: "center" }}

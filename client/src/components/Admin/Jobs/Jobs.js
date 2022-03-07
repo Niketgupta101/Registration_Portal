@@ -15,12 +15,10 @@ const Jobs = () => {
   useEffect(async () => {
     setIsLoading(true);
     const response = await getAllJobs();
-    console.log(response);
     setIsLoading(false);
 
     setJobs(response.data.jobs);
   }, []);
-  console.log(jobs);
 
   return (
     <>

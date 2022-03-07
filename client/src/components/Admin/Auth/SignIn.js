@@ -67,7 +67,6 @@ const SignIn = () => {
     try {
       let response = await login(AuthData);
       handleSuccessClick();
-    console.log(response);
     Navigate('/admin');
     } catch (error) {
       handleErrorClick();

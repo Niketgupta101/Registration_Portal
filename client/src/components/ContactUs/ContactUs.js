@@ -20,9 +20,7 @@ const ContactUs = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     let response = await postContactData(formData);
-    console.log(response);
     setFormData({ ...initialData });
   };
   return (

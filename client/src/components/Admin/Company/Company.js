@@ -10,17 +10,19 @@ const Company = () => {
   const Navigate = useNavigate();
   const [IsLoading, setIsLoading] = React.useState(false);
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = React.useState(JSON.parse(localStorage.getItem("user")));
 
   const [Companies, setCompanies] = React.useState();
 
   React.useEffect(async () => {
     if (!user) Navigate("/auth");
-    setIsLoading(true);
-    let response = await getAllCompanyDetails();
-    setIsLoading(false);
-    console.log(response);
-    setCompanies(response.data.companyList);
+    else {
+      setUser(localStorage.getItem("user"));
+      setIsLoading(true);
+      let response = await getAllCompanyDetails();
+      setIsLoading(false);
+      setCompanies(response.data.companyList);
+    }
   }, []);
 
   return (
@@ -30,27 +32,52 @@ const Company = () => {
           <h1>Companies</h1>
         </div>
         <div className="company_items">
-          { Companies && Companies.map(company => (
-            <div className="job_card job_card1">
-            <div id="companyname">{company.name}</div>
-            <div><span className="head">Website : </span>{company.website}</div>
-            <div><span className="head">Type : </span>{company.company_type}</div>       
-   
-            <div >Primary HR. Details
-              <div><span className="head">Name :</span> {company.primary_hr.name}</div>
-              <div><span className="head">Email :</span> {company.primary_hr.emailId}</div>
-              <div><span className="head">Contact Number :</span> {company.primary_hr.contactNo}</div>
-            </div>
-       
-            <div  >Secondary HR. Details
-            <div><span className="head">Name :</span> {company.secondary_hr.name}</div>
-              <div><span className="head">Email :</span> {company.secondary_hr.emailId}</div>
-              <div><span className="head">Contact Number :</span> {company.secondary_hr.contactNo}</div>
-            </div>
-           </div>
-          ))} 
+          {Companies &&
+            Companies.map((company) => (
+              <div className="job_card job_card1">
+                <div id="companyname">{company.name}</div>
+                <div>
+                  <span className="head">Website : </span>
+                  {company.website}
+                </div>
+                <div>
+                  <span className="head">Type : </span>
+                  {company.company_type}
+                </div>
 
-          
+                <div>
+                  Primary HR. Details
+                  <div>
+                    <span className="head">Name :</span>{" "}
+                    {company.primary_hr.name}
+                  </div>
+                  <div>
+                    <span className="head">Email :</span>{" "}
+                    {company.primary_hr.emailId}
+                  </div>
+                  <div>
+                    <span className="head">Contact Number :</span>{" "}
+                    {company.primary_hr.contactNo}
+                  </div>
+                </div>
+
+                <div>
+                  Secondary HR. Details
+                  <div>
+                    <span className="head">Name :</span>{" "}
+                    {company.secondary_hr.name}
+                  </div>
+                  <div>
+                    <span className="head">Email :</span>{" "}
+                    {company.secondary_hr.emailId}
+                  </div>
+                  <div>
+                    <span className="head">Contact Number :</span>{" "}
+                    {company.secondary_hr.contactNo}
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
         <Stack spacing={2}>
           <Pagination

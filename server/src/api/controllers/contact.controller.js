@@ -2,7 +2,6 @@ const { postContactData, updateContactStatus, deleteContactById, fetchAllContact
 
 const sendContactData = async (req, res, next) => {
     const details = req.body;
-    console.log(details);
     try {
         let response = await postContactData(details, next);
 
