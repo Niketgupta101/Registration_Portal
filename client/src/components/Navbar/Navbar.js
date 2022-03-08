@@ -1,6 +1,7 @@
 import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { AccountCircle, Book, Close, ContactMail, HomeOutlined, MenuOutlined, WorkOutline } from "@material-ui/icons";
 import { useNavigate, useLocation } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 import React, { useEffect, useState } from "react";
 
@@ -21,7 +22,17 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    setUser((JSON.parse(localStorage.getItem('user'))))
+    
+    const token = JSON.parse(localStorage.getItem('token'));
+    
+    if(token)
+    {
+      const decodeToken = decode(token);
+      
+      if(decodeToken.exp * 1000 < new Date().getTime()) handleLogout();
+    }
+
+    setUser((JSON.parse(localStorage.getItem('user'))));
   },[location])
 
   const handleLogout = () => {
