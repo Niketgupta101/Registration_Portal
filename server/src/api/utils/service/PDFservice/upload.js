@@ -1,6 +1,6 @@
 const { google } = require("googleapis");
 const fs = require("fs");
-const { UploadClientId, UploadClientSecret, UploadRedirectURI, UploadRefreshToken } = require("../../../config/vars");
+const { UploadClientId, UploadClientSecret, UploadRedirectURI, UploadRefreshToken } = require("../../../../config/vars");
 
 
 const oAuth2Client = new google.auth.OAuth2( UploadClientId, UploadClientSecret, UploadRedirectURI );

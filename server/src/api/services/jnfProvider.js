@@ -1,6 +1,6 @@
 const { JNF, JNFstatus } = require('../models/JNF');
 const ErrorResponse = require('../utils/errorResponse');
-const { fillJNFDoc } = require('../utils/service/createPDF');
+const { fillJNFDoc } = require('../utils/service/PDFservice/createPDF');
 
 const fetchJnfById = async (id, next) => {
     try {

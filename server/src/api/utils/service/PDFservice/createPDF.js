@@ -8,7 +8,7 @@ const {
   generateDownloadUrl,
   generatePreviewUrl,
 } = require("./upload");
-const { sendMailWithAttachment } = require("./email");
+const { sendMailWithAttachment } = require("../email");
 
 exports.fillINFDoc = async (inf) => {
   const content = fs.readFileSync(

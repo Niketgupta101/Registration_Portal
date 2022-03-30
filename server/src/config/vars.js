@@ -23,5 +23,8 @@ module.exports = {
     UploadClientId : process.env.UPLOAD_CLIENT_ID,
     UploadClientSecret : process.env.UPLOAD_CLIENT_SECRET,
     UploadRedirectURI : process.env.UPLOAD_REDIRECT_URI,
-    UploadRefreshToken : process.env.UPLOAD_REFRESH_TOKEN
+    UploadRefreshToken : process.env.UPLOAD_REFRESH_TOKEN,
+
+    gs_client_email: process.env.CLIENT_EMAIL,
+    gs_private_key: process.env.PRIVATE_KEY 
 };
