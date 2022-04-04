@@ -18,7 +18,7 @@ client.authorize((err, tokens) => {
     }
 });
 
-const readSheet = async (spreadsheetId) => {
+const readSheet = async (spreadsheetId, sheet, range) => {
     const gsapi = google.sheets({
         version: 'v4',
         auth: client
@@ -27,7 +27,7 @@ const readSheet = async (spreadsheetId) => {
 
     const options = {
         spreadsheetId: spreadsheetId,
-        range: 'Companies!A1:K'
+        range: `${sheet}!${range}`
     };
 
     let {data} = await gsapi.spreadsheets.values.get(options);
@@ -43,7 +43,7 @@ const readSheet = async (spreadsheetId) => {
     return dataValues;
 };
 
-const updateSheet = async (spreadsheetId, dataValues) => {
+const updateSheet = async (spreadsheetId, sheet, dataValues, range) => {
 
     const gsapi = google.sheets({
         version: 'v4',
@@ -52,7 +52,7 @@ const updateSheet = async (spreadsheetId, dataValues) => {
     console.log({ dataValues });
     const updateOptions = {
         spreadsheetId,
-        range: 'Companies!A1',
+        range: `${sheet}!${range}`,
         valueInputOption: 'USER_ENTERED',
         resource: {
             values: dataValues

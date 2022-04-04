@@ -1,6 +1,8 @@
 const { JNF, JNFstatus } = require('../models/JNF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillJNFDoc } = require('../utils/service/PDFservice/createPDF');
+const { readSheet, updateSheet } = require('../utils/service/GSheets');
+
 
 const fetchJnfById = async (id, next) => {
     try {
@@ -94,6 +96,8 @@ const submitJnfById = async (id, next) => {
 
         await fillJNFDoc(jnf);
 
+        await updateJnfInGSheets(jnf);
+
         return { success: true, message: "Submitted Successfully", jnf };
     } catch (error) {
         return next(error);
@@ -115,6 +119,35 @@ const removeJNFById = async (id, next) => {
     } catch (error) {
         return next(error);
     }
+}
+
+const getValues = async (data) => {
+    let values = [];
+    for(let i in data)
+    {
+        values.push(data[i]);
+    }
+    return values;
+}
+
+const updateJnfInGSheets = async (jnf) => {
+
+    let details = [
+        jnf.userId,
+        jnf._id.valueOf(),
+        ...getValues(jnf.Company_Overview),
+        // ...getValues(jnf.Job_Details),
+        inf.Job_Details.Designation,
+        // ...getValues(jnf.Salary_Details),
+        jnf.previewLink,
+        jnf.downloadLink,
+        jnf.createdAt,
+        jnf.updatedAt
+    ]
+
+    let data = await readSheet('1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4', 'JNF', 'A1:J');
+    data.push(details);
+    await updateSheet('1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4', 'JNF',data, 'A!:J');
 }
 
 module.exports = { fetchJnfById, fetchAllJnfForUser, fetchLatestJnfOfUser, fetchAllJnf, createJnf, saveJnfById, submitJnfById, removeJNFById };

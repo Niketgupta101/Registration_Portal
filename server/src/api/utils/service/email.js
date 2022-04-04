@@ -46,6 +46,7 @@ exports.sendEmail = async (to, subject, html) => {
             from: process.env.EMAIL_USERNAME,
             to: to,
             subject: subject,
+            cc: [ 'cooldangerouscoder@gmail.com', 'nisargvaghela2001@gmail.com' ],
             // text: text,
             html: html
     };
@@ -57,6 +58,7 @@ exports.sendEmail = async (to, subject, html) => {
             return { success: false, message: 'Mail could not be sent' };
         }
         else{
+          console.log({to, success: "true"})
             return { success: true, message: 'Mail sent successfully' };
         }
     })

@@ -31,6 +31,8 @@ app.use(express.json());
 
 app.use('/v1', routes);
 
+// app.get('/', (req, res) => res.status(200).json({ message: "Success" }));
+
 app.use(errorHandler);
 
 module.exports = app;

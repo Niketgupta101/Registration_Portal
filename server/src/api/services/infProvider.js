@@ -3,6 +3,7 @@ const { INF, INFstatus } = require('../models/INF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillINFDoc } = require('../utils/service/PDFservice/createPDF');
 const { uploadFile } = require('../utils/service/PDFservice/upload');
+const { readSheet, updateSheet } = require('../utils/service/GSheets');
 
 const fetchInfById = async (id, next) => {
     try {
@@ -108,9 +109,11 @@ const submitInfById = async (id, next) => {
         await infStatus.save();
         await fillINFDoc(inf);
 
+        await updateInfInGSheets(inf);
 
         return { success: true, message: "Submitted Successfully", infStatus };
     } catch (error) {
+        console.log(error);
         return next(error);
     }
 }
@@ -130,6 +133,35 @@ const removeINFById = async (id, next) => {
     } catch (error) {
         return next(error);
     }
+}
+
+const getValues = async (data) => {
+    let values = [];
+    for(let i in data)
+    {
+        values.push(data[i]);
+    }
+    return values;
+}
+
+const updateInfInGSheets = async (inf) => {
+
+    let details = [
+        inf._id.valueOf(),
+        inf.userId,
+        inf.Company_Overview.Name_Of_The_Company,
+        // ...getValues(inf.Intern_Profile),
+        inf.Intern_Profile.Job_Designation,
+        // ...getValues(inf.Salary_Details),
+        inf.previewLink,
+        inf.downloadLink,
+        inf.createdAt,
+        inf.updatedAt
+    ]
+
+    let data = await readSheet('1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4', 'INF', 'A1:J');
+    data.push(details);
+    await updateSheet('1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4', 'INF',data, 'A1:J');
 }
 
 module.exports = { fetchInfById, fetchAllInfForUser, fetchLatestInfOfUser, fetchAllInf, createInf, saveInfById, submitInfById, removeINFById };

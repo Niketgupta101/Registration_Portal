@@ -1,4 +1,4 @@
-const { postCompanyDetails, fetchCompanyById, fetchAllCompanies } = require('../services/companyProvider');
+const { postCompanyDetails, fetchCompanyById, fetchAllCompanies, sendInvitationToAll } = require('../services/companyProvider');
 
 const saveCompanyDetails = async (req, res, next) => {
     const details = req.body;
@@ -39,4 +39,14 @@ const getAllCompanyDetails = async (req, res, next ) => {
     }
 }
 
-module.exports = { getCompanyDetailsById, saveCompanyDetails, getAllCompanyDetails };
+const sendInvitationToAllCompanies = async (req, res, next) => {
+    try {
+        const response = await sendInvitationToAll(next);
+
+        res.status(201).json(response);
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports = { getCompanyDetailsById, saveCompanyDetails, getAllCompanyDetails, sendInvitationToAllCompanies };
