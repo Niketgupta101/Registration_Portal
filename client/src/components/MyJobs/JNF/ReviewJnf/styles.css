@@ -16,30 +16,12 @@
 .inputText{
     height: 40px !important;
 }
-/* .headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
-} */
+
 .fontText{
     font-size: 16px !important;
     font-weight: 700;
 }
-.headerText{
-    padding: 0.5rem;
-    border-bottom: 2px solid rgb(60, 85, 165);
-    background: transparent !important;
-    text-align: left !important;
-    color: rgb(60, 85, 165) !important;
-    font-size: 23px !important;
-    margin-top: 1.5rem;
-}
+
 .inputText{
     height: 50px;
     padding-top: 5px;
@@ -72,7 +54,7 @@ Form{
     padding-bottom: 30px;
     padding-top: 10px;
 }
-.headerText{
+/* .headerText{
     text-align: center;
     justify-content: center;
     font-weight : bold;
@@ -82,7 +64,7 @@ Form{
     display: block;
     background: rgb(138, 138, 238,0.8);
     color:rgb(0, 0, 0);
-}
+} */
 .fontText{
     font-size: 20px;
     color: rgb(0, 87, 168);
@@ -158,7 +140,6 @@ tr{
     width: 90%;
     text-align: left !important;
     justify-content: space-between;
-    padding: 0.5rem 2rem;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.51) !important;
 }
@@ -265,17 +246,7 @@ tr{
     justify-content: center;
     margin: auto 18% !important;
 }
-.headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
-}
+
 .courseName{
     font-size: 25px;
     margin-left: 15rem;

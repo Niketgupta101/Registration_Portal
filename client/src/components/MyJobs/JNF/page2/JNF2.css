@@ -100,7 +100,6 @@ tr{
     width: 90%;
     text-align: left !important;
     justify-content: space-between;
-    padding: 0.5rem 2rem;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.51) !important;
 }

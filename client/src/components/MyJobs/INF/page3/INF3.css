@@ -2,26 +2,7 @@
     justify-content: center;
     margin: auto 18% !important;
 }
-.headerText1{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    text-decoration-line: underline;
-    padding-bottom: 30px;
-    padding-top: 10px;
-}
-.headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
-}
+
 .fontText{
     font-size: 20px;
     color: rgb(0, 87, 168);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, FormGroup, Label, Col, Input } from "reactstrap";
 
 import "./INF1.css";
+
 import "animate.css";
 import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
 
@@ -19,6 +20,35 @@ export default function INF1({
   const [companyoverview, setCompanyoverview] = useState(false);
   const [internprofile, setInternprofile] = useState(false);
   const [stipenddetail, setStipenddetail] = useState(false);
+
+  function submitButton() {
+    if (
+      companyFormData.Name_Of_The_Company === "" ||
+      companyFormData.Category_Or_Sector === "" ||
+      companyFormData.Website === "" ||
+      jobFormData.Job_Designation === "" ||
+      jobFormData.Job_Description === "" ||
+      jobFormData.Place_Of_Posting === "" ||
+      stipendFormData.Salary_Per_Month === "" ||
+      stipendFormData.CTC === ""
+    ) {
+      return (
+        <button
+          className="submit_btn not-allowed-btn"
+          disabled
+          title="Kindly fill all necessary fields"
+        >
+          Save and Continue
+        </button>
+      );
+    } else {
+      return (
+        <button className="submit_btn" type="submit">
+          Save and Continue
+        </button>
+      );
+    }
+  }
 
   return (
     <div className="overallDiv1">
@@ -42,11 +72,10 @@ export default function INF1({
             }}
           >
             <div className="category-heading d-flex">
-              {/* <h3>COMPANY OVERVIEW</h3> */}
               <header className="headerText flex-grow-1">
                 COMPANY OVERVIEW
               </header>
-              <div className="mx-4 p-2 mt-2">
+              <div className="mx-4 p-2 align-self-center">
                 {companyoverview === true ? (
                   <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
                 ) : (
@@ -59,10 +88,10 @@ export default function INF1({
             <div className="lower p-2 ">
               <div className="p-2 mx-3 animate__animated animate__zoomIn">
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     Name of the Company <span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       required
@@ -77,10 +106,10 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     Category/Sector<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       name="Category_Or_Sector"
@@ -94,10 +123,10 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     Website<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       required
@@ -131,9 +160,8 @@ export default function INF1({
             }}
           >
             <div className="category-heading d-flex">
-              {/* <h3>COMPANY OVERVIEW</h3> */}
               <header className="headerText flex-grow-1">INTERN PROFILE</header>
-              <div className="mx-4 p-2 mt-2">
+              <div className="mx-4 p-2 align-self-center">
                 {internprofile === true ? (
                   <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
                 ) : (
@@ -146,10 +174,10 @@ export default function INF1({
             <div className="lower p-2 ">
               <div className="p-2 mx-3 animate__animated animate__zoomIn">
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={2} className="fontText">
+                  <Label for="exampleSelect" sm={3} className="fontText">
                     Internship Duration<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleSelect"
                       name="Internship_Duration"
@@ -176,10 +204,10 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     Job Designation<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       name="Job_Designation"
@@ -193,10 +221,10 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     Job Description<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       name="Job_Description"
@@ -210,10 +238,10 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={2} className="fontText">
+                  <Label for="exampleSelect" sm={3} className="fontText">
                     Mode of Internship<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleSelect"
                       name="Mode_Of_Internship"
@@ -230,11 +258,11 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     Place of posting (in case of Physical internship)
                     <span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       name="Place_Of_Posting"
@@ -271,7 +299,7 @@ export default function INF1({
               <header className="headerText flex-grow-1">
                 STIPEND DETAILS
               </header>
-              <div className="mx-4 p-2 mt-2">
+              <div className="mx-4 p-2 align-self-center">
                 {stipenddetail === true ? (
                   <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
                 ) : (
@@ -286,13 +314,13 @@ export default function INF1({
                 <FormGroup row style={style}>
                   <Label
                     for="exampleText"
-                    sm={2}
+                    sm={3}
                     text-colour="blue"
                     className="fontText"
                   >
                     Stipend per month<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       required
@@ -306,11 +334,11 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={2} className="fontText">
+                  <Label for="exampleSelect" sm={3} className="fontText">
                     PPO provision on performance basis
                     <span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleSelect"
                       name="PPO_provision_on_performance_basis"
@@ -327,10 +355,10 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={2} className="fontText">
+                  <Label for="exampleText" sm={3} className="fontText">
                     CTC for PPO selects<span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={10}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       name="CTC"
@@ -358,9 +386,7 @@ export default function INF1({
             marginTop: "1.5rem",
           }}
         >
-          <button className="submit_btn" type="submit">
-            Save and Continue
-          </button>
+          {submitButton()}
         </div>
       </Form>
     </div>
