@@ -13,12 +13,7 @@
     background: rgb(138, 138, 238,0.8);
     color:rgb(0, 0, 0);
 }
-.courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
+
 .inputText{
     height: 50px;
     padding-top: 5px;

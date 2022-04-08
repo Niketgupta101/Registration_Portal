@@ -42,30 +42,7 @@
     font-size: 20px;
     padding-bottom: 10px;
 }
-.courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
-.courseCheckBoxBtech{
-    margin-inline-start: 20rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBox5year{
-    margin-inline-start: 25rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBoxSkill{
-    margin-inline-start: 16.5rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
+
 .button{
     padding-top: 30px;
 }
@@ -82,19 +59,6 @@
     justify-content: space-between;
 }
 
-tbody, table{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    margin: 1.5rem auto;
-    width: 100%;
-}
-.courseName{
-    margin: 0 !important;
-    font-size: 16px !important;
-    padding: 0 !important;
-}
 tr{
     display: flex;
     width: 90%;

@@ -1,18 +1,4 @@
 
-
-.courseCheckBoxBtech {
-  margin-inline-start: 20rem;
-  display: inline-block;
-  align-items: right;
-  position: sticky;
-  width:20px;
-}
-.courseCheckBox5year {
-  margin-inline-start: 25rem;
-  display: inline-block;
-  align-items: right;
-  position: sticky;
-}
 .courseCheckBoxSkill {
   margin-inline-start: 16.5rem;
   display: inline-block;
@@ -20,15 +6,6 @@
   position: sticky;
 }
 
-
-tbody,
-table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  width: 100%;
-}
 
 tr {
   display: flex;

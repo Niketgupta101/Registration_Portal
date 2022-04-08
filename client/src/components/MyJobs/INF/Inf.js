@@ -1,7 +1,7 @@
 import { TabContext, TabPanel } from "@mui/lab";
 import React, { useEffect, useState } from "react";
 import { createNewInf, submitInf, updateInfById } from "../../../api";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import INF1 from "./page1/INF1";
 import INF2 from "./page2/INF2";
@@ -184,8 +184,8 @@ const Inf = () => {
 
   // ------------------------------------------------------------
   const selectionData = {
-    Total_Number_Of_Rounds: '',
-    Number_Of_Offers: '',
+    Total_Number_Of_Rounds: "",
+    Number_Of_Offers: "",
     Eligibility_Criteria: "",
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
@@ -280,7 +280,7 @@ const Inf = () => {
       console.log(response);
       setInfId(response.data.newInf._id);
       console.log(response);
-      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
+      setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }
@@ -302,29 +302,29 @@ const Inf = () => {
         Two_Year_MSc_Programs: { ...twoYearMscData },
       },
       Selection_Procedure: {
-        Resume_Shortlisting: { ...resumeShortListingData},
-        Type_Of_Test: { ...typeOfTestData},
-        Other_Qualification_Rounds: { ...otherQualificationsRoundData},
+        Resume_Shortlisting: { ...resumeShortListingData },
+        Type_Of_Test: { ...typeOfTestData },
+        Other_Qualification_Rounds: { ...otherQualificationsRoundData },
         Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
         Number_Of_Offers: selectionFormData.Number_Of_Offers,
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
     }));
-    console.log(selectionFormData)
-    console.log(InfData, InfId)
+    console.log(selectionFormData);
+    console.log(InfData, InfId);
     try {
       setIsLoading(true);
       let response = await updateInfById(InfData, InfId);
       setIsLoading(false);
 
       console.log(response);
-      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
+      setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }
   };
   console.log(page);
-  
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log(InfData);
@@ -334,7 +334,7 @@ const Inf = () => {
       let response = await submitInf(InfId);
       setIsLoading(false);
       console.log(response);
-      Navigate('/myjobs');
+      Navigate("/myjobs");
     } catch (error) {
       console.log(error);
     }
@@ -347,7 +347,6 @@ const Inf = () => {
 
   //   console.log(response);
   // }, [])
-  
 
   return (
     <>
@@ -378,6 +377,14 @@ const Inf = () => {
               handleFiveYearChange={handleFiveYearChange}
               handleSkillChange={handleSkillChange}
               handleUpdateInfById={handleUpdateInfById}
+              threeYearData={threeYearData}
+              twoYearData={twoYearData}
+              twoYearMbaData={twoYearMbaData}
+              twoYearMscData={twoYearMscData}
+              handleThreeYearChange={handleThreeYearChange}
+              handleTwoYearChange={handleTwoYearChange}
+              handleTwoYearMbaChange={handleTwoYearMbaChange}
+              handleTwoYearMscChange={handleTwoYearMscChange}
             />
           </TabPanel>
           <TabPanel value={"3"}>
@@ -412,14 +419,14 @@ const Inf = () => {
           </TabPanel>
           <TabPanel value={"5"}>
             <ReviewInf
-            setPage={setPage}
-            InfData={InfData}
-            handleFormSubmit = {handleFormSubmit}
+              setPage={setPage}
+              InfData={InfData}
+              handleFormSubmit={handleFormSubmit}
             />
           </TabPanel>
         </TabContext>
-      </div> 
-        {isLoading && <Loading />}
+      </div>
+      {isLoading && <Loading />}
     </>
   );
 };

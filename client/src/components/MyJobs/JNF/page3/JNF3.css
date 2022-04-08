@@ -41,12 +41,7 @@
     font-size: 20px;
     padding-bottom: 20px;
 }
-.courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
+/* 
 .courseCheckBox3MSc{
     margin-inline-start: 32.5rem;
     display: inline-block;
@@ -70,7 +65,7 @@
     display: inline-block;
     align-items: right;
     position: sticky;
-}
+} */
 .button{
     padding-top: 30px;
 }
