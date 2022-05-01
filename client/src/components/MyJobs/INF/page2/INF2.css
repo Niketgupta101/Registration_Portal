@@ -1,104 +1,18 @@
-.overallDiv1 {
-  justify-content: center;
-  margin: auto 18% !important;
-}
-.headerText1 {
-  text-align: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 30px;
-  text-decoration-line: underline;
-  padding-bottom: 30px;
-  padding-top: 10px;
-}
-.headerText {
-  text-align: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 30px;
-  margin-bottom: 15px;
-  padding-top: 10px;
-  display: block;
-  background: rgb(138, 138, 238, 0.8);
-  color: rgb(0, 0, 0);
-}
-.fontText {
-  font-size: 20px;
-  color: rgb(0, 87, 168);
-}
-.startText {
-  font-size: 18px !important;
-  margin-bottom: 1rem;
-}
-.startTextBold {
-  color: black;
-  font-size: 24px;
-  text-decoration-line: underline;
-}
-.startTextBoldSmall {
-  font-size: 20px;
-  padding-bottom: 10px;
-}
-.courseName {
-  font-size: 25px;
-  margin-left: 15rem;
-  padding-left: 2rem;
-  align-items: center;
-}
-.courseCheckBoxBtech {
-  margin-inline-start: 20rem;
-  display: inline-block;
-  align-items: right;
-  position: sticky;
-}
-.courseCheckBox5year {
-  margin-inline-start: 25rem;
-  display: inline-block;
-  align-items: right;
-  position: sticky;
-}
+
 .courseCheckBoxSkill {
   margin-inline-start: 16.5rem;
   display: inline-block;
   align-items: right;
   position: sticky;
 }
-.button {
-  padding-top: 30px;
-}
-.successButton {
-  margin-left: 800px;
-}
-.submit_btn {
-  margin: 0;
-}
-.flex {
-  display: flex;
-  flex-basis: auto;
-  margin-top: 1.5rem;
-  justify-content: space-between;
-}
 
-tbody,
-table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  margin: 1.5rem auto;
-  width: 100%;
-}
-.courseName {
-  margin: 0 !important;
-  font-size: 16px !important;
-  padding: 0 !important;
-}
+
 tr {
   display: flex;
   width: 90%;
   text-align: left !important;
   justify-content: space-between;
-  padding: 0.5rem 2rem;
+  padding: 0.4rem 0.2rem;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.51) !important;
 }
@@ -111,7 +25,9 @@ tr {
     display: inline;
     margin: 0 !important;
   }
+  
 }
+
 @media (max-width: 400px) {
   .flex {
     flex-direction: column-reverse;
@@ -120,7 +36,11 @@ tr {
     margin: 0.5rem auto;
     display: block;
   }
+  .headerText{
+    font-size: 15px !important;
+  }
 }
+
 
 input[type="checkbox"] {
   width: 15px;

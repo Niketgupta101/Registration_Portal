@@ -1,24 +1,5 @@
-.overallDiv1{
-    justify-content: center;
-    margin: auto 18% !important;
-}
-.headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
-}
-.courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
+
+
 .inputText{
     height: 50px;
     padding-top: 5px;

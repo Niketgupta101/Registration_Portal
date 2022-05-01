@@ -1,367 +1,179 @@
-.overallDiv1{
-    justify-content: center;
-    margin: auto 18% !important;
+.overallDiv1 {
+  justify-content: center;
+  margin: auto 18% !important;
 }
-.headerText1{
-    text-align: center;
-    justify-content: center; 
-    font-weight : bold;
-    font-size: 25px !important;
-    text-decoration-line: underline;
-    padding-bottom: 30px; 
-    padding-top: 10px;
-    color: rgb(60, 85, 165);
-    margin: 1.5rem auto; 
+.headerText {
+  padding: 0.5rem;
+  border-bottom: 2px solid rgb(60, 85, 165);
+  background: transparent !important;
+  text-align: left !important;
+  color: rgb(49, 68, 131) !important;
+  font-size: 1.5em !important;
+  margin-top: 5px !important;
 }
-.inputText{
-    height: 40px !important;
+.headerText1 {
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px !important;
+  text-decoration-line: underline;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  color: rgb(60, 85, 165);
+  margin: 1.5rem auto;
 }
-/* .headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
-} */
-.fontText{
-    font-size: 16px !important;
-    font-weight: "700" !important;
-    margin: "0.5rem auto" !important;
-}
-.headerText{
-    padding: 0.5rem;
-    border-bottom: 2px solid rgb(60, 85, 165);
-    background: transparent !important;
-    text-align: left !important;
-    color: rgb(60, 85, 165) !important;
-    font-size: 23px !important;
-    margin-top: 1.5rem;
-}
-.inputText{
-    height: 50px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 21px !important;
-    margin: "0.5rem auto" !important;
-}
-.fontText{
-    font-size: 24px !important;
-    color: rgba(0, 0, 0, 0.823) !important;
-    font-weight: 700;
-}
-Form{
-    margin: 2rem auto;
+.category-heading {
+  /* display: flex;
+  justify-content: space-between; */
+  text-transform: uppercase;
 }
 
-@media(max-width: 600px){
-    .overallDiv1{
-        justify-content: center;
-        margin: auto 5% !important;
-    }
+.category p {
+  opacity: 0.6;
 }
-.overallDiv1{
-    justify-content: center;
-    margin: auto 18% !important;
+
+.category h3 {
+  font-weight: 600;
+  font-size: 1.3em;
 }
-.headerText1{
-    text-align: center;
-    justify-content: center; 
-    font-weight : bold;
-    font-size: 30px;
-    text-decoration-line: underline;
-    padding-bottom: 30px;
-    padding-top: 10px;
+
+.upper {
+  width: 100%;
+  padding: 10px 0 10px 30px;
+  background-color: #c8e5fd;
+  border-radius: 10px;
 }
-.headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
+
+.lower {
+  padding: 30px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #e9edf1;
+  color: rgb(0, 0, 0);
 }
-.fontText{
-    font-size: 20px;
-    color: rgb(0, 87, 168);
-} 
-.startText{
-    font-size: 18px !important;
-    margin-bottom: 1rem;
+
+.lower h4 {
+  color: #2999f5;
 }
-.startTextBold{
-    color: black;
-    font-size: 24px;
-    text-decoration-line: underline;
+
+.lower p:not(:first-child) {
+  /* margin-top: 40px; */
 }
-.startTextBoldSmall{
-    font-size: 20px;
-    padding-bottom: 10px;
+.eligible-options {
+  background-color: #7ab4e41e;
+}
+.eligible-type {
+  background-color: white;
+  padding: 20px;
 }
 .courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
-.courseCheckBoxBtech{
-    margin-inline-start: 20rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBox5year{
-    margin-inline-start: 25rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBoxSkill{
-    margin-inline-start: 16.5rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.button{
-    padding-top: 30px;
-}
-.successButton{
-    margin-left: 800px;
-}
-.submit_btn{
-    margin: 0;
-}
-.flex{
-    display: flex;
-    flex-basis: auto;
-    margin-top: 1.5rem;
-    justify-content: space-between;
+  margin: 0 !important;
+  font-size: 1em !important;
+  padding: 0 !important;
+  margin-left: 15rem;
+  align-items: center;
+  width: 90%;
 }
 
 tbody, table{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    margin: 1.5rem auto;
-    width: 100%;
-}
-.courseName{
-    margin: 0 !important;
-    font-size: 16px !important;
-    padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem auto;
+  width: 100%;
 }
 tr{
-    display: flex;
-    width: 90%;
-    text-align: left !important;
-    justify-content: space-between;
-    padding: 0.5rem 2rem;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.51) !important;
+  display: flex;
 }
 
 
-@media(max-width: 700px)
-{
-    tr{
-        width: 100%;
-    }
-    td{
-        display: inline;
-        margin: 0 !important;
-    }
+.ug-pg-h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  /* line-height: 2.3em; */
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
 }
-@media(max-width: 400px){
-    .flex{
-        flex-direction: column-reverse;
-    }
-    .submit_btn{
-        margin: 0.5rem auto;
-        display: block;
-    }
+.ug-pg-h1:hover{
+  font-size: 2.2em;
+
 }
-.overallDiv1{
-    justify-content: center;
-    margin: auto 18% !important;
+
+.ug-pg-span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
 }
-.headerText1{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    text-decoration-line: underline;
-    padding-bottom: 30px;
-    padding-top: 10px;
+.ug-pg-h1 em {
+  font-style: normal;
+  font-weight: 600;
 }
-.headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
+
+
+.ug-pg h1 {
+  text-transform: capitalize;
 }
-.fontText{
-    font-size: 20px;
-    color: rgb(0, 87, 168);
+.ug-pg h1::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  height: 4px;
+  content: "";
+  background-color: rgb(49, 68, 131);
+  transform: scaleX(1);  
+  transition: transform 250ms ease-in-out;
 }
-.startText{
-    font-size: 18px !important;
-    margin-bottom: 1rem;
+.ug-pg-h1:after{  transform-origin:  0% 50%; }
+
+.ug-pg-h1:hover:after { transform: scaleX(3); }
+
+.ug-pg h1 span {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 2em;
+  padding-left: 0.25em;
+  color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 10px;
 }
-.startTextBold{
-    color: rgb(0, 87, 168);
-    font-size: 24px;
-    text-decoration-line: underline;
+.ug-pg {
+  position: relative;
+  background: #ffffff;
+  /* width: 95%; */
+  /* max-width: 500px; */
+  padding: 2em;
+  margin: 1.0em 1em;
+  /* border: 3px solid rgba(0, 0, 0, 0.08); */
 }
-.startTextBoldSmall{
-    color: black;
-    font-size: 20px;
-    padding-bottom: 20px;
-}
-.courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
-.courseCheckBox3MSc{
-    margin-inline-start: 32.5rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBox2MTech{
-    margin-inline-start: 16.5rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBoxmba{
-    margin-inline-start: 33rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.courseCheckBox2Msc{
-    margin-inline-start: 27rem;
-    display: inline-block;
-    align-items: right;
-    position: sticky;
-}
-.button{
-    padding-top: 30px;
-}
-.successButton{
-    margin-left: 700px;
-}
-.overallDiv1{
-    justify-content: center;
-    margin: auto 18% !important;
-}
-.headerText{
-    text-align: center;
-    justify-content: center;
-    font-weight : bold;
-    font-size: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    display: block;
-    background: rgb(138, 138, 238,0.8);
-    color:rgb(0, 0, 0);
-}
-.courseName{
-    font-size: 25px;
-    margin-left: 15rem;
-    padding-left: 2rem;
-    align-items: center;
-}
-.inputText{
-    height: 50px;
+
+@media (max-width: 400px) {
+  .category h3{
+    font-size: 1.1em;
+  }
+  .category p {
+    font-size: 0.9em;
+  }
+  .headerText {
+    font-size: 1em;
+  }
+  .courseName{
+    font-size: 0.7em !important;
+  }
+  .ug-pg-h1{
+    font-size: 1.2em;
+  }
+  .ug-pg-span{
+    font-size: 9px !important;
     padding-top: 5px;
-    padding-bottom: 5px;
-    align-items: center;
-}
-.fontText{
-    font-size: 19px;
-    justify-content: center;
-    color: rgb(0, 87, 168);
-    padding-top: 10px;
-    padding-bottom: 5px;
-    text-align: left;
-    margin: 0 !important;
-}
-.resume{
-    font-size: 19px;
-    margin-left: 132px;
-    text-align: center;
-}
-.type{
-    font-size: 19px;
-    margin-left: 150px;
-    text-align: center;
-}
-.round{
-    font-size: 19px;
-    margin-left: 72px;
-    text-align: center;
-}
-.resume2{
-    font-size: 19px;
-    margin-left: 196px;
-    text-align: center;
-}
-.type2{
-    font-size: 19px;
-    margin-left: 150px;
-    text-align: center;
-}
-.round2{
-    font-size: 19px;
-    margin-left: 131px;
-    text-align: center;
-}
-.round3{
-    font-size: 19px;
-    margin-left: 114px;
-    text-align: center;
-}
-.button{
-    padding-top: 30px;
-}
-.successButton{
-    margin-left: 999px;
-}
-.checkBox{
-    margin-left: 9px;
-}
-tr{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.align{
-    align-items: center;
-}
-.type, .resume, .round{
-    font-size: 16px !important;
-    margin: 0 !important;
-}
-
-
-@media(max-width: 600px){
-    .overallDiv1{
-        justify-content: center;
-        margin: auto 5% !important;
-    }
+  }
+  .ug-pg h1::after {
+    width: 100px;}
+  .ug-pg-h1:hover:after { transform: scaleX(1.5); }
 }
