@@ -338,13 +338,15 @@ export default function INF2({
                           <div className="collapse-div">
                             {btechdiv === true ? (
                               <button
-                                className="collapse-button"
+                                className="collapse-button d-flex justify-content-center"
                                 onClick={() => {
                                   setBtechdiv(false);
                                   handleBackClick(refbtech4year);
                                 }}
                               >
-                                <FaAngleUp size={20} />
+                                <div>
+                                  <FaAngleUp size={20} />
+                                </div>
                               </button>
                             ) : (
                               <></>

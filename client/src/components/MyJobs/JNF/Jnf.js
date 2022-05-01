@@ -1,17 +1,17 @@
 import { TabContext, TabPanel } from "@mui/lab";
 import React, { useState } from "react";
 import { createNewJnf, submitJnf, updateJnfById } from "../../../api";
-import ReviewJnf from './ReviewJnf/ReviewJnf';
+import ReviewJnf from "./ReviewJnf/ReviewJnf";
 
 import JNF1 from "./page1/JNF1";
 import JNF2 from "./page2/JNF2";
 import JNF3 from "./page3/JNF3";
-import JNF4 from "./page4/JNF4"; 
-import { useNavigate } from 'react-router-dom';
+import JNF4 from "./page4/JNF4";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../Loading/Loading";
 
 const Jnf = () => {
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState("1");
   const Navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Jnf = () => {
   const jobData = {
     Job_Designation: "",
     Job_Description: "",
-    Place_Of_Posting: ""
+    Place_Of_Posting: "",
   };
   const salaryData = {
     CTC_Breakup: "",
@@ -69,52 +69,51 @@ const Jnf = () => {
     Mineral_and_Metallurgical_Engineering: false,
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
-    Petroleum_Engineering: false
+    Petroleum_Engineering: false,
   });
   const [fiveYearData, setFiveYearData] = useState({
     Select_All: false,
     Computer_Science_and_Engineering: false,
     Mathematics_and_Computing: false,
     Applied_Geology: false,
-    Applied_Geophysics: false
+    Applied_Geophysics: false,
   });
   const [skillData, setSkillData] = useState({
     C_Cpp_Java_Python_etc: false,
     Full_Stack_Development_Frontend_or_Backend: false,
     Civil_Engineering: false,
     AI_ML_DL_Data_Science: false,
-    Business_Data_Analytics_Product_Management: false
+    Business_Data_Analytics_Product_Management: false,
   });
 
   const handleFourYearChange = (e) => {
     setFourYearData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.checked ? true : false
-      }));
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(fourYearData);
   };
   const handleFiveYearChange = (e) => {
     setFiveYearData((prevData) => ({
       ...prevData,
-       [e.target.name]: e.target.checked ? true : false 
+      [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(fiveYearData);
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
       ...prevData,
-       [e.target.name]: e.target.checked ? true : false 
-      }));
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(skillData);
   };
 
   // ------------------------------------------------------
 
-
   const [threeYearData, setThreeYearData] = useState({
     Select_All: false,
     Applied_Geology: false,
-    Applied_Geophysics: false
+    Applied_Geophysics: false,
   });
   const [twoYearData, setTwoYearData] = useState({
     Select_All: false,
@@ -133,7 +132,7 @@ const Jnf = () => {
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,
-    Pharmaceutical_Science_and_Engineering: false
+    Pharmaceutical_Science_and_Engineering: false,
   });
   const [twoYearMbaData, setTwoYearMbaData] = useState({
     Select_All: false,
@@ -141,77 +140,99 @@ const Jnf = () => {
     Finance: false,
     Human_Resources: false,
     Marketing: false,
-    Operations: false
+    Operations: false,
   });
   const [twoYearMscData, setTwoYearMscData] = useState({
     Select_All: false,
     Chemistry: false,
     Mathematics_and_Computing: false,
-    Physics: false
+    Physics: false,
   });
 
-
   const handleThreeYearChange = (e) => {
-    setThreeYearData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false  })); 
+    setThreeYearData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(threeYearData);
-  }
+  };
   const handleTwoYearChange = (e) => {
-    setTwoYearData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false })); 
+    setTwoYearData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(twoYearData);
-  }
+  };
   const handleTwoYearMbaChange = (e) => {
-    setTwoYearMbaData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false })); 
+    setTwoYearMbaData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(twoYearMbaData);
-  }
+  };
   const handleTwoYearMscChange = (e) => {
-    setTwoYearMscData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false })); 
+    setTwoYearMscData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(twoYearMscData);
-  }
+  };
 
   // ------------------------------------------------------------
 
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
-    Eligibility_Criteria: ''
-  }
+    Eligibility_Criteria: "",
+  };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
-    No: false
+    No: false,
   });
   const [typeOfTestData, setTypeOfTestData] = useState({
     Technical: false,
     Aptitude: false,
     Both: false,
-    None: false
+    None: false,
   });
-  const [otherQualificationsRoundData, setOtherQualificationsRoundData] = useState({
-    GD: false,
-    Case_Study: false,
-    Interview: false
-  });
+  const [otherQualificationsRoundData, setOtherQualificationsRoundData] =
+    useState({
+      GD: false,
+      Case_Study: false,
+      Interview: false,
+    });
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
-
   const handleResumeShortListingChange = (e) => {
-    setResumeShortListingData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false })); 
+    setResumeShortListingData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(resumeShortListingData);
-  }
+  };
   const handleTypeOfTestChange = (e) => {
-    setTypeOfTestData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false })); 
+    setTypeOfTestData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(typeOfTestData);
-  }
+  };
   const handleOtherQualificationsRoundChange = (e) => {
-    setOtherQualificationsRoundData(prevData => ({ ...prevData,  [e.target.name]: (e.target.checked) ? true:false })); 
+    setOtherQualificationsRoundData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked ? true : false,
+    }));
     console.log(otherQualificationsRoundData);
-  }
+  };
   const handleSelectionDataChange = (e) => {
-    setSelectionFormData(prevData => ({ ...prevData, [e.target.name]: e.target.value}));
-  }
+    setSelectionFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   // --------------------------------------------------
 
-  
   const [JnfId, setJnfId] = useState("");
 
   const [JnfData, setJnfData] = useState({
@@ -254,7 +275,7 @@ const Jnf = () => {
       setIsLoading(false);
       setJnfId(response.data.newJnf._id);
       console.log(response);
-      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
+      setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }
@@ -276,9 +297,9 @@ const Jnf = () => {
         Two_Year_MSc_Programs: { ...twoYearMscData },
       },
       Selection_Procedure: {
-        Resume_Shortlisting: { ...resumeShortListingData},
-        Type_Of_Test: { ...typeOfTestData},
-        Other_Qualification_Rounds: { ...otherQualificationsRoundData},
+        Resume_Shortlisting: { ...resumeShortListingData },
+        Type_Of_Test: { ...typeOfTestData },
+        Other_Qualification_Rounds: { ...otherQualificationsRoundData },
         Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
         Number_Of_Offers: selectionFormData.Number_Of_Offers,
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
@@ -290,7 +311,7 @@ const Jnf = () => {
       let response = await updateJnfById(JnfData, JnfId);
       setIsLoading(false);
       console.log(response);
-      setPage(prevPage => `${JSON.parse(prevPage) + 1}`);
+      setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
       console.log(error);
     }
@@ -305,7 +326,7 @@ const Jnf = () => {
       let response = await submitJnf(JnfId);
       setIsLoading(false);
       console.log(response);
-      Navigate('/myjobs');
+      Navigate("/myjobs");
     } catch (error) {
       console.log(error);
     }
@@ -323,7 +344,7 @@ const Jnf = () => {
             handleCompanyDataChange={handleCompanyDataChange}
             handleJobDataChange={handleJobDataChange}
             handleSalaryDataChange={handleSalaryDataChange}
-            handleCreateNewJnf = {handleCreateNewJnf}
+            handleCreateNewJnf={handleCreateNewJnf}
           />
         </TabPanel>
         <TabPanel value={"2"}>
@@ -335,12 +356,7 @@ const Jnf = () => {
             handleFourYearChange={handleFourYearChange}
             handleFiveYearChange={handleFiveYearChange}
             handleSkillChange={handleSkillChange}
-            handleUpdateJnfById = {handleUpdateJnfById}
-          />
-        </TabPanel>
-        <TabPanel value={"3"}>
-          <JNF3 
-            setPage={setPage} 
+            handleUpdateJnfById={handleUpdateJnfById}
             threeYearData={threeYearData}
             twoYearData={twoYearData}
             twoYearMbaData={twoYearMbaData}
@@ -349,29 +365,44 @@ const Jnf = () => {
             handleTwoYearChange={handleTwoYearChange}
             handleTwoYearMbaChange={handleTwoYearMbaChange}
             handleTwoYearMscChange={handleTwoYearMscChange}
-            handleUpdateJnfById = {handleUpdateJnfById}
+          />
+        </TabPanel>
+        <TabPanel value={"3"}>
+          <JNF3
+            setPage={setPage}
+            threeYearData={threeYearData}
+            twoYearData={twoYearData}
+            twoYearMbaData={twoYearMbaData}
+            twoYearMscData={twoYearMscData}
+            handleThreeYearChange={handleThreeYearChange}
+            handleTwoYearChange={handleTwoYearChange}
+            handleTwoYearMbaChange={handleTwoYearMbaChange}
+            handleTwoYearMscChange={handleTwoYearMscChange}
+            handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel>
         <TabPanel value={"4"}>
-          <JNF4 
-            setPage={setPage} 
-            resumeShortListingData ={resumeShortListingData}
+          <JNF4
+            setPage={setPage}
+            resumeShortListingData={resumeShortListingData}
             typeOfTestData={typeOfTestData}
             otherQualificationsRoundData={otherQualificationsRoundData}
             selectionFormData={selectionFormData}
             handleResumeShortListingChange={handleResumeShortListingChange}
             handleTypeOfTestChange={handleTypeOfTestChange}
-            handleOtherQualificationsRoundChange={handleOtherQualificationsRoundChange}
+            handleOtherQualificationsRoundChange={
+              handleOtherQualificationsRoundChange
+            }
             handleSelectionDataChange={handleSelectionDataChange}
-            handleUpdateJnfById = {handleUpdateJnfById}
+            handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel>
         <TabPanel value={"5"}>
-            <ReviewJnf
+          <ReviewJnf
             setPage={setPage}
             JnfData={JnfData}
-            handleFormSubmit = {handleFormSubmit}
-            />
+            handleFormSubmit={handleFormSubmit}
+          />
         </TabPanel>
       </TabContext>
       {isLoading && <Loading />}

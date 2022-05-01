@@ -24,7 +24,7 @@ import Fiveyear from "./components/Courses/Fiveyear";
 import Twoyearmba from "./components/Courses/Twoyearmba";
 import Twoyearmsc from "./components/Courses/Twoyearmsc";
 import Twoyearmtech from "./components/Courses/Twoyearmtech";
-import Btech from "./components/Courses/btech";
+import Btech from "./components/Courses/Btech";
 import Threeyearmsc from "./components/Courses/Threeyearmsc";
 
 const App = () => {
