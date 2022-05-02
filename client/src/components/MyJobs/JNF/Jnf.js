@@ -1,12 +1,15 @@
 import { TabContext, TabPanel } from "@mui/lab";
 import React, { useState } from "react";
 import { createNewJnf, submitJnf, updateJnfById } from "../../../api";
-import ReviewJnf from "./ReviewJnf/ReviewJnf";
 
+import "./styles.css";
+
+import ReviewJnf from "./ReviewJnf/ReviewJnf";
 import JNF1 from "./page1/JNF1";
 import JNF2 from "./page2/JNF2";
 import JNF3 from "./page3/JNF3";
 import JNF4 from "./page4/JNF4";
+
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Loading/Loading";
 

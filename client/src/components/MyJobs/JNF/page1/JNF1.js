@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Col, Input } from "reactstrap";
 
-import "./JNF1.css";
-
 import "animate.css";
 import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
 

@@ -51,18 +51,7 @@ export default function INF2({
       <Form>
         <div>
           <div className="container col-lg-12 col-md-12 category p-0 my-3  ">
-            <div
-              className="upper py-1"
-              onClick={() => {
-                setTimeout(() => {
-                  if (eligiblediv) {
-                    setEligiblediv(false);
-                  } else {
-                    setEligiblediv(true);
-                  }
-                }, 200);
-              }}
-            >
+            <div className="upper py-1">
               <div>
                 <div className="category-heading ">
                   <header className="headerText me-3">

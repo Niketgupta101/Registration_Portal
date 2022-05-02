@@ -1,8 +1,6 @@
 import React from "react";
 import { Form, FormGroup, Label, Col, Input } from "reactstrap";
 
-import "./JNF4.css";
-
 const JNF4 = ({
   setPage,
   resumeShortListingData,
@@ -19,8 +17,16 @@ const JNF4 = ({
     <div className="overallDiv1">
       <Form>
         <div>
-          <header className="headerText">SELECTION PROCEDURE</header>
+          <div class="ug-pg m-0 p-0">
+            <h1 className="ug-pg-h1">
+              Selection Procedure
+              <span className="ug-pg-span">
+                <b> Fill necessary details</b>{" "}
+              </span>
+            </h1>
+          </div>
         </div>
+
         <table>
           <tbody id="Selection_Procedure">
             <tr
@@ -200,10 +206,10 @@ const JNF4 = ({
           </tbody>
         </table>
         <FormGroup row>
-          <Label for="exampleText" sm={2} className="fontText">
-            Total number of rounds
+          <Label for="exampleText" sm={5} className="fontText">
+            Total number of rounds<span style={{ color: "red" }}>*</span>
           </Label>
-          <Col sm={10}>
+          <Col sm={7}>
             <Input
               id="exampleText"
               name="Total_Number_Of_Rounds"
@@ -211,15 +217,16 @@ const JNF4 = ({
               className="inputText"
               value={selectionFormData.Total_Number_Of_Rounds}
               onChange={handleSelectionDataChange}
+              required
             />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="exampleText" sm={2} className="fontText">
+          <Label for="exampleText" sm={5} className="fontText">
             Number of offers available for IIT(ISM) students (Range would be
-            sufficient)<span style={{ color: "red"}}>*</span>
+            sufficient)<span style={{ color: "red" }}>*</span>
           </Label>
-          <Col sm={10}>
+          <Col sm={7}>
             <Input
               id="exampleText"
               name="Number_Of_Offers"
@@ -232,10 +239,10 @@ const JNF4 = ({
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="exampleText" sm={2} className="fontText">
+          <Label for="exampleText" sm={5} className="fontText">
             Eligibility Criteria (if any)
           </Label>
-          <Col sm={10}>
+          <Col sm={7}>
             <Input
               id="exampleText"
               name="Eligibility_Criteria"

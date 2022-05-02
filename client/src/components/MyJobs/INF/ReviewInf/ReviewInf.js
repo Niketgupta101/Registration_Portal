@@ -2,20 +2,8 @@ import { color } from "@mui/system";
 import React from "react";
 import { Form, FormGroup, Label, Col } from "reactstrap";
 
-import "./styles.css";
-
 const style = { alignItems: "center" };
 
-// class ComponentToPrint extends React.PureComponent {
-//   render(){
-// return (
-//   <>
-//   <ReviewInf />
-//   </>
-
-//   );
-// }
-// }
 const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
   return (
     <div className="overallDiv1">
@@ -147,9 +135,8 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             Eligible courses and disciplines- Undergraduate
           </header>
         </div>
-        <div className=" text-secondary m-3 mt-2" style={{ fontSize: "15px" }}>
+        <div className="startText m-3 mt-2" style={{ fontSize: "17px" }}>
           List of courses and disciplines offered at IIT (ISM) are shown below.
-          Please highlight or check by clicking as per your requirement
         </div>
         <div className="startTextBold" style={{ fontSize: "21px" }}>
           4-Year B.Tech Programs
@@ -518,13 +505,12 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
           </tbody>
         </table> */}
         <div>
-          <header className="headerText m-0">
+          <header className="headerText m-0 mt-4">
             Eligible courses and disciplines - Postgraduate
           </header>
         </div>
-        <div className=" text-secondary m-3 mt-2" style={{ fontSize: "15px" }}>
+        <div className=" m-3 mt-2" stylstartTexte={{ fontSize: "17px" }}>
           List of courses and disciplines offered at IIT (ISM) are shown below.
-          Please highlight or check by clicking as per your requirement
         </div>
         <div>
           <div className="startTextBold" style={{ fontSize: "21px" }}>
@@ -1211,8 +1197,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
         </FormGroup>
         <FormGroup row>
           <Label for="exampleText" sm={5} className="fontText">
-            Number of offers available for IIT(ISM) students (Range would be
-            sufficient)
+            Number of offers available for IIT(ISM) students
           </Label>
           <Col sm={7}>
             <h1 className="inputText">
