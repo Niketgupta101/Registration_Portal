@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "reactstrap";
 
-import "./JNF3.css";
+// import "./JNF3.css";
 
 const JNF3 = ({
   setPage,
@@ -402,10 +402,7 @@ const JNF3 = ({
           >
             Back
           </button>
-          <button
-            className="submit_btn"
-            onClick={handleUpdateJnfById}
-          >
+          <button className="submit_btn" onClick={handleUpdateJnfById}>
             Save and Continue
           </button>
         </div>

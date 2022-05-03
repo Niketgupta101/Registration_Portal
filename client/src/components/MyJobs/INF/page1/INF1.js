@@ -37,6 +37,7 @@ export default function INF1({
           className="submit_btn not-allowed-btn"
           disabled
           title="Kindly fill all necessary fields"
+          style={{ cursor: "not-allowed" }}
         >
           Save and Continue
         </button>
