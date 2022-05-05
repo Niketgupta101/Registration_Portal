@@ -34,6 +34,17 @@ main {
   padding: 1rem;
 }
 
+.courses_list{
+  padding: 2rem 15%;
+  /* background-repeat:no-repeat; 
+  background-size:contain;
+  background: url("https://people.iitism.ac.in/~academics/assets/assets/images/index/01.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+}
 ol.gradient-list {
   counter-reset: gradient-counter;
   list-style: none;
@@ -50,7 +61,7 @@ ol.gradient-list > li {
   position: relative;
 }
 ol.gradient-list > li::before, ol.gradient-list > li::after {
-  background: linear-gradient(135deg, #83e4e2 0%, rgba(36, 36, 193, 0.8), 100%);
+  /* background: linear-gradient(135deg, #83e4e2 0%, rgba(36, 36, 193, 0.8), 100%); */
   border-radius: 1rem 1rem 0 1rem;
   content: "";
   height: 3rem;
@@ -106,21 +117,19 @@ ol.gradient-list > li:nth-child(10n+10):before {
 ol.gradient-list > li + li {
   margin-top: 2rem;
 }
-user_profile{
+.user_profile{
   margin: 0;
   padding: 2rem 22%;
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
 
-
-
-
 }
 .profile_header{
   width: 100%;
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   box-sizing: border-box;
   text-align: center;
 }
@@ -134,3 +143,23 @@ user_profile{
 #btnfirst{
   margin-top: 1rem;
 }
+.courses-button{
+  padding: 3px 30px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.prog-hover:after{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 300px !important;
+  height: 4px;
+  content: "";
+  background-color: rgb(49, 68, 131);
+  transform: scaleX(1);  
+  transition: transform 250ms ease-in-out;
+}
+.prog-hover:after{  transform-origin:  0% 50%; }
+
+.prog-hover:hover:after { transform: scaleX(3.2); }
+
