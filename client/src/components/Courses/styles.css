@@ -60,60 +60,7 @@ ol.gradient-list > li {
   padding: 1rem 1rem 1rem 3rem;
   position: relative;
 }
-ol.gradient-list > li::before, ol.gradient-list > li::after {
-  /* background: linear-gradient(135deg, #83e4e2 0%, rgba(36, 36, 193, 0.8), 100%); */
-  border-radius: 1rem 1rem 0 1rem;
-  content: "";
-  height: 3rem;
-  left: -1rem;
-  overflow: hidden;
-  position: absolute;
-  top: -1rem;
-  width: 3rem;
-}
-ol.gradient-list > li::before {
-  align-items: flex-end;
-  content: counter(gradient-counter);
-  color: #1d1f20;
-  display: flex;
-  font: 900 1.5em/1 "Montserrat";
-  justify-content: flex-end;
-  padding: 0.125em 0.25em;
-  z-index: 1;
-}
-ol.gradient-list > li:nth-child(10n+1):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+2):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+3):before {
 
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+4):before {
-  
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+5):before {
-
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+6):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+7):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+8):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+9):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
-ol.gradient-list > li:nth-child(10n+10):before {
-  background: linear-gradient(135deg, rgba(117, 117, 129, 0.8) 0%, rgba(36, 36, 193, 0.8) 100%);
-}
 ol.gradient-list > li + li {
   margin-top: 2rem;
 }
@@ -152,7 +99,7 @@ ol.gradient-list > li + li {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 300px !important;
+  width: 22vw !important;
   height: 4px;
   content: "";
   background-color: rgb(49, 68, 131);
@@ -161,5 +108,10 @@ ol.gradient-list > li + li {
 }
 .prog-hover:after{  transform-origin:  0% 50%; }
 
-.prog-hover:hover:after { transform: scaleX(3.2); }
+.prog-hover:hover:after { transform: scaleX(1.8); }
+/* .prog-hover-span{
+  font-size: 2em; */
+.course-name-li{
+  font-size: 1.25em;
+}
 
