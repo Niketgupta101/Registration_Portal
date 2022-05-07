@@ -190,7 +190,7 @@ select {
 .filter_select{
   border-radius: 5px;
   font-size: 20px;
-  padding: 5px;
+  padding:0 5px;
   height: auto;
   width: 150px;
 }
