@@ -56,7 +56,7 @@ export default function Btech() {
         </Modal.Header>
         <Modal.Body>
           <DonutModal data={data} />
-          <Button variant="text">Click here for Course Structure</Button>
+          <Button variant="text" target="_blank" href="http://www.google.com/">Click here for Course Structure</Button>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

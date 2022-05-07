@@ -145,16 +145,16 @@ ol.gradient-list > li + li {
 }
 .modal-datatext{
   font-family: "Raleway", sans-serif;
-  font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    line-height: 1em;
-    padding-left: 0.25em;
-    color: rgba(0, 0, 0, 0.8);
-    padding-bottom: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 1em;
+  padding-left: 0.25em;
+  color: rgba(0, 0, 0, 0.8);
+  padding-bottom: 5px;
 }
 .modal-stats{
-  font-size: 17px !important;
+  font-size: 19px !important;
   font-weight:800 !important;
   padding: 0 5px;
 }
