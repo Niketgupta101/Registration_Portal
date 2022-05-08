@@ -24,7 +24,6 @@ export default function JNF1({
     if (
       companyFormData.Name_Of_The_Company === "" ||
       companyFormData.Category_Or_Sector === "" ||
-      companyFormData.Website === "" ||
       jobFormData.Job_Designation === "" ||
       jobFormData.Job_Description === "" ||
       jobFormData.Place_Of_Posting === "" ||
@@ -55,7 +54,7 @@ export default function JNF1({
     <div className="overallDiv1">
       <div>
         <header className="headerText1">
-          JOB NOTIFICATION FORM (2021-2022)
+          JOB NOTIFICATION FORM (2022-2023)
         </header>
       </div>
       <Form onSubmit={handleCreateNewJnf}>
@@ -125,12 +124,12 @@ export default function JNF1({
                 </FormGroup>
                 <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
-                    Website<span style={{ color: "red" }}>*</span>
+                    Website
+                    {/* <span style={{ color: "red" }}>*</span> */}
                   </Label>
                   <Col sm={9}>
                     <Input
                       id="exampleText"
-                      required
                       name="Website"
                       type="text"
                       className="inputText"

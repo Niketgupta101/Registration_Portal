@@ -114,4 +114,47 @@ ol.gradient-list > li + li {
 .course-name-li{
   font-size: 1.25em;
 }
-
+.donut-div{
+  width: 150px;
+}
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.donut-legend-heading{
+  font-weight: 700 !important;
+}
+.donut-legend-subheading{
+  font-weight: 800 !important;
+}
+.donut-legend-placed{
+  color: #28548a;
+}
+.dot-placed{
+  background-color: #28548a;
+}
+.donut-legend-unplaced{
+  color: #9cbbe2;
+  font-weight: 600;
+  /* text-shadow: 1px 1px #1d1f20 ; */
+}
+.dot-unplaced{
+  background-color: #9cbbe2;
+}
+.modal-datatext{
+  font-family: "Raleway", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 1em;
+  padding-left: 0.25em;
+  color: rgba(0, 0, 0, 0.8);
+  padding-bottom: 5px;
+}
+.modal-stats{
+  font-size: 19px !important;
+  font-weight:800 !important;
+  padding: 0 5px;
+}

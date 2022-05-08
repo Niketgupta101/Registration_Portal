@@ -12,7 +12,6 @@
 .job_header {
   margin: 0.5rem;
   color: rgb(60, 85, 165);
-  font-size: 10px;
   font-weight: 700;
   padding: 0.3rem 0;
   border-bottom: 2px solid rgb(60, 85, 165);
@@ -44,6 +43,7 @@
   border: 1px solid rgba(0, 0, 0, 0.177);
   box-shadow: 3px 3px 6px 4px rgba(0, 0, 0, 0.177);
   transition: all ease 0.3s;
+  background-color: #fff;
   overflow: hidden;
 }
 .badge {
@@ -111,7 +111,6 @@ select {
 }
 .jobFilter {
   display: flex;
-  flex-direction: row-reverse;
 }
 .addJob_btn {
   min-width: 115px;
@@ -160,6 +159,40 @@ select {
   border: 1px solid rgba(0, 0, 0, 0.07);
   outline: none;
   background: #fff;
+}
+.jumbotron {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+}
+.company-dashboard-container{
+  background-image: url("https://ik.imagekit.io/hrgu22madpa/tuxpi.com.1646069744_Zn1263qKgTn1.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1646069759781"); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.main-heading-secondary {
+  font-family: sans-serif;
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(105, 105, 105);
+}
+.animate__fadeInDownBig {
+  --animate-duration: 1s;
+}
+.animate__fadeInUpBig {
+  --animate-duration: 1s;
+}
+
+.filter_select{
+  border-radius: 5px;
+  font-size: 20px;
+  padding:0 5px;
+  height: auto;
+  width: 150px;
 }
 
 @media (max-width: 600px) {

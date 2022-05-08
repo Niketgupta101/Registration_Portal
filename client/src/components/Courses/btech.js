@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import Modal from "react-bootstrap/Modal";
-
 import DonutModal from "./DonutModal"
 
 import "./styles.css";
 
 export default function Btech() {
+
   const [show, setShow] = useState(false);
   const [modalHeading, setmodalHeading] = useState("");
-
   const handleClose = () => setShow(false);
+  const [data, setData] = useState([53, 22]);
   function handleShow(name, stats) {
+    setData(() => stats);
     setmodalHeading(() => name);
     setShow(true);
   }
 
-  var data = [112, 23];
   return (
     <>
       <div className="courses_list">
@@ -32,26 +32,32 @@ export default function Btech() {
         </div>
         <main>
           <ol class="gradient-list">
-            <li><Button variant="text" onClick={() => handleShow("Chemical", data)}><div className="course-name-li">Chemical Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Civil Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Computer Science & Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Electrical Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Electronics and Communication Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Engineering Physics.</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Environmental Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Mechanical Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Mineral and Metallurgical Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Mining Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Mining Machinery Engineering</div></Button></li>
-            <li><Button variant="text" onClick={() => { <DonutModal data={data} /> }}><div className="course-name-li">Petroleum Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Chemical Engineering", data)}><div className="course-name-li">Chemical Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Civil Engineering", data)}><div className="course-name-li">Civil Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Computer Science and Engineering", data)}><div className="course-name-li">Computer Science & Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Electrical Engineering", data)}><div className="course-name-li">Electrical Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Electronics and Communication Engineering", data)}><div className="course-name-li">Electronics and Communication Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Engineering Physics", data)}><div className="course-name-li">Engineering Physics</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Environmental Engineering", data)}><div className="course-name-li">Environmental Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Mechanical Engineering", data)}><div className="course-name-li">Mechanical Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Mineral and Metallurgical Engineering", data)}><div className="course-name-li">Mineral and Metallurgical Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Mining Engineering", data)}><div className="course-name-li">Mining Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Mining Machinery Engineering", data)}><div className="course-name-li">Mining Machinery Engineering</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Petroleum Engineering", data)}><div className="course-name-li">Petroleum Engineering</div></Button></li>
           </ol>
+
         </main>
+
+
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{modalHeading}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <DonutModal data={data} />
+          <Button variant="text" target="_blank" href="http://www.google.com/">Click here for Course Structure</Button>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
