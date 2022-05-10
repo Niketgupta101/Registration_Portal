@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Loading from "../../Loading/Loading";
 
 import "./styles.css";
 import { getAllInf, getAllJobs } from "../../../api/index";
@@ -113,6 +114,8 @@ const Jobs = () => {
           />
         </Stack>
       </div>
+      {isLoading && <Loading />}
+
     </>
   );
 };

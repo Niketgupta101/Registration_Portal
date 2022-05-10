@@ -143,14 +143,24 @@ ol.gradient-list > li + li {
 .dot-unplaced{
   background-color: #9cbbe2;
 }
-.modal-datatext{
+.modal-type-heading{
   font-family: "Raleway", sans-serif;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: bold;
   letter-spacing: 1.2px;
   line-height: 1em;
-  padding-left: 0.25em;
+  padding: 0.35em 0 2em 0.35em;
   color: rgba(0, 0, 0, 0.8);
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+.modal-datatext{
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1em;
+  padding-left: 2em;
+  color: rgba(0, 0, 0);
   padding-bottom: 5px;
 }
 .modal-stats{

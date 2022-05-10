@@ -1,25 +1,24 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
-import { Pagination, Stack } from "@mui/material";
+import { Pagination, Stack, Button } from "@mui/material";
 import { getAllCompanyDetails } from "../../../api";
 import Loading from "../../Loading/Loading";
+import { FaSearch } from "react-icons/fa";
 
 const Company = () => {
   const Navigate = useNavigate();
-  const [IsLoading, setIsLoading] = React.useState(false);
+  const [IsLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  const [Companies, setCompanies] = useState();
 
-  const [user, setUser] = React.useState(JSON.parse(localStorage.getItem("user")));
-
-  const [Companies, setCompanies] = React.useState();
-
-  React.useEffect(async () => {
+  useEffect(async () => {
     if (!user) Navigate("/auth");
     else {
       setUser(localStorage.getItem("user"));
       setIsLoading(true);
-      let response = await getAllCompanyDetails();
+      const response = await getAllCompanyDetails();
       setIsLoading(false);
       setCompanies(response.data.companyList);
     }
@@ -28,9 +27,30 @@ const Company = () => {
   return (
     <>
       <div className="admin_company">
-        <div className="admin_company_header">
-          <h1>Companies</h1>
+        <div className="admin_company_header d-flex">
+          <h1 className="flex-grow-1">Companies
+          </h1>
+
+          <div>
+            <div className="input-group ">
+              <div className="form-outline">
+                <input type="search" id="form1" className="form-control" placeholder="Type Company Name" />
+              </div>
+              <Button variant="outlined">
+                <FaSearch />
+              </Button>
+            </div>
+          </div>
         </div>
+        <small className=" h6 admin_company_header_small"> Total Registered Companies: {' '}
+          {Companies !== undefined ? (
+            Companies.length
+          ) : (
+            0
+          )}
+        </small>
+
+
         <div className="company_items">
           {Companies &&
             Companies.map((company) => (
@@ -46,34 +66,38 @@ const Company = () => {
                 </div>
 
                 <div>
-                  Primary HR. Details
-                  <div>
-                    <span className="head">Name :</span>{" "}
-                    {company.primary_hr.name}
-                  </div>
-                  <div>
-                    <span className="head">Email :</span>{" "}
-                    {company.primary_hr.emailId}
-                  </div>
-                  <div>
-                    <span className="head">Contact Number :</span>{" "}
-                    {company.primary_hr.contactNo}
+                  <div className="company-hr-heading">Primary HR. Details</div>
+                  <div className="company-hr-details">
+                    <div >
+                      <span className="head">Name :</span>{" "}
+                      {company.primary_hr.name}
+                    </div>
+                    <div>
+                      <span className="head">Email :</span>{" "}
+                      {company.primary_hr.emailId}
+                    </div>
+                    <div>
+                      <span className="head">Contact Number :</span>{" "}
+                      {company.primary_hr.contactNo}
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  Secondary HR. Details
-                  <div>
-                    <span className="head">Name :</span>{" "}
-                    {company.secondary_hr.name}
-                  </div>
-                  <div>
-                    <span className="head">Email :</span>{" "}
-                    {company.secondary_hr.emailId}
-                  </div>
-                  <div>
-                    <span className="head">Contact Number :</span>{" "}
-                    {company.secondary_hr.contactNo}
+                  <div className="company-hr-heading">Secondary HR. Details</div>
+                  <div className="company-hr-details">
+                    <div>
+                      <span className="head">Name :</span>{" "}
+                      {company.secondary_hr.name}
+                    </div>
+                    <div>
+                      <span className="head">Email :</span>{" "}
+                      {company.secondary_hr.emailId}
+                    </div>
+                    <div>
+                      <span className="head">Contact Number :</span>{" "}
+                      {company.secondary_hr.contactNo}
+                    </div>
                   </div>
                 </div>
               </div>
