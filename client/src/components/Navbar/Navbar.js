@@ -47,10 +47,17 @@ const Navbar = () => {
           <Toolbar>
             <img src={logo} alt="" style={{ width: "6vh", height: "6vh", margin: "auto 0.5rem" }} />
             <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-              <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/')} style={{ alignItems: "center" }}>
-                {/* <AccountCircle /> */}
-                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>Home</h5>
-              </IconButton>
+
+              {user.Name === "Admin" ? (
+                <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/admin')} style={{ alignItems: "center" }}>
+                  <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>Home</h5>
+                </IconButton>
+              ) : (
+                <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/')} style={{ alignItems: "center" }}>
+                  {/* <AccountCircle /> */}
+                  <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>Home</h5>
+                </IconButton>
+              )}
               <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/myjobs')} style={{ alignItems: "center" }}>
                 {/* <AccountCircle /> */}
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>My Jobs</h5>
@@ -59,6 +66,21 @@ const Navbar = () => {
                 {/* <AccountCircle /> */}
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>Courses</h5>
               </IconButton>
+              {user.Name === "Admin" ? (
+                <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/admin/company')} style={{ alignItems: "center" }}>
+                  <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>Registered Companies</h5>
+                </IconButton>
+              ) : (
+                <></>
+              )}
+              {user.Name === "Admin" ? (
+                <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/admin/jobs')} style={{ alignItems: "center" }}>
+                  {/* <AccountCircle /> */}
+                  <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>All Jobs</h5>
+                </IconButton>
+              ) : (
+                <></>
+              )}
               <IconButton size="medium" edge="end" color="inherit" onClick={() => Navigate('/contactus')} style={{ alignItems: "center" }}>
                 {/* <AccountCircle /> */}
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>Contact Us</h5>
