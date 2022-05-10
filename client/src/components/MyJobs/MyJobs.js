@@ -134,8 +134,8 @@ const MyJobs = () => {
                     </div>
                     <div className="content_text" style={{ fontWeight: "500" }}>
                       <h5>
-                        <span>Position</span>:{" "}
-                        Software Developer
+                        <span>Sector</span>:{" "}
+                        {job?.Company_Overview?.Category_Or_Sector}
 
                       </h5>
                       <h5>
