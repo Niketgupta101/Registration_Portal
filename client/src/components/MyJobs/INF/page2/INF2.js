@@ -88,7 +88,7 @@ export default function INF2({
                 }}
               >
                 <div>
-                  <div class="ug-pg d-flex m-0 justify-content-center">
+                  <div className="ug-pg d-flex m-0 justify-content-center">
                     <div className="flex-grow-1 ">
                       <h1 className="ug-pg-h1">
                         Undergraduate
