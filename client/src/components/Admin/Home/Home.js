@@ -1,10 +1,15 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { Input } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import Loading from "../../Loading/Loading";
 
 import "./styles.css";
+import { getAllCompanyDetails } from "../../../api";
+import { getAllJobs } from "../../../api/index";
+
 import { PeopleAltTwoTone } from "@material-ui/icons";
 import { FileOpenRounded, HomeOutlined, HomeWork } from "@mui/icons-material";
 import Company from "../Company/Company";
@@ -15,7 +20,25 @@ import Contact from "./Contact";
 import "bootstrap/dist/css/bootstrap.css";
 
 const Home = () => {
-  const [value, setValue] = React.useState("Home");
+  const [value, setValue] = useState("Home");
+  const Navigate = useNavigate();
+  const [IsLoading, setIsLoading] = useState(false);
+  const [jobs, setJobs] = useState([]);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  const [Companies, setCompanies] = useState();
+
+  useEffect(async () => {
+    if (!user) Navigate("/auth");
+    else {
+      setUser(localStorage.getItem("user"));
+      setIsLoading(true);
+      const response1 = await getAllCompanyDetails();
+      const response2 = await getAllJobs();
+      setIsLoading(false);
+      setCompanies(response1.data.companyList);
+      setJobs(response2.data.jobs);
+    }
+  }, []);
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
@@ -41,10 +64,10 @@ const Home = () => {
                           color: "rgb(60, 85, 165)",
                         }}
                       />
-                      <h3>Users</h3>
+                      <h3>Students</h3>
                     </div>
                     <div className="card_content">
-                      <h3>Total:- 43</h3>
+                      <h3 className="admin_card_content_heading">Placed: <span className="admin_card_content_value"> 43</span></h3>
                     </div>
                   </div>
                   <div className="home_jobs_card home_card">
@@ -59,7 +82,15 @@ const Home = () => {
                       <h3>Jobs</h3>
                     </div>
                     <div className="card_content">
-                      <h3>Total:- 43</h3>
+                      <h3 className="admin_card_content_heading">Total:{" "}
+                        <span className="admin_card_content_value">
+                          {jobs !== undefined ? (
+                            jobs.length
+                          ) : (
+                            0
+                          )}
+                        </span>
+                      </h3>
                     </div>
                   </div>
                   <div className="home_jobs_card home_card">
@@ -74,7 +105,16 @@ const Home = () => {
                       <h3>Companies</h3>
                     </div>
                     <div className="card_content">
-                      <h3>Total:- 43</h3>
+
+                      <h3 className="admin_card_content_heading"> Registered: {" "}
+                        <span className="admin_card_content_value">
+                          {Companies !== undefined ? (
+                            Companies.length
+                          ) : (
+                            0
+                          )}
+                        </span>
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -133,10 +173,12 @@ const Home = () => {
                 value={"Jobs"}
                 icon={<FileOpenRounded />}
               />
-              </BottomNavigation>
+            </BottomNavigation>
           </Box>
         </TabContext>
       </div>
+      {IsLoading && <Loading />}
+
     </>
   );
 };

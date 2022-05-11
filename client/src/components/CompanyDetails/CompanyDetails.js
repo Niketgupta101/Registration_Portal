@@ -17,67 +17,95 @@ const CompanyDetails = ({
             className="company_form"
             onSubmit={handleCompanySubmit}
           >
-            <div className="company_card_header">
-              <h1>Company Details ...</h1>
+            <div class="ug-pg d-flex m-0 px-0 justify-content-center">
+              <div className="flex-grow-1 ">
+                <h1 className="ug-pg-h1 prog-hover">
+                  Company Details
+                  <span className="ug-pg-span">
+                    <b>Kindly fill all necessary details</b>
+                  </span>
+                </h1>
+              </div>
             </div>
             <div className="formFlex">
-              <div className="company_form_item">
-                <label htmlFor="name">Company Name</label>
+              {/* <div className="form-floating mb-3">
+                <label for="floatingInput"htmlFor="name">Company Name</label>
                 <input
                   type="text"
-                  className="form_input_btn"
+                  className="form-control"
                   name="name"
-                  required
+                  required id="floatingInput"
                   value={companyData.name}
                   onChange={handleCompanyChange}
                 />
+              </div> */}
+              <div className="form-floating mb-3">
+                <input type="text" className="form-control" name="name" required id="floatingInput" placeholder="Company Name" value={companyData.name}
+                  onChange={handleCompanyChange} />
+                <label for="floatingInput" htmlFor="name">Name of the Company</label>
               </div>
-              <div className="company_form_item">
-                <label htmlFor="website">Website</label>
+              <div className="form-floating mb-3">
                 <input
                   type="text"
-                  className="form_input_btn"
+                  className="form-control"
                   name="website"
+                  placeholder="Website"
                   required
+                  id="floatingInput"
                   value={companyData.website}
                   onChange={handleCompanyChange}
                 />
+                <label for="floatingInput" htmlFor="website">Website</label>
+
               </div>
             </div>
-            <div className="company_form_item">
-              <label htmlFor="company_type">Company Type / Sector</label>
+            <div className="form-floating mb-3">
               <input
-                className="form_input_btn"
+                className="form-control"
                 name="company_type"
                 type="text"
-                required
+                required id="floatingInput"
+                placeholder="sector"
                 value={companyData.company_type}
                 onChange={handleCompanyChange}
               />
+              <label for="floatingInput" htmlFor="company_type">Company Type / Sector</label>
+
             </div>
-            <div className="company_form_item">
-              <label htmlFor="about">About the company</label>
+
+            <div className="form-floating mb-3">
               <textarea
                 name="about"
-                id=""
                 cols="30"
                 rows="10"
-                className="form_about_input"
+                className="form-control"
                 required
+                id="floatingInput"
+                placeholder="about"
+                style={{ height: "100px " }}
                 value={companyData.about}
                 onChange={handleCompanyChange}
               />
+              <label for="floatingInput" htmlFor="about">About the company</label>
+
             </div>
-            <div className="company_card_header">
-              <h1>Alternate HR Details</h1>
+            <div class="ug-pg d-flex m-0 px-0 justify-content-center">
+              <div className="flex-grow-1 ">
+                <h1 className="ug-pg-h1 prog-hover">
+                  HR Details
+                  <span className="ug-pg-span">
+                    <b>Kindly fill Alternate HR details as well if applicable</b>
+                  </span>
+                </h1>
+              </div>
             </div>
             <div className="person">
-              <div className="company_form_item">
-                <label htmlFor="name">Name (Primary Hr)</label>
+              <div className="form-floating mb-3">
                 <input
                   type="text"
-                  className="form_input_btn"
+                  className="form-control"
                   name="name"
+                  placeholder="primary HR"
                   value={companyData.primary_hr.name}
                   onChange={(e) =>
                     setCompanyData({
@@ -88,16 +116,18 @@ const CompanyDetails = ({
                       },
                     })
                   }
-                  required
+                  required id="floatingInput"
                 />
+                <label for="floatingInput" htmlFor="name">Name (Primary HR)</label>
+
               </div>
               <div className="formFlex">
-                <div className="company_form_item">
-                  <label htmlFor="contact_no">Contact Number</label>
+                <div className="form-floating mb-3">
                   <input
-                    type="Number"
-                    className="form_input_btn"
+                    type="text"
+                    className="form-control"
                     name="contactNo"
+                    placeholder="contact"
                     value={companyData.primary_hr.contactNo}
                     onChange={(e) =>
                       setCompanyData({
@@ -108,15 +138,17 @@ const CompanyDetails = ({
                         },
                       })
                     }
-                    required
+                    required id="floatingInput"
                   />
+                  <label for="floatingInput" htmlFor="contact_no">Contact Number</label>
+
                 </div>
-                <div className="company_form_item">
-                  <label htmlFor="emailId">Mail Id</label>
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    className="form_input_btn"
+                    className="form-control"
                     name="emailId"
+                    placeholder="email"
                     value={companyData.primary_hr.emailId}
                     onChange={(e) =>
                       setCompanyData({
@@ -127,18 +159,20 @@ const CompanyDetails = ({
                         },
                       })
                     }
-                    required
+                    required id="floatingInput"
                   />
+                  <label for="floatingInput" htmlFor="emailId">E-mail ID</label>
+
                 </div>
               </div>
             </div>
             <div className="person">
-              <div className="company_form_item">
-                <label htmlFor="name">Name (Secondary Hr)</label>
+              <div className="form-floating mb-3 mt-4">
                 <input
                   type="text"
-                  className="form_input_btn"
+                  className="form-control"
                   name="name"
+                  placeholder="name hr2"
                   value={companyData.secondary_hr.name}
                   onChange={(e) =>
                     setCompanyData({
@@ -149,16 +183,18 @@ const CompanyDetails = ({
                       },
                     })
                   }
-                  required
+                  required id="floatingInput"
                 />
+                <label for="floatingInput" htmlFor="name">Name (Alternate HR)</label>
+
               </div>
               <div className="formFlex">
-                <div className="company_form_item">
-                  <label htmlFor="contact_no">Contact Number</label>
+                <div className="form-floating mb-3">
                   <input
-                    type="number"
-                    className="form_input_btn"
+                    type="text"
+                    className="form-control"
                     name="contactNo"
+                    placeholder="contact 2"
                     value={companyData.secondary_hr.contactNo}
                     onChange={(e) =>
                       setCompanyData({
@@ -169,15 +205,17 @@ const CompanyDetails = ({
                         },
                       })
                     }
-                    required
+                    required id="floatingInput"
                   />
+                  <label for="floatingInput" htmlFor="contact_no">Contact Number</label>
+
                 </div>
-                <div className="company_form_item">
-                  <label htmlFor="emailId">Mail Id</label>
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    className="form_input_btn"
+                    className="form-control"
                     name="emailId"
+                    placeholder="email2"
                     value={companyData.secondary_hr.emailId}
                     onChange={(e) =>
                       setCompanyData({
@@ -188,8 +226,10 @@ const CompanyDetails = ({
                         },
                       })
                     }
-                    required
+                    required id="floatingInput"
                   />
+                  <label for="floatingInput" htmlFor="emailId">E-mail ID</label>
+
                 </div>
               </div>
             </div>

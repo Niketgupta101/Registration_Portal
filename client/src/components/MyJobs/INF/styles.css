@@ -8,8 +8,16 @@
   background: transparent !important;
   text-align: left !important;
   color: rgb(49, 68, 131) !important;
-  font-size: 1.5em !important;
-  margin-top: 5px !important;
+  font-size: 1.5em ;
+  margin-top: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  justify-content: center;
+  font-weight : bold;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  display: block;
+  background: rgb(138, 138, 238,0.8);
 }
 .headerText1 {
   text-align: center;
@@ -78,7 +86,6 @@ tbody, table{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0.5rem auto;
   width: 100%;
 }
 tr{
@@ -164,7 +171,7 @@ tr{
     font-size: 1em;
   }
   .courseName{
-    font-size: 0.7em !important;
+    font-size: 0.9em !important;
   }
   .ug-pg-h1{
     font-size: 1.2em;

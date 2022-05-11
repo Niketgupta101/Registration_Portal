@@ -25,7 +25,6 @@ export default function INF1({
     if (
       companyFormData.Name_Of_The_Company === "" ||
       companyFormData.Category_Or_Sector === "" ||
-      companyFormData.Website === "" ||
       jobFormData.Job_Designation === "" ||
       jobFormData.Job_Description === "" ||
       jobFormData.Place_Of_Posting === "" ||
@@ -37,6 +36,7 @@ export default function INF1({
           className="submit_btn not-allowed-btn"
           disabled
           title="Kindly fill all necessary fields"
+          style={{ cursor: "not-allowed" }}
         >
           Save and Continue
         </button>
@@ -124,12 +124,12 @@ export default function INF1({
                 </FormGroup>
                 <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
-                    Website<span style={{ color: "red" }}>*</span>
+                    Website
+                    {/* <span style={{ color: "red" }}>*</span> */}
                   </Label>
                   <Col sm={9}>
                     <Input
                       id="exampleText"
-                      required
                       name="Website"
                       type="text"
                       className="inputText"

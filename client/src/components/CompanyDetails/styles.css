@@ -9,27 +9,13 @@
     flex-grow: 1;
 }
 .company_card{
-    width: 550px;
+    width: 80vw;
     min-height: 400px;
     padding: 0 1.5rem ;
     margin: 1.5rem auto;
     background-color: #fff;
-    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.34);
-    border-radius: 3px;
 }
-.company_card_header{
-    margin: 0.5rem 0;
-    color: rgba(0, 0, 255, 0.748);
-    font-size: 10px;
-    font-weight: 500;
-    padding: 0.3rem 0;
-    border-bottom: 2px solid rgba(0, 0, 255, 0.7);
-}
-.company_card_header h1{
-    text-align: left;
-    text-transform: capitalize;
-    font-size: 22px;
-}
+
 .company_form{
     display: flex;
     flex-direction: column;
