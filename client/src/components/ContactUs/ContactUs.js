@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import SendIcon from '@mui/icons-material/Send';
-
 import "./styles.css";
 import { postContactData } from "../../api";
 
@@ -25,72 +24,106 @@ const ContactUs = () => {
   };
   return (
     <>
-      <div className="contactus">
-        <div className="contactContainer">
-          <div className="contact_left">
-            <div className="contact_header">
-              <h3>Contact Form</h3>
-            </div>
-            <form onSubmit={handleFormSubmit} className="contact_form">
-              <div className="form_item form_item1">
-                <label htmlFor="">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
+      <div className="contactUs-mainbox">
+        <div className="contact3">
+          <div className="row no-gutters">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-6 card-shadow">
+                  <img src="https://people.iitism.ac.in/~acic/assets/images/banner.jpeg" className="contactUsimage" />
+
+                </div>
+                <div className="col-lg-6">
+                  <div className="contact-box ml-3">
+                    <h1 className="font-weight-light mt-2">Quick Contact</h1>
+                    <form onSubmit={handleFormSubmit} className="mt-4">
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
+                            <input className="form-control" type="text" placeholder="Name" name="name"
+                              required
+                              value={formData.name}
+                              onChange={handleChange} />
+                          </div>
+                        </div>
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
+                            <input className="form-control" type="email" placeholder="Email address" name="email"
+                              required
+                              value={formData.email}
+                              onChange={handleChange} />
+                          </div>
+                        </div>
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
+                            <input className="form-control" type="text" placeholder="Phone" name="contactNo"
+                              required
+                              value={formData.contactNo}
+                              onChange={handleChange} />
+                          </div>
+                        </div>
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
+                            <textarea className="form-control" rows="3" placeholder="Message" name="message"
+                              id="message"
+                              required
+                              value={formData.message}
+                              onChange={handleChange}></textarea>
+                          </div>
+                        </div>
+                        <div className="col-lg-12">
+                          <button type="submit" className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2" ><span> SUBMIT</span></button>
+
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div className="col-lg-12 mt-3">
+                  <div className="card mt-4 border-0 mb-4">
+                    <div className="row">
+                      <div className="col-lg-4 col-md-4">
+                        <div className="card-body d-flex align-items-center c-detail pl-0">
+                          <div className="mr-3 align-self-center">
+                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png" />
+                          </div>
+                          <div className="mx-3">
+                            <h6 className="font-weight-medium">Address</h6>
+                            <p className="">601 Sherwood Ave.
+                              <br /> San Bernandino</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-md-4">
+                        <div className="card-body d-flex align-items-center c-detail">
+                          <div className="mr-3 align-self-center">
+                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png" />
+                          </div>
+                          <div className="mx-3">
+                            <h6 className="font-weight-medium">Phone</h6>
+                            <p className="">251 546 9442
+                              <br /> 630 446 8851</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-md-4">
+                        <div className="card-body d-flex align-items-center c-detail">
+                          <div className="mr-3 align-self-center">
+                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png" />
+                          </div>
+                          <div className="mx-3">
+                            <h6 className="font-weight-medium">Email</h6>
+                            <p className="">
+                              info@wrappixel.com
+                              <br /> 123@wrappixel.com
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="form_item form_item2">
-                <label htmlFor="">Email Id</label>
-                <input
-                  type="text"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form_item form_item3">
-                <label htmlFor="">Contact Number</label>
-                <input
-                  type="text"
-                  name="contactNo"
-                  value={formData.contactNo}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form_item form_item4">
-                <label htmlFor="">Message</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="10"
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-              </div>
-              <Button type="submit" variant="contained" endIcon={<SendIcon />} style={{ position: "relative", margin: "1rem 0"}}>
-                Send
-              </Button>
-            </form>
-          </div>
-          <hr />
-          <div className="contact_right">
-            <div className="contact_header">
-              <h3>Reach Us</h3>
-            </div>
-            <div className="reach_item reach_item1">
-              <h4>CONTACT NUMBER: </h4>
-              <h5>+91-1234567890</h5>
-            </div>
-            <div className="reach_item reach_item2">
-              <h4>EMAIL: </h4>
-              <h5>registration@gmail.com</h5>
-            </div>
-            <div className="reach_item reach_item3">
-              <h4>ADDRESS: </h4>
-              <h5>Dhanbad, Jharkhand</h5>
             </div>
           </div>
         </div>
