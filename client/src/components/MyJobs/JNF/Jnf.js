@@ -370,7 +370,7 @@ const Jnf = () => {
             handleTwoYearMscChange={handleTwoYearMscChange}
           />
         </TabPanel>
-        <TabPanel value={"3"}>
+        {/* <TabPanel value={"3"}>
           <JNF3
             setPage={setPage}
             threeYearData={threeYearData}
@@ -383,8 +383,8 @@ const Jnf = () => {
             handleTwoYearMscChange={handleTwoYearMscChange}
             handleUpdateJnfById={handleUpdateJnfById}
           />
-        </TabPanel>
-        <TabPanel value={"4"}>
+        </TabPanel> */}
+        <TabPanel value={"3"}>
           <JNF4
             setPage={setPage}
             resumeShortListingData={resumeShortListingData}
@@ -400,7 +400,7 @@ const Jnf = () => {
             handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel>
-        <TabPanel value={"5"}>
+        <TabPanel value={"4"}>
           <ReviewJnf
             setPage={setPage}
             JnfData={JnfData}

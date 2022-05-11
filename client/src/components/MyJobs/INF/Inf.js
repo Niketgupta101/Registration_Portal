@@ -387,7 +387,7 @@ const Inf = () => {
               handleTwoYearMscChange={handleTwoYearMscChange}
             />
           </TabPanel>
-          <TabPanel value={"3"}>
+          {/* <TabPanel value={"3"}>
             <INF3
               setPage={setPage}
               threeYearData={threeYearData}
@@ -400,8 +400,8 @@ const Inf = () => {
               handleTwoYearMscChange={handleTwoYearMscChange}
               handleUpdateInfById={handleUpdateInfById}
             />
-          </TabPanel>
-          <TabPanel value={"4"}>
+          </TabPanel> */}
+          <TabPanel value={"3"}>
             <INF4
               setPage={setPage}
               resumeShortListingData={resumeShortListingData}
@@ -417,7 +417,7 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel>
-          <TabPanel value={"5"}>
+          <TabPanel value={"4"}>
             <ReviewInf
               setPage={setPage}
               InfData={InfData}
