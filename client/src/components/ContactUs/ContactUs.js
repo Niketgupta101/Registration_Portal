@@ -80,8 +80,8 @@ const ContactUs = () => {
                   </div>
                 </div>
                 <div className="col-lg-12 mt-3">
-                  <div className="card mt-4 border-0 mb-4">
-                    <div className="row">
+                  <div className="card-contact mt-4 border-0 mb-4">
+                    <div className="row ms-3">
                       <div className="col-lg-4 col-md-4">
                         <div className="card-body d-flex align-items-center c-detail pl-0">
                           <div className="mr-3 align-self-center">
@@ -89,8 +89,8 @@ const ContactUs = () => {
                           </div>
                           <div className="mx-3">
                             <h6 className="font-weight-medium">Address</h6>
-                            <p className="">601 Sherwood Ave.
-                              <br /> San Bernandino</p>
+                            <p className=""> Dhanbad, Jharkhand
+                              <br />  826004</p>
                           </div>
                         </div>
                       </div>
@@ -99,7 +99,7 @@ const ContactUs = () => {
                           <div className="mr-3 align-self-center">
                             <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png" />
                           </div>
-                          <div className="mx-3">
+                          <div className="ms-4">
                             <h6 className="font-weight-medium">Phone</h6>
                             <p className="">251 546 9442
                               <br /> 630 446 8851</p>
@@ -114,8 +114,8 @@ const ContactUs = () => {
                           <div className="mx-3">
                             <h6 className="font-weight-medium">Email</h6>
                             <p className="">
-                              info@wrappixel.com
-                              <br /> 123@wrappixel.com
+                              cdc@iitism.ac.in
+                              {/* <br /> 123@wrappixel.com */}
                             </p>
                           </div>
                         </div>
