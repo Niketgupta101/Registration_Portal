@@ -125,6 +125,12 @@ const searchCompany = async (pattern, offset, pagelimit, next) => {
     return next(error);
   }
 };
+const fetchAllCompaniesDeafultMail = async () =>{
+  const data = await readSheet('1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4', 'Invitations', 'A2:K'); 
+  console.log(data);
+ 
+  return data;
+}
 
 module.exports = {
   postCompanyDetails,
@@ -132,5 +138,6 @@ module.exports = {
   fetchAllCompanies,
   sendInvitationToAll,
   searchCompany,
-  updateCompanyInGSheets
+  updateCompanyInGSheets,
+  fetchAllCompaniesDeafultMail
 };

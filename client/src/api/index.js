@@ -89,3 +89,8 @@ export const getAllPendingJobsForUser = () => API.get('/jobs/user/pending');
 export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
 
 export const getGraduationYear = () => API.get('/jobs/year');
+//-------------------------Invites Companies...........................
+
+export const sendInvitationToAllCompanies = () => API.post('/company/mail/all');
+export const fetchAllCompaniesDeafultMail = () => API.get('/company/mail/defaultinvites');
+export const sendCustomEmail = (data) =>API.post('/company/sendcustommail',data);
