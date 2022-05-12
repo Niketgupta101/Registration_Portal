@@ -76,10 +76,11 @@ const fetchAllDefaultInvites = async (req,res,next) =>{
 }
 const sendCustomEmail = async (req,res,next)=>{
     try {
-        console.log("REQUEST BODY");
-        console.log(req.body);
-        const {emailId,subject,message} = req.body;
-        const response = await sendEmail(emailId,subject,message);
+        
+        const emailId=req.body.email;
+        const subject=req.body.subject;
+        const message=req.body.message;       
+        const response = await sendEmail(emailId,subject,message);        
         res.status(201).json(response);
     }
     catch (error) {
