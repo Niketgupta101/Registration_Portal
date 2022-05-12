@@ -41,11 +41,11 @@ import { useNavigate } from "react-router";
   }, []);
 
   async function clickFunction(){
-    console.log("Before Clicked");
+    
     const result= await sendInvitationToAllCompanies();
     
     console.log(result);
-    console.log("After Clicked");
+   
   }
  
 console.log(posts);  

@@ -113,10 +113,12 @@ const updateCompanyInGSheets = async (company) => {
 
 const searchCompany = async (pattern, offset, pagelimit, next) => {
   try {
+    
     let companyList = await Company.find({
       name: { $regex: pattern, $options: "im" },
     })
       .sort({ updatedAt: -1 })
+      
       .skip(offset)
       .limit(pagelimit);
 

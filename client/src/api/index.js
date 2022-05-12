@@ -94,3 +94,7 @@ export const getGraduationYear = () => API.get('/jobs/year');
 export const sendInvitationToAllCompanies = () => API.post('/company/mail/all');
 export const fetchAllCompaniesDeafultMail = () => API.get('/company/mail/defaultinvites');
 export const sendCustomEmail = (data) =>API.post('/company/sendcustommail',data);
+
+//-------------------------Invites Companies...........................
+
+export const searchCompanyByPattern = (pattern) =>API.get(`/company/${pattern}/1/5`)
