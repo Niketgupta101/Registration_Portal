@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const companyDetailsSchema = new Schema({
   userId: { type: Schema.ObjectId, ref: "User" },
-  name: { type: String, required: true },
+  name: { type: String, required: true, text: true },
   website: { type: String, required: true },
   company_type: { type: String, default: true },
   about: { type: String, required: true },

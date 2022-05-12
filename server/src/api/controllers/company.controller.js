@@ -1,4 +1,4 @@
-const { postCompanyDetails, fetchCompanyById, fetchAllCompanies, sendInvitationToAll } = require('../services/companyProvider');
+const { postCompanyDetails, fetchCompanyById, fetchAllCompanies, sendInvitationToAll, searchCompany } = require('../services/companyProvider');
 
 const saveCompanyDetails = async (req, res, next) => {
     const details = req.body;
@@ -49,4 +49,20 @@ const sendInvitationToAllCompanies = async (req, res, next) => {
     }
 }
 
-module.exports = { getCompanyDetailsById, saveCompanyDetails, getAllCompanyDetails, sendInvitationToAllCompanies };
+const searchCompanyByPattern = async (req, res, next) => {
+    let { pattern, pageno, pagelimit } = req.params;
+
+    try {
+        pageno= pageno || 1;
+        pagelimit = pagelimit || 20;
+        let offset = pagelimit*(pageno - 1);
+
+        let response = await searchCompany(pattern, offset, pagelimit, next);
+
+        res.status(201).json(response);
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports = { getCompanyDetailsById, saveCompanyDetails, getAllCompanyDetails, sendInvitationToAllCompanies, searchCompanyByPattern };
