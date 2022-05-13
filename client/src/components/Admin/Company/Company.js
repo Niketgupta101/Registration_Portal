@@ -15,7 +15,7 @@ const Company = () => {
   const [IsLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
-  const [search, setSearch] = useState(initialSearch);
+  const [search, setSearch] = useState();
 
   useEffect(async () => {
     if (!user) Navigate('/auth');
@@ -27,26 +27,25 @@ const Company = () => {
       setCompanies(response.data.companyList);
     }
   }, []);
-  const handleChange = async (e) => {
-    setSearch({ ...initialSearch, [e.target.name]: e.target.value });
-    e.preventDefault();
-    console.log(search);
-    let response = await searchCompanyByPattern(search);
 
-    console.log(response);
-
-    setCompanies(response.data.companyList);
+  const handleOnChange = (e) => {
+    setSearch(e.target.value);
   };
-  // const handleSearchSubmit = async (e) => {
-  //   e.preventDefault();
 
-  //   let response = await searchCompanyByPattern(search);
-  //   console.log("res");
-  //   console.log(response);
-
-  //   setSearch({ ...initialSearch });
-  //   setCompanies(response.data.companyList)
-  // };
+  useEffect(() => {
+    async function fetchCompanies() {
+      console.log({ search });
+      var response;
+      if (!search) {
+        response = await getAllCompanyDetails();
+      } else {
+        response = await searchCompanyByPattern(search);
+      }
+      console.log(response);
+      setCompanies(response.data.companyList);
+    }
+    fetchCompanies();
+  }, [search]);
 
   return (
     <>
@@ -63,8 +62,8 @@ const Company = () => {
                   className='form-control'
                   placeholder='Type Company Name'
                   name='search'
-                  value={search.search}
-                  onChange={handleChange}
+                  value={search}
+                  onChange={handleOnChange}
                 />
               </div>
               <Button variant='outlined'>

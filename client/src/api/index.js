@@ -1,15 +1,16 @@
 const axios = require('axios');
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem('token');
 
 console.log(token);
-const API = axios.create({ baseURL: 'http://localhost:5000/v1',
-credentials: "include",
-    withCredentials: true,
-    headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
-    }
- });
+const API = axios.create({
+  baseURL: 'http://localhost:5000/v1',
+  credentials: 'include',
+  withCredentials: true,
+  headers: {
+    authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+  },
+});
 
 // -------------------- Auth apis ---------------------------
 
@@ -19,11 +20,14 @@ export const login = (data) => API.post(`/auth/login`, data);
 
 export const adminLogin = (data) => API.post('/auth/admin/login', data);
 
-export const forgetPassword = (emailId) => API.post(`/auth/forgotPassword`, { emailId });
+export const forgetPassword = (emailId) =>
+  API.post(`/auth/forgotPassword`, { emailId });
 
-export const resetPassword = (id, password) => API.put(`/auth/resetPassword/${id}`, {password});
+export const resetPassword = (id, password) =>
+  API.put(`/auth/resetPassword/${id}`, { password });
 
-export const sendConfirmationLink = (email) => API.put('/auth/sendLink', { emailId : email });
+export const sendConfirmationLink = (email) =>
+  API.put('/auth/sendLink', { emailId: email });
 
 // -------------------- Company details -------------------------
 
@@ -43,7 +47,7 @@ export const getAllInf = () => API.get(`/inf/admin`);
 
 export const createNewInf = (data) => API.post(`/inf`, data);
 
-export const updateInfById = (data,id) => API.put(`/inf/${id}`, data);
+export const updateInfById = (data, id) => API.put(`/inf/${id}`, data);
 
 export const submitInf = (id) => API.get(`/inf/submit/${id}`);
 
@@ -61,7 +65,7 @@ export const getAllJnf = () => API.get(`/jnf/admin`);
 
 export const createNewJnf = (data) => API.post(`/jnf`, data);
 
-export const updateJnfById = (data,id) => API.put(`/jnf/${id}`, data);
+export const updateJnfById = (data, id) => API.put(`/jnf/${id}`, data);
 
 export const submitJnf = (id) => API.get(`/jnf/submit/${id}`);
 
@@ -93,9 +97,12 @@ export const getGraduationYear = () => API.get('/jobs/year');
 //-------------------------Invites Companies...........................
 
 export const sendInvitationToAllCompanies = () => API.post('/company/mail/all');
-export const fetchAllCompaniesDeafultMail = () => API.get('/company/mail/defaultinvites');
-export const sendCustomEmail = (data) =>API.post('/company/sendcustommail',data);
+export const fetchAllCompaniesDeafultMail = () =>
+  API.get('/company/mail/defaultinvites');
+export const sendCustomEmail = (data) =>
+  API.post('/company/sendcustommail', data);
 
 //-------------------------Invites Companies...........................
 
-export const searchCompanyByPattern = (pattern) =>API.get(`/company/${pattern}/1/5`)
+export const searchCompanyByPattern = (pattern) =>
+  API.get(`/company/search/${pattern}/1/5`);

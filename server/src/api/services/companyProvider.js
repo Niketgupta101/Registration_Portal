@@ -1,8 +1,8 @@
-const Company = require("../models/company_details");
-const ErrorResponse = require("../utils/errorResponse");
-const User = require("../models/userModel");
-const { readSheet, updateSheet } = require("../utils/service/GSheets");
-const { sendInvitationMailToCompany } = require("./emailProvider");
+const Company = require('../models/company_details');
+const ErrorResponse = require('../utils/errorResponse');
+const User = require('../models/userModel');
+const { readSheet, updateSheet } = require('../utils/service/GSheets');
+const { sendInvitationMailToCompany } = require('./emailProvider');
 
 const postCompanyDetails = async (details, next) => {
   try {
@@ -18,14 +18,14 @@ const postCompanyDetails = async (details, next) => {
 
 const fetchCompanyById = async (comapnyId, next) => {
   try {
-    let company = await Company.findOne({ _id: comapnyId }).populate("userId", {
+    let company = await Company.findOne({ _id: comapnyId }).populate('userId', {
       Name: 1,
       emailId: 1,
       ProfilePhoto: 1,
     });
 
     if (!company)
-      return next(new ErrorResponse("No company found with given id.", 404));
+      return next(new ErrorResponse('No company found with given id.', 404));
 
     return { success: true, company };
   } catch (error) {
@@ -49,9 +49,9 @@ const fetchAllCompanies = async (offset, pagelimit, next) => {
 const sendInvitationToAll = async (next) => {
   try {
     const data = await readSheet(
-      "1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4",
-      "Invitations",
-      "A2:K"
+      '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+      'Invitations',
+      'A2:K'
     );
 
     for (let i in data) {
@@ -62,17 +62,17 @@ const sendInvitationToAll = async (next) => {
           `${data[i][6]}`,
           `IIT(ISM)_${data[i][1]}_2022`
         );
-        data[i][10] = "Sent";
+        data[i][10] = 'Sent';
       } catch (error) {
         console.log(error);
       }
     }
     console.log(data);
     await updateSheet(
-      "1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4",
-      "Invitations",
+      '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+      'Invitations',
       data,
-      "A2:K"
+      'A2:K'
     );
 
     return { success: true };
@@ -98,41 +98,43 @@ const updateCompanyInGSheets = async (company) => {
   ];
 
   let data = await readSheet(
-    "1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4",
-    "Companies",
-    "A1:K"
+    '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+    'Companies',
+    'A1:K'
   );
   data.push(details);
   await updateSheet(
-    "1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4",
-    "Companies",
+    '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+    'Companies',
     data,
-    "A1:K"
+    'A1:K'
   );
 };
 
 const searchCompany = async (pattern, offset, pagelimit, next) => {
+  console.log({ pattern, offset, pagelimit });
   try {
-    
     let companyList = await Company.find({
-      name: { $regex: pattern, $options: "im" },
+      name: { $regex: pattern, $options: 'im' },
     })
       .sort({ updatedAt: -1 })
-      
       .skip(offset)
       .limit(pagelimit);
-
+    console.log({ companyList });
     return { success: true, companyList };
   } catch (error) {
     return next(error);
   }
 };
-const fetchAllCompaniesDeafultMail = async () =>{
-  const data = await readSheet('1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4', 'Invitations', 'A2:K'); 
+const fetchAllCompaniesDeafultMail = async () => {
+  const data = await readSheet(
+    '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+    'Invitations',
+    'A2:K'
+  );
 
- 
   return data;
-}
+};
 
 module.exports = {
   postCompanyDetails,
@@ -141,5 +143,5 @@ module.exports = {
   sendInvitationToAll,
   searchCompany,
   updateCompanyInGSheets,
-  fetchAllCompaniesDeafultMail
+  fetchAllCompaniesDeafultMail,
 };
