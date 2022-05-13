@@ -3,15 +3,19 @@ import { useNavigate } from 'react-router-dom';
 
 import './styles.css';
 import { Pagination, Stack, Button } from '@mui/material';
-import { getAllCompanyDetails } from '../../../api';
+import { getAllCompanyDetails, searchCompanyByPattern } from '../../../api';
 import Loading from '../../Loading/Loading';
 import { FaSearch } from 'react-icons/fa';
 
 const Company = () => {
   const Navigate = useNavigate();
+  const initialSearch = {
+    search: '',
+  };
   const [IsLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
+  const [search, setSearch] = useState(initialSearch);
 
   useEffect(async () => {
     if (!user) Navigate('/auth');
@@ -23,6 +27,26 @@ const Company = () => {
       setCompanies(response.data.companyList);
     }
   }, []);
+  const handleChange = async (e) => {
+    setSearch({ ...initialSearch, [e.target.name]: e.target.value });
+    e.preventDefault();
+    console.log(search);
+    let response = await searchCompanyByPattern(search);
+
+    console.log(response);
+
+    setCompanies(response.data.companyList);
+  };
+  // const handleSearchSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   let response = await searchCompanyByPattern(search);
+  //   console.log("res");
+  //   console.log(response);
+
+  //   setSearch({ ...initialSearch });
+  //   setCompanies(response.data.companyList)
+  // };
 
   return (
     <>
@@ -38,6 +62,9 @@ const Company = () => {
                   id='form1'
                   className='form-control'
                   placeholder='Type Company Name'
+                  name='search'
+                  value={search.search}
+                  onChange={handleChange}
                 />
               </div>
               <Button variant='outlined'>

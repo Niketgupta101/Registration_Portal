@@ -8,7 +8,7 @@ import CompanyDetails from "./components/CompanyDetails/CompanyDetails";
 import MyJobs from "./components/MyJobs/MyJobs";
 import Courses from "./components/Courses/Courses";
 import ContactUs from "./components/ContactUs/ContactUs";
-
+import { Home2 } from "./components/Auth/Home2";
 import AdminHome from "./components/Admin/Home/Home";
 import AdminAuth from "./components/Admin/Auth/SignIn";
 import Company from "./components/Admin/Company/Company";
@@ -26,6 +26,7 @@ import Twoyearmsc from "./components/Courses/Twoyearmsc";
 import Twoyearmtech from "./components/Courses/Twoyearmtech";
 import Btech from "./components/Courses/btech";
 import Threeyearmsc from "./components/Courses/Threeyearmsc";
+import CustomInvite from "./components/Admin/Invites/CustomInvite"
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           {/* ------------------------------ User Home --------------------- */}
 
           <Route path="/" element={<Home />} />
+          <Route path="/new" element={<Home2 />} />
           <Route path="/create/inf" element={<Inf />} />
           <Route path="/create/jnf" element={<Jnf />} />
 
@@ -75,6 +77,8 @@ const App = () => {
           <Route path="/courses/twoyearmsc" element={<Twoyearmsc />} />
           <Route path="/courses/twoyearmtech" element={<Twoyearmtech />} />
           <Route path="/courses/btech" element={<Btech />} />
+          {/* ------------------------------ Custom-Invite--------------------- */}
+          <Route path="/invite" element={<CustomInvite />} />
         </Routes>
       </div>
     </BrowserRouter>

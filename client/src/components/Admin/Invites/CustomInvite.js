@@ -1,30 +1,34 @@
-import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React from 'react'
+import { Input,FormGroup,Label,Button,Form,Row,Col } from 'reactstrap';
+import { sendCustomEmail } from '../../../api';
+import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
-import "./styles.css";
-import { postContactData } from "../../api";
 
-const ContactUs = () => {
+
+
+const  CustomInvite = () => {
   const initialData = {
-    name: "",
+    
     email: "",
-    contactNo: "",
+    subject:"",
     message: "",
   };
-  const [formData, setFormData] = useState(initialData);
+  const [emailData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...emailData, [e.target.name]: e.target.value });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    let response = await postContactData(formData);
+    let response = await sendCustomEmail(emailData);
     setFormData({ ...initialData });
   };
+ 
+    
   return (
     <>
-      <div className="contactUs-mainbox">
+    <div className="contactUs-mainbox">
         <div className="contact3">
           <div className="row no-gutters">
             <div className="container">
@@ -35,44 +39,45 @@ const ContactUs = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="contact-box ml-3">
-                    <h1 className="font-weight-light mt-2">Quick Contact</h1>
+                    <h1 className="font-weight-light mt-2">Send An Email</h1>
                     <form onSubmit={handleFormSubmit} className="mt-4">
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
                             <input className="form-control" type="text" placeholder="Name" name="name"
                               required
-                              value={formData.name}
-                              onChange={handleChange} />
+                              />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
                             <input className="form-control" type="email" placeholder="Email address" name="email"
                               required
-                              value={formData.email}
+                              value={emailData.email}
                               onChange={handleChange} />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
-                            <input className="form-control" type="text" placeholder="Phone" name="contactNo"
+                            <textarea className="form-control" rows="3" placeholder="Subject" name="subject"
+                              id="subject"
                               required
-                              value={formData.contactNo}
-                              onChange={handleChange} />
+                              value={emailData.subject}
+                              onChange={handleChange}></textarea>
                           </div>
                         </div>
+                    
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
                             <textarea className="form-control" rows="3" placeholder="Message" name="message"
                               id="message"
                               required
-                              value={formData.message}
+                              value={emailData.message}
                               onChange={handleChange}></textarea>
                           </div>
                         </div>
                         <div className="col-lg-12">
-                          <button type="submit" className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2" ><span> SUBMIT</span></button>
+                          <button type="submit" className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2" ><span> SEND</span></button>
 
                         </div>
                       </div>
@@ -128,8 +133,10 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+  
+           
     </>
-  );
-};
+  )
+}
 
-export default ContactUs;
+export default CustomInvite;

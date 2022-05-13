@@ -11,11 +11,12 @@ import { getAllCompanyDetails } from "../../../api";
 import { getAllJobs } from "../../../api/index";
 
 import { PeopleAltTwoTone } from "@material-ui/icons";
-import { FileOpenRounded, HomeOutlined, HomeWork } from "@mui/icons-material";
+import { FileOpenRounded, HomeOutlined, HomeWork, Work } from "@mui/icons-material";
 import Company from "../Company/Company";
 import Jobs from "../Jobs/Jobs";
 import { TabContext, TabPanel } from "@mui/lab";
 import Contact from "./Contact";
+import Invites from "../Invites/Invites"
 
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -141,6 +142,9 @@ const Home = () => {
             <TabPanel value="Jobs">
               <Jobs />
             </TabPanel>
+            <TabPanel value="Invites">
+              < Invites />
+            </TabPanel>
             <BottomNavigation
               showLabels
               value={value}
@@ -171,7 +175,13 @@ const Home = () => {
                 sx={style}
                 label="Jobs"
                 value={"Jobs"}
-                icon={<FileOpenRounded />}
+                icon={<Work />}
+              />
+              <BottomNavigationAction
+                sx={style}
+                label="Invites"
+                value={"Invites"}
+              icon={<FileOpenRounded />}
               />
             </BottomNavigation>
           </Box>

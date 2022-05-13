@@ -93,9 +93,9 @@ const Jobs = () => {
                     <button className="secondary_btn">
                       {" "}
                       <a
-                        href={job.downloadLink}
+                        href={job.downloadLink} 
                         style={{ textDecoration: "none", color: "inherit" }}
-                      >
+                      > 
                         {" "}
                         Download
                       </a>{" "}

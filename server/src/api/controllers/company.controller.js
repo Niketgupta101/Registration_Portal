@@ -1,5 +1,5 @@
-const { postCompanyDetails, fetchCompanyById, fetchAllCompanies, sendInvitationToAll, searchCompany } = require('../services/companyProvider');
-
+const { postCompanyDetails, fetchCompanyById, fetchAllCompanies, sendInvitationToAll, searchCompany,fetchAllCompaniesDeafultMail } = require('../services/companyProvider');
+const {sendEmail} =require('../utils/service/email')
 const saveCompanyDetails = async (req, res, next) => {
     const details = req.body;
     try {
@@ -64,5 +64,28 @@ const searchCompanyByPattern = async (req, res, next) => {
         next(error);
     }
 }
+const fetchAllDefaultInvites = async (req,res,next) =>{
+    try {
+        const response = await fetchAllCompaniesDeafultMail();
 
-module.exports = { getCompanyDetailsById, saveCompanyDetails, getAllCompanyDetails, sendInvitationToAllCompanies, searchCompanyByPattern };
+        res.status(201).json(response);
+    } catch (error) {
+        next(error);
+    }
+
+}
+const sendCustomEmail = async (req,res,next)=>{
+    try {
+        
+        const emailId=req.body.email;
+        const subject=req.body.subject;
+        const message=req.body.message;       
+        const response = await sendEmail(emailId,subject,message);        
+        res.status(201).json(response);
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+module.exports = { getCompanyDetailsById, saveCompanyDetails, getAllCompanyDetails, sendInvitationToAllCompanies, searchCompanyByPattern,fetchAllDefaultInvites,sendCustomEmail};

@@ -46,10 +46,10 @@ exports.sendEmail = async (to, subject, html) => {
             from: process.env.EMAIL_USERNAME,
             to: to,
             subject: subject,
-            cc: [ 'cooldangerouscoder@gmail.com', 'nisargvaghela2001@gmail.com' ],
+            cc: [ 'cooldangerouscoder@gmail.com','rg.19je0667@mech.iitism.ac.in' ],
             // text: text,
             html: html
-    };
+    };   
     let emailTransporter = await createTransporter();
     emailTransporter.sendMail(mailOptions, function(error, info) {
         if(error)
