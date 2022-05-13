@@ -3,9 +3,17 @@ import React from "react";
 // import { sendInvitationToAllCompanies } from "../../../api";
 import { fetchAllCompaniesDeafultMail, sendInvitationToAllCompanies} from "../../../api";
 import { useEffect, useState } from "react";
-import {Table} from "reactstrap";
 import { useNavigate } from "react-router";
-
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from "reactstrap";
 
 
 
@@ -48,21 +56,73 @@ import { useNavigate } from "react-router";
    
   }
  
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+  
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  
+
 console.log(posts);  
   return (
     <>
          {loading ? (
                     <h4>Loading...</h4>) :
-                    (posts.map((item) =>
-                      
-                        <h4 key={item[0]}>{item}</h4>)
-                    )
+                    <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                      <TableHead>
+                        <TableRow>
+                          <StyledTableCell>SNo</StyledTableCell>
+                          <StyledTableCell align="left">Name</StyledTableCell>
+                          <StyledTableCell align="left">Phone No&nbsp;</StyledTableCell>
+                          <StyledTableCell align="left">Email&nbsp;</StyledTableCell>
+                          <StyledTableCell align="left">Status&nbsp;</StyledTableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {posts.map((item) => (
+                          <StyledTableRow key={item[0]}>
+                            <StyledTableCell component="th" scope="row">
+                              {item[0]}
+                            </StyledTableCell>
+                            <StyledTableCell align="left">{item[1]}</StyledTableCell>
+                            <StyledTableCell align="left">{item[5]}</StyledTableCell>
+                            <StyledTableCell align="left">{item[6]}</StyledTableCell>
+                            <StyledTableCell align="left">{item[10]}</StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 }
-    <button onClick={clickFunction}>Send Mail to default Companies</button>
-    <button onClick={()=>Navigate('/invite')}>Send A Customized Mail</button>
- 
 
-  </>
+    <div className="buttonDiv">
+        <Button onClick={clickFunction} color="success" outline className="secondary_btn_default">
+          
+        Send default Mail to Companies
+          
+        </Button>
+        <Button onClick={()=>Navigate('/invite')} color="info" outline className="secondary_btn_customized">
+          
+        Send A Customized Mail
+          
+        </Button>
+      </div> 
+</>
   )
 };
 
