@@ -11,7 +11,7 @@ import { getAllCompanyDetails } from "../../../api";
 import { getAllJobs } from "../../../api/index";
 
 import { PeopleAltTwoTone } from "@material-ui/icons";
-import { FileOpenRounded, HomeOutlined, HomeWork } from "@mui/icons-material";
+import { FileOpenRounded, HomeOutlined, HomeWork, Work } from "@mui/icons-material";
 import Company from "../Company/Company";
 import Jobs from "../Jobs/Jobs";
 import { TabContext, TabPanel } from "@mui/lab";
@@ -175,7 +175,7 @@ const Home = () => {
                 sx={style}
                 label="Jobs"
                 value={"Jobs"}
-                icon={<FileOpenRounded />}
+                icon={<Work />}
               />
               <BottomNavigationAction
                 sx={style}
