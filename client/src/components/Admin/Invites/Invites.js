@@ -55,7 +55,8 @@ import {Button} from "reactstrap";
     console.log(result);
    
   }
- 
+  
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -82,6 +83,17 @@ console.log(posts);
     <>
          {loading ? (
                     <h4>Loading...</h4>) :
+                    <>
+                    <div className="flex-grow-1 ">
+                    <h3 className="ug-pg-h1 prog-hover">
+                      List of companies for sending default email.
+                      <span className="ug-pg-span">
+                        <b>
+                          Customized mails could also be sent.
+                        </b>
+                      </span>
+                    </h3>
+                  </div>
                     <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                       <TableHead>
@@ -108,6 +120,7 @@ console.log(posts);
                       </TableBody>
                     </Table>
                   </TableContainer>
+                  </>
                 }
 
     <div className="buttonDiv">
