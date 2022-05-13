@@ -89,13 +89,16 @@ export const getAllPendingJobsForUser = () => API.get('/jobs/user/pending');
 export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
 
 export const getGraduationYear = () => API.get('/jobs/year');
+//-------------------------Invites Companies...........................
+
+export const sendInvitationToAllCompanies = () => API.post('/company/mail/all');
+export const fetchAllCompaniesDeafultMail = () => API.get('/company/mail/defaultinvites');
+export const sendCustomEmail = (data) =>API.post('/company/sendcustommail',data);
+
+//-------------------------Invites Companies...........................
+
+export const searchCompanyByPattern = (pattern) =>API.get(`/company/${pattern}/1/5`)
 
 // ------------------------ Courses ------------------------------------
 
 export const getAllCourseData = () =>API.get('/courses');
-
-
-// export const getAllCourseData = async () => {
-//     return await axios.get('http://localhost:5000/v1/courses');
-
-// }
