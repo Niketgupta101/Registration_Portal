@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Button } from "@mui/material";
 import Modal from "react-bootstrap/Modal";
 import DonutModal from "./DonutModal"
 
 import "./styles.css";
+import {useLocation} from 'react-router-dom';
 
 export default function Twoyearmsc() {
+
+  const location = useLocation();
+  const [twoyearmsc,setTwoyearmsc]=useState(location.state);
 
   const [show, setShow] = useState(false);
   const [modalHeading, setmodalHeading] = useState("");
   const [courseLink, setCourseLink] = useState("");
   const handleClose = () => setShow(false);
   const [data, setData] = useState([53, 22]);
-  function handleShow(name, stats, courseLink) {
+  function handleShow(name, stats) {
     setData(() => stats);
     setmodalHeading(() => name);
-    setCourseLink(() => courseLink);
+    setCourseLink(() => stats[5]);
     setShow(true);
   }
 
@@ -34,9 +38,9 @@ export default function Twoyearmsc() {
         </div>
         <main>
           <ol class="gradient-list">
-            <li><Button variant="text" onClick={() => handleShow("Chemistry", data)}><div className="course-name-li">Chemistry</div></Button></li>
-            <li><Button variant="text" onClick={() => handleShow("Mathematics & Computing", data)}><div className="course-name-li">Mathematics & Computing</div></Button></li>
-            <li><Button variant="text" onClick={() => handleShow("Physics", data)}><div className="course-name-li">Physics</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Chemistry", twoyearmsc[0])}><div className="course-name-li">Chemistry</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Mathematics & Computing", twoyearmsc[1])}><div className="course-name-li">Mathematics & Computing</div></Button></li>
+            <li><Button variant="text" onClick={() => handleShow("Physics", twoyearmsc[2])}><div className="course-name-li">Physics</div></Button></li>
           </ol>
 
         </main>
@@ -49,7 +53,7 @@ export default function Twoyearmsc() {
         </Modal.Header>
         <Modal.Body>
           <DonutModal data={data} />
-          <Button variant="text" target="_blank" href="http://www.google.com/">Click here for Course Structure</Button>
+          <Button variant="text" target="_blank" href={`https://${courseLink}`}>Click here for Course Structure</Button>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

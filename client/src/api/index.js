@@ -105,4 +105,8 @@ export const sendCustomEmail = (data) =>
 //-------------------------Invites Companies...........................
 
 export const searchCompanyByPattern = (pattern) =>
-  API.get(`/company/search/${pattern}/1/5`);
+  API.get(`/search/company/${pattern}/1/5`);
+
+// ------------------------ Courses ------------------------------------
+
+export const getAllCourseData = () => API.get('/courses');
