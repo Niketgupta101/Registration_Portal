@@ -9,23 +9,24 @@ import { FaSearch } from 'react-icons/fa';
 
 const Company = () => {
   const Navigate = useNavigate();
-  const initialSearch = {
-    search: '',
-  };
+
   const [IsLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
   const [search, setSearch] = useState();
 
-  useEffect(async () => {
-    if (!user) Navigate('/auth');
-    else {
-      setUser(localStorage.getItem('user'));
-      setIsLoading(true);
-      const response = await getAllCompanyDetails();
-      setIsLoading(false);
-      setCompanies(response.data.companyList);
+  useEffect(() => {
+    async function fetchAllCompanies() {
+      if (!user) Navigate('/auth');
+      else {
+        setUser(localStorage.getItem('user'));
+        setIsLoading(true);
+        const response = await getAllCompanyDetails();
+        setIsLoading(false);
+        setCompanies(response.data.companyList);
+      }
     }
+    fetchAllCompanies();
   }, []);
 
   const handleOnChange = (e) => {

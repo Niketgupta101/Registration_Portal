@@ -5,6 +5,7 @@ const {
   sendInvitationToAll,
   searchCompany,
   fetchAllCompaniesDeafultMail,
+  sendInvitations,
 } = require('../services/companyProvider');
 const { sendEmail } = require('../utils/service/email');
 const saveCompanyDetails = async (req, res, next) => {
@@ -49,6 +50,17 @@ const getAllCompanyDetails = async (req, res, next) => {
 const sendInvitationToAllCompanies = async (req, res, next) => {
   try {
     const response = await sendInvitationToAll(next);
+
+    res.status(201).json(response);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const sendinvitationsToSelected = async (req, res, next) => {
+  const { companyList, subject, message } = req.body;
+  try {
+    const response = await sendInvitations(companyList, subject, message);
 
     res.status(201).json(response);
   } catch (error) {
@@ -102,4 +114,5 @@ module.exports = {
   searchCompanyByPattern,
   fetchAllDefaultInvites,
   sendCustomEmail,
+  sendinvitationsToSelected,
 };

@@ -3,6 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const User = require('../models/userModel');
 const { readSheet, updateSheet } = require('../utils/service/GSheets');
 const { sendInvitationMailToCompany } = require('./emailProvider');
+const { sendEmail } = require('../utils/service/email');
 
 const postCompanyDetails = async (details, next) => {
   try {
@@ -81,6 +82,33 @@ const sendInvitationToAll = async (next) => {
   }
 };
 
+const sendInvitations = async (data, subject, message, next) => {
+  console.log({ data, subject, message });
+  try {
+    for (let i in data) {
+      try {
+        console.log(data[i][6]);
+        await sendEmail(data[i][6], subject, message);
+        data[i][10] = 'Sent';
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    console.log(data);
+    // await updateSheet(
+    //   '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+    //   'Invitations',
+    //   data,
+    //   'A2:K'
+    // );
+
+    return { success: true, data };
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+};
+
 const updateCompanyInGSheets = async (company) => {
   let user = await User.findOne({ _id: company.userId }, { Name: 1 });
   let details = [
@@ -144,4 +172,5 @@ module.exports = {
   searchCompany,
   updateCompanyInGSheets,
   fetchAllCompaniesDeafultMail,
+  sendInvitations,
 };

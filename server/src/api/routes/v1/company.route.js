@@ -16,6 +16,7 @@ const {
   searchCompanyByPattern,
   fetchAllDefaultInvites,
   sendCustomEmail,
+  sendinvitationsToSelected,
 } = require('../../controllers/company.controller');
 
 router.post('/', saveCompanyDetails);
@@ -29,6 +30,7 @@ router.get(
   getAllCompanyDetails
 );
 router.post('/mail/all', sendInvitationToAllCompanies);
+router.post('/mail/selected', sendinvitationsToSelected);
 
 router.get(
   '/search/:pattern/:pageno/:pagelimit',
