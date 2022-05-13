@@ -89,3 +89,13 @@ export const getAllPendingJobsForUser = () => API.get('/jobs/user/pending');
 export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
 
 export const getGraduationYear = () => API.get('/jobs/year');
+
+// ------------------------ Courses ------------------------------------
+
+export const getAllCourseData = () =>API.get('/courses');
+
+
+// export const getAllCourseData = async () => {
+//     return await axios.get('http://localhost:5000/v1/courses');
+
+// }
