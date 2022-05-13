@@ -1,7 +1,8 @@
 const axios = require('axios');
 
-// const token = localStorage.getItem("token");
+const token = localStorage.getItem("token");
 
+console.log(token);
 const API = axios.create({ baseURL: 'http://localhost:5000/v1',
 credentials: "include",
     withCredentials: true,
