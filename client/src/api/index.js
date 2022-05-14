@@ -123,7 +123,7 @@ export const sendCustomEmail = (data) =>
 //-------------------------Invites Companies...........................
 
 export const searchCompanyByPattern = (pattern) =>
-  API.get(`/search/company/${pattern}/1/5`, setHeader());
+  API.get(`/company/search/${pattern}/1/5`, setHeader());
 
 // ------------------------ Courses ------------------------------------
 

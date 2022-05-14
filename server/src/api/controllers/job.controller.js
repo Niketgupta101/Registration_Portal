@@ -19,10 +19,16 @@ const getAllJobs = async (req, res, next) => {
 const getAllJobsForUser = async (req, res, next) => {
   const userId = req.user._id;
   try {
-    let infList = await INF.find({ userId }).sort({ createdAt: -1 });
-    let jnfList = await JNF.find({ userId }).sort({ createdAt: -1 });
+    let infList = await INFstatus.find({ userId })
+      .populate('data')
+      .sort({ createdAt: -1 });
+
+    let jnfList = await JNFstatus.find({ userId })
+      .populate('data')
+      .sort({ createdAt: -1 });
 
     let jobs = [...infList, ...jnfList];
+    console.log({ jobs });
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {
@@ -60,22 +66,22 @@ const getPendingJobForms = async (req, res, next) => {
   const userId = req.user._id;
   console.log({ userId });
   try {
-    let infs = await INFstatus.find(
-      { progress: 'incomplete', userId },
-      { infId: 1, _id: 0 }
-    ).populate('infId');
-    let jnfs = await JNFstatus.find(
-      { progress: 'incomplete', userId },
-      { infId: 1, _id: 0 }
-    ).populate('jnfId');
+    let infs = await INFstatus.find({
+      progress: 'incomplete',
+      userId,
+    }).populate('data');
+    let jnfs = await JNFstatus.find({
+      progress: 'incomplete',
+      userId,
+    }).populate('data');
 
     let jobs = [];
 
     for (let inf in infs) {
-      jobs.push(infs[inf].infId);
+      jobs.push(infs[inf]);
     }
     for (let jnf in jnfs) {
-      jobs.push(jnfs[jnf].jnfId);
+      jobs.push(jnfs[jnf]);
     }
 
     console.log({ jobs });

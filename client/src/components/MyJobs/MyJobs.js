@@ -48,9 +48,13 @@ const MyJobs = () => {
     }
   };
 
+  const handleEditJob = async () => {};
+
   useEffect(() => {
     fetchJobs(Filter);
   }, [Filter]);
+
+  console.log({ Jobs });
 
   return (
     <>
@@ -125,67 +129,62 @@ const MyJobs = () => {
                 <div className='job_card' key={job._id}>
                   <div
                     className='badge'
-                    style={{ backgroundColor: !job.isIntern && 'red' }}
+                    style={{ backgroundColor: !job.data.isIntern && 'red' }}
                   >
-                    <h6>{job.isIntern ? 'Intern' : 'FTE'}</h6>
+                    <h6>{job.data.isIntern ? 'Intern' : 'FTE'}</h6>
                   </div>
                   <div className='card_content'>
                     <div className='content_heading'>
-                      <h4>{job?.Company_Overview?.Name_Of_The_Company}</h4>
+                      <h4>{job.data?.Company_Overview?.Name_Of_The_Company}</h4>
                     </div>
                     <div className='content_text' style={{ fontWeight: '500' }}>
                       <h5>
                         <span>Sector</span>:{' '}
-                        {job?.Company_Overview?.Category_Or_Sector}
+                        {job.data?.Company_Overview?.Category_Or_Sector}
                       </h5>
                       <h5>
-                        {job.isIntern ? (
+                        {job.data.isIntern ? (
                           <>
                             <span>Mode</span>:{' '}
-                            {job?.Intern_Profile?.Mode_Of_Internship}
+                            {job.data?.Intern_Profile?.Mode_Of_Internship}
                           </>
                         ) : (
                           <>
                             <span>Place of posting</span>:{' '}
-                            {job?.Job_Details?.Place_Of_Posting}
+                            {job.data?.Job_Details?.Place_Of_Posting}
                           </>
                         )}
                       </h5>
                       <h5>
-                        {job.isIntern ? (
+                        {job.data.isIntern ? (
                           <>
                             <span>Stipend</span>:{' '}
-                            {job.Salary_Details.Salary_Per_Month}
+                            {job.data.Salary_Details.Salary_Per_Month}
                           </>
                         ) : (
                           <>
-                            <span>CTC</span>: {job.Salary_Details.CTC}
+                            <span>CTC</span>: {job.data.Salary_Details.CTC}
                           </>
                         )}
                       </h5>
-                      {job.isIntern && (
+                      {job.data.isIntern && (
                         <h5>
                           <span>Provision for PPO</span>:{' '}
                           {
-                            job.Salary_Details
+                            job.data.Salary_Details
                               .PPO_provision_on_performance_basis
                           }
                         </h5>
                       )}
-                      {Filter === 'Pending Job Form' ? (
+                      {job.progress === 'incomplete' ? (
                         <div
                           style={{ display: 'flex', justifyContent: 'center' }}
                         >
-                          <button className='secondary_btn'>
-                            <a
-                              href={job.previewLink}
-                              style={{
-                                textDecoration: 'none',
-                                color: 'inherit',
-                              }}
-                            >
-                              Continue
-                            </a>
+                          <button
+                            className='secondary_btn'
+                            onClick={handleEditJob}
+                          >
+                            Continue
                           </button>
                         </div>
                       ) : (
@@ -194,7 +193,7 @@ const MyJobs = () => {
                         >
                           <button className='secondary_btn'>
                             <a
-                              href={job.previewLink}
+                              href={job.data.previewLink}
                               style={{
                                 textDecoration: 'none',
                                 color: 'inherit',
@@ -205,7 +204,7 @@ const MyJobs = () => {
                           </button>
                           <button className='secondary_btn'>
                             <a
-                              href={job.downloadLink}
+                              href={job.data.downloadLink}
                               style={{
                                 textDecoration: 'none',
                                 color: 'inherit',
