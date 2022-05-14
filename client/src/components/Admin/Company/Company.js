@@ -15,17 +15,18 @@ const Company = () => {
   const [Companies, setCompanies] = useState();
   const [search, setSearch] = useState();
 
-  useEffect(() => {
-    async function fetchAllCompanies() {
-      if (!user) Navigate('/auth');
-      else {
-        setUser(localStorage.getItem('user'));
-        setIsLoading(true);
-        const response = await getAllCompanyDetails();
-        setIsLoading(false);
-        setCompanies(response.data.companyList);
-      }
+  async function fetchAllCompanies() {
+    if (!user) Navigate('/auth');
+    else {
+      setUser(localStorage.getItem('user'));
+      setIsLoading(true);
+      const response = await getAllCompanyDetails();
+      setIsLoading(false);
+      setCompanies(response.data.companyList);
     }
+  }
+
+  useEffect(() => {
     fetchAllCompanies();
   }, []);
 

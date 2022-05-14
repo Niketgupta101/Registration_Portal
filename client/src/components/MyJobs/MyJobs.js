@@ -1,4 +1,3 @@
-import { Add } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 
@@ -27,7 +26,7 @@ const MyJobs = () => {
 
   const [Jobs, setJobs] = useState([]);
 
-  useEffect(async () => {
+  const fetchJobs = async (Filter) => {
     if (!user) Navigate('/auth');
     else {
       setUser(JSON.parse(localStorage.getItem('user')));
@@ -47,6 +46,10 @@ const MyJobs = () => {
       }
       setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchJobs(Filter);
   }, [Filter]);
 
   return (
@@ -174,7 +177,6 @@ const MyJobs = () => {
                           style={{ display: 'flex', justifyContent: 'center' }}
                         >
                           <button className='secondary_btn'>
-                            {' '}
                             <a
                               href={job.previewLink}
                               style={{
@@ -182,9 +184,8 @@ const MyJobs = () => {
                                 color: 'inherit',
                               }}
                             >
-                              {' '}
                               Continue
-                            </a>{' '}
+                            </a>
                           </button>
                         </div>
                       ) : (
@@ -192,7 +193,6 @@ const MyJobs = () => {
                           style={{ display: 'flex', justifyContent: 'center' }}
                         >
                           <button className='secondary_btn'>
-                            {' '}
                             <a
                               href={job.previewLink}
                               style={{
@@ -200,12 +200,10 @@ const MyJobs = () => {
                                 color: 'inherit',
                               }}
                             >
-                              {' '}
                               View Job
-                            </a>{' '}
+                            </a>
                           </button>
                           <button className='secondary_btn'>
-                            {' '}
                             <a
                               href={job.downloadLink}
                               style={{
@@ -213,9 +211,8 @@ const MyJobs = () => {
                                 color: 'inherit',
                               }}
                             >
-                              {' '}
                               Download
-                            </a>{' '}
+                            </a>
                           </button>
                         </div>
                       )}
