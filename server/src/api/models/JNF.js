@@ -140,7 +140,7 @@ const jnfSchema = new Schema({
 
 const JNFstatusSchema = new Schema({
   userId: { type: Schema.ObjectId, ref: 'User' },
-  data: { type: Schema.ObjectId, ref: 'jNF' },
+  data: { type: Schema.ObjectId, ref: 'JNF' },
   progress: {
     type: String,
     default: 'incomplete',
