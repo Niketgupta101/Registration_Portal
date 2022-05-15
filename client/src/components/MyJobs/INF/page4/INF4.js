@@ -258,7 +258,7 @@ const INF4 = ({
         <div className="flex">
           <button
             className="submit_btn"
-            onClick={(e) => e.preventDefault() / setPage("3")}
+            onClick={(e) => e.preventDefault() / setPage("2")}
           >
             Back
           </button>
