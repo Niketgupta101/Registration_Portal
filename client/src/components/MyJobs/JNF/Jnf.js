@@ -1,37 +1,39 @@
-import { TabContext, TabPanel } from "@mui/lab";
-import React, { useState } from "react";
-import { createNewJnf, submitJnf, updateJnfById } from "../../../api";
+import { TabContext, TabPanel } from '@mui/lab';
+import React, { useEffect, useState } from 'react';
+import { getjnfById, submitJnf, updateJnfById } from '../../../api';
 
-import "./styles.css";
+import './styles.css';
 
-import ReviewJnf from "./ReviewJnf/ReviewJnf";
-import JNF1 from "./page1/JNF1";
-import JNF2 from "./page2/JNF2";
-import JNF3 from "./page3/JNF3";
-import JNF4 from "./page4/JNF4";
+import ReviewJnf from './ReviewJnf/ReviewJnf';
+import JNF1 from './page1/JNF1';
+import JNF2 from './page2/JNF2';
+// import JNF3 from './page3/JNF3';
+import JNF4 from './page4/JNF4';
 
-import { useNavigate } from "react-router-dom";
-import Loading from "../../Loading/Loading";
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../../Loading/Loading';
 
 const Jnf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState('1');
   const Navigate = useNavigate();
 
+  const { JnfId } = useParams();
+
   const companyData = {
-    Name_Of_The_Company: "",
-    Category_Or_Sector: "",
-    Website: "",
+    Name_Of_The_Company: '',
+    Category_Or_Sector: '',
+    Website: '',
   };
   const jobData = {
-    Job_Designation: "",
-    Job_Description: "",
-    Place_Of_Posting: "",
+    Job_Designation: '',
+    Job_Description: '',
+    Place_Of_Posting: '',
   };
   const salaryData = {
-    CTC_Breakup: "",
-    Bond_Details: "",
-    CTC: "",
+    CTC_Breakup: '',
+    Bond_Details: '',
+    CTC: '',
   };
 
   const [companyFormData, setCompanyFormData] = useState(companyData);
@@ -186,7 +188,7 @@ const Jnf = () => {
   const selectionData = {
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
-    Eligibility_Criteria: "",
+    Eligibility_Criteria: '',
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -236,7 +238,7 @@ const Jnf = () => {
 
   // --------------------------------------------------
 
-  const [JnfId, setJnfId] = useState("");
+  // const [JnfId, setJnfId] = useState('');
 
   const [JnfData, setJnfData] = useState({
     Company_Overview: companyFormData,
@@ -261,28 +263,62 @@ const Jnf = () => {
     },
   });
 
-  const handleCreateNewJnf = async (e) => {
-    e.preventDefault();
-    console.log(localStorage.getItem("token"));
+  const fetchInfData = async (JnfId) => {
+    const response = await getjnfById(JnfId);
 
-    setJnfData((prevData) => ({
-      ...prevData,
-      Company_Overview: { ...companyFormData },
-      Job_Details: { ...jobFormData },
-      Salary_Details: { ...salaryFormData },
-    }));
-
-    try {
-      setIsLoading(true);
-      let response = await createNewJnf(JnfData);
-      setIsLoading(false);
-      setJnfId(response.data.newJnf._id);
-      console.log(response);
-      setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(response.data);
+    setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
+    setCompanyFormData({ ...response.data.jnf.Company_Overview });
+    setJobFormData({ ...response.data.jnf.Job_Details });
+    setSalaryFormData({ ...response.data.jnf.Salary_Details });
+    setFourYearData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Four_Year_Btech_Programs,
+    });
+    setFiveYearData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
+    });
+    setSkillData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
+    });
+    setThreeYearData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Three_Year_MSc_Tech_Programs,
+    });
+    setTwoYearData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Two_Year_Mtech_Programs,
+    });
+    setTwoYearMbaData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Two_Year_MBA_Programs,
+    });
+    setTwoYearMscData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Two_Year_MSc_Programs,
+    });
+    setResumeShortListingData({
+      ...response.data.jnf.Selection_Procedure.Resume_Shortlisting,
+    });
+    setTypeOfTestData({
+      ...response.data.jnf.Selection_Procedure.Type_Of_Test,
+    });
+    setOtherQualificationsRoundData({
+      ...response.data.jnf.Selection_Procedure.Other_Qualification_Rounds,
+    });
+    setSelectionFormData({
+      Total_Number_Of_Rounds:
+        response.data.jnf.Selection_Procedure.Total_Number_Of_Rounds,
+      Number_Of_Offers: response.data.jnf.Selection_Procedure.Number_Of_Offers,
+      Eligibility_Criteria:
+        response.data.jnf.Selection_Procedure.Eligibility_Criteria,
+    });
   };
+
+  useEffect(() => {
+    if (JnfId) fetchInfData(JnfId);
+  }, [JnfId]);
 
   const handleUpdateJnfById = async (e) => {
     e.preventDefault();
@@ -329,7 +365,7 @@ const Jnf = () => {
       let response = await submitJnf(JnfId);
       setIsLoading(false);
       console.log(response);
-      Navigate("/myjobs");
+      Navigate('/myjobs');
     } catch (error) {
       console.log(error);
     }
@@ -338,7 +374,7 @@ const Jnf = () => {
   return (
     <>
       <TabContext value={page}>
-        <TabPanel value="1">
+        <TabPanel value='1'>
           <JNF1
             setPage={setPage}
             companyFormData={companyFormData}
@@ -347,10 +383,10 @@ const Jnf = () => {
             handleCompanyDataChange={handleCompanyDataChange}
             handleJobDataChange={handleJobDataChange}
             handleSalaryDataChange={handleSalaryDataChange}
-            handleCreateNewJnf={handleCreateNewJnf}
+            handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel>
-        <TabPanel value={"2"}>
+        <TabPanel value={'2'}>
           <JNF2
             setPage={setPage}
             fourYearData={fourYearData}
@@ -384,7 +420,7 @@ const Jnf = () => {
             handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel> */}
-        <TabPanel value={"3"}>
+        <TabPanel value={'3'}>
           <JNF4
             setPage={setPage}
             resumeShortListingData={resumeShortListingData}
@@ -400,7 +436,7 @@ const Jnf = () => {
             handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel>
-        <TabPanel value={"4"}>
+        <TabPanel value={'4'}>
           <ReviewJnf
             setPage={setPage}
             JnfData={JnfData}

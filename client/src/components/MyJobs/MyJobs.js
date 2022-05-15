@@ -7,6 +7,10 @@ import {
   getAllJnfForUser,
   getAllPendingJobsForUser,
   getAllJobsForUser,
+  createNewInf,
+  createNewJnf,
+  deleteInfById,
+  deleteJnfById,
 } from '../../api';
 import Loading from '../Loading/Loading';
 import Stack from '@mui/material/Stack';
@@ -48,9 +52,38 @@ const MyJobs = () => {
     }
   };
 
-  const handleEditJob = async () => {};
+  const handleFillInf = async () => {
+    const response = await createNewInf({});
+
+    Navigate(`/create/inf/${response.data.newInf._id}`);
+  };
+
+  const handleFillJnf = async () => {
+    const response = await createNewJnf({});
+
+    Navigate(`/create/jnf/${response.data.newJnf._id}`);
+  };
+
+  const handleEditJob = async (id, isIntern) => {
+    if (isIntern) Navigate(`/create/inf/${id}`);
+    else Navigate(`/create/jnf/${id}`);
+  };
 
   useEffect(() => {
+    fetchJobs(Filter);
+    async function filterJobs() {
+      for (let i in Jobs) {
+        if (Jobs[i].data.Company_Overview === undefined) {
+          console.log(i);
+          if (Jobs[i].data.isIntern) {
+            await deleteInfById(Jobs[i].data._id);
+          } else {
+            await deleteJnfById(Jobs[i].data._id);
+          }
+        }
+      }
+    }
+    filterJobs();
     fetchJobs(Filter);
   }, [Filter]);
 
@@ -82,18 +115,12 @@ const MyJobs = () => {
                 direction='row'
               >
                 <div className='bt animate__animated animate__fadeInLeft'>
-                  <Button
-                    variant='outlined'
-                    onClick={() => Navigate('/create/inf')}
-                  >
+                  <Button variant='outlined' onClick={handleFillInf}>
                     <div className='courses-button'>FILL INF</div>
                   </Button>
                 </div>
                 <div className='bt animate__animated animate__fadeInRight'>
-                  <Button
-                    variant='outlined'
-                    onClick={() => Navigate('/create/jnf')}
-                  >
+                  <Button variant='outlined' onClick={handleFillJnf}>
                     <div className='courses-button'>FILL JNF</div>
                   </Button>
                 </div>
@@ -129,9 +156,9 @@ const MyJobs = () => {
                 <div className='job_card' key={job._id}>
                   <div
                     className='badge'
-                    style={{ backgroundColor: !job.data.isIntern && 'red' }}
+                    style={{ backgroundColor: !job.data?.isIntern && 'red' }}
                   >
-                    <h6>{job.data.isIntern ? 'Intern' : 'FTE'}</h6>
+                    <h6>{job.data?.isIntern ? 'Intern' : 'FTE'}</h6>
                   </div>
                   <div className='card_content'>
                     <div className='content_heading'>
@@ -159,11 +186,11 @@ const MyJobs = () => {
                         {job.data.isIntern ? (
                           <>
                             <span>Stipend</span>:{' '}
-                            {job.data.Salary_Details.Salary_Per_Month}
+                            {job.data?.Salary_Details?.Salary_Per_Month}
                           </>
                         ) : (
                           <>
-                            <span>CTC</span>: {job.data.Salary_Details.CTC}
+                            <span>CTC</span>: {job?.data?.Salary_Details?.CTC}
                           </>
                         )}
                       </h5>
@@ -171,8 +198,8 @@ const MyJobs = () => {
                         <h5>
                           <span>Provision for PPO</span>:{' '}
                           {
-                            job.data.Salary_Details
-                              .PPO_provision_on_performance_basis
+                            job.data?.Salary_Details
+                              ?.PPO_provision_on_performance_basis
                           }
                         </h5>
                       )}
@@ -182,7 +209,9 @@ const MyJobs = () => {
                         >
                           <button
                             className='secondary_btn'
-                            onClick={handleEditJob}
+                            onClick={() =>
+                              handleEditJob(job.data._id, job.data.isIntern)
+                            }
                           >
                             Continue
                           </button>

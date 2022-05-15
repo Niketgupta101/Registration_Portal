@@ -1,8 +1,21 @@
 const express = require('express');
 
-const { protect, isAccesible, authorizeRoles } = require('../../middlewares/auth');
+const {
+  protect,
+  isAccesible,
+  authorizeRoles,
+} = require('../../middlewares/auth');
 
-const { getInfById, getAllInfForUser, getLatestInfOfUser, getAllInf, createNewInf, updateInfById, deleteInfById, submitInf } = require('../../controllers/inf.controller');
+const {
+  getInfById,
+  getAllInfForUser,
+  getLatestInfOfUser,
+  getAllInf,
+  createNewInf,
+  updateInfById,
+  deleteInfById,
+  submitInf,
+} = require('../../controllers/inf.controller');
 
 const router = express.Router();
 
@@ -22,6 +35,6 @@ router.put('/:id', protect, updateInfById);
 
 router.get('/submit/:id', protect, submitInf);
 
-router.delete('/delete/:id', protect, isAccesible, deleteInfById);
+router.delete('/delete/:id', protect, deleteInfById);
 
 module.exports = router;

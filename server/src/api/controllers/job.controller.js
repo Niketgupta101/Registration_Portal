@@ -4,8 +4,10 @@ const Year = require('../models/GraduationYear');
 
 const getAllJobs = async (req, res, next) => {
   try {
-    let infList = await INF.find({}).sort({ createdAt: -1 });
-    let jnfList = await JNF.find({}).sort({ createdAt: -1 });
+    let infList = await INF.find().sort({ createdAt: -1 });
+    let jnfList = await JNF.find().sort({ createdAt: -1 });
+
+    console.log(infList.length, jnfList.length);
 
     let jobs = [...infList, ...jnfList];
 
@@ -27,8 +29,9 @@ const getAllJobsForUser = async (req, res, next) => {
       .populate('data')
       .sort({ createdAt: -1 });
 
+    console.log(infList.length, jnfList.length);
+
     let jobs = [...infList, ...jnfList];
-    console.log({ jobs });
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {
@@ -83,8 +86,6 @@ const getPendingJobForms = async (req, res, next) => {
     for (let jnf in jnfs) {
       jobs.push(jnfs[jnf]);
     }
-
-    console.log({ jobs });
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {

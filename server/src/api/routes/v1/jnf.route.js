@@ -2,7 +2,16 @@ const express = require('express');
 
 const { protect, isAccesible } = require('../../middlewares/auth');
 
-const { getJnfById, getAllJnfForUser, getLatestJnfOfUser, getAllJnf, createNewJnf, updateJnfById, deleteJnfById, submitJnf } = require('../../controllers/jnf.controller');
+const {
+  getJnfById,
+  getAllJnfForUser,
+  getLatestJnfOfUser,
+  getAllJnf,
+  createNewJnf,
+  updateJnfById,
+  deleteJnfById,
+  submitJnf,
+} = require('../../controllers/jnf.controller');
 
 const router = express.Router();
 
@@ -22,6 +31,6 @@ router.put('/:id', protect, updateJnfById);
 
 router.get('/submit/:id', protect, submitJnf);
 
-router.delete('/delete/:id', protect, isAccesible, deleteJnfById);
+router.delete('/delete/:id', protect, deleteJnfById);
 
 module.exports = router;

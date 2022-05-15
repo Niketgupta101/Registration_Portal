@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Form, FormGroup, Label, Col, Input } from "reactstrap";
+import React, { useState } from 'react';
+import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 
-import "./INF1.css";
+import './INF1.css';
 
-import "animate.css";
-import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
+import 'animate.css';
+import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
 
-const style = { alignItems: "center" };
+const style = { alignItems: 'center' };
 
 export default function INF1({
   companyFormData,
@@ -15,7 +15,7 @@ export default function INF1({
   handleCompanyDataChange,
   handleJobDataChange,
   handleStipendDataChange,
-  handleCreateNewInf,
+  handleUpdateInfById,
 }) {
   const [companyoverview, setCompanyoverview] = useState(false);
   const [internprofile, setInternprofile] = useState(false);
@@ -23,27 +23,27 @@ export default function INF1({
 
   function submitButton() {
     if (
-      companyFormData.Name_Of_The_Company === "" ||
-      companyFormData.Category_Or_Sector === "" ||
-      jobFormData.Job_Designation === "" ||
-      jobFormData.Job_Description === "" ||
-      jobFormData.Place_Of_Posting === "" ||
-      stipendFormData.Salary_Per_Month === "" ||
-      stipendFormData.CTC === ""
+      companyFormData.Name_Of_The_Company === '' ||
+      companyFormData.Category_Or_Sector === '' ||
+      jobFormData.Job_Designation === '' ||
+      jobFormData.Job_Description === '' ||
+      jobFormData.Place_Of_Posting === '' ||
+      stipendFormData.Salary_Per_Month === '' ||
+      stipendFormData.CTC === ''
     ) {
       return (
         <button
-          className="submit_btn not-allowed-btn"
+          className='submit_btn not-allowed-btn'
           disabled
-          title="Kindly fill all necessary fields"
-          style={{ cursor: "not-allowed" }}
+          title='Kindly fill all necessary fields'
+          style={{ cursor: 'not-allowed' }}
         >
           Save and Continue
         </button>
       );
     } else {
       return (
-        <button className="submit_btn" type="submit">
+        <button className='submit_btn' type='submit'>
           Save and Continue
         </button>
       );
@@ -51,16 +51,16 @@ export default function INF1({
   }
 
   return (
-    <div className="overallDiv1">
+    <div className='overallDiv1'>
       <div>
-        <header className="headerText1">
+        <header className='headerText1'>
           INTERNSHIP NOTIFICATION FORM (2021-2022)
         </header>
       </div>
-      <Form onSubmit={handleCreateNewInf}>
-        <div className="animate__animated animate__fadeInLeft container col-lg-12 col-md-12 category p-0 my-3  ">
+      <Form onSubmit={handleUpdateInfById}>
+        <div className='animate__animated animate__fadeInLeft container col-lg-12 col-md-12 category p-0 my-3  '>
           <div
-            className="upper"
+            className='upper'
             onClick={() => {
               setTimeout(() => {
                 if (companyoverview) {
@@ -71,71 +71,71 @@ export default function INF1({
               }, 200);
             }}
           >
-            <div className="category-heading d-flex">
-              <header className="headerText flex-grow-1">
+            <div className='category-heading d-flex'>
+              <header className='headerText flex-grow-1'>
                 COMPANY OVERVIEW
               </header>
-              <div className="mx-4 p-2 align-self-center">
+              <div className='mx-4 p-2 align-self-center'>
                 {companyoverview === true ? (
-                  <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
+                  <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
-                  <FaAngleDoubleDown size={30} color="rgb(60, 85, 165)" />
+                  <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
                 )}
               </div>
             </div>
           </div>
           {companyoverview === true ? (
-            <div className="lower p-2 ">
-              <div className="p-2 mx-3 animate__animated animate__zoomIn">
+            <div className='lower p-2 '>
+              <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
-                    Name of the Company <span style={{ color: "red" }}>*</span>
+                  <Label for='exampleText' sm={3} className='fontText'>
+                    Name of the Company <span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
+                      id='exampleText'
                       required
-                      name="Name_Of_The_Company"
-                      type="text"
-                      className="inputText"
-                      style={{ lineHeight: "0.8" }}
+                      name='Name_Of_The_Company'
+                      type='text'
+                      className='inputText'
+                      style={{ lineHeight: '0.8' }}
                       value={companyFormData.Name_Of_The_Company}
                       onChange={handleCompanyDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
-                    Category/Sector<span style={{ color: "red" }}>*</span>
+                  <Label for='exampleText' sm={3} className='fontText'>
+                    Category/Sector<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
-                      name="Category_Or_Sector"
-                      type="text"
+                      id='exampleText'
+                      name='Category_Or_Sector'
+                      type='text'
                       required
-                      className="inputText"
+                      className='inputText'
                       value={companyFormData.Category_Or_Sector}
                       onChange={handleCompanyDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
+                  <Label for='exampleText' sm={3} className='fontText'>
                     Website
                     {/* <span style={{ color: "red" }}>*</span> */}
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
-                      name="Website"
-                      type="text"
-                      className="inputText"
+                      id='exampleText'
+                      name='Website'
+                      type='text'
+                      className='inputText'
                       value={companyFormData.Website}
                       onChange={handleCompanyDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     />
                   </Col>
                 </FormGroup>
@@ -146,9 +146,9 @@ export default function INF1({
           )}
         </div>
 
-        <div className="animate__animated animate__fadeInRight container col-lg-12 col-md-12 category p-0 my-3 ">
+        <div className='animate__animated animate__fadeInRight container col-lg-12 col-md-12 category p-0 my-3 '>
           <div
-            className="upper"
+            className='upper'
             onClick={() => {
               setTimeout(() => {
                 if (internprofile) {
@@ -159,34 +159,34 @@ export default function INF1({
               }, 200);
             }}
           >
-            <div className="category-heading d-flex">
-              <header className="headerText flex-grow-1">INTERN PROFILE</header>
-              <div className="mx-4 p-2 align-self-center">
+            <div className='category-heading d-flex'>
+              <header className='headerText flex-grow-1'>INTERN PROFILE</header>
+              <div className='mx-4 p-2 align-self-center'>
                 {internprofile === true ? (
-                  <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
+                  <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
-                  <FaAngleDoubleDown size={30} color="rgb(60, 85, 165)" />
+                  <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
                 )}
               </div>
             </div>
           </div>
           {internprofile === true ? (
-            <div className="lower p-2 ">
-              <div className="p-2 mx-3 animate__animated animate__zoomIn">
+            <div className='lower p-2 '>
+              <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={3} className="fontText">
-                    Internship Duration<span style={{ color: "red" }}>*</span>
+                  <Label for='exampleSelect' sm={3} className='fontText'>
+                    Internship Duration<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleSelect"
-                      name="Internship_Duration"
+                      id='exampleSelect'
+                      name='Internship_Duration'
                       required
-                      type="select"
-                      className="inputText"
+                      type='select'
+                      className='inputText'
                       value={jobFormData.Internship_Duration}
                       onChange={handleJobDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     >
                       <option>
                         Jan – June 2022 Dual Degree/ Integrated M. Tech courses
@@ -204,53 +204,53 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
-                    Job Designation<span style={{ color: "red" }}>*</span>
+                  <Label for='exampleText' sm={3} className='fontText'>
+                    Job Designation<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
-                      name="Job_Designation"
+                      id='exampleText'
+                      name='Job_Designation'
                       required
-                      className="inputText"
-                      type="text"
+                      className='inputText'
+                      type='text'
                       value={jobFormData.Job_Designation}
                       onChange={handleJobDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
-                    Job Description<span style={{ color: "red" }}>*</span>
+                  <Label for='exampleText' sm={3} className='fontText'>
+                    Job Description<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
-                      name="Job_Description"
-                      type="text"
+                      id='exampleText'
+                      name='Job_Description'
+                      type='text'
                       required
-                      className="inputText"
+                      className='inputText'
                       value={jobFormData.Job_Description}
                       onChange={handleJobDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={3} className="fontText">
-                    Mode of Internship<span style={{ color: "red" }}>*</span>
+                  <Label for='exampleSelect' sm={3} className='fontText'>
+                    Mode of Internship<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleSelect"
-                      name="Mode_Of_Internship"
-                      type="select"
+                      id='exampleSelect'
+                      name='Mode_Of_Internship'
+                      type='select'
                       required
-                      className="inputText"
+                      className='inputText'
                       value={jobFormData.Mode_Of_Internship}
                       onChange={handleJobDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     >
                       <option>Virtual</option>
                       <option>Physical</option>
@@ -258,19 +258,19 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
+                  <Label for='exampleText' sm={3} className='fontText'>
                     Place of posting (in case of Physical internship)
-                    <span style={{ color: "red" }}>*</span>
+                    <span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
-                      name="Place_Of_Posting"
-                      type="text"
-                      className="inputText"
+                      id='exampleText'
+                      name='Place_Of_Posting'
+                      type='text'
+                      className='inputText'
                       value={jobFormData.Place_Of_Posting}
                       onChange={handleJobDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                       required
                     />
                   </Col>
@@ -282,9 +282,9 @@ export default function INF1({
           )}
         </div>
 
-        <div className="animate__animated animate__fadeInLeft container col-lg-12 col-md-12 category p-0 my-3 ">
+        <div className='animate__animated animate__fadeInLeft container col-lg-12 col-md-12 category p-0 my-3 '>
           <div
-            className="upper"
+            className='upper'
             onClick={() => {
               setTimeout(() => {
                 if (stipenddetail) {
@@ -295,59 +295,59 @@ export default function INF1({
               }, 200);
             }}
           >
-            <div className="category-heading d-flex">
-              <header className="headerText flex-grow-1">
+            <div className='category-heading d-flex'>
+              <header className='headerText flex-grow-1'>
                 STIPEND DETAILS
               </header>
-              <div className="mx-4 p-2 align-self-center">
+              <div className='mx-4 p-2 align-self-center'>
                 {stipenddetail === true ? (
-                  <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
+                  <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
-                  <FaAngleDoubleDown size={30} color="rgb(60, 85, 165)" />
+                  <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
                 )}
               </div>
             </div>
           </div>
           {stipenddetail === true ? (
-            <div className="lower p-2 ">
-              <div className="p-2 mx-3 animate__animated animate__zoomIn">
+            <div className='lower p-2 '>
+              <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
                   <Label
-                    for="exampleText"
+                    for='exampleText'
                     sm={3}
-                    text-colour="blue"
-                    className="fontText"
+                    text-colour='blue'
+                    className='fontText'
                   >
-                    Stipend per month<span style={{ color: "red" }}>*</span>
+                    Stipend per month<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
+                      id='exampleText'
                       required
-                      name="Salary_Per_Month"
-                      type="text"
-                      className="inputText"
+                      name='Salary_Per_Month'
+                      type='text'
+                      className='inputText'
                       value={stipendFormData.Salary_Per_Month}
                       onChange={handleStipendDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={3} className="fontText">
+                  <Label for='exampleSelect' sm={3} className='fontText'>
                     PPO provision on performance basis
-                    <span style={{ color: "red" }}>*</span>
+                    <span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleSelect"
-                      name="PPO_provision_on_performance_basis"
-                      type="select"
+                      id='exampleSelect'
+                      name='PPO_provision_on_performance_basis'
+                      type='select'
                       required
-                      className="inputText"
+                      className='inputText'
                       value={stipendFormData.PPO_provision_on_performance_basis}
                       onChange={handleStipendDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                     >
                       <option>Yes</option>
                       <option>No</option>
@@ -355,18 +355,18 @@ export default function INF1({
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleText" sm={3} className="fontText">
-                    CTC for PPO selects<span style={{ color: "red" }}>*</span>
+                  <Label for='exampleText' sm={3} className='fontText'>
+                    CTC for PPO selects<span style={{ color: 'red' }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
-                      id="exampleText"
-                      name="CTC"
-                      type="text"
-                      className="inputText"
+                      id='exampleText'
+                      name='CTC'
+                      type='text'
+                      className='inputText'
                       value={stipendFormData.CTC}
                       onChange={handleStipendDataChange}
-                      autoComplete="off"
+                      autoComplete='off'
                       required
                     />
                   </Col>
@@ -379,11 +379,11 @@ export default function INF1({
         </div>
 
         <div
-          className="formFlex"
+          className='formFlex'
           style={{
-            display: "flex",
-            flexDirection: "row-reverse",
-            marginTop: "1.5rem",
+            display: 'flex',
+            flexDirection: 'row-reverse',
+            marginTop: '1.5rem',
           }}
         >
           {submitButton()}

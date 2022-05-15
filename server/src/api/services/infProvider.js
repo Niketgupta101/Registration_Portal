@@ -136,8 +136,10 @@ const removeINFById = async (id, next) => {
     if (!inf) return next(new ErrorResponse('No INF found with given id', 404));
 
     await inf.remove();
-    let infStatus = await INFstatus.find({ data: id });
+    let infStatus = await INFstatus.findOne({ data: id });
     await infStatus.remove();
+
+    console.log({ success: true });
 
     return { success: true, inf };
   } catch (error) {
