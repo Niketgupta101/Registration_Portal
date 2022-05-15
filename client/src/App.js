@@ -27,6 +27,7 @@ import Twoyearmtech from './components/Courses/Twoyearmtech';
 import Btech from './components/Courses/btech';
 import Threeyearmsc from './components/Courses/Threeyearmsc';
 import CustomInvite from './components/Admin/Invites/CustomInvite';
+import Invites from './components/Admin/Invites/Invites';
 
 const App = () => {
   return (
@@ -79,6 +80,7 @@ const App = () => {
           <Route path='/courses/btech' element={<Btech />} />
           {/* ------------------------------ Custom-Invite--------------------- */}
           <Route path='/invite' element={<CustomInvite />} />
+          <Route path='/company/invites' element={<Invites />} />
         </Routes>
       </div>
     </BrowserRouter>
