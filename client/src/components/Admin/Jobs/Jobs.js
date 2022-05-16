@@ -63,18 +63,18 @@ const Jobs = () => {
                     {job.isIntern ? (
                       <>
                         <span>Stipend</span>:{" "}
-                        {job.Salary_Details.Salary_Per_Month}
+                        {job?.Salary_Details?.Salary_Per_Month}
                       </>
                     ) : (
                       <>
-                        <span>CTC</span>: {job.Salary_Details.CTC}
+                        <span>CTC</span>: {job?.Salary_Details?.CTC}
                       </>
                     )}
                   </h5>
                   {job.isIntern && (
                     <h5>
                       <span>Provision for PPO</span>:{" "}
-                      {job.Salary_Details.PPO_provision_on_performance_basis}
+                      {job?.Salary_Details?.PPO_provision_on_performance_basis}
                     </h5>
                   )}
                   <div
@@ -93,9 +93,9 @@ const Jobs = () => {
                     <button className="secondary_btn">
                       {" "}
                       <a
-                        href={job.downloadLink} 
+                        href={job.downloadLink}
                         style={{ textDecoration: "none", color: "inherit" }}
-                      > 
+                      >
                         {" "}
                         Download
                       </a>{" "}

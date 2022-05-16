@@ -36,14 +36,14 @@ const Company = () => {
 
   useEffect(() => {
     async function fetchCompanies() {
-      console.log({ search });
+      // console.log({ search });
       var response;
       if (!search) {
         response = await getAllCompanyDetails();
       } else {
         response = await searchCompanyByPattern(search);
       }
-      console.log(response);
+      // console.log(response);
       setCompanies(response.data.companyList);
     }
     fetchCompanies();
