@@ -1,7 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
-
+import './../Auth/newStyle.css'
 import "./styles.css";
 import { forgetPassword } from "../../api";
 import { useNavigate } from "react-router-dom";
