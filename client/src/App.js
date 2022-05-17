@@ -8,7 +8,7 @@ import CompanyDetails from './components/CompanyDetails/CompanyDetails';
 import MyJobs from './components/MyJobs/MyJobs';
 import Courses from './components/Courses/Courses';
 import ContactUs from './components/ContactUs/ContactUs';
-import { Home2 } from './components/Auth/Home2';
+// import { Home2 } from './components/Auth/Home2';
 import AdminHome from './components/Admin/Home/Home';
 import AdminAuth from './components/Admin/Auth/SignIn';
 import Company from './components/Admin/Company/Company';
@@ -30,6 +30,8 @@ import CustomInvite from './components/Admin/Invites/CustomInvite';
 import Invites from './components/Admin/Invites/Invites';
 
 const App = () => {
+  // const user = localStorage.getItem('user');
+
   return (
     <BrowserRouter>
       <div id='User' className='User'>
@@ -38,7 +40,7 @@ const App = () => {
           {/* ------------------------------ User Home --------------------- */}
 
           <Route path='/' element={<Home />} />
-          <Route path='/new' element={<Home2 />} />
+          {/* <Route path='/new' element={<Home2 />} /> */}
           <Route path='/create/inf/:InfId' element={<Inf />} />
           <Route path='/create/jnf/:JnfId' element={<Jnf />} />
 

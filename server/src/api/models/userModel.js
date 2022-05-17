@@ -1,62 +1,72 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { jwtSecret, jwtExpirationInterval } = require('../../config/vars');
 
 const userSchema = new mongoose.Schema({
-    Name : String,
-    password : { type: String, required: [true, "Please provide a password"], minlength: 6, select: false },
-    emailId : { type: String, required: [true, "Please provide a email"], unique: true },
+  Name: String,
+  password: {
+    type: String,
+    required: [true, 'Please provide a password'],
+    select: false,
+  },
+  emailId: {
+    type: String,
+    required: [true, 'Please provide a email'],
+    unique: true,
+  },
 
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
+  resetPasswordToken: String,
+  resetPasswordExpire: Date,
 
-    isemailVerified : { type: Boolean, default: false},
-    emailVerifyToken: String,
-    
-    ProfilePhoto: String,
-    contactNo: String,
+  isemailVerified: { type: Boolean, default: false },
+  emailVerifyToken: String,
 
-    role: {
-        type: String,
-        default: 'user',
-        enum: ['Admin', 'user']
-    },
+  ProfilePhoto: String,
+  contactNo: String,
 
-    Settings : {
-        Notifications : { type : Boolean, default : true }
-    },
+  role: {
+    type: String,
+    default: 'user',
+    enum: ['Admin', 'user'],
+  },
 
-    createdAt : { type: Date, default: new Date() },
-    updatedAt : { type: Date, default: new Date() }
+  Settings: {
+    Notifications: { type: Boolean, default: true },
+  },
+
+  createdAt: { type: Date, default: new Date() },
+  updatedAt: { type: Date, default: new Date() },
 });
 
-userSchema.pre("save", async function(next) {
-    if(!this.isModified("password")) {
-        next();
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
     next();
-})
+  }
 
-userSchema.methods.matchPasswords = async function(password) {
-    return await bcrypt.compare(password, this.password);
-}
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
 
-userSchema.methods.getSignedToken = function() {
-    return jwt.sign({ id: this._id }, jwtSecret, { expiresIn: jwtExpirationInterval })
-}
+userSchema.methods.matchPasswords = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
-userSchema.methods.getAccessibleData = function() {
-    const accessibleData = {};
-    const fields = ['_id', 'Name', 'emailId', 'ProfilePhoto', 'createdAt'];
+userSchema.methods.getSignedToken = function () {
+  return jwt.sign({ id: this._id }, jwtSecret, {
+    expiresIn: jwtExpirationInterval,
+  });
+};
 
-    fields.forEach((field) => {
-        accessibleData[field] = this[field];
-    });
+userSchema.methods.getAccessibleData = function () {
+  const accessibleData = {};
+  const fields = ['_id', 'Name', 'emailId', 'ProfilePhoto', 'createdAt'];
 
-    return accessibleData;
-}
-module.exports = mongoose.model("User", userSchema);
+  fields.forEach((field) => {
+    accessibleData[field] = this[field];
+  });
+
+  return accessibleData;
+};
+module.exports = mongoose.model('User', userSchema);

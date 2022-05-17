@@ -56,7 +56,10 @@ const Navbar = () => {
 
   return (
     <>
-      <Box xs={{ flexGrow: 1 }}>
+      <Box
+        xs={{ flexGrow: 1 }}
+        style={{ display: `${user ? 'block' : 'none'}` }}
+      >
         <AppBar position='static'>
           <Toolbar>
             <img
