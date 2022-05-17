@@ -121,3 +121,5 @@ export const searchCompanyByPattern = (pattern) =>
 // ------------------------ Courses ------------------------------------
 
 export const getAllCourseData = () => API.get('/courses');
+
+export const getPlacedCount = () => API.get('/courses/placed/count');
