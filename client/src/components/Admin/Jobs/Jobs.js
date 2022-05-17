@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Loading from "../../Loading/Loading";
-
 import "./styles.css";
 import { getAllInf, getAllJobs } from "../../../api/index";
 
@@ -19,9 +24,16 @@ const Jobs = () => {
 
     setJobs(response.data.jobs);
   }, []);
+  const [dropdownOpen, setDropdownOpen] = useState("");
+  const handletoggle = (id) => () => {
+    if (dropdownOpen == id) {
+      setDropdownOpen(() => "");
+    } else {
+      setDropdownOpen(() => id);
+    }
+  };
+
   // console.log(jobs);
-
-
   return (
     <>
       <div className="admin_company">
@@ -29,68 +41,112 @@ const Jobs = () => {
           <h1>Jobs</h1>
         </div>
         <div className="job_items">
-          {jobs && jobs.map((job) => (
-            <div className="job_card" key={job._id} style={{ display: "inline-block" }}>
+          {jobs &&
+            jobs.map((job) => (
               <div
-                className="badge"
-                style={{ backgroundColor: !job.isIntern && "red" }}
+                className="job_card"
+                key={job._id}
+                style={{ display: "inline-block" }}
               >
-                <h6>{job.isIntern ? "Intern" : "FTE"}</h6>
-              </div>
-              <div className="card_content">
-                <div className="content_heading">
-                  <h4>{job?.Company_Overview?.Name_Of_The_Company}</h4>
+                <div
+                  className="badge"
+                  style={{ backgroundColor: !job.isIntern && "red" }}
+                >
+                  <h6>{job.isIntern ? "Intern" : "FTE"}</h6>
                 </div>
-                <div className="content_text">
-                  <h5>
-                    <span>Sector</span>:{" "}
-                    {job?.Company_Overview?.Category_Or_Sector}
-                  </h5>
-                  <h5>
-                    {job.isIntern ? (
-                      <>
-                        <span>Mode</span>:{" "}
-                        {job?.Intern_Profile?.Mode_Of_Internship}
-                      </>
-                    ) : (
-                      <>
-                        <span>Place of posting</span>:{" "}
-                        {job?.Job_Details?.Place_Of_Posting}
-                      </>
-                    )}
-                  </h5>
-                  <h5>
-                    {job.isIntern ? (
-                      <>
-                        <span>Stipend</span>:{" "}
-                        {job?.Salary_Details?.Salary_Per_Month}
-                      </>
-                    ) : (
-                      <>
-                        <span>CTC</span>: {job?.Salary_Details?.CTC}
-                      </>
-                    )}
-                  </h5>
-                  {job.isIntern && (
+                <div className="card_content">
+                  <div className="content_heading">
+                    <h4>{job?.Company_Overview?.Name_Of_The_Company}</h4>
+                  </div>
+                  <div className="content_text">
                     <h5>
-                      <span>Provision for PPO</span>:{" "}
-                      {job?.Salary_Details?.PPO_provision_on_performance_basis}
+                      <span>Sector</span>:{" "}
+                      {job?.Company_Overview?.Category_Or_Sector}
                     </h5>
-                  )}
-                  <div
-                    style={{ display: "flex", justifyContent: "center" }}
-                  >
-                    <button className="secondary_btn">
-                      {" "}
-                      <a
-                        href={job.previewLink}
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        {" "}
-                        View Job
-                      </a>{" "}
-                    </button>
-                    <button className="secondary_btn">
+                    <h5>
+                      {job.isIntern ? (
+                        <>
+                          <span>Mode</span>:{" "}
+                          {job?.Intern_Profile?.Mode_Of_Internship}
+                        </>
+                      ) : (
+                        <>
+                          <span>Place of posting</span>:{" "}
+                          {job?.Job_Details?.Place_Of_Posting}
+                        </>
+                      )}
+                    </h5>
+                    <h5>
+                      {job.isIntern ? (
+                        <>
+                          <span>Stipend</span>:{" "}
+                          {job?.Salary_Details?.Salary_Per_Month}
+                        </>
+                      ) : (
+                        <>
+                          <span>CTC</span>: {job?.Salary_Details?.CTC}
+                        </>
+                      )}
+                    </h5>
+                    {job.isIntern && (
+                      <h5>
+                        <span>Provision for PPO</span>:{" "}
+                        {
+                          job?.Salary_Details
+                            ?.PPO_provision_on_performance_basis
+                        }
+                      </h5>
+                    )}
+                    <div
+                      className="d-flex align-items-center"
+                      style={{
+                        position: "absolute",
+                      }}
+                    >
+                      <div>
+                        <button className="secondary_btn py-1">
+                          <a
+                            href={job.previewLink}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                          >
+                            View Job
+                          </a>
+                        </button>
+                      </div>
+                      <div className="my-2 ms-3 ps-2">
+                        <Dropdown
+                          isOpen={dropdownOpen === job._id}
+                          toggle={handletoggle(job._id)}
+                        >
+                          <DropdownToggle caret>Download</DropdownToggle>
+                          <DropdownMenu>
+                            <DropdownItem>
+                              <a
+                                href={job.downloadLink}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "inherit",
+                                }}
+                              >
+                                For Student
+                              </a>
+                            </DropdownItem>
+                            <DropdownItem divider />
+                            <DropdownItem>
+                              <a
+                                href={job.downloadLink}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "inherit",
+                                }}
+                              >
+                                For Admin
+                              </a>
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </Dropdown>
+                      </div>
+                      {/* <button className="secondary_btn">
                       {" "}
                       <a
                         href={job.downloadLink}
@@ -99,12 +155,12 @@ const Jobs = () => {
                         {" "}
                         Download
                       </a>{" "}
-                    </button>
+                    </button> */}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <Stack spacing={1}>
           <Pagination
@@ -115,7 +171,6 @@ const Jobs = () => {
         </Stack>
       </div>
       {isLoading && <Loading />}
-
     </>
   );
 };

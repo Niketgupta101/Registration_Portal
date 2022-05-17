@@ -22,7 +22,13 @@ const Contact = () => {
   );
 
   const handleChange = (panel) => () => {
-    setExpanded(() => panel);
+    if (expanded == panel) {
+      setExpanded(() => 0);
+    }
+    else {
+      setExpanded(() => panel);
+    }
+
   };
 
   const [Contacts, setContacts] = React.useState();
