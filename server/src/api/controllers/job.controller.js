@@ -4,8 +4,16 @@ const Year = require('../models/GraduationYear');
 
 const getAllJobs = async (req, res, next) => {
   try {
-    let infList = await INF.find().sort({ createdAt: -1 });
-    let jnfList = await JNF.find().sort({ createdAt: -1 });
+    let infList = await INFstatus.find({ progress: 'submitted' })
+      .populate('data')
+      .sort({
+        createdAt: -1,
+      });
+    let jnfList = await JNFstatus.find({ progress: 'submitted' })
+      .populate('data')
+      .sort({
+        createdAt: -1,
+      });
 
     console.log(infList.length, jnfList.length);
 
