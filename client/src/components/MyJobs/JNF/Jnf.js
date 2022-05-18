@@ -200,7 +200,7 @@ const Jnf = () => {
     Both: false,
     None: false,
   });
-  const [otherQualificationsRoundData, setOtherQualificationsRoundData] =
+  const [otherQualificationRoundsData, setOtherQualificationRoundsData] =
     useState({
       GD: false,
       Case_Study: false,
@@ -222,12 +222,12 @@ const Jnf = () => {
     }));
     console.log(typeOfTestData);
   };
-  const handleOtherQualificationsRoundChange = (e) => {
-    setOtherQualificationsRoundData((prevData) => ({
+  const handleOtherQualificationRoundsChange = (e) => {
+    setOtherQualificationRoundsData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(otherQualificationsRoundData);
+    console.log(otherQualificationRoundsData);
   };
   const handleSelectionDataChange = (e) => {
     setSelectionFormData((prevData) => ({
@@ -256,7 +256,7 @@ const Jnf = () => {
     Selection_Procedure: {
       Resume_Shortlisting: resumeShortListingData,
       Type_Of_Test: typeOfTestData,
-      Other_Qualification_Rounds: otherQualificationsRoundData,
+      Other_Qualification_Rounds: otherQualificationRoundsData,
       Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
       Number_Of_Offers: selectionFormData.Number_Of_Offers,
       Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
@@ -299,12 +299,12 @@ const Jnf = () => {
         .Two_Year_MSc_Programs,
     });
     setResumeShortListingData({
-      ...response.data.jnf.Selection_Procedure.Resume_Shortlisting,
+      ...response.data.jnf.Selection_Procedure.Resume_Shortlisting, 
     });
     setTypeOfTestData({
       ...response.data.jnf.Selection_Procedure.Type_Of_Test,
     });
-    setOtherQualificationsRoundData({
+    setOtherQualificationRoundsData({
       ...response.data.jnf.Selection_Procedure.Other_Qualification_Rounds,
     });
     setSelectionFormData({
@@ -338,7 +338,7 @@ const Jnf = () => {
       Selection_Procedure: {
         Resume_Shortlisting: { ...resumeShortListingData },
         Type_Of_Test: { ...typeOfTestData },
-        Other_Qualification_Rounds: { ...otherQualificationsRoundData },
+        Other_Qualification_Rounds: { ...otherQualificationRoundsData },
         Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
         Number_Of_Offers: selectionFormData.Number_Of_Offers,
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
@@ -425,12 +425,12 @@ const Jnf = () => {
             setPage={setPage}
             resumeShortListingData={resumeShortListingData}
             typeOfTestData={typeOfTestData}
-            otherQualificationsRoundData={otherQualificationsRoundData}
+            otherQualificationRoundsData={otherQualificationRoundsData}
             selectionFormData={selectionFormData}
             handleResumeShortListingChange={handleResumeShortListingChange}
             handleTypeOfTestChange={handleTypeOfTestChange}
-            handleOtherQualificationsRoundChange={
-              handleOtherQualificationsRoundChange
+            handleOtherQualificationRoundsChange={
+              handleOtherQualificationRoundsChange
             }
             handleSelectionDataChange={handleSelectionDataChange}
             handleUpdateJnfById={handleUpdateJnfById}

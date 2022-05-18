@@ -36,7 +36,7 @@ exports.fillINFDoc = async (inf) => {
   let twoYearMsc = inf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = inf.Selection_Procedure;
   let data = {
-    Four_Year_Select_All: fourYear.Select_All ? "Yes" : "No",
+    Four_Year_Select_All: fourYear.Select_All ? "Yes" : "No", 
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
       ? "Yes"
       : "No",
@@ -95,7 +95,7 @@ exports.fillINFDoc = async (inf) => {
     Two_Year_Mtech_Computer_Science_and_Engineering:
       twoYearMtech.Computer_Science_and_Engineering ? "Yes" : "No",
     Two_Year_Mtech_Data_Analytics: twoYearMtech.Data_Analytics ? "Yes" : "No",
-    Two_Year_Mtech_Electrical_Engineering: twoYearMtech.lectrical_Engineering
+    Two_Year_Mtech_Electrical_Engineering: twoYearMtech.Electrical_Engineering
       ? "Yes"
       : "No",
     Two_Year_Mtech_Electronics_and_Communication_Engineering:
@@ -129,7 +129,7 @@ exports.fillINFDoc = async (inf) => {
     Two_Year_Mba_Operations: twoYearMba.Operations ? "Yes" : "No",
     Two_Year_Msc_Select_All: twoYearMsc.Select_All ? "Yes" : "No",
     Two_Year_Msc_Chemistry: twoYearMsc.Chemistry ? "Yes" : "No",
-    Two_Year_Msc_Mathematics_and_Computings:
+    Two_Year_Msc_Mathematics_and_Computing:
       twoYearMsc.Mathematics_and_Computing ? "Yes" : "No",
     Two_Year_Msc_Physics: twoYearMsc.Physics ? "Yes" : "No",
     Selection_Procedure_Resume_Shortlisting:

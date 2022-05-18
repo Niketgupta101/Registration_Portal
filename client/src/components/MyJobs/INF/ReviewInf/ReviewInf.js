@@ -1211,7 +1211,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={7}>
             <h1 className="inputText">
-              {InfData.Selection_Procedure.Eligibility_Criteria}
+              {InfData.Selection_Procedure.Eligibility_Criteria} 
             </h1>
           </Col>
         </FormGroup>

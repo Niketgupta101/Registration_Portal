@@ -5,11 +5,11 @@ const JNF4 = ({
   setPage,
   resumeShortListingData,
   typeOfTestData,
-  otherQualificationsRoundData,
+  otherQualificationRoundsData,
   selectionFormData,
   handleResumeShortListingChange,
   handleTypeOfTestChange,
-  handleOtherQualificationsRoundChange,
+  handleOtherQualificationRoundsChange,
   handleSelectionDataChange,
   handleUpdateJnfById,
 }) => {
@@ -18,7 +18,7 @@ const JNF4 = ({
       <Form>
         <div>
           <div class="ug-pg m-0 p-0">
-            <h1 className="ug-pg-h1">
+            <h1 className="ug-pg-h1"> 
               Selection Procedure
               <span className="ug-pg-span">
                 <b> Fill necessary details</b>{" "}
@@ -175,8 +175,8 @@ const JNF4 = ({
                     <input
                       className="checkBox"
                       name="GD"
-                      value={otherQualificationsRoundData.GD}
-                      onChange={handleOtherQualificationsRoundChange}
+                      value={otherQualificationRoundsData.GD}
+                      onChange={handleOtherQualificationRoundsChange}
                       type="checkbox"
                     />
                   </div>
@@ -185,8 +185,8 @@ const JNF4 = ({
                     <input
                       className="checkBox"
                       name="Case_Study"
-                      value={otherQualificationsRoundData.Case_Study}
-                      onChange={handleOtherQualificationsRoundChange}
+                      value={otherQualificationRoundsData.Case_Study}
+                      onChange={handleOtherQualificationRoundsChange}
                       type="checkbox"
                     />
                   </div>
@@ -195,8 +195,8 @@ const JNF4 = ({
                     <input
                       className="checkBox"
                       name="Interview"
-                      value={otherQualificationsRoundData.Interview}
-                      onChange={handleOtherQualificationsRoundChange}
+                      value={otherQualificationRoundsData.Interview}
+                      onChange={handleOtherQualificationRoundsChange}
                       type="checkbox"
                     />
                   </div>

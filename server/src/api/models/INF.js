@@ -15,7 +15,7 @@ const infSchema = new Schema({
     Mode_Of_Internship: {
       type: String, // Virtual (or) Physical
     },
-    Place_Of_Posting: String, // If mode of internship is physical
+    Place_Of_Posting:  { type: String }, // If mode of internship is physical
   },
   Salary_Details: {
     Salary_Per_Month: { type: String },
@@ -37,7 +37,7 @@ const infSchema = new Schema({
       Environmental_Engineering: { type: Boolean, default: false },
       Mechanical_Engineering: { type: Boolean, default: false },
       Mineral_and_Metallurgical_Engineering: { type: Boolean, default: false },
-      Mining_Engineering: false,
+      Mining_Engineering: { type: Boolean, default: false },
       Mining_Machinery_Engineering: { type: Boolean, default: false },
       Petroleum_Engineering: { type: Boolean, default: false },
     },
@@ -95,7 +95,7 @@ const infSchema = new Schema({
       Select_All: { type: Boolean, default: false },
       Business_Analytics: { type: Boolean, default: false },
       Finance: { type: Boolean, default: false },
-      Human_Resources: false,
+      Human_Resources: { type: Boolean, default: false },
       Marketing: { type: Boolean, default: false },
       Operations: { type: Boolean, default: false },
     },
@@ -105,7 +105,7 @@ const infSchema = new Schema({
       Mathematics_and_Computing: { type: Boolean, default: false },
       Physics: { type: Boolean, default: false },
     },
-  },
+  }, 
   Selection_Procedure: {
     Resume_Shortlisting: {
       Yes: { type: Boolean, default: false },
@@ -123,8 +123,8 @@ const infSchema = new Schema({
       Interview: { type: Boolean, default: false },
     },
     Total_Number_Of_Rounds: { type: String, default: 0 },
-    Number_Of_Offers: String,
-    Eligibility_Criteria: String,
+    Number_Of_Offers:  {type: String },
+    Eligibility_Criteria:  String,
   },
   previewLink: String,
   downloadLink: String,

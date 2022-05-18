@@ -946,7 +946,7 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
                   readOnly
                 />
               </td>
-            </tr>
+            </tr> 
           </tbody>
         </table>
         <div>
