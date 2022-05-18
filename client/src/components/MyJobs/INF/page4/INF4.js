@@ -7,17 +7,17 @@ const INF4 = ({
   setPage,
   resumeShortListingData,
   typeOfTestData,
-  otherQualificationsRoundData,
+  otherQualificationRoundsData,
   selectionFormData,
   handleResumeShortListingChange,
   handleTypeOfTestChange,
-  handleOtherQualificationsRoundChange,
+  handleOtherQualificationRoundsChange,
   handleSelectionDataChange,
   handleUpdateInfById,
 }) => {
   return (
     <div className="overallDiv1">
-      <Form onSubmit={handleUpdateInfById}>
+      <Form onSubmit={handleUpdateInfById}> 
         <div>
           <div class="ug-pg m-0 p-0">
             <h1 className="ug-pg-h1">
@@ -177,8 +177,8 @@ const INF4 = ({
                     <input
                       className="checkBox"
                       name="GD"
-                      value={otherQualificationsRoundData.GD}
-                      onChange={handleOtherQualificationsRoundChange}
+                      value={otherQualificationRoundsData.GD}
+                      onChange={handleOtherQualificationRoundsChange}
                       type="checkbox"
                     />
                   </div>
@@ -187,8 +187,8 @@ const INF4 = ({
                     <input
                       className="checkBox"
                       name="Case_Study"
-                      value={otherQualificationsRoundData.Case_Study}
-                      onChange={handleOtherQualificationsRoundChange}
+                      value={otherQualificationRoundsData.Case_Study}
+                      onChange={handleOtherQualificationRoundsChange}
                       type="checkbox"
                     />
                   </div>
@@ -197,8 +197,8 @@ const INF4 = ({
                     <input
                       className="checkBox"
                       name="Interview"
-                      value={otherQualificationsRoundData.Interview}
-                      onChange={handleOtherQualificationsRoundChange}
+                      value={otherQualificationRoundsData.Interview}
+                      onChange={handleOtherQualificationRoundsChange}
                       type="checkbox"
                     />
                   </div>

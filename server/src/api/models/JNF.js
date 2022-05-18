@@ -107,7 +107,7 @@ const jnfSchema = new Schema({
   Selection_Procedure: {
     Resume_Shortlisting: {
       Yes: { type: Boolean, default: false },
-      No: { type: Boolean, default: false },
+      No: { type: Boolean, default: false }, 
     },
     Type_Of_Test: {
       Technical: { type: Boolean, default: false },
@@ -121,8 +121,8 @@ const jnfSchema = new Schema({
       Interview: { type: Boolean, default: false },
     },
     Total_Number_Of_Rounds: { type: Number, default: 0 },
-    Number_Of_Offers: String,
-    Eligibility_Criteria: String,
+    Number_Of_Offers:  String,
+    Eligibility_Criteria:  String,
   },
   previewLink: String,
   downloadLink: String,

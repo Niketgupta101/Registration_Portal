@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 
 import './styles.css';
-import { getAllCompanyDetails } from '../../../api';
+import { getAllCompanyDetails, getPlacedCount } from '../../../api';
 import { getAllJobs } from '../../../api/index';
 
 import { PeopleAltTwoTone } from '@material-ui/icons';
@@ -33,6 +33,8 @@ const Home = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
 
+  const [placedCount, setPlacedCount] = useState();
+
   useEffect(async () => {
     if (!user) Navigate('/auth');
     else {
@@ -40,9 +42,11 @@ const Home = () => {
       setIsLoading(true);
       const response1 = await getAllCompanyDetails();
       const response2 = await getAllJobs();
+      const response3 = await getPlacedCount();
       setIsLoading(false);
       setCompanies(response1.data.companyList);
       setJobs(response2.data.jobs);
+      setPlacedCount(response3.data.placed);
     }
   }, []);
 
@@ -71,7 +75,11 @@ const Home = () => {
               </div>
               <div className='card_content'>
                 <h3 className='admin_card_content_heading'>
-                  Placed: <span className='admin_card_content_value'> 43</span>
+                  Placed:{' '}
+                  <span className='admin_card_content_value'>
+                    {' '}
+                    {placedCount}{' '}
+                  </span>
                 </h3>
               </div>
             </div>

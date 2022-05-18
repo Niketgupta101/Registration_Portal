@@ -921,7 +921,7 @@ const ReviewStructure = ({ InfData, setPage, handleFormSubmit }) => {
             </tr>
           </tbody>
         </table>
-        <div>
+        <div> 
           <header className="headerText">SELECTION PROCEDURE</header>
         </div>
         <table>

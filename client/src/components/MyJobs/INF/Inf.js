@@ -200,7 +200,7 @@ const Inf = () => {
     Both: false,
     None: false,
   });
-  const [otherQualificationsRoundData, setOtherQualificationsRoundData] =
+  const [otherQualificationRoundsData, setOtherQualificationRoundsData] =
     useState({
       GD: false,
       Case_Study: false,
@@ -222,12 +222,12 @@ const Inf = () => {
     }));
     console.log(typeOfTestData);
   };
-  const handleOtherQualificationsRoundChange = (e) => {
-    setOtherQualificationsRoundData((prevData) => ({
+  const handleOtherQualificationRoundsChange = (e) => {
+    setOtherQualificationRoundsData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(otherQualificationsRoundData);
+    console.log(otherQualificationRoundsData);
   };
   const handleSelectionDataChange = (e) => {
     setSelectionFormData((prevData) => ({
@@ -256,7 +256,7 @@ const Inf = () => {
     Selection_Procedure: {
       Resume_Shortlisting: resumeShortListingData,
       Type_Of_Test: typeOfTestData,
-      Other_Qualification_Rounds: otherQualificationsRoundData,
+      Other_Qualification_Rounds: otherQualificationRoundsData,
       Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
       Number_Of_Offers: selectionFormData.Number_Of_Offers,
       Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
@@ -304,7 +304,7 @@ const Inf = () => {
     setTypeOfTestData({
       ...response.data.inf.Selection_Procedure.Type_Of_Test,
     });
-    setOtherQualificationsRoundData({
+    setOtherQualificationRoundsData({
       ...response.data.inf.Selection_Procedure.Other_Qualification_Rounds,
     });
     setSelectionFormData({
@@ -337,11 +337,11 @@ const Inf = () => {
         Two_Year_Mtech_Programs: { ...twoYearData },
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
-      },
+      }, 
       Selection_Procedure: {
         Resume_Shortlisting: { ...resumeShortListingData },
         Type_Of_Test: { ...typeOfTestData },
-        Other_Qualification_Rounds: { ...otherQualificationsRoundData },
+        Other_Qualification_Rounds: { ...otherQualificationRoundsData },
         Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
         Number_Of_Offers: selectionFormData.Number_Of_Offers,
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
@@ -443,12 +443,12 @@ const Inf = () => {
               setPage={setPage}
               resumeShortListingData={resumeShortListingData}
               typeOfTestData={typeOfTestData}
-              otherQualificationsRoundData={otherQualificationsRoundData}
+              otherQualificationRoundsData={otherQualificationRoundsData}
               selectionFormData={selectionFormData}
               handleResumeShortListingChange={handleResumeShortListingChange}
               handleTypeOfTestChange={handleTypeOfTestChange}
-              handleOtherQualificationsRoundChange={
-                handleOtherQualificationsRoundChange
+              handleOtherQualificationRoundsChange={
+                handleOtherQualificationRoundsChange
               }
               handleSelectionDataChange={handleSelectionDataChange}
               handleUpdateInfById={handleUpdateInfById}
