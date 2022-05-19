@@ -41,6 +41,7 @@ const Jnf = () => {
   const [salaryFormData, setSalaryFormData] = useState(salaryData);
 
   const handleCompanyDataChange = (e) => {
+    console.log({ e: e.target.name, value: e.target.value });
     setCompanyFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
@@ -58,6 +59,10 @@ const Jnf = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
+  useEffect(() => {
+    console.log(companyFormData);
+  }, [companyFormData]);
 
   // ------------------------------------------------------------
 
@@ -299,7 +304,7 @@ const Jnf = () => {
         .Two_Year_MSc_Programs,
     });
     setResumeShortListingData({
-      ...response.data.jnf.Selection_Procedure.Resume_Shortlisting, 
+      ...response.data.jnf.Selection_Procedure.Resume_Shortlisting,
     });
     setTypeOfTestData({
       ...response.data.jnf.Selection_Procedure.Type_Of_Test,
@@ -314,6 +319,7 @@ const Jnf = () => {
       Eligibility_Criteria:
         response.data.jnf.Selection_Procedure.Eligibility_Criteria,
     });
+    console.log({ companyFormData });
   };
 
   useEffect(() => {
@@ -325,6 +331,9 @@ const Jnf = () => {
 
     setJnfData((prevData) => ({
       ...prevData,
+      Company_Overview: { ...companyFormData },
+      Job_Details: { ...jobFormData },
+      Salary_Details: { ...salaryFormData },
       Eligible_Courses_And_Disciplines: {
         ...prevData.Eligible_Courses_And_Disciplines,
         Four_Year_Btech_Programs: { ...fourYearData },

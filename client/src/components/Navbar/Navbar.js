@@ -93,17 +93,19 @@ const Navbar = () => {
                   </h5>
                 </IconButton>
               )}
-              <IconButton
-                size='medium'
-                edge='end'
-                color='inherit'
-                onClick={() => Navigate('/myjobs')}
-                style={{ alignItems: 'center' }}
-              >
-                <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
-                  My Jobs
-                </h5>
-              </IconButton>
+              {user?.role !== 'Admin' && (
+                <IconButton
+                  size='medium'
+                  edge='end'
+                  color='inherit'
+                  onClick={() => Navigate('/myjobs')}
+                  style={{ alignItems: 'center' }}
+                >
+                  <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
+                    My Jobs
+                  </h5>
+                </IconButton>
+              )}
               <IconButton
                 size='medium'
                 edge='end'
