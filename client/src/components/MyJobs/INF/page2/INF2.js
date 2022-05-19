@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Form } from "reactstrap";
 import "animate.css";
+import Fab from "@mui/material/Fab";
+import Box from "@mui/material/Box";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { FaAngleDoubleDown, FaAngleDoubleUp, FaAngleUp } from "react-icons/fa";
 
 import "./INF2.css";
@@ -324,19 +327,20 @@ export default function INF2({
                               </tr>
                             </tbody>
                           </table>
-                          <div className="collapse-div">
+                          <div className="collapse-div d-flex justify-content-end">
                             {btechdiv === true ? (
-                              <button
-                                className="collapse-button d-flex justify-content-center"
-                                onClick={() => {
-                                  setBtechdiv(false);
-                                  handleBackClick(refbtech4year);
-                                }}
-                              >
-                                <div>
-                                  <FaAngleUp size={20} />
-                                </div>
-                              </button>
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setBtechdiv(false);
+                                    handleBackClick(refbtech4year);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
                             ) : (
                               <></>
                             )}
@@ -448,17 +452,20 @@ export default function INF2({
                               </tr>
                             </tbody>
                           </table>
-                          <div className="collapse-div">
+                          <div className="collapse-div d-flex justify-content-end">
                             {dual_mtechdiv === true ? (
-                              <button
-                                className="collapse-button"
-                                onClick={() => {
-                                  setdual_mtechdiv(false);
-                                  handleBackClick(refdual_mtech);
-                                }}
-                              >
-                                <FaAngleUp size={20} />
-                              </button>
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setdual_mtechdiv(false);
+                                    handleBackClick(refdual_mtech);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
                             ) : (
                               <></>
                             )}
@@ -775,17 +782,20 @@ export default function INF2({
                               </tr>
                             </tbody>
                           </table>
-                          <div className="collapse-div">
+                          <div className="collapse-div d-flex justify-content-end">
                             {mtechdiv === true ? (
-                              <button
-                                className="collapse-button"
-                                onClick={() => {
-                                  setmtechdiv(false);
-                                  handleBackClick(refmtech);
-                                }}
-                              >
-                                <FaAngleUp size={20} />
-                              </button>
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setmtechdiv(false);
+                                    handleBackClick(refmtech);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
                             ) : (
                               <></>
                             )}
@@ -900,17 +910,20 @@ export default function INF2({
                               </tr>
                             </tbody>
                           </table>
-                          <div className="collapse-div">
+                          <div className="collapse-div d-flex justify-content-end">
                             {mbadiv === true ? (
-                              <button
-                                className="collapse-button"
-                                onClick={() => {
-                                  setmbadiv(false);
-                                  handleBackClick(refmba);
-                                }}
-                              >
-                                <FaAngleUp size={20} />
-                              </button>
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setmbadiv(false);
+                                    handleBackClick(refmba);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
                             ) : (
                               <></>
                             )}
@@ -992,17 +1005,20 @@ export default function INF2({
                               </tr>
                             </tbody>
                           </table>
-                          <div className="collapse-div">
+                          <div className="collapse-div d-flex justify-content-end">
                             {msc3div === true ? (
-                              <button
-                                className="collapse-button"
-                                onClick={() => {
-                                  setmsc3div(false);
-                                  handleBackClick(refmsc3);
-                                }}
-                              >
-                                <FaAngleUp size={20} />
-                              </button>
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setmsc3div(false);
+                                    handleBackClick(refmsc3);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
                             ) : (
                               <></>
                             )}
@@ -1097,17 +1113,20 @@ export default function INF2({
                               </tr>
                             </tbody>
                           </table>
-                          <div className="collapse-div">
+                          <div className="collapse-div d-flex justify-content-end">
                             {msc2div === true ? (
-                              <button
-                                className="collapse-button"
-                                onClick={() => {
-                                  setmsc2div(false);
-                                  handleBackClick(refmsc2);
-                                }}
-                              >
-                                <FaAngleUp size={20} />
-                              </button>
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setmsc2div(false);
+                                    handleBackClick(refmsc2);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
                             ) : (
                               <></>
                             )}
