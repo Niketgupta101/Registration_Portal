@@ -1,3 +1,4 @@
+import "./style.css";
 const axios = require("axios");
 const { sendEmail } = require("../utils/service/email");
 const { clientUrl, serverUrl } = require("../../config/vars");
