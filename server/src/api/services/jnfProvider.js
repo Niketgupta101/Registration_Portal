@@ -104,7 +104,11 @@ const submitJnfById = async (id, next) => {
 
     await fillJNFDoc(jnf);
 
+    console.log('jnf doc');
+
     await updateJnfInGSheets(jnf);
+
+    console.log('jnf sheets');
 
     return { success: true, message: 'Submitted Successfully', jnf };
   } catch (error) {
@@ -137,30 +141,33 @@ const getValues = async (data) => {
 };
 
 const updateJnfInGSheets = async (jnf) => {
+  // console.log({ jnf });
   let details = [
     jnf.userId,
     jnf._id.valueOf(),
-    ...getValues(jnf.Company_Overview),
+    jnf.Company_Overview.Name_Of_The_Company,
     // ...getValues(jnf.Job_Details),
-    inf.Job_Details.Designation,
+    jnf.Job_Details.Designation,
     // ...getValues(jnf.Salary_Details),
     jnf.previewLink,
     jnf.downloadLink,
     jnf.createdAt,
     jnf.updatedAt,
   ];
-
+  console.log(details);
   let data = await readSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     'JNF',
     'A1:J'
   );
   data.push(details);
+
+  console.log({ data });
   await updateSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     'JNF',
     data,
-    'A!:J'
+    'A1:J'
   );
 };
 
