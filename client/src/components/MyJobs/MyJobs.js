@@ -222,7 +222,7 @@ const MyJobs = () => {
                         >
                           <button className='secondary_btn'>
                             <a
-                              href={job.data.previewLink}
+                              href={job.data.studentPreview}
                               style={{
                                 textDecoration: 'none',
                                 color: 'inherit',
@@ -233,7 +233,7 @@ const MyJobs = () => {
                           </button>
                           <button className='secondary_btn'>
                             <a
-                              href={job.data.downloadLink}
+                              href={job.data.studentDownload}
                               style={{
                                 textDecoration: 'none',
                                 color: 'inherit',

@@ -132,6 +132,8 @@ const infSchema = new Schema({
   },
   previewLink: String,
   downloadLink: String,
+  studentPreview: String,
+  studentDownload: String,
   isIntern: { type: Boolean, default: true },
   isJob: { type: Boolean, default: false },
   createdAt: {

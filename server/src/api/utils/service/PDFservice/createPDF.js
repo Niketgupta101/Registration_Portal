@@ -23,6 +23,18 @@ exports.fillINFDoc = async (inf) => {
     linebreaks: true,
   });
 
+  const student = fs.readFileSync(
+    path.resolve(__dirname, 'INFstudent.docx'),
+    'binary'
+  );
+
+  const studentZip = new PizZip(student);
+
+  const studentDoc = new Docxtemplater(studentZip, {
+    paragraphLoop: true,
+    linebreaks: true,
+  });
+
   let fourYear = inf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
     inf.Eligible_Courses_And_Disciplines
@@ -172,13 +184,25 @@ exports.fillINFDoc = async (inf) => {
     ...inf.Salary_Details,
     ...data,
   });
+  studentDoc.render({
+    ...inf.Company_Overview,
+    ...inf.Intern_Profile,
+    ...inf.Salary_Details,
+    ...data,
+  });
 
   const buf = doc.getZip().generate({
     type: 'nodebuffer',
     compression: 'DEFLATE',
   });
 
+  const studentBuf = studentDoc.getZip().generate({
+    type: 'nodebuffer',
+    compression: 'DEFLATE',
+  });
+
   fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
 
   var convertapi = require('convertapi')('qrIqxick6zL34d5B');
   let result = await convertapi.convert(
@@ -189,14 +213,34 @@ exports.fillINFDoc = async (inf) => {
     'docx'
   );
 
+  let studentResult = await convertapi.convert(
+    'pdf',
+    {
+      File: path.resolve(__dirname, 'studentOutput.docx'),
+    },
+    'docx'
+  );
+
   await result.saveFiles(__dirname);
+  await studentResult.saveFiles(__dirname);
 
   let response = await uploadFile(path.resolve(__dirname, 'output.pdf'));
+  let studentResponse = await uploadFile(
+    path.resolve(__dirname, 'studentOutput.pdf')
+  );
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  inf.set({ previewLink, downloadLink });
+  let resPrev = await generatePreviewUrl(studentResponse.data.id);
+  let resDown = await generateDownloadUrl(studentResponse.data.id);
+
+  inf.set({
+    previewLink,
+    downloadLink,
+    studentPreview: resPrev.previewLink,
+    studentDownload: resDown.downloadLink,
+  });
   await inf.save();
 
   sendMailWithAttachment(
