@@ -1,3 +1,39 @@
+.profile-company {
+  font-size: 18px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+}
+.profile-text-1 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 18%;
+  min-width: 20%;
+  display: flex;
+  justify-content: left;
+}
+.profile-text-2 {
+  font-size: 19px;
+  color: black;
+}
+.profile-text-3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.65);
+  margin-left: 8%;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+.profile-text-4 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .user_profile {
   margin: 0;
   padding: 2rem 22%;
@@ -80,9 +116,17 @@
   border: solid white 5px;
 }
 
-@media(max-width: 600px)
-{
-    .user_profile{
-        padding: 2rem 7%;
-    }
+@media (max-width: 600px) {
+  .user_profile {
+    padding: 2rem 7%;
+  }
+}
+@media (max-width: 750px) {
+  .profile-text-2 {
+    font-size: 1.1em;
+  }
+  .profile-text-1 {
+    font-size: 16px;
+    margin-left: 8%;
+  }
 }
