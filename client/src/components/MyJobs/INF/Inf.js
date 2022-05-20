@@ -106,10 +106,19 @@ const Inf = () => {
     }
   };
   const handleFiveYearChange = (e) => {
-    setFiveYearData((prevData) => ({
+    if (e.target.name === 'Select_All') {
+      let newValue = !fiveYearData[e.target.name];
+      for (let i in fiveYearData) {
+        setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      console.log(newValue);
+    }
+    
+    else{ setFiveYearData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
+  }
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
@@ -164,31 +173,64 @@ const Inf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    setThreeYearData((prevData) => ({
+    if (e.target.name === 'Select_All') {
+      let newValue = !threeYearData[e.target.name];
+      for (let i in threeYearData) {
+        setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      console.log(newValue);
+    }
+    else{setThreeYearData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
+  }
     console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    setTwoYearData((prevData) => ({
+    if (e.target.name === 'Select_All') {
+      let newValue = !twoYearData[e.target.name];
+      for (let i in twoYearData) {
+        setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      console.log(newValue);
+    }
+    else {setTwoYearData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(twoYearData);
+  }
   };
   const handleTwoYearMbaChange = (e) => {
-    setTwoYearMbaData((prevData) => ({
+    if (e.target.name === 'Select_All') {
+      let newValue = !twoYearMbaData[e.target.name];
+      for (let i in twoYearMbaData) {
+        setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      console.log(newValue);
+    }
+    else {setTwoYearMbaData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
+  }
     console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    setTwoYearMscData((prevData) => ({
+    if (e.target.name === 'Select_All') {
+      let newValue = !twoYearMscData[e.target.name];
+      for (let i in twoYearMscData) {
+        setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      console.log(newValue);
+    }
+
+    else {setTwoYearMscData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
+  }
     console.log(twoYearMscData);
   };
 
