@@ -4,23 +4,27 @@ const Schema = mongoose.Schema;
 const infSchema = new Schema({
   userId: { type: Schema.ObjectId, ref: 'User' },
   Company_Overview: {
-    Name_Of_The_Company: { type: String },
-    Category_Or_Sector: { type: String },
-    Website: { type: String },
+    Name_Of_The_Company: { type: String, default: '' },
+    Category_Or_Sector: { type: String, default: '' },
+    Website: { type: String, default: '' },
   },
   Intern_Profile: {
-    Internship_Duration: { type: String },
-    Job_Designation: { type: String },
-    Job_Description: { type: String },
+    Internship_Duration: {
+      type: String,
+      default: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
+    },
+    Job_Designation: { type: String, default: '' },
+    Job_Description: { type: String, default: '' },
     Mode_Of_Internship: {
       type: String, // Virtual (or) Physical
+      default: 'Virtual',
     },
-    Place_Of_Posting:  { type: String }, // If mode of internship is physical
+    Place_Of_Posting: { type: String, default: '' }, // If mode of internship is physical
   },
   Salary_Details: {
-    Salary_Per_Month: { type: String },
-    PPO_provision_on_performance_basis: { type: String },
-    CTC: { type: String },
+    Salary_Per_Month: { type: String, default: '' },
+    PPO_provision_on_performance_basis: { type: String, default: 'Yes' },
+    CTC: { type: String, default: '' },
   },
   Eligible_Courses_And_Disciplines: {
     Four_Year_Btech_Programs: {
@@ -105,7 +109,7 @@ const infSchema = new Schema({
       Mathematics_and_Computing: { type: Boolean, default: false },
       Physics: { type: Boolean, default: false },
     },
-  }, 
+  },
   Selection_Procedure: {
     Resume_Shortlisting: {
       Yes: { type: Boolean, default: false },
@@ -122,9 +126,9 @@ const infSchema = new Schema({
       Case_Study: { type: Boolean, default: false },
       Interview: { type: Boolean, default: false },
     },
-    Total_Number_Of_Rounds: { type: String, default: 0 },
-    Number_Of_Offers:  {type: String },
-    Eligibility_Criteria:  String,
+    Total_Number_Of_Rounds: { type: String, default: '' },
+    Number_Of_Offers: { type: String, default: '' },
+    Eligibility_Criteria: { type: String, default: '' },
   },
   previewLink: String,
   downloadLink: String,

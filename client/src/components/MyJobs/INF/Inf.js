@@ -25,7 +25,7 @@ const Inf = () => {
     Website: '',
   };
   const jobData = {
-    Internship_Duration: '',
+    Internship_Duration: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
     Job_Designation: '',
     Job_Description: '',
     Mode_Of_Internship: 'Virtual',
@@ -37,9 +37,9 @@ const Inf = () => {
     CTC: '',
   };
 
-  const [companyFormData, setCompanyFormData] = useState(companyData);
-  const [jobFormData, setJobFormData] = useState(jobData);
-  const [stipendFormData, setStipendFormData] = useState(stipendData);
+  const [companyFormData, setCompanyFormData] = useState({ ...companyData });
+  const [jobFormData, setJobFormData] = useState({ ...jobData });
+  const [stipendFormData, setStipendFormData] = useState({ ...stipendData });
 
   const handleCompanyDataChange = (e) => {
     setCompanyFormData((prevData) => ({
@@ -59,7 +59,6 @@ const Inf = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
   // ------------------------------------------------------------
 
   const [fourYearData, setFourYearData] = useState({
@@ -93,26 +92,35 @@ const Inf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    setFourYearData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(fourYearData);
+    if (e.target.name === 'Select_All') {
+      let newValue = !fourYearData[e.target.name];
+      for (let i in fourYearData) {
+        setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      console.log(newValue);
+    } else {
+      setFourYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
   };
   const handleFiveYearChange = (e) => {
     setFiveYearData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(fiveYearData);
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(skillData);
   };
+
+  useEffect(() => {
+    console.log(fourYearData);
+  }, [fourYearData]);
 
   // ------------------------------------------------------
 
@@ -213,55 +221,84 @@ const Inf = () => {
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(resumeShortListingData);
+    setInfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Resume_Shortlisting: {
+          ...prevData.Selection_Procedure.Resume_Shortlisting,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
   };
   const handleTypeOfTestChange = (e) => {
     setTypeOfTestData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(typeOfTestData);
+    setInfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Type_Of_Test: {
+          ...prevData.Selection_Procedure.Type_Of_Test,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
   };
   const handleOtherQualificationRoundsChange = (e) => {
     setOtherQualificationRoundsData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(otherQualificationRoundsData);
+    setInfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Other_Qualification_Rounds: {
+          ...prevData.Selection_Procedure.Other_Qualification_Rounds,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
   };
   const handleSelectionDataChange = (e) => {
     setSelectionFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
+    setInfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        [e.target.name]: e.target.value,
+      },
+    }));
   };
+
+  useEffect(() => {
+    console.log({ data: InfData.Selection_Procedure });
+  }, [resumeShortListingData]);
+
+  useEffect(() => {
+    console.log({ data: InfData.Selection_Procedure });
+  }, [typeOfTestData]);
+
+  useEffect(() => {
+    console.log({ data: InfData.Selection_Procedure });
+  }, [otherQualificationRoundsData]);
+
+  useEffect(() => {
+    console.log(selectionFormData);
+  }, [selectionFormData]);
 
   // --------------------------------------------------
 
   // const [InfId, setInfId] = useState('');
 
-  const [InfData, setInfData] = useState({
-    Company_Overview: companyFormData,
-    Intern_Profile: jobFormData,
-    Salary_Details: stipendFormData,
-    Eligible_Courses_And_Disciplines: {
-      Four_Year_Btech_Programs: fourYearData,
-      Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs: fiveYearData,
-      Skill_Based_Hiring: skillData,
-      Three_Year_MSc_Tech_Programs: threeYearData,
-      Two_Year_Mtech_Programs: twoYearData,
-      Two_Year_MBA_Programs: twoYearMbaData,
-      Two_Year_MSc_Programs: twoYearMscData,
-    },
-    Selection_Procedure: {
-      Resume_Shortlisting: resumeShortListingData,
-      Type_Of_Test: typeOfTestData,
-      Other_Qualification_Rounds: otherQualificationRoundsData,
-      Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
-      Number_Of_Offers: selectionFormData.Number_Of_Offers,
-      Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
-    },
-  });
+  const [InfData, setInfData] = useState({});
 
   const fetchInfData = async (InfId) => {
     const response = await getInfById(InfId);
@@ -314,6 +351,7 @@ const Inf = () => {
       Eligibility_Criteria:
         response.data.inf.Selection_Procedure.Eligibility_Criteria,
     });
+    setInfData({ ...response.data.inf });
   };
 
   useEffect(() => {
@@ -323,7 +361,7 @@ const Inf = () => {
   const handleUpdateInfById = async (e) => {
     e.preventDefault();
 
-    await setInfData((prevData) => ({
+    setInfData((prevData) => ({
       ...prevData,
       Company_Overview: { ...companyFormData },
       Intern_Profile: { ...jobFormData },
@@ -337,14 +375,6 @@ const Inf = () => {
         Two_Year_Mtech_Programs: { ...twoYearData },
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
-      }, 
-      Selection_Procedure: {
-        Resume_Shortlisting: { ...resumeShortListingData },
-        Type_Of_Test: { ...typeOfTestData },
-        Other_Qualification_Rounds: { ...otherQualificationRoundsData },
-        Total_Number_Of_Rounds: selectionFormData.Total_Number_Of_Rounds,
-        Number_Of_Offers: selectionFormData.Number_Of_Offers,
-        Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
     }));
     console.log(selectionFormData);
@@ -360,7 +390,7 @@ const Inf = () => {
       console.log(error);
     }
   };
-  console.log(page);
+  console.log({ InfData });
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

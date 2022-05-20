@@ -84,6 +84,7 @@ const createInf = async (loggedUserId, details, next) => {
 
 const saveInfById = async (id, details, next) => {
   try {
+    console.log({ result: details.Selection_Procedure });
     let infStatus = await INFstatus.findOne({ data: id });
 
     if (!infStatus)
