@@ -37,7 +37,6 @@ export default function INF1({
 
   function submitButton() {
     if (
-      companyFormData.Name_Of_The_Company === "" ||
       companyFormData.Category_Or_Sector === "" ||
       jobFormData.Job_Designation === "" ||
       jobFormData.Job_Description === "" ||
