@@ -41,7 +41,6 @@ export default function INF1({
   function submitButton() {
     console.log({ companyFormData, jobFormData, stipendFormData, hrDetails });
     if (
-      companyFormData.Name_Of_The_Company === '' ||
       companyFormData.Category_Or_Sector === '' ||
       jobFormData.Job_Designation === '' ||
       jobFormData.Job_Description === '' ||
