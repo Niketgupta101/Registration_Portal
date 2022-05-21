@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import TextField from "@mui/material/TextField";
 import "./styles.css";
 
 const CompanyDetails = ({
@@ -12,6 +14,36 @@ const CompanyDetails = ({
   handleCompanySubmit,
   setCompanyData,
 }) => {
+  const categories = [
+    "Public Sector",
+    "Government Owned",
+    "Private Sector",
+    "MNC(Indian Origin",
+    "MNC(Foreign Origin)",
+    "Start Up",
+    "University Institution",
+  ];
+  const sectors = [
+    "Analytics",
+    "Consulting",
+    "Core(Technical)",
+    "Finance",
+    "IT",
+    "Management",
+    "Teaching and Research",
+  ];
+  const [othercategory, setOthercategory] = useState(false);
+  const [othersector, setOthersector] = useState(false);
+  function handleOtherSector(e) {
+    if (e.target.checked && e.target.value === "Others") {
+      setOthersector(true);
+    } else setOthersector(false);
+  }
+  function handleOtherCategory(e) {
+    if (e.target.checked && e.target.value === "Others") {
+      setOthercategory(true);
+    } else setOthercategory(false);
+  }
   return (
     <>
       <div className="company_container">
@@ -103,42 +135,7 @@ const CompanyDetails = ({
                 About the company <span style={{ color: "red" }}>*</span>
               </label>
             </div>
-            <div className="mt-4 ms-2">
-              <label className="permission">Type of Company:</label>
-              <div className="ms-5 ps-3">
-                <FormControl>
-                  <FormLabel id="demo-radio-buttons-group-label">
-                    Options
-                  </FormLabel>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="Yes, Both Contact Number and Email Address"
-                    name="radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      value="Yes, Both Contact Number and Email Address"
-                      control={<Radio />}
-                      label="Yes, Both Contact Number and Email Address"
-                    />
-                    <FormControlLabel
-                      value="Yes, Only Contact Number"
-                      control={<Radio />}
-                      label="Yes, Only Contact Number"
-                    />
-                    <FormControlLabel
-                      value="Yes, Only Email Address"
-                      control={<Radio />}
-                      label="Yes, Only Email Address"
-                    />
-                    <FormControlLabel
-                      value="None"
-                      control={<Radio />}
-                      label="None"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </div>
-            </div>
+
             <div class="ug-pg d-flex m-0 px-0 justify-content-center">
               <div className="flex-grow-1 ">
                 <h1 className="ug-pg-h1 prog-hover">
@@ -221,7 +218,7 @@ const CompanyDetails = ({
                 </div>
               </div>
             </div>
-            <div className="person">
+            <div className="person mb-2">
               <div className="form-floating mb-3 mt-4">
                 <input
                   type="text"
@@ -288,8 +285,115 @@ const CompanyDetails = ({
                 </div>
               </div>
             </div>
+            <div className="container mb-2">
+              <div className="row">
+                <div className="col-12 col-md-6">
+                  <Box component="span">
+                    <div className=" ">
+                      <label>
+                        <div class="company-detail d-flex m-0 px-0 justify-content-center">
+                          <div className="flex-grow-1 ">
+                            <h1 className="company-detail-h1 prog-hover">
+                              <span className="company-detail-span">
+                                <b>Category of the Company</b>
+                              </span>
+                            </h1>
+                          </div>
+                        </div>
+                      </label>
+                      <div className="ms-5 ">
+                        <FormControl>
+                          <FormLabel id="demo-radio-buttons-group-label">
+                            Options
+                          </FormLabel>
+                          <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            defaultValue="Yes, Both Contact Number and Email Address"
+                            name="radio-buttons-group"
+                          >
+                            {categories.map((category) => (
+                              <FormControlLabel
+                                value={category}
+                                control={<Radio />}
+                                label={category}
+                                onChange={handleOtherCategory}
+                              />
+                            ))}
+                            <FormControlLabel
+                              value="Others"
+                              control={<Radio />}
+                              label="Others (please specify)"
+                              onChange={handleOtherCategory}
+                            />
+                            {othercategory && (
+                              <TextField
+                                id="standard-basic"
+                                label="Please Specify"
+                                variant="standard"
+                              />
+                            )}
+                          </RadioGroup>
+                        </FormControl>
+                      </div>
+                    </div>
+                  </Box>
+                </div>
+                <div className="col-12 col-md-6">
+                  <Box component="span">
+                    <div className=" ">
+                      <label>
+                        <div class="company-detail d-flex m-0 px-0 justify-content-center">
+                          <div className="flex-grow-1 ">
+                            <h1 className="company-detail-h1 prog-hover">
+                              <span className="company-detail-span">
+                                <b>Industry Sector</b>
+                              </span>
+                            </h1>
+                          </div>
+                        </div>
+                      </label>
+                      <div className="ms-5 ">
+                        <FormControl>
+                          <FormLabel id="demo-radio-buttons-group-label">
+                            Options
+                          </FormLabel>
+                          <RadioGroup
+                            aria-labelledby="demo-radio-buttons-group-label"
+                            defaultValue="Yes, Both Contact Number and Email Address"
+                            name="radio-buttons-group"
+                          >
+                            {sectors.map((sector) => (
+                              <FormControlLabel
+                                value={sector}
+                                control={<Radio />}
+                                label={sector}
+                                onChange={handleOtherSector}
+                              />
+                            ))}
+                            <FormControlLabel
+                              value="Others"
+                              control={<Radio />}
+                              label="Others (please specify)"
+                              onChange={handleOtherSector}
+                            />
+                            {othersector && (
+                              <TextField
+                                id="standard-basic"
+                                label="Please Specify"
+                                variant="standard"
+                              />
+                            )}
+                          </RadioGroup>
+                        </FormControl>
+                      </div>
+                    </div>
+                  </Box>
+                </div>
+              </div>
+            </div>
+            <hr />
             <div className="mt-4">
-              <label className="permission">
+              <label className="h6">
                 Do you want us to share your contact details with NIRF for
                 institute NIRF rating:
               </label>
