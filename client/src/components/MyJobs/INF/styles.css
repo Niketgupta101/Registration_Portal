@@ -8,16 +8,16 @@
   background: transparent !important;
   text-align: left !important;
   color: rgb(49, 68, 131) !important;
-  font-size: 1.5em ;
+  font-size: 1.5em;
   margin-top: 5px;
   text-transform: uppercase;
   text-align: center;
   justify-content: center;
-  font-weight : bold;
+  font-weight: bold;
   margin-bottom: 15px;
   padding-top: 10px;
   display: block;
-  background: rgb(138, 138, 238,0.8);
+  background: rgb(138, 138, 238, 0.8);
 }
 .headerText1 {
   text-align: center;
@@ -55,7 +55,7 @@
 .lower {
   padding: 30px;
   border-radius: 0px 0px 10px 10px;
-  background-color: #e9edf1;
+  background-color: #e9edf18a;
   color: rgb(0, 0, 0);
 }
 
@@ -73,7 +73,7 @@
   background-color: white;
   padding: 20px;
 }
-.courseName{
+.courseName {
   margin: 0 !important;
   font-size: 1em !important;
   padding: 0 !important;
@@ -82,16 +82,16 @@
   width: 90%;
 }
 
-tbody, table{
+tbody,
+table {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-tr{
+tr {
   display: flex;
 }
-
 
 .ug-pg-h1 {
   position: relative;
@@ -106,9 +106,8 @@ tr{
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
 }
-.ug-pg-h1:hover{
+.ug-pg-h1:hover {
   font-size: 2.2em;
-
 }
 
 .ug-pg-span {
@@ -121,7 +120,6 @@ tr{
   font-weight: 600;
 }
 
-
 .ug-pg h1 {
   text-transform: capitalize;
 }
@@ -133,12 +131,16 @@ tr{
   height: 4px;
   content: "";
   background-color: rgb(49, 68, 131);
-  transform: scaleX(1);  
+  transform: scaleX(1);
   transition: transform 250ms ease-in-out;
 }
-.ug-pg-h1:after{  transform-origin:  0% 50%; }
+.ug-pg-h1:after {
+  transform-origin: 0% 50%;
+}
 
-.ug-pg-h1:hover:after { transform: scaleX(3); }
+.ug-pg-h1:hover:after {
+  transform: scaleX(3);
+}
 
 .ug-pg h1 span {
   font-size: 13px;
@@ -156,12 +158,12 @@ tr{
   /* width: 95%; */
   /* max-width: 500px; */
   padding: 2em;
-  margin: 1.0em 1em;
+  margin: 1em 1em;
   /* border: 3px solid rgba(0, 0, 0, 0.08); */
 }
 
 @media (max-width: 400px) {
-  .category h3{
+  .category h3 {
     font-size: 1.1em;
   }
   .category p {
@@ -170,17 +172,20 @@ tr{
   .headerText {
     font-size: 1em;
   }
-  .courseName{
+  .courseName {
     font-size: 0.9em !important;
   }
-  .ug-pg-h1{
+  .ug-pg-h1 {
     font-size: 1.2em;
   }
-  .ug-pg-span{
+  .ug-pg-span {
     font-size: 9px !important;
     padding-top: 5px;
   }
   .ug-pg h1::after {
-    width: 100px;}
-  .ug-pg-h1:hover:after { transform: scaleX(1.5); }
+    width: 100px;
+  }
+  .ug-pg-h1:hover:after {
+    transform: scaleX(1.5);
+  }
 }

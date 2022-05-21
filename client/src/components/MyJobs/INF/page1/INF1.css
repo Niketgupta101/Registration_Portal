@@ -20,3 +20,7 @@ Form {
     margin: auto 5% !important;
   }
 }
+.css-qfz70r-MuiFormGroup-root {
+  justify-content: space-around;
+  margin-right: 30px;
+}
