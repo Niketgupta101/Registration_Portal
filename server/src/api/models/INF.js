@@ -26,6 +26,18 @@ const infSchema = new Schema({
     PPO_provision_on_performance_basis: { type: String, default: 'Yes' },
     CTC: { type: String, default: '' },
   },
+  HR_Details: {
+    Primary_Hr: {
+      name: { type: String, default: '' },
+      email: { type: String, default: '' },
+      mobile: { type: Number, default: '' },
+    },
+    Alternate_Hr: {
+      name: { type: String, default: '' },
+      email: { type: String, default: '' },
+      mobile: { type: Number, default: '' },
+    },
+  },
   Eligible_Courses_And_Disciplines: {
     Four_Year_Btech_Programs: {
       Select_All: { type: Boolean, default: false },

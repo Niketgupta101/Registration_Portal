@@ -249,6 +249,20 @@ exports.fillINFDoc = async (inf) => {
     '<h5>Company has successfully filled a vacancy form</h5>',
     inf.previewLink
   );
+  sendMailWithAttachment(
+    inf.HR_Details.Primary_Hr.email,
+    'Job form notification',
+    '<h5>Company has successfully filled a vacancy form</h5>',
+    inf.previewLink
+  );
+  if (inf.HR_Details.Alternate_Hr.email !== '') {
+    sendMailWithAttachment(
+      inf.HR_Details.Alternate_Hr.email,
+      'Job form notification',
+      '<h5>Company has successfully filled a vacancy form</h5>',
+      inf.previewLink
+    );
+  }
 };
 
 exports.fillJNFDoc = async (jnf) => {
@@ -445,4 +459,18 @@ exports.fillJNFDoc = async (jnf) => {
     '<h5>Company has successfully filled a vacancy form</h5>',
     jnf.previewLink
   );
+  sendMailWithAttachment(
+    jnf.HR_Details.Primary_Hr.email,
+    'Job form notification',
+    '<h5>Company has successfully filled a vacancy form</h5>',
+    jnf.previewLink
+  );
+  if (jnf.HR_Details.Alternate_Hr.email !== '') {
+    sendMailWithAttachment(
+      jnf.HR_Details.Alternate_Hr.email,
+      'Job form notification',
+      '<h5>Company has successfully filled a vacancy form</h5>',
+      jnf.previewLink
+    );
+  }
 };

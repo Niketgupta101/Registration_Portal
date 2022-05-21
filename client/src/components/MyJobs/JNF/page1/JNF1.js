@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 
 import 'animate.css';
 import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
+import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
 const style = { alignItems: 'center' };
 
@@ -11,14 +12,23 @@ export default function JNF1({
   companyFormData,
   jobFormData,
   salaryFormData,
+  hrDetails,
   handleCompanyDataChange,
   handleJobDataChange,
   handleSalaryDataChange,
+  handleHrDetailsChange,
   handleUpdateJnfById,
 }) {
   const [companyoverviewjob, setCompanyoverviewjob] = useState(false);
   const [internprofile, setInternprofile] = useState(false);
   const [stipenddetail, setStipenddetail] = useState(false);
+  const [hrdetail, setHrdetail] = useState(false);
+  const [althrdetail, setALtrdetail] = useState(false);
+
+  function handleHrdetails(e) {
+    if (e.target.value === 'YES') setALtrdetail(() => true);
+    else setALtrdetail(() => false);
+  }
 
   function submitButton() {
     if (
@@ -323,7 +333,238 @@ export default function JNF1({
             <div></div>
           )}
         </div>
+        <div className='animate__animated animate__fadeInRight container col-lg-12 col-md-12 category p-0 my-3 '>
+          <div
+            className='upper'
+            onClick={() => {
+              setTimeout(() => {
+                if (hrdetail) {
+                  setHrdetail(false);
+                } else {
+                  setHrdetail(true);
+                }
+              }, 200);
+            }}
+          >
+            <div className='category-heading d-flex'>
+              <header className='headerText flex-grow-1'>HR DETAILS</header>
+              <div className='mx-4 p-2 align-self-center'>
+                {hrdetail === true ? (
+                  <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
+                ) : (
+                  <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
+                )}
+              </div>
+            </div>
+          </div>
+          {hrdetail === true ? (
+            <div className='lower p-2 '>
+              <div className='p-2 mx-3 animate__animated animate__zoomIn'>
+                <FormGroup row style={style}>
+                  <Label
+                    for='exampleText'
+                    sm={3}
+                    text-colour='blue'
+                    className='fontText'
+                  >
+                    Name <span style={{ color: 'red' }}>*</span>
+                  </Label>
+                  <Col sm={9}>
+                    <Input
+                      id='exampleText'
+                      required
+                      name='name'
+                      value={hrDetails.Primary_Hr.name}
+                      onChange={(e) =>
+                        handleHrDetailsChange(
+                          'Primary_Hr',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
+                      type='text'
+                      className='inputText'
+                      autoComplete='off'
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row style={style}>
+                  <Label
+                    for='exampleText'
+                    sm={3}
+                    text-colour='blue'
+                    className='fontText'
+                  >
+                    Email <span style={{ color: 'red' }}>*</span>
+                  </Label>
+                  <Col sm={9}>
+                    <Input
+                      id='exampleText'
+                      required
+                      name='email'
+                      value={hrDetails.Primary_Hr.email}
+                      onChange={(e) =>
+                        handleHrDetailsChange(
+                          'Primary_Hr',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
+                      type='text'
+                      className='inputText'
+                      autoComplete='off'
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row style={style}>
+                  <Label
+                    for='exampleText'
+                    sm={3}
+                    text-colour='blue'
+                    className='fontText'
+                  >
+                    Mobile <span style={{ color: 'red' }}>*</span>
+                  </Label>
+                  <Col sm={9}>
+                    <Input
+                      id='exampleText'
+                      required
+                      name='mobile'
+                      value={hrDetails.Primary_Hr.mobile}
+                      onChange={(e) =>
+                        handleHrDetailsChange(
+                          'Primary_Hr',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
+                      type='text'
+                      className='inputText'
+                      autoComplete='off'
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row style={style}>
+                  <Label
+                    for='exampleText'
+                    sm={6}
+                    text-colour='blue'
+                    className='fontText'
+                  >
+                    Add Alternate HR Details:
+                  </Label>
 
+                  <Col sm={6}>
+                    <RadioGroup row name='row-radio-buttons-group'>
+                      <FormControlLabel
+                        value='YES'
+                        control={<Radio />}
+                        label='YES'
+                        onChange={handleHrdetails}
+                      />
+                      <FormControlLabel
+                        value='NO'
+                        control={<Radio />}
+                        label='NO'
+                        onChange={handleHrdetails}
+                      />
+                    </RadioGroup>
+                  </Col>
+                </FormGroup>
+                {althrdetail && (
+                  <div>
+                    <FormGroup row style={style}>
+                      <Label
+                        for='exampleText'
+                        sm={3}
+                        text-colour='blue'
+                        className='fontText'
+                      >
+                        Name
+                      </Label>
+                      <Col sm={9}>
+                        <Input
+                          id='exampleText'
+                          required
+                          name='name'
+                          value={hrDetails.Alternate_Hr.name}
+                          onChange={(e) =>
+                            handleHrDetailsChange(
+                              'Alternate_Hr',
+                              e.target.name,
+                              e.target.value
+                            )
+                          }
+                          type='text'
+                          className='inputText'
+                          autoComplete='off'
+                        />
+                      </Col>
+                    </FormGroup>
+                    <FormGroup row style={style}>
+                      <Label
+                        for='exampleText'
+                        sm={3}
+                        text-colour='blue'
+                        className='fontText'
+                      >
+                        Email
+                      </Label>
+                      <Col sm={9}>
+                        <Input
+                          id='exampleText'
+                          required
+                          name='email'
+                          value={hrDetails.Alternate_Hr.email}
+                          onChange={(e) =>
+                            handleHrDetailsChange(
+                              'Alternate_Hr',
+                              e.target.name,
+                              e.target.value
+                            )
+                          }
+                          type='text'
+                          className='inputText'
+                          autoComplete='off'
+                        />
+                      </Col>
+                    </FormGroup>
+                    <FormGroup row style={style}>
+                      <Label
+                        for='exampleText'
+                        sm={3}
+                        text-colour='blue'
+                        className='fontText'
+                      >
+                        Mobile
+                      </Label>
+                      <Col sm={9}>
+                        <Input
+                          id='exampleText'
+                          required
+                          name='mobile'
+                          value={hrDetails.Alternate_Hr.mobile}
+                          onChange={(e) =>
+                            handleHrDetailsChange(
+                              'Alternate_Hr',
+                              e.target.name,
+                              e.target.value
+                            )
+                          }
+                          type='text'
+                          className='inputText'
+                          autoComplete='off'
+                        />
+                      </Col>
+                    </FormGroup>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
         <div
           className='formFlex'
           style={{

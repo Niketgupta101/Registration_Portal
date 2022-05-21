@@ -20,10 +20,12 @@ const Jnf = () => {
 
   const { JnfId } = useParams();
 
+  const company = JSON.parse(localStorage.getItem('company'));
+
   const companyData = {
-    Name_Of_The_Company: '',
+    Name_Of_The_Company: company[0].name,
     Category_Or_Sector: '',
-    Website: '',
+    Website: company[0].website,
   };
   const jobData = {
     Job_Designation: '',
@@ -39,6 +41,7 @@ const Jnf = () => {
   const [companyFormData, setCompanyFormData] = useState(companyData);
   const [jobFormData, setJobFormData] = useState(jobData);
   const [salaryFormData, setSalaryFormData] = useState(salaryData);
+  const [hrDetails, setHrDetails] = useState({});
 
   const handleCompanyDataChange = (e) => {
     console.log({ e: e.target.name, value: e.target.value });
@@ -59,9 +62,14 @@ const Jnf = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
+  const handleHrDetailsChange = (type, name, value) => {
+    setHrDetails((prevData) => ({
+      ...prevData,
+      [type]: { ...prevData[type], [name]: value },
+    }));
+  };
   useEffect(() => {
-    console.log(companyFormData);
+    // console.log(companyFormData);
   }, [companyFormData]);
 
   // ------------------------------------------------------------
@@ -273,9 +281,10 @@ const Jnf = () => {
 
     console.log(response.data);
     setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
-    setCompanyFormData({ ...response.data.jnf.Company_Overview });
+    // setCompanyFormData({ ...response.data.jnf.Company_Overview });
     setJobFormData({ ...response.data.jnf.Job_Details });
     setSalaryFormData({ ...response.data.jnf.Salary_Details });
+    setHrDetails({ ...response.data.jnf.HR_Details });
     setFourYearData({
       ...response.data.jnf.Eligible_Courses_And_Disciplines
         .Four_Year_Btech_Programs,
@@ -389,9 +398,11 @@ const Jnf = () => {
             companyFormData={companyFormData}
             jobFormData={jobFormData}
             salaryFormData={salaryFormData}
+            hrDetails={hrDetails}
             handleCompanyDataChange={handleCompanyDataChange}
             handleJobDataChange={handleJobDataChange}
             handleSalaryDataChange={handleSalaryDataChange}
+            handleHrDetailsChange={handleHrDetailsChange}
             handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel>

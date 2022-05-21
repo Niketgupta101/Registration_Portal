@@ -1,44 +1,47 @@
-import { TabContext, TabPanel } from "@mui/lab";
-import React, { useEffect, useState } from "react";
-import { getInfById, submitInf, updateInfById } from "../../../api";
-import { useNavigate, useParams } from "react-router-dom";
+import { TabContext, TabPanel } from '@mui/lab';
+import React, { useEffect, useState } from 'react';
+import { getInfById, submitInf, updateInfById } from '../../../api';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import INF1 from "./page1/INF1";
-import INF2 from "./page2/INF2";
-import INF4 from "./page4/INF4";
-import ReviewInf from "./ReviewInf/ReviewInf";
+import INF1 from './page1/INF1';
+import INF2 from './page2/INF2';
+import INF4 from './page4/INF4';
+import ReviewInf from './ReviewInf/ReviewInf';
 
-import "./styles.css";
-import Loading from "../../Loading/Loading";
+import './styles.css';
+import Loading from '../../Loading/Loading';
 
 const Inf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState('1');
   const Navigate = useNavigate();
 
   const { InfId } = useParams();
 
+  const company = JSON.parse(localStorage.getItem('company'));
+
   const companyData = {
-    Name_Of_The_Company: "",
-    Category_Or_Sector: "",
-    Website: "",
+    Name_Of_The_Company: company[0].name,
+    Category_Or_Sector: '',
+    Website: company[0].website,
   };
   const jobData = {
     Internship_Duration: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
-    Job_Designation: "",
-    Job_Description: "",
-    Mode_Of_Internship: "Virtual",
-    Place_Of_Posting: "",
+    Job_Designation: '',
+    Job_Description: '',
+    Mode_Of_Internship: 'Virtual',
+    Place_Of_Posting: '',
   };
   const stipendData = {
-    Salary_Per_Month: "",
-    PPO_provision_on_performance_basis: "Yes",
-    CTC: "",
+    Salary_Per_Month: '',
+    PPO_provision_on_performance_basis: 'Yes',
+    CTC: '',
   };
 
   const [companyFormData, setCompanyFormData] = useState({ ...companyData });
   const [jobFormData, setJobFormData] = useState({ ...jobData });
   const [stipendFormData, setStipendFormData] = useState({ ...stipendData });
+  const [hrDetails, setHrDetails] = useState({});
 
   const handleCompanyDataChange = (e) => {
     setCompanyFormData((prevData) => ({
@@ -56,6 +59,12 @@ const Inf = () => {
     setStipendFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
+    }));
+  };
+  const handleHrDetailsChange = (type, name, value) => {
+    setHrDetails((prevData) => ({
+      ...prevData,
+      [type]: { ...prevData[type], [name]: value },
     }));
   };
   // ------------------------------------------------------------
@@ -91,12 +100,22 @@ const Inf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name === 'Select_All') {
       let newValue = !fourYearData[e.target.name];
+      // setFourYearData((prevData) => ({
+      //   ...prevData,
+      //   [e.target.name]: e.target.checked ? true : false,
+      // }));
       for (let i in fourYearData) {
         setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
       //console.log(newValue);
+      // setFourYearData((prevData) => {
+      //   for (let i in prevData) {
+      //     prevData[i] = newValue;
+      //   }
+      //   return prevData;
+      // });
     } else {
       setFourYearData((prevData) => ({
         ...prevData,
@@ -105,7 +124,7 @@ const Inf = () => {
     }
   };
   const handleFiveYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name === 'Select_All') {
       let newValue = !fiveYearData[e.target.name];
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -126,7 +145,7 @@ const Inf = () => {
   };
 
   useEffect(() => {
-    //console.log(fourYearData);
+    console.log(fourYearData);
   }, [fourYearData]);
 
   // ------------------------------------------------------
@@ -171,7 +190,7 @@ const Inf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name === 'Select_All') {
       let newValue = !threeYearData[e.target.name];
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -186,7 +205,7 @@ const Inf = () => {
     //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name === 'Select_All') {
       let newValue = !twoYearData[e.target.name];
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -201,7 +220,7 @@ const Inf = () => {
     }
   };
   const handleTwoYearMbaChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name === 'Select_All') {
       let newValue = !twoYearMbaData[e.target.name];
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -216,7 +235,7 @@ const Inf = () => {
     //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name === 'Select_All') {
       let newValue = !twoYearMscData[e.target.name];
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -233,9 +252,9 @@ const Inf = () => {
 
   // ------------------------------------------------------------
   const selectionData = {
-    Total_Number_Of_Rounds: "",
-    Number_Of_Offers: "",
-    Eligibility_Criteria: "",
+    Total_Number_Of_Rounds: '',
+    Number_Of_Offers: '',
+    Eligibility_Criteria: '',
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -342,11 +361,12 @@ const Inf = () => {
   const fetchInfData = async (InfId) => {
     const response = await getInfById(InfId);
 
-    //console.log(response.data);
+    // console.log(response.data);
     setInfData((prevData) => ({ ...prevData, ...response.data.inf }));
-    setCompanyFormData({ ...response.data.inf.Company_Overview });
+    // setCompanyFormData({ ...response.data.inf.Company_Overview });
     setJobFormData({ ...response.data.inf.Intern_Profile });
     setStipendFormData({ ...response.data.inf.Salary_Details });
+    setHrDetails({ ...response.data.inf.HR_Details });
     setFourYearData({
       ...response.data.inf.Eligible_Courses_And_Disciplines
         .Four_Year_Btech_Programs,
@@ -405,6 +425,7 @@ const Inf = () => {
       Company_Overview: { ...companyFormData },
       Intern_Profile: { ...jobFormData },
       Salary_Details: { ...stipendFormData },
+      HR_Details: { ...hrDetails },
       Eligible_Courses_And_Disciplines: {
         ...prevData.Eligible_Courses_And_Disciplines,
         Four_Year_Btech_Programs: { ...fourYearData },
@@ -440,7 +461,7 @@ const Inf = () => {
       let response = await submitInf(InfId);
       setIsLoading(false);
       //console.log(response);
-      Navigate("/myjobs");
+      Navigate('/myjobs');
     } catch (error) {
       //console.log(error);
     }
@@ -456,24 +477,26 @@ const Inf = () => {
 
   return (
     <>
-      <div className="INF">
+      <div className='INF'>
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+          style={{ padding: '0', margin: '0', boxSizing: 'border-box' }}
         >
-          <TabPanel value="1">
+          <TabPanel value='1'>
             <INF1
               setPage={setPage}
               companyFormData={companyFormData}
               jobFormData={jobFormData}
               stipendFormData={stipendFormData}
+              hrDetails={hrDetails}
               handleCompanyDataChange={handleCompanyDataChange}
               handleJobDataChange={handleJobDataChange}
               handleStipendDataChange={handleStipendDataChange}
+              handleHrDetailsChange={handleHrDetailsChange}
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel>
-          <TabPanel value={"2"}>
+          <TabPanel value={'2'}>
             <INF2
               setPage={setPage}
               fourYearData={fourYearData}
@@ -507,7 +530,7 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel> */}
-          <TabPanel value={"3"}>
+          <TabPanel value={'3'}>
             <INF4
               setPage={setPage}
               resumeShortListingData={resumeShortListingData}
@@ -523,7 +546,7 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel>
-          <TabPanel value={"4"}>
+          <TabPanel value={'4'}>
             <ReviewInf
               setPage={setPage}
               InfData={InfData}

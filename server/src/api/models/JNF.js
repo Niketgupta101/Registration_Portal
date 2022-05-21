@@ -20,6 +20,18 @@ const jnfSchema = new Schema({
     CTC_Breakup: { type: String },
     Bond_Details: { type: String },
   },
+  HR_Details: {
+    Primary_Hr: {
+      name: { type: String, default: '' },
+      email: { type: String, default: '' },
+      mobile: { type: Number, default: '' },
+    },
+    Alternate_Hr: {
+      name: { type: String, default: '' },
+      email: { type: String, default: '' },
+      mobile: { type: Number, default: '' },
+    },
+  },
   Eligible_Courses_And_Disciplines: {
     Four_Year_Btech_Programs: {
       Select_All: { type: Boolean, default: false },
@@ -107,7 +119,7 @@ const jnfSchema = new Schema({
   Selection_Procedure: {
     Resume_Shortlisting: {
       Yes: { type: Boolean, default: false },
-      No: { type: Boolean, default: false }, 
+      No: { type: Boolean, default: false },
     },
     Type_Of_Test: {
       Technical: { type: Boolean, default: false },
@@ -121,8 +133,8 @@ const jnfSchema = new Schema({
       Interview: { type: Boolean, default: false },
     },
     Total_Number_Of_Rounds: { type: Number, default: 0 },
-    Number_Of_Offers:  String,
-    Eligibility_Criteria:  String,
+    Number_Of_Offers: String,
+    Eligibility_Criteria: String,
   },
   previewLink: String,
   downloadLink: String,
