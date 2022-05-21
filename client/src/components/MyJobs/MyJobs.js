@@ -194,14 +194,20 @@ const MyJobs = () => {
                           </>
                         )}
                       </h5>
-                      <h5>
-                        <span>Submitted On:</span>:{" "}
-                        {job.data.updatedAt.slice(8, 10) +
-                          "/" +
-                          job.data.updatedAt.slice(5, 7) +
-                          "/" +
-                          job.data.updatedAt.slice(0, 4)}
-                      </h5>
+                      {job.progress === "incomplete" ? (
+                        <h5>
+                          <span>Form Status:</span>: Incomplete
+                        </h5>
+                      ) : (
+                        <h5>
+                          <span>Submitted On:</span>:{" "}
+                          {job.data.updatedAt.slice(8, 10) +
+                            "/" +
+                            job.data.updatedAt.slice(5, 7) +
+                            "/" +
+                            job.data.updatedAt.slice(0, 4)}
+                        </h5>
+                      )}
                       {job.progress === "incomplete" ? (
                         <div
                           style={{ display: "flex", justifyContent: "center" }}
