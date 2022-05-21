@@ -11,10 +11,10 @@ import { FaSearch } from "react-icons/fa";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Loading from "../../Loading/Loading";
-import "./styles.css";
+import "./../Jobs/styles.css";
 import { getAllInf, getAllJobs } from "../../../api/index";
 
-const Jobs = () => {
+const AllInf = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const Navigate = useNavigate();
@@ -38,7 +38,7 @@ const Jobs = () => {
     <>
       <div className="admin_company">
         <div className="admin_company_header d-flex  justify-content-between">
-          <h1>All JNF</h1>
+          <h1>All INF</h1>
           <div>
             <div className="input-group d-flex">
               <div className="form-outline">
@@ -192,4 +192,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default AllInf;

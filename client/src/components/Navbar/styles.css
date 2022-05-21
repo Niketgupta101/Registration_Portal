@@ -1,11 +1,15 @@
-.menuBar{
-    background-color: #fff;
-    color: rgba(36, 36, 193, 0.8);
-    font-weight: 600;
-    border-bottom: 1px solid rgba(0, 0, 255, 0.12);
-    position: static;
+.menuBar {
+  background-color: #fff;
+  color: rgba(36, 36, 193, 0.8);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 255, 0.12);
+  position: static;
 }
-.listItem{
+.sideNavbar-item {
+  color: white;
+  margin-left: 10px;
+}
+.listItem {
   height: 100%;
   padding: 1.2rem 0rem;
   color: rgba(36, 36, 193, 0.8);
@@ -16,23 +20,23 @@
   margin: 0;
   transition: all 0.3s;
 }
-.listItem:hover{
+.listItem:hover {
   border-bottom: 2px solid rgba(36, 36, 193, 0.8);
 }
-ul{
+ul {
   display: flex;
   height: 100%;
   margin: 0;
 }
-.menuOutlined{
+.menuOutlined {
   display: none;
   cursor: pointer;
 }
-.close{
+.close {
   display: flex;
   /* justify-content: flex-end; */
 }
-.sideMenuBar{
+.sideMenuBar {
   width: 250px;
   background-color: rgb(60, 85, 165);
   display: flex;
@@ -46,21 +50,21 @@ ul{
   top: 0;
   right: 0;
 }
-.menuContent{
+.menuContent {
   border-bottom: 1px solid #fff;
 }
-.item{
+.item {
   display: flex;
   align-items: center;
   padding: 0.5rem;
   cursor: pointer;
 }
 
-@media(max-width: 600px){
-  .menuOutlined{
+@media (max-width: 960px) {
+  .menuOutlined {
     display: block;
   }
-  .sideMenuBar{
+  .sideMenuBar {
     display: flex;
   }
 }
