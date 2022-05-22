@@ -63,9 +63,7 @@
   color: #2999f5;
 }
 
-.lower p:not(:first-child) {
-  /* margin-top: 40px; */
-}
+
 .eligible-options {
   background-color: #7ab4e41e;
 }

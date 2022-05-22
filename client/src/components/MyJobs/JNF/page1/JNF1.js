@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 
 import 'animate.css';
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
-import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
+
 
 const style = { alignItems: 'center' };
 
@@ -19,9 +22,9 @@ export default function JNF1({
   handleHrDetailsChange,
   handleUpdateJnfById,
 }) {
-  const [companyoverviewjob, setCompanyoverviewjob] = useState(false);
-  const [internprofile, setInternprofile] = useState(false);
-  const [stipenddetail, setStipenddetail] = useState(false);
+  const [companyoverview, setCompanyoverview] = useState(false);
+  const [jobdetail, setJobdetail] = useState(false);
+  const [salarydetail, setSalarydetail] = useState(false);
   const [hrdetail, setHrdetail] = useState(false);
   const [althrdetail, setALtrdetail] = useState(false);
 
@@ -32,7 +35,6 @@ export default function JNF1({
 
   function submitButton() {
     if (
-      companyFormData.Name_Of_The_Company === '' ||
       companyFormData.Category_Or_Sector === '' ||
       jobFormData.Job_Designation === '' ||
       jobFormData.Job_Description === '' ||
@@ -46,7 +48,7 @@ export default function JNF1({
           className='submit_btn not-allowed-btn'
           disabled
           title='Kindly fill all necessary fields'
-          style={{ cursor: 'not-allowed' }}
+          style={{ cursor: 'not-allowed', border: "1px solid red"  }}
         >
           Save and Continue
         </button>
@@ -73,20 +75,20 @@ export default function JNF1({
             className='upper'
             onClick={() => {
               setTimeout(() => {
-                if (companyoverviewjob) {
-                  setCompanyoverviewjob(false);
+                if (companyoverview) {
+                  setCompanyoverview(false);
                 } else {
-                  setCompanyoverviewjob(true);
+                  setCompanyoverview(true);
                 }
               }, 200);
             }}
           >
             <div className='category-heading d-flex'>
               <header className='headerText flex-grow-1'>
-                COMPANY overview
+                COMPANY OVERVIEW
               </header>
               <div className='mx-4 p-2 align-self-center'>
-                {companyoverviewjob === true ? (
+                {companyoverview === true ? (
                   <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
                   <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
@@ -94,7 +96,7 @@ export default function JNF1({
               </div>
             </div>
           </div>
-          {companyoverviewjob === true ? (
+          {companyoverview === true ? (
             <div className='lower p-2 '>
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
@@ -161,10 +163,10 @@ export default function JNF1({
             className='upper'
             onClick={() => {
               setTimeout(() => {
-                if (internprofile) {
-                  setInternprofile(false);
+                if (jobdetail) {
+                  setJobdetail(false);
                 } else {
-                  setInternprofile(true);
+                  setJobdetail(true);
                 }
               }, 200);
             }}
@@ -172,7 +174,7 @@ export default function JNF1({
             <div className='category-heading d-flex'>
               <header className='headerText flex-grow-1'>JOB DETAILS</header>
               <div className='mx-4 p-2 align-self-center'>
-                {internprofile === true ? (
+                {jobdetail === true ? (
                   <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
                   <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
@@ -180,7 +182,7 @@ export default function JNF1({
               </div>
             </div>
           </div>
-          {internprofile === true ? (
+          {jobdetail === true ? (
             <div className='lower p-2 '>
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
@@ -249,10 +251,10 @@ export default function JNF1({
             className='upper'
             onClick={() => {
               setTimeout(() => {
-                if (stipenddetail) {
-                  setStipenddetail(false);
+                if (salarydetail) {
+                  setSalarydetail(false);
                 } else {
-                  setStipenddetail(true);
+                  setSalarydetail(true);
                 }
               }, 200);
             }}
@@ -260,7 +262,7 @@ export default function JNF1({
             <div className='category-heading d-flex'>
               <header className='headerText flex-grow-1'>SALARY DETAILS</header>
               <div className='mx-4 p-2 align-self-center'>
-                {stipenddetail === true ? (
+                {salarydetail === true ? (
                   <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
                   <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
@@ -268,7 +270,7 @@ export default function JNF1({
               </div>
             </div>
           </div>
-          {stipenddetail === true ? (
+          {salarydetail === true ? (
             <div className='lower p-2 '>
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>

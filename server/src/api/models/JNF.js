@@ -5,21 +5,21 @@ const jnfSchema = new Schema(
   {
     userId: { type: Schema.ObjectId, ref: 'User' },
     Company_Overview: {
-      Name_Of_The_Company: { type: String },
-      Category_Or_Sector: { type: String },
-      Website: { type: String },
+      Name_Of_The_Company: { type: String, default: ''  },
+      Category_Or_Sector: { type: String, default: ''  },
+      Website: { type: String, default: ''  },
     }, 
     Job_Details: {
-      Designation: { type: String },
-      Place_Of_Posting: { type: String },
+      Job_Designation: { type: String, default: ''  },
+      Place_Of_Posting: { type: String, default: ''  },
       Job_Description: {
-        type: String,
+        type: String, default: ''  
       },
     },
     Salary_Details: {
-      CTC: { type: String },
-      CTC_Breakup: { type: String },
-      Bond_Details: { type: String },
+      CTC: { type: String, default: ''  },
+      CTC_Breakup: { type: String, default: ''  },
+      Bond_Details: { type: String, default: ''  },
     },
     HR_Details: {
       Primary_Hr: {
@@ -142,9 +142,9 @@ const jnfSchema = new Schema(
         Case_Study: { type: Boolean, default: false },
         Interview: { type: Boolean, default: false },
       },
-      Total_Number_Of_Rounds: { type: Number, default: 0 },
-      Number_Of_Offers: String,
-      Eligibility_Criteria: String,
+      Total_Number_Of_Rounds: { type: String, default: '' },
+      Number_Of_Offers: { type: String, default: '' },
+      Eligibility_Criteria: { type: String, default: '' },
     },
     previewLink: String,
     downloadLink: String, 
