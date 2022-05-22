@@ -1,0 +1,132 @@
+.profile-company {
+  font-size: 18px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+}
+.profile-text-1 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 18%;
+  min-width: 20%;
+  display: flex;
+  justify-content: left;
+}
+.profile-text-2 {
+  font-size: 19px;
+  color: black;
+}
+.profile-text-3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, 0.65);
+  margin-left: 8%;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+.profile-text-4 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.user_profile {
+  margin: 0;
+  padding: 2rem 22%;
+  width: 100%;
+  min-height: 91vh;
+  box-sizing: border-box;
+  background-color: rgb(165, 206, 206);
+}
+.profile_header {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.avatar > img {
+  width: 200px;
+  height: 200px;
+}
+.avatar > h3 {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;
+  color: rgb(60, 85, 165);
+}
+.avatar > h6 {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.user_details {
+  width: 100%;
+  margin-top: 2rem;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+}
+.table-container {
+  width: 100%;
+}
+
+.user_card {
+  text-align: center;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 5px;
+  margin: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.177);
+  box-shadow: 3px 3px 6px 4px rgba(0, 0, 0, 0.177);
+  transition: all ease 0.3s;
+  background-color: rgb(237, 241, 245, 0.5);
+
+  border-radius: 18px;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+/* flex-direction: row-reverse ; */
+
+.profile_header {
+  padding: 0 1rem;
+  border-bottom: 2px solid rgb(60, 85, 165);
+  font-size: 30px;
+  font-weight: 800;
+  color: rgb(60, 85, 165);
+}
+.Ap {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.row-style {
+  background-color: #d7d3d3;
+  padding: 15px;
+  border: solid white 5px;
+}
+
+@media (max-width: 600px) {
+  .user_profile {
+    padding: 2rem 7%;
+  }
+}
+@media (max-width: 750px) {
+  .profile-text-2 {
+    font-size: 1.1em;
+  }
+  .profile-text-1 {
+    font-size: 16px;
+    margin-left: 8%;
+  }
+}

@@ -1,0 +1,170 @@
+/*** FONTS ***/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900|Raleway:400,400i,700,700i);
+/*** VARIABLES ***/
+/* Colors */
+/*** EXTEND ***/
+/* box-shadow */
+ol.gradient-list > li::before, ol.gradient-list > li {
+  box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+}
+
+/*** STYLE ***/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+  color: #1d1f20;
+  font-family: "Raleway", sans-serif;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  max-width: 40rem;
+  padding: 1rem;
+}
+
+.courses_list{
+  padding: 2rem 15%;
+  /* background-repeat:no-repeat; 
+  background-size:contain;
+  background: url("https://people.iitism.ac.in/~academics/assets/assets/images/index/01.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+}
+ol.gradient-list {
+  counter-reset: gradient-counter;
+  list-style: none;
+  margin: 1.75rem 0;
+  padding-left: 1rem;
+}
+ol.gradient-list > li {
+  background: white;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+  counter-increment: gradient-counter;
+  margin-top: 1rem;
+  min-height: 3rem;
+  padding: 1rem 1rem 1rem 3rem;
+  position: relative;
+}
+
+ol.gradient-list > li + li {
+  margin-top: 2rem;
+}
+.user_profile{
+  margin: 0;
+  padding: 2rem 22%;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+}
+.profile_header{
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.buttons{
+  text-align: center;
+
+}
+.bt{
+  margin-bottom: 2rem;
+}
+#btnfirst{
+  margin-top: 1rem;
+}
+.courses-button{
+  padding: 3px 30px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.prog-hover:after{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22vw !important;
+  height: 4px;
+  content: "";
+  background-color: rgb(49, 68, 131);
+  transform: scaleX(1);  
+  transition: transform 250ms ease-in-out;
+}
+.prog-hover:after{  transform-origin:  0% 50%; }
+
+.prog-hover:hover:after { transform: scaleX(1.8); }
+/* .prog-hover-span{
+  font-size: 2em; */
+.course-name-li{
+  font-size: 1.25em;
+}
+.donut-div{
+  width: 150px;
+}
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.donut-legend-heading{
+  font-weight: 700 !important;
+}
+.donut-legend-subheading{
+  font-weight: 800 !important;
+}
+.donut-legend-placed{
+  color: #28548a;
+}
+.dot-placed{
+  background-color: #28548a;
+}
+.donut-legend-unplaced{
+  color: #9cbbe2;
+  font-weight: 600;
+  /* text-shadow: 1px 1px #1d1f20 ; */
+}
+.dot-unplaced{
+  background-color: #9cbbe2;
+}
+.modal-type-heading{
+  font-family: "Raleway", sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  line-height: 1em;
+  padding: 0.35em 0 2em 0.35em;
+  color: rgba(0, 0, 0, 0.8);
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+.modal-datatext{
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1em;
+  padding-left: 2em;
+  color: rgba(0, 0, 0);
+  padding-bottom: 5px;
+}
+.modal-stats{
+  font-size: 19px !important;
+  font-weight:800 !important;
+  padding: 0 5px;
+}

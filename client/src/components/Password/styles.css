@@ -1,0 +1,70 @@
+.forgot_password {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+.forgot_container {
+  width: 380px;
+  min-height: 200px;
+  padding: 1.5rem;
+  margin: auto 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.122);
+}
+.forgot_container > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0 0 0;
+}
+.forgot_container > form > h5 {
+  text-align: justify;
+  font-size: 16px;
+}
+.forgot_header {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(60, 85, 165);
+}
+
+.change_container {
+  width: 400px;
+  min-height: 200px;
+  padding: 1.5rem;
+  margin: auto 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.122);
+}
+
+.change_container > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0 0 0;
+}
+.change_container > form > h5 {
+  font-size: 16px;
+  text-align: justify;
+}
+
+@media (max-width: 425px) {
+  .change_container {
+    width: 90%;
+  }
+}

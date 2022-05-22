@@ -1,0 +1,191 @@
+.overallDiv1 {
+  justify-content: center;
+  margin: auto 18% !important;
+}
+.headerText {
+  padding: 0.5rem;
+  border-bottom: 2px solid rgb(60, 85, 165);
+  background: transparent !important;
+  text-align: left !important;
+  color: rgb(49, 68, 131) !important;
+  font-size: 1.5em;
+  margin-top: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  display: block;
+  background: rgb(138, 138, 238, 0.8);
+}
+.headerText1 {
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px !important;
+  text-decoration-line: underline;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  color: rgb(60, 85, 165);
+  margin: 1.5rem auto;
+}
+.category-heading {
+  /* display: flex;
+  justify-content: space-between; */
+  text-transform: uppercase;
+}
+
+.category p {
+  opacity: 0.6;
+}
+
+.category h3 {
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.upper {
+  width: 100%;
+  padding: 10px 0 10px 30px;
+  background-color: #c8e5fd;
+  border-radius: 10px;
+}
+
+.lower {
+  padding: 30px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #e9edf18a;
+  color: rgb(0, 0, 0);
+}
+
+.lower h4 {
+  color: #2999f5;
+}
+
+.lower p:not(:first-child) {
+  /* margin-top: 40px; */
+}
+.eligible-options {
+  background-color: #7ab4e41e;
+}
+.eligible-type {
+  background-color: white;
+  padding: 20px;
+}
+.courseName {
+  margin: 0 !important;
+  font-size: 1em !important;
+  padding: 0 !important;
+  margin-left: 15rem;
+  align-items: center;
+  width: 90%;
+}
+
+tbody,
+table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+tr {
+  display: flex;
+}
+
+.ug-pg-h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  /* line-height: 2.3em; */
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.ug-pg-h1:hover {
+  font-size: 2.2em;
+}
+
+.ug-pg-span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+.ug-pg-h1 em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.ug-pg h1 {
+  text-transform: capitalize;
+}
+.ug-pg h1::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  height: 4px;
+  content: "";
+  background-color: rgb(49, 68, 131);
+  transform: scaleX(1);
+  transition: transform 250ms ease-in-out;
+}
+.ug-pg-h1:after {
+  transform-origin: 0% 50%;
+}
+
+.ug-pg-h1:hover:after {
+  transform: scaleX(3);
+}
+
+.ug-pg h1 span {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 2em;
+  padding-left: 0.25em;
+  color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 10px;
+}
+.ug-pg {
+  position: relative;
+  background: #ffffff;
+  /* width: 95%; */
+  /* max-width: 500px; */
+  padding: 2em;
+  margin: 1em 1em;
+  /* border: 3px solid rgba(0, 0, 0, 0.08); */
+}
+
+@media (max-width: 400px) {
+  .category h3 {
+    font-size: 1.1em;
+  }
+  .category p {
+    font-size: 0.9em;
+  }
+  .headerText {
+    font-size: 1em;
+  }
+  .courseName {
+    font-size: 0.9em !important;
+  }
+  .ug-pg-h1 {
+    font-size: 1.2em;
+  }
+  .ug-pg-span {
+    font-size: 9px !important;
+    padding-top: 5px;
+  }
+  .ug-pg h1::after {
+    width: 100px;
+  }
+  .ug-pg-h1:hover:after {
+    transform: scaleX(1.5);
+  }
+}

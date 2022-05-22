@@ -1,0 +1,217 @@
+/*-- start editing from here --*/
+
+.a-home {
+  text-decoration: none;
+}
+/* horizontal menu */
+.h1-home {
+  font-size: 45px;
+  color: #fff;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+  padding: 1em 0 0.4em 0;
+}
+/*-- slide --*/
+
+@keyframes slideleft {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 90000%;
+  }
+}
+
+@-webkit-keyframes slideleft {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 90000%;
+  }
+}
+
+.w3layouts-main {
+  font-family: "Hind", sans-serif;
+  background-image: url("./maincoloured-college.jpg");
+  background-repeat: repeat-x;
+  animation: slideleft 20000s infinite linear;
+  -webkit-animation: slideleft 20000s infinite linear;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  background: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+}
+/*-- //slide --*/
+
+/*--header start here--*/
+.w3ls-header {
+  padding: 0em 0 0;
+}
+.icon1 {
+  margin: 0 0 1em;
+  padding: 0.8em 1em;
+  background: rgba(255, 255, 255, 0.9);
+}
+.icon1:hover {
+  background: rgba(255, 255, 255);
+}
+.icon1 span.fa {
+  color: #222;
+  width: 22px;
+}
+.main-icon {
+  text-align: center;
+}
+.main-icon span.fa {
+  font-size: 50px;
+  color: #fff;
+  margin-bottom: 1em;
+}
+.wthree li {
+  display: inline-block;
+}
+.a-home {
+  color: #585858;
+  margin: 0em;
+}
+.bottom {
+  margin: 1em 0 0;
+}
+.header-main {
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+}
+
+.sign-up {
+  margin: 2em 0;
+}
+.header-left {
+  background: #fff;
+  padding: 0px;
+}
+.sign-up h2 {
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  background: #fbbc05;
+  width: 40px;
+  height: 40px;
+  line-height: 1.9em;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+::-webkit-input-placeholder {
+  color: #333 !important;
+}
+.header-left-bottom input {
+  outline: none;
+  font-size: 17px;
+  color: #222;
+  border: none;
+  width: 90%;
+  display: inline-block;
+  background: transparent;
+  letter-spacing: 1px;
+}
+.header-left-bottom input[type="password"] {
+  outline: none;
+  font-size: 17px;
+  color: #222;
+  border: none;
+  width: 90%;
+  display: inline-block;
+  background: transparent;
+  letter-spacing: 1px;
+}
+.header-left-bottom button.btn {
+  background: #007cc0;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 0.8em 2em;
+  letter-spacing: 1px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+/*-- agileits --*/
+.header-left-bottom .para {
+  font-size: 17px;
+  color: #000;
+  display: inline-block;
+  width: 50%;
+  margin: 20px 0 0;
+  letter-spacing: 1px;
+  float: left;
+}
+
+.header-left-bottom p.right {
+  text-align: right;
+}
+.header-left-bottom p .a-home {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e2e2;
+  text-transform: uppercase;
+}
+
+.heading h5 {
+  color: #c5c5c5;
+  color: #000000;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+@media (max-width: 667px) {
+  .h1-home {
+    font-size: 40px;
+    letter-spacing: 3px;
+  }
+}
+
+@media (max-width: 415px) {
+  .h1-home {
+    font-size: 35px;
+    letter-spacing: 3px;
+  }
+}
+@media (max-width: 384px) {
+  .main-icon span.f.a-home {
+    margin-bottom: 0.6em;
+  }
+  .header-main {
+    max-width: 360px;
+    margin: 0 1em;
+  }
+  .header-left-bottom input[type="email"],
+  .header-left-bottom input[type="password"] {
+    width: 88%;
+  }
+
+  .h1-home {
+    font-size: 30px;
+  }
+}

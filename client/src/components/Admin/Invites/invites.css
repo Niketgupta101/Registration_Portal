@@ -1,0 +1,17 @@
+.secondary_btn_customized {
+  padding-left: inherit;
+  padding-top: 5cm;
+}
+.flex-grow-1 {
+  padding-bottom: 10 px;
+  justify-content: center;
+}
+.ug-pg-span {
+  padding-bottom: 20px;
+  align-self: center;
+}
+.css-pdct74-MuiTablePagination-selectLabel,
+.css-levciy-MuiTablePagination-displayedRows {
+  margin: 0 !important;
+  font-size: 1rem !important;
+}

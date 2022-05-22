@@ -1,0 +1,45 @@
+{
+  "name": "user-management-module",
+  "version": "1.0.0",
+  "description": "user-management-module",
+  "author": "Niket Gupta",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "server": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niketgupta101/Boilerplate-Structure.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "convertapi": "^1.11.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "docxtemplater": "^3.29.0",
+    "dotenv-safe": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.2",
+    "googleapis": "^95.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.4.0",
+    "mongoose": "^6.1.4",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.2",
+    "path": "^0.12.7",
+    "pdfkit": "^0.13.0",
+    "pizzip": "^3.1.1",
+    "uuid": "^8.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/Niketgupta101/Boilerplate-Structure/issues"
+  },
+  "homepage": "https://github.com/Niketgupta101/Boilerplate-Structure#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

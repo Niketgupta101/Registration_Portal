@@ -1,0 +1,48 @@
+
+.courseCheckBoxSkill {
+  margin-inline-start: 16.5rem;
+  display: inline-block;
+  align-items: right;
+  position: sticky;
+}
+
+
+tr {
+  display: flex;
+  width: 90%;
+  text-align: left !important;
+  justify-content: space-between;
+  padding: 0.4rem 0.2rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.51) !important;
+}
+
+@media (max-width: 700px) {
+  tr {
+    width: 100%;
+  }
+  td {
+    display: inline;
+    margin: 0 !important;
+  }
+  
+}
+
+@media (max-width: 400px) {
+  .flex {
+    flex-direction: column-reverse;
+  }
+  .submit_btn {
+    margin: 0.5rem auto;
+    display: block;
+  }
+  .headerText{
+    font-size: 1.2em !important;
+  }
+}
+
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}

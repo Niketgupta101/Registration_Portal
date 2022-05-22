@@ -1,0 +1,182 @@
+.company_container {
+  min-height: 91vh;
+  width: 95vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  /* background: rgba(14, 13, 13, 0.143); */
+  display: flex;
+  margin: auto;
+  flex-grow: 1;
+}
+.company_card {
+  width: 80vw;
+  min-height: 400px;
+  padding: 0 1.5rem;
+  margin: 1.5rem auto;
+  background-color: #fff;
+}
+
+.company_form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+.company_form_item {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0.2rem;
+  width: 100%;
+}
+.form_input_btn {
+  width: 100%;
+  height: 2rem;
+  line-height: 14px;
+  padding: auto 0.5rem;
+  margin: 0.15rem 0;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.531);
+}
+.form_input_btn:hover,
+.form_about_input:hover {
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  /* box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.068); */
+}
+.form_about_input {
+  width: 99%;
+  line-height: 14px;
+  padding: auto 0.5rem;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.531);
+}
+.company_form_item > input {
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+}
+.company_form_item label {
+  font-size: 14px;
+  font-weight: 500;
+}
+.formFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  margin: 0;
+  justify-content: space-between;
+}
+.formFlex > div {
+  flex-basis: 48%;
+}
+.company-detail-h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  /* line-height: 2.3em; */
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.company-detail-h1:hover {
+  font-size: 2.2em;
+}
+
+.company-detail-span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+.company-detail-h1 em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.company-detail h1 {
+  text-transform: capitalize;
+}
+.company-detail h1::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100px !important;
+  height: 4px;
+  content: "";
+  background-color: rgb(49, 68, 131);
+  transition: transform 250ms ease-in-out;
+}
+.company-detail-h1:after {
+  transform-origin: 0% 50%;
+}
+
+.company-detail-h1:hover:after {
+  transform: scaleX(3);
+}
+
+.company-detail h1 span {
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 2em;
+  color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 10px;
+}
+.company-detail {
+  position: relative;
+  background: #ffffff;
+  /* width: 95%; */
+  /* max-width: 500px; */
+  padding: 2em;
+  margin: 1em 1em;
+  /* border: 3px solid rgba(0, 0, 0, 0.08); */
+}
+
+.form_submit_btn {
+  padding: 0.5rem 1.5rem;
+  display: inline;
+  align-self: right;
+  font-weight: 500;
+  margin: 0.7rem auto;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: 1px 1px 5px 1px rgba(0, 0, 0, 0.476);
+  background: rgba(0, 0, 255, 0.7);
+  transition: all 0.3s;
+  border: 2px solid rgba(0, 0, 255, 0.7);
+}
+.form_submit_btn:hover {
+  color: rgba(0, 0, 255, 0.7);
+  background: white;
+  font-weight: 600;
+}
+.permission {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 615px) {
+  .company_card {
+    width: 85vw;
+    padding: 0 1rem;
+  }
+  .company_card_header > h1 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 450px) {
+  .formFlex {
+    display: block;
+  }
+}

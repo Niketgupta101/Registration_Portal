@@ -1,0 +1,11 @@
+.job_items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+@media (max-width: 450px) {
+  input[type="search"] {
+    width: 150px;
+  }
+}
