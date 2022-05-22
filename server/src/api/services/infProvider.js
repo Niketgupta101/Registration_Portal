@@ -55,11 +55,11 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
 const fetchAllInf = async (offset, pagelimit, next) => {
   try {
-    let infList = await INFstatus.find({ progress: 'submitted' })
-      .populate('data')
-      .sort({ createdAt: -1 })
+    let infList = await INF.find({ status: 'complete' })
+      .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
+
     return { success: true, jobs: infList };
   } catch (error) {
     console.log(error);
@@ -70,17 +70,14 @@ const fetchAllInf = async (offset, pagelimit, next) => {
 const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
-    let infList = await INFstatus.find({ progress: 'submitted' })
-      .populate('data')
-      .find({
-        'data.Company_Overview.Name_Of_The_Company': {
-          $regex: pattern,
-          $options: 'im',
-        },
-      })
+    let infList = await INF.find({
+      'Company_Overview.Name_Of_The_Company': { $regex: pattern },
+      status: 'complete',
+    })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
+
     console.log({ infList });
     return { success: true, jobs: infList };
   } catch (error) {

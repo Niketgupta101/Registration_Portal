@@ -240,6 +240,7 @@ exports.fillINFDoc = async (inf) => {
     downloadLink,
     studentPreview: resPrev.previewLink,
     studentDownload: resDown.downloadLink,
+    status: 'complete',
   });
   await inf.save();
 
@@ -450,7 +451,7 @@ exports.fillJNFDoc = async (jnf) => {
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  jnf.set({ previewLink, downloadLink });
+  jnf.set({ previewLink, downloadLink, status: 'complete' });
   await jnf.save();
 
   sendMailWithAttachment(

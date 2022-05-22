@@ -148,6 +148,7 @@ const jnfSchema = new Schema(
     },
     previewLink: String,
     downloadLink: String,
+    status: { type: String, default: 'incomplete' },
     isIntern: { type: Boolean, default: false },
     isJob: { type: Boolean, default: true },
   },

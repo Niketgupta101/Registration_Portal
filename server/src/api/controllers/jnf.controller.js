@@ -7,6 +7,7 @@ const {
   saveJnfById,
   submitJnfById,
   removeJnfById,
+  searchJnfByCompany,
 } = require('../services/jnfProvider');
 
 const getJnfById = async (req, res, next) => {
@@ -114,6 +115,24 @@ const deleteJnfById = async (req, res, next) => {
   }
 };
 
+const searchJnfByPattern = async (req, res, next) => {
+  let { pattern, pageno, pagelimit } = req.params;
+  console.log({ pattern, pageno, pagelimit });
+
+  try {
+    pageno = pageno || 1;
+    pagelimit = pagelimit || 20;
+    let offset = pagelimit * (pageno - 1);
+
+    let response = await searchJnfByCompany(pattern, offset, pagelimit, next);
+    console.log(response);
+    res.status(201).json(response);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
 module.exports = {
   getJnfById,
   getAllJnfForUser,
@@ -122,5 +141,6 @@ module.exports = {
   createNewJnf,
   updateJnfById,
   submitJnf,
+  searchJnfByPattern,
   deleteJnfById,
 };

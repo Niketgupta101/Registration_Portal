@@ -1,6 +1,10 @@
 const express = require('express');
 
-const { protect, isAccesible } = require('../../middlewares/auth');
+const {
+  protect,
+  isAccesible,
+  authorizeRoles,
+} = require('../../middlewares/auth');
 
 const {
   getJnfById,
@@ -11,6 +15,7 @@ const {
   updateJnfById,
   deleteJnfById,
   submitJnf,
+  searchJnfByPattern,
 } = require('../../controllers/jnf.controller');
 
 const router = express.Router();
@@ -24,6 +29,13 @@ router.get('/user/:userId/:pageno/:pagelimit', protect, getAllJnfForUser);
 router.get('/latest', protect, getLatestJnfOfUser);
 
 router.get('/admin/all/:pageno/:pagelimit', protect, getAllJnf);
+
+router.get(
+  '/search/:pattern/:pageno/:pagelimit',
+  protect,
+  authorizeRoles,
+  searchJnfByPattern
+);
 
 router.post('/', protect, createNewJnf);
 

@@ -44,12 +44,29 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-    let jnfList = await JNFstatus.find({ progress: 'submitted' })
-      .populate('data')
+    let jnfList = await JNF.find({ status: 'completed' })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
 
+    return { success: true, jobs: jnfList };
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
+  console.log({ pattern, offset, pagelimit });
+  try {
+    let jnfList = await JNF.find({
+      'Company_Overview.Name_Of_The_Company': { $regex: pattern },
+      status: 'complete',
+    })
+      .sort({ updatedAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
+
+    console.log({ jnfList });
     return { success: true, jobs: jnfList };
   } catch (error) {
     return next(error);
@@ -184,4 +201,5 @@ module.exports = {
   saveJnfById,
   submitJnfById,
   removeJNFById,
+  searchJnfByCompany,
 };
