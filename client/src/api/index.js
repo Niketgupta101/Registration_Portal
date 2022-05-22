@@ -46,15 +46,17 @@ export const postCompanyDetails = (data) => API.post(`/company`, data);
 
 export const getCompanyDetailsById = (id) => API.get(`/acompany/${id}`);
 
-export const getAllCompanyDetails = () => API.get(`/company/all/1/20`);
+export const getAllCompanyDetails = (pageNo) =>
+  API.get(`/company/all/${pageNo}/12`);
 
 // --------------------- INF ------------------------------------
 
 export const getInfById = (id) => API.get(`/inf/${id}`);
 
-export const getAllInfForUser = (userId) => API.get(`/inf/user/${userId}`);
+export const getAllInfForUser = (userId, pageNo) =>
+  API.get(`/inf/user/${userId}/${pageNo}/12`);
 
-export const getAllInf = () => API.get(`/inf/admin`);
+export const getAllInf = (pageNo) => API.get(`/inf/admin/all/${pageNo}/12`);
 
 export const createNewInf = (data) => API.post(`/inf`, data);
 
@@ -70,9 +72,10 @@ export const getLatestInfOfUser = () => API.get('/inf/latest');
 
 export const getjnfById = (id) => API.get(`/jnf/${id}`);
 
-export const getAllJnfForUser = (userId) => API.get(`/jnf/user/${userId}`);
+export const getAllJnfForUser = (userId, pageNo) =>
+  API.get(`/jnf/user/${userId}/${pageNo}/12`);
 
-export const getAllJnf = () => API.get(`/jnf/admin`);
+export const getAllJnf = (pageNo) => API.get(`/jnf/admin/all/${pageNo}/12`);
 
 export const createNewJnf = (data) => API.post(`/jnf`, data);
 
@@ -98,9 +101,11 @@ export const deleteContactById = (id) => API.delete(`contact/${id}`);
 
 export const getAllJobs = () => API.get('/jobs/all');
 
-export const getAllJobsForUser = () => API.get('/jobs/user/all');
+export const getAllJobsForUser = (pageNo) =>
+  API.get(`/jobs/user/all/${pageNo}/12`);
 
-export const getAllPendingJobsForUser = () => API.get('/jobs/user/pending');
+export const getAllPendingJobsForUser = (pageNo) =>
+  API.get(`/jobs/user/pending/${pageNo}/12`);
 
 export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
 
@@ -117,6 +122,9 @@ export const sendCustomEmail = (data) =>
 
 export const searchCompanyByPattern = (pattern) =>
   API.get(`/company/search/${pattern}/1/5`);
+
+export const searchInfByPattern = (pattern) =>
+  API.get(`/inf/search/${pattern}/1/5`);
 
 // ------------------------ Courses ------------------------------------
 

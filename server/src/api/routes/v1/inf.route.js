@@ -15,6 +15,7 @@ const {
   updateInfById,
   deleteInfById,
   submitInf,
+  searchInfByPattern,
 } = require('../../controllers/inf.controller');
 
 const router = express.Router();
@@ -23,11 +24,18 @@ router.get('/:id', protect, getInfById);
 
 router.get('/single/:id', protect, getInfById);
 
-router.get('/user/:userId', protect, getAllInfForUser);
+router.get('/user/:userId/:pageno/:pagelimit', protect, getAllInfForUser);
+
+router.get(
+  '/search/:pattern/:pageno/:pagelimit',
+  protect,
+  authorizeRoles,
+  searchInfByPattern
+);
 
 router.get('/latest', protect, getLatestInfOfUser);
 
-router.get('/admin/all', protect, getAllInf);
+router.get('/admin/all/:pageno/:pagelimit', protect, getAllInf);
 
 router.post('/', protect, createNewInf);
 

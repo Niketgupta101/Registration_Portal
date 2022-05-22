@@ -16,9 +16,13 @@ const fetchJnfById = async (id, next) => {
   }
 };
 
-const fetchAllJnfForUser = async (userId, next) => {
+const fetchAllJnfForUser = async (userId, offset, pagelimit, next) => {
   try {
-    let jnfList = await JNF.find({ userId }).sort({ updatedAt: -1 });
+    let jnfList = await JNFstatus.find({ userId })
+      .populate('data')
+      .sort({ updatedAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
 
     return { success: true, jobs: jnfList };
   } catch (error) {
@@ -40,13 +44,13 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-    let jnfList = await JNFstatus.find()
+    let jnfList = await JNFstatus.find({ progress: 'submitted' })
       .populate('data')
       .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
 
-    return { success: true, jnfList };
+    return { success: true, jobs: jnfList };
   } catch (error) {
     return next(error);
   }

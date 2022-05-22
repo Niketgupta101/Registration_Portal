@@ -19,11 +19,11 @@ router.get('/:id', protect, getJnfById);
 
 router.get('/single/:id', protect, getJnfById);
 
-router.get('/user/:userId', protect, getAllJnfForUser);
+router.get('/user/:userId/:pageno/:pagelimit', protect, getAllJnfForUser);
 
 router.get('/latest', protect, getLatestJnfOfUser);
 
-router.get('/admin/all', protect, getAllJnf);
+router.get('/admin/all/:pageno/:pagelimit', protect, getAllJnf);
 
 router.post('/', protect, createNewJnf);
 

@@ -38,8 +38,8 @@ const fetchAllCompanies = async (offset, pagelimit, next) => {
   try {
     let companyList = await Company.find()
       .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
 
     return { success: true, companyList };
   } catch (error) {

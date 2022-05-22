@@ -20,11 +20,13 @@ const fetchInfById = async (id, next) => {
   }
 };
 
-const fetchAllInfForUser = async (userId, next) => {
+const fetchAllInfForUser = async (userId, offset, pagelimit, next) => {
   try {
     let infList = await INFstatus.find({ userId })
       .populate('data')
-      .sort({ updatedAt: -1 });
+      .sort({ updatedAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
 
     let jobs = [];
 
@@ -53,15 +55,35 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
 const fetchAllInf = async (offset, pagelimit, next) => {
   try {
-    let infList = await INFstatus.find()
+    let infList = await INFstatus.find({ progress: 'submitted' })
       .populate('data')
-      .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
-
-    return { success: true, infList };
+      .sort({ createdAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
+    return { success: true, jobs: infList };
   } catch (error) {
     console.log(error);
+    return next(error);
+  }
+};
+
+const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
+  console.log({ pattern, offset, pagelimit });
+  try {
+    let infList = await INFstatus.find({ progress: 'submitted' })
+      .populate('data')
+      .find({
+        'data.Company_Overview.Name_Of_The_Company': {
+          $regex: pattern,
+          $options: 'im',
+        },
+      })
+      .sort({ updatedAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
+    console.log({ infList });
+    return { success: true, jobs: infList };
+  } catch (error) {
     return next(error);
   }
 };
@@ -193,4 +215,5 @@ module.exports = {
   saveInfById,
   submitInfById,
   removeINFById,
+  searchInfByCompany,
 };
