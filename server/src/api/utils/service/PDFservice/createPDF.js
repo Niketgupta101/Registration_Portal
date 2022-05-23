@@ -47,6 +47,7 @@ exports.fillINFDoc = async (inf) => {
   let twoYearMba = inf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = inf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = inf.Selection_Procedure;
+  let hR_Details=inf.HR_Details;
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -176,12 +177,19 @@ exports.fillINFDoc = async (inf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria:
       selectionProcedure.Eligibility_Criteria,
+    Primary_Hr_Name : hR_Details.Primary_Hr.name,
+    Primary_Hr_Email : hR_Details.Primary_Hr.email,
+    Primary_Hr_Mobile : hR_Details.Primary_Hr.mobile,
+    Secondary_Hr_Name:hR_Details.Alternate_Hr.name,
+    Secondary_Hr_Email : hR_Details.Alternate_Hr.email,
+    Secondary_Hr_Mobile : hR_Details.Alternate_Hr.mobile,
   };
   console.log({ selectionProcedure });
   doc.render({
     ...inf.Company_Overview,
     ...inf.Intern_Profile,
     ...inf.Salary_Details,
+    ...inf.hR_Details,
     ...data,
   });
   studentDoc.render({
@@ -302,6 +310,7 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMba = jnf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
+  let hR_Details=inf.HR_Details;
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -430,12 +439,19 @@ exports.fillJNFDoc = async (jnf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria:
       selectionProcedure.Eligibility_Criteria,
+      Primary_Hr_Name : hR_Details.Primary_Hr.name,
+      Primary_Hr_Email : hR_Details.Primary_Hr.email,
+      Primary_Hr_Mobile : hR_Details.Primary_Hr.mobile,
+      Secondary_Hr_Name:hR_Details.Alternate_Hr.name,
+      Secondary_Hr_Email : hR_Details.Alternate_Hr.email,
+      Secondary_Hr_Mobile : hR_Details.Alternate_Hr.mobile,
   };
 
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,
     ...jnf.Salary_Details,
+    ...jnf.HR_Details,
     ...data,
   });
   studentDoc.render({
