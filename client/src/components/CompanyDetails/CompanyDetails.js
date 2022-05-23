@@ -394,7 +394,14 @@ const CompanyDetails = ({
             <hr />
             <div className="mt-4">
               <label className="h6">
-              The National Institutional Ranking Framework, adopted by Ministry of Education, Government of India, as a part of its methodology for judging the score of an institute, asks for the contact details of the organizations that visit the institute for placements. By agreeing, your organization agrees to share the Email ID and Name of the recruiter with the Ministry of Education, Government of India, for helping towards the score of the Indian Institute of Technology (Indian School of Mines).
+                The National Institutional Ranking Framework, adopted by
+                Ministry of Education, Government of India, as a part of its
+                methodology for judging the score of an institute, asks for the
+                contact details of the organizations that visit the institute
+                for placements. By agreeing, your organization agrees to share
+                the Email ID and Name of the recruiter with the Ministry of
+                Education, Government of India, for helping towards the score of
+                the Indian Institute of Technology (Indian School of Mines).
               </label>
               <div className="ms-4">
                 <FormControl>
@@ -410,7 +417,7 @@ const CompanyDetails = ({
                       value="Agree"
                       control={<Radio />}
                       label="Agree"
-                    />                
+                    />
                     <FormControlLabel
                       value="Disagree"
                       control={<Radio />}
