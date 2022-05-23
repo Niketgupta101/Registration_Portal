@@ -1,20 +1,15 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Box, Button, IconButton, Toolbar } from "@material-ui/core";
 import {
   AccountCircle,
-  Book,
   Close,
-  ContactMail,
+  Email,
   HomeOutlined,
   MenuOutlined,
-  WorkOutline,
 } from "@material-ui/icons";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import FactoryIcon from "@mui/icons-material/Factory";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { useNavigate, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 
@@ -290,7 +285,9 @@ const Navbar = () => {
                 onClick={() => Navigate("/admin")}
                 style={{ alignItems: "center" }}
               >
-                <h5>Home</h5>
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  Home
+                </h5>
               </IconButton>
             ) : (
               <IconButton
@@ -300,10 +297,13 @@ const Navbar = () => {
                 onClick={() => Navigate("/")}
                 style={{ alignItems: "center" }}
               >
-                <h5>Home</h5>
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  Home
+                </h5>
               </IconButton>
             )}
           </div>
+
           {user?.role !== "Admin" && (
             <div className="sideNavbar-item ">
               <HomeOutlined style={{ marginBottom: "5px" }} />
@@ -312,7 +312,6 @@ const Navbar = () => {
                 edge="end"
                 color="inherit"
                 onClick={() => Navigate("/myjobs")}
-                style={{ alignItems: "center" }}
               >
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
                   My Jobs
@@ -320,146 +319,158 @@ const Navbar = () => {
               </IconButton>
             </div>
           )}
-          <div
-            className="item item1"
-            onClick={() => {
-              Navigate("/");
-              setSideBar(false);
-            }}
-          >
-            <HomeOutlined style={{ color: "white" }} />
-            <Typography
-              variant="h6"
-              style={{ color: "white", margin: "auto 0.5rem" }}
+          <div className="sideNavbar-item ">
+            <MenuBookIcon style={{ marginBottom: "5px" }} />
+            <IconButton
+              size="medium"
+              edge="end"
+              color="inherit"
+              onClick={() => Navigate("/courses")}
+              style={{ alignItems: "center" }}
             >
-              {user && user.Name === "Admin" ? (
-                <IconButton
-                  size="medium"
-                  edge="end"
-                  color="inherit"
-                  onClick={() => Navigate("/admin")}
-                  style={{ alignItems: "center" }}
-                >
-                  <h5>Home</h5>
-                </IconButton>
-              ) : (
-                <IconButton
-                  size="medium"
-                  edge="end"
-                  color="inherit"
-                  onClick={() => Navigate("/")}
-                  style={{ alignItems: "center" }}
-                >
-                  <h5>Home</h5>
-                </IconButton>
-              )}
-            </Typography>
+              <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                Courses
+              </h5>
+            </IconButton>
           </div>
-          <div
-            className="item item2"
-            onClick={() => {
-              Navigate("/myjobs");
-              setSideBar(false);
-            }}
-          >
-            <WorkOutline style={{ color: "white" }} />
-            <Typography
-              variant="h6"
-              style={{ color: "white", margin: "auto 0.5rem" }}
-            >
-              {user?.role !== "Admin" && (
-                <IconButton
-                  size="medium"
-                  edge="end"
-                  color="inherit"
-                  onClick={() => Navigate("/myjobs")}
-                  style={{ alignItems: "center" }}
-                >
-                  <h5>My Jobs</h5>
-                </IconButton>
-              )}
-            </Typography>
-          </div>
-          <div
-            className="item item3"
-            onClick={() => {
-              Navigate("/courses");
-              setSideBar(false);
-            }}
-          >
-            <Book style={{ color: "white" }} />
-            <Typography
-              variant="h6"
-              style={{ color: "white", margin: "auto 0.5rem" }}
-            >
-              Courses
-            </Typography>
-          </div>
-          <div
-            className="item item4"
-            onClick={() => {
-              Navigate("/contactus");
-              setSideBar(false);
-            }}
-          >
-            <ContactMail style={{ color: "white" }} />
-            <Typography
-              variant="h6"
-              style={{ color: "white", margin: "auto 0.5rem" }}
-            >
-              Contact Us
-            </Typography>
-          </div>
+          {user && user.Name === "Admin" ? (
+            <div className="sideNavbar-item ">
+              <FactoryIcon style={{ marginBottom: "5px" }} />
+              <IconButton
+                size="medium"
+                edge="end"
+                color="inherit"
+                onClick={() => Navigate("/admin/company")}
+                style={{ alignItems: "center" }}
+              >
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  Companies
+                </h5>
+              </IconButton>
+            </div>
+          ) : (
+            <></>
+          )}
+          {user && user.role === "Admin" ? (
+            <div className="sideNavbar-item ">
+              <FormatListBulletedIcon style={{ marginBottom: "5px" }} />
+              <IconButton
+                size="medium"
+                edge="end"
+                color="inherit"
+                onClick={() => Navigate("/admin/jobs")}
+                style={{ alignItems: "center" }}
+              >
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  JNFs
+                </h5>
+              </IconButton>
+            </div>
+          ) : (
+            <></>
+          )}
+          {user && user.role === "Admin" ? (
+            <div className="sideNavbar-item ">
+              <FormatListBulletedIcon style={{ marginBottom: "5px" }} />
+              <IconButton
+                size="medium"
+                edge="end"
+                color="inherit"
+                onClick={() => Navigate("/admin/inf")}
+                style={{ alignItems: "center" }}
+              >
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  INFs
+                </h5>
+              </IconButton>
+            </div>
+          ) : (
+            <></>
+          )}
+          {(user === undefined || user?.role !== "Admin") && (
+            <div className="sideNavbar-item ">
+              <Email style={{ marginBottom: "5px" }} />
+              <IconButton
+                size="medium"
+                edge="end"
+                color="inherit"
+                onClick={() => Navigate("/contactus")}
+                style={{ alignItems: "center" }}
+              >
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  Contact Us
+                </h5>
+              </IconButton>
+            </div>
+          )}
+          {user?.role === "Admin" && (
+            <div className="sideNavbar-item ">
+              <ContactMailIcon style={{ marginBottom: "5px" }} />
+              <IconButton
+                size="medium"
+                edge="end"
+                color="inherit"
+                onClick={() => Navigate("/company/invites")}
+                style={{ alignItems: "center" }}
+              >
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                  Invites
+                </h5>
+              </IconButton>
+            </div>
+          )}
         </div>
         <div className="profileContent">
           {user ? (
             <>
-              <div
-                className="item item1"
-                onClick={() => {
-                  Navigate("/profile");
-                  setSideBar(false);
-                }}
-              >
-                <AccountCircle style={{ color: "white" }} />
-                <Typography
-                  variant="h6"
-                  style={{ color: "white", margin: "auto 0.5rem" }}
+              <div className="sideNavbar-item ">
+                <AccountCircle style={{ marginBottom: "5px" }} />
+
+                <IconButton
+                  size="medium"
+                  edge="end"
+                  color="inherit"
+                  onClick={() => Navigate("/profile")}
                 >
-                  Profile
-                </Typography>
+                  <h5
+                    style={{
+                      margin: "0 1.5rem 0 0.5rem",
+                      fontSize: "17px",
+                    }}
+                  >
+                    {user.Name}
+                  </h5>
+                </IconButton>
               </div>
-              <div
-                className="item item1"
-                onClick={() => {
-                  handleLogout();
-                  setSideBar(false);
-                }}
-              >
-                <Logout style={{ color: "white" }} />
-                <Typography
-                  variant="h6"
-                  style={{ color: "white", margin: "auto 0.5rem" }}
+              <div className="sideNavbar-item ">
+                <Logout style={{ marginBottom: "5px", color: "white" }} />
+
+                <IconButton
+                  size="medium"
+                  color="inherit"
+                  onClick={handleLogout}
+                  style={{ alignItems: "center" }}
                 >
-                  Logout
-                </Typography>
+                  <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
+                    Logout
+                  </h5>
+                </IconButton>
               </div>
             </>
           ) : (
-            <div
-              className="item item1"
-              onClick={() => {
-                handleLogin();
-                setSideBar(false);
-              }}
-            >
+            <div className="sideNavbar-item ">
               <Login style={{ color: "white" }} />
-              <Typography
-                variant="h6"
-                style={{ color: "white", margin: "auto 0.5rem" }}
+
+              <IconButton
+                size="medium"
+                color="inherit"
+                onClick={handleLogin}
+                style={{ alignItems: "center" }}
               >
-                Login
-              </Typography>
+                <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "19px" }}>
+                  Login
+                </h5>
+              </IconButton>
             </div>
           )}
         </div>
