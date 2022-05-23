@@ -5,23 +5,6 @@ const jnfSchema = new Schema(
   {
     userId: { type: Schema.ObjectId, ref: 'User' },
     Company_Overview: {
-<<<<<<< HEAD
-      Name_Of_The_Company: { type: String },
-      Category_Or_Sector: { type: String },
-      Website: { type: String },
-    },
-    Job_Details: {
-      Designation: { type: String },
-      Place_Of_Posting: { type: String },
-      Job_Description: {
-        type: String,
-      },
-    },
-    Salary_Details: {
-      CTC: { type: String },
-      CTC_Breakup: { type: String },
-      Bond_Details: { type: String },
-=======
       Name_Of_The_Company: { type: String, default: ''  },
       Category_Or_Sector: { type: String, default: ''  },
       Website: { type: String, default: ''  },
@@ -37,7 +20,6 @@ const jnfSchema = new Schema(
       CTC: { type: String, default: ''  },
       CTC_Breakup: { type: String, default: ''  },
       Bond_Details: { type: String, default: ''  },
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     },
     HR_Details: {
       Primary_Hr: {
@@ -160,15 +142,6 @@ const jnfSchema = new Schema(
         Case_Study: { type: Boolean, default: false },
         Interview: { type: Boolean, default: false },
       },
-<<<<<<< HEAD
-      Total_Number_Of_Rounds: { type: Number, default: 0 },
-      Number_Of_Offers: String,
-      Eligibility_Criteria: String,
-    },
-    previewLink: String,
-    downloadLink: String,
-    status: { type: String, default: 'incomplete' },
-=======
       Total_Number_Of_Rounds: { type: String, default: '' },
       Number_Of_Offers: { type: String, default: '' },
       Eligibility_Criteria: { type: String, default: '' },
@@ -177,7 +150,6 @@ const jnfSchema = new Schema(
     downloadLink: String, 
     studentPreview: String,
     studentDownload: String,
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     isIntern: { type: Boolean, default: false },
     isJob: { type: Boolean, default: true },
   },

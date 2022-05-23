@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-const { JNF, JNFstatus } = require('../models/JNF');
-const ErrorResponse = require('../utils/errorResponse');
-const { fillJNFDoc } = require('../utils/service/PDFservice/createPDF');
-=======
 const path = require('path');
 const { JNF, JNFstatus } = require('../models/JNF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillJNFDoc } = require('../utils/service/PDFservice/createPDF');
 const { uploadFile } = require('../utils/service/PDFservice/upload');
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 const { readSheet, updateSheet } = require('../utils/service/GSheets');
 
 const fetchJnfById = async (id, next) => {
@@ -17,11 +11,7 @@ const fetchJnfById = async (id, next) => {
 
     if (!jnf)
       return next(new ErrorResponse('No JNF found with given id.', 404));
-<<<<<<< HEAD
-
-=======
  
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     return { success: true, jnf };
   } catch (error) {
     return next(error);
@@ -56,12 +46,8 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-<<<<<<< HEAD
-    let jnfList = await JNF.find({ status: 'completed' })
-=======
     let jnfList = await JNFstatus.find({ progress: 'submitted' })
       .populate('data')
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
@@ -75,16 +61,6 @@ const fetchAllJnf = async (offset, pagelimit, next) => {
 const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
-<<<<<<< HEAD
-    let jnfList = await JNF.find({
-      'Company_Overview.Name_Of_The_Company': { $regex: pattern },
-      status: 'complete',
-    })
-      .sort({ updatedAt: -1 })
-      .skip(parseInt(offset))
-      .limit(parseInt(pagelimit));
-
-=======
     let jnfList = await JNFstatus.find({ progress: 'submitted' })
       .populate('data')
       .find({
@@ -96,7 +72,6 @@ const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     console.log({ jnfList });
     return { success: true, jobs: jnfList };
   } catch (error) {
@@ -199,11 +174,7 @@ const updateJnfInGSheets = async (jnf) => {
     jnf._id.valueOf(),
     jnf.Company_Overview.Name_Of_The_Company,
     // ...getValues(jnf.Job_Details),
-<<<<<<< HEAD
-    jnf.Job_Details.Designation,
-=======
     jnf.Job_Details.Job_Designation,
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     // ...getValues(jnf.Salary_Details),
     jnf.previewLink,
     jnf.downloadLink,

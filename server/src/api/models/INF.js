@@ -153,16 +153,10 @@ const infSchema = new Schema(
       Eligibility_Criteria: { type: String, default: '' },
     },
     previewLink: String,
-<<<<<<< HEAD
     downloadLink: String,
     studentPreview: String,
     studentDownload: String,
     status: { type: String, default: 'incomplete' },
-=======
-    downloadLink: String, 
-    studentPreview: String,
-    studentDownload: String,
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     isIntern: { type: Boolean, default: true },
     isJob: { type: Boolean, default: false },
   },
