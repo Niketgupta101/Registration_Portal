@@ -151,11 +151,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Select_All"
-<<<<<<< HEAD
-                                    value={fourYearData.Select_All}
-=======
                                     checked={fourYearData.Select_All}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -168,11 +164,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Chemical_Engineering"
-<<<<<<< HEAD
-                                    value={fourYearData.Chemical_Engineering}
-=======
                                     checked={fourYearData.Chemical_Engineering}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -185,11 +177,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Civil_Engineering"
-<<<<<<< HEAD
-                                    value={fourYearData.Civil_Engineering}
-=======
                                     checked={fourYearData.Civil_Engineering}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -202,11 +190,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Computer_Science_and_Engineering"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fourYearData.Computer_Science_and_Engineering
                                     }
                                     onChange={handleFourYearChange}
@@ -221,11 +205,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Electrical_Engineering"
-<<<<<<< HEAD
-                                    value={fourYearData.Electrical_Engineering}
-=======
                                     checked={fourYearData.Electrical_Engineering}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -238,11 +218,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Electronics_and_Communication_Engineering"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fourYearData.Electronics_and_Communication_Engineering
                                     }
                                     onChange={handleFourYearChange}
@@ -257,11 +233,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Engineering_Physics"
-<<<<<<< HEAD
-                                    value={fourYearData.Engineering_Physics}
-=======
                                     checked={fourYearData.Engineering_Physics}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -274,11 +246,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Environmental_Engineering"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fourYearData.Environmental_Engineering
                                     }
                                     onChange={handleFourYearChange}
@@ -293,11 +261,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Mechanical_Engineering"
-<<<<<<< HEAD
-                                    value={fourYearData.Mechanical_Engineering}
-=======
                                     checked={fourYearData.Mechanical_Engineering}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -310,11 +274,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Mineral_and_Metallurgical_Engineering"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fourYearData.Mineral_and_Metallurgical_Engineering
                                     }
                                     onChange={handleFourYearChange}
@@ -329,11 +289,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Mining_Engineering"
-<<<<<<< HEAD
-                                    value={fourYearData.Mining_Engineering}
-=======
                                     checked={fourYearData.Mining_Engineering}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -346,11 +302,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Mining_Machinery_Engineering"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fourYearData.Mining_Machinery_Engineering
                                     }
                                     onChange={handleFourYearChange}
@@ -365,11 +317,7 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Petroleum_Engineering"
-<<<<<<< HEAD
-                                    value={fourYearData.Petroleum_Engineering}
-=======
                                     checked={fourYearData.Petroleum_Engineering}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -440,11 +388,7 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Select_All"
-<<<<<<< HEAD
-                                    value={fiveYearData.Select_All}
-=======
                                     checked={fiveYearData.Select_All}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFiveYearChange}
                                     type="checkbox"
                                   />
@@ -457,11 +401,7 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Computer_Science_and_Engineering"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fiveYearData.Computer_Science_and_Engineering
                                     }
                                     onChange={handleFiveYearChange}
@@ -476,11 +416,7 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Mathematics_and_Computing"
-<<<<<<< HEAD
-                                    value={
-=======
                                     checked={
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                       fiveYearData.Mathematics_and_Computing
                                     }
                                     onChange={handleFiveYearChange}
@@ -493,11 +429,7 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Applied_Geology"
-<<<<<<< HEAD
-                                    value={fiveYearData.Applied_Geology}
-=======
                                     checked={fiveYearData.Applied_Geology}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFiveYearChange}
                                     type="checkbox"
                                   />
@@ -510,11 +442,7 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Applied_Geophysics"
-<<<<<<< HEAD
-                                    value={fiveYearData.Applied_Geophysics}
-=======
                                     checked={fiveYearData.Applied_Geophysics}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     onChange={handleFiveYearChange}
                                     type="checkbox"
                                   />
