@@ -4,11 +4,7 @@ import "./styles.css";
 const style = { alignItems: "center" };
 
 
-<<<<<<< HEAD
-const ReviewStructure = ({ InfData, setPage, handleFormSubmit }) => {
-=======
 const structure = ({ InfData, setPage, handleFormSubmit }) => {
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   return (
     <div className="overallDiv1">
       <div>

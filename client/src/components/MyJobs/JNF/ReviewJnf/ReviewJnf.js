@@ -1189,11 +1189,7 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
           <button
             className='submit_btn'
             type='submit'
-<<<<<<< HEAD
-            onClick={(e) => e.preventDefault() / setPage('4')}
-=======
             onClick={(e) => e.preventDefault() / setPage('3')}
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
           >
             Edit
           </button>

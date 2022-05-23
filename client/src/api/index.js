@@ -70,11 +70,7 @@ export const getLatestInfOfUser = () => API.get('/inf/latest');
 
 // ---------------------- JNF -----------------------------------
 
-<<<<<<< HEAD
 export const getjnfById = (id) => API.get(`/jnf/${id}`);
-=======
-export const getJnfById = (id) => API.get(`/jnf/${id}`);
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
 export const getAllJnfForUser = (userId, pageNo) =>
   API.get(`/jnf/user/${userId}/${pageNo}/12`);
@@ -130,14 +126,9 @@ export const searchCompanyByPattern = (pattern) =>
 export const searchInfByPattern = (pattern) =>
   API.get(`/inf/search/${pattern}/1/5`);
 
-<<<<<<< HEAD
-export const searchJnfByPattern = (pattern) =>
-  API.get(`/jnf/search/${pattern}/1/5`);
-=======
   export const searchJnfByPattern = (pattern) =>
   API.get(`/jnf/search/${pattern}/1/5`);
 
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 // ------------------------ Courses ------------------------------------
 
 export const getAllCourseData = () => API.get('/courses');

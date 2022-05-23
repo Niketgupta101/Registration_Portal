@@ -71,11 +71,7 @@ export default function INF1({
     <div className="overallDiv1">
       <div>
         <header className="headerText1">
-<<<<<<< HEAD
-          INTERNSHIP NOTIFICATION FORM (2021-2022)
-=======
           INTERNSHIP NOTIFICATION FORM (2022-2023)
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
         </header>
       </div>
       <Form onSubmit={handleUpdateInfById}>
@@ -146,11 +142,7 @@ export default function INF1({
                       autoComplete="off"
                     />
                   </Col>
-<<<<<<< HEAD
-                </FormGroup>
-=======
                 </FormGroup> 
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                 <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
                     Category/Sector<span style={{ color: "red" }}>*</span>
