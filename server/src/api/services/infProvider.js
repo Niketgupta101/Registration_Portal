@@ -3,7 +3,11 @@ const { INF, INFstatus } = require('../models/INF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillINFDoc } = require('../utils/service/PDFservice/createPDF');
 const { uploadFile } = require('../utils/service/PDFservice/upload');
+<<<<<<< HEAD
 const { readSheet, updateSheet } = require('../utils/service/GSheets');
+=======
+const { readSheet, updateSheet } = require('../utils/service/GSheets'); 
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
 const fetchInfById = async (id, next) => {
   try {
@@ -55,11 +59,19 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
 const fetchAllInf = async (offset, pagelimit, next) => {
   try {
+<<<<<<< HEAD
     let infList = await INF.find({ status: 'complete' })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
 
+=======
+    let infList = await INFstatus.find({ progress: 'submitted' })
+      .populate('data')
+      .sort({ createdAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     return { success: true, jobs: infList };
   } catch (error) {
     console.log(error);
@@ -70,6 +82,7 @@ const fetchAllInf = async (offset, pagelimit, next) => {
 const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
+<<<<<<< HEAD
     let infList = await INF.find({
       'Company_Overview.Name_Of_The_Company': { $regex: pattern },
       status: 'complete',
@@ -78,6 +91,19 @@ const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
 
+=======
+    let infList = await INFstatus.find({ progress: 'submitted' })
+      .populate('data')
+      .find({
+        'data.Company_Overview.Name_Of_The_Company': {
+          $regex: pattern,
+          $options: 'im',
+        },
+      })
+      .sort({ updatedAt: -1 })
+      .skip(parseInt(offset))
+      .limit(parseInt(pagelimit));
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     console.log({ infList });
     return { success: true, jobs: infList };
   } catch (error) {

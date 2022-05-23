@@ -135,7 +135,11 @@ module.exports = {
   getInfById,
   getAllInfForUser,
   searchInfByPattern,
+<<<<<<< HEAD
   getLatestInfOfUser,
+=======
+  getLatestInfOfUser, 
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   getAllInf,
   createNewInf,
   updateInfById,

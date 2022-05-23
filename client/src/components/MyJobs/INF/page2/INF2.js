@@ -236,7 +236,11 @@ export default function INF2({
                                 </td>
                                 <td className='courseCheckBoxBtech'>
                                   <input
+<<<<<<< HEAD
                                     name='Engineering_Physics'
+=======
+                                    name='Engineering_'
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                                     checked={fourYearData.Engineering_Physics}
                                     onChange={handleFourYearChange}
                                     type='checkbox'

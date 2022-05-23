@@ -47,6 +47,10 @@ exports.fillINFDoc = async (inf) => {
   let twoYearMba = inf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = inf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = inf.Selection_Procedure;
+<<<<<<< HEAD
+=======
+  let hR_Details=inf.HR_Details;
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -176,12 +180,25 @@ exports.fillINFDoc = async (inf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria:
       selectionProcedure.Eligibility_Criteria,
+<<<<<<< HEAD
+=======
+    Primary_Hr_Name : hR_Details.Primary_Hr.name,
+    Primary_Hr_Email : hR_Details.Primary_Hr.email,
+    Primary_Hr_Mobile : hR_Details.Primary_Hr.mobile,
+    Secondary_Hr_Name:hR_Details.Alternate_Hr.name,
+    Secondary_Hr_Email : hR_Details.Alternate_Hr.email,
+    Secondary_Hr_Mobile : hR_Details.Alternate_Hr.mobile,
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
   console.log({ selectionProcedure });
   doc.render({
     ...inf.Company_Overview,
     ...inf.Intern_Profile,
     ...inf.Salary_Details,
+<<<<<<< HEAD
+=======
+    ...inf.hR_Details,
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     ...data,
   });
   studentDoc.render({
@@ -240,7 +257,10 @@ exports.fillINFDoc = async (inf) => {
     downloadLink,
     studentPreview: resPrev.previewLink,
     studentDownload: resDown.downloadLink,
+<<<<<<< HEAD
     status: 'complete',
+=======
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   });
   await inf.save();
 
@@ -278,6 +298,21 @@ exports.fillJNFDoc = async (jnf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
+<<<<<<< HEAD
+=======
+  
+  const student = fs.readFileSync(
+    path.resolve(__dirname, 'JNFstudent.docx'),
+    'binary'
+  );
+
+  const studentZip = new PizZip(student);
+
+  const studentDoc = new Docxtemplater(studentZip, {
+    paragraphLoop: true,
+    linebreaks: true,
+  });
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
@@ -291,6 +326,10 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMba = jnf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
+<<<<<<< HEAD
+=======
+  let hR_Details=inf.HR_Details;
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -351,7 +390,11 @@ exports.fillJNFDoc = async (jnf) => {
     Two_Year_Mtech_Computer_Science_and_Engineering:
       twoYearMtech.Computer_Science_and_Engineering ? 'Yes' : 'No',
     Two_Year_Mtech_Data_Analytics: twoYearMtech.Data_Analytics ? 'Yes' : 'No',
+<<<<<<< HEAD
     Two_Year_Mtech_Electrical_Engineering: twoYearMtech.lectrical_Engineering
+=======
+    Two_Year_Mtech_Electrical_Engineering: twoYearMtech.Electrical_Engineering
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
       ? 'Yes'
       : 'No',
     Two_Year_Mtech_Electronics_and_Communication_Engineering:
@@ -385,7 +428,11 @@ exports.fillJNFDoc = async (jnf) => {
     Two_Year_Mba_Operations: twoYearMba.Operations ? 'Yes' : 'No',
     Two_Year_Msc_Select_All: twoYearMsc.Select_All ? 'Yes' : 'No',
     Two_Year_Msc_Chemistry: twoYearMsc.Chemistry ? 'Yes' : 'No',
+<<<<<<< HEAD
     Two_Year_Msc_Mathematics_and_Computings:
+=======
+    Two_Year_Msc_Mathematics_and_Computing:
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
       twoYearMsc.Mathematics_and_Computing ? 'Yes' : 'No',
     Two_Year_Msc_Physics: twoYearMsc.Physics ? 'Yes' : 'No',
     Selection_Procedure_Resume_Shortlisting:
@@ -419,21 +466,52 @@ exports.fillJNFDoc = async (jnf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria:
       selectionProcedure.Eligibility_Criteria,
+<<<<<<< HEAD
+=======
+      Primary_Hr_Name : hR_Details.Primary_Hr.name,
+      Primary_Hr_Email : hR_Details.Primary_Hr.email,
+      Primary_Hr_Mobile : hR_Details.Primary_Hr.mobile,
+      Secondary_Hr_Name:hR_Details.Alternate_Hr.name,
+      Secondary_Hr_Email : hR_Details.Alternate_Hr.email,
+      Secondary_Hr_Mobile : hR_Details.Alternate_Hr.mobile,
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
 
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,
     ...jnf.Salary_Details,
+<<<<<<< HEAD
     ...data,
   });
 
+=======
+    ...jnf.HR_Details,
+    ...data,
+  });
+  studentDoc.render({
+    ...jnf.Company_Overview,
+    ...jnf.Job_Details,
+    ...jnf.Salary_Details,
+    ...data,
+  });
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   const buf = doc.getZip().generate({
+    type: 'nodebuffer',
+    compression: 'DEFLATE',
+  });
+<<<<<<< HEAD
+
+  fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+=======
+  const studentBuf = studentDoc.getZip().generate({
     type: 'nodebuffer',
     compression: 'DEFLATE',
   });
 
   fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
   var convertapi = require('convertapi')('qrIqxick6zL34d5B');
   let result = await convertapi.convert(
@@ -444,14 +522,41 @@ exports.fillJNFDoc = async (jnf) => {
     'docx'
   );
 
+<<<<<<< HEAD
   await result.saveFiles(path.resolve(__dirname));
 
   let response = await uploadFile(path.resolve(__dirname, 'output.pdf'));
+=======
+  let studentResult = await convertapi.convert(
+    'pdf',
+    {
+      File: path.resolve(__dirname, 'studentOutput.docx'),
+    },
+    'docx'
+  );
+
+  await result.saveFiles(path.resolve(__dirname));
+  await studentResult.saveFiles(__dirname);
+
+  let response = await uploadFile(path.resolve(__dirname, 'output.pdf'));
+  let studentResponse = await uploadFile(
+    path.resolve(__dirname, 'studentOutput.pdf')
+  );
+
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
+<<<<<<< HEAD
   jnf.set({ previewLink, downloadLink, status: 'complete' });
+=======
+  let resPrev = await generatePreviewUrl(studentResponse.data.id);
+  let resDown = await generateDownloadUrl(studentResponse.data.id);
+
+  jnf.set({ previewLink, downloadLink,studentPreview: resPrev.previewLink,
+    studentDownload: resDown.downloadLink, });
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   await jnf.save();
 
   sendMailWithAttachment(

@@ -394,8 +394,12 @@ const CompanyDetails = ({
             <hr />
             <div className="mt-4">
               <label className="h6">
+<<<<<<< HEAD
                 Do you want us to share your contact details with NIRF for
                 institute NIRF rating:
+=======
+              The National Institutional Ranking Framework, adopted by Ministry of Education, Government of India, as a part of its methodology for judging the score of an institute, asks for the contact details of the organizations that visit the institute for placements. By agreeing, your organization agrees to share the Email ID and Name of the recruiter with the Ministry of Education, Government of India, for helping towards the score of the Indian Institute of Technology (Indian School of Mines).
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
               </label>
               <div className="ms-4">
                 <FormControl>
@@ -404,6 +408,7 @@ const CompanyDetails = ({
                   </FormLabel>
                   <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
+<<<<<<< HEAD
                     defaultValue="Yes, Both Contact Number and Email Address"
                     name="radio-buttons-group"
                   >
@@ -426,6 +431,20 @@ const CompanyDetails = ({
                       value="None"
                       control={<Radio />}
                       label="None"
+=======
+                    defaultValue="Agree"
+                    name="radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="Agree"
+                      control={<Radio />}
+                      label="Agree"
+                    />                
+                    <FormControlLabel
+                      value="Disagree"
+                      control={<Radio />}
+                      label="Disagree"
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                     />
                   </RadioGroup>
                 </FormControl>

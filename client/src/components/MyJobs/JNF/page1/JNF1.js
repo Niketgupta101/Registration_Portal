@@ -2,8 +2,16 @@ import React, { useState } from 'react';
 import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 
 import 'animate.css';
+<<<<<<< HEAD
 import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
+=======
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
+
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
 const style = { alignItems: 'center' };
 
@@ -19,9 +27,15 @@ export default function JNF1({
   handleHrDetailsChange,
   handleUpdateJnfById,
 }) {
+<<<<<<< HEAD
   const [companyoverviewjob, setCompanyoverviewjob] = useState(false);
   const [internprofile, setInternprofile] = useState(false);
   const [stipenddetail, setStipenddetail] = useState(false);
+=======
+  const [companyoverview, setCompanyoverview] = useState(false);
+  const [jobdetail, setJobdetail] = useState(false);
+  const [salarydetail, setSalarydetail] = useState(false);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   const [hrdetail, setHrdetail] = useState(false);
   const [althrdetail, setALtrdetail] = useState(false);
 
@@ -32,7 +46,10 @@ export default function JNF1({
 
   function submitButton() {
     if (
+<<<<<<< HEAD
       companyFormData.Name_Of_The_Company === '' ||
+=======
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
       companyFormData.Category_Or_Sector === '' ||
       jobFormData.Job_Designation === '' ||
       jobFormData.Job_Description === '' ||
@@ -46,7 +63,11 @@ export default function JNF1({
           className='submit_btn not-allowed-btn'
           disabled
           title='Kindly fill all necessary fields'
+<<<<<<< HEAD
           style={{ cursor: 'not-allowed' }}
+=======
+          style={{ cursor: 'not-allowed', border: "1px solid red"  }}
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
         >
           Save and Continue
         </button>
@@ -73,20 +94,34 @@ export default function JNF1({
             className='upper'
             onClick={() => {
               setTimeout(() => {
+<<<<<<< HEAD
                 if (companyoverviewjob) {
                   setCompanyoverviewjob(false);
                 } else {
                   setCompanyoverviewjob(true);
+=======
+                if (companyoverview) {
+                  setCompanyoverview(false);
+                } else {
+                  setCompanyoverview(true);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                 }
               }, 200);
             }}
           >
             <div className='category-heading d-flex'>
               <header className='headerText flex-grow-1'>
+<<<<<<< HEAD
                 COMPANY overview
               </header>
               <div className='mx-4 p-2 align-self-center'>
                 {companyoverviewjob === true ? (
+=======
+                COMPANY OVERVIEW
+              </header>
+              <div className='mx-4 p-2 align-self-center'>
+                {companyoverview === true ? (
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                   <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
                   <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
@@ -94,7 +129,11 @@ export default function JNF1({
               </div>
             </div>
           </div>
+<<<<<<< HEAD
           {companyoverviewjob === true ? (
+=======
+          {companyoverview === true ? (
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
             <div className='lower p-2 '>
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
@@ -161,10 +200,17 @@ export default function JNF1({
             className='upper'
             onClick={() => {
               setTimeout(() => {
+<<<<<<< HEAD
                 if (internprofile) {
                   setInternprofile(false);
                 } else {
                   setInternprofile(true);
+=======
+                if (jobdetail) {
+                  setJobdetail(false);
+                } else {
+                  setJobdetail(true);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                 }
               }, 200);
             }}
@@ -172,7 +218,11 @@ export default function JNF1({
             <div className='category-heading d-flex'>
               <header className='headerText flex-grow-1'>JOB DETAILS</header>
               <div className='mx-4 p-2 align-self-center'>
+<<<<<<< HEAD
                 {internprofile === true ? (
+=======
+                {jobdetail === true ? (
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                   <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
                   <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
@@ -180,7 +230,11 @@ export default function JNF1({
               </div>
             </div>
           </div>
+<<<<<<< HEAD
           {internprofile === true ? (
+=======
+          {jobdetail === true ? (
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
             <div className='lower p-2 '>
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>
@@ -249,10 +303,17 @@ export default function JNF1({
             className='upper'
             onClick={() => {
               setTimeout(() => {
+<<<<<<< HEAD
                 if (stipenddetail) {
                   setStipenddetail(false);
                 } else {
                   setStipenddetail(true);
+=======
+                if (salarydetail) {
+                  setSalarydetail(false);
+                } else {
+                  setSalarydetail(true);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                 }
               }, 200);
             }}
@@ -260,7 +321,11 @@ export default function JNF1({
             <div className='category-heading d-flex'>
               <header className='headerText flex-grow-1'>SALARY DETAILS</header>
               <div className='mx-4 p-2 align-self-center'>
+<<<<<<< HEAD
                 {stipenddetail === true ? (
+=======
+                {salarydetail === true ? (
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
                   <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                 ) : (
                   <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
@@ -268,7 +333,11 @@ export default function JNF1({
               </div>
             </div>
           </div>
+<<<<<<< HEAD
           {stipenddetail === true ? (
+=======
+          {salarydetail === true ? (
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
             <div className='lower p-2 '>
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 <FormGroup row style={style}>

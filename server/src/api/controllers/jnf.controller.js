@@ -15,7 +15,10 @@ const getJnfById = async (req, res, next) => {
 
   try {
     let response = await fetchJnfById(id, next);
+<<<<<<< HEAD
 
+=======
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     res.status(201).json(response);
   } catch (error) {
     next(error);
@@ -136,11 +139,19 @@ const searchJnfByPattern = async (req, res, next) => {
 module.exports = {
   getJnfById,
   getAllJnfForUser,
+<<<<<<< HEAD
+=======
+  searchJnfByPattern,
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   getLatestJnfOfUser,
   getAllJnf,
   createNewJnf,
   updateJnfById,
+<<<<<<< HEAD
   submitJnf,
   searchJnfByPattern,
+=======
+  submitJnf, 
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   deleteJnfById,
 };

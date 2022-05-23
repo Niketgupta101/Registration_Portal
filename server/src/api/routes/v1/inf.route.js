@@ -10,7 +10,11 @@ const {
   getInfById,
   getAllInfForUser,
   getLatestInfOfUser,
+<<<<<<< HEAD
   getAllInf,
+=======
+  getAllInf, 
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   createNewInf,
   updateInfById,
   deleteInfById,

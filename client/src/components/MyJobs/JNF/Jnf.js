@@ -1,6 +1,10 @@
 import { TabContext, TabPanel } from '@mui/lab';
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { getjnfById, submitJnf, updateJnfById } from '../../../api';
+=======
+import { getJnfById, submitJnf, updateJnfById } from '../../../api';
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
 import './styles.css';
 
@@ -37,11 +41,31 @@ const Jnf = () => {
     Bond_Details: '',
     CTC: '',
   };
+<<<<<<< HEAD
 
   const [companyFormData, setCompanyFormData] = useState(companyData);
   const [jobFormData, setJobFormData] = useState(jobData);
   const [salaryFormData, setSalaryFormData] = useState(salaryData);
   const [hrDetails, setHrDetails] = useState({});
+=======
+  const hrData = {
+    Primary_Hr: {
+      name: "",
+      email: "",
+      mobile: "",
+    },
+    Alternate_Hr: {
+      name: "",
+      email: "",
+      mobile: "",
+    },
+  };
+
+  const [companyFormData, setCompanyFormData] = useState({ ...companyData });
+  const [jobFormData, setJobFormData] = useState({ ...jobData });
+  const [salaryFormData, setSalaryFormData] = useState({ ...salaryData });
+  const [hrDetails, setHrDetails] = useState({ ...hrData });
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
   const handleCompanyDataChange = (e) => {
     console.log({ e: e.target.name, value: e.target.value });
@@ -105,6 +129,7 @@ const Jnf = () => {
   });
 
   const handleFourYearChange = (e) => {
+<<<<<<< HEAD
     setFourYearData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
@@ -117,15 +142,62 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(fiveYearData);
+=======
+    if (e.target.name === "Select_All") {
+      let newValue = !fourYearData[e.target.name];
+      // setFourYearData((prevData) => ({
+      //   ...prevData,
+      //   [e.target.name]: e.target.checked ? true : false,
+      // }));
+      for (let i in fourYearData) {
+        setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+      // setFourYearData((prevData) => {
+      //   for (let i in prevData) {
+      //     prevData[i] = newValue;
+      //   }
+      //   return prevData;
+      // });
+    } else {
+      setFourYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+  };
+  const handleFiveYearChange = (e) => {
+    if (e.target.name === "Select_All") {
+      let newValue = !fiveYearData[e.target.name];
+      for (let i in fiveYearData) {
+        setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setFiveYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
+<<<<<<< HEAD
     console.log(skillData);
   };
 
+=======
+  };
+
+  useEffect(() => {
+    console.log(fourYearData);
+  }, [fourYearData]);
+
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   // ------------------------------------------------------
 
   const [threeYearData, setThreeYearData] = useState({
@@ -146,7 +218,11 @@ const Jnf = () => {
     Environmental_Engineering: false,
     Industrial_Engineering_and_Management: false,
     Mechanical_Engineering: false,
+<<<<<<< HEAD
     Fuel_Minerals_and_Metallurgical_Engineering: false,
+=======
+    Fuel_Minerals_and_Metallurgical_Engineering: false, 
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,
@@ -168,6 +244,7 @@ const Jnf = () => {
   });
 
   const handleThreeYearChange = (e) => {
+<<<<<<< HEAD
     setThreeYearData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
@@ -194,14 +271,80 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(twoYearMscData);
+=======
+    if (e.target.name === "Select_All") {
+      let newValue = !threeYearData[e.target.name];
+      for (let i in threeYearData) {
+        setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setThreeYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+    //console.log(threeYearData);
+  };
+  const handleTwoYearChange = (e) => {
+    if (e.target.name === "Select_All") {
+      let newValue = !twoYearData[e.target.name];
+      for (let i in twoYearData) {
+        setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setTwoYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+      //console.log(twoYearData);
+    }
+  };
+  const handleTwoYearMbaChange = (e) => {
+    if (e.target.name === "Select_All") {
+      let newValue = !twoYearMbaData[e.target.name];
+      for (let i in twoYearMbaData) {
+        setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setTwoYearMbaData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+    //console.log(twoYearMbaData);
+  };
+  const handleTwoYearMscChange = (e) => {
+    if (e.target.name === "Select_All") {
+      let newValue = !twoYearMscData[e.target.name];
+      for (let i in twoYearMscData) {
+        setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setTwoYearMscData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+    //console.log(twoYearMscData);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
 
   // ------------------------------------------------------------
 
   const selectionData = {
+<<<<<<< HEAD
     Total_Number_Of_Rounds: 0,
     Number_Of_Offers: 0,
     Eligibility_Criteria: '',
+=======
+    Total_Number_Of_Rounds: "",
+    Number_Of_Offers: "",
+    Eligibility_Criteria: "",
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -227,12 +370,38 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(resumeShortListingData);
+<<<<<<< HEAD
+=======
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Resume_Shortlisting: {
+          ...prevData.Selection_Procedure.Resume_Shortlisting,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
   const handleTypeOfTestChange = (e) => {
     setTypeOfTestData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
+<<<<<<< HEAD
+=======
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Type_Of_Test: {
+          ...prevData.Selection_Procedure.Type_Of_Test,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     console.log(typeOfTestData);
   };
   const handleOtherQualificationRoundsChange = (e) => {
@@ -241,18 +410,42 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(otherQualificationRoundsData);
+<<<<<<< HEAD
+=======
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Other_Qualification_Rounds: {
+          ...prevData.Selection_Procedure.Other_Qualification_Rounds,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
   const handleSelectionDataChange = (e) => {
     setSelectionFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
+<<<<<<< HEAD
+=======
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        [e.target.name]: e.target.value,
+      },
+    }));
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
   };
 
   // --------------------------------------------------
 
   // const [JnfId, setJnfId] = useState('');
 
+<<<<<<< HEAD
   const [JnfData, setJnfData] = useState({
     Company_Overview: companyFormData,
     Job_Details: jobFormData,
@@ -278,6 +471,12 @@ const Jnf = () => {
 
   const fetchInfData = async (JnfId) => {
     const response = await getjnfById(JnfId);
+=======
+  const [JnfData, setJnfData] = useState({});
+
+  const fetchJnfData = async (JnfId) => {
+    const response = await getJnfById(JnfId);
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
     console.log(response.data);
     setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
@@ -329,11 +528,20 @@ const Jnf = () => {
         response.data.jnf.Selection_Procedure.Eligibility_Criteria,
     });
     console.log({ companyFormData });
+<<<<<<< HEAD
   };
 
   useEffect(() => {
     if (JnfId) fetchInfData(JnfId);
   }, [JnfId]);
+=======
+    setJnfData({ ...response.data.jnf });
+  };
+
+  useEffect(() => {
+    if (JnfId) fetchJnfData(JnfId);
+  }, [JnfId]); 
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
 
   const handleUpdateJnfById = async (e) => {
     e.preventDefault();
@@ -353,6 +561,7 @@ const Jnf = () => {
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
       },
+<<<<<<< HEAD
       Selection_Procedure: {
         Resume_Shortlisting: { ...resumeShortListingData },
         Type_Of_Test: { ...typeOfTestData },
@@ -361,6 +570,8 @@ const Jnf = () => {
         Number_Of_Offers: selectionFormData.Number_Of_Offers,
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
+=======
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     }));
 
     try {
@@ -383,7 +594,11 @@ const Jnf = () => {
       let response = await submitJnf(JnfId);
       setIsLoading(false);
       console.log(response);
+<<<<<<< HEAD
       Navigate('/myjobs');
+=======
+      Navigate("/myjobs");
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
     } catch (error) {
       console.log(error);
     }
@@ -391,7 +606,12 @@ const Jnf = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <TabContext value={page}>
+=======
+    <div className="JNF">
+      <TabContext value={page} style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
         <TabPanel value='1'>
           <JNF1
             setPage={setPage}
@@ -464,6 +684,10 @@ const Jnf = () => {
           />
         </TabPanel>
       </TabContext>
+<<<<<<< HEAD
+=======
+      </div>
+>>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
       {isLoading && <Loading />}
     </>
   );

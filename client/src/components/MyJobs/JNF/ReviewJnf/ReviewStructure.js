@@ -4,16 +4,12 @@ import "./styles.css";
 const style = { alignItems: "center" };
 
 
-<<<<<<< HEAD
-const ReviewStructure = ({ InfData, setPage, handleFormSubmit }) => {
-=======
-const structure = ({ InfData, setPage, handleFormSubmit }) => {
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
+const structure = ({ JnfData, setPage, handleFormSubmit }) => {
   return (
     <div className="overallDiv1">
       <div>
         <header className="headerText1">
-          INTERNSHIP NOTIFICATION FORM (2021-2022)
+          JOB NOTIFICATION FORM (2022-2023)
         </header>
       </div>
       <Form>
@@ -23,7 +19,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Company_Overview.Name_Of_The_Company}
+              {JnfData.Company_Overview.Name_Of_The_Company}
             </h1>
           </Col>
         </FormGroup>
@@ -33,7 +29,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Company_Overview.Category_Or_Sector}
+              {JnfData.Company_Overview.Category_Or_Sector}
             </h1>
           </Col>
         </FormGroup>
@@ -42,27 +38,19 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
             Website
           </Label>
           <Col sm={10}>
-            <h1 className="inputText">{InfData.Company_Overview.Website}</h1>
+            <h1 className="inputText">{JnfData.Company_Overview.Website}</h1>
           </Col>
         </FormGroup>
         <div>
-          <header className="headerText">INTERN PROFILE</header>
+          <header className="headerText">JOB DETAILS</header>
         </div>
-        <FormGroup row style={style}>
-          <Label for="exampleSelect" sm={2} className="fontText">
-            Internship Duration
-          </Label>
-          <Col sm={10}>
-            <h1>{InfData.Intern_Profile.Internship_Duration}</h1>
-          </Col>
-        </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
             Job Designation
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Intern_Profile.Job_Designation}
+              {JnfData.Intern_Profile.Job_Designation}
             </h1>
           </Col>
         </FormGroup>
@@ -72,32 +60,12 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Intern_Profile.Job_Description}
-            </h1>
-          </Col>
-        </FormGroup>
-        <FormGroup row style={style}>
-          <Label for="exampleSelect" sm={2} className="fontText">
-            Mode of Internship
-          </Label>
-          <Col sm={10}>
-            <h1 className="inputText">
-              {InfData.Intern_Profile.Mode_Of_Internship}
-            </h1>
-          </Col>
-        </FormGroup>
-        <FormGroup row style={style}>
-          <Label for="exampleText" sm={2} className="fontText">
-            Place of posting (in case of Physical internship)
-          </Label>
-          <Col sm={10}>
-            <h1 className="inputText">
-              {InfData.Intern_Profile.Place_Of_Posting}
+              {JnfData.Intern_Profile.Job_Description}
             </h1>
           </Col>
         </FormGroup>
         <div>
-          <header className="headerText">STIPEND DETAILS</header>
+          <header className="headerText">SALARY DETAILS</header>
         </div>
         <FormGroup row style={style}>
           <Label
@@ -106,30 +74,30 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
             text-colour="blue"
             className="fontText"
           >
-            Stipend per month
+            CTC
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Salary_Details.Salary_Per_Month}
+              {JnfData.Salary_Details.CTC}
             </h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleSelect" sm={2} className="fontText">
-            PPO provision on performance basis
+            CTC Breakup
           </Label>
           <Col sm={10}>
             <h1 className="inputText">
-              {InfData.Salary_Details.PPO_provision_on_performance_basis}
+              {JnfData.Salary_Details.CTC_Breakup}
             </h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
           <Label for="exampleText" sm={2} className="fontText">
-            CTC for PPO selects
+            Bond Details
           </Label>
           <Col sm={10}>
-            <h1 className="inputText">{InfData.Salary_Details.CTC}</h1>
+            <h1 className="inputText">{JnfData.Bond_Details.CTC}</h1>
           </Col>
         </FormGroup>
         <div>
@@ -153,7 +121,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Select_All
                   }
                   type="checkbox"
@@ -166,7 +134,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Chemical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Chemical_Engineering
                   }
                   type="checkbox"
@@ -179,7 +147,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Civil_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Civil_Engineering
                   }
                   type="checkbox"
@@ -192,7 +160,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Computer_Science_and_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Computer_Science_and_Engineering
                   }
                   type="checkbox"
@@ -205,7 +173,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Electrical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Electrical_Engineering
                   }
                   type="checkbox"
@@ -220,7 +188,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Electronics_and_Communication_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs
                       .Electronics_and_Communication_Engineering
                   }
@@ -234,7 +202,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Engineering_Physics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Engineering_Physics
                   }
                   type="checkbox"
@@ -247,7 +215,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Environmental_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Environmental_Engineering
                   }
                   type="checkbox"
@@ -260,7 +228,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mechanical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Mechanical_Engineering
                   }
                   type="checkbox"
@@ -275,7 +243,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mineral_and_Metallurgical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs
                       .Mineral_and_Metallurgical_Engineering
                   }
@@ -289,7 +257,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mining_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Mining_Engineering
                   }
                   type="checkbox"
@@ -302,7 +270,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mining_Machinery_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Mining_Machinery_Engineering
                   }
                   type="checkbox"
@@ -315,7 +283,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Petroleum_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Petroleum_Engineering
                   }
                   type="checkbox"
@@ -338,7 +306,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Select_All
                   }
@@ -352,7 +320,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Computer_Science_and_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Computer_Science_and_Engineering
                   }
@@ -366,7 +334,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mathematics_and_Computing"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Mathematics_and_Computing
                   }
@@ -380,7 +348,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Applied_Geology"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Applied_Geology
                   }
@@ -394,7 +362,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Applied_Geophysics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Applied_Geophysics
                   }
@@ -417,7 +385,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="C_Cpp_Java_Python_etc"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
+                    JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
                       .C_Cpp_Java_Python_etc
                   }
                   type="checkbox"
@@ -432,7 +400,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Full_Stack_Development_Frontend_or_Backend"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
+                    JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
                       .Full_Stack_Development_Frontend_or_Backend
                   }
                   type="checkbox"
@@ -445,7 +413,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Civil_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
+                    JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
                       .Civil_Engineering
                   }
                   type="checkbox"
@@ -458,7 +426,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="AI_ML_DL_Data_Science"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
+                    JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
                       .AI_ML_DL_Data_Science
                   }
                   type="checkbox"
@@ -473,7 +441,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Business_Data_Analytics_Product_Management"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
+                    JnfData.Eligible_Courses_And_Disciplines.Skill_Based_Hiring
                       .Business_Data_Analytics_Product_Management
                   }
                   type="checkbox"
@@ -503,7 +471,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Three_Year_MSc_Tech_Programs.Select_All
                   }
                   type="checkbox"
@@ -516,7 +484,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Applied_Geology"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Three_Year_MSc_Tech_Programs.Applied_Geology
                   }
                   type="checkbox"
@@ -529,7 +497,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Applied_Geophysics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Three_Year_MSc_Tech_Programs.Applied_Geophysics
                   }
                   type="checkbox"
@@ -550,7 +518,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Select_All
                   }
                   type="checkbox"
@@ -563,7 +531,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Applied_Geology"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Applied_Geology
                   }
                   type="checkbox"
@@ -576,7 +544,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Applied_Geophysics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Applied_Geophysics
                   }
                   type="checkbox"
@@ -589,7 +557,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Chemical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Chemical_Engineering
                   }
                   type="checkbox"
@@ -602,7 +570,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Civil_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Civil_Engineering
                   }
                   type="checkbox"
@@ -615,7 +583,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Computer_Science_and_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Computer_Science_and_Engineering
                   }
                   type="checkbox"
@@ -628,7 +596,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Data_Analytics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Data_Analytics
                   }
                   type="checkbox"
@@ -641,7 +609,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Electrical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Electrical_Engineering
                   }
                   type="checkbox"
@@ -656,7 +624,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Electronics_and_Communication_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Electronics_and_Communication_Engineering
                   }
@@ -670,7 +638,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Environmental_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Environmental_Engineering
                   }
                   type="checkbox"
@@ -685,7 +653,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Industrial_Engineering_and_Management"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Industrial_Engineering_and_Management
                   }
@@ -699,7 +667,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mechanical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Mechanical_Engineering
                   }
                   type="checkbox"
@@ -714,7 +682,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Fuel_Minerals_and_Metallurgical_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Fuel_Minerals_and_Metallurgical_Engineering
                   }
@@ -728,7 +696,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mining_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Mining_Engineering
                   }
                   type="checkbox"
@@ -741,7 +709,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mining_Machinery_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Mining_Machinery_Engineering
                   }
                   type="checkbox"
@@ -754,7 +722,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Petroleum_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Petroleum_Engineering
                   }
                   type="checkbox"
@@ -769,7 +737,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Pharmaceutical_Science_and_Engineering"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Pharmaceutical_Science_and_Engineering
                   }
@@ -791,7 +759,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Select_All
                   }
                   type="checkbox"
@@ -804,7 +772,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Business_Analytics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Business_Analytics
                   }
                   type="checkbox"
@@ -817,7 +785,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Finance"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Finance
                   }
                   type="checkbox"
@@ -830,7 +798,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Human_Resources"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Human_Resources
                   }
                   type="checkbox"
@@ -843,7 +811,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Marketing"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Marketing
                   }
                   type="checkbox"
@@ -856,7 +824,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Operations"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Operations
                   }
                   type="checkbox"
@@ -877,7 +845,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Select_All
                   }
                   type="checkbox"
@@ -890,7 +858,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Chemistry"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Chemistry
                   }
                   type="checkbox"
@@ -903,7 +871,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Mathematics_and_Computing"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Mathematics_and_Computing
                   }
                   type="checkbox"
@@ -916,7 +884,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Physics"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
+                    JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Physics
                   }
                   type="checkbox"
@@ -961,7 +929,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="Yes"
                       checked={
-                        InfData.Selection_Procedure.Resume_Shortlisting.Yes
+                        JnfData.Selection_Procedure.Resume_Shortlisting.Yes
                       }
                       type="checkbox"
                     />
@@ -972,7 +940,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="No"
                       checked={
-                        InfData.Selection_Procedure.Resume_Shortlisting.No
+                        JnfData.Selection_Procedure.Resume_Shortlisting.No
                       }
                       type="checkbox"
                     />
@@ -1011,7 +979,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="Technical"
                       checked={
-                        InfData.Selection_Procedure.Type_Of_Test.Technical
+                        JnfData.Selection_Procedure.Type_Of_Test.Technical
                       }
                       type="checkbox"
                     />
@@ -1022,7 +990,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="Aptitude"
                       checked={
-                        InfData.Selection_Procedure.Type_Of_Test.Aptitude
+                        JnfData.Selection_Procedure.Type_Of_Test.Aptitude
                       }
                       type="checkbox"
                     />
@@ -1032,7 +1000,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                     <input
                       className="checkBox"
                       name="Technical_and_Aptitude"
-                      checked={InfData.Selection_Procedure.Type_Of_Test.Both}
+                      checked={JnfData.Selection_Procedure.Type_Of_Test.Both}
                       type="checkbox"
                     />
                   </div>
@@ -1041,7 +1009,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                     <input
                       className="checkBox"
                       name="None"
-                      checked={InfData.Selection_Procedure.Type_Of_Test.None}
+                      checked={JnfData.Selection_Procedure.Type_Of_Test.None}
                       type="checkbox"
                     />
                   </div>
@@ -1079,7 +1047,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="GD"
                       checked={
-                        InfData.Selection_Procedure.Other_Qualification_Rounds
+                        JnfData.Selection_Procedure.Other_Qualification_Rounds
                           .GD
                       }
                       type="checkbox"
@@ -1091,7 +1059,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="Case_Study"
                       checked={
-                        InfData.Selection_Procedure.Other_Qualification_Rounds
+                        JnfData.Selection_Procedure.Other_Qualification_Rounds
                           .Case_Study
                       }
                       type="checkbox"
@@ -1103,7 +1071,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
                       className="checkBox"
                       name="Interview"
                       checked={
-                        InfData.Selection_Procedure.Other_Qualification_Rounds
+                        JnfData.Selection_Procedure.Other_Qualification_Rounds
                           .Interview
                       }
                       type="checkbox"
@@ -1122,7 +1090,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
             <h1 className="inputText">
               checked=
               {
-                InfData.Selection_Procedure.Total_Number_Of_Rounds
+                JnfData.Selection_Procedure.Total_Number_Of_Rounds
                   .Total_Number_Of_Rounds
               }
             </h1>
@@ -1136,7 +1104,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
           <Col sm={10}>
             <h1 className="inputText">
               checked=
-              {InfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
+              {JnfData.Selection_Procedure.Number_Of_Offers.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
@@ -1148,7 +1116,7 @@ const structure = ({ InfData, setPage, handleFormSubmit }) => {
             <h1 className="inputText">
               checked=
               {
-                InfData.Selection_Procedure.Eligibility_Criteria
+                JnfData.Selection_Procedure.Eligibility_Criteria
                   .Eligibility_Criteria
               }
             </h1>
