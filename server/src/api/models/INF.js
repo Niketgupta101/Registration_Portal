@@ -1,42 +1,46 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const infSchema = new Schema(
   {
-    userId: { type: Schema.ObjectId, ref: 'User' },
+    userId: { type: Schema.ObjectId, ref: "User" },
     Company_Overview: {
-      Name_Of_The_Company: { type: String, default: '' },
-      Category_Or_Sector: { type: String, default: '' },
-      Website: { type: String, default: '' },
+      Name_Of_The_Company: { type: String, default: "" },
+      Category_Or_Sector: { type: String, default: "" },
+      Category: { type: String, default: "" },
+      Sector: { type: String, default: "" },
+      About: { type: String, default: "" },
+      Website: { type: String, default: "" },
     },
     Intern_Profile: {
       Internship_Duration: {
         type: String,
         default: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
       },
-      Job_Designation: { type: String, default: '' },
-      Job_Description: { type: String, default: '' },
+      Job_Designation: { type: String, default: "" },
+      Job_Description: { type: String, default: "" },
       Mode_Of_Internship: {
         type: String, // Virtual (or) Physical
-        default: 'Virtual',
+        default: "Virtual",
       },
-      Place_Of_Posting: { type: String, default: '' }, // If mode of internship is physical
+      Place_Of_Posting: { type: String, default: "" }, // If mode of internship is physical
     },
     Salary_Details: {
-      Salary_Per_Month: { type: String, default: '' },
-      PPO_provision_on_performance_basis: { type: String, default: 'Yes' },
-      CTC: { type: String, default: '' },
+      Salary_Per_Month: { type: String, default: "" },
+      Salary_Unit: { type: String, default: "" },
+      PPO_provision_on_performance_basis: { type: String, default: "Yes" },
+      CTC: { type: String, default: "" },
     },
     HR_Details: {
       Primary_Hr: {
-        name: { type: String, default: '' },
-        email: { type: String, default: '' },
-        mobile: { type: Number, default: '' },
+        name: { type: String, default: "" },
+        email: { type: String, default: "" },
+        mobile: { type: Number, default: "" },
       },
       Alternate_Hr: {
-        name: { type: String, default: '' },
-        email: { type: String, default: '' },
-        mobile: { type: Number, default: '' },
+        name: { type: String, default: "" },
+        email: { type: String, default: "" },
+        mobile: { type: Number, default: "" },
       },
     },
     Eligible_Courses_And_Disciplines: {
@@ -148,15 +152,15 @@ const infSchema = new Schema(
         Case_Study: { type: Boolean, default: false },
         Interview: { type: Boolean, default: false },
       },
-      Total_Number_Of_Rounds: { type: String, default: '' },
-      Number_Of_Offers: { type: String, default: '' },
-      Eligibility_Criteria: { type: String, default: '' },
+      Total_Number_Of_Rounds: { type: String, default: "" },
+      Number_Of_Offers: { type: String, default: "" },
+      Eligibility_Criteria: { type: String, default: "" },
     },
     previewLink: String,
     downloadLink: String,
     studentPreview: String,
     studentDownload: String,
-    status: { type: String, default: 'incomplete' },
+    status: { type: String, default: "incomplete" },
     isIntern: { type: Boolean, default: true },
     isJob: { type: Boolean, default: false },
   },
@@ -167,11 +171,11 @@ const infSchema = new Schema(
 
 const INFstatusSchema = new Schema(
   {
-    userId: { type: Schema.ObjectId, ref: 'User' },
-    data: { type: Schema.ObjectId, ref: 'INF' },
+    userId: { type: Schema.ObjectId, ref: "User" },
+    data: { type: Schema.ObjectId, ref: "INF" },
     progress: {
       type: String,
-      default: 'incomplete',
+      default: "incomplete",
     },
   },
   {
@@ -179,7 +183,7 @@ const INFstatusSchema = new Schema(
   }
 );
 
-const INF = mongoose.model('INF', infSchema);
-const INFstatus = mongoose.model('INFstatus', INFstatusSchema);
+const INF = mongoose.model("INF", infSchema);
+const INFstatus = mongoose.model("INFstatus", INFstatusSchema);
 
 module.exports = { INF, INFstatus };

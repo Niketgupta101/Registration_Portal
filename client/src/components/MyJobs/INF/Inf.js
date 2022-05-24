@@ -19,9 +19,13 @@ const Inf = () => {
   const { InfId } = useParams();
 
   const company = JSON.parse(localStorage.getItem("company"));
+  console.log(company);
 
   const companyData = {
     Name_Of_The_Company: company[0].name,
+    Category: company[0].categoryData,
+    Sector: company[0].sectorData,
+    About: company[0].about,
     Category_Or_Sector: "",
     Website: company[0].website,
   };
@@ -34,6 +38,7 @@ const Inf = () => {
   };
   const stipendData = {
     Salary_Per_Month: "",
+    Salary_Unit: "",
     PPO_provision_on_performance_basis: "Yes",
     CTC: "",
   };
@@ -180,7 +185,7 @@ const Inf = () => {
     Environmental_Engineering: false,
     Industrial_Engineering_and_Management: false,
     Mechanical_Engineering: false,
-    Fuel_Minerals_and_Metallurgical_Engineering: false, 
+    Fuel_Minerals_and_Metallurgical_Engineering: false,
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,

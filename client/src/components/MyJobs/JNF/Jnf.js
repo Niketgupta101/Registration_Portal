@@ -1,42 +1,44 @@
-import { TabContext, TabPanel } from '@mui/lab';
-import React, { useEffect, useState } from 'react';
-import { getjnfById, submitJnf, updateJnfById} from '../../../api';
+import { TabContext, TabPanel } from "@mui/lab";
+import React, { useEffect, useState } from "react";
+import { getjnfById, submitJnf, updateJnfById } from "../../../api";
 
+import "./styles.css";
 
-import './styles.css';
-
-import ReviewJnf from './ReviewJnf/ReviewJnf';
-import JNF1 from './page1/JNF1';
-import JNF2 from './page2/JNF2';
+import ReviewJnf from "./ReviewJnf/ReviewJnf";
+import JNF1 from "./page1/JNF1";
+import JNF2 from "./page2/JNF2";
 // import JNF3 from './page3/JNF3';
-import JNF4 from './page4/JNF4';
+import JNF4 from "./page4/JNF4";
 
-import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '../../Loading/Loading';
+import { useNavigate, useParams } from "react-router-dom";
+import Loading from "../../Loading/Loading";
 
 const Jnf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState('1');
+  const [page, setPage] = useState("1");
   const Navigate = useNavigate();
 
   const { JnfId } = useParams();
 
-  const company = JSON.parse(localStorage.getItem('company'));
-
+  const company = JSON.parse(localStorage.getItem("company"));
+  console.log(company);
   const companyData = {
     Name_Of_The_Company: company[0].name,
-    Category_Or_Sector: '',
+    Category_Or_Sector: "",
+    Category: company[0].categoryData,
+    Sector: company[0].sectorData,
+    About: company[0].about,
     Website: company[0].website,
   };
   const jobData = {
-    Job_Designation: '',
-    Job_Description: '',
-    Place_Of_Posting: '',
+    Job_Designation: "",
+    Job_Description: "",
+    Place_Of_Posting: "",
   };
   const salaryData = {
-    CTC_Breakup: '',
-    Bond_Details: '',
-    CTC: '',
+    CTC_Breakup: "",
+    Bond_Details: "",
+    CTC: "",
   };
   const hrData = {
     Primary_Hr: {
@@ -186,7 +188,7 @@ const Jnf = () => {
     Environmental_Engineering: false,
     Industrial_Engineering_and_Management: false,
     Mechanical_Engineering: false,
-    Fuel_Minerals_and_Metallurgical_Engineering: false, 
+    Fuel_Minerals_and_Metallurgical_Engineering: false,
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,
@@ -385,12 +387,8 @@ const Jnf = () => {
     },
   });
 
-  
   const fetchInfData = async (JnfId) => {
     const response = await getjnfById(JnfId);
-  
-
- 
 
     console.log(response.data);
     setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
@@ -447,7 +445,7 @@ const Jnf = () => {
 
   useEffect(() => {
     if (JnfId) getjnfById(JnfId);
-  }, [JnfId]); 
+  }, [JnfId]);
 
   const handleUpdateJnfById = async (e) => {
     e.preventDefault();
@@ -505,43 +503,46 @@ const Jnf = () => {
 
   return (
     <>
-    <div className="JNF">
-      <TabContext value={page} style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
-        <TabPanel value='1'>
-          <JNF1
-            setPage={setPage}
-            companyFormData={companyFormData}
-            jobFormData={jobFormData}
-            salaryFormData={salaryFormData}
-            hrDetails={hrDetails}
-            handleCompanyDataChange={handleCompanyDataChange}
-            handleJobDataChange={handleJobDataChange}
-            handleSalaryDataChange={handleSalaryDataChange}
-            handleHrDetailsChange={handleHrDetailsChange}
-            handleUpdateJnfById={handleUpdateJnfById}
-          />
-        </TabPanel>
-        <TabPanel value={'2'}>
-          <JNF2
-            setPage={setPage}
-            fourYearData={fourYearData}
-            fiveYearData={fiveYearData}
-            skillData={skillData}
-            handleFourYearChange={handleFourYearChange}
-            handleFiveYearChange={handleFiveYearChange}
-            handleSkillChange={handleSkillChange}
-            handleUpdateJnfById={handleUpdateJnfById}
-            threeYearData={threeYearData}
-            twoYearData={twoYearData}
-            twoYearMbaData={twoYearMbaData}
-            twoYearMscData={twoYearMscData}
-            handleThreeYearChange={handleThreeYearChange}
-            handleTwoYearChange={handleTwoYearChange}
-            handleTwoYearMbaChange={handleTwoYearMbaChange}
-            handleTwoYearMscChange={handleTwoYearMscChange}
-          />
-        </TabPanel>
-        {/* <TabPanel value={"3"}>
+      <div className="JNF">
+        <TabContext
+          value={page}
+          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+        >
+          <TabPanel value="1">
+            <JNF1
+              setPage={setPage}
+              companyFormData={companyFormData}
+              jobFormData={jobFormData}
+              salaryFormData={salaryFormData}
+              hrDetails={hrDetails}
+              handleCompanyDataChange={handleCompanyDataChange}
+              handleJobDataChange={handleJobDataChange}
+              handleSalaryDataChange={handleSalaryDataChange}
+              handleHrDetailsChange={handleHrDetailsChange}
+              handleUpdateJnfById={handleUpdateJnfById}
+            />
+          </TabPanel>
+          <TabPanel value={"2"}>
+            <JNF2
+              setPage={setPage}
+              fourYearData={fourYearData}
+              fiveYearData={fiveYearData}
+              skillData={skillData}
+              handleFourYearChange={handleFourYearChange}
+              handleFiveYearChange={handleFiveYearChange}
+              handleSkillChange={handleSkillChange}
+              handleUpdateJnfById={handleUpdateJnfById}
+              threeYearData={threeYearData}
+              twoYearData={twoYearData}
+              twoYearMbaData={twoYearMbaData}
+              twoYearMscData={twoYearMscData}
+              handleThreeYearChange={handleThreeYearChange}
+              handleTwoYearChange={handleTwoYearChange}
+              handleTwoYearMbaChange={handleTwoYearMbaChange}
+              handleTwoYearMscChange={handleTwoYearMscChange}
+            />
+          </TabPanel>
+          {/* <TabPanel value={"3"}>
           <JNF3
             setPage={setPage}
             threeYearData={threeYearData}
@@ -555,30 +556,30 @@ const Jnf = () => {
             handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel> */}
-        <TabPanel value={'3'}>
-          <JNF4
-            setPage={setPage}
-            resumeShortListingData={resumeShortListingData}
-            typeOfTestData={typeOfTestData}
-            otherQualificationRoundsData={otherQualificationRoundsData}
-            selectionFormData={selectionFormData}
-            handleResumeShortListingChange={handleResumeShortListingChange}
-            handleTypeOfTestChange={handleTypeOfTestChange}
-            handleOtherQualificationRoundsChange={
-              handleOtherQualificationRoundsChange
-            }
-            handleSelectionDataChange={handleSelectionDataChange}
-            handleUpdateJnfById={handleUpdateJnfById}
-          />
-        </TabPanel>
-        <TabPanel value={'4'}>
-          <ReviewJnf
-            setPage={setPage}
-            JnfData={JnfData}
-            handleFormSubmit={handleFormSubmit}
-          />
-        </TabPanel>
-      </TabContext>
+          <TabPanel value={"3"}>
+            <JNF4
+              setPage={setPage}
+              resumeShortListingData={resumeShortListingData}
+              typeOfTestData={typeOfTestData}
+              otherQualificationRoundsData={otherQualificationRoundsData}
+              selectionFormData={selectionFormData}
+              handleResumeShortListingChange={handleResumeShortListingChange}
+              handleTypeOfTestChange={handleTypeOfTestChange}
+              handleOtherQualificationRoundsChange={
+                handleOtherQualificationRoundsChange
+              }
+              handleSelectionDataChange={handleSelectionDataChange}
+              handleUpdateJnfById={handleUpdateJnfById}
+            />
+          </TabPanel>
+          <TabPanel value={"4"}>
+            <ReviewJnf
+              setPage={setPage}
+              JnfData={JnfData}
+              handleFormSubmit={handleFormSubmit}
+            />
+          </TabPanel>
+        </TabContext>
       </div>
       {isLoading && <Loading />}
     </>
