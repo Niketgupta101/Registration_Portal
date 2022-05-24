@@ -38,12 +38,16 @@ const CompanyDetails = ({
     if (e.target.checked && e.target.value === "Others") {
       setOthersector(true);
     } else setOthersector(false);
+    handleCompanyChange(e);
   }
-  function handleOtherCategory(e) {
+
+  function handleCategory(e) {
     if (e.target.checked && e.target.value === "Others") {
       setOthercategory(true);
     } else setOthercategory(false);
+    handleCompanyChange(e);
   }
+
   return (
     <>
       <div className="company_container">
@@ -104,7 +108,7 @@ const CompanyDetails = ({
                 </label>
               </div>
             </div>
-            <div className="form-floating mb-3">
+            {/* <div className="form-floating mb-3">
               <input
                 className="form-control"
                 name="company_type"
@@ -117,7 +121,7 @@ const CompanyDetails = ({
               <label for="floatingInput" htmlFor="company_type">
                 Company Type / Sector <span style={{ color: "red" }}>*</span>
               </label>
-            </div>
+            </div> */}
 
             <div className="form-floating mb-3">
               <textarea
@@ -309,27 +313,30 @@ const CompanyDetails = ({
                           <RadioGroup
                             aria-labelledby="demo-radio-buttons-group-label"
                             defaultValue="Yes, Both Contact Number and Email Address"
-                            name="radio-buttons-group"
+                            name="category"
                           >
                             {categories.map((category) => (
                               <FormControlLabel
                                 value={category}
                                 control={<Radio />}
                                 label={category}
-                                onChange={handleOtherCategory}
+                                name="categoryData"
+                                onChange={handleCategory}
                               />
                             ))}
                             <FormControlLabel
                               value="Others"
                               control={<Radio />}
                               label="Others (please specify)"
-                              onChange={handleOtherCategory}
+                              onChange={handleCategory}
                             />
                             {othercategory && (
                               <TextField
                                 id="standard-basic"
                                 label="Please Specify"
                                 variant="standard"
+                                name="categoryData"
+                                onChange={handleCompanyChange}
                               />
                             )}
                           </RadioGroup>
@@ -367,6 +374,7 @@ const CompanyDetails = ({
                                 value={sector}
                                 control={<Radio />}
                                 label={sector}
+                                name="sectorData"
                                 onChange={handleOtherSector}
                               />
                             ))}
@@ -374,6 +382,7 @@ const CompanyDetails = ({
                               value="Others"
                               control={<Radio />}
                               label="Others (please specify)"
+                              name="sectorData"
                               onChange={handleOtherSector}
                             />
                             {othersector && (
@@ -381,6 +390,8 @@ const CompanyDetails = ({
                                 id="standard-basic"
                                 label="Please Specify"
                                 variant="standard"
+                                name="sectorData"
+                                onChange={handleCompanyChange}
                               />
                             )}
                           </RadioGroup>
@@ -410,18 +421,21 @@ const CompanyDetails = ({
                   </FormLabel>
                   <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="Agree"
                     name="radio-buttons-group"
                   >
                     <FormControlLabel
                       value="Agree"
                       control={<Radio />}
                       label="Agree"
+                      name="consent"
+                      onChange={handleCompanyChange}
                     />
                     <FormControlLabel
                       value="Disagree"
                       control={<Radio />}
                       label="Disagree"
+                      name="consent"
+                      onChange={handleCompanyChange}
                     />
                   </RadioGroup>
                 </FormControl>
