@@ -335,6 +335,7 @@ const Inf = () => {
       Both: false,
       None: false,
     };
+    console.log("original", temp);
     switch (e.target.value) {
       case "0":
         temp.Technical = true;
@@ -349,14 +350,22 @@ const Inf = () => {
         temp.None = true;
         break;
     }
+    console.log("a switch", temp);
     setTypeOfTestData(temp);
+    console.log("a setType", temp);
     setInfData((prevData) => ({
       ...prevData,
       Selection_Procedure: {
         ...prevData.Selection_Procedure,
-        Type_Of_Test: temp,
+        Type_Of_Test: {
+          Technical: temp.Technical,
+          Aptitude: temp.Aptitude,
+          Both: temp.Both,
+          None: temp.None,
+        },
       },
     }));
+    console.log("a InfData", temp);
   };
   const handleOtherQualificationRoundsChange = (e) => {
     setOtherQualificationRoundsData((prevData) => ({
