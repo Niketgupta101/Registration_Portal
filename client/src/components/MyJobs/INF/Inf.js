@@ -180,7 +180,7 @@ const Inf = () => {
     Environmental_Engineering: false,
     Industrial_Engineering_and_Management: false,
     Mechanical_Engineering: false,
-    Fuel_Minerals_and_Metallurgical_Engineering: false, 
+    Fuel_Minerals_and_Metallurgical_Engineering: false,
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,
@@ -287,34 +287,69 @@ const Inf = () => {
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {
-    setResumeShortListingData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    setInfData((prevData) => ({
-      ...prevData,
-      Selection_Procedure: {
-        ...prevData.Selection_Procedure,
-        Resume_Shortlisting: {
-          ...prevData.Selection_Procedure.Resume_Shortlisting,
-          [e.target.name]: e.target.checked ? true : false,
+    console.log(e.target.value);
+    if (e.target.value == 1) {
+      console.log(e.target.name, e.target.value);
+      setResumeShortListingData((prevData) => ({
+        Yes: false,
+        No: true,
+      }));
+      setInfData((prevData) => ({
+        ...prevData,
+        Selection_Procedure: {
+          ...prevData.Selection_Procedure,
+          Resume_Shortlisting: {
+            Yes: false,
+            No: true,
+          },
         },
-      },
-    }));
+      }));
+    }
+    if (e.target.value == 0) {
+      console.log(e.target.name, e.target.value);
+      setResumeShortListingData((prevData) => ({
+        Yes: true,
+        No: false,
+      }));
+      setInfData((prevData) => ({
+        ...prevData,
+        Selection_Procedure: {
+          ...prevData.Selection_Procedure,
+          Resume_Shortlisting: {
+            Yes: true,
+            No: false,
+          },
+        },
+      }));
+    }
   };
   const handleTypeOfTestChange = (e) => {
-    setTypeOfTestData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
+    let temp = {
+      Technical: false,
+      Aptitude: false,
+      Both: false,
+      None: false,
+    };
+    switch (e.target.value) {
+      case "0":
+        temp.Technical = true;
+        break;
+      case "1":
+        temp.Aptitude = true;
+        break;
+      case "2":
+        temp.Both = true;
+        break;
+      default:
+        temp.None = true;
+        break;
+    }
+    setTypeOfTestData(temp);
     setInfData((prevData) => ({
       ...prevData,
       Selection_Procedure: {
         ...prevData.Selection_Procedure,
-        Type_Of_Test: {
-          ...prevData.Selection_Procedure.Type_Of_Test,
-          [e.target.name]: e.target.checked ? true : false,
-        },
+        Type_Of_Test: temp,
       },
     }));
   };
@@ -492,8 +527,7 @@ const Inf = () => {
       <div className="INF">
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
-        >
+          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
           <TabPanel value="1">
             <INF1
               setPage={setPage}
