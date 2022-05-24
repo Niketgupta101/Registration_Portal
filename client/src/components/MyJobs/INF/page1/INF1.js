@@ -39,9 +39,8 @@ export default function INF1({
   }
 
   function submitButton() {
-    console.log({ companyFormData, jobFormData, stipendFormData, hrDetails });
+    // console.log({ companyFormData, jobFormData, stipendFormData, hrDetails });
     if (
-      companyFormData.Category_Or_Sector === "" ||
       jobFormData.Job_Designation === "" ||
       jobFormData.Job_Description === "" ||
       jobFormData.Place_Of_Posting === "" ||
@@ -142,19 +141,52 @@ export default function INF1({
                       autoComplete="off"
                     />
                   </Col>
-                </FormGroup> 
+                </FormGroup>
                 <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
-                    Category/Sector<span style={{ color: "red" }}>*</span>
+                    Category<span style={{ color: "red" }}>*</span>
                   </Label>
                   <Col sm={9}>
                     <Input
                       id="exampleText"
-                      name="Category_Or_Sector"
+                      name="Category"
                       type="text"
-                      required
                       className="inputText"
-                      value={companyFormData.Category_Or_Sector}
+                      value={companyFormData.Category}
+                      disabled="true"
+                      onChange={handleCompanyDataChange}
+                      autoComplete="off"
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row style={style}>
+                  <Label for="exampleText" sm={3} className="fontText">
+                    Sector<span style={{ color: "red" }}>*</span>
+                  </Label>
+                  <Col sm={9}>
+                    <Input
+                      id="exampleText"
+                      name="Sector"
+                      type="text"
+                      className="inputText"
+                      value={companyFormData.Sector}
+                      disabled="true"
+                      onChange={handleCompanyDataChange}
+                      autoComplete="off"
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row style={style}>
+                  <Label for="exampleText" sm={3} className="fontText">
+                    About the Company<span style={{ color: "red" }}>*</span>
+                  </Label>
+                  <Col sm={9}>
+                    <Input
+                      id="exampleText"
+                      name="About"
+                      type="text"
+                      className="inputText"
+                      value={companyFormData.About}
                       onChange={handleCompanyDataChange}
                       autoComplete="off"
                     />
@@ -363,11 +395,15 @@ export default function INF1({
                         value="Per Month"
                         control={<Radio />}
                         label="per Month"
+                        name="Salary_Unit"
+                        onChange={handleStipendDataChange}
                       />
                       <FormControlLabel
                         value="Total "
                         control={<Radio />}
                         label="Total"
+                        name="Salary_Unit"
+                        onChange={handleStipendDataChange}
                       />
                     </RadioGroup>
                   </Col>

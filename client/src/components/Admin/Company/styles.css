@@ -10,6 +10,9 @@
   flex-wrap: wrap;
   align-items: center;
 }
+#companyname {
+  text-align: center;
+}
 .company_items > div {
   padding: 1rem 0;
 }
@@ -31,9 +34,9 @@
 }
 
 .job_card1 {
-  text-align: center;
-  width: 20rem;
-  height: 20rem;
+  width: 22rem;
+  height: 24rem;
+  overflow-y: auto;
   /* border-radius: 5px; */
   margin: 0.8rem;
   border: 1px solid rgba(0, 0, 0, 0.177);
@@ -43,6 +46,9 @@
 
   border-radius: 18px;
 }
+.job-card-subheading {
+  padding-left: 25px;
+}
 #companyname {
   font-weight: bolder;
   font-size: large;
@@ -50,7 +56,7 @@
 }
 
 .head {
-  font-weight: bold;
+  font-weight: 500;
   line-height: 2px;
 }
 .contacthr {
