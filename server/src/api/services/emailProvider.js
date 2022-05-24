@@ -1,15 +1,99 @@
-const axios = require("axios");
-const { sendEmail } = require("../utils/service/email");
-const { clientUrl, serverUrl } = require("../../config/vars");
+const axios = require('axios');
+const { sendEmail } = require('../utils/service/email');
+const { clientUrl, serverUrl } = require('../../config/vars');
+
+const generateHtml = (url) => {
+  return `<div>
+      <div style="background-color: #003399; padding: 20px; color: white">
+        <div
+          style="letter-spacing: 2.5px; font-weight: 500; text-align: center"
+        >
+          THANKS FOR SIGNING UP!
+        </div>
+        <div
+          style="
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-top: 10px;
+          "
+        >
+          Verify your Email Address
+        </div>
+      </div>
+      <div
+        style="
+          font-size: 18px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          margin-top: 20px;
+        "
+      >
+        Hi,
+      </div>
+      <div
+        style="
+          font-size: 17px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          color: black;
+        "
+      >
+        You are almost ready to get started. Your E-mail id has not yet been
+        verified. Please, click on the button below to verify your email
+        address.
+      </div>
+      <div>
+        <button
+          style="
+            background-color: #ff6d14;
+            padding: 8px 20px;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1px;
+          "
+        >
+          <a href=${url} clicktracking="off">Verify Email</a>
+        </button>
+      </div>
+      <div
+        style="
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          color: rgba(0, 0, 0, 0.6);
+          margin-top: 20px;
+        "
+      >
+        Thanks,
+      </div>
+      <div
+        style="
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          color: rgba(0, 0, 0, 0.6);
+        "
+      >
+        CDC, IIT(ISM) Dhanbad
+      </div>
+    </div>`;
+};
 
 exports.sendConfirmationMail = async (emailId, emailVerifyToken) => {
   try {
     const emailVerifyUrl = `${serverUrl}/v1/users/verifyEmail/${emailVerifyToken}`;
 
-    const subject = "Mail to verify email id.";
-    const message = `
-            <p>Please go to this link to verify your email</p>
-            <a href=${emailVerifyUrl} clicktracking=off>here</a>`;
+    const subject = 'Mail to verify email id.';
+    // const message = `
+    //         <p>Please go to this link to verify your email</p>
+    //         <a href=${emailVerifyUrl} clicktracking=off>here</a>`;
+
+    const message = generateHtml(emailVerifyUrl);
 
     // const message = `
     //           <div className="verifyEmail mt-4">
@@ -48,7 +132,7 @@ exports.sendResetPasswordMail = async (emailId, resetToken) => {
   try {
     const resetUrl = `${clientUrl}/passwordReset/${resetToken}`;
 
-    const subject = "Mail to reset your Password";
+    const subject = 'Mail to reset your Password';
 
     const message = `<h1>You have requested a password reset</h1>
                 <p>Please go to this link to reset your password</p>
@@ -65,14 +149,14 @@ exports.sendResetPasswordMail = async (emailId, resetToken) => {
 exports.sendInvitationMailToCompany = async (emailId, username, password) => {
   try {
     const subject =
-      "Invitation for Internship/Placements Season of IIT(ISM) Dhanbad";
+      'Invitation for Internship/Placements Season of IIT(ISM) Dhanbad';
 
     const message = `<h3>You are invited</h3>
                         <h4>Username: ${username}</h4>
                         <h4>Password: ${password}</h4>`;
 
     await sendEmail(emailId, subject, message);
-    console.log("here");
+    console.log('here');
     return { success: true };
   } catch (error) {
     return { success: false };
