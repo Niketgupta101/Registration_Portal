@@ -112,8 +112,8 @@ const Jobs = () => {
                   </div>
                   <div className="content_text">
                     <h5>
-                      <span>Sector</span>:{" "}
-                      {job.data?.Company_Overview?.Category_Or_Sector}
+                      <span>Designation: </span>:{" "}
+                      {job.data?.Job_Details?.Job_Designation}
                     </h5>
                     <h5>
                       {job.data.isIntern ? (

@@ -1,19 +1,33 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
-import './../Auth/newStyle.css'
+import "./../Auth/newStyle.css";
 import "./styles.css";
 import { forgetPassword } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
+  const notify = () =>
+    toast.success("Reset link sent to Email Address!", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   const [emailId, setEmailId] = useState("");
   const Navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await forgetPassword(emailId);
-    Navigate('/auth');
+
+    Navigate("/auth");
   };
 
   return (
@@ -25,8 +39,8 @@ const ForgotPassword = () => {
             <div className="forgot_header">Forgot Password</div>
             <form className="forgot_content" onSubmit={handleSubmit}>
               <h5>
-                A reset password link would be sent to the below email address if
-                there exist's any user registered with the given mail id.
+                A reset password link would be sent to the below email address
+                if there exist's any user registered with the given mail id.
               </h5>
               <TextField
                 name="emailId"
@@ -50,6 +64,7 @@ const ForgotPassword = () => {
                   padding: "0.5rem 1rem",
                 }}
                 type="submit"
+                onClick={notify}
               >
                 Send
               </Button>
@@ -57,6 +72,17 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
