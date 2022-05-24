@@ -170,7 +170,7 @@ const AllInf = () => {
                           <DropdownMenu>
                             <DropdownItem>
                               <a
-                                href={job.downloadLink}
+                                href={job.studentDownload}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',
