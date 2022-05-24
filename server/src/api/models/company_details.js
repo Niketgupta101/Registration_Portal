@@ -7,18 +7,21 @@ const companyDetailsSchema = new Schema({
   website: { type: String, required: true },
   company_type: { type: String, default: true },
   about: { type: String, required: true },
+  categoryData: { type: String, required: true },
+  sectorData: { type: String, required: true },
+
   primary_hr: {
     name: { type: String, required: true },
     contactNo: { type: Number, minlength: 10, required: true },
-    emailId: { type: String, required: true }
+    emailId: { type: String, required: true },
   },
   secondary_hr: {
     name: { type: String, required: true },
     contactNo: { type: Number, minlength: 10, required: true },
-    emailId: { type: String, required: true }
+    emailId: { type: String, required: true },
   },
   isVerifiedByCDC: { type: Boolean, default: false },
+  consent: { type: String, required: true },
 });
 
-
-module.exports = mongoose.model('CompanyDetails', companyDetailsSchema);
+module.exports = mongoose.model("CompanyDetails", companyDetailsSchema);
