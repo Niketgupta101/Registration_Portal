@@ -1,6 +1,7 @@
 import { TabContext, TabPanel } from '@mui/lab';
 import React, { useEffect, useState } from 'react';
-import { getjnfById, submitJnf, updateJnfById } from '../../../api';
+import { getjnfById, submitJnf, updateJnfById} from '../../../api';
+
 
 import './styles.css';
 
@@ -37,11 +38,23 @@ const Jnf = () => {
     Bond_Details: '',
     CTC: '',
   };
+  const hrData = {
+    Primary_Hr: {
+      name: "",
+      email: "",
+      mobile: "",
+    },
+    Alternate_Hr: {
+      name: "",
+      email: "",
+      mobile: "",
+    },
+  };
 
-  const [companyFormData, setCompanyFormData] = useState(companyData);
-  const [jobFormData, setJobFormData] = useState(jobData);
-  const [salaryFormData, setSalaryFormData] = useState(salaryData);
-  const [hrDetails, setHrDetails] = useState({});
+  const [companyFormData, setCompanyFormData] = useState({ ...companyData });
+  const [jobFormData, setJobFormData] = useState({ ...jobData });
+  const [salaryFormData, setSalaryFormData] = useState({ ...salaryData });
+  const [hrDetails, setHrDetails] = useState({ ...hrData });
 
   const handleCompanyDataChange = (e) => {
     console.log({ e: e.target.name, value: e.target.value });
@@ -105,26 +118,53 @@ const Jnf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    setFourYearData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(fourYearData);
+    if (e.target.name === "Select_All") {
+      let newValue = !fourYearData[e.target.name];
+      // setFourYearData((prevData) => ({
+      //   ...prevData,
+      //   [e.target.name]: e.target.checked ? true : false,
+      // }));
+      for (let i in fourYearData) {
+        setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+      // setFourYearData((prevData) => {
+      //   for (let i in prevData) {
+      //     prevData[i] = newValue;
+      //   }
+      //   return prevData;
+      // });
+    } else {
+      setFourYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
   };
   const handleFiveYearChange = (e) => {
-    setFiveYearData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(fiveYearData);
+    if (e.target.name === "Select_All") {
+      let newValue = !fiveYearData[e.target.name];
+      for (let i in fiveYearData) {
+        setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setFiveYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(skillData);
   };
+
+  useEffect(() => {
+    console.log(fourYearData);
+  }, [fourYearData]);
 
   // ------------------------------------------------------
 
@@ -146,7 +186,7 @@ const Jnf = () => {
     Environmental_Engineering: false,
     Industrial_Engineering_and_Management: false,
     Mechanical_Engineering: false,
-    Fuel_Minerals_and_Metallurgical_Engineering: false,
+    Fuel_Minerals_and_Metallurgical_Engineering: false, 
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,
@@ -168,40 +208,72 @@ const Jnf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    setThreeYearData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(threeYearData);
+    if (e.target.name === "Select_All") {
+      let newValue = !threeYearData[e.target.name];
+      for (let i in threeYearData) {
+        setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setThreeYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+    //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    setTwoYearData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(twoYearData);
+    if (e.target.name === "Select_All") {
+      let newValue = !twoYearData[e.target.name];
+      for (let i in twoYearData) {
+        setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setTwoYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+      //console.log(twoYearData);
+    }
   };
   const handleTwoYearMbaChange = (e) => {
-    setTwoYearMbaData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(twoYearMbaData);
+    if (e.target.name === "Select_All") {
+      let newValue = !twoYearMbaData[e.target.name];
+      for (let i in twoYearMbaData) {
+        setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setTwoYearMbaData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+    //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    setTwoYearMscData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.checked ? true : false,
-    }));
-    console.log(twoYearMscData);
+    if (e.target.name === "Select_All") {
+      let newValue = !twoYearMscData[e.target.name];
+      for (let i in twoYearMscData) {
+        setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setTwoYearMscData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+    //console.log(twoYearMscData);
   };
 
   // ------------------------------------------------------------
 
   const selectionData = {
-    Total_Number_Of_Rounds: 0,
-    Number_Of_Offers: 0,
-    Eligibility_Criteria: '',
+    Total_Number_Of_Rounds: "",
+    Number_Of_Offers: "",
+    Eligibility_Criteria: "",
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -227,11 +299,31 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(resumeShortListingData);
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Resume_Shortlisting: {
+          ...prevData.Selection_Procedure.Resume_Shortlisting,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
   };
   const handleTypeOfTestChange = (e) => {
     setTypeOfTestData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
+    }));
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Type_Of_Test: {
+          ...prevData.Selection_Procedure.Type_Of_Test,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
     }));
     console.log(typeOfTestData);
   };
@@ -241,11 +333,28 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
     console.log(otherQualificationRoundsData);
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        Other_Qualification_Rounds: {
+          ...prevData.Selection_Procedure.Other_Qualification_Rounds,
+          [e.target.name]: e.target.checked ? true : false,
+        },
+      },
+    }));
   };
   const handleSelectionDataChange = (e) => {
     setSelectionFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
+    }));
+    setJnfData((prevData) => ({
+      ...prevData,
+      Selection_Procedure: {
+        ...prevData.Selection_Procedure,
+        [e.target.name]: e.target.value,
+      },
     }));
   };
 
@@ -276,8 +385,12 @@ const Jnf = () => {
     },
   });
 
+  
   const fetchInfData = async (JnfId) => {
     const response = await getjnfById(JnfId);
+  
+
+ 
 
     console.log(response.data);
     setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
@@ -329,11 +442,12 @@ const Jnf = () => {
         response.data.jnf.Selection_Procedure.Eligibility_Criteria,
     });
     console.log({ companyFormData });
+    setJnfData({ ...response.data.jnf });
   };
 
   useEffect(() => {
-    if (JnfId) fetchInfData(JnfId);
-  }, [JnfId]);
+    if (JnfId) getjnfById(JnfId);
+  }, [JnfId]); 
 
   const handleUpdateJnfById = async (e) => {
     e.preventDefault();
@@ -383,7 +497,7 @@ const Jnf = () => {
       let response = await submitJnf(JnfId);
       setIsLoading(false);
       console.log(response);
-      Navigate('/myjobs');
+      Navigate("/myjobs");
     } catch (error) {
       console.log(error);
     }
@@ -391,7 +505,8 @@ const Jnf = () => {
 
   return (
     <>
-      <TabContext value={page}>
+    <div className="JNF">
+      <TabContext value={page} style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
         <TabPanel value='1'>
           <JNF1
             setPage={setPage}
@@ -464,6 +579,7 @@ const Jnf = () => {
           />
         </TabPanel>
       </TabContext>
+      </div>
       {isLoading && <Loading />}
     </>
   );

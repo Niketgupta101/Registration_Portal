@@ -6,15 +6,15 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import { Button } from '@mui/material';
+import { Button } from '@mui/material'; 
 import { FaSearch } from 'react-icons/fa';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Loading from '../../Loading/Loading';
 import './../Jobs/styles.css';
-import { getAllInf, getAllJobs, searchInfByPattern } from '../../../api/index';
+import { getAllJnf, getAllJobs, searchJnfByPattern } from '../../../api/index';
 
-const AllInf = () => {
+const AllJnf = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const Navigate = useNavigate();
@@ -33,25 +33,25 @@ const AllInf = () => {
 
   useEffect(async () => {
     setIsLoading(true);
-    const response = await getAllInf(pageNo);
+    const response = await getAllJnf(pageNo);
     setIsLoading(false);
 
     setJobs(response.data.jobs);
   }, [pageNo]);
 
   useEffect(() => {
-    async function fetchINFs() {
+    async function fetchJNFs() {
       // console.log({ search });
       var response;
       if (!search) {
-        response = await getAllInf(pageNo);
+        response = await getAllJnf(pageNo);
       } else {
-        response = await searchInfByPattern(search);
+        response = await searchJnfByPattern(search);
       }
       // console.log(response);
       setJobs(response.data.jobs);
     }
-    fetchINFs();
+    fetchJNFs();
   }, [search]);
 
   const [dropdownOpen, setDropdownOpen] = useState('');
@@ -67,7 +67,7 @@ const AllInf = () => {
     <>
       <div className='admin_company'>
         <div className='admin_company_header d-flex  justify-content-between'>
-          <h1>All INF</h1>
+          <h1>All JNF</h1>
           <div>
             <div className='input-group d-flex'>
               <div className='form-outline'>
@@ -98,9 +98,9 @@ const AllInf = () => {
               >
                 <div
                   className='badge'
-                  style={{ backgroundColor: !job.data.isIntern && 'red' }}
+                  style={{ backgroundColor: !job.data.isJob && 'red' }}
                 >
-                  <h6>{job.data.isIntern ? 'Intern' : 'FTE'}</h6>
+                  <h6>{job.data.isJob ? 'Intern' : 'FTE'}</h6>
                 </div>
                 <div className='card_content'>
                   <div className='content_heading'>
@@ -112,20 +112,7 @@ const AllInf = () => {
                       {job.data?.Company_Overview?.Category_Or_Sector}
                     </h5>
                     <h5>
-                      {job.data.isIntern ? (
-                        <>
-                          <span>Mode</span>:{' '}
-                          {job.data?.Intern_Profile?.Mode_Of_Internship}
-                        </>
-                      ) : (
-                        <>
-                          <span>Place of posting</span>:{' '}
-                          {job.data?.Job_Details?.Place_Of_Posting}
-                        </>
-                      )}
-                    </h5>
-                    <h5>
-                      {job.data.isIntern ? (
+                      {job.data.isJob ? (
                         <>
                           <span>Stipend</span>:{' '}
                           {job.data?.Salary_Details?.Salary_Per_Month}
@@ -170,7 +157,7 @@ const AllInf = () => {
                           <DropdownMenu>
                             <DropdownItem>
                               <a
-                                href={job.studentDownload}
+                                href={job.data.downloadLink}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',
@@ -224,4 +211,4 @@ const AllInf = () => {
   );
 };
 
-export default AllInf;
+export default AllJnf;

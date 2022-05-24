@@ -394,8 +394,14 @@ const CompanyDetails = ({
             <hr />
             <div className="mt-4">
               <label className="h6">
-                Do you want us to share your contact details with NIRF for
-                institute NIRF rating:
+                The National Institutional Ranking Framework, adopted by
+                Ministry of Education, Government of India, as a part of its
+                methodology for judging the score of an institute, asks for the
+                contact details of the organizations that visit the institute
+                for placements. By agreeing, your organization agrees to share
+                the Email ID and Name of the recruiter with the Ministry of
+                Education, Government of India, for helping towards the score of
+                the Indian Institute of Technology (Indian School of Mines).
               </label>
               <div className="ms-4">
                 <FormControl>
@@ -404,28 +410,18 @@ const CompanyDetails = ({
                   </FormLabel>
                   <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="Yes, Both Contact Number and Email Address"
+                    defaultValue="Agree"
                     name="radio-buttons-group"
                   >
                     <FormControlLabel
-                      value="Yes, Both Contact Number and Email Address"
+                      value="Agree"
                       control={<Radio />}
-                      label="Yes, Both Contact Number and Email Address"
+                      label="Agree"
                     />
                     <FormControlLabel
-                      value="Yes, Only Contact Number"
+                      value="Disagree"
                       control={<Radio />}
-                      label="Yes, Only Contact Number"
-                    />
-                    <FormControlLabel
-                      value="Yes, Only Email Address"
-                      control={<Radio />}
-                      label="Yes, Only Email Address"
-                    />
-                    <FormControlLabel
-                      value="None"
-                      control={<Radio />}
-                      label="None"
+                      label="Disagree"
                     />
                   </RadioGroup>
                 </FormControl>

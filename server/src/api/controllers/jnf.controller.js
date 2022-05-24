@@ -15,7 +15,6 @@ const getJnfById = async (req, res, next) => {
 
   try {
     let response = await fetchJnfById(id, next);
-
     res.status(201).json(response);
   } catch (error) {
     next(error);
@@ -136,6 +135,7 @@ const searchJnfByPattern = async (req, res, next) => {
 module.exports = {
   getJnfById,
   getAllJnfForUser,
+  searchJnfByPattern,
   getLatestJnfOfUser,
   getAllJnf,
   createNewJnf,

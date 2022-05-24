@@ -180,7 +180,7 @@ const Inf = () => {
     Environmental_Engineering: false,
     Industrial_Engineering_and_Management: false,
     Mechanical_Engineering: false,
-    Fuel_Minerals_and_Metallurgical_Engineering: false,
+    Fuel_Minerals_and_Metallurgical_Engineering: false, 
     Mining_Engineering: false,
     Mining_Machinery_Engineering: false,
     Petroleum_Engineering: false,

@@ -126,8 +126,9 @@ export const searchCompanyByPattern = (pattern) =>
 export const searchInfByPattern = (pattern) =>
   API.get(`/inf/search/${pattern}/1/5`);
 
-export const searchJnfByPattern = (pattern) =>
+  export const searchJnfByPattern = (pattern) =>
   API.get(`/jnf/search/${pattern}/1/5`);
+
 // ------------------------ Courses ------------------------------------
 
 export const getAllCourseData = () => API.get('/courses');

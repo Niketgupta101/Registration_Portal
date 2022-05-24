@@ -1,6 +1,8 @@
+const path = require('path');
 const { JNF, JNFstatus } = require('../models/JNF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillJNFDoc } = require('../utils/service/PDFservice/createPDF');
+const { uploadFile } = require('../utils/service/PDFservice/upload');
 const { readSheet, updateSheet } = require('../utils/service/GSheets');
 
 const fetchJnfById = async (id, next) => {
@@ -9,7 +11,7 @@ const fetchJnfById = async (id, next) => {
 
     if (!jnf)
       return next(new ErrorResponse('No JNF found with given id.', 404));
-
+ 
     return { success: true, jnf };
   } catch (error) {
     return next(error);
@@ -44,7 +46,8 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-    let jnfList = await JNF.find({ status: 'completed' })
+    let jnfList = await JNFstatus.find({ progress: 'submitted' })
+      .populate('data')
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
@@ -58,14 +61,17 @@ const fetchAllJnf = async (offset, pagelimit, next) => {
 const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
-    let jnfList = await JNF.find({
-      'Company_Overview.Name_Of_The_Company': { $regex: pattern },
-      status: 'complete',
-    })
+    let jnfList = await JNFstatus.find({ progress: 'submitted' })
+      .populate('data')
+      .find({
+        'data.Company_Overview.Name_Of_The_Company': {
+          $regex: pattern,
+          $options: 'im',
+        },
+      })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
-
     console.log({ jnfList });
     return { success: true, jobs: jnfList };
   } catch (error) {
@@ -168,7 +174,7 @@ const updateJnfInGSheets = async (jnf) => {
     jnf._id.valueOf(),
     jnf.Company_Overview.Name_Of_The_Company,
     // ...getValues(jnf.Job_Details),
-    jnf.Job_Details.Designation,
+    jnf.Job_Details.Job_Designation,
     // ...getValues(jnf.Salary_Details),
     jnf.previewLink,
     jnf.downloadLink,

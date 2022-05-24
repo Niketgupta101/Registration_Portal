@@ -1,17 +1,13 @@
 const express = require('express');
 
-const {
-  protect,
-  isAccesible,
-  authorizeRoles,
-} = require('../../middlewares/auth');
+const { protect, isAccesible, authorizeRoles } = require('../../middlewares/auth');
 
 const {
   getJnfById,
   getAllJnfForUser,
   getLatestJnfOfUser,
   getAllJnf,
-  createNewJnf,
+  createNewJnf, 
   updateJnfById,
   deleteJnfById,
   submitJnf,
@@ -36,7 +32,6 @@ router.get(
   authorizeRoles,
   searchJnfByPattern
 );
-
 router.post('/', protect, createNewJnf);
 
 router.put('/:id', protect, updateJnfById);
