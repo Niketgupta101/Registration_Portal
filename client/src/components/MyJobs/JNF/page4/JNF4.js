@@ -29,7 +29,7 @@ const JNF4 = ({
 
         <table>
           <tbody id="Selection_Procedure">
-            <tr
+            {/* <tr
               style={{
                 width: "100%",
                 display: "flex",
@@ -144,6 +144,53 @@ const JNF4 = ({
                   </div>
                 </div>
               </td>
+            </tr> */}
+            <tr
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+              }}>
+              <td
+                className="fontText"
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}>
+                Resume Shortlisting
+              </td>
+              <td>
+                <hr />
+              </td>
+              <td style={{ flexBasis: "70%" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                  }}>
+                  <div className="align">
+                    <label className="resume">Yes</label>
+                    <input
+                      className="checkBox"
+                      value={0}
+                      name="resumeShortlisting"
+                      checked={resumeShortListingData.Yes}
+                      onChange={handleResumeShortListingChange}
+                      type="radio"
+                    />
+                  </div>
+                  <div className="align">
+                    <label className="resume">No</label>
+                    <input
+                      className="checkBox"
+                      value={1}
+                      name="resumeShortlisting"
+                      checked={resumeShortListingData.No}
+                      onChange={handleResumeShortListingChange}
+                      type="radio"
+                    />
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr
               style={{
@@ -151,12 +198,79 @@ const JNF4 = ({
                 display: "flex",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
-              }}
-            >
+              }}>
               <td
                 className="fontText"
-                style={{ fontWeight: "700", margin: "0.5rem auto" }}
-              >
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}>
+                Type of Test
+              </td>
+              <td>
+                <hr />
+              </td>
+              <td style={{ flexBasis: "70%" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                  }}>
+                  <div>
+                    <label className="type">Technical </label>
+                    <input
+                      className="checkBox"
+                      name="Type_of_Test"
+                      value={0}
+                      checked={typeOfTestData.Technical}
+                      onChange={handleTypeOfTestChange}
+                      type="radio"
+                    />
+                  </div>
+                  <div>
+                    <label className="type">Aptitude </label>
+                    <input
+                      className="checkBox"
+                      name="Type_of_Test"
+                      value={1}
+                      checked={typeOfTestData.Aptitude}
+                      onChange={handleTypeOfTestChange}
+                      type="radio"
+                    />
+                  </div>
+                  <div>
+                    <label className="type">Both</label>
+                    <input
+                      className="checkBox"
+                      name="Type_of_Test"
+                      value={2}
+                      checked={typeOfTestData.Both}
+                      onChange={handleTypeOfTestChange}
+                      type="radio"
+                    />
+                  </div>
+                  <div>
+                    <label className="type">None </label>
+                    <input
+                      className="checkBox"
+                      name="Type_of_Test"
+                      value={3}
+                      checked={typeOfTestData.None}
+                      onChange={handleTypeOfTestChange}
+                      type="radio"
+                    />
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+              }}>
+              <td
+                className="fontText"
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}>
                 Other Qualification Rounds
               </td>
               <td>
@@ -168,8 +282,7 @@ const JNF4 = ({
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "space-between",
-                  }}
-                >
+                  }}>
                   <div className="align">
                     <label className="round">GD </label>
                     <input
@@ -256,8 +369,7 @@ const JNF4 = ({
         <div className="flex">
           <button
             className="submit_btn"
-            onClick={(e) => e.preventDefault() / setPage("2")}
-          >
+            onClick={(e) => e.preventDefault() / setPage("2")}>
             Back
           </button>
           <button className="submit_btn" type="submit">
