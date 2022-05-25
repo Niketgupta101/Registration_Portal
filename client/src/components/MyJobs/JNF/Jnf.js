@@ -120,22 +120,18 @@ const Jnf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && fourYearData.Select_All === true) {
+      setFourYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !fourYearData[e.target.name];
-      // setFourYearData((prevData) => ({
-      //   ...prevData,
-      //   [e.target.name]: e.target.checked ? true : false,
-      // }));
+
       for (let i in fourYearData) {
         setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
-      // setFourYearData((prevData) => {
-      //   for (let i in prevData) {
-      //     prevData[i] = newValue;
-      //   }
-      //   return prevData;
-      // });
     } else {
       setFourYearData((prevData) => ({
         ...prevData,
@@ -144,7 +140,13 @@ const Jnf = () => {
     }
   };
   const handleFiveYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && fiveYearData.Select_All === true) {
+      setFiveYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !fiveYearData[e.target.name];
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -210,7 +212,13 @@ const Jnf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && threeYearData.Select_All === true) {
+      setThreeYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !threeYearData[e.target.name];
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -225,7 +233,13 @@ const Jnf = () => {
     //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && twoYearData.Select_All === true) {
+      setTwoYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearData[e.target.name];
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -240,7 +254,13 @@ const Jnf = () => {
     }
   };
   const handleTwoYearMbaChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && twoYearMbaData.Select_All === true) {
+      setTwoYearMbaData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearMbaData[e.target.name];
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -255,7 +275,13 @@ const Jnf = () => {
     //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && twoYearMscData.Select_All === true) {
+      setTwoYearMscData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearMscData[e.target.name];
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -293,6 +319,17 @@ const Jnf = () => {
       Case_Study: false,
       Interview: false,
     });
+  const priorityData = {
+    Priority1: "",
+    Priority2: "",
+  };
+  const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
+  const handlePriorityDataChange = (e) => {
+    setPriorityFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {
@@ -518,6 +555,7 @@ const Jnf = () => {
         Number_Of_Offers: selectionFormData.Number_Of_Offers,
         Eligibility_Criteria: selectionFormData.Eligibility_Criteria,
       },
+      Priority_Details: { ...priorityFormData },
     }));
 
     try {
@@ -615,6 +653,8 @@ const Jnf = () => {
               }
               handleSelectionDataChange={handleSelectionDataChange}
               handleUpdateJnfById={handleUpdateJnfById}
+              priorityFormData={priorityFormData}
+              handlePriorityDataChange={handlePriorityDataChange}
             />
           </TabPanel>
           <TabPanel value={"4"}>

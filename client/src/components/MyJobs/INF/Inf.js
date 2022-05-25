@@ -117,31 +117,33 @@ const Inf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && fourYearData.Select_All === true) {
+      setFourYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !fourYearData[e.target.name];
-      // setFourYearData((prevData) => ({
-      //   ...prevData,
-      //   [e.target.name]: e.target.checked ? true : false,
-      // }));
       for (let i in fourYearData) {
         setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
-      // setFourYearData((prevData) => {
-      //   for (let i in prevData) {
-      //     prevData[i] = newValue;
-      //   }
-      //   return prevData;
-      // });
     } else {
       setFourYearData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
+    // console.log(fourYearData);
   };
   const handleFiveYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && fiveYearData.Select_All === true) {
+      setFiveYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !fiveYearData[e.target.name];
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -153,6 +155,7 @@ const Inf = () => {
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
+    // console.log(fiveYearData);
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
@@ -162,7 +165,7 @@ const Inf = () => {
   };
 
   useEffect(() => {
-    console.log(fourYearData);
+    // console.log(fourYearData);
   }, [fourYearData]);
 
   // ------------------------------------------------------
@@ -207,7 +210,13 @@ const Inf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && threeYearData.Select_All === true) {
+      setThreeYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !threeYearData[e.target.name];
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -222,7 +231,13 @@ const Inf = () => {
     //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && twoYearData.Select_All === true) {
+      setTwoYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearData[e.target.name];
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -237,7 +252,13 @@ const Inf = () => {
     }
   };
   const handleTwoYearMbaChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && twoYearMbaData.Select_All === true) {
+      setTwoYearMbaData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearMbaData[e.target.name];
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -252,7 +273,13 @@ const Inf = () => {
     //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== "Select_All" && twoYearMscData.Select_All === true) {
+      setTwoYearMscData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearMscData[e.target.name];
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -289,12 +316,21 @@ const Inf = () => {
       Case_Study: false,
       Interview: false,
     });
+  const priorityData = {
+    Priority1: "",
+    Priority2: "",
+  };
+  const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
+  const handlePriorityDataChange = (e) => {
+    setPriorityFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value == 1) {
-      console.log(e.target.name, e.target.value);
       setResumeShortListingData((prevData) => ({
         Yes: false,
         No: true,
@@ -311,7 +347,6 @@ const Inf = () => {
       }));
     }
     if (e.target.value == 0) {
-      console.log(e.target.name, e.target.value);
       setResumeShortListingData((prevData) => ({
         Yes: true,
         No: false,
@@ -335,7 +370,7 @@ const Inf = () => {
       Both: false,
       None: false,
     };
-    console.log("original", temp);
+    // console.log("original", temp);
     switch (e.target.value) {
       case "0":
         temp.Technical = true;
@@ -350,7 +385,7 @@ const Inf = () => {
         temp.None = true;
         break;
     }
-    console.log("a switch", temp);
+    // console.log("a switch", temp);
     setTypeOfTestData(temp);
     console.log("a setType", temp);
     setInfData((prevData) => ({
@@ -365,7 +400,7 @@ const Inf = () => {
         },
       },
     }));
-    console.log("a InfData", temp);
+    // console.log("a InfData", temp);
   };
   const handleOtherQualificationRoundsChange = (e) => {
     setOtherQualificationRoundsData((prevData) => ({
@@ -397,21 +432,13 @@ const Inf = () => {
     }));
   };
 
-  useEffect(() => {
-    //console.log({ data: InfData.Selection_Procedure });
-  }, [resumeShortListingData]);
+  useEffect(() => {}, [resumeShortListingData]);
 
-  useEffect(() => {
-    //console.log({ data: InfData.Selection_Procedure });
-  }, [typeOfTestData]);
+  useEffect(() => {}, [typeOfTestData]);
 
-  useEffect(() => {
-    //console.log({ data: InfData.Selection_Procedure });
-  }, [otherQualificationRoundsData]);
+  useEffect(() => {}, [otherQualificationRoundsData]);
 
-  useEffect(() => {
-    //console.log(selectionFormData);
-  }, [selectionFormData]);
+  useEffect(() => {}, [selectionFormData]);
 
   // --------------------------------------------------
 
@@ -428,6 +455,7 @@ const Inf = () => {
     setJobFormData({ ...response.data.inf.Intern_Profile });
     setStipendFormData({ ...response.data.inf.Salary_Details });
     setHrDetails({ ...response.data.inf.HR_Details });
+    setPriorityFormData({ ...response.data.inf.Priority_Details });
     setFourYearData({
       ...response.data.inf.Eligible_Courses_And_Disciplines
         .Four_Year_Btech_Programs,
@@ -497,8 +525,9 @@ const Inf = () => {
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
       },
+      Priority_Details: { ...priorityFormData },
     }));
-    //console.log(selectionFormData);
+    // console.log(selectionFormData);
     //console.log(InfData, InfId);
     try {
       setIsLoading(true);
@@ -541,7 +570,8 @@ const Inf = () => {
       <div className="INF">
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
+          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+        >
           <TabPanel value="1">
             <INF1
               setPage={setPage}
@@ -604,6 +634,8 @@ const Inf = () => {
               }
               handleSelectionDataChange={handleSelectionDataChange}
               handleUpdateInfById={handleUpdateInfById}
+              priorityFormData={priorityFormData}
+              handlePriorityDataChange={handlePriorityDataChange}
             />
           </TabPanel>
           <TabPanel value={"4"}>

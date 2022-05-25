@@ -1263,6 +1263,28 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             </h1>
           </Col>
         </FormGroup>
+        <div>
+          <header className="headerText">
+            Tentative dates for test and interviews:
+          </header>
+        </div>
+        <FormGroup row style={style}>
+          <Label for="exampleSelect" sm={3} className="fontText">
+            Priority 1
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">P1</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleSelect" sm={3} className="fontText">
+            Priority 2
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">P2</h1>
+          </Col>
+        </FormGroup>
+
         <div
           className="formFlex"
           style={{

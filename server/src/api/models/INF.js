@@ -156,6 +156,10 @@ const infSchema = new Schema(
       Number_Of_Offers: { type: String, default: "" },
       Eligibility_Criteria: { type: String, default: "" },
     },
+    Priority_Details: {
+      Priority1: { type: String, default: "" },
+      Priority2: { type: String, default: "" },
+    },
     previewLink: String,
     downloadLink: String,
     studentPreview: String,
