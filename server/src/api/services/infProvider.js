@@ -3,7 +3,7 @@ const { INF, INFstatus } = require('../models/INF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillINFDoc } = require('../utils/service/PDFservice/createPDF');
 const { uploadFile } = require('../utils/service/PDFservice/upload');
-const { readSheet, updateSheet } = require('../utils/service/GSheets'); 
+const { readSheet, updateSheet } = require('../utils/service/GSheets');
 
 const fetchInfById = async (id, next) => {
   try {
@@ -73,10 +73,26 @@ const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
     let infList = await INFstatus.find({ progress: 'submitted' })
       .populate('data')
       .find({
-        'data.Company_Overview.Name_Of_The_Company': {
-          $regex: pattern,
-          $options: 'im',
-        },
+        $or: [
+          {
+            'data.Company_Overview.Name_Of_The_Company': {
+              $regex: pattern,
+              $options: 'im',
+            },
+          },
+          {
+            'data.Company_Overview.Category': {
+              $regex: pattern,
+              $options: 'im',
+            },
+          },
+          {
+            'data.Company_Overview_Sector': {
+              $regex: pattern,
+              $options: 'im',
+            },
+          },
+        ],
       })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))

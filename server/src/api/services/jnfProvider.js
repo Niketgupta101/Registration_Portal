@@ -11,7 +11,7 @@ const fetchJnfById = async (id, next) => {
 
     if (!jnf)
       return next(new ErrorResponse('No JNF found with given id.', 404));
- 
+
     return { success: true, jnf };
   } catch (error) {
     return next(error);
@@ -64,10 +64,26 @@ const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
     let jnfList = await JNFstatus.find({ progress: 'submitted' })
       .populate('data')
       .find({
-        'data.Company_Overview.Name_Of_The_Company': {
-          $regex: pattern,
-          $options: 'im',
-        },
+        $or: [
+          {
+            'data.Company_Overview.Name_Of_The_Company': {
+              $regex: pattern,
+              $options: 'im',
+            },
+          },
+          {
+            'data.Company_Overview.Category': {
+              $regex: pattern,
+              $options: 'im',
+            },
+          },
+          {
+            'data.Company_Overview_Sector': {
+              $regex: pattern,
+              $options: 'im',
+            },
+          },
+        ],
       })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
