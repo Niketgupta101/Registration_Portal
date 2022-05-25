@@ -24,7 +24,7 @@ const MyJobs = () => {
   const [IsLoading, setIsLoading] = useState(false);
 
   const [Filter, setFilter] = useState("All Jobs");
-
+  const [deleteId, setDeleteId] = useState([0, 0]);
   const Navigate = useNavigate();
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -76,8 +76,21 @@ const MyJobs = () => {
     else Navigate(`/create/jnf/${id}`);
   };
 
+  const handleDelete = async (deleteId) => {
+    console.log(deleteId);
+    // setIsLoading(true);
+    if (deleteId[1]) {
+      await deleteInfById(deleteId[0]);
+    } else {
+      await deleteInfById(deleteId[0]);
+      // setIsLoading(false);
+    }
+    setDeleteId([deleteId[0], delete [1]]);
+  };
+
   useEffect(() => {
     fetchJobs(Filter);
+    handleDelete(deleteId);
     async function filterJobs() {
       for (let i in Jobs) {
         if (Jobs[i].data.Company_Overview === undefined) {
@@ -161,13 +174,14 @@ const MyJobs = () => {
             <div className="jobs_content">
               {Jobs.map((job) => (
                 <div className="job_card" key={job._id}>
-                  {console.log(job)}
+                  {/* {console.log(job)} */}
                   <div
                     className="badge"
                     style={{ backgroundColor: !job.data?.isIntern && "red" }}
                   >
                     <h6>{job.data?.isIntern ? "Intern" : "FTE"}</h6>
                   </div>
+
                   <div className="card_content">
                     <div className="content_heading">
                       <h4>{job.data?.Company_Overview?.Name_Of_The_Company}</h4>
@@ -175,7 +189,9 @@ const MyJobs = () => {
                     <div className="content_text" style={{ fontWeight: "500" }}>
                       <h5>
                         <span>Designation: </span>:{" "}
-                        {job.data?.Job_Details?.Job_Designation}
+                        {job.data?.isIntern
+                          ? job.data?.Intern_Profile?.Job_Designation
+                          : job.data?.Job_Details?.Job_Designation}
                       </h5>
                       <h5>
                         {job.data.isIntern ? (
@@ -228,6 +244,14 @@ const MyJobs = () => {
                           >
                             Continue
                           </button>
+                          <button
+                            className="secondary_btn secondary_btn_delete"
+                            onClick={() =>
+                              handleDelete([job.data._id, job.data.isIntern])
+                            }
+                          >
+                            Delete
+                          </button>
                         </div>
                       ) : (
                         <div
@@ -255,6 +279,13 @@ const MyJobs = () => {
                               Download
                             </a>
                           </button>
+                          {/* {job.progress === "incomplete" && (
+                            <div className="delete-job">
+                              <button onClick={handleDeleteJnf(job._id)}>
+                                delete
+                              </button>
+                            </div>
+                          )} */}
                         </div>
                       )}
                     </div>

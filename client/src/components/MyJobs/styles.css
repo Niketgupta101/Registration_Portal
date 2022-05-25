@@ -59,47 +59,56 @@
 .job_card:hover {
   box-shadow: -2px -2px 6px 4px rgba(0, 0, 0, 0.177);
 }
-.content_heading>h4{
-    font-size: 20px;
-    font-weight: 700;
-    color: rgb(60, 85, 165);
-    text-align: center;
+.content_heading > h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(60, 85, 165);
+  text-align: center;
 }
-.content_text{
-    margin: 1rem 1.5rem;
+.content_text {
+  margin: 1rem 1.5rem;
 }
-.content_text>h5{
-    font-size: 16px;
-    font-weight: 500;
+.content_text > h5 {
+  font-size: 16px;
+  font-weight: 500;
 }
-.content_text>h5>span{
-    font-weight: 600;
+.content_text > h5 > span {
+  font-weight: 600;
 }
-.secondary_btn{
-    border: 1.5px solid rgb(60, 85, 165);
-    border-radius: 3px;
-    padding: 3px 10px;
-    color: rgb(60, 85, 165);
-    font-size: 16px;
-    font-weight: 700;
-    background: transparent;
-    display: inline;
-    margin: 0.5rem auto;
-    /* position: relative; */
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
-    transition: all ease 0.3s;
+.secondary_btn {
+  border: 1.5px solid rgb(60, 85, 165);
+  border-radius: 3px;
+  padding: 3px 10px;
+  color: rgb(60, 85, 165);
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+  display: inline;
+  margin: 0.5rem auto;
+  /* position: relative; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  transition: all ease 0.3s;
 }
-.content_text>h5{
+.secondary_btn_delete {
+  border: 1.5px solid red;
+  color: red;
+}
+
+.content_text > h5 {
   font-weight: 500 !important;
 }
-.content_text>h5>span{
+.content_text > h5 > span {
   font-weight: 600;
   margin-right: 0.5rem;
 }
-.secondary_btn:hover{
-    color: #fff;
-    background-color: rgb(60, 85, 165);
+.secondary_btn:hover {
+  color: #fff;
+  background-color: rgb(60, 85, 165);
+}
+.secondary_btn_delete:hover {
+  color: #fff;
+  background-color: red;
 }
 select {
   height: 30px;
@@ -161,11 +170,11 @@ select {
   background: #fff;
 }
 .jumbotron {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   text-align: center;
 }
-.company-dashboard-container{
-  background-image: url("https://ik.imagekit.io/hrgu22madpa/tuxpi.com.1646069744_Zn1263qKgTn1.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1646069759781"); 
+.company-dashboard-container {
+  background-image: url("https://ik.imagekit.io/hrgu22madpa/tuxpi.com.1646069744_Zn1263qKgTn1.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1646069759781");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -187,10 +196,10 @@ select {
   --animate-duration: 1s;
 }
 
-.filter_select{
+.filter_select {
   border-radius: 5px;
   font-size: 20px;
-  padding:0 5px;
+  padding: 0 5px;
   height: auto;
   width: 150px;
 }

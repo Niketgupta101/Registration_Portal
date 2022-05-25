@@ -7,7 +7,7 @@ const Profile = () => {
   let user = JSON.parse(localStorage.getItem("user"));
   let company = JSON.parse(localStorage.getItem("company"));
 
-  console.log({ user, company });
+  // console.log({ user, company });
 
   return (
     <>
@@ -52,11 +52,19 @@ const Profile = () => {
           <div className="profile-text-3">About the Company</div>
           <div className="d-flex my-3">
             <div className="profile-text-1">Sector: </div>{" "}
-            <div className="profile-text-2">{company[0].company_type}</div>
+            <div className="profile-text-2">{company[0].sectorData}</div>
+          </div>
+          <div className="d-flex my-3">
+            <div className="profile-text-1">Category: </div>{" "}
+            <div className="profile-text-2">{company[0].categoryData}</div>
           </div>
           <div className="d-flex my-3">
             <div className="profile-text-1">Website: </div>{" "}
             <div className="profile-text-2">{company[0].website}</div>
+          </div>
+          <div className="d-flex my-3">
+            <div className="profile-text-1">About: </div>{" "}
+            <div className="profile-text-2">{company[0].about}</div>
           </div>
         </div>
         <div>
@@ -70,7 +78,7 @@ const Profile = () => {
             <div className="profile-text-2">{user.contactNo}</div>
           </div>
         </div>
-        <div>
+        <div className="mb-5">
           <div className="profile-text-3"> HR Details</div>
           <div className="row mx-4 mt-3">
             <div className="col-12 col-md-6 ">

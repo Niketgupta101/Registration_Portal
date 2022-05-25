@@ -339,7 +339,7 @@ const Jnf = () => {
       Both: false,
       None: false,
     };
-    console.log("original", temp);
+    // console.log("original", temp);
     switch (e.target.value) {
       case "0":
         temp.Technical = true;
@@ -350,11 +350,11 @@ const Jnf = () => {
       case "2":
         temp.Both = true;
         break;
-      default:
+      case "3":
         temp.None = true;
         break;
     }
-    console.log("a switch", temp);
+    // console.log("a switch", temp);
 
     setTypeOfTestData(temp);
 
@@ -411,6 +411,7 @@ const Jnf = () => {
     Company_Overview: companyFormData,
     Job_Details: jobFormData,
     Salary_Details: salaryFormData,
+    HR_Details: hrDetails,
     Eligible_Courses_And_Disciplines: {
       Four_Year_Btech_Programs: fourYearData,
       Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs: fiveYearData,
@@ -498,6 +499,7 @@ const Jnf = () => {
       Company_Overview: { ...companyFormData },
       Job_Details: { ...jobFormData },
       Salary_Details: { ...salaryFormData },
+      HR_Details: { ...hrDetails },
       Eligible_Courses_And_Disciplines: {
         ...prevData.Eligible_Courses_And_Disciplines,
         Four_Year_Btech_Programs: { ...fourYearData },
@@ -549,7 +551,8 @@ const Jnf = () => {
       <div className="JNF">
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
+          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+        >
           <TabPanel value="1">
             <JNF1
               setPage={setPage}
