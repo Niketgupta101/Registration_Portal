@@ -55,10 +55,11 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
 const fetchAllInf = async (offset, pagelimit, next) => {
   try {
-    let infList = await INF.find({ status: 'completed' })
+    let infList = await INF.find({ status: 'complete' })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
+    console.log(infList, offset, pagelimit);
     return { success: true, jobs: infList };
   } catch (error) {
     console.log(error);
@@ -90,7 +91,7 @@ const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
           },
         },
       ],
-      status: 'completed',
+      status: 'complete',
     })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))

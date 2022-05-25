@@ -109,15 +109,10 @@ const AllInf = () => {
                   </div>
                   <div className='content_text'>
                     <h5>
-<<<<<<< HEAD
                       <span>Designation: </span>:{' '}
-                      {job?.Job_Details?.Job_Designation}
-=======
-                      <span>Designation: </span>:{" "}
                       {job.data?.isIntern
                         ? job.data?.Intern_Profile?.Job_Designation
                         : job.data?.Job_Details?.Job_Designation}
->>>>>>> caa4a2cde7d65dbf261ef403fbd4b90d666f6b94
                     </h5>
                     <h5>
                       {job.isIntern ? (

@@ -129,19 +129,11 @@ const Navbar = () => {
               )}
               {user && user.role === 'Admin' ? (
                 <IconButton
-<<<<<<< HEAD
                   size='medium'
                   edge='end'
                   color='inherit'
-                  onClick={() => Navigate('/admin/jobs')}
+                  onClick={() => Navigate('/admin/jnf')}
                   style={{ alignItems: 'center' }}
-=======
-                  size="medium"
-                  edge="end"
-                  color="inherit"
-                  onClick={() => Navigate("/admin/jnf")}
-                  style={{ alignItems: "center" }}
->>>>>>> caa4a2cde7d65dbf261ef403fbd4b90d666f6b94
                 >
                   <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
                     JNFs
@@ -363,19 +355,11 @@ const Navbar = () => {
             <div className='sideNavbar-item '>
               <FormatListBulletedIcon style={{ marginBottom: '5px' }} />
               <IconButton
-<<<<<<< HEAD
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/admin/jobs')}
+                onClick={() => Navigate('/admin/jnf')}
                 style={{ alignItems: 'center' }}
-=======
-                size="medium"
-                edge="end"
-                color="inherit"
-                onClick={() => Navigate("/admin/jnf")}
-                style={{ alignItems: "center" }}
->>>>>>> caa4a2cde7d65dbf261ef403fbd4b90d666f6b94
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
                   JNFs

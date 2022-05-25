@@ -46,7 +46,7 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-    let jnfList = await JNF.find({ status: 'completed' })
+    let jnfList = await JNF.find({ status: 'complete' })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
@@ -81,7 +81,7 @@ const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
           },
         },
       ],
-      status: 'completed',
+      status: 'complete',
     })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))

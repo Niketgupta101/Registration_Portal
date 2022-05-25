@@ -36,7 +36,6 @@ const AllJnf = () => {
     setIsLoading(true);
     const response = await getAllJnf(pageNo);
     setIsLoading(false);
-
     setJobs(response.data.jobs);
   }, [pageNo]);
 
@@ -55,11 +54,11 @@ const AllJnf = () => {
       // console.log({ search });
       var response;
       if (!search) {
-        response = await getAllInf(pageNo);
+        response = await getAllJnf(pageNo);
       } else {
         response = await searchJnfByPattern(search);
       }
-      // console.log(response);
+      console.log(response);
       setJobs(response.data.jobs);
     }
     fetchJNFs();
@@ -99,58 +98,58 @@ const AllJnf = () => {
             jobs.map((job) => (
               <div
                 className='job_card'
-                key={job.data._id}
+                key={job._id}
                 style={{ display: 'inline-block' }}
               >
                 <div
                   className='badge'
-                  style={{ backgroundColor: !job.data.isIntern && 'red' }}
+                  style={{ backgroundColor: !job.isIntern && 'red' }}
                 >
-                  <h6>{job.data.isIntern ? 'Intern' : 'FTE'}</h6>
+                  <h6>{job.isIntern ? 'Intern' : 'FTE'}</h6>
                 </div>
                 <div className='card_content'>
                   <div className='content_heading'>
-                    <h4>{job.data?.Company_Overview?.Name_Of_The_Company}</h4>
+                    <h4>{job?.Company_Overview?.Name_Of_The_Company}</h4>
                   </div>
                   <div className='content_text'>
                     <h5>
                       <span>Designation: </span>:{' '}
-                      {job.data?.isIntern
-                        ? job.data?.Intern_Profile?.Job_Designation
-                        : job.data?.Job_Details?.Job_Designation}
+                      {job?.isIntern
+                        ? job?.Intern_Profile?.Job_Designation
+                        : job?.Job_Details?.Job_Designation}
                     </h5>
                     <h5>
-                      {job.data.isIntern ? (
+                      {job.isIntern ? (
                         <>
                           <span>Mode</span>:{' '}
-                          {job.data?.Intern_Profile?.Mode_Of_Internship}
+                          {job?.Intern_Profile?.Mode_Of_Internship}
                         </>
                       ) : (
                         <>
                           <span>Place of posting</span>:{' '}
-                          {job.data?.Job_Details?.Place_Of_Posting}
+                          {job?.Job_Details?.Place_Of_Posting}
                         </>
                       )}
                     </h5>
                     <h5>
-                      {job.data.isIntern ? (
+                      {job.isIntern ? (
                         <>
                           <span>Stipend</span>:{' '}
-                          {job.data?.Salary_Details?.Salary_Per_Month}
+                          {job?.Salary_Details?.Salary_Per_Month}
                         </>
                       ) : (
                         <>
-                          <span>CTC</span>: {job.data?.Salary_Details?.CTC}
+                          <span>CTC</span>: {job?.Salary_Details?.CTC}
                         </>
                       )}
                     </h5>
                     <h5>
                       <span>Submitted On:</span>:{' '}
-                      {job.data.updatedAt.slice(8, 10) +
+                      {job.updatedAt.slice(8, 10) +
                         '/' +
-                        job.data.updatedAt.slice(5, 7) +
+                        job.updatedAt.slice(5, 7) +
                         '/' +
-                        job.data.updatedAt.slice(0, 4)}
+                        job.updatedAt.slice(0, 4)}
                     </h5>
 
                     <div
@@ -162,7 +161,7 @@ const AllJnf = () => {
                       <div>
                         <button className='secondary_btn py-1'>
                           <a
-                            href={job.data.previewLink}
+                            href={job.previewLink}
                             style={{ textDecoration: 'none', color: 'inherit' }}
                           >
                             View Job
@@ -171,14 +170,14 @@ const AllJnf = () => {
                       </div>
                       <div className='my-2 ms-3 ps-2'>
                         <Dropdown
-                          isOpen={dropdownOpen === job.data._id}
-                          toggle={handletoggle(job.data._id)}
+                          isOpen={dropdownOpen === job._id}
+                          toggle={handletoggle(job._id)}
                         >
                           <DropdownToggle caret>Download</DropdownToggle>
                           <DropdownMenu>
                             <DropdownItem>
                               <a
-                                href={job.data.studentDownload}
+                                href={job.studentDownload}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',
@@ -190,7 +189,7 @@ const AllJnf = () => {
                             <DropdownItem divider />
                             <DropdownItem>
                               <a
-                                href={job.data.downloadLink}
+                                href={job.downloadLink}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',
@@ -205,7 +204,7 @@ const AllJnf = () => {
                       {/* <button className="secondary_btn">
                       {" "}
                       <a
-                        href={job.data.downloadLink}
+                        href={job.downloadLink}
                         style={{ textDecoration: "none", color: "inherit" }}
                       >
                         {" "}
