@@ -9,11 +9,10 @@ import MyJobs from "./components/MyJobs/MyJobs";
 import Courses from "./components/Courses/Courses";
 import ContactUs from "./components/ContactUs/ContactUs";
 import AllInf from "./components/Admin/Infs/AllInf";
-import AllJnf from "./components/Admin/Jnfs/AllJnf";
 import AdminHome from "./components/Admin/Home/Home";
 import AdminAuth from "./components/Admin/Auth/SignIn";
 import Company from "./components/Admin/Company/Company";
-import Jobs from "./components/Admin/Jobs/Jobs";
+import AllJnf from "./components/Admin/Jobs/AllJnf";
 import Inf from "./components/MyJobs/INF/Inf";
 import Jnf from "./components/MyJobs/JNF/Jnf";
 import VerifyEmail from "./components/Auth/VerifyEmail";
@@ -72,9 +71,9 @@ const App = () => {
           {/* ------------------------------ Admin Menu --------------------- */}
 
           <Route path="/admin/company" element={<Company />} />
-          <Route path="/admin/jobs" element={<Jobs />} />
-          <Route path="/admin/inf" element={<AllInf />} />
           <Route path="/admin/jnf" element={<AllJnf />} />
+          <Route path="/admin/inf" element={<AllInf />} />
+          {/* <Route path="/admin/jnf" element={<AllJnf />} /> */}
 
           {/* ------------------------------ Courses--------------------- */}
           <Route path="/courses/fiveyear" element={<Fiveyear />} />

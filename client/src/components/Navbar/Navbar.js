@@ -132,7 +132,7 @@ const Navbar = () => {
                   size="medium"
                   edge="end"
                   color="inherit"
-                  onClick={() => Navigate("/admin/jobs")}
+                  onClick={() => Navigate("/admin/jnf")}
                   style={{ alignItems: "center" }}
                 >
                   <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>
@@ -358,7 +358,7 @@ const Navbar = () => {
                 size="medium"
                 edge="end"
                 color="inherit"
-                onClick={() => Navigate("/admin/jobs")}
+                onClick={() => Navigate("/admin/jnf")}
                 style={{ alignItems: "center" }}
               >
                 <h5 style={{ margin: "0 1.5rem 0 0.5rem", fontSize: "17px" }}>

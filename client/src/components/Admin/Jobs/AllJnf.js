@@ -11,8 +11,13 @@ import { FaSearch } from "react-icons/fa";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Loading from "../../Loading/Loading";
-import "./../Jobs/styles.css";
-import { getAllJnf, getAllJobs, searchJnfByPattern } from "../../../api/index";
+import "./styles.css";
+import {
+  getAllInf,
+  getAllJnf,
+  getAllJobs,
+  searchJnfByPattern,
+} from "../../../api/index";
 
 const AllJnf = () => {
   const [jobs, setJobs] = useState([]);
@@ -22,10 +27,6 @@ const AllJnf = () => {
   const [pageNo, setPageNo] = useState("1");
 
   const [search, setSearch] = useState();
-
-  const handlePageChange = (event, value) => {
-    setPageNo(value);
-  };
 
   const handleOnChange = (e) => {
     setSearch(e.target.value);
@@ -38,13 +39,21 @@ const AllJnf = () => {
 
     setJobs(response.data.jobs);
   }, [pageNo]);
+  const [dropdownOpen, setDropdownOpen] = useState("");
+  const handletoggle = (id) => () => {
+    if (dropdownOpen === id) {
+      setDropdownOpen(() => "");
+    } else {
+      setDropdownOpen(() => id);
+    }
+  };
 
   useEffect(() => {
     async function fetchJNFs() {
       // console.log({ search });
       var response;
       if (!search) {
-        response = await getAllJnf(pageNo);
+        response = await getAllInf(pageNo);
       } else {
         response = await searchJnfByPattern(search);
       }
@@ -54,13 +63,8 @@ const AllJnf = () => {
     fetchJNFs();
   }, [search]);
 
-  const [dropdownOpen, setDropdownOpen] = useState("");
-  const handletoggle = (id) => () => {
-    if (dropdownOpen === id) {
-      setDropdownOpen(() => "");
-    } else {
-      setDropdownOpen(() => id);
-    }
+  const handlePageChange = (event, value) => {
+    setPageNo(value);
   };
 
   return (
@@ -98,9 +102,9 @@ const AllJnf = () => {
               >
                 <div
                   className="badge"
-                  style={{ backgroundColor: !job.data.isJob && "red" }}
+                  style={{ backgroundColor: !job.data.isIntern && "red" }}
                 >
-                  <h6>{job.data.isJob ? "Intern" : "FTE"}</h6>
+                  <h6>{job.data.isIntern ? "Intern" : "FTE"}</h6>
                 </div>
                 <div className="card_content">
                   <div className="content_heading">
@@ -114,7 +118,20 @@ const AllJnf = () => {
                         : job.data?.Job_Details?.Job_Designation}
                     </h5>
                     <h5>
-                      {job.data.isJob ? (
+                      {job.data.isIntern ? (
+                        <>
+                          <span>Mode</span>:{" "}
+                          {job.data?.Intern_Profile?.Mode_Of_Internship}
+                        </>
+                      ) : (
+                        <>
+                          <span>Place of posting</span>:{" "}
+                          {job.data?.Job_Details?.Place_Of_Posting}
+                        </>
+                      )}
+                    </h5>
+                    <h5>
+                      {job.data.isIntern ? (
                         <>
                           <span>Stipend</span>:{" "}
                           {job.data?.Salary_Details?.Salary_Per_Month}
@@ -159,7 +176,7 @@ const AllJnf = () => {
                           <DropdownMenu>
                             <DropdownItem>
                               <a
-                                href={job.data.downloadLink}
+                                href={job.data.studentDownload}
                                 style={{
                                   textDecoration: "none",
                                   color: "inherit",
@@ -201,7 +218,7 @@ const AllJnf = () => {
         </div>
         <Stack spacing={1}>
           <Pagination
-            count={20}
+            count={10}
             color="primary"
             style={{ margin: "3rem auto" }}
             onChange={handlePageChange}
