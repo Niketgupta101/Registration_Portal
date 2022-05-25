@@ -46,8 +46,7 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-    let jnfList = await JNFstatus.find({ progress: 'submitted' })
-      .populate('data')
+    let jnfList = await JNF.find({ status: 'completed' })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
@@ -61,30 +60,29 @@ const fetchAllJnf = async (offset, pagelimit, next) => {
 const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
-    let jnfList = await JNFstatus.find({ progress: 'submitted' })
-      .populate('data')
-      .find({
-        $or: [
-          {
-            'data.Company_Overview.Name_Of_The_Company': {
-              $regex: pattern,
-              $options: 'im',
-            },
+    let jnfList = await JNF.find({
+      $or: [
+        {
+          'data.Company_Overview.Name_Of_The_Company': {
+            $regex: pattern,
+            $options: 'im',
           },
-          {
-            'data.Company_Overview.Category': {
-              $regex: pattern,
-              $options: 'im',
-            },
+        },
+        {
+          'data.Company_Overview.Category': {
+            $regex: pattern,
+            $options: 'im',
           },
-          {
-            'data.Company_Overview_Sector': {
-              $regex: pattern,
-              $options: 'im',
-            },
+        },
+        {
+          'data.Company_Overview_Sector': {
+            $regex: pattern,
+            $options: 'im',
           },
-        ],
-      })
+        },
+      ],
+      status: 'completed',
+    })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
