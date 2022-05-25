@@ -75,6 +75,11 @@ const MyJobs = () => {
     if (isIntern) Navigate(`/create/inf/${id}`);
     else Navigate(`/create/jnf/${id}`);
   };
+  const handleDelete = (id, isIntern) => {
+    if (isIntern) deleteInfById(id);
+    else deleteJnfById(id);
+    // console.log(id, isIntern);
+  };
 
   useEffect(() => {
     fetchJobs(Filter);
@@ -161,13 +166,14 @@ const MyJobs = () => {
             <div className="jobs_content">
               {Jobs.map((job) => (
                 <div className="job_card" key={job._id}>
-                  {console.log(job)}
+                  {/* {console.log(job)} */}
                   <div
                     className="badge"
                     style={{ backgroundColor: !job.data?.isIntern && "red" }}
                   >
                     <h6>{job.data?.isIntern ? "Intern" : "FTE"}</h6>
                   </div>
+
                   <div className="card_content">
                     <div className="content_heading">
                       <h4>{job.data?.Company_Overview?.Name_Of_The_Company}</h4>
@@ -230,6 +236,14 @@ const MyJobs = () => {
                           >
                             Continue
                           </button>
+                          <button
+                            className="secondary_btn secondary_btn_delete"
+                            onClick={() =>
+                              handleDelete(job.data._id, job.data.isIntern)
+                            }
+                          >
+                            Delete
+                          </button>
                         </div>
                       ) : (
                         <div
@@ -257,6 +271,13 @@ const MyJobs = () => {
                               Download
                             </a>
                           </button>
+                          {/* {job.progress === "incomplete" && (
+                            <div className="delete-job">
+                              <button onClick={handleDeleteJnf(job._id)}>
+                                delete
+                              </button>
+                            </div>
+                          )} */}
                         </div>
                       )}
                     </div>
