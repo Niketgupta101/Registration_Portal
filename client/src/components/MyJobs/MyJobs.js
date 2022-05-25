@@ -24,7 +24,7 @@ const MyJobs = () => {
   const [IsLoading, setIsLoading] = useState(false);
 
   const [Filter, setFilter] = useState("All Jobs");
-
+  const [deleteId, setDeleteId] = useState([0, 0]);
   const Navigate = useNavigate();
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -75,14 +75,22 @@ const MyJobs = () => {
     if (isIntern) Navigate(`/create/inf/${id}`);
     else Navigate(`/create/jnf/${id}`);
   };
-  const handleDelete = (id, isIntern) => {
-    if (isIntern) deleteInfById(id);
-    else deleteJnfById(id);
-    // console.log(id, isIntern);
+
+  const handleDelete = async (deleteId) => {
+    console.log(deleteId);
+    // setIsLoading(true);
+    if (deleteId[1]) {
+      await deleteInfById(deleteId[0]);
+    } else {
+      await deleteInfById(deleteId[0]);
+      // setIsLoading(false);
+    }
+    setDeleteId([deleteId[0], delete [1]]);
   };
 
   useEffect(() => {
     fetchJobs(Filter);
+    handleDelete(deleteId);
     async function filterJobs() {
       for (let i in Jobs) {
         if (Jobs[i].data.Company_Overview === undefined) {
@@ -239,7 +247,7 @@ const MyJobs = () => {
                           <button
                             className="secondary_btn secondary_btn_delete"
                             onClick={() =>
-                              handleDelete(job.data._id, job.data.isIntern)
+                              handleDelete([job.data._id, job.data.isIntern])
                             }
                           >
                             Delete
