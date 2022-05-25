@@ -175,7 +175,9 @@ const MyJobs = () => {
                     <div className="content_text" style={{ fontWeight: "500" }}>
                       <h5>
                         <span>Designation: </span>:{" "}
-                        {job.data?.Job_Details?.Job_Designation}
+                        {job.data?.isIntern
+                          ? job.data?.Intern_Profile?.Job_Designation
+                          : job.data?.Job_Details?.Job_Designation}
                       </h5>
                       <h5>
                         {job.data.isIntern ? (

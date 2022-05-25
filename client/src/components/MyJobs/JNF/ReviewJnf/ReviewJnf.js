@@ -1,390 +1,475 @@
-import React from 'react';
-import { Form, FormGroup, Label, Col } from 'reactstrap';
+import React from "react";
+import { Form, FormGroup, Label, Col } from "reactstrap";
 
-const style = { alignItems: 'center' };
+const style = { alignItems: "center" };
 
 const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
   console.log({ JnfData });
   return (
-    <div className='overallDiv1'>
+    <div className="overallDiv1">
       <div>
-        <header className='headerText1'>
-          JOB NOTIFICATION FORM (2021-2022)
+        <header className="headerText1">
+          JOB NOTIFICATION FORM (2022-2023)
         </header>
       </div>
       <Form>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={4} className='fontText'>
+          <Label for="exampleText" sm={4} className="fontText">
             Name of the Company
           </Label>
           <Col sm={8}>
-            <h1 className='inputText'>
+            <h1 className="inputText">
               {JnfData.Company_Overview.Name_Of_The_Company}
             </h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={4} className='fontText'>
-            Category/Sector
+          <Label for="exampleText" sm={4} className="fontText">
+            Category
           </Label>
           <Col sm={8}>
-            <h1 className='inputText'>
-              {JnfData.Company_Overview.Category_Or_Sector}
-            </h1>
+            <h1 className="inputText">{JnfData.Company_Overview.Category}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={4} className='fontText'>
+          <Label for="exampleText" sm={4} className="fontText">
+            Sector
+          </Label>
+          <Col sm={8}>
+            <h1 className="inputText">{JnfData.Company_Overview.Sector}</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleText" sm={4} className="fontText">
             Website
           </Label>
           <Col sm={8}>
-            <h1 className='inputText'>{JnfData.Company_Overview.Website}</h1>
+            <h1 className="inputText">{JnfData.Company_Overview.Website}</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleText" sm={4} className="fontText">
+            About
+          </Label>
+          <Col sm={8}>
+            <h1 className="inputText">{JnfData.Company_Overview.About}</h1>
           </Col>
         </FormGroup>
         <div>
-          <header className='headerText'>JOB DETAILS</header>
+          <header className="headerText">JOB DETAILS</header>
         </div>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={3} className='fontText'>
+          <Label for="exampleText" sm={3} className="fontText">
             Job Designation
           </Label>
           <Col sm={9}>
-            <h1 className='inputText'>{JnfData.Job_Details.Job_Designation}</h1>
+            <h1 className="inputText">{JnfData.Job_Details.Job_Designation}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={3} className='fontText'>
+          <Label for="exampleText" sm={3} className="fontText">
             Job Description
           </Label>
           <Col sm={9}>
-            <h1 className='inputText'>{JnfData.Job_Details.Job_Description}</h1>
+            <h1 className="inputText">{JnfData.Job_Details.Job_Description}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={3} className='fontText'>
+          <Label for="exampleText" sm={3} className="fontText">
             Place of posting
           </Label>
           <Col sm={9}>
-            <h1 className='inputText'>
+            <h1 className="inputText">
               {JnfData.Job_Details.Place_Of_Posting}
             </h1>
           </Col>
         </FormGroup>
         <div>
-          <header className='headerText'>SALARY DETAILS</header>
+          <header className="headerText">SALARY DETAILS</header>
         </div>
         <FormGroup row style={style}>
           <Label
-            for='exampleText'
-            sm={4}
-            text-colour='blue'
-            className='fontText'
+            for="exampleText"
+            sm={3}
+            text-colour="blue"
+            className="fontText"
           >
             CTC (in lpa)
           </Label>
-          <Col sm={8}>
-            <h1 className='inputText'>{JnfData.Salary_Details.CTC}</h1>
+          <Col sm={9}>
+            <h1 className="inputText">{JnfData.Salary_Details.CTC}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={3} className='fontText'>
+          <Label for="exampleText" sm={3} className="fontText">
             CTC Breakup
           </Label>
           <Col sm={9}>
-            <h1 className='inputText'>{JnfData.Salary_Details.CTC_Breakup}</h1>
+            <h1 className="inputText">{JnfData.Salary_Details.CTC_Breakup}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
-          <Label for='exampleText' sm={3} className='fontText'>
+          <Label for="exampleText" sm={3} className="fontText">
             Bond Details (if any)
           </Label>
           <Col sm={9}>
-            <h1 className='inputText'>{JnfData.Salary_Details.Bond_Details}</h1>
+            <h1 className="inputText">{JnfData.Salary_Details.Bond_Details}</h1>
           </Col>
         </FormGroup>
         <div>
-          <header className='headerText m-0'>
+          <header className="headerText">HR DETAILS</header>
+        </div>
+        <FormGroup row style={style}>
+          <Label
+            for="exampleText"
+            sm={4}
+            text-colour="blue"
+            className="fontText"
+          >
+            Primary HR Name:
+          </Label>
+          <Col sm={8}>
+            {/* {console.log(JnfData.HR_Details.Primary_Hr.name)} */}
+            <h1 className="inputText">{JnfData.HR_Details.Primary_Hr.name}</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleText" sm={3} className="fontText">
+            Email Id:
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">{JnfData.HR_Details.Primary_Hr.email}</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleText" sm={3} className="fontText">
+            Contact Number:
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">
+              {JnfData.HR_Details.Primary_Hr.mobile}
+            </h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label
+            for="exampleText"
+            sm={4}
+            text-colour="blue"
+            className="fontText"
+          >
+            Alternate HR Name:
+          </Label>
+          <Col sm={8}>
+            {/* {console.log(JnfData.HR_Details.Primary_Hr.name)} */}
+            <h1 className="inputText">
+              {JnfData.HR_Details.Alternate_Hr.name}
+            </h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleText" sm={3} className="fontText">
+            Email Id:
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">
+              {JnfData.HR_Details.Alternate_Hr.email}
+            </h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleText" sm={3} className="fontText">
+            Contact Number:
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">
+              {JnfData.HR_Details.Alternate_Hr.mobile}
+            </h1>
+          </Col>
+        </FormGroup>
+        <div>
+          <header className="headerText m-0">
             Eligible courses and disciplines- Undergraduate
           </header>
         </div>
-        <div className='startText mx-3 mt-2' style={{ fontSize: '17px' }}>
+        <div className="startText mx-3 mt-2" style={{ fontSize: "17px" }}>
           List of courses and disciplines offered at IIT (ISM) are shown below.
         </div>
-        <div className='startTextBold'>4-Year B.Tech Programs</div>
-        <div className='startTextBoldSmall'>
+        <div className="startTextBold">4-Year B.Tech Programs</div>
+        <div className="startTextBoldSmall">
           Admitted through JEE (Advanced)
         </div>
         <table>
-          <tbody id='Four_Year'>
+          <tbody id="Four_Year">
             <tr>
-              <td className='courseName'>Select All</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Select_All'
+                  name="Select_All"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Select_All
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Chemical Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Chemical Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Chemical_Engineering'
+                  name="Chemical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Chemical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Civil Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Civil Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Civil_Engineering'
+                  name="Civil_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Civil_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Computer Science and Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Computer Science and Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Computer_Science_and_Engineering'
+                  name="Computer_Science_and_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Computer_Science_and_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Electrical Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Electrical Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Electrical_Engineering'
+                  name="Electrical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Electrical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>
+              <td className="courseName">
                 Electronics & Communication Engineering
               </td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Electronics_and_Communication_Engineering'
+                  name="Electronics_and_Communication_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs
                       .Electronics_and_Communication_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Engineering Physics</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Engineering Physics</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Engineering_Physics'
+                  name="Engineering_Physics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Engineering_Physics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Environmental Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Environmental Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Environmental_Engineering'
+                  name="Environmental_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Environmental_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mechanical Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Mechanical Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Mechanical_Engineering'
+                  name="Mechanical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Mechanical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>
+              <td className="courseName">
                 Mineral & Metallurgical Engineering
               </td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Mineral_and_Metallurgical_Engineering'
+                  name="Mineral_and_Metallurgical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs
                       .Mineral_and_Metallurgical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mining Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Mining Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Mining_Engineering'
+                  name="Mining_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Mining_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mining Machinery Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Mining Machinery Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Mining_Machinery_Engineering'
+                  name="Mining_Machinery_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Mining_Machinery_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Petroleum Engineering</td>
-              <td className='courseCheckBoxBtech'>
+              <td className="courseName">Petroleum Engineering</td>
+              <td className="courseCheckBoxBtech">
                 <input
-                  name='Petroleum_Engineering'
+                  name="Petroleum_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Four_Year_Btech_Programs.Petroleum_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
           </tbody>
         </table>
-        <div className='startTextBold'>
+        <div className="startTextBold">
           5-Year Dual Degree/ Integrated M.Tech Programs
         </div>
-        <div className='startTextBoldSmall'>
+        <div className="startTextBoldSmall">
           Admitted through JEE (Advanced)
         </div>
         <table>
-          <tbody id='Five_Year'>
+          <tbody id="Five_Year">
             <tr>
-              <td className='courseName'>Select All</td>
-              <td className='courseCheckBox5year'>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBox5year">
                 <input
-                  name='Select_All'
+                  name="Select_All"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Select_All
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Computer Science and Engineering</td>
-              <td className='courseCheckBox5year'>
+              <td className="courseName">Computer Science and Engineering</td>
+              <td className="courseCheckBox5year">
                 <input
-                  name='Computer_Science_and_Engineering'
+                  name="Computer_Science_and_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Computer_Science_and_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mathematics & Computing</td>
-              <td className='courseCheckBox5year'>
+              <td className="courseName">Mathematics & Computing</td>
+              <td className="courseCheckBox5year">
                 <input
-                  name='Mathematics_and_Computing'
+                  name="Mathematics_and_Computing"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Mathematics_and_Computing
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Applied Geology</td>
-              <td className='courseCheckBox5year'>
+              <td className="courseName">Applied Geology</td>
+              <td className="courseCheckBox5year">
                 <input
-                  name='Applied_Geology'
+                  name="Applied_Geology"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Applied_Geology
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Applied Geophysics</td>
-              <td className='courseCheckBox5year'>
+              <td className="courseName">Applied Geophysics</td>
+              <td className="courseCheckBox5year">
                 <input
-                  name='Applied_Geophysics'
+                  name="Applied_Geophysics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs
                       .Applied_Geophysics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
@@ -479,471 +564,471 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
           </table> */}
         </div>
         <div>
-          <header className='headerText m-0 mt-4'>
+          <header className="headerText m-0 mt-4">
             Eligible courses and disciplines - Postgraduate
           </header>
         </div>
-        <div className='startText mx-3 mt-2' style={{ fontSize: '17px' }}>
+        <div className="startText mx-3 mt-2" style={{ fontSize: "17px" }}>
           List of courses and disciplines offered at IIT (ISM) are shown below.
         </div>
-        <div className='startTextBold'>3-Year MSc.Tech Programs</div>
-        <div className='startTextBoldSmall'>
+        <div className="startTextBold">3-Year MSc.Tech Programs</div>
+        <div className="startTextBoldSmall">
           Admitted through <b>JAM</b>
         </div>
         <table>
-          <tbody id='Three_Year'>
+          <tbody id="Three_Year">
             <tr>
-              <td className='courseName'>Select All</td>
-              <td className='courseCheckBox3MSc'>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBox3MSc">
                 <input
-                  name='Select_All'
+                  name="Select_All"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Three_Year_MSc_Tech_Programs.Select_All
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Applied Geology</td>
-              <td className='courseCheckBox3MSc'>
+              <td className="courseName">Applied Geology</td>
+              <td className="courseCheckBox3MSc">
                 <input
-                  name='Applied_Geology'
+                  name="Applied_Geology"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Three_Year_MSc_Tech_Programs.Applied_Geology
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Applied Geophysics</td>
-              <td className='courseCheckBox3MSc'>
+              <td className="courseName">Applied Geophysics</td>
+              <td className="courseCheckBox3MSc">
                 <input
-                  name='Applied_Geophysics'
+                  name="Applied_Geophysics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Three_Year_MSc_Tech_Programs.Applied_Geophysics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
           </tbody>
         </table>
-        <div className='startTextBold'>2-Year M.Tech Programs</div>
-        <div className='startTextBoldSmall'>
+        <div className="startTextBold">2-Year M.Tech Programs</div>
+        <div className="startTextBoldSmall">
           Admitted through <b>GATE</b>
         </div>
         <table>
-          <tbody id='Two_Year'>
+          <tbody id="Two_Year">
             <tr>
-              <td className='courseName'>Select All</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Select_All'
+                  name="Select_All"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Select_All
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Applied Geology</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Applied Geology</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Applied_Geology'
+                  name="Applied_Geology"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Applied_Geology
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Applied Geophysics</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Applied Geophysics</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Applied_Geophysics'
+                  name="Applied_Geophysics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Applied_Geophysics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Chemical Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Chemical Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Chemical_Engineering'
+                  name="Chemical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Chemical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Civil Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Civil Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Civil_Engineering'
+                  name="Civil_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Civil_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Computer Science and Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Computer Science and Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Computer_Science_and_Engineering'
+                  name="Computer_Science_and_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Computer_Science_and_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Data Analytics</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Data Analytics</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Data_Analytics'
+                  name="Data_Analytics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Data_Analytics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Electrical Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Electrical Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Electrical_Engineering'
+                  name="Electrical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Electrical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>
+              <td className="courseName">
                 Electronics & Communication Engineering
               </td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Electronics_and_Communication_Engineering'
+                  name="Electronics_and_Communication_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Electronics_and_Communication_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Environmental Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Environmental Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Environmental_Engineering'
+                  name="Environmental_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Environmental_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>
+              <td className="courseName">
                 Industrial Engineering & Management
               </td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Industrial_Engineering_and_Management'
+                  name="Industrial_Engineering_and_Management"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Industrial_Engineering_and_Management
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mechanical Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Mechanical Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Mechanical_Engineering'
+                  name="Mechanical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Mechanical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>
+              <td className="courseName">
                 Fuel, Minerals & Metallurgical Engineering
               </td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Fuel_Minerals_and_Metallurgical_Engineering'
+                  name="Fuel_Minerals_and_Metallurgical_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Fuel_Minerals_and_Metallurgical_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mining Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Mining Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Mining_Engineering'
+                  name="Mining_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Mining_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mining Machinery Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Mining Machinery Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Mining_Machinery_Engineering'
+                  name="Mining_Machinery_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Mining_Machinery_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Petroleum Engineering</td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseName">Petroleum Engineering</td>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Petroleum_Engineering'
+                  name="Petroleum_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs.Petroleum_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>
+              <td className="courseName">
                 Pharmaceutical Science & Engineering
               </td>
-              <td className='courseCheckBox2MTech'>
+              <td className="courseCheckBox2MTech">
                 <input
-                  name='Pharmaceutical_Science_and_Engineering'
+                  name="Pharmaceutical_Science_and_Engineering"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_Mtech_Programs
                       .Pharmaceutical_Science_and_Engineering
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
           </tbody>
         </table>
-        <div className='startTextBold'>2-Year MBA Programs</div>
-        <div className='startTextBoldSmall'>
+        <div className="startTextBold">2-Year MBA Programs</div>
+        <div className="startTextBoldSmall">
           Admitted through <b>CAT</b>
         </div>
         <table>
-          <tbody id='Two_Year_Mba'>
+          <tbody id="Two_Year_Mba">
             <tr>
-              <td className='courseName'>Select All</td>
-              <td className='courseCheckBoxmba'>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBoxmba">
                 <input
-                  name='Select_All'
+                  name="Select_All"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Select_All
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Business Analytics</td>
-              <td className='courseCheckBoxmba'>
+              <td className="courseName">Business Analytics</td>
+              <td className="courseCheckBoxmba">
                 <input
-                  name='Business_Analytics'
+                  name="Business_Analytics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Business_Analytics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Finance</td>
-              <td className='courseCheckBoxmba'>
+              <td className="courseName">Finance</td>
+              <td className="courseCheckBoxmba">
                 <input
-                  name='Finance'
+                  name="Finance"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Finance
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Human Resources</td>
-              <td className='courseCheckBoxmba'>
+              <td className="courseName">Human Resources</td>
+              <td className="courseCheckBoxmba">
                 <input
-                  name='Human_Resources'
+                  name="Human_Resources"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Human_Resources
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Marketing</td>
-              <td className='courseCheckBoxmba'>
+              <td className="courseName">Marketing</td>
+              <td className="courseCheckBoxmba">
                 <input
-                  name='Marketing'
+                  name="Marketing"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Marketing
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Operations</td>
-              <td className='courseCheckBoxmba'>
+              <td className="courseName">Operations</td>
+              <td className="courseCheckBoxmba">
                 <input
-                  name='Operations'
+                  name="Operations"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MBA_Programs.Operations
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
           </tbody>
         </table>
-        <div className='startTextBold'>2-Year M.Sc. Programs</div>
-        <div className='startTextBoldSmall'>
+        <div className="startTextBold">2-Year M.Sc. Programs</div>
+        <div className="startTextBoldSmall">
           Admitted through <b>JAM</b>
         </div>
         <table>
-          <tbody id='Two_Year_Msc'>
+          <tbody id="Two_Year_Msc">
             <tr>
-              <td className='courseName'>Select All</td>
-              <td className='courseCheckBox2Msc'>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBox2Msc">
                 <input
-                  name='Select_All'
+                  name="Select_All"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Select_All
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Chemistry</td>
-              <td className='courseCheckBox2Msc'>
+              <td className="courseName">Chemistry</td>
+              <td className="courseCheckBox2Msc">
                 <input
-                  name='Chemistry'
+                  name="Chemistry"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Chemistry
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Mathematics & Computing</td>
-              <td className='courseCheckBox2Msc'>
+              <td className="courseName">Mathematics & Computing</td>
+              <td className="courseCheckBox2Msc">
                 <input
-                  name='Mathematics_and_Computing'
+                  name="Mathematics_and_Computing"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Mathematics_and_Computing
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
             <tr>
-              <td className='courseName'>Physics</td>
-              <td className='courseCheckBox2Msc'>
+              <td className="courseName">Physics</td>
+              <td className="courseCheckBox2Msc">
                 <input
-                  name='Physics'
+                  name="Physics"
                   checked={
                     JnfData.Eligible_Courses_And_Disciplines
                       .Two_Year_MSc_Programs.Physics
                   }
-                  type='checkbox'
+                  type="checkbox"
                   readOnly
                 />
               </td>
@@ -951,57 +1036,57 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
           </tbody>
         </table>
         <div>
-          <header className='headerText'>SELECTION PROCEDURE</header>
+          <header className="headerText">SELECTION PROCEDURE</header>
         </div>
         <table>
-          <tbody id='Selection_Procedure'>
+          <tbody id="Selection_Procedure">
             <tr
               style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
               }}
             >
               <td
-                className='fontText'
-                style={{ fontWeight: '700', margin: '0.5rem auto' }}
+                className="fontText"
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}
               >
                 Resume Shortlisting
               </td>
               <td>
                 <hr />
               </td>
-              <td style={{ flexBasis: '70%' }}>
+              <td style={{ flexBasis: "70%" }}>
                 <div
                   style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-between',
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <div className='align'>
-                    <label className='resume'>Yes</label>
+                  <div className="align">
+                    <label className="resume">Yes</label>
                     <input
-                      className='checkBox'
-                      name='Yes'
+                      className="checkBox"
+                      name="Yes"
                       checked={
                         JnfData.Selection_Procedure.Resume_Shortlisting.Yes
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
-                  <div className='align'>
-                    <label className='resume'>No</label>
+                  <div className="align">
+                    <label className="resume">No</label>
                     <input
-                      className='checkBox'
-                      name='No'
+                      className="checkBox"
+                      name="No"
                       checked={
                         JnfData.Selection_Procedure.Resume_Shortlisting.No
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
                 </div>
@@ -1009,71 +1094,71 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             </tr>
             <tr
               style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
               }}
             >
               <td
-                className='fontText'
-                style={{ fontWeight: '700', margin: '0.5rem auto' }}
+                className="fontText"
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}
               >
                 Type of Test
               </td>
               <td>
                 <hr />
               </td>
-              <td style={{ flexBasis: '70%' }}>
+              <td style={{ flexBasis: "70%" }}>
                 <div
                   style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-between',
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
                   }}
                 >
                   <div>
-                    <label className='type'>Technical </label>
+                    <label className="type">Technical </label>
                     <input
-                      className='checkBox'
-                      name='Technical'
+                      className="checkBox"
+                      name="Technical"
                       checked={
                         JnfData.Selection_Procedure.Type_Of_Test.Technical
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
                   <div>
-                    <label className='type'>Aptitude </label>
+                    <label className="type">Aptitude </label>
                     <input
-                      className='checkBox'
-                      name='Aptitude'
+                      className="checkBox"
+                      name="Aptitude"
                       checked={
                         JnfData.Selection_Procedure.Type_Of_Test.Aptitude
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
                   <div>
-                    <label className='type'>Both</label>
+                    <label className="type">Both</label>
                     <input
-                      className='checkBox'
-                      name='Technical_and_Aptitude'
+                      className="checkBox"
+                      name="Technical_and_Aptitude"
                       checked={JnfData.Selection_Procedure.Type_Of_Test.Both}
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
                   <div>
-                    <label className='type'>None </label>
+                    <label className="type">None </label>
                     <input
-                      className='checkBox'
-                      name='None'
+                      className="checkBox"
+                      name="None"
                       checked={JnfData.Selection_Procedure.Type_Of_Test.None}
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
                 </div>
@@ -1081,66 +1166,66 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             </tr>
             <tr
               style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
               }}
             >
               <td
-                className='fontText'
-                style={{ fontWeight: '700', margin: '0.5rem auto' }}
+                className="fontText"
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}
               >
                 Other Qualification Rounds
               </td>
               <td>
                 <hr />
               </td>
-              <td style={{ flexBasis: '70%' }}>
+              <td style={{ flexBasis: "70%" }}>
                 <div
                   style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-between',
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <div className='align'>
-                    <label className='round'>GD </label>
+                  <div className="align">
+                    <label className="round">GD </label>
                     <input
-                      className='checkBox'
-                      name='GD'
+                      className="checkBox"
+                      name="GD"
                       checked={
                         JnfData.Selection_Procedure.Other_Qualification_Rounds
                           .GD
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
-                  <div className='align'>
-                    <label className='round'> Case Study</label>
+                  <div className="align">
+                    <label className="round"> Case Study</label>
                     <input
-                      className='checkBox'
-                      name='Case_Study'
+                      className="checkBox"
+                      name="Case_Study"
                       checked={
                         JnfData.Selection_Procedure.Other_Qualification_Rounds
                           .Case_Study
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
-                  <div className='align'>
-                    <label className='round'>Interview </label>
+                  <div className="align">
+                    <label className="round">Interview </label>
                     <input
-                      className='checkBox'
-                      name='Interview'
+                      className="checkBox"
+                      name="Interview"
                       checked={
                         JnfData.Selection_Procedure.Other_Qualification_Rounds
                           .Interview
                       }
                       readOnly
-                      type='checkbox'
+                      type="checkbox"
                     />
                   </div>
                 </div>
@@ -1149,53 +1234,53 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
           </tbody>
         </table>
         <FormGroup row>
-          <Label for='exampleText' sm={5} className='fontText'>
+          <Label for="exampleText" sm={5} className="fontText">
             Total number of rounds
           </Label>
           <Col sm={7}>
-            <h1 className='inputText'>
+            <h1 className="inputText">
               {JnfData.Selection_Procedure.Total_Number_Of_Rounds}
             </h1>
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for='exampleText' sm={5} className='fontText'>
+          <Label for="exampleText" sm={5} className="fontText">
             Number of offers available for IIT(ISM) students
           </Label>
           <Col sm={7}>
-            <h1 className='inputText'>
+            <h1 className="inputText">
               {JnfData.Selection_Procedure.Number_Of_Offers}
             </h1>
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for='exampleText' sm={5} className='fontText'>
+          <Label for="exampleText" sm={5} className="fontText">
             Eligibility Criteria (if any)
           </Label>
           <Col sm={7}>
-            <h1 className='inputText'>
+            <h1 className="inputText">
               {JnfData.Selection_Procedure.Eligibility_Criteria}
             </h1>
           </Col>
         </FormGroup>
         <div
-          className='formFlex'
+          className="formFlex"
           style={{
-            display: 'flex',
-            flexDirection: 'row-reverse',
-            marginTop: '1.5rem',
+            display: "flex",
+            flexDirection: "row-reverse",
+            marginTop: "1.5rem",
           }}
         >
           <button
-            className='submit_btn'
-            type='submit'
-            onClick={(e) => e.preventDefault() / setPage('3')}
+            className="submit_btn"
+            type="submit"
+            onClick={(e) => e.preventDefault() / setPage("3")}
           >
             Edit
           </button>
           <button
-            className='submit_btn'
-            type='submit'
+            className="submit_btn"
+            type="submit"
             onClick={handleFormSubmit}
           >
             Submit

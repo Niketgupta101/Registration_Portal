@@ -27,7 +27,7 @@ const JNF4 = ({
           </div>
         </div>
 
-        <table>
+        <table className="my-3">
           <tbody id="Selection_Procedure">
             {/* <tr
               style={{
@@ -151,10 +151,12 @@ const JNF4 = ({
                 display: "flex",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
-              }}>
+              }}
+            >
               <td
                 className="fontText"
-                style={{ fontWeight: "700", margin: "0.5rem auto" }}>
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}
+              >
                 Resume Shortlisting
               </td>
               <td>
@@ -166,7 +168,8 @@ const JNF4 = ({
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "space-between",
-                  }}>
+                  }}
+                >
                   <div className="align">
                     <label className="resume">Yes</label>
                     <input
@@ -198,10 +201,12 @@ const JNF4 = ({
                 display: "flex",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
-              }}>
+              }}
+            >
               <td
                 className="fontText"
-                style={{ fontWeight: "700", margin: "0.5rem auto" }}>
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}
+              >
                 Type of Test
               </td>
               <td>
@@ -213,7 +218,8 @@ const JNF4 = ({
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "space-between",
-                  }}>
+                  }}
+                >
                   <div>
                     <label className="type">Technical </label>
                     <input
@@ -267,10 +273,12 @@ const JNF4 = ({
                 display: "flex",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
-              }}>
+              }}
+            >
               <td
                 className="fontText"
-                style={{ fontWeight: "700", margin: "0.5rem auto" }}>
+                style={{ fontWeight: "700", margin: "0.5rem auto" }}
+              >
                 Other Qualification Rounds
               </td>
               <td>
@@ -282,7 +290,8 @@ const JNF4 = ({
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "space-between",
-                  }}>
+                  }}
+                >
                   <div className="align">
                     <label className="round">GD </label>
                     <input
@@ -369,7 +378,8 @@ const JNF4 = ({
         <div className="flex">
           <button
             className="submit_btn"
-            onClick={(e) => e.preventDefault() / setPage("2")}>
+            onClick={(e) => e.preventDefault() / setPage("2")}
+          >
             Back
           </button>
           <button className="submit_btn" type="submit">
