@@ -73,25 +73,27 @@ const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
     let infList = await INF.find({
       $or: [
         {
-          'data.Company_Overview.Name_Of_The_Company': {
+          'Company_Overview.Name_Of_The_Company': {
             $regex: pattern,
             $options: 'im',
           },
+          status: 'complete',
         },
         {
-          'data.Company_Overview.Category': {
+          'Company_Overview.Category': {
             $regex: pattern,
             $options: 'im',
           },
+          status: 'complete',
         },
         {
-          'data.Company_Overview_Sector': {
+          'Company_Overview.Sector': {
             $regex: pattern,
             $options: 'im',
           },
+          status: 'complete',
         },
       ],
-      status: 'complete',
     })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))

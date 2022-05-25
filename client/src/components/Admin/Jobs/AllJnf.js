@@ -51,7 +51,7 @@ const AllJnf = () => {
 
   useEffect(() => {
     async function fetchJNFs() {
-      // console.log({ search });
+      console.log({ search });
       var response;
       if (!search) {
         response = await getAllJnf(pageNo);

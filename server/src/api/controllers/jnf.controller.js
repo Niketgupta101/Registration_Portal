@@ -124,7 +124,7 @@ const searchJnfByPattern = async (req, res, next) => {
     let offset = pagelimit * (pageno - 1);
 
     let response = await searchJnfByCompany(pattern, offset, pagelimit, next);
-    console.log(response);
+    // console.log(response);
     res.status(201).json(response);
   } catch (error) {
     console.log(error);

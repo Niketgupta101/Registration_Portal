@@ -49,7 +49,7 @@ const AllInf = () => {
       } else {
         response = await searchInfByPattern(search);
       }
-      // console.log(response);
+      console.log(response);
       setJobs(response.data.jobs);
     }
     fetchINFs();
