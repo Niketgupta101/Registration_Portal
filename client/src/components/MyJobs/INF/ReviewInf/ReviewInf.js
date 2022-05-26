@@ -9,11 +9,10 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
     <div className="overallDiv1">
       <div>
         <header className="headerText1">
-          INTERNSHIP NOTIFICATION FORM (2021-2022)
+          INTERNSHIP NOTIFICATION FORM (2022-2023)
         </header>
       </div>
       <Form>
-        {console.log(InfData)}
         <FormGroup row style={style}>
           <Label for="exampleText" sm={4} className="fontText">
             Name of the Company
@@ -1232,6 +1231,28 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             </h1>
           </Col>
         </FormGroup>
+
+        <div>
+          <header className="headerText">
+            Tentative dates for test and interviews:
+          </header>
+        </div>
+        <FormGroup row style={style}>
+          <Label for="exampleSelect" sm={3} className="fontText">
+            Priority 1
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">P1</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleSelect" sm={3} className="fontText">
+            Priority 2
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">P2</h1>
+          </Col>
+        </FormGroup>
         <div
           className="formFlex"
           style={{
@@ -1243,16 +1264,16 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
           <button
             className="submit_btn"
             type="submit"
-            onClick={handleFormSubmit}
+            onClick={(e) => e.preventDefault() / setPage("3")}
           >
-            Submit
+            Edit
           </button>
           <button
             className="submit_btn"
             type="submit"
-            onClick={(e) => e.preventDefault() / setPage("3")}
+            onClick={handleFormSubmit}
           >
-            Edit
+            Submit
           </button>
         </div>
       </Form>

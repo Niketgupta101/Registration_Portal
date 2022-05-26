@@ -37,6 +37,10 @@ const jnfSchema = new Schema(
         mobile: { type: Number, default: '' },
       },
     },
+    Priority_Details: {
+      Priority1: { type: String, default: "" },
+      Priority2: { type: String, default: "" },
+    },
     Eligible_Courses_And_Disciplines: {
       Four_Year_Btech_Programs: {
         Select_All: { type: Boolean, default: false },

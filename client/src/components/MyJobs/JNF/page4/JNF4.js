@@ -1,18 +1,30 @@
 import React from "react";
 import { Form, FormGroup, Label, Col, Input } from "reactstrap";
-
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 const JNF4 = ({
   setPage,
   resumeShortListingData,
   typeOfTestData,
   otherQualificationRoundsData,
   selectionFormData,
+  priorityFormData,
+  handlePriorityDataChange,
   handleResumeShortListingChange,
   handleTypeOfTestChange,
   handleOtherQualificationRoundsChange,
   handleSelectionDataChange,
   handleUpdateJnfById,
 }) => {
+  const dates = [
+    "1st Dec to 10th Dec'22",
+    "11th Dec to 24th Dec'22",
+    "2nd Jan to 15th Jan'23",
+    "16th Jan to 31st Jan'23",
+  ];
   return (
     <div className="overallDiv1">
       <Form onSubmit={handleUpdateJnfById}>
@@ -375,6 +387,68 @@ const JNF4 = ({
             />
           </Col>
         </FormGroup>
+        <hr />
+        <div className="my-5">
+          <div class="ug-pg m-0 p-0">
+            <h1 className="ug-pg-h1">
+              Tentative Dates for Tests and Interviews:
+              <span className="ug-pg-span">
+                <b> Fill your priority accordingly</b>{" "}
+              </span>
+            </h1>
+          </div>
+        </div>
+        <div className="row">
+          <Col sm={6}>
+            <div className="d-flex justify-content-center">
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Priority 1
+                </FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  {dates.map((date) => (
+                    <FormControlLabel
+                      value={date}
+                      control={<Radio />}
+                      label={date}
+                      name="Priority1"
+                      onChange={handlePriorityDataChange}
+                    />
+                  ))}
+                </RadioGroup>
+              </FormControl>
+            </div>
+          </Col>
+          <Col sm={6}>
+            <div className="d-flex justify-content-center">
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Priority 2
+                </FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  {dates.map((date) => (
+                    <FormControlLabel
+                      value={date}
+                      control={<Radio />}
+                      label={date}
+                      name="Priority2"
+                      onChange={handlePriorityDataChange}
+                    />
+                  ))}
+                  {console.log("pp=", priorityFormData)}
+                </RadioGroup>
+              </FormControl>
+            </div>
+          </Col>
+        </div>
         <div className="flex">
           <button
             className="submit_btn"

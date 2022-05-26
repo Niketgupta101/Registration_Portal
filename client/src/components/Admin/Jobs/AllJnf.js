@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from 'reactstrap';
-import { Button } from '@mui/material';
-import { FaSearch } from 'react-icons/fa';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Loading from '../../Loading/Loading';
-import './styles.css';
+} from "reactstrap";
+import { Button } from "@mui/material";
+import { FaSearch } from "react-icons/fa";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Loading from "../../Loading/Loading";
+import "./styles.css";
 import {
   getAllInf,
   getAllJnf,
   getAllJobs,
   searchJnfByPattern,
-} from '../../../api/index';
+} from "../../../api/index";
 
 const AllJnf = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const Navigate = useNavigate();
 
-  const [pageNo, setPageNo] = useState('1');
+  const [pageNo, setPageNo] = useState("1");
 
   const [search, setSearch] = useState();
 
@@ -39,11 +39,11 @@ const AllJnf = () => {
     setJobs(response.data.jobs);
   }, [pageNo]);
 
-  const [dropdownOpen, setDropdownOpen] = useState('');
+  const [dropdownOpen, setDropdownOpen] = useState("");
 
   const handletoggle = (id) => () => {
     if (dropdownOpen === id) {
-      setDropdownOpen(() => '');
+      setDropdownOpen(() => "");
     } else {
       setDropdownOpen(() => id);
     }
@@ -70,50 +70,51 @@ const AllJnf = () => {
 
   return (
     <>
-      <div className='admin_company'>
-        <div className='admin_company_header d-flex  justify-content-between'>
+      <div className="admin_company">
+        <div className="admin_company_header d-flex  justify-content-between">
           <h1>All JNF</h1>
           <div>
-            <div className='input-group d-flex'>
-              <div className='form-outline'>
+            <div className="input-group d-flex">
+              <div className="form-outline">
                 <input
-                  type='search'
-                  id='form1'
-                  className='form-control'
-                  placeholder='Type Company Name'
-                  name='search'
+                  type="search"
+                  id="form1"
+                  className="form-control"
+                  placeholder="Type Company Name"
+                  name="search"
                   value={search}
                   onChange={handleOnChange}
                 />
               </div>
-              <Button variant='contained'>
+              <Button variant="contained">
                 <FaSearch />
               </Button>
             </div>
           </div>
         </div>
 
-        <div className='job_items'>
+        <div className="job_items">
+          {console.log(jobs)}
           {jobs &&
             jobs.map((job) => (
               <div
-                className='job_card'
+                className="job_card"
                 key={job._id}
-                style={{ display: 'inline-block' }}
+                style={{ display: "inline-block" }}
               >
                 <div
-                  className='badge'
-                  style={{ backgroundColor: !job.isIntern && 'red' }}
+                  className="badge"
+                  style={{ backgroundColor: !job.isIntern && "#7f2020" }}
                 >
-                  <h6>{job.isIntern ? 'Intern' : 'FTE'}</h6>
+                  <h6>{job.isIntern ? "Intern" : "FTE"}</h6>
                 </div>
-                <div className='card_content'>
-                  <div className='content_heading'>
+                <div className="card_content">
+                  <div className="content_heading">
                     <h4>{job?.Company_Overview?.Name_Of_The_Company}</h4>
                   </div>
-                  <div className='content_text'>
+                  <div className="content_text">
                     <h5>
-                      <span>Designation: </span>:{' '}
+                      <span>Designation: </span>:{" "}
                       {job?.isIntern
                         ? job?.Intern_Profile?.Job_Designation
                         : job?.Job_Details?.Job_Designation}
@@ -121,12 +122,12 @@ const AllJnf = () => {
                     <h5>
                       {job.isIntern ? (
                         <>
-                          <span>Mode</span>:{' '}
+                          <span>Mode</span>:{" "}
                           {job?.Intern_Profile?.Mode_Of_Internship}
                         </>
                       ) : (
                         <>
-                          <span>Place of posting</span>:{' '}
+                          <span>Place of posting</span>:{" "}
                           {job?.Job_Details?.Place_Of_Posting}
                         </>
                       )}
@@ -134,7 +135,7 @@ const AllJnf = () => {
                     <h5>
                       {job.isIntern ? (
                         <>
-                          <span>Stipend</span>:{' '}
+                          <span>Stipend</span>:{" "}
                           {job?.Salary_Details?.Salary_Per_Month}
                         </>
                       ) : (
@@ -144,31 +145,31 @@ const AllJnf = () => {
                       )}
                     </h5>
                     <h5>
-                      <span>Submitted On:</span>:{' '}
+                      <span>Submitted On:</span>:{" "}
                       {job.updatedAt.slice(8, 10) +
-                        '/' +
+                        "/" +
                         job.updatedAt.slice(5, 7) +
-                        '/' +
+                        "/" +
                         job.updatedAt.slice(0, 4)}
                     </h5>
 
                     <div
-                      className='d-flex align-items-center'
+                      className="d-flex align-items-center"
                       style={{
-                        position: 'absolute',
+                        position: "absolute",
                       }}
                     >
                       <div>
-                        <button className='secondary_btn py-1'>
+                        <button className="secondary_btn py-1">
                           <a
                             href={job.previewLink}
-                            style={{ textDecoration: 'none', color: 'inherit' }}
+                            style={{ textDecoration: "none", color: "inherit" }}
                           >
                             View Job
                           </a>
                         </button>
                       </div>
-                      <div className='my-2 ms-3 ps-2'>
+                      <div className="my-2 ms-3 ps-2">
                         <Dropdown
                           isOpen={dropdownOpen === job._id}
                           toggle={handletoggle(job._id)}
@@ -179,8 +180,8 @@ const AllJnf = () => {
                               <a
                                 href={job.studentDownload}
                                 style={{
-                                  textDecoration: 'none',
-                                  color: 'inherit',
+                                  textDecoration: "none",
+                                  color: "inherit",
                                 }}
                               >
                                 For Student
@@ -191,8 +192,8 @@ const AllJnf = () => {
                               <a
                                 href={job.downloadLink}
                                 style={{
-                                  textDecoration: 'none',
-                                  color: 'inherit',
+                                  textDecoration: "none",
+                                  color: "inherit",
                                 }}
                               >
                                 For Admin
@@ -220,8 +221,8 @@ const AllJnf = () => {
         <Stack spacing={1}>
           <Pagination
             count={10}
-            color='primary'
-            style={{ margin: '3rem auto' }}
+            color="primary"
+            style={{ margin: "3rem auto" }}
             onChange={handlePageChange}
           />
         </Stack>
