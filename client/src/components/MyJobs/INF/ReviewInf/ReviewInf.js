@@ -1242,7 +1242,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             Priority 1
           </Label>
           <Col sm={9}>
-            <h1 className="inputText">P1</h1>
+            <h1 className="inputText">{InfData.Priority_Details.Priority1}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
@@ -1250,7 +1250,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             Priority 2
           </Label>
           <Col sm={9}>
-            <h1 className="inputText">P2</h1>
+            <h1 className="inputText">{InfData.Priority_Details.Priority2}</h1>
           </Col>
         </FormGroup>
         <div

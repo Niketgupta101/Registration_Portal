@@ -21,7 +21,7 @@ const Jnf = () => {
   const { JnfId } = useParams();
 
   const company = JSON.parse(localStorage.getItem("company"));
-  console.log(company);
+  // console.log(company);
   const companyData = {
     Name_Of_The_Company: company[0].name,
     Category_Or_Sector: "",
