@@ -12,12 +12,12 @@ const companyDetailsSchema = new Schema({
 
   primary_hr: {
     name: { type: String, required: true },
-    contactNo: { type: Number, minlength: 10, required: true },
+    contactNo: { type: String, minlength: 10, required: true },
     emailId: { type: String, required: true },
   },
   secondary_hr: {
     name: { type: String, required: true },
-    contactNo: { type: Number, minlength: 10, required: true },
+    contactNo: { type: String, minlength: 10, required: true },
     emailId: { type: String, required: true },
   },
   isVerifiedByCDC: { type: Boolean, default: false },

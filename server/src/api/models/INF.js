@@ -35,12 +35,12 @@ const infSchema = new Schema(
       Primary_Hr: {
         name: { type: String, default: "" },
         email: { type: String, default: "" },
-        mobile: { type: Number, default: "" },
+        mobile: { type: String, default: "" },
       },
       Alternate_Hr: {
         name: { type: String, default: "" },
         email: { type: String, default: "" },
-        mobile: { type: Number, default: "" },
+        mobile: { type: String, default: "" },
       },
     },
     Eligible_Courses_And_Disciplines: {

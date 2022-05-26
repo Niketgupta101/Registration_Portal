@@ -29,12 +29,12 @@ const jnfSchema = new Schema(
       Primary_Hr: {
         name: { type: String, default: '' },
         email: { type: String, default: '' },
-        mobile: { type: Number, default: '' },
+        mobile: { type: String, default: '' },
       },
       Alternate_Hr: {
         name: { type: String, default: '' },
         email: { type: String, default: '' },
-        mobile: { type: Number, default: '' },
+        mobile: { type: String, default: '' },
       },
     },
     Priority_Details: {
