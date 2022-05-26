@@ -289,15 +289,6 @@ exports.fillINFDoc = async (inf) => {
     ...inf.hR_Details,
     ...data,
   });
-  createStudentInfPdf(
-    {
-      ...inf.Company_Overview,
-      ...inf.Intern_Profile,
-      ...inf.Salary_Details,
-      ...data,
-    },
-    inf._id
-  );
 
   const buf = doc.getZip().generate({
     type: 'nodebuffer',
@@ -353,6 +344,16 @@ exports.fillINFDoc = async (inf) => {
       inf.previewLink
     );
   }
+
+  createStudentInfPdf(
+    {
+      ...inf.Company_Overview,
+      ...inf.Intern_Profile,
+      ...inf.Salary_Details,
+      ...data,
+    },
+    inf._id
+  );
 };
 
 exports.fillJNFDoc = async (jnf) => {
@@ -517,7 +518,6 @@ exports.fillJNFDoc = async (jnf) => {
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
   };
-  console.log('line 520');
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,
@@ -525,18 +525,6 @@ exports.fillJNFDoc = async (jnf) => {
     ...jnf.HR_Details,
     ...data,
   });
-  console.log('line 528');
-
-  createStudentJnfPdf(
-    {
-      ...jnf.Company_Overview,
-      ...jnf.Job_Details,
-      ...jnf.Salary_Details,
-      ...data,
-    },
-    jnf._id
-  );
-  console.log('line 539');
 
   const buf = doc.getZip().generate({
     type: 'nodebuffer',
@@ -593,4 +581,14 @@ exports.fillJNFDoc = async (jnf) => {
       jnf.previewLink
     );
   }
+
+  createStudentJnfPdf(
+    {
+      ...jnf.Company_Overview,
+      ...jnf.Job_Details,
+      ...jnf.Salary_Details,
+      ...data,
+    },
+    jnf._id
+  );
 };
