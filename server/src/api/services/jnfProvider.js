@@ -129,6 +129,7 @@ const saveJnfById = async (id, details, next) => {
 
     return { success: true, jnf };
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
@@ -142,7 +143,7 @@ const submitJnfById = async (id, next) => {
     let jnfStatus = await JNFstatus.findOne({ data: id });
 
     jnfStatus.set({ progress: 'submitted' });
-
+    console.log('here');
     await jnfStatus.save();
 
     await fillJNFDoc(jnf);
@@ -155,6 +156,7 @@ const submitJnfById = async (id, next) => {
 
     return { success: true, message: 'Submitted Successfully', jnf };
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
