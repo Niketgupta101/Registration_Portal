@@ -145,6 +145,8 @@ exports.fillINFDoc = async (inf) => {
   let twoYearMsc = inf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = inf.Selection_Procedure;
   let hR_Details = inf.HR_Details;
+  let priority_Details = inf.Priority_Details;
+  console.log(priority_Details);
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -280,6 +282,8 @@ exports.fillINFDoc = async (inf) => {
     Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
+    Priority_One: priority_Details.Priority1,
+    Priority_Two : priority_Details.Priority2
   };
   console.log({ selectionProcedure });
   doc.render({
@@ -287,6 +291,7 @@ exports.fillINFDoc = async (inf) => {
     ...inf.Intern_Profile,
     ...inf.Salary_Details,
     ...inf.hR_Details,
+    ...inf.priority_Details,
     ...data,
   });
 
@@ -382,6 +387,7 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
   let hR_Details = jnf.HR_Details;
+  let priority_Details = jnf.Priority_Details;
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -517,12 +523,15 @@ exports.fillJNFDoc = async (jnf) => {
     Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
+    Priority_One: priority_Details.Priority1,
+    Priority_Two : priority_Details.Priority2
   };
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,
     ...jnf.Salary_Details,
     ...jnf.HR_Details,
+    ...jnf.Priority_Details,
     ...data,
   });
 
