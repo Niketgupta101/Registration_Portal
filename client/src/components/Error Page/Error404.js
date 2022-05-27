@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 export const Error404 = () => {
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "90vh" }}>
       <div className="center h-100 ">
         <div className="error">
           <div className="number">4</div>
@@ -28,7 +28,7 @@ export const Error404 = () => {
         <div className="text">
           Oops. The page you're looking for doesn't exist.
         </div>
-        <a className="button" href="/">
+        <a className="button a-text" href="/">
           Back Home
         </a>
       </div>
