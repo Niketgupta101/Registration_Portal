@@ -139,6 +139,12 @@ const getPendingJobForms = async (req, res, next) => {
       jobs.push(jnfs[jnf]);
     }
 
+    jobs.sort(function (a, b) {
+      let dateA = a.data.updatedAt;
+      let dateB = b.data.updatedAt;
+      return dateB - dateA;
+    });
+
     res.status(201).json({ success: true, jobs });
   } catch (error) {
     console.log(error);
