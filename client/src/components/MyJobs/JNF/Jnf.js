@@ -1,55 +1,55 @@
-import { TabContext, TabPanel } from "@mui/lab";
-import React, { useEffect, useState } from "react";
-import { getjnfById, submitJnf, updateJnfById } from "../../../api";
+import { TabContext, TabPanel } from '@mui/lab';
+import React, { useEffect, useState } from 'react';
+import { getjnfById, submitJnf, updateJnfById } from '../../../api';
 
-import "./styles.css";
+import './styles.css';
 
-import ReviewJnf from "./ReviewJnf/ReviewJnf";
-import JNF1 from "./page1/JNF1";
-import JNF2 from "./page2/JNF2";
+import ReviewJnf from './ReviewJnf/ReviewJnf';
+import JNF1 from './page1/JNF1';
+import JNF2 from './page2/JNF2';
 // import JNF3 from './page3/JNF3';
-import JNF4 from "./page4/JNF4";
+import JNF4 from './page4/JNF4';
 
-import { useNavigate, useParams } from "react-router-dom";
-import Loading from "../../Loading/Loading";
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../../Loading/Loading';
 
 const Jnf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState('1');
   const Navigate = useNavigate();
 
   const { JnfId } = useParams();
 
-  const company = JSON.parse(localStorage.getItem("company"));
+  const company = JSON.parse(localStorage.getItem('company'));
   // console.log(company);
   const companyData = {
     Name_Of_The_Company: company[0].name,
-    Category_Or_Sector: "",
+    Category_Or_Sector: '',
     Category: company[0].categoryData,
     Sector: company[0].sectorData,
     About: company[0].about,
     Website: company[0].website,
   };
   const jobData = {
-    Job_Designation: "",
-    Job_Description: "",
-    Place_Of_Posting: "",
+    Job_Designation: '',
+    Job_Description: '',
+    Place_Of_Posting: '',
   };
   const salaryData = {
-    CTC_Breakup: "",
-    Bond_Details: "",
-    CTC: "",
+    CTC_Breakup: '',
+    Bond_Details: '',
+    CTC: '',
   };
   const hrData = {
     Primary_Hr: {
-      name: "",
-      email: "",
-      mobile: "",
+      name: '',
+      email: '',
+      mobile: '',
     },
     Alternate_Hr: {
-      name: "",
-      email: "",
-      mobile: "",
+      name: '',
+      email: '',
+      mobile: '',
     },
   };
 
@@ -120,13 +120,13 @@ const Jnf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    if (e.target.name !== "Select_All" && fourYearData.Select_All === true) {
+    if (e.target.name !== 'Select_All' && fourYearData.Select_All === true) {
       setFourYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === "Select_All") {
+    } else if (e.target.name === 'Select_All') {
       let newValue = !fourYearData[e.target.name];
 
       for (let i in fourYearData) {
@@ -140,13 +140,13 @@ const Jnf = () => {
     }
   };
   const handleFiveYearChange = (e) => {
-    if (e.target.name !== "Select_All" && fiveYearData.Select_All === true) {
+    if (e.target.name !== 'Select_All' && fiveYearData.Select_All === true) {
       setFiveYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === "Select_All") {
+    } else if (e.target.name === 'Select_All') {
       let newValue = !fiveYearData[e.target.name];
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -212,13 +212,13 @@ const Jnf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    if (e.target.name !== "Select_All" && threeYearData.Select_All === true) {
+    if (e.target.name !== 'Select_All' && threeYearData.Select_All === true) {
       setThreeYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === "Select_All") {
+    } else if (e.target.name === 'Select_All') {
       let newValue = !threeYearData[e.target.name];
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -233,13 +233,13 @@ const Jnf = () => {
     //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    if (e.target.name !== "Select_All" && twoYearData.Select_All === true) {
+    if (e.target.name !== 'Select_All' && twoYearData.Select_All === true) {
       setTwoYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === "Select_All") {
+    } else if (e.target.name === 'Select_All') {
       let newValue = !twoYearData[e.target.name];
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -254,13 +254,13 @@ const Jnf = () => {
     }
   };
   const handleTwoYearMbaChange = (e) => {
-    if (e.target.name !== "Select_All" && twoYearMbaData.Select_All === true) {
+    if (e.target.name !== 'Select_All' && twoYearMbaData.Select_All === true) {
       setTwoYearMbaData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === "Select_All") {
+    } else if (e.target.name === 'Select_All') {
       let newValue = !twoYearMbaData[e.target.name];
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -275,13 +275,13 @@ const Jnf = () => {
     //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    if (e.target.name !== "Select_All" && twoYearMscData.Select_All === true) {
+    if (e.target.name !== 'Select_All' && twoYearMscData.Select_All === true) {
       setTwoYearMscData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === "Select_All") {
+    } else if (e.target.name === 'Select_All') {
       let newValue = !twoYearMscData[e.target.name];
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -299,9 +299,9 @@ const Jnf = () => {
   // ------------------------------------------------------------
 
   const selectionData = {
-    Total_Number_Of_Rounds: "",
-    Number_Of_Offers: "",
-    Eligibility_Criteria: "",
+    Total_Number_Of_Rounds: '',
+    Number_Of_Offers: '',
+    Eligibility_Criteria: '',
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -320,8 +320,8 @@ const Jnf = () => {
       Interview: false,
     });
   const priorityData = {
-    Priority1: "",
-    Priority2: "",
+    Priority1: '',
+    Priority2: '',
   };
   const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
   const handlePriorityDataChange = (e) => {
@@ -378,16 +378,16 @@ const Jnf = () => {
     };
     // console.log("original", temp);
     switch (e.target.value) {
-      case "0":
+      case '0':
         temp.Technical = true;
         break;
-      case "1":
+      case '1':
         temp.Aptitude = true;
         break;
-      case "2":
+      case '2':
         temp.Both = true;
         break;
-      case "3":
+      case '3':
         temp.None = true;
         break;
     }
@@ -468,7 +468,7 @@ const Jnf = () => {
     },
   });
 
-  const fetchInfData = async (JnfId) => {
+  const fetchJnfData = async (JnfId) => {
     const response = await getjnfById(JnfId);
 
     console.log(response.data);
@@ -525,7 +525,7 @@ const Jnf = () => {
   };
 
   useEffect(() => {
-    if (JnfId) getjnfById(JnfId);
+    fetchJnfData(JnfId);
   }, [JnfId]);
 
   const handleUpdateJnfById = async (e) => {
@@ -578,7 +578,7 @@ const Jnf = () => {
       let response = await submitJnf(JnfId);
       setIsLoading(false);
       console.log(response);
-      Navigate("/myjobs");
+      Navigate('/myjobs');
     } catch (error) {
       console.log(error);
     }
@@ -586,12 +586,12 @@ const Jnf = () => {
 
   return (
     <>
-      <div className="JNF">
+      <div className='JNF'>
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+          style={{ padding: '0', margin: '0', boxSizing: 'border-box' }}
         >
-          <TabPanel value="1">
+          <TabPanel value='1'>
             <JNF1
               setPage={setPage}
               companyFormData={companyFormData}
@@ -605,7 +605,7 @@ const Jnf = () => {
               handleUpdateJnfById={handleUpdateJnfById}
             />
           </TabPanel>
-          <TabPanel value={"2"}>
+          <TabPanel value={'2'}>
             <JNF2
               setPage={setPage}
               fourYearData={fourYearData}
@@ -639,7 +639,7 @@ const Jnf = () => {
             handleUpdateJnfById={handleUpdateJnfById}
           />
         </TabPanel> */}
-          <TabPanel value={"3"}>
+          <TabPanel value={'3'}>
             <JNF4
               setPage={setPage}
               resumeShortListingData={resumeShortListingData}
@@ -657,7 +657,7 @@ const Jnf = () => {
               handlePriorityDataChange={handlePriorityDataChange}
             />
           </TabPanel>
-          <TabPanel value={"4"}>
+          <TabPanel value={'4'}>
             <ReviewJnf
               setPage={setPage}
               JnfData={JnfData}

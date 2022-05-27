@@ -24,12 +24,13 @@ const MyJobs = () => {
   const [IsLoading, setIsLoading] = useState(false);
 
   const [Filter, setFilter] = useState('All Jobs');
-  const [deleteId, setDeleteId] = useState([0, 0]);
   const Navigate = useNavigate();
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
   const [Jobs, setJobs] = useState([]);
+
+  const [reload, setReload] = useState(0);
 
   const [pageNo, setPageNo] = useState('1');
 
@@ -59,14 +60,28 @@ const MyJobs = () => {
     }
   };
 
+  const company = JSON.parse(localStorage.getItem('company'));
+  // console.log(company);
+  const companyData = {
+    Name_Of_The_Company: company[0].name,
+    Category_Or_Sector: '',
+    Category: company[0].categoryData,
+    Sector: company[0].sectorData,
+    About: company[0].about,
+    Website: company[0].website,
+  };
   const handleFillInf = async () => {
-    const response = await createNewInf({});
+    const response = await createNewInf({
+      Company_Overview: { ...companyData },
+    });
 
     Navigate(`/create/inf/${response.data.newInf._id}`);
   };
 
   const handleFillJnf = async () => {
-    const response = await createNewJnf({});
+    const response = await createNewJnf({
+      Company_Overview: { ...companyData },
+    });
 
     Navigate(`/create/jnf/${response.data.newJnf._id}`);
   };
@@ -78,19 +93,24 @@ const MyJobs = () => {
 
   const handleDelete = async (deleteId) => {
     console.log(deleteId);
-    // setIsLoading(true);
-    if (deleteId[1]) {
-      await deleteInfById(deleteId[0]);
-    } else {
-      await deleteInfById(deleteId[0]);
-      // setIsLoading(false);
+    try {
+      setIsLoading(true);
+      if (deleteId[1]) {
+        await deleteInfById(deleteId[0]);
+      } else {
+        await deleteJnfById(deleteId[0]);
+      }
+      // let newJobList = Jobs.filter((job) => job._id !== deleteId[0]);
+
+      setReload((prevData) => prevData + 1);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
     }
-    setDeleteId([deleteId[0], delete [1]]);
   };
 
   useEffect(() => {
     fetchJobs(Filter);
-    // handleDelete(deleteId);
     async function filterJobs() {
       for (let i in Jobs) {
         if (Jobs[i].data.Company_Overview === undefined) {
@@ -105,7 +125,7 @@ const MyJobs = () => {
     }
     filterJobs();
     fetchJobs(Filter);
-  }, [Filter, pageNo]);
+  }, [Filter, pageNo, reload]);
 
   console.log({ Jobs });
 

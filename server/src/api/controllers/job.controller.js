@@ -28,6 +28,13 @@ const getAllJobs = async (req, res, next) => {
 
     let jobs = [...infList, ...jnfList];
 
+    jobs.sort(function (a, b) {
+      let dateA = Date(a.data.updatedAt);
+      let dateB = Date(b.data.updatedAt);
+      console.log({ dateA, dateB });
+      return dateB - dateA;
+    });
+
     res.status(201).json({ success: true, jobs });
   } catch (error) {
     console.log(error);
@@ -58,6 +65,12 @@ const getAllJobsForUser = async (req, res, next) => {
     console.log(infList.length, jnfList.length);
 
     let jobs = [...infList, ...jnfList];
+
+    jobs.sort(function (a, b) {
+      let dateA = a.data.updatedAt;
+      let dateB = b.data.updatedAt;
+      return dateB - dateA;
+    });
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {

@@ -168,11 +168,12 @@ const removeJNFById = async (id, next) => {
     if (!jnf) return next(new ErrorResponse('No JNF found with given id', 404));
 
     await jnf.remove();
-    let jnfStatus = await JNFstatus.find({ data: id });
+    let jnfStatus = await JNFstatus.findOne({ data: id });
     await jnfStatus.remove();
 
     return { success: true, jnf };
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
