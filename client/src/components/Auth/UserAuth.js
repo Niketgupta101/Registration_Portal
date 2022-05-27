@@ -112,10 +112,10 @@ const UserAuth = () => {
           emailIdOrUsername: AuthData.email,
           password: AuthData.password,
         });
+        localStorage.setItem('user', JSON.stringify(data.user));
         if (!data.user.isemailVerified) {
           setPage('verify');
         } else {
-          localStorage.setItem('user', JSON.stringify(data.user));
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('company', JSON.stringify(data.company));
 
