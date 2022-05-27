@@ -28,6 +28,7 @@ import Btech from "./components/Courses/btech";
 import Threeyearmsc from "./components/Courses/Threeyearmsc";
 import CustomInvite from "./components/Admin/Invites/CustomInvite";
 import Invites from "./components/Admin/Invites/Invites";
+import { Error404 } from "./components/Error Page/Error404";
 
 const App = () => {
   // const user = localStorage.getItem('user');
@@ -85,6 +86,7 @@ const App = () => {
           {/* ------------------------------ Custom-Invite--------------------- */}
           <Route path="/invite" element={<CustomInvite />} />
           <Route path="/company/invites" element={<Invites />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </div>
     </BrowserRouter>
