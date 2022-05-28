@@ -1,8 +1,9 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 import "./styles.css";
 import { postContactData } from "../../api";
+import cllgPhoto from "./../../Images/contactUsCllgPhoto.jpeg";
 
 const ContactUs = () => {
   const initialData = {
@@ -30,8 +31,7 @@ const ContactUs = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-6 card-shadow">
-                  <img src="https://people.iitism.ac.in/~acic/assets/images/banner.jpeg" className="contactUsimage" />
-
+                  <img src={cllgPhoto} className="contactUsimage" />
                 </div>
                 <div className="col-lg-6">
                   <div className="contact-box ml-3">
@@ -40,40 +40,64 @@ const ContactUs = () => {
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
-                            <input className="form-control" type="text" placeholder="Name" name="name"
+                            <input
+                              className="form-control"
+                              type="text"
+                              placeholder="Name"
+                              name="name"
                               required
                               value={formData.name}
-                              onChange={handleChange} />
+                              onChange={handleChange}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
-                            <input className="form-control" type="email" placeholder="Email address" name="email"
+                            <input
+                              className="form-control"
+                              type="email"
+                              placeholder="Email address"
+                              name="email"
                               required
                               value={formData.email}
-                              onChange={handleChange} />
+                              onChange={handleChange}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
-                            <input className="form-control" type="text" placeholder="Phone" name="contactNo"
+                            <input
+                              className="form-control"
+                              type="text"
+                              placeholder="Phone"
+                              name="contactNo"
                               required
                               value={formData.contactNo}
-                              onChange={handleChange} />
+                              onChange={handleChange}
+                            />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mt-2">
-                            <textarea className="form-control" rows="3" placeholder="Message" name="message"
+                            <textarea
+                              className="form-control"
+                              rows="3"
+                              placeholder="Message"
+                              name="message"
                               id="message"
                               required
                               value={formData.message}
-                              onChange={handleChange}></textarea>
+                              onChange={handleChange}
+                            ></textarea>
                           </div>
                         </div>
-                        <div className="col-lg-12">
-                          <button type="submit" className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2" ><span> SUBMIT</span></button>
-
+                        <div className="col-lg-12 submit-btn">
+                          <button
+                            type="submit"
+                            className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2 "
+                          >
+                            <span> SUBMIT</span>
+                          </button>
                         </div>
                       </div>
                     </form>
@@ -89,8 +113,11 @@ const ContactUs = () => {
                           </div>
                           <div className="mx-3">
                             <h6 className="font-weight-medium">Address</h6>
-                            <p className=""> Dhanbad, Jharkhand
-                              <br />  826004</p>
+                            <p className="">
+                              {" "}
+                              Dhanbad, Jharkhand
+                              <br /> 826004
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -101,8 +128,10 @@ const ContactUs = () => {
                           </div>
                           <div className="ms-4">
                             <h6 className="font-weight-medium">Phone</h6>
-                            <p className="">251 546 9442
-                              <br /> 630 446 8851</p>
+                            <p className="">
+                              251 546 9442
+                              <br /> 630 446 8851
+                            </p>
                           </div>
                         </div>
                       </div>
