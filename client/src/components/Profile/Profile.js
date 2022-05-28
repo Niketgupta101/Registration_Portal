@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 import { FaUserCircle } from "react-icons/fa";
-import { FcBusinessman } from "react-icons/fc";
+import hricon from "./../../Images/hricon.png";
 
 const Profile = () => {
   let user = JSON.parse(localStorage.getItem("user"));
@@ -39,7 +39,7 @@ const Profile = () => {
             className="d-flex justify-content-center"
             style={{ width: "30%" }}
           >
-            <FcBusinessman style={{ fontSize: "9em" }} />
+            <img src={hricon} style={{ width: "6.5em" }}></img>
           </div>
           <div className="d-flex" style={{ minWidth: "30%" }}>
             <div>
@@ -50,6 +50,10 @@ const Profile = () => {
         </div>
         <div>
           <div className="profile-text-3">About the Company</div>
+          <div className="d-flex my-3">
+            <div className="profile-text-1">Name: </div>{" "}
+            <div className="profile-text-2">{company[0].name}</div>
+          </div>
           <div className="d-flex my-3">
             <div className="profile-text-1">Sector: </div>{" "}
             <div className="profile-text-2">{company[0].sectorData}</div>
