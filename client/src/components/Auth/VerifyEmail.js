@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 // import { useNavigate } from 'react-router-dom';
-import { sendConfirmationLink } from "../../api";
-import { FaEnvelope } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { sendConfirmationLink } from '../../api';
+import { FaEnvelope } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import "./styles.css";
+import './styles.css';
 
 const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
   // const Navigate = useNavigate();
   const notify = () =>
-    toast.success("Verification link sent to Email", {
-      position: "top-right",
+    toast.success('Verification link sent to Email', {
+      position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -22,11 +22,11 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
 
   const handleSendLink = async (e) => {
     e.preventDefault();
-    notify();
     try {
       await sendConfirmationLink(email);
       setIsSignIn(true);
-      setPage("auth");
+      notify();
+      setPage('auth');
     } catch (error) {
       console.log(error);
     }
@@ -34,43 +34,43 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
 
   return (
     <>
-      <div className="w3layouts-main">
-        <div className="bg-layer">
-          <h1 className="h1-home">CDC Placement Portal</h1>
-          <div className="verifyEmail mt-4">
-            <div className="verify_container">
-              <div className="verify-header ">
-                <div className="d-flex justify-content-center">
-                  <div className="verifyline align-self-center mx-3"></div>
-                  <FaEnvelope style={{ fontSize: "3em" }} />
-                  <div className="verifyline align-self-center mx-3"></div>
+      <div className='w3layouts-main'>
+        <div className='bg-layer'>
+          <h1 className='h1-home'>CDC Placement Portal</h1>
+          <div className='verifyEmail mt-4'>
+            <div className='verify_container'>
+              <div className='verify-header '>
+                <div className='d-flex justify-content-center'>
+                  <div className='verifyline align-self-center mx-3'></div>
+                  <FaEnvelope style={{ fontSize: '3em' }} />
+                  <div className='verifyline align-self-center mx-3'></div>
                 </div>
-                <div className="verify-thanks text-center my-3">
+                <div className='verify-thanks text-center my-3'>
                   THANKS FOR SIGNING UP!
                 </div>
-                <div className="text-center verify-email">
+                <div className='text-center verify-email'>
                   Verify your Email Address
                 </div>
               </div>
-              <div className="d-flex justify-content-center mt-4 verify-text-1">
-                Hi,{" "}
+              <div className='d-flex justify-content-center mt-4 verify-text-1'>
+                Hi,{' '}
               </div>
-              <div className="text-center verify-text-2">
+              <div className='text-center verify-text-2'>
                 You are almost ready to get started. Your E-mail id has not yet
                 been verified. Please, click on the button below to verify your
-                email address. A link would be sent to the email id -{" "}
+                email address. A link would be sent to the email id -{' '}
                 {email && email}
                 linked with your account
               </div>
-              <div className="d-flex justify-content-center">
+              <div className='d-flex justify-content-center'>
                 <button
-                  className="verify-link-button "
+                  className='verify-link-button '
                   onClick={handleSendLink}
                 >
                   Send Verification Link
                 </button>
                 <ToastContainer
-                  position="top-right"
+                  position='top-right'
                   autoClose={5000}
                   hideProgressBar={false}
                   newestOnTop={false}
@@ -81,11 +81,11 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
                   pauseOnHover
                 />
               </div>
-              <div className="d-flex justify-content-center mt-3 verify-text-3">
-                {" "}
+              <div className='d-flex justify-content-center mt-3 verify-text-3'>
+                {' '}
                 Thanks,
               </div>
-              <div className="d-flex justify-content-center verify-text-3">
+              <div className='d-flex justify-content-center verify-text-3'>
                 CDC, IIT(ISM) Dhanbad
               </div>
               {/* <h3>Your Email has not yet been verified.</h3>
