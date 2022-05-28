@@ -106,7 +106,7 @@ const AllJnf = () => {
                   className="badge"
                   style={{ backgroundColor: !job.isIntern && "#7f2020" }}
                 >
-                  <h6>{job.isIntern ? "Intern" : "FTE"}</h6>
+                  <h6>{job.isIntern ? "Intern" : "JOB"}</h6>
                 </div>
                 <div className="card_content">
                   <div className="content_heading">

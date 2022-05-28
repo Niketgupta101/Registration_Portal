@@ -26,8 +26,8 @@
   max-width: 100%;
   height: 100%;
   object-fit: cover;
-  padding: 20px;
-  filter: brightness(80%);
+  padding: 5px;
+  filter: brightness(100%);
   /* box-shadow: 5px 5px #3e4555; */
 }
 
@@ -72,4 +72,17 @@
   background: -webkit-linear-gradient(left, #ff6a5b 0%, #ff4d7e 100%);
   background: -o-linear-gradient(left, #ff6a5b 0%, #ff4d7e 100%);
   background: linear-gradient(to right, #ff6a5b 0%, #ff4d7e 100%);
+}
+@media (max-width: 600px) {
+  .contactUs-mainbox {
+    padding: 2% 2%;
+  }
+  .contactUs-mainbox .submit-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .contact-box {
+    margin: 10px 20px;
+  }
 }
