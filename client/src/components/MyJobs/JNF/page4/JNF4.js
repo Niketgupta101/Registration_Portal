@@ -410,15 +410,21 @@ const JNF4 = ({
                   defaultValue="female"
                   name="radio-buttons-group"
                 >
-                  {dates.map((date) => (
-                    <FormControlLabel
+                 {
+                  dates.map((date)=>(
+                    <div className="optionPriority">
+                    <input
                       value={date}
-                      control={<Radio />}
-                      label={date}
+                      type="radio"                      
                       name="Priority1"
                       onChange={handlePriorityDataChange}
-                    />
-                  ))}
+                      required
+                  
+                    />{date}
+                    </div>
+
+                  ))
+                }
                 </RadioGroup>
               </FormControl>
             </div>
@@ -434,15 +440,21 @@ const JNF4 = ({
                   defaultValue="female"
                   name="radio-buttons-group"
                 >
-                  {dates.map((date) => (
-                    <FormControlLabel
+                  {
+                  dates.map((date)=>(
+                    <div className="optionPriority">
+                    <input
                       value={date}
-                      control={<Radio />}
-                      label={date}
+                      type="radio"                      
                       name="Priority2"
                       onChange={handlePriorityDataChange}
-                    />
-                  ))}
+                      required
+                    />{date}
+                    </div>
+
+                  ))
+                }
+                  
                   {console.log("pp=", priorityFormData)}
                 </RadioGroup>
               </FormControl>

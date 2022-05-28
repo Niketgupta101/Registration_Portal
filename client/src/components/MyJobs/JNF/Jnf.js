@@ -319,17 +319,17 @@ const Jnf = () => {
       Case_Study: false,
       Interview: false,
     });
-  const priorityData = {
-    Priority1: '',
-    Priority2: '',
-  };
-  const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
-  const handlePriorityDataChange = (e) => {
-    setPriorityFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
-  };
+    const priorityData = {
+      Priority1: "",
+      Priority2: "",
+    };
+    const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
+    const handlePriorityDataChange = (e) => {
+      setPriorityFormData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.value,
+      }));
+    };
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {

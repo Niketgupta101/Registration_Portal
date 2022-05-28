@@ -295,16 +295,24 @@ const INF4 = ({
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="female"
                   name="radio-buttons-group"
-                >
-                  {dates.map((date) => (
-                    <FormControlLabel
+                >{
+                  dates.map((date)=>(
+                    <div className="optionPriority">
+                    <input
                       value={date}
-                      control={<Radio />}
-                      label={date}
+                      type="radio"                      
                       name="Priority1"
                       onChange={handlePriorityDataChange}
-                    />
-                  ))}
+                      required
+                      className="radioOption"
+                    />{date}
+                    </div>
+
+                  ))
+                }
+                
+                  
+                 
                 </RadioGroup>
               </FormControl>
             </div>
@@ -319,16 +327,21 @@ const INF4 = ({
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="female"
                   name="radio-buttons-group"
-                >
-                  {dates.map((date) => (
-                    <FormControlLabel
+                >{
+                  dates.map((date)=>(
+                    <div className="optionPriority">
+                    <input
                       value={date}
-                      control={<Radio />}
-                      label={date}
+                      type="radio"                      
                       name="Priority2"
                       onChange={handlePriorityDataChange}
-                    />
-                  ))}
+                      required
+                    />{date}
+                    </div>
+
+                  ))
+                }
+               
                   {/* {console.log("pp=", priorityFormData)} */}
                 </RadioGroup>
               </FormControl>
@@ -343,6 +356,7 @@ const INF4 = ({
             Back
           </button>
           <button className="submit_btn" type="submit">
+            
             Review and Submit
           </button>
         </div>

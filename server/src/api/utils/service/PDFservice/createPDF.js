@@ -131,7 +131,9 @@ exports.fillINFDoc = async (inf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-
+  let Category =inf.Company_Overview.Category;
+  let Sector = inf.Company_Overview.Sector;
+  
   let fourYear = inf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
     inf.Eligible_Courses_And_Disciplines
@@ -284,6 +286,8 @@ exports.fillINFDoc = async (inf) => {
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
     Priority_One: priority_Details.Priority1,
     Priority_Two: priority_Details.Priority2,
+    Sector : Sector,
+    Category : Category
   };
   console.log({ selectionProcedure });
   doc.render({
@@ -373,7 +377,8 @@ exports.fillJNFDoc = async (jnf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-
+  let Category =jnf.Company_Overview.Category;
+  let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
     jnf.Eligible_Courses_And_Disciplines
@@ -525,6 +530,8 @@ exports.fillJNFDoc = async (jnf) => {
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
     Priority_One: priority_Details.Priority1,
     Priority_Two: priority_Details.Priority2,
+    Sector : Sector,
+    Category : Category
   };
   doc.render({
     ...jnf.Company_Overview,

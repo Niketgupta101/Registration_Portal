@@ -123,7 +123,7 @@ const createInf = async (loggedUserId, details, next) => {
 
 const saveInfById = async (id, details, next) => {
   try {
-    console.log({ result: details.Selection_Procedure });
+    console.log({ result: details.Selection_Procedure },details);
     let infStatus = await INFstatus.findOne({ data: id });
 
     if (!infStatus)
@@ -156,6 +156,7 @@ const submitInfById = async (id, next) => {
     let infStatus = await INFstatus.findOne({ data: id });
 
     infStatus.set({ progress: 'submitted' });
+    console.log("inf is " , inf);
 
     await infStatus.save();
     await fillINFDoc(inf);
