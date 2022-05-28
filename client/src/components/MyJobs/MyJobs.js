@@ -23,7 +23,7 @@ import { Pagination } from "@mui/material";
 const MyJobs = () => {
   const [IsLoading, setIsLoading] = useState(false);
 
-  const [Filter, setFilter] = useState("All Jobs");
+  const [Filter, setFilter] = useState("All Forms");
   const Navigate = useNavigate();
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
