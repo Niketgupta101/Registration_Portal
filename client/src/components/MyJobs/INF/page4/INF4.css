@@ -71,6 +71,11 @@ tr{
     font-size: 16px !important;
     margin: 0 !important;
 }
+.optionPriority{
+    font-size: larger;
+    padding: 1rem;
+}
+
 
 
 @media(max-width: 600px){

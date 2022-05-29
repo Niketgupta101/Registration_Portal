@@ -1,41 +1,45 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const jnfSchema = new Schema(
   {
-    userId: { type: Schema.ObjectId, ref: "User" },
+    userId: { type: Schema.ObjectId, ref: 'User' },
     Company_Overview: {
-      Name_Of_The_Company: { type: String, default: "" },
-      Category_Or_Sector: { type: String, default: "" },
-      Category: { type: String, default: "" },
-      Sector: { type: String, default: "" },
-      About: { type: String, default: "" },
-      Website: { type: String, default: "" },
+      Name_Of_The_Company: { type: String, default: '' },
+      Category_Or_Sector: { type: String, default: '' },
+      Category: { type: String, default: '' },
+      Sector: { type: String, default: '' },
+      About: { type: String, default: '' },
+      Website: { type: String, default: '' },
     },
     Job_Details: {
-      Job_Designation: { type: String, default: "" },
-      Place_Of_Posting: { type: String, default: "" },
+      Job_Designation: { type: String, default: '' },
+      Place_Of_Posting: { type: String, default: '' },
       Job_Description: {
         type: String,
-        default: "",
+        default: '',
       },
     },
     Salary_Details: {
-      CTC: { type: String, default: "" },
-      CTC_Breakup: { type: String, default: "" },
-      Bond_Details: { type: String, default: "" },
+      CTC: { type: String, default: '' },
+      CTC_Breakup: { type: String, default: '' },
+      Bond_Details: { type: String, default: '' },
     },
     HR_Details: {
       Primary_Hr: {
-        name: { type: String, default: "" },
-        email: { type: String, default: "" },
-        mobile: { type: Number, default: "" },
+        name: { type: String, default: '' },
+        email: { type: String, default: '' },
+        mobile: { type: String, default: '' },
       },
       Alternate_Hr: {
-        name: { type: String, default: "" },
-        email: { type: String, default: "" },
-        mobile: { type: Number, default: "" },
+        name: { type: String, default: '' },
+        email: { type: String, default: '' },
+        mobile: { type: String, default: '' },
       },
+    },
+    Priority_Details: {
+      Priority1: { type: String, default: "" },
+      Priority2: { type: String, default: "" },
     },
     Eligible_Courses_And_Disciplines: {
       Four_Year_Btech_Programs: {
@@ -146,14 +150,19 @@ const jnfSchema = new Schema(
         Case_Study: { type: Boolean, default: false },
         Interview: { type: Boolean, default: false },
       },
-      Total_Number_Of_Rounds: { type: String, default: "" },
-      Number_Of_Offers: { type: String, default: "" },
-      Eligibility_Criteria: { type: String, default: "" },
+      Total_Number_Of_Rounds: { type: String, default: '' },
+      Number_Of_Offers: { type: String, default: '' },
+      Eligibility_Criteria: { type: String, default: '' },
+    },
+    Priority_Details: {
+      Priority1: { type: String, default: "" },
+      Priority2: { type: String, default: "" },
     },
     previewLink: String,
     downloadLink: String,
     studentPreview: String,
     studentDownload: String,
+    status: { type: String, default: 'incomplete' },
     isIntern: { type: Boolean, default: false },
     isJob: { type: Boolean, default: true },
   },
@@ -164,11 +173,11 @@ const jnfSchema = new Schema(
 
 const JNFstatusSchema = new Schema(
   {
-    userId: { type: Schema.ObjectId, ref: "User" },
-    data: { type: Schema.ObjectId, ref: "JNF" },
+    userId: { type: Schema.ObjectId, ref: 'User' },
+    data: { type: Schema.ObjectId, ref: 'JNF' },
     progress: {
       type: String,
-      default: "incomplete",
+      default: 'incomplete',
     },
   },
   {
@@ -176,7 +185,7 @@ const JNFstatusSchema = new Schema(
   }
 );
 
-const JNF = mongoose.model("JNF", jnfSchema);
-const JNFstatus = mongoose.model("JNFstatus", JNFstatusSchema);
+const JNF = mongoose.model('JNF', jnfSchema);
+const JNFstatus = mongoose.model('JNFstatus', JNFstatusSchema);
 
 module.exports = { JNF, JNFstatus };

@@ -10,6 +10,116 @@ const {
 } = require('./upload');
 const { sendMailWithAttachment } = require('../email');
 
+const { INF } = require('../../../models/INF');
+const { JNF } = require('../../../models/JNF');
+const { convert_client_id } = require('../../../../config/vars');
+
+const createStudentInfPdf = async (data, id) => {
+  const student = fs.readFileSync(
+    path.resolve(__dirname, 'INFstudent.docx'),
+    'binary'
+  );
+
+  const studentZip = new PizZip(student);
+
+  const studentDoc = new Docxtemplater(studentZip, {
+    paragraphLoop: true,
+    linebreaks: true,
+  });
+
+  studentDoc.render({ ...data });
+
+  const studentBuf = studentDoc.getZip().generate({
+    type: 'nodebuffer',
+    compression: 'DEFLATE',
+  });
+
+  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
+
+  var convertapi = require('convertapi')(convert_client_id);
+
+  let studentResult = await convertapi.convert(
+    'pdf',
+    {
+      File: path.resolve(__dirname, 'studentOutput.docx'),
+    },
+    'docx'
+  );
+
+  await studentResult.saveFiles(__dirname);
+
+  let studentResponse = await uploadFile(
+    path.resolve(__dirname, 'studentOutput.pdf'),
+    'INF',
+    'students'
+  );
+
+  let resPrev = await generatePreviewUrl(studentResponse.data.id);
+  let resDown = await generateDownloadUrl(studentResponse.data.id);
+
+  let inf = await INF.findOne({ _id: id });
+
+  inf.set({
+    studentPreview: resPrev.previewLink,
+    studentDownload: resDown.downloadLink,
+  });
+
+  await inf.save();
+};
+
+const createStudentJnfPdf = async (data, id) => {
+  const student = fs.readFileSync(
+    path.resolve(__dirname, 'JNFstudent.docx'),
+    'binary'
+  );
+
+  const studentZip = new PizZip(student);
+
+  const studentDoc = new Docxtemplater(studentZip, {
+    paragraphLoop: true,
+    linebreaks: true,
+  });
+
+  studentDoc.render({ ...data });
+
+  const studentBuf = studentDoc.getZip().generate({
+    type: 'nodebuffer',
+    compression: 'DEFLATE',
+  });
+
+  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
+
+  var convertapi = require('convertapi')(convert_client_id);
+
+  let studentResult = await convertapi.convert(
+    'pdf',
+    {
+      File: path.resolve(__dirname, 'studentOutput.docx'),
+    },
+    'docx'
+  );
+
+  await studentResult.saveFiles(__dirname);
+
+  let studentResponse = await uploadFile(
+    path.resolve(__dirname, 'studentOutput.pdf'),
+    'JNF',
+    'students'
+  );
+
+  let resPrev = await generatePreviewUrl(studentResponse.data.id);
+  let resDown = await generateDownloadUrl(studentResponse.data.id);
+
+  let jnf = await JNF.findOne({ _id: id });
+
+  jnf.set({
+    studentPreview: resPrev.previewLink,
+    studentDownload: resDown.downloadLink,
+  });
+
+  await jnf.save();
+};
+
 exports.fillINFDoc = async (inf) => {
   const content = fs.readFileSync(
     path.resolve(__dirname, 'INF.docx'),
@@ -22,18 +132,8 @@ exports.fillINFDoc = async (inf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-
-  const student = fs.readFileSync(
-    path.resolve(__dirname, 'INFstudent.docx'),
-    'binary'
-  );
-
-  const studentZip = new PizZip(student);
-
-  const studentDoc = new Docxtemplater(studentZip, {
-    paragraphLoop: true,
-    linebreaks: true,
-  });
+  let Category = inf.Company_Overview.Category;
+  let Sector = inf.Company_Overview.Sector;
 
   let fourYear = inf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
@@ -47,7 +147,9 @@ exports.fillINFDoc = async (inf) => {
   let twoYearMba = inf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = inf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = inf.Selection_Procedure;
-  let hR_Details=inf.HR_Details;
+  let hR_Details = inf.HR_Details;
+  let priority_Details = inf.Priority_Details;
+  console.log(priority_Details);
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -177,12 +279,16 @@ exports.fillINFDoc = async (inf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria:
       selectionProcedure.Eligibility_Criteria,
-    Primary_Hr_Name : hR_Details.Primary_Hr.name,
-    Primary_Hr_Email : hR_Details.Primary_Hr.email,
-    Primary_Hr_Mobile : hR_Details.Primary_Hr.mobile,
-    Secondary_Hr_Name:hR_Details.Alternate_Hr.name,
-    Secondary_Hr_Email : hR_Details.Alternate_Hr.email,
-    Secondary_Hr_Mobile : hR_Details.Alternate_Hr.mobile,
+    Primary_Hr_Name: hR_Details.Primary_Hr.name,
+    Primary_Hr_Email: hR_Details.Primary_Hr.email,
+    Primary_Hr_Mobile: hR_Details.Primary_Hr.mobile,
+    Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
+    Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
+    Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
+    Priority_One: priority_Details.Priority1,
+    Priority_Two: priority_Details.Priority2,
+    Sector: Sector,
+    Category: Category,
   };
   console.log({ selectionProcedure });
   doc.render({
@@ -190,12 +296,7 @@ exports.fillINFDoc = async (inf) => {
     ...inf.Intern_Profile,
     ...inf.Salary_Details,
     ...inf.hR_Details,
-    ...data,
-  });
-  studentDoc.render({
-    ...inf.Company_Overview,
-    ...inf.Intern_Profile,
-    ...inf.Salary_Details,
+    ...inf.priority_Details,
     ...data,
   });
 
@@ -204,15 +305,9 @@ exports.fillINFDoc = async (inf) => {
     compression: 'DEFLATE',
   });
 
-  const studentBuf = studentDoc.getZip().generate({
-    type: 'nodebuffer',
-    compression: 'DEFLATE',
-  });
-
   fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
-  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
 
-  var convertapi = require('convertapi')('qrIqxick6zL34d5B');
+  var convertapi = require('convertapi')(convert_client_id);
   let result = await convertapi.convert(
     'pdf',
     {
@@ -221,33 +316,20 @@ exports.fillINFDoc = async (inf) => {
     'docx'
   );
 
-  let studentResult = await convertapi.convert(
-    'pdf',
-    {
-      File: path.resolve(__dirname, 'studentOutput.docx'),
-    },
-    'docx'
-  );
-
   await result.saveFiles(__dirname);
-  await studentResult.saveFiles(__dirname);
 
-  let response = await uploadFile(path.resolve(__dirname, 'output.pdf'));
-  let studentResponse = await uploadFile(
-    path.resolve(__dirname, 'studentOutput.pdf')
+  let response = await uploadFile(
+    path.resolve(__dirname, 'output.pdf'),
+    'INF',
+    'admin'
   );
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  let resPrev = await generatePreviewUrl(studentResponse.data.id);
-  let resDown = await generateDownloadUrl(studentResponse.data.id);
-
   inf.set({
     previewLink,
     downloadLink,
-    studentPreview: resPrev.previewLink,
-    studentDownload: resDown.downloadLink,
     status: 'complete',
   });
   await inf.save();
@@ -255,23 +337,33 @@ exports.fillINFDoc = async (inf) => {
   sendMailWithAttachment(
     'niketgupta101@gmail.com',
     'Job form notification',
-    '<h5>Company has successfully filled a vacancy form</h5>',
+    AttachmentMailHtml(),
     inf.previewLink
   );
   sendMailWithAttachment(
     inf.HR_Details.Primary_Hr.email,
-    'Job form notification',
-    '<h5>Company has successfully filled a vacancy form</h5>',
+    'Thank you for filling the notification form!',
+    AttachmentMailHtml(),
     inf.previewLink
   );
   if (inf.HR_Details.Alternate_Hr.email !== '') {
     sendMailWithAttachment(
       inf.HR_Details.Alternate_Hr.email,
-      'Job form notification',
-      '<h5>Company has successfully filled a vacancy form</h5>',
+      'Thank you for filling the notification form!',
+      AttachmentMailHtml(),
       inf.previewLink
     );
   }
+
+  createStudentInfPdf(
+    {
+      ...inf.Company_Overview,
+      ...inf.Intern_Profile,
+      ...inf.Salary_Details,
+      ...data,
+    },
+    inf._id
+  );
 };
 
 exports.fillJNFDoc = async (jnf) => {
@@ -286,19 +378,8 @@ exports.fillJNFDoc = async (jnf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-  
-  const student = fs.readFileSync(
-    path.resolve(__dirname, 'JNFstudent.docx'),
-    'binary'
-  );
-
-  const studentZip = new PizZip(student);
-
-  const studentDoc = new Docxtemplater(studentZip, {
-    paragraphLoop: true,
-    linebreaks: true,
-  });
-
+  let Category = jnf.Company_Overview.Category;
+  let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
     jnf.Eligible_Courses_And_Disciplines
@@ -311,7 +392,8 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMba = jnf.Eligible_Courses_And_Disciplines.Two_Year_MBA_Programs;
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
-  let hR_Details=inf.HR_Details;
+  let hR_Details = jnf.HR_Details;
+  let priority_Details = jnf.Priority_Details;
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -406,8 +488,9 @@ exports.fillJNFDoc = async (jnf) => {
     Two_Year_Mba_Operations: twoYearMba.Operations ? 'Yes' : 'No',
     Two_Year_Msc_Select_All: twoYearMsc.Select_All ? 'Yes' : 'No',
     Two_Year_Msc_Chemistry: twoYearMsc.Chemistry ? 'Yes' : 'No',
-    Two_Year_Msc_Mathematics_and_Computing:
-      twoYearMsc.Mathematics_and_Computing ? 'Yes' : 'No',
+    Two_Year_Msc_Mathematics_and_Computing: twoYearMsc.Mathematics_and_Computing
+      ? 'Yes'
+      : 'No',
     Two_Year_Msc_Physics: twoYearMsc.Physics ? 'Yes' : 'No',
     Selection_Procedure_Resume_Shortlisting:
       selectionProcedure.Resume_Shortlisting ? 'Yes' : 'No',
@@ -440,40 +523,34 @@ exports.fillJNFDoc = async (jnf) => {
     Selection_Procedure_Number_Of_Offers: selectionProcedure.Number_Of_Offers,
     Selection_Procedure_Eligibility_Criteria:
       selectionProcedure.Eligibility_Criteria,
-      Primary_Hr_Name : hR_Details.Primary_Hr.name,
-      Primary_Hr_Email : hR_Details.Primary_Hr.email,
-      Primary_Hr_Mobile : hR_Details.Primary_Hr.mobile,
-      Secondary_Hr_Name:hR_Details.Alternate_Hr.name,
-      Secondary_Hr_Email : hR_Details.Alternate_Hr.email,
-      Secondary_Hr_Mobile : hR_Details.Alternate_Hr.mobile,
+    Primary_Hr_Name: hR_Details.Primary_Hr.name,
+    Primary_Hr_Email: hR_Details.Primary_Hr.email,
+    Primary_Hr_Mobile: hR_Details.Primary_Hr.mobile,
+    Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
+    Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
+    Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
+    Priority_One: priority_Details.Priority1,
+    Priority_Two: priority_Details.Priority2,
+    Sector: Sector,
+    Category: Category,
   };
-
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,
     ...jnf.Salary_Details,
     ...jnf.HR_Details,
+    ...jnf.Priority_Details,
     ...data,
   });
-  studentDoc.render({
-    ...jnf.Company_Overview,
-    ...jnf.Job_Details,
-    ...jnf.Salary_Details,
-    ...data,
-  });
+
   const buf = doc.getZip().generate({
-    type: 'nodebuffer',
-    compression: 'DEFLATE',
-  });
-  const studentBuf = studentDoc.getZip().generate({
     type: 'nodebuffer',
     compression: 'DEFLATE',
   });
 
   fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
-  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
 
-  var convertapi = require('convertapi')('qrIqxick6zL34d5B');
+  var convertapi = require('convertapi')(convert_client_id);
   let result = await convertapi.convert(
     'pdf',
     {
@@ -482,51 +559,176 @@ exports.fillJNFDoc = async (jnf) => {
     'docx'
   );
 
-  let studentResult = await convertapi.convert(
-    'pdf',
-    {
-      File: path.resolve(__dirname, 'studentOutput.docx'),
-    },
-    'docx'
-  );
-
   await result.saveFiles(path.resolve(__dirname));
-  await studentResult.saveFiles(__dirname);
+  console.log('line 558');
 
-  let response = await uploadFile(path.resolve(__dirname, 'output.pdf'));
-  let studentResponse = await uploadFile(
-    path.resolve(__dirname, 'studentOutput.pdf')
+  let response = await uploadFile(
+    path.resolve(__dirname, 'output.pdf'),
+    'JNF',
+    'admin'
   );
-
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  let resPrev = await generatePreviewUrl(studentResponse.data.id);
-  let resDown = await generateDownloadUrl(studentResponse.data.id);
-
-  jnf.set({ previewLink, downloadLink,studentPreview: resPrev.previewLink,
-    studentDownload: resDown.downloadLink, });
+  jnf.set({
+    previewLink,
+    downloadLink,
+    status: 'complete',
+  });
   await jnf.save();
 
   sendMailWithAttachment(
     'niketgupta101@gmail.com',
     'Job form notification',
-    '<h5>Company has successfully filled a vacancy form</h5>',
+    AttachmentMailHtml(),
     jnf.previewLink
   );
   sendMailWithAttachment(
     jnf.HR_Details.Primary_Hr.email,
-    'Job form notification',
-    '<h5>Company has successfully filled a vacancy form</h5>',
+    'Thank you for filling the notification form!',
+    AttachmentMailHtml(),
     jnf.previewLink
   );
   if (jnf.HR_Details.Alternate_Hr.email !== '') {
     sendMailWithAttachment(
       jnf.HR_Details.Alternate_Hr.email,
-      'Job form notification',
-      '<h5>Company has successfully filled a vacancy form</h5>',
+      'Thank you for filling the notification form!',
+      AttachmentMailHtml(),
       jnf.previewLink
     );
   }
+
+  createStudentJnfPdf(
+    {
+      ...jnf.Company_Overview,
+      ...jnf.Job_Details,
+      ...jnf.Salary_Details,
+      ...data,
+    },
+    jnf._id
+  );
+};
+
+const AttachmentMailHtml = () => {
+  return `<div>
+  <div marginheight="0" topmargin="0" marginwidth="0" style="margin: 0px; background-color: #f2f3f8" leftmargin="0">
+    <!--100% body table-->
+    <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8" style="
+            @import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700);
+            font-family: 'Open Sans', sans-serif;
+          ">
+      <tr>
+        <td>
+          <table style="
+                  background-color: #f2f3f8;
+                  max-width: 670px;
+                  margin: 0 auto;
+                " width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="height: 80px">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="height: 20px">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" style="
+                        max-width: 670px;
+                        background: #fff;
+                        border-radius: 3px;
+                        text-align: center;
+                        -webkit-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                        -moz-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                        box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                      ">
+                  <tr>
+                    <td style="height: 40px">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0 35px">
+                      <div>
+                        <h1 style="
+                                color: #1e1e2d;
+                                font-weight: 500;
+                                margin: 10px 0;
+                                font-size: 30px;
+                                font-family: 'Rubik', sans-serif;
+                                letter-spacing: 2px;
+                              ">
+                          Thank you for filling the notification form!
+                        </h1>
+                      </div>
+
+                      <span style="
+                              display: inline-block;
+                              vertical-align: middle;
+                              margin: 29px 0 26px;
+                              border-bottom: 1px solid #cecece;
+                              width: 100px;
+                            "></span>
+                      <p style="
+                              color: #455056;
+                              font-size: 15px;
+                              line-height: 24px;
+                              margin: 0;
+                            ">
+                        This automatic reply is just to let you know that we have received your response.
+                        Attached below is the copy of your responses. For queries kindly email the Career and Develpment
+                        Cell of IIT(ISM) Dhanbad at
+                        <span style="color:blue; cursor:pointer;">cdc@iitism.ac.in</span>
+                      </p>
+                      <p>
+                      <div style="
+                          color: #455056;
+                          font-size: 13px;
+                          line-height: 24px;
+                          font-weight: 500;
+                          margin: 30px 0 0 0;
+                          letter-spacing: 1px;
+                        ">Thanks</div>
+                      <div style="
+                        color: #455056;
+                        font-size: 13px;
+                        line-height: 24px;
+                        font-weight: 500;
+                        margin: 0px 0 20px 0;
+                        letter-spacing: 1px;
+                      ">CDC, IIT(ISM) Dhanbad</div>
+                      </p>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px">&nbsp;</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="height: 20px">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <p style="
+                        font-size: 14px;
+                        color: rgba(69, 80, 86, 0.7411764705882353);
+                        line-height: 18px;
+                        margin: 0 0 0;
+                      ">
+                  <a target="_blank" href="https://cdc.iitism.ac.in/"><strong>https://cdc.iitism.ac.in/</strong></a>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 80px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <!--/100% body table-->
+  </div>
+</div>`;
 };

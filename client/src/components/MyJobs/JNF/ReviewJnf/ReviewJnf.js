@@ -415,7 +415,9 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
               </td>
             </tr>
             <tr>
-              <td className="courseName">Computer Science and Engineering</td>
+              <td className="courseName">
+                Computer Science and Engineering (Dual Degree)
+              </td>
               <td className="courseCheckBox5year">
                 <input
                   name="Computer_Science_and_Engineering"
@@ -1263,6 +1265,28 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             </h1>
           </Col>
         </FormGroup>
+        <div>
+          <header className="headerText">
+            Tentative dates for test and interviews:
+          </header>
+        </div>
+        <FormGroup row style={style}>
+          <Label for="exampleSelect" sm={3} className="fontText">
+            Priority 1
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">{JnfData.Priority_Details.Priority1}</h1>
+          </Col>
+        </FormGroup>
+        <FormGroup row style={style}>
+          <Label for="exampleSelect" sm={3} className="fontText">
+            Priority 2
+          </Label>
+          <Col sm={9}>
+            <h1 className="inputText">{JnfData.Priority_Details.Priority2}</h1>
+          </Col>
+        </FormGroup>
+
         <div
           className="formFlex"
           style={{

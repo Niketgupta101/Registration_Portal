@@ -164,7 +164,7 @@ export const deleteContactById = (id) => API.delete(`contact/${id}`);
 
 // ------------------------ Jobs ------------------------------------
 
-export const getAllJobs = () => API.get('/jobs/all');
+export const getAllJobs = () => API.get('/jobs/all/1/12');
 
 export const getAllJobsForUser = (pageNo) =>
   API.get(`/jobs/user/all/${pageNo}/12`);
@@ -191,7 +191,7 @@ export const searchCompanyByPattern = (pattern) =>
 export const searchInfByPattern = (pattern) =>
   API.get(`/inf/search/${pattern}/1/5`);
 
-  export const searchJnfByPattern = (pattern) =>
+export const searchJnfByPattern = (pattern) =>
   API.get(`/jnf/search/${pattern}/1/5`);
 
 // ------------------------ Courses ------------------------------------

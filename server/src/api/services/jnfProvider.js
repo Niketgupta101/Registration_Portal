@@ -11,7 +11,7 @@ const fetchJnfById = async (id, next) => {
 
     if (!jnf)
       return next(new ErrorResponse('No JNF found with given id.', 404));
- 
+
     return { success: true, jnf };
   } catch (error) {
     return next(error);
@@ -46,8 +46,7 @@ const fetchLatestJnfOfUser = async (loggedUserId, next) => {
 
 const fetchAllJnf = async (offset, pagelimit, next) => {
   try {
-    let jnfList = await JNFstatus.find({ progress: 'submitted' })
-      .populate('data')
+    let jnfList = await JNF.find({ status: 'complete' })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
@@ -61,18 +60,35 @@ const fetchAllJnf = async (offset, pagelimit, next) => {
 const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
-    let jnfList = await JNFstatus.find({ progress: 'submitted' })
-      .populate('data')
-      .find({
-        'data.Company_Overview.Name_Of_The_Company': {
-          $regex: pattern,
-          $options: 'im',
+    let jnfList = await JNF.find({
+      $or: [
+        {
+          'Company_Overview.Name_Of_The_Company': {
+            $regex: pattern,
+            $options: 'im',
+          },
+          status: 'complete',
         },
-      })
+        {
+          'Company_Overview.Category': {
+            $regex: pattern,
+            $options: 'im',
+          },
+          status: 'complete',
+        },
+        {
+          'Company_Overview.Sector': {
+            $regex: pattern,
+            $options: 'im',
+          },
+          status: 'complete',
+        },
+      ],
+    })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
-    console.log({ jnfList });
+    // console.log({ jnfList });
     return { success: true, jobs: jnfList };
   } catch (error) {
     return next(error);
@@ -113,6 +129,7 @@ const saveJnfById = async (id, details, next) => {
 
     return { success: true, jnf };
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
@@ -126,7 +143,7 @@ const submitJnfById = async (id, next) => {
     let jnfStatus = await JNFstatus.findOne({ data: id });
 
     jnfStatus.set({ progress: 'submitted' });
-
+    console.log('here');
     await jnfStatus.save();
 
     await fillJNFDoc(jnf);
@@ -139,6 +156,7 @@ const submitJnfById = async (id, next) => {
 
     return { success: true, message: 'Submitted Successfully', jnf };
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
@@ -150,11 +168,12 @@ const removeJNFById = async (id, next) => {
     if (!jnf) return next(new ErrorResponse('No JNF found with given id', 404));
 
     await jnf.remove();
-    let jnfStatus = await JNFstatus.find({ data: id });
+    let jnfStatus = await JNFstatus.findOne({ data: id });
     await jnfStatus.remove();
 
     return { success: true, jnf };
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };

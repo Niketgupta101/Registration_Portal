@@ -1,0 +1,21 @@
+{
+  "name": "registration_portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && npm install && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niketgupta101/Registration_Portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niketgupta101/Registration_Portal/issues"
+  },
+  "homepage": "https://github.com/Niketgupta101/Registration_Portal#readme"
+}

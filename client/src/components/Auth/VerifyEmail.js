@@ -22,10 +22,10 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
 
   const handleSendLink = async (e) => {
     e.preventDefault();
-    notify();
     try {
       await sendConfirmationLink(email);
       setIsSignIn(true);
+      notify();
       setPage("auth");
     } catch (error) {
       console.log(error);
@@ -57,17 +57,17 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
               </div>
               <div className="text-center verify-text-2">
                 You are almost ready to get started. Your E-mail id has not yet
-                been verified. Please, click on the button below to verify your
-                email address. A link would be sent to the email id -{" "}
-                {email && email}
-                linked with your account
+                been verified. A verification link has been sent to your
+                registered email id <b>{email && email}</b> linked with your
+                account. If you haven't recieved the email, kindly{" "}
+                <b>Click on the button Below to resend</b> the link.
               </div>
               <div className="d-flex justify-content-center">
                 <button
                   className="verify-link-button "
                   onClick={handleSendLink}
                 >
-                  Send Verification Link
+                  Resend Verification Link
                 </button>
                 <ToastContainer
                   position="top-right"

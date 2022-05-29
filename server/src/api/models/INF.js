@@ -35,12 +35,12 @@ const infSchema = new Schema(
       Primary_Hr: {
         name: { type: String, default: "" },
         email: { type: String, default: "" },
-        mobile: { type: Number, default: "" },
+        mobile: { type: String, default: "" },
       },
       Alternate_Hr: {
         name: { type: String, default: "" },
         email: { type: String, default: "" },
-        mobile: { type: Number, default: "" },
+        mobile: { type: String, default: "" },
       },
     },
     Eligible_Courses_And_Disciplines: {
@@ -155,6 +155,10 @@ const infSchema = new Schema(
       Total_Number_Of_Rounds: { type: String, default: "" },
       Number_Of_Offers: { type: String, default: "" },
       Eligibility_Criteria: { type: String, default: "" },
+    },
+    Priority_Details: {
+      Priority1: { type: String, default: "" },
+      Priority2: { type: String, default: "" },
     },
     previewLink: String,
     downloadLink: String,

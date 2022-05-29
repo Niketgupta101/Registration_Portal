@@ -1,57 +1,73 @@
-import { TabContext, TabPanel } from "@mui/lab";
-import React, { useEffect, useState } from "react";
-import { getInfById, submitInf, updateInfById } from "../../../api";
-import { useNavigate, useParams } from "react-router-dom";
+import { TabContext, TabPanel } from '@mui/lab';
+import React, { useEffect, useState } from 'react';
+import { getInfById, submitInf, updateInfById } from '../../../api';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import INF1 from "./page1/INF1";
-import INF2 from "./page2/INF2";
-import INF4 from "./page4/INF4";
-import ReviewInf from "./ReviewInf/ReviewInf";
+import INF1 from './page1/INF1';
+import INF2 from './page2/INF2';
+import INF4 from './page4/INF4';
+import ReviewInf from './ReviewInf/ReviewInf';
 
-import "./styles.css";
-import Loading from "../../Loading/Loading";
+import './styles.css';
+import Loading from '../../Loading/Loading';
 
 const Inf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState('1');
   const Navigate = useNavigate();
 
   const { InfId } = useParams();
 
-  const company = JSON.parse(localStorage.getItem("company"));
+  let user = JSON.parse(localStorage.getItem('user'));
+  const company = JSON.parse(localStorage.getItem('company'));
+
+  useEffect(() => {
+    if (
+      !user ||
+      user.isemailVerified === false ||
+      !company ||
+      company.length === 0
+    ) {
+      Navigate('/auth');
+    }
+  }, [Navigate, user]);
+
   console.log(company);
 
-  const companyData = {
-    Name_Of_The_Company: company[0].name,
-    Category: company[0].categoryData,
-    Sector: company[0].sectorData,
-    About: company[0].about,
-    Category_Or_Sector: "",
-    Website: company[0].website,
-  };
+  let companyData;
+  if (company && company.length !== 0) {
+    companyData = {
+      Name_Of_The_Company: company[0]?.name,
+      Category_Or_Sector: '',
+      Category: company[0]?.categoryData,
+      Sector: company[0]?.sectorData,
+      About: company[0]?.about,
+      Website: company[0]?.website,
+    };
+  }
   const jobData = {
     Internship_Duration: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
-    Job_Designation: "",
-    Job_Description: "",
-    Mode_Of_Internship: "Virtual",
-    Place_Of_Posting: "",
+    Job_Designation: '',
+    Job_Description: '',
+    Mode_Of_Internship: 'Virtual',
+    Place_Of_Posting: '',
   };
   const stipendData = {
-    Salary_Per_Month: "",
-    Salary_Unit: "",
-    PPO_provision_on_performance_basis: "Yes",
-    CTC: "",
+    Salary_Per_Month: '',
+    Salary_Unit: '',
+    PPO_provision_on_performance_basis: 'Yes',
+    CTC: '',
   };
   const hrData = {
     Primary_Hr: {
-      name: "",
-      email: "",
-      mobile: "",
+      name: '',
+      email: '',
+      mobile: '',
     },
     Alternate_Hr: {
-      name: "",
-      email: "",
-      mobile: "",
+      name: '',
+      email: '',
+      mobile: '',
     },
   };
 
@@ -117,31 +133,33 @@ const Inf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== 'Select_All' && fourYearData.Select_All === true) {
+      setFourYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
       let newValue = !fourYearData[e.target.name];
-      // setFourYearData((prevData) => ({
-      //   ...prevData,
-      //   [e.target.name]: e.target.checked ? true : false,
-      // }));
       for (let i in fourYearData) {
         setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
-      // setFourYearData((prevData) => {
-      //   for (let i in prevData) {
-      //     prevData[i] = newValue;
-      //   }
-      //   return prevData;
-      // });
     } else {
       setFourYearData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
+    // console.log(fourYearData);
   };
   const handleFiveYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== 'Select_All' && fiveYearData.Select_All === true) {
+      setFiveYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
       let newValue = !fiveYearData[e.target.name];
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -153,6 +171,7 @@ const Inf = () => {
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
+    // console.log(fiveYearData);
   };
   const handleSkillChange = (e) => {
     setSkillData((prevData) => ({
@@ -162,7 +181,7 @@ const Inf = () => {
   };
 
   useEffect(() => {
-    console.log(fourYearData);
+    // console.log(fourYearData);
   }, [fourYearData]);
 
   // ------------------------------------------------------
@@ -207,7 +226,13 @@ const Inf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== 'Select_All' && threeYearData.Select_All === true) {
+      setThreeYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
       let newValue = !threeYearData[e.target.name];
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -222,7 +247,13 @@ const Inf = () => {
     //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== 'Select_All' && twoYearData.Select_All === true) {
+      setTwoYearData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
       let newValue = !twoYearData[e.target.name];
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -237,7 +268,13 @@ const Inf = () => {
     }
   };
   const handleTwoYearMbaChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== 'Select_All' && twoYearMbaData.Select_All === true) {
+      setTwoYearMbaData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
       let newValue = !twoYearMbaData[e.target.name];
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -252,7 +289,13 @@ const Inf = () => {
     //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
-    if (e.target.name === "Select_All") {
+    if (e.target.name !== 'Select_All' && twoYearMscData.Select_All === true) {
+      setTwoYearMscData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
       let newValue = !twoYearMscData[e.target.name];
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -269,9 +312,9 @@ const Inf = () => {
 
   // ------------------------------------------------------------
   const selectionData = {
-    Total_Number_Of_Rounds: "",
-    Number_Of_Offers: "",
-    Eligibility_Criteria: "",
+    Total_Number_Of_Rounds: '',
+    Number_Of_Offers: '',
+    Eligibility_Criteria: '',
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -289,12 +332,21 @@ const Inf = () => {
       Case_Study: false,
       Interview: false,
     });
+  const priorityData = {
+    Priority1: '',
+    Priority2: '',
+  };
+  const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
+  const handlePriorityDataChange = (e) => {
+    setPriorityFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value == 1) {
-      console.log(e.target.name, e.target.value);
       setResumeShortListingData((prevData) => ({
         Yes: false,
         No: true,
@@ -311,7 +363,6 @@ const Inf = () => {
       }));
     }
     if (e.target.value == 0) {
-      console.log(e.target.name, e.target.value);
       setResumeShortListingData((prevData) => ({
         Yes: true,
         No: false,
@@ -335,24 +386,24 @@ const Inf = () => {
       Both: false,
       None: false,
     };
-    console.log("original", temp);
+    // console.log("original", temp);
     switch (e.target.value) {
-      case "0":
+      case '0':
         temp.Technical = true;
         break;
-      case "1":
+      case '1':
         temp.Aptitude = true;
         break;
-      case "2":
+      case '2':
         temp.Both = true;
         break;
       default:
         temp.None = true;
         break;
     }
-    console.log("a switch", temp);
+    // console.log("a switch", temp);
     setTypeOfTestData(temp);
-    console.log("a setType", temp);
+    console.log('a setType', temp);
     setInfData((prevData) => ({
       ...prevData,
       Selection_Procedure: {
@@ -365,7 +416,7 @@ const Inf = () => {
         },
       },
     }));
-    console.log("a InfData", temp);
+    // console.log("a InfData", temp);
   };
   const handleOtherQualificationRoundsChange = (e) => {
     setOtherQualificationRoundsData((prevData) => ({
@@ -397,21 +448,13 @@ const Inf = () => {
     }));
   };
 
-  useEffect(() => {
-    //console.log({ data: InfData.Selection_Procedure });
-  }, [resumeShortListingData]);
+  useEffect(() => {}, [resumeShortListingData]);
 
-  useEffect(() => {
-    //console.log({ data: InfData.Selection_Procedure });
-  }, [typeOfTestData]);
+  useEffect(() => {}, [typeOfTestData]);
 
-  useEffect(() => {
-    //console.log({ data: InfData.Selection_Procedure });
-  }, [otherQualificationRoundsData]);
+  useEffect(() => {}, [otherQualificationRoundsData]);
 
-  useEffect(() => {
-    //console.log(selectionFormData);
-  }, [selectionFormData]);
+  useEffect(() => {}, [selectionFormData]);
 
   // --------------------------------------------------
 
@@ -428,6 +471,7 @@ const Inf = () => {
     setJobFormData({ ...response.data.inf.Intern_Profile });
     setStipendFormData({ ...response.data.inf.Salary_Details });
     setHrDetails({ ...response.data.inf.HR_Details });
+    setPriorityFormData({ ...response.data.inf.Priority_Details });
     setFourYearData({
       ...response.data.inf.Eligible_Courses_And_Disciplines
         .Four_Year_Btech_Programs,
@@ -497,8 +541,9 @@ const Inf = () => {
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
       },
+      Priority_Details: { ...priorityFormData },
     }));
-    //console.log(selectionFormData);
+    // console.log(selectionFormData);
     //console.log(InfData, InfId);
     try {
       setIsLoading(true);
@@ -522,7 +567,7 @@ const Inf = () => {
       let response = await submitInf(InfId);
       setIsLoading(false);
       //console.log(response);
-      Navigate("/myjobs");
+      Navigate('/myjobs');
     } catch (error) {
       //console.log(error);
     }
@@ -538,11 +583,12 @@ const Inf = () => {
 
   return (
     <>
-      <div className="INF">
+      <div className='INF'>
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}>
-          <TabPanel value="1">
+          style={{ padding: '0', margin: '0', boxSizing: 'border-box' }}
+        >
+          <TabPanel value='1'>
             <INF1
               setPage={setPage}
               companyFormData={companyFormData}
@@ -556,7 +602,7 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel>
-          <TabPanel value={"2"}>
+          <TabPanel value={'2'}>
             <INF2
               setPage={setPage}
               fourYearData={fourYearData}
@@ -590,7 +636,7 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel> */}
-          <TabPanel value={"3"}>
+          <TabPanel value={'3'}>
             <INF4
               setPage={setPage}
               resumeShortListingData={resumeShortListingData}
@@ -604,9 +650,11 @@ const Inf = () => {
               }
               handleSelectionDataChange={handleSelectionDataChange}
               handleUpdateInfById={handleUpdateInfById}
+              priorityFormData={priorityFormData}
+              handlePriorityDataChange={handlePriorityDataChange}
             />
           </TabPanel>
-          <TabPanel value={"4"}>
+          <TabPanel value={'4'}>
             <ReviewInf
               setPage={setPage}
               InfData={InfData}

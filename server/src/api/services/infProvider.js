@@ -3,7 +3,7 @@ const { INF, INFstatus } = require('../models/INF');
 const ErrorResponse = require('../utils/errorResponse');
 const { fillINFDoc } = require('../utils/service/PDFservice/createPDF');
 const { uploadFile } = require('../utils/service/PDFservice/upload');
-const { readSheet, updateSheet } = require('../utils/service/GSheets'); 
+const { readSheet, updateSheet } = require('../utils/service/GSheets');
 
 const fetchInfById = async (id, next) => {
   try {
@@ -55,11 +55,11 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
 const fetchAllInf = async (offset, pagelimit, next) => {
   try {
-    let infList = await INFstatus.find({ progress: 'submitted' })
-      .populate('data')
-      .sort({ createdAt: -1 })
+    let infList = await INF.find({ status: 'complete' })
+      .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
+    console.log(infList, offset, pagelimit);
     return { success: true, jobs: infList };
   } catch (error) {
     console.log(error);
@@ -70,14 +70,31 @@ const fetchAllInf = async (offset, pagelimit, next) => {
 const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
   console.log({ pattern, offset, pagelimit });
   try {
-    let infList = await INFstatus.find({ progress: 'submitted' })
-      .populate('data')
-      .find({
-        'data.Company_Overview.Name_Of_The_Company': {
-          $regex: pattern,
-          $options: 'im',
+    let infList = await INF.find({
+      $or: [
+        {
+          'Company_Overview.Name_Of_The_Company': {
+            $regex: pattern,
+            $options: 'im',
+          },
+          status: 'complete',
         },
-      })
+        {
+          'Company_Overview.Category': {
+            $regex: pattern,
+            $options: 'im',
+          },
+          status: 'complete',
+        },
+        {
+          'Company_Overview.Sector': {
+            $regex: pattern,
+            $options: 'im',
+          },
+          status: 'complete',
+        },
+      ],
+    })
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
@@ -106,7 +123,7 @@ const createInf = async (loggedUserId, details, next) => {
 
 const saveInfById = async (id, details, next) => {
   try {
-    console.log({ result: details.Selection_Procedure });
+    console.log({ result: details.Selection_Procedure },details);
     let infStatus = await INFstatus.findOne({ data: id });
 
     if (!infStatus)
@@ -139,6 +156,7 @@ const submitInfById = async (id, next) => {
     let infStatus = await INFstatus.findOne({ data: id });
 
     infStatus.set({ progress: 'submitted' });
+    console.log("inf is " , inf);
 
     await infStatus.save();
     await fillINFDoc(inf);
