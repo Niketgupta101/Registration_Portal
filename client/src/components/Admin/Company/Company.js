@@ -11,11 +11,13 @@ const Company = () => {
   const Navigate = useNavigate();
 
   const [IsLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
   const [search, setSearch] = useState();
 
   const [pageNo, setPageNo] = useState('1');
+
+  let user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     if (!user || user.isemailVerified === false || user.role !== 'Admin') {
@@ -32,14 +34,14 @@ const Company = () => {
   };
 
   async function fetchAllCompanies() {
-    if (!user) Navigate('/auth');
-    else {
-      setUser(localStorage.getItem('user'));
-      setIsLoading(true);
-      const response = await getAllCompanyDetails(pageNo);
-      setIsLoading(false);
-      setCompanies(response.data.companyList);
-    }
+    // if (!user) Navigate('/auth');
+    // else {
+    // setUser(localStorage.getItem('user'));
+    setIsLoading(true);
+    const response = await getAllCompanyDetails(pageNo);
+    setIsLoading(false);
+    setCompanies(response.data.companyList);
+    // }
   }
 
   useEffect(() => {

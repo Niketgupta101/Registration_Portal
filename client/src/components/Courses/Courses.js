@@ -20,15 +20,9 @@ const Courses = () => {
   const Navigate = useNavigate();
 
   let user = JSON.parse(localStorage.getItem('user'));
-  let company = JSON.parse(localStorage.getItem('company'));
 
   useEffect(() => {
-    if (
-      !user ||
-      user.isemailVerified === false ||
-      !company ||
-      company.length === 0
-    ) {
+    if (!user || user.isemailVerified === false) {
       Navigate('/auth');
     }
   }, [Navigate, user]);
