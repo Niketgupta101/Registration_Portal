@@ -26,7 +26,7 @@ exports.registerUser = async (user, next) => {
 
     return { newUser, token };
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
@@ -48,7 +48,7 @@ exports.loginUser = async (emailIdOrUsername, password, next) => {
 
     return { user, token, company };
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
@@ -80,7 +80,7 @@ exports.forgotPassword = async (emailId, next) => {
       return next(new ErrorResponse('Email could not be sent', 500));
     }
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
@@ -101,7 +101,7 @@ exports.resetPassword = async (resetPasswordToken, password) => {
 
     return { success: true, data: 'Password Reset Success' };
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
