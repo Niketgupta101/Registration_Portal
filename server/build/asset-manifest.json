@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ca707ad3.css",
-    "main.js": "/static/js/main.3d7edf2c.js",
+    "main.js": "/static/js/main.d3c0d49e.js",
     "static/media/20190824_070411.jpg": "/static/media/20190824_070411.5ce7305b5f1ce7054ceb.jpg",
     "static/media/maincoloured-college.jpg": "/static/media/maincoloured-college.5d89ac6f330dbedd617b.jpg",
     "static/media/contactUsCllgPhoto.jpeg": "/static/media/contactUsCllgPhoto.439c0d422541c20c66ea.jpeg",
@@ -11,10 +11,10 @@
     "static/media/hricon.png": "/static/media/hricon.bca3b9835ccc4568500d.png",
     "index.html": "/index.html",
     "main.ca707ad3.css.map": "/static/css/main.ca707ad3.css.map",
-    "main.3d7edf2c.js.map": "/static/js/main.3d7edf2c.js.map"
+    "main.d3c0d49e.js.map": "/static/js/main.d3c0d49e.js.map"
   },
   "entrypoints": [
     "static/css/main.ca707ad3.css",
-    "static/js/main.3d7edf2c.js"
+    "static/js/main.d3c0d49e.js"
   ]
 }
