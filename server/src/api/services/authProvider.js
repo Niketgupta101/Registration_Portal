@@ -36,11 +36,11 @@ exports.loginUser = async (emailIdOrUsername, password, next) => {
       $or: [{ emailId: emailIdOrUsername }],
     }).select('+password');
 
-    if (!user) return next(new ErrorResponse('Invalid Credentials', 401));
+    if (!user) return next(new ErrorResponse('Email not registered', 401));
 
     const check = await user.matchPasswords(password);
 
-    if (!check) return next(new ErrorResponse('Invalid Credentials', 404));
+    if (!check) return next(new ErrorResponse('Wrong Password', 404));
 
     let company = await Company.find({ userId: user._id });
 

@@ -9,6 +9,9 @@ import { TabContext, TabPanel } from '@mui/lab';
 import { Home2 } from './Home2';
 import Loading from '../Loading/Loading';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const UserAuth = () => {
   const Navigate = useNavigate();
 
@@ -96,6 +99,12 @@ const UserAuth = () => {
 
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
+    if(AuthData.password!=AuthData.confirmPassword)
+    {
+      toast.warn("Passwords do not match");
+      setAuthData({...AuthData,confirmPassword:""});
+    }
+    else
     setPage('company');
   };
 
@@ -112,6 +121,7 @@ const UserAuth = () => {
           emailIdOrUsername: AuthData.email,
           password: AuthData.password,
         });
+        
         localStorage.setItem('user', JSON.stringify(data.user));
         if (!data.user.isemailVerified) {
           setPage('verify');
@@ -120,9 +130,12 @@ const UserAuth = () => {
           localStorage.setItem('company', JSON.stringify(data.company));
 
           handleSuccessClick();
+          toast.success("Successfully Logged in")
           Navigate('/');
         }
       } catch (error) {
+        // console.log("error.message=",error.response.data.error);
+          toast.warn(error.response.data.error)
         handleErrorClick();
       }
     } else {
@@ -201,6 +214,7 @@ const UserAuth = () => {
         </TabPanel>
       </TabContext>
       {isLoading && <Loading />}
+      <ToastContainer />
     </>
   );
 };
