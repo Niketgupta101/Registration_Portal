@@ -376,7 +376,9 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
               </td>
             </tr>
             <tr>
-              <td className="courseName">Computer Science and Engineering</td>
+              <td className="courseName">
+                Computer Science and Engineering (Dual Degree)
+              </td>
               <td className="courseCheckBox5year">
                 <input
                   name="Computer_Science_and_Engineering"
