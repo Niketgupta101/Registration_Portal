@@ -155,8 +155,8 @@ const jnfSchema = new Schema(
       Eligibility_Criteria: { type: String, default: '' },
     },
     Priority_Details: {
-      Priority1: { type: String, default: "" },
-      Priority2: { type: String, default: "" },
+      Priority_One_Job: { type: String, default: "" },
+      Priority_Two_Job: { type: String, default: "" },
     },
     previewLink: String,
     downloadLink: String,

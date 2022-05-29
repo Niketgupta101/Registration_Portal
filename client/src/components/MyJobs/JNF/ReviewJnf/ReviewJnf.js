@@ -1275,7 +1275,7 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             Priority 1
           </Label>
           <Col sm={9}>
-            <h1 className="inputText">{JnfData.Priority_Details.Priority1}</h1>
+            <h1 className="inputText">{JnfData.Priority_Details.Priority_One_Job}</h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
@@ -1283,7 +1283,7 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             Priority 2
           </Label>
           <Col sm={9}>
-            <h1 className="inputText">{JnfData.Priority_Details.Priority2}</h1>
+            <h1 className="inputText">{JnfData.Priority_Details.Priority_Two_Job}</h1>
           </Col>
         </FormGroup>
 

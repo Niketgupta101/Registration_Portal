@@ -335,8 +335,8 @@ const Jnf = () => {
       Interview: false,
     });
   const priorityData = {
-    Priority1: '',
-    Priority2: '',
+    Priority_One_Job: '',
+    Priority_Two_Job: '',
   };
   const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
   const handlePriorityDataChange = (e) => {

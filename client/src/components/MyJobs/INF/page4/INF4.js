@@ -301,18 +301,14 @@ const INF4 = ({
                     <input
                       value={date}
                       type="radio"                      
-                      name="Priority1"
+                      name="Priority_One"
                       onChange={handlePriorityDataChange}
-                      required
                       className="radioOption"
                     />{date}
                     </div>
 
                   ))
-                }
-                
-                  
-                 
+                }              
                 </RadioGroup>
               </FormControl>
             </div>
@@ -330,19 +326,20 @@ const INF4 = ({
                 >{
                   dates.map((date)=>(
                     <div className="optionPriority">
+                      {console.log(date)}
                     <input
                       value={date}
                       type="radio"                      
-                      name="Priority2"
+                      name="Priority_Two"
                       onChange={handlePriorityDataChange}
-                      required
                     />{date}
                     </div>
 
                   ))
                 }
+                
                
-                  {/* {console.log("pp=", priorityFormData)} */}
+                  {console.log("pp=", priorityFormData)}
                 </RadioGroup>
               </FormControl>
             </div>

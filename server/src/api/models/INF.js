@@ -157,8 +157,8 @@ const infSchema = new Schema(
       Eligibility_Criteria: { type: String, default: "" },
     },
     Priority_Details: {
-      Priority1: { type: String, default: "" },
-      Priority2: { type: String, default: "" },
+      Priority_One: { type: String, default: "" },
+      Priority_Two: { type: String, default: "" },
     },
     previewLink: String,
     downloadLink: String,

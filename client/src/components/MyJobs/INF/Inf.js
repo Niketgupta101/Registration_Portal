@@ -333,8 +333,8 @@ const Inf = () => {
       Interview: false,
     });
   const priorityData = {
-    Priority1: '',
-    Priority2: '',
+    Priority_One:"",
+    Priority_Two:"",
   };
   const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
   const handlePriorityDataChange = (e) => {

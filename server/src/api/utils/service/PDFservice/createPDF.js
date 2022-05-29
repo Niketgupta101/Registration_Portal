@@ -285,8 +285,8 @@ exports.fillINFDoc = async (inf) => {
     Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
-    Priority_One: priority_Details.Priority1,
-    Priority_Two: priority_Details.Priority2,
+    Priority_One: priority_Details.Priority_One,
+    Priority_Two: priority_Details.Priority_Two,
     Sector: Sector,
     Category: Category,
   };
@@ -378,6 +378,7 @@ exports.fillJNFDoc = async (jnf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
+  console.log(jnf,"jnf")
   let Category = jnf.Company_Overview.Category;
   let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
@@ -393,7 +394,7 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
   let hR_Details = jnf.HR_Details;
-  let priority_Details = jnf.Priority_Details;
+  let priority_Details_Job = jnf.Priority_Details;
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -529,11 +530,12 @@ exports.fillJNFDoc = async (jnf) => {
     Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
-    Priority_One: priority_Details.Priority1,
-    Priority_Two: priority_Details.Priority2,
+    Priority_One_Job: priority_Details_Job.Priority_One_Job,
+    Priority_Two_Job: priority_Details_Job.Priority_Two_Job,
     Sector: Sector,
     Category: Category,
   };
+  console.log(priority_Details_Job,"Job Prioritiea")
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,

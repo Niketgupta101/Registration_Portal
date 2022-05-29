@@ -416,7 +416,7 @@ const JNF4 = ({
                     <input
                       value={date}
                       type="radio"                      
-                      name="Priority1"
+                      name="Priority_One_Job"
                       onChange={handlePriorityDataChange}
                       required
                   
@@ -446,7 +446,7 @@ const JNF4 = ({
                     <input
                       value={date}
                       type="radio"                      
-                      name="Priority2"
+                      name="Priority_Two_Job"
                       onChange={handlePriorityDataChange}
                       required
                     />{date}
