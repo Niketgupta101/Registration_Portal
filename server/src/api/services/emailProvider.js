@@ -313,7 +313,7 @@ const generateHtml = (url) => {
 
 exports.sendConfirmationMail = async (emailId, emailVerifyToken) => {
   try {
-    const emailVerifyUrl = `${serverUrl}/v1/users/verifyEmail/${emailVerifyToken}`;
+    const emailVerifyUrl = `/v1/users/verifyEmail/${emailVerifyToken}`;
 
     const subject = "Mail to verify email id.";
 
