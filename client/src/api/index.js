@@ -3,20 +3,85 @@ const axios = require('axios');
 const token = localStorage.getItem('token');
 
 console.log(token);
-const API = axios.create({
-  baseURL: 'http://localhost:5000/v1',
-  // {
-  //   headers: {
-  //     authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-  //   },
-  // },
-  credentials: 'include',
-  withCredentials: true,
-});
 
-API.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(
-  localStorage.getItem('token')
-)}`;
+const getApiObject = function() {
+  if(process.env.NODE_ENV === 'production'){
+    const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
+    return {
+      get: async function (path) {
+        let resp = await (await fetch(
+          `/v1${path}`,
+          {
+            method: 'GET',
+            headers : {
+              'Content-Type': 'application/json',
+              'Authorization': tokenString,
+            },
+          }
+        )).json();
+        return {data: resp};
+      },
+      post: async function (path, data) {
+        let resp = await (await fetch(
+          `/v1${path}`, 
+          {
+            method: 'POST',
+            headers : {
+              'Content-Type': 'application/json',
+              'Authorization': tokenString,
+            },
+            body: JSON.stringify(data),
+          },
+        )).json();
+        return {data: resp};
+      },
+      put: async function (path, data) {
+        let resp = await (await fetch(
+          `/v1${path}`, 
+          {
+            method: 'PUT',
+            headers : {
+              'Content-Type': 'application/json',
+              'Authorization': tokenString,
+            },
+            body: JSON.stringify(data),
+          },
+        )).json();
+        return {data: resp};
+      },
+      delete: async function (path) {
+        let resp = await (await fetch(
+          `/v1${path}`, 
+          {
+            method: 'DELETE',
+            headers : {
+              'Content-Type': 'application/json',
+              'Authorization': tokenString,
+            },
+          },
+        )).json();
+        return {data: resp};
+      },
+    };
+  }else{
+    const APIObj = axios.create({
+      baseURL: 'http://localhost:5000/v1',
+      // {
+      //   headers: {
+      //     authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      //   },
+      // },
+      credentials: 'include',
+      withCredentials: true,
+    });
+    APIObj.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(
+      localStorage.getItem('token')
+    )}`;
+    return APIObj;
+  }
+}
+
+const API = getApiObject();
 
 // const setHeader = () => {
 //   console.log({ token: localStorage.getItem('token') });
@@ -99,7 +164,7 @@ export const deleteContactById = (id) => API.delete(`contact/${id}`);
 
 // ------------------------ Jobs ------------------------------------
 
-export const getAllJobs = () => API.get('/jobs/all');
+export const getAllJobs = () => API.get('/jobs/all/1/12');
 
 export const getAllJobsForUser = (pageNo) =>
   API.get(`/jobs/user/all/${pageNo}/12`);
@@ -126,7 +191,7 @@ export const searchCompanyByPattern = (pattern) =>
 export const searchInfByPattern = (pattern) =>
   API.get(`/inf/search/${pattern}/1/5`);
 
-  export const searchJnfByPattern = (pattern) =>
+export const searchJnfByPattern = (pattern) =>
   API.get(`/jnf/search/${pattern}/1/5`);
 
 // ------------------------ Courses ------------------------------------

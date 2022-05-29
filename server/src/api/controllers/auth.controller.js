@@ -34,7 +34,7 @@ exports.login = async (req, res, next) => {
     const { emailIdOrUsername, password } = req.body;
 
     if(!emailIdOrUsername || !password)
-    return next(new ErrorResponse("Please provide an emailId/username an password", 400))
+    return next(new ErrorResponse("Please provide an emailId/username and password", 400))
 
     try {
         const { user, token, company } = await loginUser(emailIdOrUsername, password, next);

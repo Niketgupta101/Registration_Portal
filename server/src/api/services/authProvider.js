@@ -20,13 +20,13 @@ exports.registerUser = async (user, next) => {
 
     const newUser = await User.create(user);
 
-    // sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
+    sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
 
     const token = newUser.getSignedToken();
 
     return { newUser, token };
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
@@ -36,11 +36,11 @@ exports.loginUser = async (emailIdOrUsername, password, next) => {
       $or: [{ emailId: emailIdOrUsername }],
     }).select('+password');
 
-    if (!user) return next(new ErrorResponse('Invalid Credentials', 401));
+    if (!user) return next(new ErrorResponse('Email not registered', 401));
 
     const check = await user.matchPasswords(password);
 
-    if (!check) return next(new ErrorResponse('Invalid Credentials', 404));
+    if (!check) return next(new ErrorResponse('Wrong Password', 404));
 
     let company = await Company.find({ userId: user._id });
 
@@ -48,7 +48,7 @@ exports.loginUser = async (emailIdOrUsername, password, next) => {
 
     return { user, token, company };
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
@@ -80,7 +80,7 @@ exports.forgotPassword = async (emailId, next) => {
       return next(new ErrorResponse('Email could not be sent', 500));
     }
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 
@@ -101,7 +101,7 @@ exports.resetPassword = async (resetPasswordToken, password) => {
 
     return { success: true, data: 'Password Reset Success' };
   } catch (error) {
-    throw error;
+    return next(error);
   }
 };
 

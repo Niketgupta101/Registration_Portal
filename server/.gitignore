@@ -3,5 +3,6 @@
 .env.test.local
 .env.production.local
 .env.local
-
+.vscode
+webpack.config.js
 node_modules/

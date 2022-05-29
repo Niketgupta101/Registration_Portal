@@ -7,11 +7,16 @@ import './styles.css';
 const Home = () => {
   const Navigate = useNavigate();
 
-  let user = localStorage.getItem('user');
+  let user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    if (!user) {
+    if (!user || !user.isemailVerified) {
+      console.log(user);
       Navigate('/auth');
+    }
+
+    if (user && user.role === 'Admin') {
+      Navigate('/admin');
     }
   }, [Navigate, user]);
 

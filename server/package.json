@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "server": "nodemon ./src/index.js"
+    "server": "nodemon ./src/index.js",
+    "build": "NODE_ENV=$NODE_ENV webpack"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,10 @@
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
     "pizzip": "^3.1.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-stream": "^7.0.0"
   },
   "bugs": {
     "url": "https://github.com/Niketgupta101/Boilerplate-Structure/issues"

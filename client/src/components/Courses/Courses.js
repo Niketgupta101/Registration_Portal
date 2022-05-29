@@ -9,7 +9,6 @@ import "./styles.css";
 import { getAllCourseData } from "../../api/index.js";
 
 const Courses = () => {
-
   const [courses, setCourses] = useState([]);
   const [btech, setBtech] = useState([]);
   const [fiveyear, setFiveyear] = useState([]);
@@ -18,6 +17,15 @@ const Courses = () => {
   const [twoyearmsc, setTwoyearmsc] = useState([]);
   const [twoyearmtech, setTwoyearmtech] = useState([]);
 
+  const Navigate = useNavigate();
+
+  let user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    if (!user || user.isemailVerified === false) {
+      Navigate("/auth");
+    }
+  }, [Navigate, user]);
 
   const [isLoading, setIsLoading] = useState(false);
   useEffect(async () => {
@@ -37,11 +45,8 @@ const Courses = () => {
     setTwoyearmtech(() => temp.slice(24));
 
     // console.log("btech=",response.data.data.slice(0,12));
-
-
   }, []);
 
-  const Navigate = useNavigate();
   return (
     <div className="courses_list">
       <div class="ug-pg d-flex m-0 justify-content-center">
@@ -60,7 +65,10 @@ const Courses = () => {
       <div className="buttons">
         <div className="bt animate__animated animate__fadeInLeft" id="btnfirst">
           {/* {console.log(btech)} */}
-          <Button variant="outlined" onClick={() => Navigate("/courses/btech", { state: btech })}>
+          <Button
+            variant="outlined"
+            onClick={() => Navigate("/courses/btech", { state: btech })}
+          >
             <div className="courses-button">B.Tech - 4 year</div>
           </Button>
         </div>
@@ -69,13 +77,17 @@ const Courses = () => {
             variant="outlined"
             onClick={() => Navigate("/courses/fiveyear", { state: fiveyear })}
           >
-            <div className="courses-button">Integrated M.Tech - 5 year</div>
+            <div className="courses-button">
+              Integrated M.Tech/ Dual Degree - 5 year
+            </div>
           </Button>
         </div>
         <div className="bt animate__animated animate__fadeInLeft">
           <Button
             variant="outlined"
-            onClick={() => Navigate("/courses/twoyearmba", { state: twoyearmba })}
+            onClick={() =>
+              Navigate("/courses/twoyearmba", { state: twoyearmba })
+            }
           >
             <div className="courses-button">M.B.A - 2 year</div>
           </Button>
@@ -83,7 +95,9 @@ const Courses = () => {
         <div className="bt  animate__animated animate__fadeInRight">
           <Button
             variant="outlined"
-            onClick={() => Navigate("/courses/twoyearmsc", { state: twoyearmsc })}
+            onClick={() =>
+              Navigate("/courses/twoyearmsc", { state: twoyearmsc })
+            }
           >
             <div className="courses-button">M.SC - 2 Year </div>
           </Button>
@@ -91,16 +105,19 @@ const Courses = () => {
         <div className="bt animate__animated animate__fadeInLeft">
           <Button
             variant="outlined"
-            onClick={() => Navigate("/courses/twoyearmtech", { state: twoyearmtech })}
+            onClick={() =>
+              Navigate("/courses/twoyearmtech", { state: twoyearmtech })
+            }
           >
-
             <div className="courses-button">M.Tech - 2 year</div>
           </Button>
         </div>
         <div className="bt  animate__animated animate__fadeInRight">
           <Button
             variant="outlined"
-            onClick={() => Navigate("/courses/threeyearmsc", { state: threeyearmsc })}
+            onClick={() =>
+              Navigate("/courses/threeyearmsc", { state: threeyearmsc })
+            }
           >
             <div className="courses-button">M.SC - 3 Year</div>
           </Button>
