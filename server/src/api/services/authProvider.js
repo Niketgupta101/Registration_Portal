@@ -20,7 +20,7 @@ exports.registerUser = async (user, next) => {
 
     const newUser = await User.create(user);
 
-    // sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
+    sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
 
     const token = newUser.getSignedToken();
 
