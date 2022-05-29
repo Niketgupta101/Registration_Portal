@@ -22,11 +22,11 @@ app.use(express.json());
 
 app.use('/v1', routes);
 
-app.use(express.static(path.join(__dirname, '..', '..', 'build')));
+/*app.use(express.static(path.join(__dirname, '..', '..', 'build')));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'build', 'index.html'));
-});
+});*/
 
 // app.get('/', (req, res) => res.status(200).json({ message: "Success" }));
 
