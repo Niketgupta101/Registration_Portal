@@ -205,7 +205,9 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Electrical_Engineering"
-                                    checked={fourYearData.Electrical_Engineering}
+                                    checked={
+                                      fourYearData.Electrical_Engineering
+                                    }
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -261,7 +263,9 @@ export default function JNF2({
                                 <td className="courseCheckBoxBtech">
                                   <input
                                     name="Mechanical_Engineering"
-                                    checked={fourYearData.Mechanical_Engineering}
+                                    checked={
+                                      fourYearData.Mechanical_Engineering
+                                    }
                                     onChange={handleFourYearChange}
                                     type="checkbox"
                                   />
@@ -396,7 +400,7 @@ export default function JNF2({
                               </tr>
                               <tr>
                                 <td className="courseName">
-                                  Computer Science and Engineering
+                                  Computer Science and Engineering (Dual Degree)
                                 </td>
                                 <td className="courseCheckBox5year">
                                   <input
