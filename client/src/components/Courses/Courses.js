@@ -1,15 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
-import "animate.css";
-import Loading from "../Loading/Loading";
-import "./styles.css";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
+import 'animate.css';
+import Loading from '../Loading/Loading';
+import './styles.css';
 
-import { getAllCourseData } from "../../api/index.js";
+import { getAllCourseData } from '../../api/index.js';
 
 const Courses = () => {
-
   const [courses, setCourses] = useState([]);
   const [btech, setBtech] = useState([]);
   const [fiveyear, setFiveyear] = useState([]);
@@ -18,6 +17,21 @@ const Courses = () => {
   const [twoyearmsc, setTwoyearmsc] = useState([]);
   const [twoyearmtech, setTwoyearmtech] = useState([]);
 
+  const Navigate = useNavigate();
+
+  let user = JSON.parse(localStorage.getItem('user'));
+  let company = JSON.parse(localStorage.getItem('company'));
+
+  useEffect(() => {
+    if (
+      !user ||
+      user.isemailVerified === false ||
+      !company ||
+      company.length === 0
+    ) {
+      Navigate('/auth');
+    }
+  }, [Navigate, user]);
 
   const [isLoading, setIsLoading] = useState(false);
   useEffect(async () => {
@@ -37,18 +51,15 @@ const Courses = () => {
     setTwoyearmtech(() => temp.slice(24));
 
     // console.log("btech=",response.data.data.slice(0,12));
-
-
   }, []);
 
-  const Navigate = useNavigate();
   return (
-    <div className="courses_list">
-      <div class="ug-pg d-flex m-0 justify-content-center">
-        <div className="flex-grow-1 ">
-          <h1 className="ug-pg-h1 prog-hover">
+    <div className='courses_list'>
+      <div class='ug-pg d-flex m-0 justify-content-center'>
+        <div className='flex-grow-1 '>
+          <h1 className='ug-pg-h1 prog-hover'>
             Programs
-            <span className="ug-pg-span">
+            <span className='ug-pg-span'>
               <b>
                 List of Programs offered by IIT(ISM) Dhanbad. Click for more
                 details
@@ -57,52 +68,62 @@ const Courses = () => {
           </h1>
         </div>
       </div>
-      <div className="buttons">
-        <div className="bt animate__animated animate__fadeInLeft" id="btnfirst">
+      <div className='buttons'>
+        <div className='bt animate__animated animate__fadeInLeft' id='btnfirst'>
           {/* {console.log(btech)} */}
-          <Button variant="outlined" onClick={() => Navigate("/courses/btech", { state: btech })}>
-            <div className="courses-button">B.Tech - 4 year</div>
+          <Button
+            variant='outlined'
+            onClick={() => Navigate('/courses/btech', { state: btech })}
+          >
+            <div className='courses-button'>B.Tech - 4 year</div>
           </Button>
         </div>
-        <div className="bt animate__animated animate__fadeInRight">
+        <div className='bt animate__animated animate__fadeInRight'>
           <Button
-            variant="outlined"
-            onClick={() => Navigate("/courses/fiveyear", { state: fiveyear })}
+            variant='outlined'
+            onClick={() => Navigate('/courses/fiveyear', { state: fiveyear })}
           >
-            <div className="courses-button">Integrated M.Tech - 5 year</div>
+            <div className='courses-button'>Integrated M.Tech - 5 year</div>
           </Button>
         </div>
-        <div className="bt animate__animated animate__fadeInLeft">
+        <div className='bt animate__animated animate__fadeInLeft'>
           <Button
-            variant="outlined"
-            onClick={() => Navigate("/courses/twoyearmba", { state: twoyearmba })}
+            variant='outlined'
+            onClick={() =>
+              Navigate('/courses/twoyearmba', { state: twoyearmba })
+            }
           >
-            <div className="courses-button">M.B.A - 2 year</div>
+            <div className='courses-button'>M.B.A - 2 year</div>
           </Button>
         </div>
-        <div className="bt  animate__animated animate__fadeInRight">
+        <div className='bt  animate__animated animate__fadeInRight'>
           <Button
-            variant="outlined"
-            onClick={() => Navigate("/courses/twoyearmsc", { state: twoyearmsc })}
+            variant='outlined'
+            onClick={() =>
+              Navigate('/courses/twoyearmsc', { state: twoyearmsc })
+            }
           >
-            <div className="courses-button">M.SC - 2 Year </div>
+            <div className='courses-button'>M.SC - 2 Year </div>
           </Button>
         </div>
-        <div className="bt animate__animated animate__fadeInLeft">
+        <div className='bt animate__animated animate__fadeInLeft'>
           <Button
-            variant="outlined"
-            onClick={() => Navigate("/courses/twoyearmtech", { state: twoyearmtech })}
+            variant='outlined'
+            onClick={() =>
+              Navigate('/courses/twoyearmtech', { state: twoyearmtech })
+            }
           >
-
-            <div className="courses-button">M.Tech - 2 year</div>
+            <div className='courses-button'>M.Tech - 2 year</div>
           </Button>
         </div>
-        <div className="bt  animate__animated animate__fadeInRight">
+        <div className='bt  animate__animated animate__fadeInRight'>
           <Button
-            variant="outlined"
-            onClick={() => Navigate("/courses/threeyearmsc", { state: threeyearmsc })}
+            variant='outlined'
+            onClick={() =>
+              Navigate('/courses/threeyearmsc', { state: threeyearmsc })
+            }
           >
-            <div className="courses-button">M.SC - 3 Year</div>
+            <div className='courses-button'>M.SC - 3 Year</div>
           </Button>
         </div>
       </div>

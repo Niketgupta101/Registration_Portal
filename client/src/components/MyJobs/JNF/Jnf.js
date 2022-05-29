@@ -18,18 +18,33 @@ const Jnf = () => {
   const [page, setPage] = useState('1');
   const Navigate = useNavigate();
 
+  let user = JSON.parse(localStorage.getItem('user'));
+  const company = JSON.parse(localStorage.getItem('company'));
+
+  useEffect(() => {
+    if (
+      !user ||
+      user.isemailVerified === false ||
+      !company ||
+      company.length === 0
+    ) {
+      Navigate('/auth');
+    }
+  }, [Navigate, user]);
+
   const { JnfId } = useParams();
 
-  const company = JSON.parse(localStorage.getItem('company'));
-  // console.log(company);
-  const companyData = {
-    Name_Of_The_Company: company[0].name,
-    Category_Or_Sector: '',
-    Category: company[0].categoryData,
-    Sector: company[0].sectorData,
-    About: company[0].about,
-    Website: company[0].website,
-  };
+  let companyData;
+  if (company && company.length !== 0) {
+    companyData = {
+      Name_Of_The_Company: company[0]?.name,
+      Category_Or_Sector: '',
+      Category: company[0]?.categoryData,
+      Sector: company[0]?.sectorData,
+      About: company[0]?.about,
+      Website: company[0]?.website,
+    };
+  }
   const jobData = {
     Job_Designation: '',
     Job_Description: '',
@@ -319,17 +334,17 @@ const Jnf = () => {
       Case_Study: false,
       Interview: false,
     });
-    const priorityData = {
-      Priority1: "",
-      Priority2: "",
-    };
-    const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
-    const handlePriorityDataChange = (e) => {
-      setPriorityFormData((prevData) => ({
-        ...prevData,
-        [e.target.name]: e.target.value,
-      }));
-    };
+  const priorityData = {
+    Priority1: '',
+    Priority2: '',
+  };
+  const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
+  const handlePriorityDataChange = (e) => {
+    setPriorityFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {

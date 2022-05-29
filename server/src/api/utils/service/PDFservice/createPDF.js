@@ -12,6 +12,7 @@ const { sendMailWithAttachment } = require('../email');
 
 const { INF } = require('../../../models/INF');
 const { JNF } = require('../../../models/JNF');
+const { convert_client_id } = require('../../../../config/vars');
 
 const createStudentInfPdf = async (data, id) => {
   const student = fs.readFileSync(
@@ -35,7 +36,7 @@ const createStudentInfPdf = async (data, id) => {
 
   fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
 
-  var convertapi = require('convertapi')('fNvk89UQF26MbYaX');
+  var convertapi = require('convertapi')(convert_client_id);
 
   let studentResult = await convertapi.convert(
     'pdf',
@@ -88,7 +89,7 @@ const createStudentJnfPdf = async (data, id) => {
 
   fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
 
-  var convertapi = require('convertapi')('fNvk89UQF26MbYaX');
+  var convertapi = require('convertapi')(convert_client_id);
 
   let studentResult = await convertapi.convert(
     'pdf',
@@ -131,9 +132,9 @@ exports.fillINFDoc = async (inf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-  let Category =inf.Company_Overview.Category;
+  let Category = inf.Company_Overview.Category;
   let Sector = inf.Company_Overview.Sector;
-  
+
   let fourYear = inf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
     inf.Eligible_Courses_And_Disciplines
@@ -286,8 +287,8 @@ exports.fillINFDoc = async (inf) => {
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
     Priority_One: priority_Details.Priority1,
     Priority_Two: priority_Details.Priority2,
-    Sector : Sector,
-    Category : Category
+    Sector: Sector,
+    Category: Category,
   };
   console.log({ selectionProcedure });
   doc.render({
@@ -306,7 +307,7 @@ exports.fillINFDoc = async (inf) => {
 
   fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
 
-  var convertapi = require('convertapi')('fNvk89UQF26MbYaX');
+  var convertapi = require('convertapi')(convert_client_id);
   let result = await convertapi.convert(
     'pdf',
     {
@@ -377,7 +378,7 @@ exports.fillJNFDoc = async (jnf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-  let Category =jnf.Company_Overview.Category;
+  let Category = jnf.Company_Overview.Category;
   let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
   let fiveYear =
@@ -530,8 +531,8 @@ exports.fillJNFDoc = async (jnf) => {
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
     Priority_One: priority_Details.Priority1,
     Priority_Two: priority_Details.Priority2,
-    Sector : Sector,
-    Category : Category
+    Sector: Sector,
+    Category: Category,
   };
   doc.render({
     ...jnf.Company_Overview,
@@ -549,7 +550,7 @@ exports.fillJNFDoc = async (jnf) => {
 
   fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
 
-  var convertapi = require('convertapi')('fNvk89UQF26MbYaX');
+  var convertapi = require('convertapi')(convert_client_id);
   let result = await convertapi.convert(
     'pdf',
     {
