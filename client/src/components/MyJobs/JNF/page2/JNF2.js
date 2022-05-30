@@ -778,12 +778,12 @@ export default function JNF2({
                               </tr>
                               <tr>
                                 <td className="courseName">
-                                  Petroleum Production Engineering
+                                  Petroleum Production Operations
                                 </td>
                                 <td className="courseCheckBox5year">
                                   <input
-                                    name="Petroleum_Production_Engineering"
-                                    checked={minorData.Petroleum_Production_Engineering}
+                                    name="Petroleum_Production_Operations"
+                                    checked={minorData.Petroleum_Production_Operations}
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />

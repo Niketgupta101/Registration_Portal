@@ -91,7 +91,7 @@ const jnfSchema = new Schema(
         Computational_Fluid_Dynamics : { type: Boolean, default: false },
         Mining_Methods_and_Safety: { type: Boolean, default: false },
         Material_Handling_Engineering : { type: Boolean, default: false },
-        Petroleum_Production_Engineering : { type: Boolean, default: false },
+        Petroleum_Production_Operations : { type: Boolean, default: false },
         High_Energy_Physics : { type: Boolean, default: false },
         Nanotechnology : { type: Boolean, default: false },
 

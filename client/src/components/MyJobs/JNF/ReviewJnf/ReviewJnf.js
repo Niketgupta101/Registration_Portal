@@ -478,6 +478,341 @@ const ReviewJnf = ({ JnfData, setPage, handleFormSubmit }) => {
             </tr>
           </tbody>
         </table>
+        <div className="startTextBold">
+          Minors
+        </div>
+        <div className="startTextBoldSmall">
+          Admitted through JEE (Advanced)
+        </div>
+        <table>
+          <tbody id="Minor">
+          <tr>
+              <td className="courseName">Select_All</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Select_All"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines.Minors.Select_All
+                      
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+          <tr>
+              <td className="courseName">Exploration Geology</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Exploration_Geology"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines.Minors.Exploration_Geology
+                      
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Exploration Geophysics</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Exploration_Geophysics"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Exploration_Geophysics
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Separation and Purification Technology</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Separation_and_Purification_Technology"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Separation_and_Purification_Technology
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Materials Science</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Materials_Science"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Materials_Science
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Infrastructure Engineering</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Infrastructure_Engineering"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Infrastructure_Engineering
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Data Science</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Data_Science"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Data_Science
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Electrical Technology</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Electrical_Technology"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Electrical_Technology
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Embedded System Design</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Embedded_System_Design"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Embedded_System_Design
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Environmental Management</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Environmental_Management"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Environmental_Management
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Metallurgical Engineering</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Metallurgical_Engineering"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Metallurgical_Engineering
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Opeartions Management</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Opeartions_Management"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Opeartions_Management
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Finance</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Finance"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Finance
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Marketing</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Marketing"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Marketing
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Mathematics and Statistics</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Mathematics_and_Statistics"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Mathematics_and_Statistics
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Robotics</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Robotics"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Robotics
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Manufacturing</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Manufacturing"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Manufacturing
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Computational Fluid Dynamics</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Computational_Fluid_Dynamics"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Computational_Fluid_Dynamics
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Mining Methods and Safety</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Mining_Methods_and_Safety"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Mining_Methods_and_Safety
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Material Handling Engineering</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Material_Handling_Engineering"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Material_Handling_Engineering
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Petroleum Production Operations</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Petroleum_Production_Operations"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Petroleum_Production_Operations
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">High Energy Physics</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="High_Energy_Physics"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.High_Energy_Physics
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">Nanotechnology</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Nanotechnology"
+                  checked={
+                    JnfData.Eligible_Courses_And_Disciplines
+                      .Minors.Nanotechnology
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+      
+        
+    
+        </tbody>
+        </table>
         <div>
           {/* <div className="startTextBold">Skill Based Hiring</div>
           <div className="startTextBoldSmall">

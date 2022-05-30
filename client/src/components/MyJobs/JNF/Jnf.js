@@ -147,7 +147,7 @@ const Jnf = () => {
     Computational_Fluid_Dynamics : false,
     Mining_Methods_and_Safety: false,
     Material_Handling_Engineering : false,
-    Petroleum_Production_Engineering : false,
+    Petroleum_Production_Operations : false,
     High_Energy_Physics : false,
     Nanotechnology : false
 

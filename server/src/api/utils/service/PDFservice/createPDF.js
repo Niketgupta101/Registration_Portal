@@ -382,6 +382,7 @@ exports.fillJNFDoc = async (jnf) => {
   let Category = jnf.Company_Overview.Category;
   let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
+  let minor = jnf.Eligible_Courses_And_Disciplines.Minors;
   let fiveYear =
     jnf.Eligible_Courses_And_Disciplines
       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs;
@@ -431,6 +432,33 @@ exports.fillJNFDoc = async (jnf) => {
       : 'No',
     Five_Year_Applied_Geology: fiveYear.Applied_Geology ? 'Yes' : 'No',
     Five_Year_Applied_Geophysics: fiveYear.Applied_Geophysics ? 'Yes' : 'No',
+    Minor_Select_All : minor.Select_All ? 'Yes' : 'No',
+    Minor_Exploration_Geology : minor.Exploration_Geology ? 'Yes' : 'No',
+    Minor_Exploration_Geophysics : minor.Exploration_Geophysics ? 'Yes' : 'No',
+    Minor_Separation_and_Purification_Technology : minor.Separation_and_Purification_Technology ? 'Yes' : 'No',
+    Minor_Materials_Science : minor.Materials_Science ? 'Yes' : 'No',
+    Minor_Infrastructure_Engineering : minor.Infrastructure_Engineering ? 'Yes' : 'No',
+    Minor_Data_Science : minor.Data_Science ? 'Yes' : 'No',
+    Minor_Electrical_Technology : minor.Electrical_Technology ? 'Yes' : 'No',
+    Minor_Embedded_System_Design : minor.Embedded_System_Design ? 'Yes' : 'No',
+    Minor_Environmental_Management : minor.Environmental_Management ? 'Yes' : 'No',
+    Minor_Metallurgical_Engineering : minor.Metallurgical_Engineering ? 'Yes' : 'No',
+    Minor_Opeartions_Management : minor.Opeartions_Management ? 'Yes' : 'No',
+    Minor_Finance : minor.Finance ? 'Yes' : 'No',
+    Minor_Marketing : minor.Marketing ? 'Yes' : 'No',
+    Minor_Mathematics_and_Statistics : minor.Mathematics_and_Computing ? 'Yes' : 'No',
+    Minor_Robotics : minor.Robotics ? 'Yes' : 'No',
+    Minor_Manufacturing : minor.Manufacturing ? 'Yes' : 'No',
+    Minor_Computational_Fluid_Dynamics : minor.Computational_Fluid_Dynamics ? 'Yes' : 'No',
+    Minor_Mining_Methods_and_Safety : minor.Mining_Methods_and_Safety ? 'Yes' : 'No',
+    Minor_Material_Handling_Engineering : minor.Material_Handling_Engineering ? 'Yes' : 'No',
+    Minor_Petroleum_Production_Operations : minor.Petroleum_Production_Operations ? 'Yes' : 'No',
+    Minor_High_Energy_Physics : minor.High_Energy_Physics ? 'Yes' : 'No',
+    Minor_Nanotechnology : minor.Nanotechnology ? 'Yes' : 'No',
+
+  
+
+
     Skill_C_Cpp_Java_Python_etc: skill.C_Cpp_Java_Python_etc ? 'Yes' : 'No',
     Skill_Full_Stack_Development_Frontend_or_Backend:
       skill.Full_Stack_Development_Frontend_or_Backend ? 'Yes' : 'No',
