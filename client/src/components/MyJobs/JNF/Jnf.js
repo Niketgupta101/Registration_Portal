@@ -126,6 +126,32 @@ const Jnf = () => {
     Applied_Geology: false,
     Applied_Geophysics: false,
   });
+  const [minorData ,  setMinorData] = useState({
+    Select_All : false,
+    Exploration_Geology : false,
+    Exploration_Geophysics : false,
+    Separation_and_Purification_Technology : false,
+    Materials_Science :false,
+    Infrastructure_Engineering : false,
+    Data_Science : false,
+    Electrical_Technology : false,
+    Embedded_System_Design : false,
+    Environmental_Management : false,
+    Metallurgical_Engineering : false,
+    Opeartions_Management : false,
+    Finance : false,
+    Marketing:false,
+    Mathematics_and_Statistics : false,
+    Robotics : false,
+    Manufacturing : false,
+    Computational_Fluid_Dynamics : false,
+    Mining_Methods_and_Safety: false,
+    Material_Handling_Engineering : false,
+    Petroleum_Production_Engineering : false,
+    High_Energy_Physics : false,
+    Nanotechnology : false
+
+  })
   const [skillData, setSkillData] = useState({
     C_Cpp_Java_Python_etc: false,
     Full_Stack_Development_Frontend_or_Backend: false,
@@ -169,6 +195,26 @@ const Jnf = () => {
       //console.log(newValue);
     } else {
       setFiveYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+  };
+  const handleMinorChange = (e) => {
+    if (e.target.name !== 'Select_All' && minorData.Select_All === true) {
+      setMinorData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
+      let newValue = !minorData[e.target.name];
+      for (let i in minorData) {
+        setMinorData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+      //console.log(newValue);
+    } else {
+      setMinorData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
@@ -500,6 +546,11 @@ const Jnf = () => {
       ...response.data.jnf.Eligible_Courses_And_Disciplines
         .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
     });
+    setMinorData({
+      ...response.data.jnf.Eligible_Courses_And_Disciplines
+        .Minors,
+
+    })
     setSkillData({
       ...response.data.jnf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
     });
@@ -556,6 +607,7 @@ const Jnf = () => {
         ...prevData.Eligible_Courses_And_Disciplines,
         Four_Year_Btech_Programs: { ...fourYearData },
         Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs: { ...fiveYearData },
+        Minors : {...minorData},
         Skill_Based_Hiring: { ...skillData },
         Three_Year_MSc_Tech_Programs: { ...threeYearData },
         Two_Year_Mtech_Programs: { ...twoYearData },
@@ -625,6 +677,7 @@ const Jnf = () => {
               setPage={setPage}
               fourYearData={fourYearData}
               fiveYearData={fiveYearData}
+              minorData={minorData}
               skillData={skillData}
               handleFourYearChange={handleFourYearChange}
               handleFiveYearChange={handleFiveYearChange}
@@ -638,6 +691,7 @@ const Jnf = () => {
               handleTwoYearChange={handleTwoYearChange}
               handleTwoYearMbaChange={handleTwoYearMbaChange}
               handleTwoYearMscChange={handleTwoYearMscChange}
+              handleMinorChange={handleMinorChange}
             />
           </TabPanel>
           {/* <TabPanel value={"3"}>
