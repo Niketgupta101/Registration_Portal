@@ -3,12 +3,14 @@ import React from "react";
 import { sendConfirmationLink } from "../../api";
 import { FaEnvelope } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
+import Button from "@mui/material/Button";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import "animate.css";
 import "./styles.css";
 
 const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
-  // const Navigate = useNavigate();
+  const Navigate = useNavigate();
   const notify = () =>
     toast.success("Verification link sent to Email", {
       position: "top-right",
@@ -36,8 +38,7 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
     <>
       <div className="w3layouts-main">
         <div className="bg-layer">
-          <h1 className="h1-home">CDC Placement Portal</h1>
-          <div className="verifyEmail mt-4">
+          <div className="verifyEmail ">
             <div className="verify_container">
               <div className="verify-header ">
                 <div className="d-flex justify-content-center">
@@ -96,6 +97,14 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
                 <button className='submit_btn' style={{ padding: "0.5rem 1rem", margin: "1rem", background: "rbg(60, 85, 165)" }} onClick={handleSendLink}>Send Link</button>
                 <button className='submit_btn' style={{ padding: "0.5rem 1rem", margin: "1rem", background: "rbg(60, 85, 165) !imporatnt" }} onClick={() => Navigate('/auth')}>Proceed to Login</button>
               </div> */}
+              <Button
+                className="mt-2 animate__animated animate__pulse animate__infinite"
+                variant="text"
+                size="large"
+                onClick={() => Navigate("/auth")}
+              >
+                <b style={{ fontSize: "1.2rem" }}>Go Back to Login Page</b>
+              </Button>
             </div>
           </div>
         </div>

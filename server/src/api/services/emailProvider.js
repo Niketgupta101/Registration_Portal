@@ -315,7 +315,7 @@ exports.sendConfirmationMail = async (emailId, emailVerifyToken) => {
   try {
     const emailVerifyUrl = `${serverUrl}/v1/users/verifyEmail/${emailVerifyToken}`;
 
-    const subject = "Mail to verify email id.";
+    const subject = "Email Verification - CDC IIT(ISM) Dhanbad";
 
     const message = generateHtml(emailVerifyUrl);
 
@@ -330,7 +330,7 @@ exports.sendResetPasswordMail = async (emailId, resetToken) => {
   try {
     const resetUrl = `${clientUrl}/passwordReset/${resetToken}`;
 
-    const subject = "Mail to reset your Password";
+    const subject = "Reset your Password";
 
     const message = htmlforgetpassword(resetUrl);
     // const message = `<h1>You have requested a password reset</h1>
