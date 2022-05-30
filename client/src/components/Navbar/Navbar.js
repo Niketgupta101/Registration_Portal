@@ -46,6 +46,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.clear();
     setUser(undefined);
+    setSideBar(() => false);
     Navigate("/auth");
   };
 
