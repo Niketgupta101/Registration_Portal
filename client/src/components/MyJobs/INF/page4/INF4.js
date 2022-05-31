@@ -31,7 +31,7 @@ const INF4 = ({
     <div className="overallDiv1">
       <Form onSubmit={handleUpdateInfById}>
         <div>
-          <div class="ug-pg m-0 p-0">
+          <div className="ug-pg m-0 p-0">
             <h1 className="ug-pg-h1">
               Selection Procedure
               <span className="ug-pg-span">
@@ -275,7 +275,7 @@ const INF4 = ({
         </FormGroup>
         <hr />
         <div className="my-5">
-          <div class="ug-pg m-0 p-0">
+          <div className="ug-pg m-0 p-0">
             <h1 className="ug-pg-h1">
               Tentative Dates for Tests and Interviews:
               <span className="ug-pg-span">
@@ -295,20 +295,19 @@ const INF4 = ({
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="female"
                   name="radio-buttons-group"
-                >{
-                  dates.map((date)=>(
+                >
+                  {dates.map((date) => (
                     <div className="optionPriority">
-                    <input
-                      value={date}
-                      type="radio"                      
-                      name="Priority_One"
-                      onChange={handlePriorityDataChange}
-                      className="radioOption"
-                    />{date}
+                      <input
+                        value={date}
+                        type="radio"
+                        name="Priority_One"
+                        onChange={handlePriorityDataChange}
+                        className="radioOption"
+                      />
+                      {date}
                     </div>
-
-                  ))
-                }              
+                  ))}
                 </RadioGroup>
               </FormControl>
             </div>
@@ -323,22 +322,20 @@ const INF4 = ({
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="female"
                   name="radio-buttons-group"
-                >{
-                  dates.map((date)=>(
+                >
+                  {dates.map((date) => (
                     <div className="optionPriority">
                       {console.log(date)}
-                    <input
-                      value={date}
-                      type="radio"                      
-                      name="Priority_Two"
-                      onChange={handlePriorityDataChange}
-                    />{date}
+                      <input
+                        value={date}
+                        type="radio"
+                        name="Priority_Two"
+                        onChange={handlePriorityDataChange}
+                      />
+                      {date}
                     </div>
+                  ))}
 
-                  ))
-                }
-                
-               
                   {console.log("pp=", priorityFormData)}
                 </RadioGroup>
               </FormControl>
@@ -353,7 +350,6 @@ const INF4 = ({
             Back
           </button>
           <button className="submit_btn" type="submit">
-            
             Review and Submit
           </button>
         </div>

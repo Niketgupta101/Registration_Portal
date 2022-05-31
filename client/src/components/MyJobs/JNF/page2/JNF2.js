@@ -24,12 +24,12 @@ export default function JNF2({
   handleTwoYearMbaChange,
   handleTwoYearMscChange,
   handleUpdateJnfById,
-  handleMinorChange
+  handleMinorChange,
 }) {
   const [eligiblediv, setEligiblediv] = useState(false);
   const [btechdiv, setBtechdiv] = useState(false);
   const [dual_mtechdiv, setdual_mtechdiv] = useState(false);
-  const [minordiv,setMinorsdiv] = useState(false);
+  const [minordiv, setMinorsdiv] = useState(false);
   const [mbadiv, setmbadiv] = useState(false);
   const [msc2div, setmsc2div] = useState(false);
   const [msc3div, setmsc3div] = useState(false);
@@ -45,7 +45,7 @@ export default function JNF2({
   const refmsc3 = useRef();
   const refmtech = useRef();
   const refphd = useRef();
-  const refminors =useRef();
+  const refminors = useRef();
 
   function handleBackClick(refname) {
     refname.current.scrollIntoView({ behavior: "smooth" });
@@ -93,7 +93,7 @@ export default function JNF2({
                 }}
               >
                 <div>
-                  <div class="ug-pg d-flex m-0 justify-content-center">
+                  <div className="ug-pg d-flex m-0 justify-content-center">
                     <div className="flex-grow-1 ">
                       <h1 className="ug-pg-h1">
                         Undergraduate
@@ -498,7 +498,7 @@ export default function JNF2({
                             Minors
                           </h3>
                           <div className="p-2 align-self-center">
-                            {minordiv=== true ? (
+                            {minordiv === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
                               <FaAngleDoubleDown size={20} />
@@ -534,9 +534,7 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Exploration_Geology"
-                                    checked={
-                                      minorData.Exploration_Geology
-                                    }
+                                    checked={minorData.Exploration_Geology}
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -549,20 +547,22 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Exploration_Geophysics"
-                                    checked={
-                                      minorData.Exploration_Geophysics
-                                    }
+                                    checked={minorData.Exploration_Geophysics}
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">Separation and Purification Technology</td>
+                                <td className="courseName">
+                                  Separation and Purification Technology
+                                </td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Separation_and_Purification_Technology"
-                                    checked={minorData.Separation_and_Purification_Technology}
+                                    checked={
+                                      minorData.Separation_and_Purification_Technology
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -588,16 +588,16 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Infrastructure_Engineering"
-                                    checked={minorData.Infrastructure_Engineering}
+                                    checked={
+                                      minorData.Infrastructure_Engineering
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">
-                                  Data Science
-                                </td>
+                                <td className="courseName">Data Science</td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Data_Science"
@@ -653,7 +653,9 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Metallurgical_Engineering"
-                                    checked={minorData.Metallurgical_Engineering}
+                                    checked={
+                                      minorData.Metallurgical_Engineering
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -673,9 +675,7 @@ export default function JNF2({
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">
-                                  Finance
-                                </td>
+                                <td className="courseName">Finance</td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Finance"
@@ -686,9 +686,7 @@ export default function JNF2({
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">
-                                  Marketing
-                                </td>
+                                <td className="courseName">Marketing</td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Marketing"
@@ -705,16 +703,16 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Mathematics_and_Statistics"
-                                    checked={minorData.Mathematics_and_Statistics}
+                                    checked={
+                                      minorData.Mathematics_and_Statistics
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">
-                                  Robotics
-                                </td>
+                                <td className="courseName">Robotics</td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Robotics"
@@ -725,9 +723,7 @@ export default function JNF2({
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">
-                                  Manufacturing
-                                </td>
+                                <td className="courseName">Manufacturing</td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Manufacturing"
@@ -744,7 +740,9 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Computational_Fluid_Dynamics"
-                                    checked={minorData.Computational_Fluid_Dynamics}
+                                    checked={
+                                      minorData.Computational_Fluid_Dynamics
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -757,7 +755,9 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Mining_Methods_and_Safety"
-                                    checked={minorData.Mining_Methods_and_Safety}
+                                    checked={
+                                      minorData.Mining_Methods_and_Safety
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -770,7 +770,9 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Material_Handling_Engineering"
-                                    checked={minorData.Material_Handling_Engineering}
+                                    checked={
+                                      minorData.Material_Handling_Engineering
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -783,7 +785,9 @@ export default function JNF2({
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Petroleum_Production_Operations"
-                                    checked={minorData.Petroleum_Production_Operations}
+                                    checked={
+                                      minorData.Petroleum_Production_Operations
+                                    }
                                     onChange={handleMinorChange}
                                     type="checkbox"
                                   />
@@ -803,9 +807,7 @@ export default function JNF2({
                                 </td>
                               </tr>
                               <tr>
-                                <td className="courseName">
-                                  Nanotechnology
-                                </td>
+                                <td className="courseName">Nanotechnology</td>
                                 <td className="courseCheckBox5year">
                                   <input
                                     name="Nanotechnology"
@@ -840,7 +842,6 @@ export default function JNF2({
                         <div></div>
                       )}
                     </div>
-                    
                   </div>
                 </div>
               ) : (
@@ -860,7 +861,7 @@ export default function JNF2({
                 }}
               >
                 <div>
-                  <div class="ug-pg d-flex m-0 justify-content-center">
+                  <div className="ug-pg d-flex m-0 justify-content-center">
                     <div className="flex-grow-1 ">
                       <h1 className="ug-pg-h1">
                         Postgraduate

@@ -99,8 +99,38 @@ const Courses = () => {
                   }
                 >
                   <div className="courses-button">
-                    Integrated M.Tech/ Dual Degree
+                    Integrated M.Tech- 5 years
                   </div>
+                </Button>
+              </div>
+              <div className="bt animate__animated animate__fadeInLeft">
+                <Button
+                  style={{
+                    maxWidth: "350px",
+                    minWidth: "350px",
+                    backgroundColor: "white",
+                  }}
+                  variant="outlined"
+                  onClick={() =>
+                    Navigate("/courses/doublemajor", { state: btech })
+                  }
+                >
+                  <div className="courses-button">Double Major</div>
+                </Button>
+              </div>
+              <div className="bt animate__animated animate__fadeInRight">
+                <Button
+                  style={{
+                    maxWidth: "350px",
+                    minWidth: "350px",
+                    backgroundColor: "white",
+                  }}
+                  variant="outlined"
+                  onClick={() =>
+                    Navigate("/courses/dualdegree", { state: btech })
+                  }
+                >
+                  <div className="courses-button">Dual Degree</div>
                 </Button>
               </div>
               <div className="bt animate__animated animate__fadeInLeft">

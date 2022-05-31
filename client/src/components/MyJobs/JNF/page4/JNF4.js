@@ -29,7 +29,7 @@ const JNF4 = ({
     <div className="overallDiv1">
       <Form onSubmit={handleUpdateJnfById}>
         <div>
-          <div class="ug-pg m-0 p-0">
+          <div className="ug-pg m-0 p-0">
             <h1 className="ug-pg-h1">
               Selection Procedure
               <span className="ug-pg-span">
@@ -389,7 +389,7 @@ const JNF4 = ({
         </FormGroup>
         <hr />
         <div className="my-5">
-          <div class="ug-pg m-0 p-0">
+          <div className="ug-pg m-0 p-0">
             <h1 className="ug-pg-h1">
               Tentative Dates for Tests and Interviews:
               <span className="ug-pg-span">
@@ -410,21 +410,18 @@ const JNF4 = ({
                   defaultValue="female"
                   name="radio-buttons-group"
                 >
-                 {
-                  dates.map((date)=>(
+                  {dates.map((date) => (
                     <div className="optionPriority">
-                    <input
-                      value={date}
-                      type="radio"                      
-                      name="Priority_One_Job"
-                      onChange={handlePriorityDataChange}
-                      required
-                  
-                    />{date}
+                      <input
+                        value={date}
+                        type="radio"
+                        name="Priority_One_Job"
+                        onChange={handlePriorityDataChange}
+                        required
+                      />
+                      {date}
                     </div>
-
-                  ))
-                }
+                  ))}
                 </RadioGroup>
               </FormControl>
             </div>
@@ -440,21 +437,19 @@ const JNF4 = ({
                   defaultValue="female"
                   name="radio-buttons-group"
                 >
-                  {
-                  dates.map((date)=>(
+                  {dates.map((date) => (
                     <div className="optionPriority">
-                    <input
-                      value={date}
-                      type="radio"                      
-                      name="Priority_Two_Job"
-                      onChange={handlePriorityDataChange}
-                      required
-                    />{date}
+                      <input
+                        value={date}
+                        type="radio"
+                        name="Priority_Two_Job"
+                        onChange={handlePriorityDataChange}
+                        required
+                      />
+                      {date}
                     </div>
+                  ))}
 
-                  ))
-                }
-                  
                   {console.log("pp=", priorityFormData)}
                 </RadioGroup>
               </FormControl>

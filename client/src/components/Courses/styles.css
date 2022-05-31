@@ -37,13 +37,6 @@ main {
 
 .courses_list {
   padding: 2rem 15%;
-  /* background-repeat:no-repeat; 
-  background-size:contain;
-  background: url("https://people.iitism.ac.in/~academics/assets/assets/images/index/01.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
 }
 ol.gradient-list {
   counter-reset: gradient-counter;
@@ -52,12 +45,15 @@ ol.gradient-list {
   padding-left: 1rem;
 }
 ol.gradient-list > li {
+  width: 400px;
   background: white;
   border-radius: 0 0.5rem 0.5rem 0.5rem;
   counter-increment: gradient-counter;
   margin-top: 1rem;
   min-height: 3rem;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  justify-content: center;
   position: relative;
 }
 
@@ -100,7 +96,7 @@ ol.gradient-list > li + li {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 10em !important;
+  width: 25vw !important;
   height: 4px;
   background-color: rgb(49, 68, 131);
   transform: scaleX(1);
@@ -172,11 +168,15 @@ ol.gradient-list > li + li {
   font-weight: 800 !important;
   padding: 0 5px;
 }
+
 @media (max-width: 500px) {
   .courses_list {
     padding: 2rem 5%;
   }
   .prog-hover {
     font-size: 1.4em !important;
+  }
+  .prog-hover:hover:after {
+    transform: scaleX(1.3) !important;
   }
 }
