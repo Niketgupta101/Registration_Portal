@@ -46,7 +46,6 @@ const MyJobs = () => {
       Navigate('/auth');
     }
   }, [Navigate, user, company]);
-  console.log(company);
   const handlePageChange = (event, value) => {
     setPageNo(value);
   };
@@ -69,16 +68,8 @@ const MyJobs = () => {
         setJobs(response.data.jobs);
       }
       setIsLoading(false);
-      console.log('xty');
     } catch (error) {
       setIsLoading(false);
-      if (toReload) {
-        console.log('reload');
-        // setToReload((prevState) => !prevState);
-        // fetchJobs();
-      } else {
-        console.log(error);
-      }
     }
   };
 
@@ -115,7 +106,6 @@ const MyJobs = () => {
   };
 
   const handleDelete = async (deleteId) => {
-    console.log(deleteId);
     try {
       setIsLoading(true);
       if (deleteId[1]) {
@@ -123,13 +113,10 @@ const MyJobs = () => {
       } else {
         await deleteJnfById(deleteId[0]);
       }
-      // let newJobList = Jobs.filter((job) => job._id !== deleteId[0]);
 
       setReload((prevData) => prevData + 1);
       setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -137,7 +124,6 @@ const MyJobs = () => {
     async function filterJobs() {
       for (let i in Jobs) {
         if (Jobs[i].data.Company_Overview === undefined) {
-          console.log(i);
           if (Jobs[i].data.isIntern) {
             await deleteInfById(Jobs[i].data._id);
           } else {
@@ -148,8 +134,6 @@ const MyJobs = () => {
     }
     filterJobs();
   }, [Filter, pageNo, reload]);
-
-  console.log({ Jobs });
 
   return (
     <>
@@ -230,7 +214,6 @@ const MyJobs = () => {
               {Jobs &&
                 Jobs.map((job) => (
                   <div className='job_card' key={job._id}>
-                    {/* {console.log(job)} */}
                     <div
                       className='badge'
                       style={{ backgroundColor: !job.data?.isIntern && 'red' }}

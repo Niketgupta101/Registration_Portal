@@ -48,7 +48,6 @@ const fetchLatestInfOfUser = async (loggedUserId, next) => {
 
     return { success: true, inf };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -59,16 +58,13 @@ const fetchAllInf = async (offset, pagelimit, next) => {
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
-    console.log(infList, offset, pagelimit);
     return { success: true, jobs: infList };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
 
 const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
-  console.log({ pattern, offset, pagelimit });
   try {
     let infList = await INF.find({
       $or: [
@@ -98,7 +94,6 @@ const searchInfByCompany = async (pattern, offset, pagelimit, next) => {
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
-    console.log({ infList });
     return { success: true, jobs: infList };
   } catch (error) {
     return next(error);
@@ -123,7 +118,6 @@ const createInf = async (loggedUserId, details, next) => {
 
 const saveInfById = async (id, details, next) => {
   try {
-    console.log({ result: details.Selection_Procedure },details);
     let infStatus = await INFstatus.findOne({ data: id });
 
     if (!infStatus)
@@ -142,7 +136,6 @@ const saveInfById = async (id, details, next) => {
 
     return { success: true, inf };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -156,7 +149,6 @@ const submitInfById = async (id, next) => {
     let infStatus = await INFstatus.findOne({ data: id });
 
     infStatus.set({ progress: 'submitted' });
-    console.log("inf is " , inf);
 
     await infStatus.save();
     await fillINFDoc(inf);
@@ -165,7 +157,6 @@ const submitInfById = async (id, next) => {
 
     return { success: true, message: 'Submitted Successfully', infStatus };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -179,8 +170,6 @@ const removeINFById = async (id, next) => {
     await inf.remove();
     let infStatus = await INFstatus.findOne({ data: id });
     await infStatus.remove();
-
-    console.log({ success: true });
 
     return { success: true, inf };
   } catch (error) {

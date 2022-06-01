@@ -74,7 +74,6 @@ const Jnf = () => {
   const [hrDetails, setHrDetails] = useState({ ...hrData });
 
   const handleCompanyDataChange = (e) => {
-    console.log({ e: e.target.name, value: e.target.value });
     setCompanyFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
@@ -98,9 +97,7 @@ const Jnf = () => {
       [type]: { ...prevData[type], [name]: value },
     }));
   };
-  useEffect(() => {
-    // console.log(companyFormData);
-  }, [companyFormData]);
+  useEffect(() => {}, [companyFormData]);
 
   // ------------------------------------------------------------
 
@@ -126,32 +123,31 @@ const Jnf = () => {
     Applied_Geology: false,
     Applied_Geophysics: false,
   });
-  const [minorData ,  setMinorData] = useState({
-    Select_All : false,
-    Exploration_Geology : false,
-    Exploration_Geophysics : false,
-    Separation_and_Purification_Technology : false,
-    Materials_Science :false,
-    Infrastructure_Engineering : false,
-    Data_Science : false,
-    Electrical_Technology : false,
-    Embedded_System_Design : false,
-    Environmental_Management : false,
-    Metallurgical_Engineering : false,
-    Opeartions_Management : false,
-    Finance : false,
-    Marketing:false,
-    Mathematics_and_Statistics : false,
-    Robotics : false,
-    Manufacturing : false,
-    Computational_Fluid_Dynamics : false,
+  const [minorData, setMinorData] = useState({
+    Select_All: false,
+    Exploration_Geology: false,
+    Exploration_Geophysics: false,
+    Separation_and_Purification_Technology: false,
+    Materials_Science: false,
+    Infrastructure_Engineering: false,
+    Data_Science: false,
+    Electrical_Technology: false,
+    Embedded_System_Design: false,
+    Environmental_Management: false,
+    Metallurgical_Engineering: false,
+    Opeartions_Management: false,
+    Finance: false,
+    Marketing: false,
+    Mathematics_and_Statistics: false,
+    Robotics: false,
+    Manufacturing: false,
+    Computational_Fluid_Dynamics: false,
     Mining_Methods_and_Safety: false,
-    Material_Handling_Engineering : false,
-    Petroleum_Production_Operations : false,
-    High_Energy_Physics : false,
-    Nanotechnology : false
-
-  })
+    Material_Handling_Engineering: false,
+    Petroleum_Production_Operations: false,
+    High_Energy_Physics: false,
+    Nanotechnology: false,
+  });
   const [skillData, setSkillData] = useState({
     C_Cpp_Java_Python_etc: false,
     Full_Stack_Development_Frontend_or_Backend: false,
@@ -192,7 +188,6 @@ const Jnf = () => {
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
     } else {
       setFiveYearData((prevData) => ({
         ...prevData,
@@ -212,7 +207,6 @@ const Jnf = () => {
       for (let i in minorData) {
         setMinorData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
     } else {
       setMinorData((prevData) => ({
         ...prevData,
@@ -226,10 +220,6 @@ const Jnf = () => {
       [e.target.name]: e.target.checked ? true : false,
     }));
   };
-
-  useEffect(() => {
-    console.log(fourYearData);
-  }, [fourYearData]);
 
   // ------------------------------------------------------
 
@@ -284,14 +274,12 @@ const Jnf = () => {
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
     } else {
       setThreeYearData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
-    //console.log(threeYearData);
   };
   const handleTwoYearChange = (e) => {
     if (e.target.name !== 'Select_All' && twoYearData.Select_All === true) {
@@ -305,13 +293,11 @@ const Jnf = () => {
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
     } else {
       setTwoYearData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
-      //console.log(twoYearData);
     }
   };
   const handleTwoYearMbaChange = (e) => {
@@ -326,14 +312,12 @@ const Jnf = () => {
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
     } else {
       setTwoYearMbaData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
-    //console.log(twoYearMbaData);
   };
   const handleTwoYearMscChange = (e) => {
     if (e.target.name !== 'Select_All' && twoYearMscData.Select_All === true) {
@@ -347,14 +331,12 @@ const Jnf = () => {
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
       }
-      //console.log(newValue);
     } else {
       setTwoYearMscData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
     }
-    //console.log(twoYearMscData);
   };
 
   // ------------------------------------------------------------
@@ -394,9 +376,7 @@ const Jnf = () => {
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
 
   const handleResumeShortListingChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value == 1) {
-      console.log(e.target.name, e.target.value);
       setResumeShortListingData((prevData) => ({
         Yes: false,
         No: true,
@@ -413,7 +393,6 @@ const Jnf = () => {
       }));
     }
     if (e.target.value == 0) {
-      console.log(e.target.name, e.target.value);
       setResumeShortListingData((prevData) => ({
         Yes: true,
         No: false,
@@ -437,7 +416,6 @@ const Jnf = () => {
       Both: false,
       None: false,
     };
-    // console.log("original", temp);
     switch (e.target.value) {
       case '0':
         temp.Technical = true;
@@ -452,7 +430,6 @@ const Jnf = () => {
         temp.None = true;
         break;
     }
-    // console.log("a switch", temp);
 
     setTypeOfTestData(temp);
 
@@ -468,14 +445,12 @@ const Jnf = () => {
         },
       },
     }));
-    console.log(typeOfTestData);
   };
   const handleOtherQualificationRoundsChange = (e) => {
     setOtherQualificationRoundsData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.checked ? true : false,
     }));
-    console.log(otherQualificationRoundsData);
     setJnfData((prevData) => ({
       ...prevData,
       Selection_Procedure: {
@@ -532,7 +507,6 @@ const Jnf = () => {
   const fetchJnfData = async (JnfId) => {
     const response = await getjnfById(JnfId);
 
-    console.log(response.data);
     setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
     // setCompanyFormData({ ...response.data.jnf.Company_Overview });
     setJobFormData({ ...response.data.jnf.Job_Details });
@@ -547,10 +521,8 @@ const Jnf = () => {
         .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
     });
     setMinorData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Minors,
-
-    })
+      ...response.data.jnf.Eligible_Courses_And_Disciplines.Minors,
+    });
     setSkillData({
       ...response.data.jnf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
     });
@@ -586,7 +558,6 @@ const Jnf = () => {
       Eligibility_Criteria:
         response.data.jnf.Selection_Procedure.Eligibility_Criteria,
     });
-    console.log({ companyFormData });
     setJnfData({ ...response.data.jnf });
   };
 
@@ -607,7 +578,7 @@ const Jnf = () => {
         ...prevData.Eligible_Courses_And_Disciplines,
         Four_Year_Btech_Programs: { ...fourYearData },
         Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs: { ...fiveYearData },
-        Minors : {...minorData},
+        Minors: { ...minorData },
         Skill_Based_Hiring: { ...skillData },
         Three_Year_MSc_Tech_Programs: { ...threeYearData },
         Two_Year_Mtech_Programs: { ...twoYearData },
@@ -629,26 +600,19 @@ const Jnf = () => {
       setIsLoading(true);
       let response = await updateJnfById(JnfData, JnfId);
       setIsLoading(false);
-      console.log(response);
       setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(JnfData);
 
     try {
       setIsLoading(true);
       let response = await submitJnf(JnfId);
       setIsLoading(false);
-      console.log(response);
       Navigate('/myjobs');
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

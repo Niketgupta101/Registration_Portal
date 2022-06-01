@@ -25,7 +25,6 @@ const Home = () => {
 
   useEffect(() => {
     if (!user || user.isemailVerified === false || user.role !== 'Admin') {
-      // console.log({ user, email: user.isemailVerified, role: user.role });
       Navigate('/auth');
     }
   }, [Navigate, user]);
@@ -44,7 +43,6 @@ const Home = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
     }
   };
 

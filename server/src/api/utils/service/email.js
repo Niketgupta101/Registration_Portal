@@ -21,7 +21,6 @@ const createTransporter = async () => {
   const accessToken = await new Promise((resolve, reject) => {
     oAuth2Client.getAccessToken((err, token) => {
       if (err) {
-        console.log(err);
         reject('Failed to create access token :(');
       }
       resolve(token);
@@ -59,10 +58,8 @@ exports.sendEmail = async (to, subject, html) => {
   let emailTransporter = await createTransporter();
   emailTransporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.log(error);
       return { success: false, message: 'Mail could not be sent' };
     } else {
-      console.log({ to, success: 'true' });
       return { success: true, message: 'Mail sent successfully' };
     }
   });

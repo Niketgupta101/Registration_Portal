@@ -58,7 +58,6 @@ const fetchAllJnf = async (offset, pagelimit, next) => {
 };
 
 const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
-  console.log({ pattern, offset, pagelimit });
   try {
     let jnfList = await JNF.find({
       $or: [
@@ -88,7 +87,6 @@ const searchJnfByCompany = async (pattern, offset, pagelimit, next) => {
       .sort({ updatedAt: -1 })
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
-    // console.log({ jnfList });
     return { success: true, jobs: jnfList };
   } catch (error) {
     return next(error);
@@ -129,7 +127,6 @@ const saveJnfById = async (id, details, next) => {
 
     return { success: true, jnf };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -143,20 +140,14 @@ const submitJnfById = async (id, next) => {
     let jnfStatus = await JNFstatus.findOne({ data: id });
 
     jnfStatus.set({ progress: 'submitted' });
-    console.log('here');
     await jnfStatus.save();
 
     await fillJNFDoc(jnf);
 
-    console.log('jnf doc');
-
     await updateJnfInGSheets(jnf);
-
-    console.log('jnf sheets');
 
     return { success: true, message: 'Submitted Successfully', jnf };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -173,7 +164,6 @@ const removeJNFById = async (id, next) => {
 
     return { success: true, jnf };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -187,7 +177,6 @@ const getValues = async (data) => {
 };
 
 const updateJnfInGSheets = async (jnf) => {
-  // console.log({ jnf });
   let details = [
     jnf.userId,
     jnf._id.valueOf(),
@@ -200,7 +189,6 @@ const updateJnfInGSheets = async (jnf) => {
     jnf.createdAt,
     jnf.updatedAt,
   ];
-  console.log(details);
   let data = await readSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     'JNF',
@@ -208,7 +196,6 @@ const updateJnfInGSheets = async (jnf) => {
   );
   data.push(details);
 
-  console.log({ data });
   await updateSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     'JNF',

@@ -149,7 +149,6 @@ exports.fillINFDoc = async (inf) => {
   let selectionProcedure = inf.Selection_Procedure;
   let hR_Details = inf.HR_Details;
   let priority_Details = inf.Priority_Details;
-  console.log(priority_Details);
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -290,7 +289,6 @@ exports.fillINFDoc = async (inf) => {
     Sector: Sector,
     Category: Category,
   };
-  console.log({ selectionProcedure });
   doc.render({
     ...inf.Company_Overview,
     ...inf.Intern_Profile,
@@ -377,7 +375,6 @@ exports.fillJNFDoc = async (jnf) => {
     paragraphLoop: true,
     linebreaks: true,
   });
-  console.log(jnf, 'jnf');
   let Category = jnf.Company_Overview.Category;
   let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
@@ -576,7 +573,6 @@ exports.fillJNFDoc = async (jnf) => {
     Sector: Sector,
     Category: Category,
   };
-  console.log(priority_Details_Job, 'Job Prioritiea');
   doc.render({
     ...jnf.Company_Overview,
     ...jnf.Job_Details,
@@ -603,7 +599,6 @@ exports.fillJNFDoc = async (jnf) => {
   );
 
   await result.saveFiles(path.resolve(__dirname));
-  console.log('line 558');
 
   let response = await uploadFile(
     path.resolve(__dirname, 'output.pdf'),

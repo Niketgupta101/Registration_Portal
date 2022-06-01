@@ -41,10 +41,7 @@ const Invites = () => {
   useEffect(() => {
     const loadPost = async () => {
       setLoading(true);
-      console.log('Before Response');
       const response = await fetchAllCompaniesDeafultMail();
-      console.log(response);
-      console.log('After Response');
       setPosts(response.data);
       setLoading(false);
     };
@@ -53,8 +50,7 @@ const Invites = () => {
   }, []);
 
   async function clickFunction() {
-    const result = await sendInvitationToAllCompanies();
-    console.log(result);
+    await sendInvitationToAllCompanies();
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -89,7 +85,6 @@ const Invites = () => {
     setPage(0);
   };
 
-  console.log(posts);
   return (
     <>
       <div className='company-dashboard-container'>

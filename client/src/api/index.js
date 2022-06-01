@@ -1,9 +1,5 @@
 const axios = require('axios');
 
-const token = localStorage.getItem('token');
-
-console.log(token);
-
 const getApiObject = function () {
   if (process.env.NODE_ENV === 'production') {
     const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;

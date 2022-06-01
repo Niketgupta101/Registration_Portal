@@ -11,7 +11,6 @@ const Home = () => {
 
   useEffect(() => {
     if (!user || !user.isemailVerified) {
-      console.log(user);
       Navigate('/auth');
     }
 

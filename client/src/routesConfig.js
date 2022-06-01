@@ -57,7 +57,6 @@ export const CustomRoute = ({ component: Component, path, role, ...rest }) => {
       path={path}
       {...rest}
       render={(props) => {
-        console.log('routesConfig');
         if (
           !localStorage.length ||
           localStorage.getItem('user') === undefined ||

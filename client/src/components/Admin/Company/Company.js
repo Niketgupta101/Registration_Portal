@@ -50,14 +50,12 @@ const Company = () => {
 
   useEffect(() => {
     async function fetchCompanies() {
-      // console.log({ search });
       var response;
       if (!search) {
         response = await getAllCompanyDetails();
       } else {
         response = await searchCompanyByPattern(search);
       }
-      // console.log(response);
       setCompanies(response.data.companyList);
     }
     fetchCompanies();
@@ -95,7 +93,6 @@ const Company = () => {
         </small>
 
         <div className='company_items'>
-          {/* {console.log(Companies)} */}
           {Companies &&
             Companies.map((company) => (
               <div className='job_card job_card1'>

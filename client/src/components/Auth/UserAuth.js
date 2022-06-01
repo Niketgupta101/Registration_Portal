@@ -116,11 +116,9 @@ const UserAuth = () => {
     let email_check;
     try {
       email_check = await register({ ...AuthData, email_check: 'true' });
-      // console.log(1);
     } catch (error) {
       setIsLoading(false);
       toast.warn(error.response.data.error);
-      // console.log(error.response.data.error);
       return;
     }
     setIsLoading(false);
@@ -136,7 +134,6 @@ const UserAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleCompanySubmit = async (e) => {
-    // console.log("Submitted=", companyData);
     e.preventDefault();
     localStorage.clear();
     // -------------------------------------- auth process
@@ -159,7 +156,6 @@ const UserAuth = () => {
           Navigate('/');
         }
       } catch (error) {
-        // console.log("error.message=",error.response.data.error);
         toast.warn(error.response.data.error);
         handleErrorClick();
       }

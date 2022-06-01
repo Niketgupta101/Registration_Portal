@@ -44,7 +44,6 @@ const getLatestInfOfUser = async (req, res, next) => {
 
     res.status(201).json(response);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -115,7 +114,6 @@ const deleteInfById = async (req, res, next) => {
 
 const searchInfByPattern = async (req, res, next) => {
   let { pattern, pageno, pagelimit } = req.params;
-  console.log({ pattern, pageno, pagelimit });
 
   try {
     pageno = pageno || 1;
@@ -123,10 +121,8 @@ const searchInfByPattern = async (req, res, next) => {
     let offset = pagelimit * (pageno - 1);
 
     let response = await searchInfByCompany(pattern, offset, pagelimit, next);
-    console.log(response);
     res.status(201).json(response);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -135,7 +131,7 @@ module.exports = {
   getInfById,
   getAllInfForUser,
   searchInfByPattern,
-  getLatestInfOfUser, 
+  getLatestInfOfUser,
   getAllInf,
   createNewInf,
   updateInfById,

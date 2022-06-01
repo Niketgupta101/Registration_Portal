@@ -57,18 +57,14 @@ const sendInvitationToAll = async (next) => {
 
     for (let i in data) {
       try {
-        console.log(data[i][6]);
         await sendInvitationMailToCompany(
           data[i][6],
           `${data[i][6]}`,
           `IIT(ISM)_${data[i][1]}_2022`
         );
         data[i][10] = 'Sent';
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
-    console.log(data);
     await updateSheet(
       '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
       'Invitations',
@@ -83,18 +79,13 @@ const sendInvitationToAll = async (next) => {
 };
 
 const sendInvitations = async (data, subject, message, next) => {
-  console.log({ data, subject, message });
   try {
     for (let i in data) {
       try {
-        console.log(data[i][6]);
         await sendEmail(data[i][6], subject, message);
         data[i][10] = 'Sent';
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
-    console.log(data);
     // await updateSheet(
     //   '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     //   'Invitations',
@@ -104,7 +95,6 @@ const sendInvitations = async (data, subject, message, next) => {
 
     return { success: true, data };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -140,7 +130,6 @@ const updateCompanyInGSheets = async (company) => {
 };
 
 const searchCompany = async (pattern, offset, pagelimit, next) => {
-  console.log({ pattern, offset, pagelimit });
   try {
     let companyList = await Company.find({
       name: { $regex: pattern, $options: 'im' },
@@ -148,7 +137,6 @@ const searchCompany = async (pattern, offset, pagelimit, next) => {
       .sort({ updatedAt: -1 })
       .skip(offset)
       .limit(pagelimit);
-    console.log({ companyList });
     return { success: true, companyList };
   } catch (error) {
     return next(error);

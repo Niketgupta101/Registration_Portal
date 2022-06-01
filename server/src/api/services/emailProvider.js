@@ -1,6 +1,6 @@
-const axios = require("axios");
-const { sendEmail } = require("../utils/service/email");
-const { clientUrl, serverUrl } = require("../../config/vars");
+const axios = require('axios');
+const { sendEmail } = require('../utils/service/email');
+const { clientUrl, serverUrl } = require('../../config/vars');
 
 const htmlforgetpassword = (url) => {
   return `<div>
@@ -315,7 +315,7 @@ exports.sendConfirmationMail = async (emailId, emailVerifyToken) => {
   try {
     const emailVerifyUrl = `${serverUrl}/v1/users/verifyEmail/${emailVerifyToken}`;
 
-    const subject = "Email Verification - CDC IIT(ISM) Dhanbad";
+    const subject = 'Email Verification - CDC IIT(ISM) Dhanbad';
 
     const message = generateHtml(emailVerifyUrl);
 
@@ -330,7 +330,7 @@ exports.sendResetPasswordMail = async (emailId, resetToken) => {
   try {
     const resetUrl = `${clientUrl}/passwordReset/${resetToken}`;
 
-    const subject = "Reset your Password";
+    const subject = 'Reset your Password';
 
     const message = htmlforgetpassword(resetUrl);
     // const message = `<h1>You have requested a password reset</h1>
@@ -348,14 +348,13 @@ exports.sendResetPasswordMail = async (emailId, resetToken) => {
 exports.sendInvitationMailToCompany = async (emailId, username, password) => {
   try {
     const subject =
-      "Invitation for Internship/Placements Season of IIT(ISM) Dhanbad";
+      'Invitation for Internship/Placements Season of IIT(ISM) Dhanbad';
 
     const message = `<h3>You are invited</h3>
                         <h4>Username: ${username}</h4>
                         <h4>Password: ${password}</h4>`;
 
     await sendEmail(emailId, subject, message);
-    console.log("here");
     return { success: true };
   } catch (error) {
     return { success: false };

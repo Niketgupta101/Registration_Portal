@@ -24,20 +24,16 @@ const getAllJobs = async (req, res, next) => {
       .skip(offset)
       .limit(pagelimit);
 
-    console.log(infList.length, jnfList.length);
-
     let jobs = [...infList, ...jnfList];
 
     jobs.sort(function (a, b) {
       let dateA = Date(a.data.updatedAt);
       let dateB = Date(b.data.updatedAt);
-      console.log({ dateA, dateB });
       return dateB - dateA;
     });
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -62,8 +58,6 @@ const getAllJobsForUser = async (req, res, next) => {
       .skip(offset)
       .limit(pagelimit);
 
-    console.log(infList.length, jnfList.length);
-
     let jobs = [...infList, ...jnfList];
 
     jobs.sort(function (a, b) {
@@ -74,7 +68,6 @@ const getAllJobsForUser = async (req, res, next) => {
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -107,7 +100,6 @@ const getGraduationYear = async (req, res, next) => {
 const getPendingJobForms = async (req, res, next) => {
   let { pagelimit, pageno } = req.params;
   const userId = req.user._id;
-  console.log({ userId });
   try {
     pagelimit = parseInt(pagelimit) || 12;
     pageNo = parseInt(pageno) || 1;
@@ -147,7 +139,6 @@ const getPendingJobForms = async (req, res, next) => {
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
