@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
+const getInt=(value)=>{
+  if(isNaN(value)===false)
+  return parseInt(value);
+  return 0;
+}
 export default function DonutModal(props) {
   const [statsData, setStatsData] = useState(props.data);
+
   console.log(statsData);
+  let placed=getInt(statsData[2]);
+  let unplaced=getInt(statsData[1])-getInt(statsData[2]);
+  let interned=getInt(statsData[4]);
+  let unintered=getInt(statsData[3])-getInt(statsData[4]);
   const finalYearData = [
-    parseInt(statsData[2]),
-    parseInt(statsData[1]) - parseInt(statsData[2]),
+    placed,
+    unplaced,
   ];
   const thirdYearData = [
-    parseInt(statsData[4]),
-    parseInt(statsData[3]) - parseInt(statsData[4]),
+    interned,
+    unintered,
   ];
   const colorsFinalYear = ["#28548a", "#9cbbe2"];
   const colorsThirdYear = ["#ad755e", "#fcbca0"];
@@ -23,18 +33,18 @@ export default function DonutModal(props) {
           <div className="modal-datatext">
             {" "}
             Total Number of Students:{" "}
-            <span className="modal-stats">{parseInt(statsData[1])}</span>
+            <span className="modal-stats">{placed+unplaced}</span>
           </div>
           <div className="modal-datatext">
             {" "}
             Number of Students Placed:{" "}
-            <span className="modal-stats">{parseInt(statsData[2])}</span>
+            <span className="modal-stats">{placed}</span>
           </div>
           <div className="modal-datatext">
             {" "}
             Number of Students Unplaced:{" "}
             <span className="modal-stats">
-              {parseInt(statsData[1]) - parseInt(statsData[2])}
+              {unplaced}
             </span>
           </div>
           <div className="d-flex justify-content-center m-3">
@@ -72,9 +82,7 @@ export default function DonutModal(props) {
             <div className="donut-legend m-4">
               <div className="h5 m-0 donut-legend-heading">Placed</div>
               <div className="h2 m-0 donut-legend-subheading ">
-                {Math.round(
-                  (parseInt(statsData[2]) / parseInt(statsData[1])) * 100
-                )}
+                {Math.round(placed / (placed+unplaced) * 100)}
                 %
               </div>
               <div className="donut-legend-placed">
@@ -92,18 +100,18 @@ export default function DonutModal(props) {
           <div className="modal-datatext">
             {" "}
             Total Number of Students:{" "}
-            <span className="modal-stats">{parseInt(statsData[3])}</span>
+            <span className="modal-stats">{interned+unintered}</span>
           </div>
           <div className="modal-datatext">
             {" "}
             Number of Students Placed:{" "}
-            <span className="modal-stats">{parseInt(statsData[4])}</span>
+            <span className="modal-stats">{interned}</span>
           </div>
           <div className="modal-datatext">
             {" "}
             Number of Students Unplaced:{" "}
             <span className="modal-stats">
-              {parseInt(statsData[3]) - parseInt(statsData[4])}
+              {unintered}
             </span>
           </div>
           <div className="d-flex justify-content-center m-3">
@@ -141,9 +149,7 @@ export default function DonutModal(props) {
             <div className="donut-legend m-4">
               <div className="h5 m-0 donut-legend-heading">Placed</div>
               <div className="h2 m-0 donut-legend-subheading ">
-                {Math.round(
-                  (parseInt(statsData[4]) / parseInt(statsData[3])) * 100
-                )}
+                {Math.round(interned / (interned+unintered) * 100)}
                 %
               </div>
               <div style={{ color: "#ad755e" }}>

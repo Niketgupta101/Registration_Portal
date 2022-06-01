@@ -12,6 +12,8 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [btech, setBtech] = useState([]);
   const [fiveyear, setFiveyear] = useState([]);
+  const [doublemajor, setDoublemajor] = useState([]);
+  const [dualdegree,setDualdegree]=useState([]);
   const [threeyearmsc, setThreeyearmsc] = useState([]);
   const [twoyearmba, setTwoyearmba] = useState([]);
   const [twoyearmsc, setTwoyearmsc] = useState([]);
@@ -35,14 +37,22 @@ const Courses = () => {
     setIsLoading(false);
 
     let temp = response.data.data;
-
+    
     setCourses(() => temp);
     setBtech(() => temp.slice(0, 12));
     setFiveyear(() => temp.slice(12, 15));
-    setThreeyearmsc(() => temp.slice(15, 17));
-    setTwoyearmba(() => temp.slice(17, 21));
-    setTwoyearmsc(() => temp.slice(21, 24));
-    setTwoyearmtech(() => temp.slice(24));
+    setDoublemajor(()=>temp.slice(15, 16));
+    setDualdegree(()=>temp.slice(16, 18));
+    setThreeyearmsc(() => temp.slice(18, 20));
+    setTwoyearmba(() => temp.slice(20, 22));
+    setTwoyearmsc(() => temp.slice(22, 25));
+    setTwoyearmtech(() => temp.slice(25,45));
+     console.log(response.data.data.slice(0, 12));
+     console.log(response.data.data.slice(12, 15));
+     console.log(response.data.data.slice(18, 20));
+     console.log(response.data.data.slice(20, 22));
+     console.log(response.data.data.slice(22, 25));
+     console.log(response.data.data.slice(25,45));
 
     // console.log("btech=",response.data.data.slice(0,12));
   }, []);
@@ -112,7 +122,7 @@ const Courses = () => {
                   }}
                   variant="outlined"
                   onClick={() =>
-                    Navigate("/courses/doublemajor", { state: btech })
+                    Navigate("/courses/doublemajor", { state: doublemajor })
                   }
                 >
                   <div className="courses-button">Double Major</div>
@@ -127,7 +137,7 @@ const Courses = () => {
                   }}
                   variant="outlined"
                   onClick={() =>
-                    Navigate("/courses/dualdegree", { state: btech })
+                    Navigate("/courses/dualdegree", { state: dualdegree })
                   }
                 >
                   <div className="courses-button">Dual Degree</div>

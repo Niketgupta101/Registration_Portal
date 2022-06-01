@@ -11,6 +11,7 @@ import Loading from "../Loading/Loading";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const UserAuth = () => {
   const Navigate = useNavigate();
@@ -99,7 +100,27 @@ const UserAuth = () => {
 
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
+    if(AuthData.firstName===""||AuthData.lastName===""||AuthData.email===""||AuthData.contactNo===""||AuthData.password===""||AuthData.confirmPassword==="")
+   {
+     toast.warn("Please fill all the entries");
+     return;
+   }
     var re = /\S+@\S+\.\S+/;
+    setIsLoading(true);
+    let  email_check;
+    try{
+      email_check  = await register({...AuthData,email_check:"true"});
+      // console.log(1);
+
+    }catch(error)
+    {
+      setIsLoading(false);
+      toast.warn(error.response.data.error)
+      // console.log(error.response.data.error);
+      return ;
+    }
+   setIsLoading(false);
+   
     if (AuthData.password != AuthData.confirmPassword) {
       toast.warn("Passwords do not match");
       setAuthData({ ...AuthData, confirmPassword: "" });

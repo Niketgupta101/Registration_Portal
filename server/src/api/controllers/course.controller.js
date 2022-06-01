@@ -5,10 +5,10 @@ const {
 
 const getAllCourseData = async (req, res, next) => {
   try {
-    let response = await readCoursesGSheets();
+    let response = await readCoursesGSheets(next);
     res.status(201).json(response);
   } catch (error) {
-    res.send(error);
+    next(error);
   }
 };
 

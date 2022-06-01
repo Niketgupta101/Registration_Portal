@@ -26,8 +26,9 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
     e.preventDefault();
     try {
       await sendConfirmationLink(email);
-      setIsSignIn(true);
       notify();
+      setIsSignIn(() => true);
+
       setPage("auth");
     } catch (error) {
       console.log(error);
@@ -101,7 +102,11 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
                 className="mt-2 animate__animated animate__pulse animate__infinite"
                 variant="text"
                 size="large"
-                onClick={() => Navigate("/auth")}
+                onClick={() => {
+                  Navigate("/auth");
+                  setIsSignIn(() => true);
+                  setPage("auth");
+                }}
               >
                 <b style={{ fontSize: "1.2rem" }}>Go Back to Login Page</b>
               </Button>

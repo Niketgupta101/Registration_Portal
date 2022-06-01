@@ -31,11 +31,12 @@ const readSheet = async (spreadsheetId, sheet, range) => {
     };
 
     let {data} = await gsapi.spreadsheets.values.get(options);
-    //  console.log("data = ",data.values);
+     console.log("data = ",data.values);
     let dataValues = data.values;
 
     if(sheet==='Courses')
     {
+         console.log(dataValues)
         const filteredData=dataValues.filter((item)=>item.length>=3)
         return filteredData;
     }
