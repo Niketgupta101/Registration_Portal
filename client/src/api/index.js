@@ -4,66 +4,62 @@ const token = localStorage.getItem('token');
 
 console.log(token);
 
-const getApiObject = function() {
-  if(process.env.NODE_ENV === 'production'){
+const getApiObject = function () {
+  if (process.env.NODE_ENV === 'production') {
     const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
     return {
       get: async function (path) {
-        let resp = await (await fetch(
-          `/v1${path}`,
-          {
+        let resp = await (
+          await fetch(`/v1${path}`, {
             method: 'GET',
-            headers : {
+            headers: {
               'Content-Type': 'application/json',
-              'Authorization': tokenString,
+              Authorization: tokenString,
             },
-          }
-        )).json();
-        return {data: resp};
+          })
+        ).json();
+        return { data: resp };
       },
       post: async function (path, data) {
-        let resp = await (await fetch(
-          `/v1${path}`, 
-          {
+        let resp = await (
+          await fetch(`/v1${path}`, {
             method: 'POST',
-            headers : {
+            headers: {
               'Content-Type': 'application/json',
-              'Authorization': tokenString,
+              Authorization: tokenString,
             },
             body: JSON.stringify(data),
-          },
-        )).json();
-        return {data: resp};
+          })
+        ).json();
+        return { data: resp };
       },
       put: async function (path, data) {
-        let resp = await (await fetch(
-          `/v1${path}`, 
-          {
+        let resp = await (
+          await fetch(`/v1${path}`, {
             method: 'PUT',
-            headers : {
+            headers: {
               'Content-Type': 'application/json',
-              'Authorization': tokenString,
+              Authorization: tokenString,
             },
             body: JSON.stringify(data),
-          },
-        )).json();
-        return {data: resp};
+          })
+        ).json();
+        return { data: resp };
       },
       delete: async function (path) {
-        let resp = await (await fetch(
-          `/v1${path}`, 
-          {
+        let resp = await (
+          await fetch(`/v1${path}`, {
             method: 'DELETE',
-            headers : {
+            headers: {
               'Content-Type': 'application/json',
-              'Authorization': tokenString,
+              Authorization: tokenString,
             },
-          },
-        )).json();
-        return {data: resp};
+          })
+        ).json();
+        return { data: resp };
       },
     };
-  }else{
+  } else {
     const APIObj = axios.create({
       baseURL: 'http://localhost:5000/v1',
       // {
@@ -74,128 +70,147 @@ const getApiObject = function() {
       credentials: 'include',
       withCredentials: true,
     });
-    APIObj.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(
-      localStorage.getItem('token')
-    )}`;
+    // APIObj.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(
+    //   localStorage.getItem('token')
+    // )}`;
     return APIObj;
   }
-}
+};
 
-const API = getApiObject();
+// const API = getApiObject();
+const API = axios.create({ baseURL: `http://localhost:5000/v1` });
 
-// const setHeader = () => {
-//   console.log({ token: localStorage.getItem('token') });
-//   return;
-// };
+const setHeader = () => {
+  return {
+    headers: {
+      authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+    },
+  };
+};
 
 // -------------------- Auth apis ---------------------------
 
-export const register = (user) => API.post(`/auth/register`, user);
+export const register = (user) => API.post(`/auth/register`, user, setHeader());
 
-export const login = (data) => API.post(`/auth/login`, data);
+export const login = (data) => API.post(`/auth/login`, data, setHeader());
 
-export const adminLogin = (data) => API.post('/auth/admin/login', data);
+export const adminLogin = (data) =>
+  API.post('/auth/admin/login', data, setHeader());
 
 export const forgetPassword = (emailId) =>
-  API.post(`/auth/forgotPassword`, { emailId });
+  API.post(`/auth/forgotPassword`, { emailId }, setHeader());
 
 export const resetPassword = (id, password) =>
-  API.put(`/auth/resetPassword/${id}`, { password });
+  API.put(`/auth/resetPassword/${id}`, { password }, setHeader());
 
 export const sendConfirmationLink = (email) =>
-  API.put('/auth/sendLink', { emailId: email });
+  API.put('/auth/sendLink', { emailId: email }, setHeader());
 
 // -------------------- Company details -------------------------
 
-export const postCompanyDetails = (data) => API.post(`/company`, data);
+export const postCompanyDetails = (data) =>
+  API.post(`/company`, data, setHeader());
 
-export const getCompanyDetailsById = (id) => API.get(`/acompany/${id}`);
+export const getCompanyDetailsById = (id) =>
+  API.get(`/acompany/${id}`, setHeader());
 
 export const getAllCompanyDetails = (pageNo) =>
-  API.get(`/company/all/${pageNo}/12`);
+  API.get(`/company/all/${pageNo}/12`, setHeader());
 
 // --------------------- INF ------------------------------------
 
-export const getInfById = (id) => API.get(`/inf/${id}`);
+export const getInfById = (id) => API.get(`/inf/${id}`, setHeader());
 
 export const getAllInfForUser = (userId, pageNo) =>
-  API.get(`/inf/user/${userId}/${pageNo}/12`);
+  API.get(`/inf/user/${userId}/${pageNo}/12`, setHeader());
 
-export const getAllInf = (pageNo) => API.get(`/inf/admin/all/${pageNo}/12`);
+export const getAllInf = (pageNo) =>
+  API.get(`/inf/admin/all/${pageNo}/12`, setHeader());
 
-export const createNewInf = (data) => API.post(`/inf`, data);
+export const createNewInf = (data) => API.post(`/inf`, data, setHeader());
 
-export const updateInfById = (data, id) => API.put(`/inf/${id}`, data);
+export const updateInfById = (data, id) =>
+  API.put(`/inf/${id}`, data, setHeader());
 
-export const submitInf = (id) => API.get(`/inf/submit/${id}`);
+export const submitInf = (id) => API.get(`/inf/submit/${id}`, setHeader());
 
-export const deleteInfById = (id) => API.delete(`/inf/delete/${id}`);
+export const deleteInfById = (id) =>
+  API.delete(`/inf/delete/${id}`, setHeader());
 
-export const getLatestInfOfUser = () => API.get('/inf/latest');
+export const getLatestInfOfUser = () => API.get('/inf/latest', setHeader());
 
 // ---------------------- JNF -----------------------------------
 
-export const getjnfById = (id) => API.get(`/jnf/${id}`);
+export const getjnfById = (id) => API.get(`/jnf/${id}`, setHeader());
 
 export const getAllJnfForUser = (userId, pageNo) =>
-  API.get(`/jnf/user/${userId}/${pageNo}/12`);
+  API.get(`/jnf/user/${userId}/${pageNo}/12`, setHeader());
 
-export const getAllJnf = (pageNo) => API.get(`/jnf/admin/all/${pageNo}/12`);
+export const getAllJnf = (pageNo) =>
+  API.get(`/jnf/admin/all/${pageNo}/12`, setHeader());
 
-export const createNewJnf = (data) => API.post(`/jnf`, data);
+export const createNewJnf = (data) => API.post(`/jnf`, data, setHeader());
 
-export const updateJnfById = (data, id) => API.put(`/jnf/${id}`, data);
+export const updateJnfById = (data, id) =>
+  API.put(`/jnf/${id}`, data, setHeader());
 
-export const submitJnf = (id) => API.get(`/jnf/submit/${id}`);
+export const submitJnf = (id) => API.get(`/jnf/submit/${id}`, setHeader());
 
-export const deleteJnfById = (id) => API.delete(`/jnf/delete/${id}`);
+export const deleteJnfById = (id) =>
+  API.delete(`/jnf/delete/${id}`, setHeader());
 
-export const getLatestJnfOfUser = () => API.get('/jnf/latest');
+export const getLatestJnfOfUser = () => API.get('/jnf/latest', setHeader());
 
 // ----------------------- Contact -----------------------------------
 
-export const getAllContacts = () => API.get('/contact/all');
+export const getAllContacts = () => API.get('/contact/all', setHeader());
 
-export const postContactData = (data) => API.post(`/contact`, data);
+export const postContactData = (data) =>
+  API.post(`/contact`, data, setHeader());
 
-export const updateContactStatus = (id) => API.put(`contact/${id}`);
+export const updateContactStatus = (id) =>
+  API.put(`contact/${id}`, setHeader());
 
-export const deleteContactById = (id) => API.delete(`contact/${id}`);
+export const deleteContactById = (id) =>
+  API.delete(`contact/${id}`, setHeader());
 
 // ------------------------ Jobs ------------------------------------
 
-export const getAllJobs = () => API.get('/jobs/all/1/12');
+export const getAllJobs = () => API.get('/jobs/all/1/12', setHeader());
 
 export const getAllJobsForUser = (pageNo) =>
-  API.get(`/jobs/user/all/${pageNo}/12`);
+  API.get(`/jobs/user/all/${pageNo}/12`, setHeader());
 
 export const getAllPendingJobsForUser = (pageNo) =>
-  API.get(`/jobs/user/pending/${pageNo}/12`);
+  API.get(`/jobs/user/pending/${pageNo}/12`, setHeader());
 
-export const updateGraduationYear = (data) => API.put('/jobs/year/admin', data);
+export const updateGraduationYear = (data) =>
+  API.put('/jobs/year/admin', data, setHeader());
 
-export const getGraduationYear = () => API.get('/jobs/year');
+export const getGraduationYear = () => API.get('/jobs/year', setHeader());
 //-------------------------Invites Companies...........................
 
-export const sendInvitationToAllCompanies = () => API.post('/company/mail/all');
+export const sendInvitationToAllCompanies = () =>
+  API.post('/company/mail/all', setHeader());
 export const fetchAllCompaniesDeafultMail = () =>
-  API.get('/company/mail/defaultinvites');
+  API.get('/company/mail/defaultinvites', setHeader());
 export const sendCustomEmail = (data) =>
-  API.post('/company/sendcustommail', data);
+  API.post('/company/sendcustommail', data, setHeader());
 
 //-------------------------Invites Companies...........................
 
 export const searchCompanyByPattern = (pattern) =>
-  API.get(`/company/search/${pattern}/1/5`);
+  API.get(`/company/search/${pattern}/1/5`, setHeader());
 
 export const searchInfByPattern = (pattern) =>
-  API.get(`/inf/search/${pattern}/1/5`);
+  API.get(`/inf/search/${pattern}/1/5`, setHeader());
 
 export const searchJnfByPattern = (pattern) =>
-  API.get(`/jnf/search/${pattern}/1/5`);
+  API.get(`/jnf/search/${pattern}/1/5`, setHeader());
 
 // ------------------------ Courses ------------------------------------
 
-export const getAllCourseData = () => API.get('/courses');
+export const getAllCourseData = () => API.get('/courses', setHeader());
 
-export const getPlacedCount = () => API.get('/courses/placed/count');
+export const getPlacedCount = () =>
+  API.get('/courses/placed/count', setHeader());

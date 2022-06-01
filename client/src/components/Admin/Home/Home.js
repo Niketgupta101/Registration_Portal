@@ -44,13 +44,7 @@ const Home = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      if (isReload) {
-        setIsReload((prevState) => !prevState);
-        console.log('reload', isReload);
-        fetchData();
-      } else {
-        console.log(error);
-      }
+      console.log(error);
     }
   };
 
