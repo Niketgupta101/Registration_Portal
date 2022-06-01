@@ -56,6 +56,7 @@ const MyJobs = () => {
     try {
       if (Filter === 'All Forms') {
         let response = await getAllJobsForUser(pageNo);
+       
         setJobs(response.data.jobs);
       } else if (Filter === 'Internships') {
         let response = await getAllInfForUser(user._id, pageNo);
@@ -68,6 +69,7 @@ const MyJobs = () => {
         setJobs(response.data.jobs);
       }
       setIsLoading(false);
+      console.log("xty");
     } catch (error) {
       setIsLoading(false);
       if (toReload) {

@@ -3,6 +3,30 @@ const { registerUser, loginUser, forgotPassword, resetPassword, sendEmailConfirm
 const emailValidator = require('email-validator');
 
 exports.register = async (req, res, next) => {
+    
+     
+    // console.log(Object.keys(req.body).includes("email_check"));
+    
+    if(Object.keys(req.body).includes("email_check"))
+    {
+        
+        
+        let userDetails = {
+            emailId: req.body.email,
+            email_check:"true"
+        }
+       
+        try {
+            const email_check = await registerUser(userDetails, next);
+            //  console.log(email_check);
+              if(email_check!=null)
+             res.status(201).json({ success: true, email_check:"Doesn't Already Exists"});
+        } catch (error) {
+            console.log("error in controller");
+            return next(error);
+        }
+    }
+  else{
     const  user = req.body;
 
     if(!emailValidator.validate(user.email))
@@ -26,8 +50,12 @@ exports.register = async (req, res, next) => {
 
         res.status(201).json({ success: true, newUser, token});
     } catch (error) {
+        
+        console.log(error);
         return next(error);
     }
+  }
+    
 }
 
 exports.login = async (req, res, next) => {
@@ -38,7 +66,7 @@ exports.login = async (req, res, next) => {
 
     try {
         const { user, token, company } = await loginUser(emailIdOrUsername, password, next);
-
+          console.log(user);
         res.status(200).json({ success: true, user, token, company});
 
     } catch (error) {

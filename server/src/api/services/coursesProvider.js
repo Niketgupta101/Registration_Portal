@@ -27,11 +27,14 @@ exports.getPlacedStudentsCount = async (next) => {
     let count = 0;
 
     for (let i in data) {
-      if (data[i][2] != '') {
+      console.log("count=",count,"data[i][2]=",data[i][2]);
+      if(data[i][2]==undefined)
+      count +=0;
+      else if (data[i][2] != '') {
         count += parseInt(data[i][2]);
       }
     }
-
+    
     return { placed: count };
   } catch (error) {
     console.log(error);
