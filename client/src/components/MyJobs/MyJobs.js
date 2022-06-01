@@ -130,7 +130,7 @@ const MyJobs = () => {
   };
 
   useEffect(() => {
-    fetchJobs(Filter);
+    if (JSON.parse(localStorage.getItem('token'))) fetchJobs(Filter);
     async function filterJobs() {
       for (let i in Jobs) {
         if (Jobs[i].data.Company_Overview === undefined) {
@@ -144,7 +144,6 @@ const MyJobs = () => {
       }
     }
     filterJobs();
-    fetchJobs(Filter);
   }, [Filter, pageNo, reload]);
 
   console.log({ Jobs });
@@ -225,126 +224,138 @@ const MyJobs = () => {
             </div>
 
             <div className='jobs_content'>
-              {Jobs.map((job) => (
-                <div className='job_card' key={job._id}>
-                  {/* {console.log(job)} */}
-                  <div
-                    className='badge'
-                    style={{ backgroundColor: !job.data?.isIntern && 'red' }}
-                  >
-                    <h6>{job.data?.isIntern ? 'Intern' : 'JOB'}</h6>
-                  </div>
-
-                  <div className='card_content'>
-                    <div className='content_heading'>
-                      <h4>{job.data?.Company_Overview?.Name_Of_The_Company}</h4>
+              {Jobs &&
+                Jobs.map((job) => (
+                  <div className='job_card' key={job._id}>
+                    {/* {console.log(job)} */}
+                    <div
+                      className='badge'
+                      style={{ backgroundColor: !job.data?.isIntern && 'red' }}
+                    >
+                      <h6>{job.data?.isIntern ? 'Intern' : 'JOB'}</h6>
                     </div>
-                    <div className='content_text' style={{ fontWeight: '500' }}>
-                      <h5>
-                        <span>Designation: </span>:{' '}
-                        {job.data?.isIntern
-                          ? job.data?.Intern_Profile?.Job_Designation
-                          : job.data?.Job_Details?.Job_Designation}
-                      </h5>
-                      <h5>
-                        {job.data.isIntern ? (
-                          <>
-                            <span>Mode</span>:{' '}
-                            {job.data?.Intern_Profile?.Mode_Of_Internship}
-                          </>
-                        ) : (
-                          <>
-                            <span>Place of posting</span>:{' '}
-                            {job.data?.Job_Details?.Place_Of_Posting}
-                          </>
-                        )}
-                      </h5>
-                      <h5>
-                        {job.data.isIntern ? (
-                          <>
-                            <span>Stipend</span>:{' '}
-                            {job.data?.Salary_Details?.Salary_Per_Month}
-                          </>
-                        ) : (
-                          <>
-                            <span>CTC</span>: {job?.data?.Salary_Details?.CTC}
-                          </>
-                        )}
-                      </h5>
-                      {job.progress === 'incomplete' ? (
+
+                    <div className='card_content'>
+                      <div className='content_heading'>
+                        <h4>
+                          {job.data?.Company_Overview?.Name_Of_The_Company}
+                        </h4>
+                      </div>
+                      <div
+                        className='content_text'
+                        style={{ fontWeight: '500' }}
+                      >
                         <h5>
-                          <span>Form Status:</span>: Incomplete
+                          <span>Designation: </span>:{' '}
+                          {job.data?.isIntern
+                            ? job.data?.Intern_Profile?.Job_Designation
+                            : job.data?.Job_Details?.Job_Designation}
                         </h5>
-                      ) : (
                         <h5>
-                          <span>Submitted On:</span>:{' '}
-                          {job.data.updatedAt.slice(8, 10) +
-                            '/' +
-                            job.data.updatedAt.slice(5, 7) +
-                            '/' +
-                            job.data.updatedAt.slice(0, 4)}
+                          {job.data.isIntern ? (
+                            <>
+                              <span>Mode</span>:{' '}
+                              {job.data?.Intern_Profile?.Mode_Of_Internship}
+                            </>
+                          ) : (
+                            <>
+                              <span>Place of posting</span>:{' '}
+                              {job.data?.Job_Details?.Place_Of_Posting}
+                            </>
+                          )}
                         </h5>
-                      )}
-                      {job.progress === 'incomplete' ? (
-                        <div
-                          style={{ display: 'flex', justifyContent: 'center' }}
-                        >
-                          <button
-                            className='secondary_btn'
-                            onClick={() =>
-                              handleEditJob(job.data._id, job.data.isIntern)
-                            }
+                        <h5>
+                          {job.data.isIntern ? (
+                            <>
+                              <span>Stipend</span>:{' '}
+                              {job.data?.Salary_Details?.Salary_Per_Month}
+                            </>
+                          ) : (
+                            <>
+                              <span>CTC</span>: {job?.data?.Salary_Details?.CTC}
+                            </>
+                          )}
+                        </h5>
+                        {job.progress === 'incomplete' ? (
+                          <h5>
+                            <span>Form Status:</span>: Incomplete
+                          </h5>
+                        ) : (
+                          <h5>
+                            <span>Submitted On:</span>:{' '}
+                            {job.data.updatedAt.slice(8, 10) +
+                              '/' +
+                              job.data.updatedAt.slice(5, 7) +
+                              '/' +
+                              job.data.updatedAt.slice(0, 4)}
+                          </h5>
+                        )}
+                        {job.progress === 'incomplete' ? (
+                          <div
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                            }}
                           >
-                            Continue
-                          </button>
-                          <button
-                            className='secondary_btn secondary_btn_delete'
-                            onClick={() =>
-                              handleDelete([job.data._id, job.data.isIntern])
-                            }
+                            <button
+                              className='secondary_btn'
+                              onClick={() =>
+                                handleEditJob(job.data._id, job.data.isIntern)
+                              }
+                            >
+                              Continue
+                            </button>
+                            <button
+                              className='secondary_btn secondary_btn_delete'
+                              onClick={() =>
+                                handleDelete([job.data._id, job.data.isIntern])
+                              }
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        ) : (
+                          <div
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                            }}
                           >
-                            Delete
-                          </button>
-                        </div>
-                      ) : (
-                        <div
-                          style={{ display: 'flex', justifyContent: 'center' }}
-                        >
-                          <button className='secondary_btn'>
-                            <a
-                              href={job.data.previewLink}
-                              style={{
-                                textDecoration: 'none',
-                                color: 'inherit',
-                              }}
-                            >
-                              View Job
-                            </a>
-                          </button>
-                          <button className='secondary_btn'>
-                            <a
-                              href={job.data.downloadLink}
-                              style={{
-                                textDecoration: 'none',
-                                color: 'inherit',
-                              }}
-                            >
-                              Download
-                            </a>
-                          </button>
-                          {/* {job.progress === "incomplete" && (
+                            <button className='secondary_btn'>
+                              <a
+                                href={job.data.previewLink}
+                                style={{
+                                  textDecoration: 'none',
+                                  color: 'inherit',
+                                }}
+                              >
+                                View Job
+                              </a>
+                            </button>
+                            <button className='secondary_btn'>
+                              <a
+                                href={job.data.downloadLink}
+                                style={{
+                                  textDecoration: 'none',
+                                  color: 'inherit',
+                                }}
+                              >
+                                Download
+                              </a>
+                            </button>
+                            {/* {job.progress === "incomplete" && (
                             <div className="delete-job">
                               <button onClick={handleDeleteJnf(job._id)}>
                                 delete
                               </button>
                             </div>
                           )} */}
-                        </div>
-                      )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>

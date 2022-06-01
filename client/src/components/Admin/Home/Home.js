@@ -19,6 +19,7 @@ const Home = () => {
   const [jobs, setJobs] = useState([]);
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
+  const [isReload, setIsReload] = useState(true);
 
   let user = JSON.parse(localStorage.getItem('user'));
 
@@ -31,19 +32,30 @@ const Home = () => {
 
   const [placedCount, setPlacedCount] = useState();
 
-  useEffect(async () => {
-    if (!user) Navigate('/auth');
-    else {
-      // setUser(localStorage.getItem('user'));
+  const fetchData = async () => {
+    try {
       setIsLoading(true);
       const response1 = await getAllCompanyDetails();
       const response2 = await getAllJobs();
       const response3 = await getPlacedCount();
-      setIsLoading(false);
       setCompanies(response1.data.companyList);
       setJobs(response2.data.jobs);
       setPlacedCount(response3.data.placed);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      if (isReload) {
+        setIsReload((prevState) => !prevState);
+        console.log('reload', isReload);
+        fetchData();
+      } else {
+        console.log(error);
+      }
     }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   // const handleChange = (event, newValue) => {
