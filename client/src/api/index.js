@@ -78,7 +78,7 @@ const getApiObject = function () {
 };
 
 // const API = getApiObject();
-const API = axios.create({ baseURL: `http://localhost:5000/v1` });
+const API = axios.create({ baseURL: `/v1` });
 
 const setHeader = () => {
   return {
