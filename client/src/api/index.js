@@ -1,80 +1,80 @@
 const axios = require('axios');
 
-const getApiObject = function () {
-  if (process.env.NODE_ENV === 'production') {
-    const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
-    return {
-      get: async function (path) {
-        let resp = await (
-          await fetch(`/v1${path}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: tokenString,
-            },
-          })
-        ).json();
-        return { data: resp };
-      },
-      post: async function (path, data) {
-        let resp = await (
-          await fetch(`/v1${path}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: tokenString,
-            },
-            body: JSON.stringify(data),
-          })
-        ).json();
-        return { data: resp };
-      },
-      put: async function (path, data) {
-        let resp = await (
-          await fetch(`/v1${path}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: tokenString,
-            },
-            body: JSON.stringify(data),
-          })
-        ).json();
-        return { data: resp };
-      },
-      delete: async function (path) {
-        let resp = await (
-          await fetch(`/v1${path}`, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: tokenString,
-            },
-          })
-        ).json();
-        return { data: resp };
-      },
-    };
-  } else {
-    const APIObj = axios.create({
-      baseURL: 'http://localhost:5000/v1',
-      // {
-      //   headers: {
-      //     authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-      //   },
-      // },
-      credentials: 'include',
-      withCredentials: true,
-    });
-    // APIObj.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(
-    //   localStorage.getItem('token')
-    // )}`;
-    return APIObj;
-  }
-};
+// const getApiObject = function () {
+//   if (process.env.NODE_ENV === 'production') {
+//     const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
+//     return {
+//       get: async function (path) {
+//         let resp = await (
+//           await fetch(`/v1${path}`, {
+//             method: 'GET',
+//             headers: {
+//               'Content-Type': 'application/json',
+//               Authorization: tokenString,
+//             },
+//           })
+//         ).json();
+//         return { data: resp };
+//       },
+//       post: async function (path, data) {
+//         let resp = await (
+//           await fetch(`/v1${path}`, {
+//             method: 'POST',
+//             headers: {
+//               'Content-Type': 'application/json',
+//               Authorization: tokenString,
+//             },
+//             body: JSON.stringify(data),
+//           })
+//         ).json();
+//         return { data: resp };
+//       },
+//       put: async function (path, data) {
+//         let resp = await (
+//           await fetch(`/v1${path}`, {
+//             method: 'PUT',
+//             headers: {
+//               'Content-Type': 'application/json',
+//               Authorization: tokenString,
+//             },
+//             body: JSON.stringify(data),
+//           })
+//         ).json();
+//         return { data: resp };
+//       },
+//       delete: async function (path) {
+//         let resp = await (
+//           await fetch(`/v1${path}`, {
+//             method: 'DELETE',
+//             headers: {
+//               'Content-Type': 'application/json',
+//               Authorization: tokenString,
+//             },
+//           })
+//         ).json();
+//         return { data: resp };
+//       },
+//     };
+//   } else {
+//     const APIObj = axios.create({
+//       baseURL: 'http://localhost:5000/v1',
+//       // {
+//       //   headers: {
+//       //     authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+//       //   },
+//       // },
+//       credentials: 'include',
+//       withCredentials: true,
+//     });
+//     // APIObj.defaults.headers.common['Authorization'] = `Bearer ${JSON.parse(
+//     //   localStorage.getItem('token')
+//     // )}`;
+//     return APIObj;
+//   }
+// };
 
 // const API = getApiObject();
-const API = axios.create({ baseURL: `/v1` });
+const API = axios.create({ baseURL: `http://localhost:5000/v1` });
 
 const setHeader = () => {
   return {

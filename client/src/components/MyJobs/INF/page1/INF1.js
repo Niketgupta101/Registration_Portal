@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 
 import './INF1.css';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import 'animate.css';
 import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
+
+import { getGraduationYear } from '../../../../api/index';
 
 const style = { alignItems: 'center' };
 
@@ -31,6 +31,7 @@ export default function INF1({
   const [stipenddetail, setStipenddetail] = useState(false);
   const [hrdetail, setHrdetail] = useState(false);
   const [althrdetail, setALtrdetail] = useState(false);
+  const [Year, setYear] = useState(2023);
 
   function handleHrdetails(e) {
     if (e.target.value === 'YES') setALtrdetail(() => true);
@@ -63,6 +64,17 @@ export default function INF1({
       );
     }
   }
+
+  useEffect(() => {
+    async function fetchGraduationYear() {
+      try {
+        const { data } = await getGraduationYear();
+
+        setYear(data.year);
+      } catch (error) {}
+    }
+    fetchGraduationYear();
+  }, []);
 
   return (
     <div className='overallDiv1'>
@@ -239,16 +251,16 @@ export default function INF1({
                       autoComplete='off'
                     >
                       <option>
-                        Jan – June 2023: Dual Degree/ Integrated M. Tech courses
-                        only (2023 batch)
+                        Jan – June {Year}: Dual Degree/ Integrated M. Tech
+                        courses only ({Year} batch)
                       </option>
                       <option>
-                        May – July 2023: Pre-final year students of ALL courses
-                        (2024 batch)
+                        May – July {Year}: Pre-final year students of ALL
+                        courses ({Year + 1} batch)
                       </option>
                       <option>
-                        July – Dec 2023: M. Tech/ MBA – Business Analytics
-                        courses only (2024 batch)
+                        July – Dec {Year}: M. Tech/ MBA – Business Analytics
+                        courses only ({Year + 1} batch)
                       </option>
                     </Input>
                   </Col>
