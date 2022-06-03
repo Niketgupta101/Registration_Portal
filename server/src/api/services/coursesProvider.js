@@ -9,7 +9,6 @@ exports.readCoursesGSheets = async () => {
     );
     return { success: true, data: data };
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
@@ -22,19 +21,17 @@ exports.getPlacedStudentsCount = async (next) => {
       'A2:K54'
     );
 
-    console.log({ data });
-
     let count = 0;
 
     for (let i in data) {
-      if (data[i][2] != '') {
+      if (data[i][2] == undefined) count += 0;
+      else if (data[i][2] != '') {
         count += parseInt(data[i][2]);
       }
     }
 
     return { placed: count };
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

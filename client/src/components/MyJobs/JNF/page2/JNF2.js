@@ -10,6 +10,7 @@ export default function JNF2({
   setPage,
   fourYearData,
   fiveYearData,
+  minorData,
   threeYearData,
   twoYearData,
   twoYearMbaData,
@@ -23,10 +24,12 @@ export default function JNF2({
   handleTwoYearMbaChange,
   handleTwoYearMscChange,
   handleUpdateJnfById,
+  handleMinorChange,
 }) {
   const [eligiblediv, setEligiblediv] = useState(false);
   const [btechdiv, setBtechdiv] = useState(false);
   const [dual_mtechdiv, setdual_mtechdiv] = useState(false);
+  const [minordiv, setMinorsdiv] = useState(false);
   const [mbadiv, setmbadiv] = useState(false);
   const [msc2div, setmsc2div] = useState(false);
   const [msc3div, setmsc3div] = useState(false);
@@ -42,6 +45,7 @@ export default function JNF2({
   const refmsc3 = useRef();
   const refmtech = useRef();
   const refphd = useRef();
+  const refminors = useRef();
 
   function handleBackClick(refname) {
     refname.current.scrollIntoView({ behavior: "smooth" });
@@ -89,7 +93,7 @@ export default function JNF2({
                 }}
               >
                 <div>
-                  <div class="ug-pg d-flex m-0 justify-content-center">
+                  <div className="ug-pg d-flex m-0 justify-content-center">
                     <div className="flex-grow-1 ">
                       <h1 className="ug-pg-h1">
                         Undergraduate
@@ -477,6 +481,367 @@ export default function JNF2({
                         <div></div>
                       )}
                     </div>
+                    <div ref={refminors} className="eligible-type my-3">
+                      <div
+                        onClick={() => {
+                          setTimeout(() => {
+                            if (minordiv) {
+                              setMinorsdiv(false);
+                            } else {
+                              setMinorsdiv(true);
+                            }
+                          }, 200);
+                        }}
+                      >
+                        <div className="eligible-heading d-flex ">
+                          <h3 className="flex-grow-1 align-self-center m-0">
+                            Minors
+                          </h3>
+                          <div className="p-2 align-self-center">
+                            {minordiv === true ? (
+                              <FaAngleDoubleUp size={20} />
+                            ) : (
+                              <FaAngleDoubleDown size={20} />
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="eligible-sub-heading">
+                          <p className="m-0">
+                            Admitted through <b>JEE (Advanced)</b>
+                          </p>
+                        </div>
+                      </div>
+                      {minordiv === true ? (
+                        <div className="eligible-option">
+                          <table className="m-0">
+                            <tbody id="Minors">
+                              <tr>
+                                <td className="courseName">Select All</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Select_All"
+                                    checked={minorData.Select_All}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Exploration Geology
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Exploration_Geology"
+                                    checked={minorData.Exploration_Geology}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Exploration Geophysics
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Exploration_Geophysics"
+                                    checked={minorData.Exploration_Geophysics}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Separation and Purification Technology
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Separation_and_Purification_Technology"
+                                    checked={
+                                      minorData.Separation_and_Purification_Technology
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Materials Science
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Materials_Science"
+                                    checked={minorData.Materials_Science}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Infrastructure Engineering
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Infrastructure_Engineering"
+                                    checked={
+                                      minorData.Infrastructure_Engineering
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">Data Science</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Data_Science"
+                                    checked={minorData.Data_Science}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Electrical Technology
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Electrical_Technology"
+                                    checked={minorData.Electrical_Technology}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Embedded System Design
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Embedded_System_Design"
+                                    checked={minorData.Embedded_System_Design}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Environmental Management
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Environmental_Management"
+                                    checked={minorData.Environmental_Management}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Metallurgical Engineering
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Metallurgical_Engineering"
+                                    checked={
+                                      minorData.Metallurgical_Engineering
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Opeartions Management
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Opeartions_Management"
+                                    checked={minorData.Opeartions_Management}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">Finance</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Finance"
+                                    checked={minorData.Finance}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">Marketing</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Marketing"
+                                    checked={minorData.Marketing}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Mathematics and Statistics
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Mathematics_and_Statistics"
+                                    checked={
+                                      minorData.Mathematics_and_Statistics
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">Robotics</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Robotics"
+                                    checked={minorData.Robotics}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">Manufacturing</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Manufacturing"
+                                    checked={minorData.Manufacturing}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Computational Fluid Dynamics
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Computational_Fluid_Dynamics"
+                                    checked={
+                                      minorData.Computational_Fluid_Dynamics
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Mining Methods and Safety
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Mining_Methods_and_Safety"
+                                    checked={
+                                      minorData.Mining_Methods_and_Safety
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Material Handling Engineering
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Material_Handling_Engineering"
+                                    checked={
+                                      minorData.Material_Handling_Engineering
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Petroleum Production Operations
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Petroleum_Production_Operations"
+                                    checked={
+                                      minorData.Petroleum_Production_Operations
+                                    }
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  High Energy Physics
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="High_Energy_Physics"
+                                    checked={minorData.High_Energy_Physics}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">Nanotechnology</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Nanotechnology"
+                                    checked={minorData.Nanotechnology}
+                                    onChange={handleMinorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div className="collapse-div d-flex justify-content-end">
+                            {minordiv === true ? (
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setMinorsdiv(false);
+                                    handleBackClick(minordiv);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -496,7 +861,7 @@ export default function JNF2({
                 }}
               >
                 <div>
-                  <div class="ug-pg d-flex m-0 justify-content-center">
+                  <div className="ug-pg d-flex m-0 justify-content-center">
                     <div className="flex-grow-1 ">
                       <h1 className="ug-pg-h1">
                         Postgraduate

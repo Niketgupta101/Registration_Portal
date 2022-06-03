@@ -6,7 +6,6 @@ const withAuth = (Component, routeRole) => (props) => {
   const {
     location: { pathname },
   } = props;
-  console.log({ Component, routeRole });
   if (
     !localStorage.length ||
     localStorage.getItem('user') === undefined ||

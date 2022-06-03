@@ -23,7 +23,6 @@ import { Logout, Login } from '@mui/icons-material';
 const Navbar = () => {
   let [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [sideBar, setSideBar] = useState(false);
-  // console.log(user);
   const Navigate = useNavigate();
   const location = useLocation();
 
@@ -46,6 +45,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.clear();
     setUser(undefined);
+    setSideBar(() => false);
     Navigate('/auth');
   };
 
@@ -302,7 +302,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/admin')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/admin');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -314,7 +317,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -331,7 +337,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/myjobs')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/myjobs');
+                }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
                   Applications
@@ -345,7 +354,10 @@ const Navbar = () => {
               size='medium'
               edge='end'
               color='inherit'
-              onClick={() => Navigate('/courses')}
+              onClick={() => {
+                setSideBar(() => false);
+                Navigate('/courses');
+              }}
               style={{ alignItems: 'center' }}
             >
               <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -360,7 +372,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/admin/company')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/admin/company');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -378,7 +393,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/admin/jnf')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/admin/jnf');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -396,7 +414,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/admin/inf')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/admin/inf');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -414,7 +435,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/contactus')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/contactus');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -430,7 +454,10 @@ const Navbar = () => {
                 size='medium'
                 edge='end'
                 color='inherit'
-                onClick={() => Navigate('/company/invites')}
+                onClick={() => {
+                  setSideBar(() => false);
+                  Navigate('/company/invites');
+                }}
                 style={{ alignItems: 'center' }}
               >
                 <h5 style={{ margin: '0 1.5rem 0 0.5rem', fontSize: '17px' }}>
@@ -450,7 +477,10 @@ const Navbar = () => {
                   size='medium'
                   edge='end'
                   color='inherit'
-                  onClick={() => Navigate('/profile')}
+                  onClick={() => {
+                    setSideBar(() => false);
+                    Navigate('/profile');
+                  }}
                 >
                   <h5
                     style={{

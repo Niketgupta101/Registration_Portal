@@ -149,7 +149,6 @@ exports.fillINFDoc = async (inf) => {
   let selectionProcedure = inf.Selection_Procedure;
   let hR_Details = inf.HR_Details;
   let priority_Details = inf.Priority_Details;
-  console.log(priority_Details);
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -285,12 +284,11 @@ exports.fillINFDoc = async (inf) => {
     Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
-    Priority_One: priority_Details.Priority1,
-    Priority_Two: priority_Details.Priority2,
+    Priority_One: priority_Details.Priority_One,
+    Priority_Two: priority_Details.Priority_Two,
     Sector: Sector,
     Category: Category,
   };
-  console.log({ selectionProcedure });
   doc.render({
     ...inf.Company_Overview,
     ...inf.Intern_Profile,
@@ -327,13 +325,6 @@ exports.fillINFDoc = async (inf) => {
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  inf.set({
-    previewLink,
-    downloadLink,
-    status: 'complete',
-  });
-  await inf.save();
-
   sendMailWithAttachment(
     'niketgupta101@gmail.com',
     'Job form notification',
@@ -354,6 +345,12 @@ exports.fillINFDoc = async (inf) => {
       inf.previewLink
     );
   }
+  inf.set({
+    previewLink,
+    downloadLink,
+    status: 'complete',
+  });
+  await inf.save();
 
   createStudentInfPdf(
     {
@@ -381,6 +378,7 @@ exports.fillJNFDoc = async (jnf) => {
   let Category = jnf.Company_Overview.Category;
   let Sector = jnf.Company_Overview.Sector;
   let fourYear = jnf.Eligible_Courses_And_Disciplines.Four_Year_Btech_Programs;
+  let minor = jnf.Eligible_Courses_And_Disciplines.Minors;
   let fiveYear =
     jnf.Eligible_Courses_And_Disciplines
       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs;
@@ -393,7 +391,7 @@ exports.fillJNFDoc = async (jnf) => {
   let twoYearMsc = jnf.Eligible_Courses_And_Disciplines.Two_Year_MSc_Programs;
   let selectionProcedure = jnf.Selection_Procedure;
   let hR_Details = jnf.HR_Details;
-  let priority_Details = jnf.Priority_Details;
+  let priority_Details_Job = jnf.Priority_Details;
   let data = {
     Four_Year_Select_All: fourYear.Select_All ? 'Yes' : 'No',
     Four_Year_Chemical_Engineering: fourYear.Chemical_Engineering
@@ -430,6 +428,47 @@ exports.fillJNFDoc = async (jnf) => {
       : 'No',
     Five_Year_Applied_Geology: fiveYear.Applied_Geology ? 'Yes' : 'No',
     Five_Year_Applied_Geophysics: fiveYear.Applied_Geophysics ? 'Yes' : 'No',
+    Minor_Select_All: minor.Select_All ? 'Yes' : 'No',
+    Minor_Exploration_Geology: minor.Exploration_Geology ? 'Yes' : 'No',
+    Minor_Exploration_Geophysics: minor.Exploration_Geophysics ? 'Yes' : 'No',
+    Minor_Separation_and_Purification_Technology:
+      minor.Separation_and_Purification_Technology ? 'Yes' : 'No',
+    Minor_Materials_Science: minor.Materials_Science ? 'Yes' : 'No',
+    Minor_Infrastructure_Engineering: minor.Infrastructure_Engineering
+      ? 'Yes'
+      : 'No',
+    Minor_Data_Science: minor.Data_Science ? 'Yes' : 'No',
+    Minor_Electrical_Technology: minor.Electrical_Technology ? 'Yes' : 'No',
+    Minor_Embedded_System_Design: minor.Embedded_System_Design ? 'Yes' : 'No',
+    Minor_Environmental_Management: minor.Environmental_Management
+      ? 'Yes'
+      : 'No',
+    Minor_Metallurgical_Engineering: minor.Metallurgical_Engineering
+      ? 'Yes'
+      : 'No',
+    Minor_Opeartions_Management: minor.Opeartions_Management ? 'Yes' : 'No',
+    Minor_Finance: minor.Finance ? 'Yes' : 'No',
+    Minor_Marketing: minor.Marketing ? 'Yes' : 'No',
+    Minor_Mathematics_and_Statistics: minor.Mathematics_and_Computing
+      ? 'Yes'
+      : 'No',
+    Minor_Robotics: minor.Robotics ? 'Yes' : 'No',
+    Minor_Manufacturing: minor.Manufacturing ? 'Yes' : 'No',
+    Minor_Computational_Fluid_Dynamics: minor.Computational_Fluid_Dynamics
+      ? 'Yes'
+      : 'No',
+    Minor_Mining_Methods_and_Safety: minor.Mining_Methods_and_Safety
+      ? 'Yes'
+      : 'No',
+    Minor_Material_Handling_Engineering: minor.Material_Handling_Engineering
+      ? 'Yes'
+      : 'No',
+    Minor_Petroleum_Production_Operations: minor.Petroleum_Production_Operations
+      ? 'Yes'
+      : 'No',
+    Minor_High_Energy_Physics: minor.High_Energy_Physics ? 'Yes' : 'No',
+    Minor_Nanotechnology: minor.Nanotechnology ? 'Yes' : 'No',
+
     Skill_C_Cpp_Java_Python_etc: skill.C_Cpp_Java_Python_etc ? 'Yes' : 'No',
     Skill_Full_Stack_Development_Frontend_or_Backend:
       skill.Full_Stack_Development_Frontend_or_Backend ? 'Yes' : 'No',
@@ -529,8 +568,8 @@ exports.fillJNFDoc = async (jnf) => {
     Secondary_Hr_Name: hR_Details.Alternate_Hr.name,
     Secondary_Hr_Email: hR_Details.Alternate_Hr.email,
     Secondary_Hr_Mobile: hR_Details.Alternate_Hr.mobile,
-    Priority_One: priority_Details.Priority1,
-    Priority_Two: priority_Details.Priority2,
+    Priority_One_Job: priority_Details_Job.Priority_One_Job,
+    Priority_Two_Job: priority_Details_Job.Priority_Two_Job,
     Sector: Sector,
     Category: Category,
   };
@@ -560,7 +599,6 @@ exports.fillJNFDoc = async (jnf) => {
   );
 
   await result.saveFiles(path.resolve(__dirname));
-  console.log('line 558');
 
   let response = await uploadFile(
     path.resolve(__dirname, 'output.pdf'),
@@ -570,13 +608,6 @@ exports.fillJNFDoc = async (jnf) => {
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
-
-  jnf.set({
-    previewLink,
-    downloadLink,
-    status: 'complete',
-  });
-  await jnf.save();
 
   sendMailWithAttachment(
     'niketgupta101@gmail.com',
@@ -599,6 +630,12 @@ exports.fillJNFDoc = async (jnf) => {
     );
   }
 
+  jnf.set({
+    previewLink,
+    downloadLink,
+    status: 'complete',
+  });
+  await jnf.save();
   createStudentJnfPdf(
     {
       ...jnf.Company_Overview,

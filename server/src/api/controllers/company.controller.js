@@ -70,7 +70,6 @@ const sendinvitationsToSelected = async (req, res, next) => {
 
 const searchCompanyByPattern = async (req, res, next) => {
   let { pattern, pageno, pagelimit } = req.params;
-  console.log({ pattern, pageno, pagelimit });
 
   try {
     pageno = pageno || 1;
@@ -78,10 +77,8 @@ const searchCompanyByPattern = async (req, res, next) => {
     let offset = pagelimit * (pageno - 1);
 
     let response = await searchCompany(pattern, offset, pagelimit, next);
-    console.log(response);
     res.status(201).json(response);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

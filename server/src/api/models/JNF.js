@@ -70,6 +70,32 @@ const jnfSchema = new Schema(
         Applied_Geology: { type: Boolean, default: false },
         Applied_Geophysics: { type: Boolean, default: false },
       },
+      Minors:{
+        Select_All : { type: Boolean, default: false },
+        Exploration_Geology : { type: Boolean, default: false },
+        Exploration_Geophysics : { type: Boolean, default: false },
+        Separation_and_Purification_Technology : { type: Boolean, default: false },
+        Materials_Science :{ type: Boolean, default: false },
+        Infrastructure_Engineering : { type: Boolean, default: false },
+        Data_Science : { type: Boolean, default: false },
+        Electrical_Technology : { type: Boolean, default: false },
+        Embedded_System_Design : { type: Boolean, default: false },
+        Environmental_Management : { type: Boolean, default: false },
+        Metallurgical_Engineering : { type: Boolean, default: false },
+        Opeartions_Management : { type: Boolean, default: false },
+        Finance : { type: Boolean, default: false },
+        Marketing:{ type: Boolean, default: false },
+        Mathematics_and_Statistics : { type: Boolean, default: false },
+        Robotics : { type: Boolean, default: false },
+        Manufacturing : { type: Boolean, default: false },
+        Computational_Fluid_Dynamics : { type: Boolean, default: false },
+        Mining_Methods_and_Safety: { type: Boolean, default: false },
+        Material_Handling_Engineering : { type: Boolean, default: false },
+        Petroleum_Production_Operations : { type: Boolean, default: false },
+        High_Energy_Physics : { type: Boolean, default: false },
+        Nanotechnology : { type: Boolean, default: false },
+
+      },
       Skill_Based_Hiring: {
         C_Cpp_Java_Python_etc: { type: Boolean, default: false },
         Full_Stack_Development_Frontend_or_Backend: {
@@ -133,6 +159,7 @@ const jnfSchema = new Schema(
         Mathematics_and_Computing: { type: Boolean, default: false },
         Physics: { type: Boolean, default: false },
       },
+
     },
     Selection_Procedure: {
       Resume_Shortlisting: {
@@ -155,8 +182,8 @@ const jnfSchema = new Schema(
       Eligibility_Criteria: { type: String, default: '' },
     },
     Priority_Details: {
-      Priority1: { type: String, default: "" },
-      Priority2: { type: String, default: "" },
+      Priority_One_Job: { type: String, default: "" },
+      Priority_Two_Job: { type: String, default: "" },
     },
     previewLink: String,
     downloadLink: String,

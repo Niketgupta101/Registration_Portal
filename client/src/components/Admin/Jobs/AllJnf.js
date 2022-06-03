@@ -59,14 +59,12 @@ const AllJnf = () => {
 
   useEffect(() => {
     async function fetchJNFs() {
-      console.log({ search });
       var response;
       if (!search) {
         response = await getAllJnf(pageNo);
       } else {
         response = await searchJnfByPattern(search);
       }
-      console.log(response);
       setJobs(response.data.jobs);
     }
     fetchJNFs();
@@ -102,7 +100,6 @@ const AllJnf = () => {
         </div>
 
         <div className='job_items'>
-          {console.log(jobs)}
           {jobs &&
             jobs.map((job) => (
               <div

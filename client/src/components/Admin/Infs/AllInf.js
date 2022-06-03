@@ -42,7 +42,6 @@ const AllInf = () => {
   useEffect(async () => {
     setIsLoading(true);
     const response = await getAllInf(pageNo);
-    console.log(response);
     setIsLoading(false);
 
     setJobs(response.data.jobs);
@@ -50,14 +49,12 @@ const AllInf = () => {
 
   useEffect(() => {
     async function fetchINFs() {
-      // console.log({ search });
       var response;
       if (!search) {
         response = await getAllInf(pageNo);
       } else {
         response = await searchInfByPattern(search);
       }
-      console.log(response);
       setJobs(response.data.jobs);
     }
     fetchINFs();
@@ -98,7 +95,6 @@ const AllInf = () => {
         </div>
 
         <div className='job_items'>
-          {/* {console.log(jobs)} */}
           {jobs &&
             jobs.map((job) => (
               <div
@@ -120,7 +116,6 @@ const AllInf = () => {
                     <h5>
                       <span>Designation: </span>:{' '}
                       {job?.Intern_Profile?.Job_Designation}
-                      {/* {console.log(job?.Intern_Profile)} */}
                     </h5>
                     <h5>
                       {job.isIntern ? (

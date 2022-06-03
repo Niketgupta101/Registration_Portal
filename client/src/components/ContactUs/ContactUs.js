@@ -1,18 +1,18 @@
-import { Button } from '@mui/material';
+import { Button } from "@mui/material";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-import React, { useEffect, useState } from 'react';
-import SendIcon from '@mui/icons-material/Send';
-import './styles.css';
-import { postContactData } from '../../api';
-import cllgPhoto from './../../Images/contactUsCllgPhoto.jpeg';
+import React, { useEffect, useState } from "react";
+import SendIcon from "@mui/icons-material/Send";
+import "./styles.css";
+import { postContactData } from "../../api";
+import cllgPhoto from "./../../Images/contact-us.png";
 
 const ContactUs = () => {
   const Navigate = useNavigate();
 
-  let user = JSON.parse(localStorage.getItem('user'));
-  let company = JSON.parse(localStorage.getItem('company'));
+  let user = JSON.parse(localStorage.getItem("user"));
+  let company = JSON.parse(localStorage.getItem("company"));
 
   useEffect(() => {
     if (
@@ -21,15 +21,15 @@ const ContactUs = () => {
       !company ||
       company.length === 0
     ) {
-      Navigate('/auth');
+      Navigate("/auth");
     }
   }, [Navigate, user]);
 
   const initialData = {
-    name: '',
-    email: '',
-    contactNo: '',
-    message: '',
+    name: "",
+    email: "",
+    contactNo: "",
+    message: "",
   };
   const [formData, setFormData] = useState(initialData);
 
@@ -44,76 +44,76 @@ const ContactUs = () => {
   };
   return (
     <>
-      <div className='contactUs-mainbox'>
-        <div className='contact3'>
-          <div className='row no-gutters'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col-lg-6 card-shadow'>
-                  <img src={cllgPhoto} className='contactUsimage' />
+      <div className="contactUs-mainbox">
+        <div className="contact3">
+          <div className="row no-gutters">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-6 card-shadow">
+                  <img src={cllgPhoto} className="contactUsimage" />
                 </div>
-                <div className='col-lg-6'>
-                  <div className='contact-box ml-3'>
-                    <h1 className='font-weight-light mt-2'>Quick Contact</h1>
-                    <form onSubmit={handleFormSubmit} className='mt-4'>
-                      <div className='row'>
-                        <div className='col-lg-12'>
-                          <div className='form-group mt-2'>
+                <div className="col-lg-6">
+                  <div className="contact-box ml-3">
+                    <h1 className="font-weight-light mt-2">Contact Us</h1>
+                    <form onSubmit={handleFormSubmit} className="mt-4">
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
                             <input
-                              className='form-control'
-                              type='text'
-                              placeholder='Name'
-                              name='name'
+                              className="form-control"
+                              type="text"
+                              placeholder="Name"
+                              name="name"
                               required
                               value={formData.name}
                               onChange={handleChange}
                             />
                           </div>
                         </div>
-                        <div className='col-lg-12'>
-                          <div className='form-group mt-2'>
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
                             <input
-                              className='form-control'
-                              type='email'
-                              placeholder='Email address'
-                              name='email'
+                              className="form-control"
+                              type="email"
+                              placeholder="Email address"
+                              name="email"
                               required
                               value={formData.email}
                               onChange={handleChange}
                             />
                           </div>
                         </div>
-                        <div className='col-lg-12'>
-                          <div className='form-group mt-2'>
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
                             <input
-                              className='form-control'
-                              type='text'
-                              placeholder='Phone'
-                              name='contactNo'
+                              className="form-control"
+                              type="text"
+                              placeholder="Phone"
+                              name="contactNo"
                               required
                               value={formData.contactNo}
                               onChange={handleChange}
                             />
                           </div>
                         </div>
-                        <div className='col-lg-12'>
-                          <div className='form-group mt-2'>
+                        <div className="col-lg-12">
+                          <div className="form-group mt-2">
                             <textarea
-                              className='form-control'
-                              rows='3'
-                              placeholder='Message'
-                              name='message'
-                              id='message'
+                              className="form-control"
+                              rows="3"
+                              placeholder="Message"
+                              name="message"
+                              id="message"
                               required
                               value={formData.message}
                               onChange={handleChange}
                             ></textarea>
                           </div>
                         </div>
-                        <div className='col-lg-12 submit-btn'>
+                        <div className="col-lg-12 submit-btn">
                           <button
-                            type='submit'
-                            className='btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2 '
+                            type="submit"
+                            className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2 "
                           >
                             <span> SUBMIT</span>
                           </button>
@@ -122,46 +122,46 @@ const ContactUs = () => {
                     </form>
                   </div>
                 </div>
-                <div className='col-lg-12 mt-3'>
-                  <div className='card-contact mt-4 border-0 mb-4'>
-                    <div className='row ms-3'>
-                      <div className='col-lg-4 col-md-4'>
-                        <div className='card-body d-flex align-items-center c-detail pl-0'>
-                          <div className='mr-3 align-self-center'>
-                            <img src='https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png' />
+                <div className="col-lg-12 mt-3">
+                  <div className="card-contact mt-4 border-0 mb-4">
+                    <div className="row ms-3">
+                      <div className="col-lg-4 col-md-4">
+                        <div className="card-body d-flex align-items-center c-detail pl-0">
+                          <div className="mr-3 align-self-center">
+                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png" />
                           </div>
-                          <div className='mx-3'>
-                            <h6 className='font-weight-medium'>Address</h6>
-                            <p className=''>
-                              {' '}
+                          <div className="mx-3">
+                            <h6 className="font-weight-medium">Address</h6>
+                            <p className="">
+                              {" "}
                               Dhanbad, Jharkhand
                               <br /> 826004
                             </p>
                           </div>
                         </div>
                       </div>
-                      <div className='col-lg-4 col-md-4'>
-                        <div className='card-body d-flex align-items-center c-detail'>
-                          <div className='mr-3 align-self-center'>
-                            <img src='https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png' />
+                      <div className="col-lg-4 col-md-4">
+                        <div className="card-body d-flex align-items-center c-detail">
+                          <div className="mr-3 align-self-center">
+                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png" />
                           </div>
-                          <div className='ms-4'>
-                            <h6 className='font-weight-medium'>Phone</h6>
-                            <p className=''>
+                          <div className="ms-4">
+                            <h6 className="font-weight-medium">Phone</h6>
+                            <p className="">
                               251 546 9442
                               <br /> 630 446 8851
                             </p>
                           </div>
                         </div>
                       </div>
-                      <div className='col-lg-4 col-md-4'>
-                        <div className='card-body d-flex align-items-center c-detail'>
-                          <div className='mr-3 align-self-center'>
-                            <img src='https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png' />
+                      <div className="col-lg-4 col-md-4">
+                        <div className="card-body d-flex align-items-center c-detail">
+                          <div className="mr-3 align-self-center">
+                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png" />
                           </div>
-                          <div className='mx-3'>
-                            <h6 className='font-weight-medium'>Email</h6>
-                            <p className=''>
+                          <div className="mx-3">
+                            <h6 className="font-weight-medium">Email</h6>
+                            <p className="">
                               cdc@iitism.ac.in
                               {/* <br /> 123@wrappixel.com */}
                             </p>

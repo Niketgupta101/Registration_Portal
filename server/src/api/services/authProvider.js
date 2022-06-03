@@ -8,25 +8,31 @@ const {
 const ErrorResponse = require('../utils/errorResponse');
 
 exports.registerUser = async (user, next) => {
-  try {
-    let oldUser = await User.findOne({ emailId: user.emailId });
+  if (Object.keys(user).includes('email_check')) {
+    try {
+      let oldUser = await User.findOne({ emailId: user.emailId });
+      if (oldUser)
+        return next(new ErrorResponse('Email Id already in use.', 400));
+      else return { email_check: 1 };
+    } catch (error) {
+      return next(error);
+    }
+  } else {
+    try {
+      user.emailVerifyToken = uuidv4();
 
-    if (oldUser)
-      return next(new ErrorResponse('Email Id already in use.', 400));
+      // user.isemailVerified = true ;
 
-    user.emailVerifyToken = uuidv4();
+      const newUser = await User.create(user);
 
-    // user.isemailVerified = true ;
+      sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
 
-    const newUser = await User.create(user);
+      const token = newUser.getSignedToken();
 
-    sendConfirmationMail(newUser.emailId, newUser.emailVerifyToken);
-
-    const token = newUser.getSignedToken();
-
-    return { newUser, token };
-  } catch (error) {
-    return next(error);
+      return { newUser, token };
+    } catch (error) {
+      return next(error);
+    }
   }
 };
 
@@ -106,7 +112,6 @@ exports.resetPassword = async (resetPasswordToken, password) => {
 };
 
 exports.sendEmailConfirmation = async (emailId, next) => {
-  console.log({ emailId });
   try {
     let user = await User.findOne({ emailId });
 

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0934fb49.css",
+    "main.js": "/static/js/main.5f69440e.js",
+    "static/media/maincoloured-college.jpg": "/static/media/maincoloured-college.5d89ac6f330dbedd617b.jpg",
+    "static/media/contact-us.png": "/static/media/contact-us.a380dcacdab8c5c48bd2.png",
+    "static/media/Indian_Institute_of_Technology_(Indian_School_of_Mines),_Dhanbad_Logo.png": "/static/media/Indian_Institute_of_Technology_(Indian_School_of_Mines),_Dhanbad_Logo.053a9b27d2cc4f4580cd.png",
+    "static/media/mainbuilding.jpeg": "/static/media/mainbuilding.ea34aacebd650fb01ebf.jpeg",
+    "static/media/snowflakes-background3.png": "/static/media/snowflakes-background3.3cc68cb0eecfe14adefe.png",
+    "static/media/spinner.gif": "/static/media/spinner.11d9cde8ebaeadb07ba7.gif",
+    "static/media/hricon.png": "/static/media/hricon.bca3b9835ccc4568500d.png",
+    "index.html": "/index.html",
+    "main.0934fb49.css.map": "/static/css/main.0934fb49.css.map",
+    "main.5f69440e.js.map": "/static/js/main.5f69440e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0934fb49.css",
+    "static/js/main.5f69440e.js"
+  ]
+}

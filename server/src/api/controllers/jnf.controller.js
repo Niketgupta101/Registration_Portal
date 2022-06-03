@@ -111,14 +111,12 @@ const deleteJnfById = async (req, res, next) => {
 
     res.status(201).json(response);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
 
 const searchJnfByPattern = async (req, res, next) => {
   let { pattern, pageno, pagelimit } = req.params;
-  console.log({ pattern, pageno, pagelimit });
 
   try {
     pageno = pageno || 1;
@@ -126,10 +124,8 @@ const searchJnfByPattern = async (req, res, next) => {
     let offset = pagelimit * (pageno - 1);
 
     let response = await searchJnfByCompany(pattern, offset, pagelimit, next);
-    // console.log(response);
     res.status(201).json(response);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };

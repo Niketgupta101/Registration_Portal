@@ -22,8 +22,6 @@ const Profile = () => {
     }
   }, [Navigate, user]);
 
-  // console.log({ user, company });
-
   return (
     <>
       <div className='company-dashboard-container'>

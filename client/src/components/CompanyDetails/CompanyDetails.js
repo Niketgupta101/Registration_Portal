@@ -57,7 +57,7 @@ const CompanyDetails = ({
             className="company_form"
             onSubmit={handleCompanySubmit}
           >
-            <div class="ug-pg d-flex m-0 px-0 justify-content-center">
+            <div className="ug-pg d-flex m-0 px-0 justify-content-center">
               <div className="flex-grow-1 ">
                 <h1 className="ug-pg-h1 prog-hover">
                   Company Details
@@ -140,7 +140,7 @@ const CompanyDetails = ({
               </label>
             </div>
 
-            <div class="ug-pg d-flex m-0 px-0 justify-content-center">
+            <div className="ug-pg d-flex m-0 px-0 justify-content-center">
               <div className="flex-grow-1 ">
                 <h1 className="ug-pg-h1 prog-hover">
                   HR Details
@@ -295,7 +295,7 @@ const CompanyDetails = ({
                   <Box component="span">
                     <div className=" ">
                       <label>
-                        <div class="company-detail d-flex m-0 px-0 justify-content-center">
+                        <div className="company-detail d-flex m-0 px-0 justify-content-center">
                           <div className="flex-grow-1 ">
                             <h1 className="company-detail-h1 prog-hover">
                               <span className="company-detail-span">
@@ -349,7 +349,7 @@ const CompanyDetails = ({
                   <Box component="span">
                     <div className=" ">
                       <label>
-                        <div class="company-detail d-flex m-0 px-0 justify-content-center">
+                        <div className="company-detail d-flex m-0 px-0 justify-content-center">
                           <div className="flex-grow-1 ">
                             <h1 className="company-detail-h1 prog-hover">
                               <span className="company-detail-span">

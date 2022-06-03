@@ -4,7 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 
 import './styles.css';
-import { getAllCompanyDetails, getPlacedCount } from '../../../api';
+import {
+  getAllCompanyDetails,
+  getGraduationYear,
+  getPlacedCount,
+  updateGraduationYear,
+} from '../../../api';
 import { getAllJobs } from '../../../api/index';
 import { PeopleAltTwoTone } from '@material-ui/icons';
 import { FileOpenRounded, HomeWork } from '@mui/icons-material';
@@ -13,46 +18,55 @@ import Contact from './Contact';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const Home = () => {
-  const [value, setValue] = useState('Home');
   const Navigate = useNavigate();
   const [IsLoading, setIsLoading] = useState(false);
   const [jobs, setJobs] = useState([]);
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
+  const [Year, setYear] = useState(2023);
 
   let user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     if (!user || user.isemailVerified === false || user.role !== 'Admin') {
-      // console.log({ user, email: user.isemailVerified, role: user.role });
       Navigate('/auth');
     }
   }, [Navigate, user]);
 
   const [placedCount, setPlacedCount] = useState();
 
-  useEffect(async () => {
-    if (!user) Navigate('/auth');
-    else {
-      // setUser(localStorage.getItem('user'));
+  const fetchData = async () => {
+    try {
       setIsLoading(true);
       const response1 = await getAllCompanyDetails();
       const response2 = await getAllJobs();
       const response3 = await getPlacedCount();
-      setIsLoading(false);
+      const { data } = await getGraduationYear();
+      setYear(data.year);
       setCompanies(response1.data.companyList);
       setJobs(response2.data.jobs);
       setPlacedCount(response3.data.placed);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
   // };
 
-  const style = {
-    width: '10vw',
+  const handleYearChange = async (e) => {
+    setYear(e.target.value);
+    const response = await updateGraduationYear({
+      graduationYear: e.target.value,
+    });
   };
+
   return (
     <>
       <div className='admin_home'>
@@ -129,6 +143,8 @@ const Home = () => {
               name='Internship_Duration'
               type='select'
               className='inputText'
+              value={Year}
+              onChange={handleYearChange}
             >
               <option>2022</option>
               <option>2023</option>
