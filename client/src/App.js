@@ -25,12 +25,15 @@ import Twoyearmba from "./components/Courses/Twoyearmba";
 import Twoyearmsc from "./components/Courses/Twoyearmsc";
 import Twoyearmtech from "./components/Courses/Twoyearmtech";
 import Btech from "./components/Courses/btech";
+import Minors from "./components/Courses/Minors";
 import Threeyearmsc from "./components/Courses/Threeyearmsc";
 import DualDegree from "./components/Courses/DualDegree";
 import Doublemajor from "./components/Courses/DoubleMajor";
 import CustomInvite from "./components/Admin/Invites/CustomInvite";
 import Invites from "./components/Admin/Invites/Invites";
 import { Error404 } from "./components/Error Page/Error404";
+
+
 
 const App = () => {
   return (
@@ -85,6 +88,8 @@ const App = () => {
           <Route path="/courses/btech" element={<Btech />} />
           <Route path="/courses/doublemajor" element={<Doublemajor />} />
           <Route path="/courses/dualdegree" element={<DualDegree />} />
+          <Route path="/courses/minors" element={<Minors />}/>
+          
           {/* ------------------------------ Custom-Invite--------------------- */}
           <Route path="/invite" element={<CustomInvite />} />
           <Route path="/company/invites" element={<Invites />} />

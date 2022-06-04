@@ -11,6 +11,7 @@ import { getAllCourseData } from '../../api/index.js';
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [btech, setBtech] = useState([]);
+  const [minros,setMinros] = useState([]);
   const [fiveyear, setFiveyear] = useState([]);
   const [doublemajor, setDoublemajor] = useState([]);
   const [dualdegree, setDualdegree] = useState([]);
@@ -84,6 +85,22 @@ const Courses = () => {
                   }}
                 >
                   <div className='courses-button'>B.Tech - 4 year</div>
+                </Button>
+              </div>
+              <div
+                className='bt animate__animated animate__fadeInLeft'
+                id='btnfirst'
+              >
+                <Button
+                  variant='outlined'
+                  onClick={() => Navigate('/courses/minors', { state: btech })}
+                  style={{
+                    maxWidth: '350px',
+                    minWidth: '350px',
+                    backgroundColor: 'white',
+                  }}
+                >
+                  <div className='courses-button'>Minors</div>
                 </Button>
               </div>
               <div className='bt animate__animated animate__fadeInRight'>
