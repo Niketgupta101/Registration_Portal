@@ -368,17 +368,21 @@ const Inf = () => {
       Interview: false,
     });
   const priorityData = {
-    Priority_One: '',
-    Priority_Two: '',
+    Priority_One: "",
+    Priority_Two: "",
   };
-  const [priorityFormData, setPriorityFormData] = useState({ 
-    Priority_One : "",
-    Priority_Two : "",
-  });
+  const [priorityFormData, setPriorityFormData] = useState(priorityData);
   const handlePriorityDataChange = (e) => {
     setPriorityFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
+    }));
+    setInfData((prevData) => ({
+      ...prevData,
+      Priority_Details: {
+        ...prevData.Priority_Details,
+        [e.target.name]: e.target.value,
+      },
     }));
   };
   const [selectionFormData, setSelectionFormData] = useState(selectionData);
@@ -489,6 +493,8 @@ const Inf = () => {
   useEffect(() => {}, [otherQualificationRoundsData]);
 
   useEffect(() => {}, [selectionFormData]);
+
+  useEffect(() => {}, [priorityFormData]);
 
   // --------------------------------------------------
 
