@@ -14,8 +14,17 @@ const ResetPassword = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+
+      try {
+       
       await resetPassword(id, password);
       Navigate('/auth');
+      } catch (error) {
+        Navigate("/badgateway");
+      }
+
+
+
     };
   
     return (

@@ -38,9 +38,20 @@ const Company = () => {
     // else {
     // setUser(localStorage.getItem('user'));
     setIsLoading(true);
-    const response = await getAllCompanyDetails(pageNo);
+
+    try{
+      const response = await getAllCompanyDetails(pageNo);
     setIsLoading(false);
     setCompanies(response.data.companyList);
+    }catch(error)
+    {
+      setIsLoading(false);
+      Navigate("/badgateway");
+    }
+
+
+
+  
     // }
   }
 
@@ -52,9 +63,19 @@ const Company = () => {
     async function fetchCompanies() {
       var response;
       if (!search) {
-        response = await getAllCompanyDetails();
+        try {
+          response = await getAllCompanyDetails();
+        } catch (error) {
+          Navigate("/badgateway");
+        }
+        
       } else {
-        response = await searchCompanyByPattern(search);
+        try {
+          response = await searchCompanyByPattern(search);
+        } catch (error) {
+          Navigate("/badgateway");
+        }
+       
       }
       setCompanies(response.data.companyList);
     }

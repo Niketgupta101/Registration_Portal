@@ -42,9 +42,16 @@ const AllJnf = () => {
 
   useEffect(async () => {
     setIsLoading(true);
-    const response = await getAllJnf(pageNo);
+
+    try {
+      const response = await getAllJnf(pageNo);
     setIsLoading(false);
     setJobs(response.data.jobs);
+    } catch (error) {
+      setIsLoading(false);
+      Navigate("/badgateway");
+    }
+
   }, [pageNo]);
 
   const [dropdownOpen, setDropdownOpen] = useState('');
@@ -61,9 +68,20 @@ const AllJnf = () => {
     async function fetchJNFs() {
       var response;
       if (!search) {
-        response = await getAllJnf(pageNo);
+        try{
+          response = await getAllJnf(pageNo);
+        }catch(error)
+        {
+          Navigate('/badgateway');
+        }
+        
       } else {
-        response = await searchJnfByPattern(search);
+        try{
+          response = await searchJnfByPattern(search);
+        }catch(error)
+        {
+          Navigate('/badgateway')
+        }
       }
       setJobs(response.data.jobs);
     }

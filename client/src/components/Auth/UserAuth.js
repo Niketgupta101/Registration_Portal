@@ -184,10 +184,12 @@ const UserAuth = () => {
 
               setPage('verify');
             } catch (error) {
+              Navigate("/badgateway");
               handleErrorClick();
             }
           }
         } catch (error) {
+          Navigate("/badgateway");
           handleErrorClick();
         }
         setIsLoading(false);

@@ -30,8 +30,14 @@ const CustomInvite = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    let response = await sendCustomEmail(emailData);
-    setFormData({ ...initialData });
+    try {
+      let response = await sendCustomEmail(emailData);
+      setFormData({ ...initialData });
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+    
+   
   };
 
   return (

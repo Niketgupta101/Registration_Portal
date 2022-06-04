@@ -69,7 +69,10 @@ const MyJobs = () => {
       }
       setIsLoading(false);
     } catch (error) {
+
       setIsLoading(false);
+        Navigate("/badgateway");
+      
     }
   };
 
@@ -85,19 +88,33 @@ const MyJobs = () => {
     };
   }
   const handleFillInf = async () => {
-    const response = await createNewInf({
-      Company_Overview: { ...companyData },
-    });
 
-    Navigate(`/create/inf/${response.data.newInf._id}`);
+    try {
+      const response = await createNewInf({
+        Company_Overview: { ...companyData },
+      });
+  
+      Navigate(`/create/inf/${response.data.newInf._id}`);
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+
+   
   };
 
   const handleFillJnf = async () => {
-    const response = await createNewJnf({
-      Company_Overview: { ...companyData },
-    });
+      
+    try {
+      const response = await createNewJnf({
+        Company_Overview: { ...companyData },
+      });
+      Navigate(`/create/jnf/${response.data.newJnf._id}`);
+    } catch (error) {
+      Navigate("/badgateway");
+    }
 
-    Navigate(`/create/jnf/${response.data.newJnf._id}`);
+
+    
   };
 
   const handleEditJob = async (id, isIntern) => {
@@ -109,28 +126,50 @@ const MyJobs = () => {
     try {
       setIsLoading(true);
       if (deleteId[1]) {
-        await deleteInfById(deleteId[0]);
+
+        try {
+          await deleteInfById(deleteId[0]);
+        } catch (error) {
+          setIsLoading(false);
+          Navigate("/badgateway");
+        }
+
+       
       } else {
-        await deleteJnfById(deleteId[0]);
+        try {
+          await deleteJnfById(deleteId[0]);
+        } catch (error) {
+          setIsLoading(false);
+          Navigate("/badgateway");
+        }
       }
 
       setReload((prevData) => prevData + 1);
       setIsLoading(false);
-    } catch (error) {}
+    } catch (error) {
+      setIsLoading(false);
+      Navigate("/badgateway");
+    }
   };
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('token'))) fetchJobs(Filter);
     async function filterJobs() {
-      for (let i in Jobs) {
-        if (Jobs[i].data.Company_Overview === undefined) {
-          if (Jobs[i].data.isIntern) {
-            await deleteInfById(Jobs[i].data._id);
-          } else {
-            await deleteJnfById(Jobs[i].data._id);
+      try {
+        for (let i in Jobs) {
+          if (Jobs[i].data.Company_Overview === undefined) {
+            if (Jobs[i].data.isIntern) {
+  
+              await deleteInfById(Jobs[i].data._id);
+            } else {
+              await deleteJnfById(Jobs[i].data._id);
+            }
           }
         }
+      } catch (error) {
+        Navigate("/badgateway");
       }
+    
     }
     filterJobs();
   }, [Filter, pageNo, reload]);

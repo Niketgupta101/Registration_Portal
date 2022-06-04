@@ -7,7 +7,8 @@ import SendIcon from "@mui/icons-material/Send";
 import "./styles.css";
 import { postContactData } from "../../api";
 import cllgPhoto from "./../../Images/contact-us.png";
-
+import { Toast } from "reactstrap";
+import { ToastContainer, toast } from 'react-toastify';
 const ContactUs = () => {
   const Navigate = useNavigate();
 
@@ -39,8 +40,14 @@ const ContactUs = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    let response = await postContactData(formData);
-    setFormData({ ...initialData });
+    try {
+      let response = await postContactData(formData);
+      setFormData({ ...initialData });
+      toast.success("Mail Sent !!!");
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+    
   };
   return (
     <>
@@ -115,7 +122,7 @@ const ContactUs = () => {
                             type="submit"
                             className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2 "
                           >
-                            <span> SUBMIT</span>
+                            <span > SUBMIT</span>
                           </button>
                         </div>
                       </div>
@@ -176,6 +183,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };
