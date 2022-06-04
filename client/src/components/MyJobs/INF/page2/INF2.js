@@ -12,6 +12,8 @@ export default function INF2({
   setPage,
   fourYearData,
   fiveYearData,
+  dualDegreeData,
+  doubleMajorData,
   threeYearData,
   twoYearData,
   twoYearMbaData,
@@ -19,6 +21,8 @@ export default function INF2({
   skillData,
   handleFourYearChange,
   handleFiveYearChange,
+  handleDoubleMajorChange,
+  handleDualDegreeChange,
   handleSkillChange,
   handleThreeYearChange,
   handleTwoYearChange,
@@ -28,6 +32,8 @@ export default function INF2({
 }) {
   const [eligiblediv, setEligiblediv] = useState(false);
   const [btechdiv, setBtechdiv] = useState(false);
+  const [doublemajor,setDoubleMajor] = useState(false);
+  const [dualdegree,setDualDegree] = useState(false);
   const [dual_mtechdiv, setdual_mtechdiv] = useState(false);
   const [mbadiv, setmbadiv] = useState(false);
   const [msc2div, setmsc2div] = useState(false);
@@ -44,6 +50,8 @@ export default function INF2({
   const refmsc3 = useRef();
   const refmtech = useRef();
   const refphd = useRef();
+  const refdoublemajor = useRef();
+  const refdualdegree = useRef();
 
   function handleBackClick(refname) {
     refname.current.scrollIntoView({ behavior: "smooth" });
@@ -479,6 +487,195 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
+                    <div ref={refdoublemajor} className="eligible-type my-3">
+                      <div
+                        onClick={() => {
+                          setTimeout(() => {
+                            if (doublemajor) {
+                              setDoubleMajor(false);
+                            } else {
+                              setDoubleMajor(true);
+                            }
+                          }, 200);
+                        }}
+                      >
+                        <div className="eligible-heading d-flex ">
+                          <h3 className="flex-grow-1 align-self-center m-0">
+                            Double Major
+                          </h3>
+                          <div className="p-2 align-self-center">
+                            {doublemajor === true ? (
+                              <FaAngleDoubleUp size={20} />
+                            ) : (
+                              <FaAngleDoubleDown size={20} />
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="eligible-sub-heading">
+                          <p className="m-0">
+                            Admitted through <b>JEE (Advanced)</b>
+                          </p>
+                        </div>
+                      </div>
+                      {doublemajor === true ? (
+                        <div className="eligible-option">
+                          <table className="m-0">
+                            <tbody id="Five_Year">
+                              <tr>
+                                <td className="courseName">Select All</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Select_All"
+                                    checked={doubleMajorData.Select_All}
+                                    onChange={handleDoubleMajorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Computer Science and Engineering (Double Major)
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Computer_Science_and_Engineering_Double_Major"
+                                    checked={
+                                      doubleMajorData.Computer_Science_and_Engineering_Double_Major
+                                    }
+                                    onChange={handleDoubleMajorChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>                            
+                             
+                            </tbody>
+                          </table>
+                          <div className="collapse-div d-flex justify-content-end">
+                            {doublemajor === true ? (
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setDoubleMajor(false);
+                                    handleBackClick(doublemajor);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                    <div ref={refdualdegree} className="eligible-type my-3">
+                      <div
+                        onClick={() => {
+                          setTimeout(() => {
+                            if (dualdegree) {
+                              setDualDegree(false);
+                            } else {
+                              setDualDegree(true);
+                            }
+                          }, 200);
+                        }}
+                      >
+                        <div className="eligible-heading d-flex ">
+                          <h3 className="flex-grow-1 align-self-center m-0">
+                            Dual Degree
+                          </h3>
+                          <div className="p-2 align-self-center">
+                            {dualdegree === true ? (
+                              <FaAngleDoubleUp size={20} />
+                            ) : (
+                              <FaAngleDoubleDown size={20} />
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="eligible-sub-heading">
+                          <p className="m-0">
+                            Admitted through <b>JEE (Advanced)</b>
+                          </p>
+                        </div>
+                      </div>
+                      {dualdegree === true ? (
+                        <div className="eligible-option">
+                          <table className="m-0">
+                            <tbody id="Five_Year">
+                              <tr>
+                                <td className="courseName">Select All</td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Select_All"
+                                    checked={dualDegreeData.Select_All}
+                                    onChange={handleDualDegreeChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Computer Science and Engineering (B.Tech and M.Tech in Different Departments)
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Computer_Science_and_Engineering_Dual_Degree"
+                                    checked={
+                                      dualDegreeData.Computer_Science_and_Engineering_Dual_Degree
+                                    }
+                                    onChange={handleDualDegreeChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="courseName">
+                                  Environmental Science and Engineering (B.Tech and M.Tech in Same Different)
+                                </td>
+                                <td className="courseCheckBox5year">
+                                  <input
+                                    name="Environmental_Science_and_Engineering_Dual_Degree"
+                                    checked={
+                                      dualDegreeData.Environmental_Science_and_Engineering_Dual_Degree
+                                    }
+                                    onChange={handleDualDegreeChange}
+                                    type="checkbox"
+                                  />
+                                </td>
+                              </tr>                         
+                            </tbody>
+                          </table>
+                          <div className="collapse-div d-flex justify-content-end">
+                            {dual_mtechdiv === true ? (
+                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                  color="primary"
+                                  aria-label="add"
+                                  onClick={() => {
+                                    setdual_mtechdiv(false);
+                                    handleBackClick(refdual_mtech);
+                                  }}
+                                >
+                                  <ArrowUpwardIcon />
+                                </Fab>
+                              </Box>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                    
                   </div>
                 </div>
               ) : (

@@ -72,6 +72,16 @@ const infSchema = new Schema(
         Applied_Geology: { type: Boolean, default: false },
         Applied_Geophysics: { type: Boolean, default: false },
       },
+      Dual_Degree :{
+        Select_All :{ type: Boolean, default: false },
+        Computer_Science_and_Engineering_Dual_Degree : { type: Boolean, default: false },
+        Environmental_Science_and_Engineering_Dual_Degree : { type: Boolean, default: false }
+      },
+      Double_Major :{
+        Select_All : { type: Boolean, default: false },
+        Computer_Science_and_Engineering_Double_Major :  { type: Boolean, default: false }
+
+      },
       Skill_Based_Hiring: {
         C_Cpp_Java_Python_etc: { type: Boolean, default: false },
         Full_Stack_Development_Frontend_or_Backend: {

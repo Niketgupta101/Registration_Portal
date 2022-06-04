@@ -32,13 +32,7 @@ import Doublemajor from "./components/Courses/DoubleMajor";
 import CustomInvite from "./components/Admin/Invites/CustomInvite";
 import Invites from "./components/Admin/Invites/Invites";
 import { Error404 } from "./components/Error Page/Error404";
-<<<<<<< HEAD
-
-
-
-=======
 import BadGateway from "./components/BadGateway/BadGateway";
->>>>>>> 0f5cdd015a2d53508cd3a4ad76903c111377af80
 const App = () => {
   return (
     <BrowserRouter>

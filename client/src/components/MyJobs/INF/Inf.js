@@ -122,6 +122,18 @@ const Inf = () => {
     Applied_Geology: false,
     Applied_Geophysics: false,
   });
+  const [doubleMajorData,setDoubleMajorData] = useState({
+    Select_All: false,
+    Computer_Science_and_Engineering_Double_Major : false
+
+  })
+  const [dualDegreeData , setDualDegreeData] = useState({
+    Select_All : false,
+    Computer_Science_and_Engineering_Dual_Degree : false,
+    Environmental_Science_and_Engineering_Dual_Degree : false,
+
+
+  })
   const [skillData, setSkillData] = useState({
     C_Cpp_Java_Python_etc: false,
     Full_Stack_Development_Frontend_or_Backend: false,
@@ -163,6 +175,44 @@ const Inf = () => {
       }
     } else {
       setFiveYearData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+  };
+  const handleDoubleMajorChange = (e) => {
+    if (e.target.name !== 'Select_All' && doubleMajorData.Select_All === true) {
+      setDoubleMajorData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
+      let newValue = !doubleMajorData[e.target.name];
+      for (let i in doubleMajorData) {
+        setDoubleMajorData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+    } else {
+      setDoubleMajorData((prevData) => ({
+        ...prevData,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    }
+  };
+  const handleDualDegreeChange = (e) => {
+    if (e.target.name !== 'Select_All' && dualDegreeData.Select_All === true) {
+      setDualDegreeData((prevData) => ({
+        ...prevData,
+        Select_All: false,
+        [e.target.name]: e.target.checked ? true : false,
+      }));
+    } else if (e.target.name === 'Select_All') {
+      let newValue = !dualDegreeData[e.target.name];
+      for (let i in dualDegreeData) {
+        setDualDegreeData((prevData) => ({ ...prevData, [i]: newValue }));
+      }
+    } else {
+      setDualDegreeData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.checked ? true : false,
       }));
@@ -321,7 +371,10 @@ const Inf = () => {
     Priority_One: '',
     Priority_Two: '',
   };
-  const [priorityFormData, setPriorityFormData] = useState({ ...priorityData });
+  const [priorityFormData, setPriorityFormData] = useState({ 
+    Priority_One : "",
+    Priority_Two : "",
+  });
   const handlePriorityDataChange = (e) => {
     setPriorityFormData((prevData) => ({
       ...prevData,
@@ -466,6 +519,14 @@ const Inf = () => {
       setSkillData({
         ...response.data.inf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
       });
+      setDoubleMajorData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+        .Double_Major,
+      })
+      setDualDegreeData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines.
+        Dual_Degree,
+      })
       setThreeYearData({
         ...response.data.inf.Eligible_Courses_And_Disciplines
           .Three_Year_MSc_Tech_Programs,
@@ -482,6 +543,7 @@ const Inf = () => {
         ...response.data.inf.Eligible_Courses_And_Disciplines
           .Two_Year_MSc_Programs,
       });
+
       setResumeShortListingData({
         ...response.data.inf.Selection_Procedure.Resume_Shortlisting,
       });
@@ -529,6 +591,8 @@ const Inf = () => {
         Two_Year_Mtech_Programs: { ...twoYearData },
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
+        Double_Major : {...doubleMajorData},
+        Dual_Degree : {...dualDegreeData}
       },
       Priority_Details: { ...priorityFormData },
     }));
@@ -590,6 +654,8 @@ const Inf = () => {
               setPage={setPage}
               fourYearData={fourYearData}
               fiveYearData={fiveYearData}
+              doubleMajorData ={doubleMajorData}
+              dualDegreeData ={dualDegreeData}
               skillData={skillData}
               handleFourYearChange={handleFourYearChange}
               handleFiveYearChange={handleFiveYearChange}
@@ -603,6 +669,8 @@ const Inf = () => {
               handleTwoYearChange={handleTwoYearChange}
               handleTwoYearMbaChange={handleTwoYearMbaChange}
               handleTwoYearMscChange={handleTwoYearMscChange}
+              handleDoubleMajorChange ={handleDoubleMajorChange}
+              handleDualDegreeChange ={handleDualDegreeChange}
             />
           </TabPanel>
           {/* <TabPanel value={"3"}>

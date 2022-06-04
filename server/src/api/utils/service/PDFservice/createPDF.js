@@ -139,6 +139,8 @@ exports.fillINFDoc = async (inf) => {
   let fiveYear =
     inf.Eligible_Courses_And_Disciplines
       .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs;
+  let doubleMajor = inf.Eligible_Courses_And_Disciplines.Double_Major; 
+  let dualDegree = inf.Eligible_Courses_And_Disciplines.Dual_Degree; 
   let skill = inf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring;
   let threeYear =
     inf.Eligible_Courses_And_Disciplines.Three_Year_MSc_Tech_Programs;
@@ -185,6 +187,12 @@ exports.fillINFDoc = async (inf) => {
       : 'No',
     Five_Year_Applied_Geology: fiveYear.Applied_Geology ? 'Yes' : 'No',
     Five_Year_Applied_Geophysics: fiveYear.Applied_Geophysics ? 'Yes' : 'No',
+    Double_Major_Select_All : doubleMajor.Select_All ? 'Yes' : 'No',
+    Double_Major_Computer_Science_and_Engineering : doubleMajor.Computer_Science_and_Engineering_Double_Major ? 'Yes' :'No',
+    Dual_Degree_Select_All : dualDegree.Select_All ?'Yes':'No',
+    Dual_Degree_Computer_Science_and_Engineering : dualDegree.Computer_Science_and_Engineering_Dual_Degree ?'Yes':'No',
+    Dual_Degree_Environmental_Science_and_Engineering : dualDegree.Environmental_Science_and_Engineering_Dual_Degree ?'Yes' : 'No',
+
     Skill_C_Cpp_Java_Python_etc: skill.C_Cpp_Java_Python_etc ? 'Yes' : 'No',
     Skill_Full_Stack_Development_Frontend_or_Backend:
       skill.Full_Stack_Development_Frontend_or_Backend ? 'Yes' : 'No',

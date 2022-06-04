@@ -439,6 +439,106 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             </tr>
           </tbody>
         </table>
+        <div className="startTextBold" style={{ fontSize: "21px" }}>
+          Double Majors
+        </div>
+        <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+          Admitted through JEE (Advanced)
+        </div>
+        <table>
+          <tbody id="Five_Year">
+            <tr>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Select_All"
+                  checked={
+                    InfData.Eligible_Courses_And_Disciplines.Double_Major.Select_All
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">
+                Computer Science and Engineering 
+              </td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Computer_Science_and_Engineering_Double_Major"
+                  checked={
+                    InfData.Eligible_Courses_And_Disciplines
+                      .Double_Major.Computer_Science_and_Engineering_Double_Major
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+           
+            
+      
+          </tbody>
+        </table>
+        <div className="startTextBold" style={{ fontSize: "21px" }}>
+          Dual Degree
+        </div>
+        <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+          Admitted through JEE (Advanced)
+        </div>
+        <table>
+          <tbody id="Five_Year">
+            <tr>
+              <td className="courseName">Select All</td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Select_All"
+                  checked={
+                    InfData.Eligible_Courses_And_Disciplines.Dual_Degree.Select_All
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">
+                Computer Science and Engineering (B.Tech and M.Tech in Different Departments)
+              </td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Computer_Science_and_Engineering_Dual_Degree"
+                  checked={
+                    InfData.Eligible_Courses_And_Disciplines
+                      .Dual_Degree.Computer_Science_and_Engineering_Dual_Degree
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="courseName">
+                Environmental Science and Engineering (B.Tech and M.Tech in Different Departments)
+              </td>
+              <td className="courseCheckBox5year">
+                <input
+                  name="Environmental_Science_and_Engineering_Dual_Degree"
+                  checked={
+                    InfData.Eligible_Courses_And_Disciplines
+                      .Dual_Degree.Environmental_Science_and_Engineering_Dual_Degree
+                  }
+                  type="checkbox"
+                  readOnly
+                />
+              </td>
+            </tr>
+           
+            
+      
+          </tbody>
+        </table>
         {/* <div className="startTextBold">Skill Based Hiring</div>
         <div className="startTextBoldSmall">
           Students with certified technical expertise in the following skills
