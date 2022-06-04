@@ -62,12 +62,16 @@ exports.login = async (req, res, next) => {
     );
 
   try {
-    const { user, token, company } = await loginUser(
+    const loginResponse = await loginUser(
       emailIdOrUsername,
       password,
       next
     );
-    res.status(200).json({ success: true, user, token, company });
+    if(loginResponse!==undefined)
+    {
+     const { user, token, company }=loginResponse;
+      res.status(200).json({ success: true, user, token, company });
+    }
   } catch (error) {
     return next(error);
   }
@@ -77,7 +81,7 @@ exports.forgotPassword = async (req, res, next) => {
   const { emailId } = req.body;
   try {
     const response = await forgotPassword(emailId, next);
-
+    if(response!==undefined)
     res.status(201).json(response);
   } catch (error) {
     return next(error);

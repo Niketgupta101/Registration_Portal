@@ -66,6 +66,7 @@ exports.forgotPassword = async (emailId, next) => {
       return next(new ErrorResponse('Email could not be sent', 404));
     }
 
+    
     const resetToken = uuidv4();
 
     user.resetPasswordToken = resetToken;

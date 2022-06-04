@@ -15,6 +15,28 @@ export default function Twoyearmtech() {
   const [courseLink, setCourseLink] = useState("");
   const handleClose = () => setShow(false);
   const [data, setData] = useState([53, 22]);
+  const branches = [
+    "Chemical Engineering",
+    "Civil Engineering",
+    "Computer Science and Engineering",
+    "Data Analytics",
+    "Earthquake Science & Engineering",
+    "Electrical Engineering",
+    "Electronics & Communication Engineering",
+    "Engineering Geology",
+    "Environmental Science & Engineering",
+    "Fuel, Minerals & Metallurgical Engineering",
+    "Geo-Exploration",
+    "Geomatics",
+    "Geotechnical Engineering",
+    "Industrial Engineering & Management",
+    "Mechanical Engineering",
+    "Mining Engineering",
+    "Mining Machinery Engineering",
+    "Petroleum Engineering",
+    "Pharmaceutical Science & Engineering",
+    "Tunnelling and Underground Space Technology",
+  ];
   function handleShow(name, stats) {
     setData(() => stats);
     setmodalHeading(() => name);
@@ -43,204 +65,21 @@ export default function Twoyearmtech() {
               </div>
               <main className="d-flex justify-content-center">
                 <ol class="gradient-list">
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Applied Geology ", twoyearmtech[0])
-                      }
-                    >
-                      <div className="course-name-li">Applied Geology </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Applied Geophysics", twoyearmtech[1])
-                      }
-                    >
-                      <div className="course-name-li">Applied Geophysics</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Chemical Engineering", twoyearmtech[2])
-                      }
-                    >
-                      <div className="course-name-li">Chemical Engineering</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Civil Engineering", twoyearmtech[3])
-                      }
-                    >
-                      <div className="course-name-li">Civil Engineering</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow(
-                          "Computer Science and Engineering",
-                          twoyearmtech[4]
-                        )
-                      }
-                    >
-                      <div className="course-name-li">
-                        Computer Science and Engineering
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Data Analytics", twoyearmtech[5])
-                      }
-                    >
-                      <div className="course-name-li">Data Analytics</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Electrical Engineering ", twoyearmtech[6])
-                      }
-                    >
-                      <div className="course-name-li">
-                        Electrical Engineering{" "}
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow(
-                          "Electronics & Communication Engineering ",
-                          twoyearmtech[7]
-                        )
-                      }
-                    >
-                      <div className="course-name-li">
-                        Electronics & Communication Engineering{" "}
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Environmental Engineering", twoyearmtech[8])
-                      }
-                    >
-                      <div className="course-name-li">
-                        Environmental Engineering
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow(
-                          "Industrial Engineering & Management",
-                          twoyearmtech[9]
-                        )
-                      }
-                    >
-                      <div className="course-name-li">
-                        Industrial Engineering & Management
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Mechanical Engineering", twoyearmtech[10])
-                      }
-                    >
-                      <div className="course-name-li">
-                        Mechanical Engineering
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow(
-                          "Fuel, Minerals & Metallurgical Engineering",
-                          twoyearmtech[11]
-                        )
-                      }
-                    >
-                      <div className="course-name-li">
-                        Fuel, Minerals & Metallurgical Engineering
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Mining Engineering", twoyearmtech[12])
-                      }
-                    >
-                      <div className="course-name-li">Mining Engineering</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow(
-                          "Mining Machinery Engineering",
-                          twoyearmtech[13]
-                        )
-                      }
-                    >
-                      <div className="course-name-li">
-                        Mining Machinery Engineering
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Petroleum Engineering", twoyearmtech[14])
-                      }
-                    >
-                      <div className="course-name-li">
-                        Petroleum Engineering{" "}
-                      </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow(
-                          "Pharmaceutical Science & Engineering",
-                          twoyearmtech[15]
-                        )
-                      }
-                    >
-                      <div className="course-name-li">
-                        Pharmaceutical Science & Engineering
-                      </div>
-                    </Button>
-                  </li>
+                  {branches.map((branch) => (
+                    <li>
+                      <Button
+                        variant="text"
+                        onClick={() =>
+                          handleShow(
+                            branch,
+                            twoyearmtech[branches.indexOf(branch)]
+                          )
+                        }
+                      >
+                        <div className="course-name-li">{branch}</div>
+                      </Button>
+                    </li>
+                  ))}
                 </ol>
               </main>
             </div>

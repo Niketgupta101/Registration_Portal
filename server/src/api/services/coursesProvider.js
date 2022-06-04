@@ -1,4 +1,4 @@
-const { readSheet, updateSheet } = require('../utils/service/GSheets');
+const { readSheet } = require('../utils/service/GSheets');
 
 exports.readCoursesGSheets = async () => {
   try {
@@ -18,19 +18,11 @@ exports.getPlacedStudentsCount = async (next) => {
     const data = await readSheet(
       '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
       'Courses',
-      'A2:K54'
+      'A69:C69'
     );
 
-    let count = 0;
 
-    for (let i in data) {
-      if (data[i][2] == undefined) count += 0;
-      else if (data[i][2] != '') {
-        count += parseInt(data[i][2]);
-      }
-    }
-
-    return { placed: count };
+    return { placed: data[0][2] };
   } catch (error) {
     next(error);
   }

@@ -15,6 +15,7 @@ export default function Twoyearmba() {
   const [courseLink, setCourseLink] = useState("");
   const handleClose = () => setShow(false);
   const [data, setData] = useState([53, 22]);
+  const branches = ["Business Analytics", "Master of Business Administration"];
   function handleShow(name, stats) {
     setData(() => stats);
     setmodalHeading(() => name);
@@ -43,50 +44,21 @@ export default function Twoyearmba() {
               </div>
               <main className="d-flex justify-content-center">
                 <ol class="gradient-list">
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Business Analytics", twoyearmba[0])
-                      }
-                    >
-                      <div className="course-name-li">Business Analytics</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() => handleShow("Finance ", twoyearmba[1])}
-                    >
-                      <div className="course-name-li">Finance </div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() =>
-                        handleShow("Human Resources", twoyearmba[2])
-                      }
-                    >
-                      <div className="course-name-li">Human Resources</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() => handleShow("Marketing", twoyearmba[3])}
-                    >
-                      <div className="course-name-li">Marketing</div>
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      variant="text"
-                      onClick={() => handleShow("Operations", twoyearmba[4])}
-                    >
-                      <div className="course-name-li">Operations</div>
-                    </Button>
-                  </li>
+                  {branches.map((branch) => (
+                    <li>
+                      <Button
+                        variant="text"
+                        onClick={() =>
+                          handleShow(
+                            branch,
+                            twoyearmba[branches.indexOf(branch)]
+                          )
+                        }
+                      >
+                        <div className="course-name-li">{branch}</div>
+                      </Button>
+                    </li>
+                  ))}
                 </ol>
               </main>
             </div>

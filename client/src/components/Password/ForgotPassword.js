@@ -9,8 +9,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
-  const notify = () =>
-    toast.success("Reset link sent to Email Address!", {
+  const notify = (status) =>{
+     if(status=="success")
+     return toast.success("Reset link sent to Email Address!", {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: true,
@@ -19,15 +20,29 @@ const ForgotPassword = () => {
       draggable: true,
       progress: undefined,
     });
+    else return toast.warn("Email Id not found", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  }
   const [emailId, setEmailId] = useState("");
   const Navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await forgetPassword(emailId);
-
-    Navigate("/auth");
+   
+    try{
+      const response =await forgetPassword(emailId);
+      notify("success");
+    }catch(error){
+      notify("failure");
+    }
   };
 
   return (
@@ -64,7 +79,6 @@ const ForgotPassword = () => {
                   padding: "0.5rem 1rem",
                 }}
                 type="submit"
-                onClick={notify}
               >
                 Send
               </Button>

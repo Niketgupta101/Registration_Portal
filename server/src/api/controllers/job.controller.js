@@ -75,7 +75,7 @@ const getAllJobsForUser = async (req, res, next) => {
 const updateGraduationYear = async (req, res, next) => {
   const { graduationYear } = req.body;
   try {
-    let year = await Year.findOne({ _id: '1' });
+    let year = await Year.findOne({ id: '1' });
 
     year.set({ graduationYear });
 
@@ -89,9 +89,9 @@ const updateGraduationYear = async (req, res, next) => {
 
 const getGraduationYear = async (req, res, next) => {
   try {
-    let year = await Year.findOne({ _id: '1' });
+    let year = await Year.findOne({ id: '1' });
 
-    res.status(201).json({ success: true, year });
+    res.status(201).json({ success: true, year:year.graduationYear });
   } catch (error) {
     next(error);
   }
