@@ -444,58 +444,67 @@ const Inf = () => {
   const [InfData, setInfData] = useState({});
 
   const fetchInfData = async (InfId) => {
-    const response = await getInfById(InfId);
 
-    setInfData((prevData) => ({ ...prevData, ...response.data.inf }));
-    // setCompanyFormData({ ...response.data.inf.Company_Overview });
-    setJobFormData({ ...response.data.inf.Intern_Profile });
-    setStipendFormData({ ...response.data.inf.Salary_Details });
-    setHrDetails({ ...response.data.inf.HR_Details });
-    setPriorityFormData({ ...response.data.inf.Priority_Details });
-    setFourYearData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Four_Year_Btech_Programs,
-    });
-    setFiveYearData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
-    });
-    setSkillData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
-    });
-    setThreeYearData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Three_Year_MSc_Tech_Programs,
-    });
-    setTwoYearData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Two_Year_Mtech_Programs,
-    });
-    setTwoYearMbaData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Two_Year_MBA_Programs,
-    });
-    setTwoYearMscData({
-      ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Two_Year_MSc_Programs,
-    });
-    setResumeShortListingData({
-      ...response.data.inf.Selection_Procedure.Resume_Shortlisting,
-    });
-    setTypeOfTestData({
-      ...response.data.inf.Selection_Procedure.Type_Of_Test,
-    });
-    setOtherQualificationRoundsData({
-      ...response.data.inf.Selection_Procedure.Other_Qualification_Rounds,
-    });
-    setSelectionFormData({
-      Total_Number_Of_Rounds:
-        response.data.inf.Selection_Procedure.Total_Number_Of_Rounds,
-      Number_Of_Offers: response.data.inf.Selection_Procedure.Number_Of_Offers,
-      Eligibility_Criteria:
-        response.data.inf.Selection_Procedure.Eligibility_Criteria,
-    });
-    setInfData({ ...response.data.inf });
+
+    try {
+      const response = await getInfById(InfId);
+
+      setInfData((prevData) => ({ ...prevData, ...response.data.inf }));
+      // setCompanyFormData({ ...response.data.inf.Company_Overview });
+      setJobFormData({ ...response.data.inf.Intern_Profile });
+      setStipendFormData({ ...response.data.inf.Salary_Details });
+      setHrDetails({ ...response.data.inf.HR_Details });
+      setPriorityFormData({ ...response.data.inf.Priority_Details });
+      setFourYearData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Four_Year_Btech_Programs,
+      });
+      setFiveYearData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
+      });
+      setSkillData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
+      });
+      setThreeYearData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Three_Year_MSc_Tech_Programs,
+      });
+      setTwoYearData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Two_Year_Mtech_Programs,
+      });
+      setTwoYearMbaData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Two_Year_MBA_Programs,
+      });
+      setTwoYearMscData({
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Two_Year_MSc_Programs,
+      });
+      setResumeShortListingData({
+        ...response.data.inf.Selection_Procedure.Resume_Shortlisting,
+      });
+      setTypeOfTestData({
+        ...response.data.inf.Selection_Procedure.Type_Of_Test,
+      });
+      setOtherQualificationRoundsData({
+        ...response.data.inf.Selection_Procedure.Other_Qualification_Rounds,
+      });
+      setSelectionFormData({
+        Total_Number_Of_Rounds:
+          response.data.inf.Selection_Procedure.Total_Number_Of_Rounds,
+        Number_Of_Offers: response.data.inf.Selection_Procedure.Number_Of_Offers,
+        Eligibility_Criteria:
+          response.data.inf.Selection_Procedure.Eligibility_Criteria,
+      });
+      setInfData({ ...response.data.inf });
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+
+
+   
   };
 
   useEffect(() => {
@@ -529,7 +538,9 @@ const Inf = () => {
       setIsLoading(false);
 
       setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
-    } catch (error) {}
+    } catch (error) {
+      Navigate("/badgateway");
+    }
   };
 
   const handleFormSubmit = async (e) => {
@@ -540,7 +551,10 @@ const Inf = () => {
       let response = await submitInf(InfId);
       setIsLoading(false);
       Navigate('/myjobs');
-    } catch (error) {}
+    } catch (error) {
+      setIsLoading(false);
+      Navigate("/badgateway");
+    }
   };
 
   // -----------------------------------------------------------------

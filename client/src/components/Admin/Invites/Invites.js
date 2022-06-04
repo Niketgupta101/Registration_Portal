@@ -50,7 +50,12 @@ const Invites = () => {
   }, []);
 
   async function clickFunction() {
-    await sendInvitationToAllCompanies();
+    try {
+      await sendInvitationToAllCompanies();
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+  
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({

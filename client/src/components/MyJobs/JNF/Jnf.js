@@ -505,60 +505,67 @@ const Jnf = () => {
   });
 
   const fetchJnfData = async (JnfId) => {
-    const response = await getjnfById(JnfId);
 
-    setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
-    // setCompanyFormData({ ...response.data.jnf.Company_Overview });
-    setJobFormData({ ...response.data.jnf.Job_Details });
-    setSalaryFormData({ ...response.data.jnf.Salary_Details });
-    setHrDetails({ ...response.data.jnf.HR_Details });
-    setFourYearData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Four_Year_Btech_Programs,
-    });
-    setFiveYearData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
-    });
-    setMinorData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines.Minors,
-    });
-    setSkillData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
-    });
-    setThreeYearData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Three_Year_MSc_Tech_Programs,
-    });
-    setTwoYearData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Two_Year_Mtech_Programs,
-    });
-    setTwoYearMbaData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Two_Year_MBA_Programs,
-    });
-    setTwoYearMscData({
-      ...response.data.jnf.Eligible_Courses_And_Disciplines
-        .Two_Year_MSc_Programs,
-    });
-    setResumeShortListingData({
-      ...response.data.jnf.Selection_Procedure.Resume_Shortlisting,
-    });
-    setTypeOfTestData({
-      ...response.data.jnf.Selection_Procedure.Type_Of_Test,
-    });
-    setOtherQualificationRoundsData({
-      ...response.data.jnf.Selection_Procedure.Other_Qualification_Rounds,
-    });
-    setSelectionFormData({
-      Total_Number_Of_Rounds:
-        response.data.jnf.Selection_Procedure.Total_Number_Of_Rounds,
-      Number_Of_Offers: response.data.jnf.Selection_Procedure.Number_Of_Offers,
-      Eligibility_Criteria:
-        response.data.jnf.Selection_Procedure.Eligibility_Criteria,
-    });
-    setJnfData({ ...response.data.jnf });
+
+    try {
+      const response = await getjnfById(JnfId);
+
+      setJnfData((prevData) => ({ ...prevData, ...response.data.jnf }));
+      // setCompanyFormData({ ...response.data.jnf.Company_Overview });
+      setJobFormData({ ...response.data.jnf.Job_Details });
+      setSalaryFormData({ ...response.data.jnf.Salary_Details });
+      setHrDetails({ ...response.data.jnf.HR_Details });
+      setFourYearData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines
+          .Four_Year_Btech_Programs,
+      });
+      setFiveYearData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines
+          .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
+      });
+      setMinorData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines.Minors,
+      });
+      setSkillData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
+      });
+      setThreeYearData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines
+          .Three_Year_MSc_Tech_Programs,
+      });
+      setTwoYearData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines
+          .Two_Year_Mtech_Programs,
+      });
+      setTwoYearMbaData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines
+          .Two_Year_MBA_Programs,
+      });
+      setTwoYearMscData({
+        ...response.data.jnf.Eligible_Courses_And_Disciplines
+          .Two_Year_MSc_Programs,
+      });
+      setResumeShortListingData({
+        ...response.data.jnf.Selection_Procedure.Resume_Shortlisting,
+      });
+      setTypeOfTestData({
+        ...response.data.jnf.Selection_Procedure.Type_Of_Test,
+      });
+      setOtherQualificationRoundsData({
+        ...response.data.jnf.Selection_Procedure.Other_Qualification_Rounds,
+      });
+      setSelectionFormData({
+        Total_Number_Of_Rounds:
+          response.data.jnf.Selection_Procedure.Total_Number_Of_Rounds,
+        Number_Of_Offers: response.data.jnf.Selection_Procedure.Number_Of_Offers,
+        Eligibility_Criteria:
+          response.data.jnf.Selection_Procedure.Eligibility_Criteria,
+      });
+      setJnfData({ ...response.data.jnf });
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+
   };
 
   useEffect(() => {
@@ -601,7 +608,10 @@ const Jnf = () => {
       let response = await updateJnfById(JnfData, JnfId);
       setIsLoading(false);
       setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
-    } catch (error) {}
+    } catch (error) {
+      setIsLoading(false);
+      Navigate("/badgateway");
+    }
   };
 
   const handleFormSubmit = async (e) => {
@@ -612,7 +622,10 @@ const Jnf = () => {
       let response = await submitJnf(JnfId);
       setIsLoading(false);
       Navigate('/myjobs');
-    } catch (error) {}
+    } catch (error) {
+      setIsLoading(false);
+      Navigate("/badgateway");
+    }
   };
 
   return (

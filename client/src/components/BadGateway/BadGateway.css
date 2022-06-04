@@ -1,0 +1,12 @@
+/* .badGateway{
+  
+} */
+.badGateway h3{
+    font-size: clamp(30px,4vw,40px);
+  text-align: center;
+}
+.badGateway hr{
+    width: 90vw;
+    margin: auto;
+    border: 2px solid rgb(1, 1, 1) !important;
+}

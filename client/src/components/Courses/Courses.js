@@ -32,20 +32,29 @@ const Courses = () => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(async () => {
     setIsLoading(true);
-    const response = await getAllCourseData();
+    try{
+      const response = await getAllCourseData();
+      let temp = response.data.data;
+
+      setCourses(() => temp);
+      setBtech(() => temp.slice(0, 12));
+      setFiveyear(() => temp.slice(12, 15));
+      setDoublemajor(() => temp.slice(15, 16));
+      setDualdegree(() => temp.slice(16, 18));
+      setThreeyearmsc(() => temp.slice(18, 20));
+      setTwoyearmba(() => temp.slice(20, 22));
+      setTwoyearmsc(() => temp.slice(22, 25));
+      setTwoyearmtech(() => temp.slice(25, 45));
+    
+    }catch(error)
+    {
+      Navigate('/badgateway')
+      setIsLoading(false);
+    }
+    
     setIsLoading(false);
 
-    let temp = response.data.data;
-
-    setCourses(() => temp);
-    setBtech(() => temp.slice(0, 12));
-    setFiveyear(() => temp.slice(12, 15));
-    setDoublemajor(() => temp.slice(15, 16));
-    setDualdegree(() => temp.slice(16, 18));
-    setThreeyearmsc(() => temp.slice(18, 20));
-    setTwoyearmba(() => temp.slice(20, 22));
-    setTwoyearmsc(() => temp.slice(22, 25));
-    setTwoyearmtech(() => temp.slice(25, 45));
+    
   }, []);
 
   return (

@@ -31,7 +31,7 @@ import Doublemajor from "./components/Courses/DoubleMajor";
 import CustomInvite from "./components/Admin/Invites/CustomInvite";
 import Invites from "./components/Admin/Invites/Invites";
 import { Error404 } from "./components/Error Page/Error404";
-
+import BadGateway from "./components/BadGateway/BadGateway";
 const App = () => {
   return (
     <BrowserRouter>
@@ -88,6 +88,7 @@ const App = () => {
           {/* ------------------------------ Custom-Invite--------------------- */}
           <Route path="/invite" element={<CustomInvite />} />
           <Route path="/company/invites" element={<Invites />} />
+          <Route path="/badgateway" element={<BadGateway />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </div>

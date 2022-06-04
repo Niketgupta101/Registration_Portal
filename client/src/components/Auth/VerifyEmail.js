@@ -30,7 +30,9 @@ const VerifyEmail = ({ email, setIsSignIn, setPage }) => {
       setIsSignIn(() => true);
 
       setPage('auth');
-    } catch (error) {}
+    } catch (error) {
+      Navigate("/badgateway");
+    }
   };
 
   return (

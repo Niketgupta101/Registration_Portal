@@ -48,7 +48,9 @@ const Home = () => {
       setPlacedCount(response3.data.placed);
       setIsLoading(false);
     } catch (error) {
+      
       setIsLoading(false);
+      Navigate('/badgateway')
     }
   };
 
@@ -62,9 +64,14 @@ const Home = () => {
 
   const handleYearChange = async (e) => {
     setYear(e.target.value);
-    const response = await updateGraduationYear({
-      graduationYear: e.target.value,
-    });
+    try {
+      const response = await updateGraduationYear({
+        graduationYear: e.target.value,
+      });
+    } catch (error) {
+      Navigate("/badgateway");
+    }
+    
   };
 
   return (

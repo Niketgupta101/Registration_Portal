@@ -38,21 +38,32 @@ const Contact = () => {
     else {
       setUser(JSON.parse(localStorage.getItem('user')));
       setIsLoading(true);
-      let response = await getAllContacts();
-      setIsLoading(false);
-
-      setContacts(response.data.contactList);
+      try {
+        let response = await getAllContacts();
+        setIsLoading(false);
+  
+        setContacts(response.data.contactList);
+      } catch (error) {
+        setIsLoading(false);
+        Navigate("/badgateway");
+      }
     }
   }, []);
 
   const handleContactStatus = async (id) => {
-    const response = await updateContactStatus(id);
+    try{
+      const response = await updateContactStatus(id);
 
-    setContacts((prevContact) =>
-      prevContact.map((contact) =>
-        contact._id === id ? response.data.contact : contact
-      )
-    );
+      setContacts((prevContact) =>
+        prevContact.map((contact) =>
+          contact._id === id ? response.data.contact : contact
+        )
+      );
+    }catch(error)
+    {
+      Navigate('/badgateway');
+    }
+   
   };
 
   return (
