@@ -56,14 +56,16 @@ const sendInvitationToAll = async (next) => {
     );
 
     for (let i in data) {
-      try {
-        await sendInvitationMailToCompany(
-          data[i][6],
-          `${data[i][6]}`,
-          `IIT(ISM)_${data[i][1]}_2022`
-        );
-        data[i][10] = 'Sent';
-      } catch (error) {}
+      if (data[i][10] !== 'Sent') {
+        try {
+          await sendInvitationMailToCompany(
+            data[i][6],
+            `${data[i][6]}`,
+            `IIT(ISM)_${data[i][1]}_2022`
+          );
+          data[i][10] = 'Sent';
+        } catch (error) {}
+      }
     }
     await updateSheet(
       '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
@@ -113,19 +115,20 @@ const updateCompanyInGSheets = async (company) => {
     company.secondary_hr.contactNo,
     company.secondary_hr.emailId,
     company.isVerifiedByCDC,
+    company.consent,
   ];
 
   let data = await readSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     'Companies',
-    'A1:K'
+    'A1:L'
   );
   data.push(details);
   await updateSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
     'Companies',
     data,
-    'A1:K'
+    'A1:L'
   );
 };
 

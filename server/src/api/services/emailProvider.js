@@ -350,9 +350,8 @@ exports.sendInvitationMailToCompany = async (emailId, username, password) => {
     const subject =
       'Invitation for Internship/Placements Season of IIT(ISM) Dhanbad';
 
-    const message = `<h3>You are invited</h3>
-                        <h4>Username: ${username}</h4>
-                        <h4>Password: ${password}</h4>`;
+    const message = `<h3>You are invited for the Internship/Placement Season of IIT(ISM) Dhanbad 2022-23</h3>
+                        <h4>Proceed here to complete registration process - <a href=${clientUrl}>Link</a></h4>`;
 
     await sendEmail(emailId, subject, message);
     return { success: true };
