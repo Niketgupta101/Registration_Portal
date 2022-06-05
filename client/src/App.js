@@ -52,7 +52,7 @@ const App = () => {
           {/* <Route path='/verifyemail' element={<VerifyEmail />} /> */}
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/passwordReset/:id" element={<ResetPassword />} />
-          <Route path="/changepassword" element={<ChangePassword />} />
+          {/* <Route path="/changepassword" element={<ChangePassword />} /> */}
 
           {/* ------------------------------ User Menu --------------------- */}
 
