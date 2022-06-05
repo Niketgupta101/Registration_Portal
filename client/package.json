@@ -27,8 +27,6 @@
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "react-strap": "^0.0.1",
-    "react-to-print": "^2.14.4",
     "react-toastify": "^9.0.1",
     "reactstrap": "^9.0.1",
     "web-vitals": "^2.1.4"
@@ -57,5 +55,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:5000"
+  "proxy": "http://localhost:5000"
 }

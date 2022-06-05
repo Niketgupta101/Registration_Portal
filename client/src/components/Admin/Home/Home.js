@@ -48,14 +48,13 @@ const Home = () => {
       setPlacedCount(response3.data.placed);
       setIsLoading(false);
     } catch (error) {
-      
       setIsLoading(false);
-      Navigate('/badgateway')
+      Navigate('/badgateway');
     }
   };
 
   useEffect(() => {
-    fetchData();
+    if (localStorage.getItem('user') !== null) fetchData();
   }, []);
 
   // const handleChange = (event, newValue) => {
@@ -69,9 +68,8 @@ const Home = () => {
         graduationYear: e.target.value,
       });
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
-    
   };
 
   return (
