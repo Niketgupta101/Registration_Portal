@@ -24,11 +24,9 @@ const Contact = () => {
   const handleChange = (panel) => () => {
     if (expanded == panel) {
       setExpanded(() => 0);
-    }
-    else {
+    } else {
       setExpanded(() => panel);
     }
-
   };
 
   const [Contacts, setContacts] = React.useState();
@@ -41,17 +39,17 @@ const Contact = () => {
       try {
         let response = await getAllContacts();
         setIsLoading(false);
-  
+
         setContacts(response.data.contactList);
       } catch (error) {
         setIsLoading(false);
-        Navigate("/badgateway");
+        Navigate('/badgateway');
       }
     }
   }, []);
 
   const handleContactStatus = async (id) => {
-    try{
+    try {
       const response = await updateContactStatus(id);
 
       setContacts((prevContact) =>
@@ -59,11 +57,9 @@ const Contact = () => {
           contact._id === id ? response.data.contact : contact
         )
       );
-    }catch(error)
-    {
-      Navigate('/badgateway');
+    } catch (error) {
+      // Navigate('/badgateway');
     }
-   
   };
 
   return (

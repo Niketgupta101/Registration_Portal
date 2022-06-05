@@ -74,9 +74,15 @@ const axios = require('axios');
 // };
 
 // const API = getApiObject();
-const API = axios.create({ baseURL: `http://localhost:5000/v1` });
+const API = axios.create({
+  baseURL: `http://localhost:5000/v1`,
+  headers: {
+    authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+  },
+});
 
 const setHeader = () => {
+  console.log('Header');
   return {
     headers: {
       authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
