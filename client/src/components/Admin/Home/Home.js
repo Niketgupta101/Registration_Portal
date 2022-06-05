@@ -54,7 +54,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem('user') !== null) fetchData();
+    fetchData();
   }, []);
 
   // const handleChange = (event, newValue) => {
