@@ -1,25 +1,25 @@
-import { TabContext, TabPanel } from '@mui/lab';
-import React, { useEffect, useState } from 'react';
-import { getInfById, submitInf, updateInfById } from '../../../api';
-import { useNavigate, useParams } from 'react-router-dom';
+import { TabContext, TabPanel } from "@mui/lab";
+import React, { useEffect, useState } from "react";
+import { getInfById, submitInf, updateInfById } from "../../../api";
+import { useNavigate, useParams } from "react-router-dom";
 
-import INF1 from './page1/INF1';
-import INF2 from './page2/INF2';
-import INF4 from './page4/INF4';
-import ReviewInf from './ReviewInf/ReviewInf';
+import INF1 from "./page1/INF1";
+import INF2 from "./page2/INF2";
+import INF4 from "./page4/INF4";
+import ReviewInf from "./ReviewInf/ReviewInf";
 
-import './styles.css';
-import Loading from '../../Loading/Loading';
+import "./styles.css";
+import Loading from "../../Loading/Loading";
 
 const Inf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState('1');
+  const [page, setPage] = useState("1");
   const Navigate = useNavigate();
 
   const { InfId } = useParams();
 
-  let user = JSON.parse(localStorage.getItem('user'));
-  const company = JSON.parse(localStorage.getItem('company'));
+  let user = JSON.parse(localStorage.getItem("user"));
+  const company = JSON.parse(localStorage.getItem("company"));
 
   useEffect(() => {
     if (
@@ -28,7 +28,7 @@ const Inf = () => {
       !company ||
       company.length === 0
     ) {
-      Navigate('/auth');
+      Navigate("/auth");
     }
   }, [Navigate, user]);
 
@@ -36,7 +36,7 @@ const Inf = () => {
   if (company && company.length !== 0) {
     companyData = {
       Name_Of_The_Company: company[0]?.name,
-      Category_Or_Sector: '',
+      Category_Or_Sector: "",
       Category: company[0]?.categoryData,
       Sector: company[0]?.sectorData,
       About: company[0]?.about,
@@ -45,27 +45,27 @@ const Inf = () => {
   }
   const jobData = {
     Internship_Duration: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
-    Job_Designation: '',
-    Job_Description: '',
-    Mode_Of_Internship: 'Virtual',
-    Place_Of_Posting: '',
+    Job_Designation: "",
+    Job_Description: "",
+    Mode_Of_Internship: "Virtual",
+    Place_Of_Posting: "",
   };
   const stipendData = {
-    Salary_Per_Month: '',
-    Salary_Unit: '',
-    PPO_provision_on_performance_basis: 'Yes',
-    CTC: '',
+    Salary_Per_Month: "",
+    Salary_Unit: "",
+    PPO_provision_on_performance_basis: "Yes",
+    CTC: "",
   };
   const hrData = {
     Primary_Hr: {
-      name: '',
-      email: '',
-      mobile: '',
+      name: "",
+      email: "",
+      mobile: "",
     },
     Alternate_Hr: {
-      name: '',
-      email: '',
-      mobile: '',
+      name: "",
+      email: "",
+      mobile: "",
     },
   };
 
@@ -84,6 +84,12 @@ const Inf = () => {
     setJobFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
+    }));
+  };
+  const handleInternDuration = (duration) => {
+    setJobFormData((prevData) => ({
+      ...prevData,
+      Internship_Duration: duration,
     }));
   };
   const handleStipendDataChange = (e) => {
@@ -122,18 +128,15 @@ const Inf = () => {
     Applied_Geology: false,
     Applied_Geophysics: false,
   });
-  const [doubleMajorData,setDoubleMajorData] = useState({
+  const [doubleMajorData, setDoubleMajorData] = useState({
     Select_All: false,
-    Computer_Science_and_Engineering_Double_Major : false
-
-  })
-  const [dualDegreeData , setDualDegreeData] = useState({
-    Select_All : false,
-    Computer_Science_and_Engineering_Dual_Degree : false,
-    Environmental_Science_and_Engineering_Dual_Degree : false,
-
-
-  })
+    Computer_Science_and_Engineering_Double_Major: false,
+  });
+  const [dualDegreeData, setDualDegreeData] = useState({
+    Select_All: false,
+    Computer_Science_and_Engineering_Dual_Degree: false,
+    Environmental_Science_and_Engineering_Dual_Degree: false,
+  });
   const [skillData, setSkillData] = useState({
     C_Cpp_Java_Python_etc: false,
     Full_Stack_Development_Frontend_or_Backend: false,
@@ -143,13 +146,13 @@ const Inf = () => {
   });
 
   const handleFourYearChange = (e) => {
-    if (e.target.name !== 'Select_All' && fourYearData.Select_All === true) {
+    if (e.target.name !== "Select_All" && fourYearData.Select_All === true) {
       setFourYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !fourYearData[e.target.name];
       for (let i in fourYearData) {
         setFourYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -162,13 +165,13 @@ const Inf = () => {
     }
   };
   const handleFiveYearChange = (e) => {
-    if (e.target.name !== 'Select_All' && fiveYearData.Select_All === true) {
+    if (e.target.name !== "Select_All" && fiveYearData.Select_All === true) {
       setFiveYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !fiveYearData[e.target.name];
       for (let i in fiveYearData) {
         setFiveYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -181,13 +184,13 @@ const Inf = () => {
     }
   };
   const handleDoubleMajorChange = (e) => {
-    if (e.target.name !== 'Select_All' && doubleMajorData.Select_All === true) {
+    if (e.target.name !== "Select_All" && doubleMajorData.Select_All === true) {
       setDoubleMajorData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !doubleMajorData[e.target.name];
       for (let i in doubleMajorData) {
         setDoubleMajorData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -200,13 +203,13 @@ const Inf = () => {
     }
   };
   const handleDualDegreeChange = (e) => {
-    if (e.target.name !== 'Select_All' && dualDegreeData.Select_All === true) {
+    if (e.target.name !== "Select_All" && dualDegreeData.Select_All === true) {
       setDualDegreeData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !dualDegreeData[e.target.name];
       for (let i in dualDegreeData) {
         setDualDegreeData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -269,13 +272,13 @@ const Inf = () => {
   });
 
   const handleThreeYearChange = (e) => {
-    if (e.target.name !== 'Select_All' && threeYearData.Select_All === true) {
+    if (e.target.name !== "Select_All" && threeYearData.Select_All === true) {
       setThreeYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !threeYearData[e.target.name];
       for (let i in threeYearData) {
         setThreeYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -288,13 +291,13 @@ const Inf = () => {
     }
   };
   const handleTwoYearChange = (e) => {
-    if (e.target.name !== 'Select_All' && twoYearData.Select_All === true) {
+    if (e.target.name !== "Select_All" && twoYearData.Select_All === true) {
       setTwoYearData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearData[e.target.name];
       for (let i in twoYearData) {
         setTwoYearData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -307,13 +310,13 @@ const Inf = () => {
     }
   };
   const handleTwoYearMbaChange = (e) => {
-    if (e.target.name !== 'Select_All' && twoYearMbaData.Select_All === true) {
+    if (e.target.name !== "Select_All" && twoYearMbaData.Select_All === true) {
       setTwoYearMbaData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearMbaData[e.target.name];
       for (let i in twoYearMbaData) {
         setTwoYearMbaData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -326,13 +329,13 @@ const Inf = () => {
     }
   };
   const handleTwoYearMscChange = (e) => {
-    if (e.target.name !== 'Select_All' && twoYearMscData.Select_All === true) {
+    if (e.target.name !== "Select_All" && twoYearMscData.Select_All === true) {
       setTwoYearMscData((prevData) => ({
         ...prevData,
         Select_All: false,
         [e.target.name]: e.target.checked ? true : false,
       }));
-    } else if (e.target.name === 'Select_All') {
+    } else if (e.target.name === "Select_All") {
       let newValue = !twoYearMscData[e.target.name];
       for (let i in twoYearMscData) {
         setTwoYearMscData((prevData) => ({ ...prevData, [i]: newValue }));
@@ -347,9 +350,9 @@ const Inf = () => {
 
   // ------------------------------------------------------------
   const selectionData = {
-    Total_Number_Of_Rounds: '',
-    Number_Of_Offers: '',
-    Eligibility_Criteria: '',
+    Total_Number_Of_Rounds: "",
+    Number_Of_Offers: "",
+    Eligibility_Criteria: "",
   };
   const [resumeShortListingData, setResumeShortListingData] = useState({
     Yes: false,
@@ -429,13 +432,13 @@ const Inf = () => {
       None: false,
     };
     switch (e.target.value) {
-      case '0':
+      case "0":
         temp.Technical = true;
         break;
-      case '1':
+      case "1":
         temp.Aptitude = true;
         break;
-      case '2':
+      case "2":
         temp.Both = true;
         break;
       default:
@@ -503,8 +506,6 @@ const Inf = () => {
   const [InfData, setInfData] = useState({});
 
   const fetchInfData = async (InfId) => {
-
-
     try {
       const response = await getInfById(InfId);
 
@@ -523,16 +524,15 @@ const Inf = () => {
           .Five_Year_Dual_Degree_Or_Integrated_Mtech_Programs,
       });
       setSkillData({
-        ...response.data.inf.Eligible_Courses_And_Disciplines.Skill_Based_Hiring,
+        ...response.data.inf.Eligible_Courses_And_Disciplines
+          .Skill_Based_Hiring,
       });
       setDoubleMajorData({
-        ...response.data.inf.Eligible_Courses_And_Disciplines
-        .Double_Major,
-      })
+        ...response.data.inf.Eligible_Courses_And_Disciplines.Double_Major,
+      });
       setDualDegreeData({
-        ...response.data.inf.Eligible_Courses_And_Disciplines.
-        Dual_Degree,
-      })
+        ...response.data.inf.Eligible_Courses_And_Disciplines.Dual_Degree,
+      });
       setThreeYearData({
         ...response.data.inf.Eligible_Courses_And_Disciplines
           .Three_Year_MSc_Tech_Programs,
@@ -562,7 +562,8 @@ const Inf = () => {
       setSelectionFormData({
         Total_Number_Of_Rounds:
           response.data.inf.Selection_Procedure.Total_Number_Of_Rounds,
-        Number_Of_Offers: response.data.inf.Selection_Procedure.Number_Of_Offers,
+        Number_Of_Offers:
+          response.data.inf.Selection_Procedure.Number_Of_Offers,
         Eligibility_Criteria:
           response.data.inf.Selection_Procedure.Eligibility_Criteria,
       });
@@ -570,9 +571,6 @@ const Inf = () => {
     } catch (error) {
       Navigate("/badgateway");
     }
-
-
-   
   };
 
   useEffect(() => {
@@ -597,8 +595,8 @@ const Inf = () => {
         Two_Year_Mtech_Programs: { ...twoYearData },
         Two_Year_MBA_Programs: { ...twoYearMbaData },
         Two_Year_MSc_Programs: { ...twoYearMscData },
-        Double_Major : {...doubleMajorData},
-        Dual_Degree : {...dualDegreeData}
+        Double_Major: { ...doubleMajorData },
+        Dual_Degree: { ...dualDegreeData },
       },
       Priority_Details: { ...priorityFormData },
     }));
@@ -620,7 +618,7 @@ const Inf = () => {
       setIsLoading(true);
       let response = await submitInf(InfId);
       setIsLoading(false);
-      Navigate('/myjobs');
+      Navigate("/myjobs");
     } catch (error) {
       setIsLoading(false);
       Navigate("/badgateway");
@@ -636,12 +634,12 @@ const Inf = () => {
 
   return (
     <>
-      <div className='INF'>
+      <div className="INF">
         <TabContext
           value={page}
-          style={{ padding: '0', margin: '0', boxSizing: 'border-box' }}
+          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
         >
-          <TabPanel value='1'>
+          <TabPanel value="1">
             <INF1
               setPage={setPage}
               companyFormData={companyFormData}
@@ -651,17 +649,18 @@ const Inf = () => {
               handleCompanyDataChange={handleCompanyDataChange}
               handleJobDataChange={handleJobDataChange}
               handleStipendDataChange={handleStipendDataChange}
+              handleInternDuration={handleInternDuration}
               handleHrDetailsChange={handleHrDetailsChange}
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel>
-          <TabPanel value={'2'}>
+          <TabPanel value={"2"}>
             <INF2
               setPage={setPage}
               fourYearData={fourYearData}
               fiveYearData={fiveYearData}
-              doubleMajorData ={doubleMajorData}
-              dualDegreeData ={dualDegreeData}
+              doubleMajorData={doubleMajorData}
+              dualDegreeData={dualDegreeData}
               skillData={skillData}
               handleFourYearChange={handleFourYearChange}
               handleFiveYearChange={handleFiveYearChange}
@@ -675,8 +674,8 @@ const Inf = () => {
               handleTwoYearChange={handleTwoYearChange}
               handleTwoYearMbaChange={handleTwoYearMbaChange}
               handleTwoYearMscChange={handleTwoYearMscChange}
-              handleDoubleMajorChange ={handleDoubleMajorChange}
-              handleDualDegreeChange ={handleDualDegreeChange}
+              handleDoubleMajorChange={handleDoubleMajorChange}
+              handleDualDegreeChange={handleDualDegreeChange}
             />
           </TabPanel>
           {/* <TabPanel value={"3"}>
@@ -693,7 +692,7 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel> */}
-          <TabPanel value={'3'}>
+          <TabPanel value={"3"}>
             <INF4
               setPage={setPage}
               resumeShortListingData={resumeShortListingData}
@@ -711,7 +710,7 @@ const Inf = () => {
               handlePriorityDataChange={handlePriorityDataChange}
             />
           </TabPanel>
-          <TabPanel value={'4'}>
+          <TabPanel value={"4"}>
             <ReviewInf
               setPage={setPage}
               InfData={InfData}
