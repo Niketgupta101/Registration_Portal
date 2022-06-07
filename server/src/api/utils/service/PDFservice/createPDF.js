@@ -13,12 +13,22 @@ const { sendMailWithAttachment } = require('../email');
 const { INF } = require('../../../models/INF');
 const { JNF } = require('../../../models/JNF');
 const { convert_client_id } = require('../../../../config/vars');
+const { env } = require('../../../../config/vars');
 
 const createStudentInfPdf = async (data, id) => {
-  const student = fs.readFileSync(
+  
+  let student;
+  if(env === 'production'){
+    student = fs.readFileSync(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/INFstudent.docx'),
+      'binary'
+    );}
+    else{
+      student = fs.readFileSync(
     path.resolve(__dirname, 'INFstudent.docx'),
     'binary'
   );
+    }
 
   const studentZip = new PizZip(student);
 
@@ -34,25 +44,49 @@ const createStudentInfPdf = async (data, id) => {
     compression: 'DEFLATE',
   });
 
-  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
+  if(env === 'production'){fs.writeFileSync(path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/studentOutput.docx'), studentBuf);}
+    else{fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);}
+  
 
   var convertapi = require('convertapi')(convert_client_id);
 
-  let studentResult = await convertapi.convert(
-    'pdf',
-    {
-      File: path.resolve(__dirname, 'studentOutput.docx'),
-    },
-    'docx'
-  );
+  let studentResult;
+  if(env === 'production'){
+    studentResult = await convertapi.convert(
+      'pdf',
+      {
+        File: path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/studentOutput.docx'),
+      },
+      'docx'
+    );
+  }
+    else{
+      studentResult = await convertapi.convert(
+        'pdf',
+        {
+          File: path.resolve(__dirname, 'studentOutput.docx'),
+        },
+        'docx'
+      );
+    }
 
   await studentResult.saveFiles(__dirname);
 
-  let studentResponse = await uploadFile(
-    path.resolve(__dirname, 'studentOutput.pdf'),
-    'INF',
-    'students'
-  );
+  let studentResponse;
+  if(env === 'production'){
+    studentResponse = await uploadFile(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/studentOutput.pdf'),
+      'INF',
+      'students'
+    );
+  }
+    else{
+      studentResponse = await uploadFile(
+        path.resolve(__dirname, 'studentOutput.pdf'),
+        'INF',
+        'students'
+      );
+    }
 
   let resPrev = await generatePreviewUrl(studentResponse.data.id);
   let resDown = await generateDownloadUrl(studentResponse.data.id);
@@ -68,10 +102,20 @@ const createStudentInfPdf = async (data, id) => {
 };
 
 const createStudentJnfPdf = async (data, id) => {
-  const student = fs.readFileSync(
+
+  
+  let student;
+  if(env === 'production'){
+    student = fs.readFileSync(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/JNFstudent.docx'),
+      'binary'
+    );}
+    else{
+      student = fs.readFileSync(
     path.resolve(__dirname, 'JNFstudent.docx'),
     'binary'
   );
+    }
 
   const studentZip = new PizZip(student);
 
@@ -87,25 +131,47 @@ const createStudentJnfPdf = async (data, id) => {
     compression: 'DEFLATE',
   });
 
-  fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);
+  if(env === 'production'){fs.writeFileSync(path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/studentOutput.docx'), studentBuf);}
+    else{fs.writeFileSync(path.resolve(__dirname, 'studentOutput.docx'), studentBuf);}
+  
 
   var convertapi = require('convertapi')(convert_client_id);
 
-  let studentResult = await convertapi.convert(
-    'pdf',
-    {
-      File: path.resolve(__dirname, 'studentOutput.docx'),
-    },
-    'docx'
-  );
+  let studentResult;
+  if(env === 'production'){
+    studentResult = await convertapi.convert(
+      'pdf',
+      {
+        File: path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/studentOutput.docx'),
+      },
+      'docx'
+    );}
+    else{
+      studentResult = await convertapi.convert(
+        'pdf',
+        {
+          File: path.resolve(__dirname, 'studentOutput.docx'),
+        },
+        'docx'
+      );
+    }
 
   await studentResult.saveFiles(__dirname);
 
-  let studentResponse = await uploadFile(
-    path.resolve(__dirname, 'studentOutput.pdf'),
+  
+  let studentResponse;
+  if(env === 'production'){
+    studentResponse = await uploadFile(
+    path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/studentOutput.pdf'),
     'JNF',
     'students'
-  );
+  );}
+    else{
+      studentResponse = await uploadFile(
+      path.resolve(__dirname, 'studentOutput.pdf'),
+      'JNF',
+      'students'
+    );}
 
   let resPrev = await generatePreviewUrl(studentResponse.data.id);
   let resDown = await generateDownloadUrl(studentResponse.data.id);
@@ -121,10 +187,18 @@ const createStudentJnfPdf = async (data, id) => {
 };
 
 exports.fillINFDoc = async (inf) => {
-  const content = fs.readFileSync(
+  let content;
+  if(env === 'production'){
+    content = fs.readFileSync(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/INF.docx'),
+      'binary'
+    );}
+    else{
+      content = fs.readFileSync(
     path.resolve(__dirname, 'INF.docx'),
     'binary'
   );
+    }
 
   const zip = new PizZip(content);
 
@@ -316,27 +390,61 @@ exports.fillINFDoc = async (inf) => {
     compression: 'DEFLATE',
   });
 
-  fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+  if(env === 'production'){fs.writeFileSync(path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.docx'), buf);}
+    else{fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);}
+
+  
 
   var convertapi = require('convertapi')(convert_client_id);
-  let result = await convertapi.convert(
-    'pdf',
-    {
-      File: path.resolve(__dirname, 'output.docx'),
-    },
-    'docx'
-  );
+
+  let result;
+  if(env === 'production'){
+    result = await convertapi.convert(
+      'pdf',
+      {
+        File: path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.docx'),
+      },
+      'docx'
+    );}
+    else{
+      result = await convertapi.convert(
+        'pdf',
+        {
+          File: path.resolve(__dirname, 'output.docx'),
+        },
+        'docx'
+      );
+    }
+
 
   await result.saveFiles(__dirname);
 
-  let response = await uploadFile(
-    path.resolve(__dirname, 'output.pdf'),
-    'INF',
-    'admin'
-  );
+  let response;
+  if(env === 'production'){
+    response = await uploadFile(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.pdf'),
+      'INF',
+      'admin'
+    );
+  }
+    else{
+      response = await uploadFile(
+        path.resolve(__dirname, 'output.pdf'),
+        'INF',
+        'admin'
+      );
+    }
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
+
+  
+  inf.set({
+    previewLink,
+    downloadLink,
+    status: 'complete',
+  });
+  await inf.save();
 
   sendMailWithAttachment(
     'cooldangerouscoder@gmail.com',
@@ -364,12 +472,6 @@ exports.fillINFDoc = async (inf) => {
       inf.previewLink
     );
   }
-  inf.set({
-    previewLink,
-    downloadLink,
-    status: 'complete',
-  });
-  await inf.save();
 
   createStudentInfPdf(
     {
@@ -383,10 +485,20 @@ exports.fillINFDoc = async (inf) => {
 };
 
 exports.fillJNFDoc = async (jnf) => {
-  const content = fs.readFileSync(
+
+  
+  let content;
+  if(env === 'production'){
+    content = fs.readFileSync(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/JNF.docx'),
+      'binary'
+    );}
+    else{
+      content = fs.readFileSync(
     path.resolve(__dirname, 'JNF.docx'),
     'binary'
   );
+    }
 
   const zip = new PizZip(content);
 
@@ -606,24 +718,49 @@ exports.fillJNFDoc = async (jnf) => {
     compression: 'DEFLATE',
   });
 
-  fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);
+
+  if(env === 'production'){fs.writeFileSync(path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.docx'), buf);}
+    else{fs.writeFileSync(path.resolve(__dirname, 'output.docx'), buf);}
+  
 
   var convertapi = require('convertapi')(convert_client_id);
-  let result = await convertapi.convert(
-    'pdf',
-    {
-      File: path.resolve(__dirname, 'output.docx'),
-    },
-    'docx'
-  );
+
+  let result;
+  if(env === 'production'){
+    result = await convertapi.convert(
+      'pdf',
+      {
+        File: path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.docx'),
+      },
+      'docx'
+    );}
+    else{
+      result = await convertapi.convert(
+        'pdf',
+        {
+          File: path.resolve(__dirname, 'output.docx'),
+        },
+        'docx'
+      );
+    }
 
   await result.saveFiles(path.resolve(__dirname));
 
-  let response = await uploadFile(
-    path.resolve(__dirname, 'output.pdf'),
-    'JNF',
-    'admin'
-  );
+  let response;
+  if(env === 'production'){
+    response = await uploadFile(
+      path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.pdf'),
+      'JNF',
+      'admin'
+    );
+  }
+    else{
+      response = await uploadFile(
+        path.resolve(__dirname, 'output.pdf'),
+        'JNF',
+        'admin'
+      );
+    }
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);

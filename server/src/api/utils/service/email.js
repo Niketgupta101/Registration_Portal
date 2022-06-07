@@ -9,6 +9,7 @@ const { google } = require('googleapis');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const { env } = require('../../../config/vars');
 
 const oAuth2Client = new google.auth.OAuth2(
   EmailClientId,
@@ -65,6 +66,24 @@ exports.sendEmail = async (to, subject, html) => {
   });
 };
 
+// let attachments;
+//   if(env === 'production'){
+//     attachments = [
+//       {
+//         filename: 'JOB_FORM.pdf',
+//         path: path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.pdf'),
+//       },
+//     ]
+//   }
+//     else{
+//       attachments = [
+//         {
+//           filename: 'JOB_FORM.pdf',
+//           path: path.join(__dirname, '/PDFservice/output.pdf'),
+//         },
+//       ]
+//     }
+
 exports.sendMailWithAttachment = async (to, subject, html, link) => {
   let emailTransporter = await createTransporter();
   emailTransporter.sendMail(
@@ -73,12 +92,13 @@ exports.sendMailWithAttachment = async (to, subject, html, link) => {
       to,
       subject,
       html,
-      attachments: [
-        {
-          filename: 'JOB_FORM.pdf',
-          path: path.join(__dirname, '/PDFservice/output.pdf'),
-        },
-      ],
+      attachments:  [
+                {
+                  filename: 'JOB_FORM.pdf',
+                  path: link,
+                  contentType: 'application/pdf',
+                },
+              ]
     },
     function (err, success) {
       if (err) {
