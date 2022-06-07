@@ -760,6 +760,15 @@ exports.fillJNFDoc = async (jnf) => {
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
+  
+
+  jnf.set({
+    previewLink,
+    downloadLink,
+    status: 'complete',
+  });
+  await jnf.save();
+
   let cc = [
     'niketgupta101@gmail.com',
     'mahapatraakash.19je0086@cse.iitism.ac.in',
@@ -776,12 +785,6 @@ exports.fillJNFDoc = async (jnf) => {
     cc,
     jnf.downloadLink
   );
-
-  jnf.set({
-    previewLink,
-    downloadLink,
-    status: 'complete',
-  });
   await jnf.save();
   createStudentJnfPdf(
     {
