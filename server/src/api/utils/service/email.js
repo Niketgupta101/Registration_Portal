@@ -66,39 +66,22 @@ exports.sendEmail = async (to, subject, html) => {
   });
 };
 
-// let attachments;
-//   if(env === 'production'){
-//     attachments = [
-//       {
-//         filename: 'JOB_FORM.pdf',
-//         path: path.resolve(__dirname, '/root/src/api/utils/service/PDFservice/output.pdf'),
-//       },
-//     ]
-//   }
-//     else{
-//       attachments = [
-//         {
-//           filename: 'JOB_FORM.pdf',
-//           path: path.join(__dirname, '/PDFservice/output.pdf'),
-//         },
-//       ]
-//     }
-
-exports.sendMailWithAttachment = async (to, subject, html, link) => {
+exports.sendMailWithAttachment = async (to, subject, html, cc, link) => {
   let emailTransporter = await createTransporter();
+  console.log({ link });
   emailTransporter.sendMail(
     {
       from: process.env.EMAIL_USERNAME,
       to,
       subject,
       html,
-      attachments:  [
-                {
-                  filename: 'JOB_FORM.pdf',
-                  path: link,
-                  contentType: 'application/pdf',
-                },
-              ]
+      cc,
+      attachments: [
+        {
+          filename: 'JOB_FORM.pdf',
+          path: link,
+        },
+      ],
     },
     function (err, success) {
       if (err) {

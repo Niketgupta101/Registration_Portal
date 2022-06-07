@@ -2,13 +2,15 @@ const axios = require('axios');
 
 const isRequestSuccessful = function (statusCode) {
   return 200 <= statusCode && statusCode <= 299;
-}
+};
 
 const getApiObject = function () {
   if (process.env.NODE_ENV === 'production') {
     return {
       get: async function (path) {
-        const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
+        const tokenString = `Bearer ${JSON.parse(
+          localStorage.getItem('token')
+        )}`;
         let req = await fetch(`/v1${path}`, {
           method: 'GET',
           headers: {
@@ -17,15 +19,17 @@ const getApiObject = function () {
           },
         });
         let resp = await req.json();
-        
-        if(!isRequestSuccessful(req.status)){
-          throw { response : { data: resp } };
+
+        if (!isRequestSuccessful(req.status)) {
+          throw { response: { data: resp } };
         }
 
         return { data: resp };
       },
       post: async function (path, data) {
-        const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
+        const tokenString = `Bearer ${JSON.parse(
+          localStorage.getItem('token')
+        )}`;
         let req = await fetch(`/v1${path}`, {
           method: 'POST',
           headers: {
@@ -35,15 +39,17 @@ const getApiObject = function () {
           body: JSON.stringify(data),
         });
         let resp = await req.json();
-        
-        if(!isRequestSuccessful(req.status)){
-          throw { response : { data: resp } };
+
+        if (!isRequestSuccessful(req.status)) {
+          throw { response: { data: resp } };
         }
 
         return { data: resp };
       },
       put: async function (path, data) {
-        const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
+        const tokenString = `Bearer ${JSON.parse(
+          localStorage.getItem('token')
+        )}`;
         let req = await fetch(`/v1${path}`, {
           method: 'PUT',
           headers: {
@@ -53,15 +59,17 @@ const getApiObject = function () {
           body: JSON.stringify(data),
         });
         let resp = await req.json();
-        
-        if(!isRequestSuccessful(req.status)){
-          throw { response : { data: resp } };
+
+        if (!isRequestSuccessful(req.status)) {
+          throw { response: { data: resp } };
         }
 
         return { data: resp };
       },
       delete: async function (path) {
-        const tokenString = `Bearer ${JSON.parse(localStorage.getItem('token'))}`;
+        const tokenString = `Bearer ${JSON.parse(
+          localStorage.getItem('token')
+        )}`;
         let req = await fetch(`/v1${path}`, {
           method: 'DELETE',
           headers: {
@@ -70,9 +78,9 @@ const getApiObject = function () {
           },
         });
         let resp = await req.json();
-        
-        if(!isRequestSuccessful(req.status)){
-          throw { response : { data: resp } };
+
+        if (!isRequestSuccessful(req.status)) {
+          throw { response: { data: resp } };
         }
 
         return { data: resp };
@@ -92,7 +100,6 @@ const getApiObject = function () {
 const API = getApiObject();
 
 const setHeader = () => {
-  console.log('Header');
   return {
     headers: {
       authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
