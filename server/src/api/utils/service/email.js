@@ -65,18 +65,20 @@ exports.sendEmail = async (to, subject, html) => {
   });
 };
 
-exports.sendMailWithAttachment = async (to, subject, html, link) => {
+exports.sendMailWithAttachment = async (to, subject, html, cc, link) => {
   let emailTransporter = await createTransporter();
+  console.log({ link });
   emailTransporter.sendMail(
     {
       from: process.env.EMAIL_USERNAME,
       to,
       subject,
       html,
+      cc,
       attachments: [
         {
           filename: 'JOB_FORM.pdf',
-          path: path.join(__dirname, '/PDFservice/output.pdf'),
+          path: link,
         },
       ],
     },

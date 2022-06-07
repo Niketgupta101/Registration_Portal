@@ -338,37 +338,27 @@ exports.fillINFDoc = async (inf) => {
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  sendMailWithAttachment(
-    'cooldangerouscoder@gmail.com',
-    'Job form notification',
-    AttachmentMailHtml(),
-    inf.previewLink
-  );
-  sendMailWithAttachment(
-    'mahapatraakash.19je0086@cse.iitism.ac.in',
-    'Job form notification',
-    AttachmentMailHtml(),
-    inf.previewLink
-  );
-  sendMailWithAttachment(
-    inf.HR_Details.Primary_Hr.email,
-    'Thank you for filling the notification form!',
-    AttachmentMailHtml(),
-    inf.previewLink
-  );
-  if (inf.HR_Details.Alternate_Hr.email !== '') {
-    sendMailWithAttachment(
-      inf.HR_Details.Alternate_Hr.email,
-      'Thank you for filling the notification form!',
-      AttachmentMailHtml(),
-      inf.previewLink
-    );
-  }
   inf.set({
     previewLink,
     downloadLink,
     status: 'complete',
   });
+
+  let cc = [
+    'niketgupta101@gmail.com',
+    'mahapatraakash.19je0086@cse.iitism.ac.in',
+  ];
+
+  if (inf.HR_Details.Alternate_Hr.email !== '') {
+    cc.push(inf.HR_Details.Alternate_Hr.email);
+  }
+  sendMailWithAttachment(
+    inf.HR_Details.Primary_Hr.email,
+    'Thank you for filling the notification form!',
+    AttachmentMailHtml(),
+    cc,
+    inf.downloadLink
+  );
   await inf.save();
 
   createStudentInfPdf(
@@ -628,38 +618,29 @@ exports.fillJNFDoc = async (jnf) => {
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  sendMailWithAttachment(
-    'cooldangerouscoder@gmail.com',
-    'Job form notification',
-    AttachmentMailHtml(),
-    jnf.previewLink
-  );
-  sendMailWithAttachment(
-    'mahapatraakash.19je0086@cse.iitism.ac.in',
-    'Job form notification',
-    AttachmentMailHtml(),
-    jnf.previewLink
-  );
-  sendMailWithAttachment(
-    jnf.HR_Details.Primary_Hr.email,
-    'Thank you for filling the notification form!',
-    AttachmentMailHtml(),
-    jnf.previewLink
-  );
-  if (jnf.HR_Details.Alternate_Hr.email !== '') {
-    sendMailWithAttachment(
-      jnf.HR_Details.Alternate_Hr.email,
-      'Thank you for filling the notification form!',
-      AttachmentMailHtml(),
-      jnf.previewLink
-    );
-  }
-
   jnf.set({
     previewLink,
     downloadLink,
     status: 'complete',
   });
+
+  let cc = [
+    'niketgupta101@gmail.com',
+    'mahapatraakash.19je0086@cse.iitism.ac.in',
+  ];
+
+  if (jnf.HR_Details.Alternate_Hr.email !== '') {
+    cc.push(jnf.HR_Details.Alternate_Hr.email);
+  }
+
+  sendMailWithAttachment(
+    jnf.HR_Details.Primary_Hr.email,
+    'Thank you for filling the notification form!',
+    AttachmentMailHtml(),
+    cc,
+    jnf.downloadLink
+  );
+
   await jnf.save();
   createStudentJnfPdf(
     {
