@@ -70,7 +70,8 @@ const createStudentInfPdf = async (data, id) => {
       );
     }
 
-  await studentResult.saveFiles(__dirname);
+  if(env === 'production'){await studentResult.saveFiles('/root/src/api/utils/service/PDFservice/');}
+  else{  await studentResult.saveFiles(__dirname);}
 
   let studentResponse;
   if(env === 'production'){
@@ -156,7 +157,8 @@ const createStudentJnfPdf = async (data, id) => {
       );
     }
 
-  await studentResult.saveFiles(__dirname);
+  if(env === 'production') {await studentResult.saveFiles('/root/src/api/utils/service/PDFservice/');}
+  else {await studentResult.saveFiles(__dirname);}
 
   
   let studentResponse;
@@ -417,7 +419,8 @@ exports.fillINFDoc = async (inf) => {
     }
 
 
-  await result.saveFiles(__dirname);
+  if(env === 'production') {await result.saveFiles('/root/src/api/utils/service/PDFservice/');}
+  else {await result.saveFiles(__dirname);}
 
   let response;
   if(env === 'production'){
@@ -446,32 +449,23 @@ exports.fillINFDoc = async (inf) => {
   });
   await inf.save();
 
-  sendMailWithAttachment(
-    'cooldangerouscoder@gmail.com',
-    'Job form notification',
-    AttachmentMailHtml(),
-    inf.previewLink
-  );
-  sendMailWithAttachment(
+  let cc = [
     'mahapatraakash.19je0086@cse.iitism.ac.in',
-    'Job form notification',
-    AttachmentMailHtml(),
-    inf.previewLink
-  );
+    'niketgupta101@gmail.com'
+  ];
+
+  if (inf.HR_Details.Alternate_Hr.email !== '') {
+    cc.push(inf.HR_Details.Alternate_Hr.email);
+  }
+  
   sendMailWithAttachment(
     inf.HR_Details.Primary_Hr.email,
     'Thank you for filling the notification form!',
     AttachmentMailHtml(),
-    inf.previewLink
+    cc,
+    inf.downloadLink
   );
-  if (inf.HR_Details.Alternate_Hr.email !== '') {
-    sendMailWithAttachment(
-      inf.HR_Details.Alternate_Hr.email,
-      'Thank you for filling the notification form!',
-      AttachmentMailHtml(),
-      inf.previewLink
-    );
-  }
+  await inf.save();
 
   createStudentInfPdf(
     {
@@ -744,7 +738,8 @@ exports.fillJNFDoc = async (jnf) => {
       );
     }
 
-  await result.saveFiles(path.resolve(__dirname));
+  if(env === 'production') {await result.saveFiles(path.resolve(__dirname,'/root/src/api/utils/service/PDFservice/'));}
+  else {await result.saveFiles(path.resolve(__dirname));}
 
   let response;
   if(env === 'production'){
@@ -765,32 +760,22 @@ exports.fillJNFDoc = async (jnf) => {
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  sendMailWithAttachment(
-    'cooldangerouscoder@gmail.com',
-    'Job form notification',
-    AttachmentMailHtml(),
-    jnf.previewLink
-  );
-  sendMailWithAttachment(
+  let cc = [
+    'niketgupta101@gmail.com',
     'mahapatraakash.19je0086@cse.iitism.ac.in',
-    'Job form notification',
-    AttachmentMailHtml(),
-    jnf.previewLink
-  );
+  ];
+  
+  if (jnf.HR_Details.Alternate_Hr.email !== '') {
+    cc.push(jnf.HR_Details.Alternate_Hr.email);
+  }
+
   sendMailWithAttachment(
     jnf.HR_Details.Primary_Hr.email,
     'Thank you for filling the notification form!',
     AttachmentMailHtml(),
-    jnf.previewLink
+    cc,
+    jnf.downloadLink
   );
-  if (jnf.HR_Details.Alternate_Hr.email !== '') {
-    sendMailWithAttachment(
-      jnf.HR_Details.Alternate_Hr.email,
-      'Thank you for filling the notification form!',
-      AttachmentMailHtml(),
-      jnf.previewLink
-    );
-  }
 
   jnf.set({
     previewLink,
