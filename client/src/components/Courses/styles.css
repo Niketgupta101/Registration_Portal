@@ -168,6 +168,12 @@ ol.gradient-list > li + li {
   font-weight: 800 !important;
   padding: 0 5px;
 }
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+  opacity: 0.75 !important;
+  font-size: 25px !important ;
+}
 
 @media (max-width: 500px) {
   .courses_list {

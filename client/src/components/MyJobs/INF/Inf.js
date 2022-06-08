@@ -73,7 +73,6 @@ const Inf = () => {
   const [jobFormData, setJobFormData] = useState({ ...jobData });
   const [stipendFormData, setStipendFormData] = useState({ ...stipendData });
   const [hrDetails, setHrDetails] = useState({ ...hrData });
-
   const handleCompanyDataChange = (e) => {
     setCompanyFormData((prevData) => ({
       ...prevData,
@@ -86,12 +85,12 @@ const Inf = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleInternDuration = (duration) => {
-    setJobFormData((prevData) => ({
-      ...prevData,
-      Internship_Duration: duration,
-    }));
-  };
+  // const handleInternDuration = (duration) => {
+  //   setJobFormData((prevData) => ({
+  //     ...prevData,
+  //     Internship_Duration: duration,
+  //   }));
+  // };
   const handleStipendDataChange = (e) => {
     setStipendFormData((prevData) => ({
       ...prevData,
@@ -649,7 +648,7 @@ const Inf = () => {
               handleCompanyDataChange={handleCompanyDataChange}
               handleJobDataChange={handleJobDataChange}
               handleStipendDataChange={handleStipendDataChange}
-              handleInternDuration={handleInternDuration}
+              // handleInternDuration={handleInternDuration}
               handleHrDetailsChange={handleHrDetailsChange}
               handleUpdateInfById={handleUpdateInfById}
             />

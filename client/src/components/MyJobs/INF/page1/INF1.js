@@ -21,7 +21,7 @@ export default function INF1({
   handleCompanyDataChange,
   handleJobDataChange,
   handleStipendDataChange,
-  handleInternDuration,
+  // handleInternDuration,
   handleHrDetailsChange,
   handleUpdateInfById,
   company,
@@ -35,21 +35,21 @@ export default function INF1({
   const [althrdetail, setALtrdetail] = useState(false);
   const [Year, setYear] = useState(2023);
 
-  const [show, setShow] = React.useState(false);
-  const [duration, setDuration] = useState("");
+  // const [show, setShow] = React.useState(false);
+  // const [duration, setDuration] = useState("");
 
-  const handleOpen = (e) => {
-    setDuration(e.target.value);
-    setShow(true);
-  };
-  const handleAgree = () => {
-    handleInternDuration(duration);
-    setShow(false);
-  };
+  // const handleOpen = (e) => {
+  //   setDuration(e.target.value);
+  //   setShow(true);
+  // };
+  // const handleAgree = () => {
+  //   handleInternDuration(duration);
+  //   setShow(false);
+  // };
 
-  const handleClose = () => {
-    setShow(false);
-  };
+  // const handleClose = () => {
+  //   setShow(false);
+  // };
 
   function handleHrdetails(e) {
     if (e.target.value === "YES") setALtrdetail(() => true);
@@ -144,7 +144,7 @@ export default function INF1({
                       className="inputText"
                       style={{ lineHeight: "0.8" }}
                       value={companyFormData.Name_Of_The_Company}
-                      disabled="true"
+                      disabled={true}
                       onChange={handleCompanyDataChange}
                       autoComplete="off"
                     />
@@ -163,7 +163,7 @@ export default function INF1({
                       type="text"
                       className="inputText"
                       value={companyFormData.Website}
-                      disabled="true"
+                      disabled={true}
                       onChange={handleCompanyDataChange}
                       autoComplete="off"
                     />
@@ -180,7 +180,7 @@ export default function INF1({
                       type="text"
                       className="inputText"
                       value={companyFormData.Category}
-                      disabled="true"
+                      disabled={true}
                       onChange={handleCompanyDataChange}
                       autoComplete="off"
                     />
@@ -197,7 +197,7 @@ export default function INF1({
                       type="text"
                       className="inputText"
                       value={companyFormData.Sector}
-                      disabled="true"
+                      disabled={true}
                       onChange={handleCompanyDataChange}
                       autoComplete="off"
                     />
@@ -265,7 +265,7 @@ export default function INF1({
                       type="select"
                       className="inputText"
                       value={jobFormData.Internship_Duration}
-                      onChange={handleOpen}
+                      onChange={handleJobDataChange}
                       autoComplete="off"
                     >
                       <option>
@@ -716,8 +716,7 @@ export default function INF1({
             <div></div>
           )}
         </div>
-        {/* <Button onClick={handleOpen}>Open modal</Button> */}
-        <Modal show={show} onHide={handleClose}>
+        {/* <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Confirm Internship Duration</Modal.Title>
           </Modal.Header>
@@ -733,7 +732,7 @@ export default function INF1({
               Yes
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal> */}
 
         <div
           className="formFlex"

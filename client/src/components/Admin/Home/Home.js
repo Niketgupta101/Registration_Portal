@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Input } from 'reactstrap';
-import { useNavigate } from 'react-router-dom';
-import Loading from '../../Loading/Loading';
+import React, { useEffect, useState } from "react";
+import { Input } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import Loading from "../../Loading/Loading";
+import Modal from "react-bootstrap/Modal";
+import Button from "@mui/material/Button";
 
-import './styles.css';
+import "./styles.css";
 import {
   getAllCompanyDetails,
   getGraduationYear,
   getPlacedCount,
   updateGraduationYear,
-} from '../../../api';
-import { getAllJobs } from '../../../api/index';
-import { PeopleAltTwoTone } from '@material-ui/icons';
-import { FileOpenRounded, HomeWork } from '@mui/icons-material';
-import Contact from './Contact';
+} from "../../../api";
+import { getAllJobs } from "../../../api/index";
+import { PeopleAltTwoTone } from "@material-ui/icons";
+import { FileOpenRounded, HomeWork } from "@mui/icons-material";
+import Contact from "./Contact";
 
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 const Home = () => {
   const Navigate = useNavigate();
@@ -25,15 +27,30 @@ const Home = () => {
   const [Companies, setCompanies] = useState();
   const [Year, setYear] = useState(2023);
 
-  let user = JSON.parse(localStorage.getItem('user'));
+  let user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    if (!user || user.isemailVerified === false || user.role !== 'Admin') {
-      Navigate('/auth');
+    if (!user || user.isemailVerified === false || user.role !== "Admin") {
+      Navigate("/auth");
     }
   }, [Navigate, user]);
 
   const [placedCount, setPlacedCount] = useState();
+  const [show, setShow] = React.useState(false);
+  const [duration, setDuration] = useState("");
+
+  const handleOpen = (e) => {
+    setDuration(e.target.value);
+    setShow(true);
+  };
+  const handleAgree = () => {
+    handleYearChange(duration);
+    setShow(false);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
 
   const fetchData = async () => {
     try {
@@ -49,7 +66,7 @@ const Home = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      Navigate('/badgateway');
+      Navigate("/badgateway");
     }
   };
 
@@ -61,101 +78,117 @@ const Home = () => {
   //   setValue(newValue);
   // };
 
-  const handleYearChange = async (e) => {
-    setYear(e.target.value);
+  const handleYearChange = async (year) => {
+    setYear(year);
     try {
       const response = await updateGraduationYear({
-        graduationYear: e.target.value,
+        graduationYear: year,
       });
     } catch (error) {
-      Navigate('/badgateway');
+      Navigate("/badgateway");
     }
   };
 
   return (
     <>
-      <div className='admin_home'>
-        <div className='admin_home_container'>
-          <div className='admin_home_cards'>
-            <div className='home_users_card home_card'>
-              <div className='card_avatar'>
+      <div className="admin_home">
+        <div className="admin_home_container">
+          <div className="admin_home_cards">
+            <div className="home_users_card home_card">
+              <div className="card_avatar">
                 <PeopleAltTwoTone
                   style={{
-                    width: '35px',
-                    height: '35px',
-                    color: 'rgb(60, 85, 165)',
+                    width: "35px",
+                    height: "35px",
+                    color: "rgb(60, 85, 165)",
                   }}
                 />
                 <h3>Students</h3>
               </div>
-              <div className='card_content'>
-                <h3 className='admin_card_content_heading'>
-                  Placed:{' '}
-                  <span className='admin_card_content_value'>
-                    {' '}
-                    {placedCount}{' '}
+              <div className="card_content">
+                <h3 className="admin_card_content_heading">
+                  Placed:{" "}
+                  <span className="admin_card_content_value">
+                    {" "}
+                    {placedCount}{" "}
                   </span>
                 </h3>
               </div>
             </div>
-            <div className='home_jobs_card home_card'>
-              <div className='card_avatar'>
+            <div className="home_jobs_card home_card">
+              <div className="card_avatar">
                 <FileOpenRounded
                   style={{
-                    width: '35px',
-                    height: '35px',
-                    color: 'rgb(60, 85, 165)',
+                    width: "35px",
+                    height: "35px",
+                    color: "rgb(60, 85, 165)",
                   }}
                 />
                 <h3>Jobs</h3>
               </div>
-              <div className='card_content'>
-                <h3 className='admin_card_content_heading'>
-                  Total:{' '}
-                  <span className='admin_card_content_value'>
+              <div className="card_content">
+                <h3 className="admin_card_content_heading">
+                  Total:{" "}
+                  <span className="admin_card_content_value">
                     {jobs !== undefined ? jobs.length : 0}
                   </span>
                 </h3>
               </div>
             </div>
-            <div className='home_jobs_card home_card'>
-              <div className='card_avatar'>
+            <div className="home_jobs_card home_card">
+              <div className="card_avatar">
                 <HomeWork
                   style={{
-                    width: '35px',
-                    height: '35px',
-                    color: 'rgb(60, 85, 165)',
+                    width: "35px",
+                    height: "35px",
+                    color: "rgb(60, 85, 165)",
                   }}
                 />
                 <h3>Companies</h3>
               </div>
-              <div className='card_content'>
-                <h3 className='admin_card_content_heading'>
-                  {' '}
-                  Registered:{' '}
-                  <span className='admin_card_content_value'>
+              <div className="card_content">
+                <h3 className="admin_card_content_heading">
+                  {" "}
+                  Registered:{" "}
+                  <span className="admin_card_content_value">
                     {Companies !== undefined ? Companies.length : 0}
                   </span>
                 </h3>
               </div>
             </div>
           </div>
-          <div className='d-flex justify-content-center p-5'></div>
-          <div id='setyear'>
+          <div className="d-flex justify-content-center p-5"></div>
+          <div id="setyear">
             <h4>Set the Graduation Year :</h4>
             <Input
-              id='exampleSelect'
-              name='Internship_Duration'
-              type='select'
-              className='inputText'
+              id="exampleSelect"
+              name="Internship_Duration"
+              type="select"
+              className="inputText"
               value={Year}
-              onChange={handleYearChange}
+              onChange={handleOpen}
             >
               <option>2022</option>
               <option>2023</option>
               <option>2024</option>
             </Input>
           </div>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Confirm Graduation Year</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure you want to change the graduation year to {duration}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleAgree}>
+                Yes
+              </Button>
+            </Modal.Footer>
+          </Modal>
           <Contact />
         </div>
         {/* <TabContext value={value}>
