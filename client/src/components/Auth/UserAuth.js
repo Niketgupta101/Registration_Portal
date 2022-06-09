@@ -122,12 +122,13 @@ const UserAuth = () => {
       return;
     }
     setIsLoading(false);
-
     if (AuthData.password != AuthData.confirmPassword) {
       toast.warn('Passwords do not match');
       setAuthData({ ...AuthData, confirmPassword: '' });
     } else if (re.test(AuthData.email) === false) {
       toast.error('Invalid Email Address');
+    } else if (AuthData.email.split('@')[1] === 'gmail.com') {
+      toast.error('Only Work Emails are allowed.');
     } else setPage('company');
   };
 
@@ -184,12 +185,12 @@ const UserAuth = () => {
 
               setPage('verify');
             } catch (error) {
-              Navigate("/badgateway");
+              Navigate('/badgateway');
               handleErrorClick();
             }
           }
         } catch (error) {
-          Navigate("/badgateway");
+          Navigate('/badgateway');
           handleErrorClick();
         }
         setIsLoading(false);
