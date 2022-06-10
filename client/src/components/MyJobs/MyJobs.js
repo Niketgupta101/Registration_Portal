@@ -69,10 +69,8 @@ const MyJobs = () => {
       }
       setIsLoading(false);
     } catch (error) {
-
       setIsLoading(false);
-        Navigate("/badgateway");
-      
+      Navigate('/badgateway');
     }
   };
 
@@ -88,33 +86,26 @@ const MyJobs = () => {
     };
   }
   const handleFillInf = async () => {
-
     try {
       const response = await createNewInf({
         Company_Overview: { ...companyData },
       });
-  
+
       Navigate(`/create/inf/${response.data.newInf._id}`);
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
-
-   
   };
 
   const handleFillJnf = async () => {
-      
     try {
       const response = await createNewJnf({
         Company_Overview: { ...companyData },
       });
       Navigate(`/create/jnf/${response.data.newJnf._id}`);
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
-
-
-    
   };
 
   const handleEditJob = async (id, isIntern) => {
@@ -126,21 +117,18 @@ const MyJobs = () => {
     try {
       setIsLoading(true);
       if (deleteId[1]) {
-
         try {
           await deleteInfById(deleteId[0]);
         } catch (error) {
           setIsLoading(false);
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
-
-       
       } else {
         try {
           await deleteJnfById(deleteId[0]);
         } catch (error) {
           setIsLoading(false);
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
       }
 
@@ -148,7 +136,7 @@ const MyJobs = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
@@ -159,7 +147,6 @@ const MyJobs = () => {
         for (let i in Jobs) {
           if (Jobs[i].data.Company_Overview === undefined) {
             if (Jobs[i].data.isIntern) {
-  
               await deleteInfById(Jobs[i].data._id);
             } else {
               await deleteJnfById(Jobs[i].data._id);
@@ -167,9 +154,8 @@ const MyJobs = () => {
           }
         }
       } catch (error) {
-        Navigate("/badgateway");
+        Navigate('/badgateway');
       }
-    
     }
     filterJobs();
   }, [Filter, pageNo, reload]);
@@ -208,7 +194,7 @@ const MyJobs = () => {
                     <div className='courses-button'>FILL INTERNSHIP FORM</div>
                   </Button>
                 </div>
-                <div className='bt animate__animated animate__fadeInRight my-2'>
+                {/* <div className='bt animate__animated animate__fadeInRight my-2'>
                   <Button
                     variant='outlined'
                     style={{
@@ -220,7 +206,7 @@ const MyJobs = () => {
                   >
                     <div className='courses-button'>FILL JOB FORM</div>
                   </Button>
-                </div>
+                </div> */}
               </Stack>
             </div>
           </div>
