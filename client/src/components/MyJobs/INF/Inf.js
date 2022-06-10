@@ -634,50 +634,51 @@ const Inf = () => {
   return (
     <>
       <div className="INF">
-        <TabContext
-          value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
-        >
-          <TabPanel value="1">
-            <INF1
-              setPage={setPage}
-              companyFormData={companyFormData}
-              jobFormData={jobFormData}
-              stipendFormData={stipendFormData}
-              hrDetails={hrDetails}
-              handleCompanyDataChange={handleCompanyDataChange}
-              handleJobDataChange={handleJobDataChange}
-              handleStipendDataChange={handleStipendDataChange}
-              // handleInternDuration={handleInternDuration}
-              handleHrDetailsChange={handleHrDetailsChange}
-              handleUpdateInfById={handleUpdateInfById}
-            />
-          </TabPanel>
-          <TabPanel value={"2"}>
-            <INF2
-              setPage={setPage}
-              fourYearData={fourYearData}
-              fiveYearData={fiveYearData}
-              doubleMajorData={doubleMajorData}
-              dualDegreeData={dualDegreeData}
-              skillData={skillData}
-              handleFourYearChange={handleFourYearChange}
-              handleFiveYearChange={handleFiveYearChange}
-              handleSkillChange={handleSkillChange}
-              handleUpdateInfById={handleUpdateInfById}
-              threeYearData={threeYearData}
-              twoYearData={twoYearData}
-              twoYearMbaData={twoYearMbaData}
-              twoYearMscData={twoYearMscData}
-              handleThreeYearChange={handleThreeYearChange}
-              handleTwoYearChange={handleTwoYearChange}
-              handleTwoYearMbaChange={handleTwoYearMbaChange}
-              handleTwoYearMscChange={handleTwoYearMscChange}
-              handleDoubleMajorChange={handleDoubleMajorChange}
-              handleDualDegreeChange={handleDualDegreeChange}
-            />
-          </TabPanel>
-          {/* <TabPanel value={"3"}>
+        <div className="bg-image">
+          <TabContext
+            value={page}
+            style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+          >
+            <TabPanel value="1">
+              <INF1
+                setPage={setPage}
+                companyFormData={companyFormData}
+                jobFormData={jobFormData}
+                stipendFormData={stipendFormData}
+                hrDetails={hrDetails}
+                handleCompanyDataChange={handleCompanyDataChange}
+                handleJobDataChange={handleJobDataChange}
+                handleStipendDataChange={handleStipendDataChange}
+                // handleInternDuration={handleInternDuration}
+                handleHrDetailsChange={handleHrDetailsChange}
+                handleUpdateInfById={handleUpdateInfById}
+              />
+            </TabPanel>
+            <TabPanel value={"2"}>
+              <INF2
+                setPage={setPage}
+                fourYearData={fourYearData}
+                fiveYearData={fiveYearData}
+                doubleMajorData={doubleMajorData}
+                dualDegreeData={dualDegreeData}
+                skillData={skillData}
+                handleFourYearChange={handleFourYearChange}
+                handleFiveYearChange={handleFiveYearChange}
+                handleSkillChange={handleSkillChange}
+                handleUpdateInfById={handleUpdateInfById}
+                threeYearData={threeYearData}
+                twoYearData={twoYearData}
+                twoYearMbaData={twoYearMbaData}
+                twoYearMscData={twoYearMscData}
+                handleThreeYearChange={handleThreeYearChange}
+                handleTwoYearChange={handleTwoYearChange}
+                handleTwoYearMbaChange={handleTwoYearMbaChange}
+                handleTwoYearMscChange={handleTwoYearMscChange}
+                handleDoubleMajorChange={handleDoubleMajorChange}
+                handleDualDegreeChange={handleDualDegreeChange}
+              />
+            </TabPanel>
+            {/* <TabPanel value={"3"}>
             <INF3
               setPage={setPage}
               threeYearData={threeYearData}
@@ -691,32 +692,33 @@ const Inf = () => {
               handleUpdateInfById={handleUpdateInfById}
             />
           </TabPanel> */}
-          <TabPanel value={"3"}>
-            <INF4
-              setPage={setPage}
-              resumeShortListingData={resumeShortListingData}
-              typeOfTestData={typeOfTestData}
-              otherQualificationRoundsData={otherQualificationRoundsData}
-              selectionFormData={selectionFormData}
-              handleResumeShortListingChange={handleResumeShortListingChange}
-              handleTypeOfTestChange={handleTypeOfTestChange}
-              handleOtherQualificationRoundsChange={
-                handleOtherQualificationRoundsChange
-              }
-              handleSelectionDataChange={handleSelectionDataChange}
-              handleUpdateInfById={handleUpdateInfById}
-              priorityFormData={priorityFormData}
-              handlePriorityDataChange={handlePriorityDataChange}
-            />
-          </TabPanel>
-          <TabPanel value={"4"}>
-            <ReviewInf
-              setPage={setPage}
-              InfData={InfData}
-              handleFormSubmit={handleFormSubmit}
-            />
-          </TabPanel>
-        </TabContext>
+            <TabPanel value={"3"}>
+              <INF4
+                setPage={setPage}
+                resumeShortListingData={resumeShortListingData}
+                typeOfTestData={typeOfTestData}
+                otherQualificationRoundsData={otherQualificationRoundsData}
+                selectionFormData={selectionFormData}
+                handleResumeShortListingChange={handleResumeShortListingChange}
+                handleTypeOfTestChange={handleTypeOfTestChange}
+                handleOtherQualificationRoundsChange={
+                  handleOtherQualificationRoundsChange
+                }
+                handleSelectionDataChange={handleSelectionDataChange}
+                handleUpdateInfById={handleUpdateInfById}
+                priorityFormData={priorityFormData}
+                handlePriorityDataChange={handlePriorityDataChange}
+              />
+            </TabPanel>
+            <TabPanel value={"4"}>
+              <ReviewInf
+                setPage={setPage}
+                InfData={InfData}
+                handleFormSubmit={handleFormSubmit}
+              />
+            </TabPanel>
+          </TabContext>
+        </div>
       </div>
       {isLoading && <Loading />}
     </>
