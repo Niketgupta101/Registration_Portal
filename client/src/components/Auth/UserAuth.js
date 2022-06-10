@@ -127,7 +127,12 @@ const UserAuth = () => {
       setAuthData({ ...AuthData, confirmPassword: '' });
     } else if (re.test(AuthData.email) === false) {
       toast.error('Invalid Email Address');
-    } else if (!AuthData.email.split('@')[1].endsWith('iitism.ac.in')) {
+    } else if (
+      AuthData.email.split('@')[1] === 'gmail.com' ||
+      AuthData.email.split('@')[1] === 'yahoo.com' ||
+      AuthData.email.split('@')[1] === 'rediff.com' ||
+      AuthData.email.split('@')[1] === 'outlook.com'
+    ) {
       toast.error('Only Work Emails are allowed.');
     } else setPage('company');
   };
