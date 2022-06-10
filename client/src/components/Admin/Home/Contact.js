@@ -82,10 +82,37 @@ const Contact = () => {
                 id='panel1bh-header'
               >
                 <Typography sx={{ width: '35%' }}>{contact.name}</Typography>
-                <Typography sx={{ width: '55%', color: 'text.secondary' }}>
+                <Typography
+                  sx={{
+                    width: '30%',
+                    color: 'text.secondary',
+                    display: {
+                      sm: 'none',
+                      md: 'none',
+                      xs: 'inline-block',
+                    },
+                  }}
+                />
+                <Typography
+                  sx={{
+                    width: '50%',
+                    color: 'text.secondary',
+                    display: {
+                      xs: 'none',
+                      sm: 'inline-block',
+                      md: 'inline-block',
+                    },
+                  }}
+                >
                   {contact.email}
                 </Typography>
-                <Typography sx={{ width: '10%', right: 'right' }}>
+                <Typography
+                  sx={{
+                    width: '10%',
+                    right: 'right',
+                    justifyContent: 'flex-end',
+                  }}
+                >
                   {contact.progress === 'Pending' ? (
                     <Box sx={{ color: 'error.main', fontWeight: 'bold' }}>
                       {contact.progress}
@@ -99,6 +126,18 @@ const Contact = () => {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
+                <Typography
+                  sx={{
+                    width: '50%',
+                    display: {
+                      sm: 'none',
+                      md: 'none',
+                      xs: 'inline-block',
+                    },
+                  }}
+                >
+                  {contact.email}
+                </Typography>
                 <Typography>{contact.message}</Typography>
                 {contact.progress === 'Pending' ? (
                   <Typography>

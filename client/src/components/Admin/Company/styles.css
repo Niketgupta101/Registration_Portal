@@ -71,17 +71,17 @@
   padding-left: 25px;
 }
 @media (max-width: 400px) {
-  input[type="search"] {
+  input[type='search'] {
     width: 150px;
   }
 }
 @media (max-width: 600px) {
   .admin_company {
-    padding: 0;
+    padding: 0 0.5rem;
   }
 }
 @media (max-width: 450px) {
-  input[type="search"] {
+  input[type='search'] {
     width: 150px;
   }
 }

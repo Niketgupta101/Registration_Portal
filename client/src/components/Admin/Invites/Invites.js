@@ -53,9 +53,8 @@ const Invites = () => {
     try {
       await sendInvitationToAllCompanies();
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
-  
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
