@@ -1,6 +1,16 @@
 import { color } from "@mui/system";
 import React from "react";
 import { Form, FormGroup, Label, Col } from "reactstrap";
+import FormLabel from "@mui/material/FormLabel";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import TextField from "@mui/material/TextField";
 
 const style = { alignItems: "center" };
 
@@ -453,7 +463,8 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Double_Major.Select_All
+                    InfData.Eligible_Courses_And_Disciplines.Double_Major
+                      .Select_All
                   }
                   type="checkbox"
                   readOnly
@@ -461,24 +472,19 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
               </td>
             </tr>
             <tr>
-              <td className="courseName">
-                Computer Science and Engineering 
-              </td>
+              <td className="courseName">Computer Science and Engineering</td>
               <td className="courseCheckBox5year">
                 <input
                   name="Computer_Science_and_Engineering_Double_Major"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
-                      .Double_Major.Computer_Science_and_Engineering_Double_Major
+                    InfData.Eligible_Courses_And_Disciplines.Double_Major
+                      .Computer_Science_and_Engineering_Double_Major
                   }
                   type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
-           
-            
-      
           </tbody>
         </table>
         <div className="startTextBold" style={{ fontSize: "21px" }}>
@@ -495,7 +501,8 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
                 <input
                   name="Select_All"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines.Dual_Degree.Select_All
+                    InfData.Eligible_Courses_And_Disciplines.Dual_Degree
+                      .Select_All
                   }
                   type="checkbox"
                   readOnly
@@ -504,14 +511,15 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             </tr>
             <tr>
               <td className="courseName">
-                Computer Science and Engineering (B.Tech and M.Tech in Different Departments)
+                Computer Science and Engineering (B.Tech and M.Tech in Different
+                Departments)
               </td>
               <td className="courseCheckBox5year">
                 <input
                   name="Computer_Science_and_Engineering_Dual_Degree"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
-                      .Dual_Degree.Computer_Science_and_Engineering_Dual_Degree
+                    InfData.Eligible_Courses_And_Disciplines.Dual_Degree
+                      .Computer_Science_and_Engineering_Dual_Degree
                   }
                   type="checkbox"
                   readOnly
@@ -520,23 +528,21 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             </tr>
             <tr>
               <td className="courseName">
-                Environmental Science and Engineering (B.Tech and M.Tech in Different Departments)
+                Environmental Science and Engineering (B.Tech and M.Tech in
+                Different Departments)
               </td>
               <td className="courseCheckBox5year">
                 <input
                   name="Environmental_Science_and_Engineering_Dual_Degree"
                   checked={
-                    InfData.Eligible_Courses_And_Disciplines
-                      .Dual_Degree.Environmental_Science_and_Engineering_Dual_Degree
+                    InfData.Eligible_Courses_And_Disciplines.Dual_Degree
+                      .Environmental_Science_and_Engineering_Dual_Degree
                   }
                   type="checkbox"
                   readOnly
                 />
               </td>
             </tr>
-           
-            
-      
           </tbody>
         </table>
         {/* <div className="startTextBold">Skill Based Hiring</div>
@@ -1108,6 +1114,71 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
         <div>
           <header className="headerText">SELECTION PROCEDURE</header>
         </div>
+        <TableContainer component={Paper} className="my-5">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Stages</TableCell>
+                <TableCell>IIT ISM PLACEMENT CALENDAR</TableCell>
+                <TableCell>Mode of Hiring</TableCell>
+                <TableCell>Preferred Date</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow key="Pre-Placement-Talk">
+                <TableCell component="th" scope="row">
+                  Pre-Placement Talk
+                </TableCell>
+                <TableCell> 15-Jul-2022 onwards</TableCell>
+                <TableCell>Virtual</TableCell>
+                <TableCell>10-06-2022</TableCell>
+              </TableRow>
+              <TableRow key="Resume-Shortlisting">
+                <TableCell component="th" scope="row">
+                  Resume Shortlisting
+                </TableCell>
+                <TableCell> 15-Jul-2022 onwards</TableCell>
+                <TableCell>Virtual</TableCell>
+                <TableCell>10-06-2022</TableCell>
+              </TableRow>
+              <TableRow key="Online-Written-Test">
+                <TableCell component="th" scope="row">
+                  Online/Written Test
+                </TableCell>
+                <TableCell> 15-Jul-2022 onwards</TableCell>
+                <TableCell>Virtual</TableCell>
+                <TableCell>10-06-2022</TableCell>
+              </TableRow>
+              <TableRow key="Group-Discussion">
+                <TableCell component="th" scope="row">
+                  Group Discussion
+                </TableCell>
+                <TableCell> 15-Jul-2022 onwards</TableCell>
+                <TableCell>Virtual</TableCell>
+                <TableCell>10-06-2022</TableCell>
+              </TableRow>
+              <TableRow key="Personal-Interview">
+                <TableCell component="th" scope="row">
+                  Personal Interview
+                </TableCell>
+                <TableCell> 17-Aug-2022 onwards</TableCell>
+                <TableCell>Virtual</TableCell>
+                <TableCell>10-06-2022</TableCell>
+              </TableRow>
+              <TableRow key="Any-other-rounds">
+                <TableCell component="th" scope="row">
+                  Any other rounds
+                </TableCell>
+                <TableCell> </TableCell>
+                <TableCell>Virtual</TableCell>
+                <TableCell>10-06-2022</TableCell>
+              </TableRow>
+              {/* <TableRow> */}
+
+              {/* </TableRow> */}
+            </TableBody>
+          </Table>
+        </TableContainer>
         <table>
           <tbody id="Selection_Procedure">
             <tr
@@ -1334,7 +1405,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
           </Col>
         </FormGroup>
 
-        <div>
+        {/* <div>
           <header className="headerText">
             Tentative dates for test and interviews:
           </header>
@@ -1344,7 +1415,9 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             Priority 1
           </Label>
           <Col sm={9}>
-            <h1 className="inputText">{InfData.Priority_Details.Priority_One}</h1>
+            <h1 className="inputText">
+              {InfData.Priority_Details.Priority_One}
+            </h1>
           </Col>
         </FormGroup>
         <FormGroup row style={style}>
@@ -1352,9 +1425,11 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             Priority 2
           </Label>
           <Col sm={9}>
-            <h1 className="inputText">{InfData.Priority_Details.Priority_Two}</h1>
+            <h1 className="inputText">
+              {InfData.Priority_Details.Priority_Two}
+            </h1>
           </Col>
-        </FormGroup>
+        </FormGroup> */}
         <div
           className="formFlex"
           style={{
