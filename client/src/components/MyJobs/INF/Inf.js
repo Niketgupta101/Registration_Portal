@@ -44,7 +44,7 @@ const Inf = () => {
     };
   }
   const jobData = {
-    Internship_Duration: `Jan – June 2022 Dual Degree/ Integrated M. Tech courses only (2022 batch)`,
+    Internship_Duration: `May-July 2023`,
     Job_Designation: "",
     Job_Description: "",
     Mode_Of_Internship: "Virtual",

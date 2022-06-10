@@ -268,18 +268,8 @@ export default function INF1({
                       onChange={handleJobDataChange}
                       autoComplete="off"
                     >
-                      <option>
-                        Jan – June {Year}: Dual Degree/ Integrated M. Tech
-                        courses only ({Year} batch)
-                      </option>
-                      <option>
-                        May – July {Year}: Pre-final year students of ALL
-                        courses ({Year + 1} batch)
-                      </option>
-                      <option>
-                        July – Dec {Year}: M. Tech/ MBA – Business Analytics
-                        courses only ({Year + 1} batch)
-                      </option>
+                      <option>May-July {Year}</option>
+                      <option>July-Dec {Year}</option>
                     </Input>
                   </Col>
                 </FormGroup>

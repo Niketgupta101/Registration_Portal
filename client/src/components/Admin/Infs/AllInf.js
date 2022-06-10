@@ -41,17 +41,15 @@ const AllInf = () => {
 
   useEffect(async () => {
     setIsLoading(true);
-    try{
+    try {
       const response = await getAllInf(pageNo);
       setIsLoading(false);
-  
+
       setJobs(response.data.jobs);
-    }catch(error)
-    {
+    } catch (error) {
       setIsLoading(false);
       Navigate("/badgateway");
     }
-    
   }, [pageNo]);
 
   useEffect(() => {
@@ -129,8 +127,8 @@ const AllInf = () => {
                   </div>
                   <div className="content_text">
                     <h5>
-                      <span>Designation: </span>:{" "}
-                      {job?.Intern_Profile?.Job_Designation}
+                      <span>Duration: </span>
+                      {job.data?.Intern_Profile?.Internship_Duration}
                     </h5>
                     <h5>
                       {job.isIntern ? (
