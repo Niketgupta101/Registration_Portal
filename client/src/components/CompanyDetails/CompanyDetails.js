@@ -26,11 +26,15 @@ const CompanyDetails = ({
   const sectors = [
     "Analytics",
     "Consulting",
-    "Core(Technical)",
-    "Finance",
-    "IT",
+    "Core",
+    "Banking and Finance",
+    "Software/IT",
+    "Education/ Ed Tech",
+    "E-Commerce",
+    "Technology",
+    "FMCG",
+    "PSU",
     "Management",
-    "Teaching and Research",
   ];
   const [othercategory, setOthercategory] = useState(false);
   const [othersector, setOthersector] = useState(false);
@@ -299,7 +303,18 @@ const CompanyDetails = ({
                           <div className="flex-grow-1 ">
                             <h1 className="company-detail-h1 prog-hover">
                               <span className="company-detail-span">
-                                <b>Category of the Company</b>
+                                <b>
+                                  Category of the Company
+                                  <span
+                                    style={{
+                                      color: "red",
+                                      fontSize: "30px",
+                                      padding: "0",
+                                    }}
+                                  >
+                                    *
+                                  </span>
+                                </b>
                               </span>
                             </h1>
                           </div>
@@ -312,8 +327,9 @@ const CompanyDetails = ({
                           </FormLabel>
                           <RadioGroup
                             aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="Yes, Both Contact Number and Email Address"
+                            defaultValue=""
                             name="category"
+                            required
                           >
                             {categories.map((category) => (
                               <FormControlLabel
@@ -353,7 +369,18 @@ const CompanyDetails = ({
                           <div className="flex-grow-1 ">
                             <h1 className="company-detail-h1 prog-hover">
                               <span className="company-detail-span">
-                                <b>Industry Sector</b>
+                                <b>
+                                  Industry Sector
+                                  <span
+                                    style={{
+                                      color: "red",
+                                      fontSize: "30px",
+                                      padding: "0 ",
+                                    }}
+                                  >
+                                    *
+                                  </span>
+                                </b>
                               </span>
                             </h1>
                           </div>
@@ -366,8 +393,9 @@ const CompanyDetails = ({
                           </FormLabel>
                           <RadioGroup
                             aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="Yes, Both Contact Number and Email Address"
+                            defaultValue=""
                             name="radio-buttons-group"
+                            required
                           >
                             {sectors.map((sector) => (
                               <FormControlLabel
