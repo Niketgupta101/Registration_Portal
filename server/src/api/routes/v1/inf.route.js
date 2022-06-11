@@ -10,13 +10,19 @@ const {
   getInfById,
   getAllInfForUser,
   getLatestInfOfUser,
-  getAllInf, 
+  getAllInf,
   createNewInf,
   updateInfById,
   deleteInfById,
   submitInf,
   searchInfByPattern,
 } = require('../../controllers/inf.controller');
+const {
+  fetchInf,
+  createInf,
+  updateInf,
+  submitReviewedInf,
+} = require('../../controllers/newInf.controller');
 
 const router = express.Router();
 
@@ -41,8 +47,17 @@ router.post('/', protect, createNewInf);
 
 router.put('/:id', protect, updateInfById);
 
-router.get('/submit/:id', protect, submitInf);
+// router.get('/submit/:id', protect, submitInf);
 
 router.delete('/delete/:id', protect, deleteInfById);
+
+// -----------------------------------------------------------------------------------
+
+router.get('/new/:infId', protect, fetchInf);
+router.post('/new', protect, createInf);
+
+router.put('/new/update', protect, updateInf);
+
+router.put('/new/submit/:infId', protect, submitReviewedInf);
 
 module.exports = router;

@@ -233,3 +233,11 @@ export const getAllCourseData = () => API.get('/courses', setHeader());
 
 export const getPlacedCount = () =>
   API.get('/courses/placed/count', setHeader());
+
+// -------------------------------------------
+
+export const fetchInf = (id) => API.get(`inf/new/${id}`, setHeader());
+export const createInf = (data) => API.post(`inf/new`, data, setHeader());
+export const updateInf = (data) => API.put('inf/new/update', data, setHeader());
+export const submitReviewedInf = (id) =>
+  API.put(`inf/new/submit/${id}`, setHeader());
