@@ -1,5 +1,5 @@
 .INF {
-  background-image: url("./../../../Images/bg.jpg");
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/078/367/non_2x/abstract-grey-white-simple-background-vector.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -7,7 +7,7 @@
 }
 .overallDiv1 {
   justify-content: center;
-  margin: auto 18% !important;
+  margin: auto 10% !important;
 }
 .headerText {
   padding: 0.5rem;
@@ -55,15 +55,18 @@
 .upper {
   width: 100%;
   padding: 10px 0 10px 30px;
-  background-color: #c8e5fd;
+  /* background-color: #c8e5fd; */
   border-radius: 10px;
 }
 
 .lower {
   padding: 30px;
   border-radius: 0px 0px 10px 10px;
-  background-color: #fafafad0;
+  /* background-color: #fafafad0; */
   color: rgb(0, 0, 0);
+}
+.lower Label {
+  text-transform: capitalize;
 }
 
 .lower h4 {

@@ -1,6 +1,6 @@
 .overallDiv1 {
   justify-content: center;
-  margin: auto 18% !important;
+  margin: auto 10% !important;
 }
 .headerText1 {
   text-align: center;
@@ -35,16 +35,6 @@ Form {
   margin: 2rem auto;
 }
 
-@media (max-width: 600px) {
-  .overallDiv1 {
-    justify-content: center;
-    margin: auto 5% !important;
-  }
-}
-.overallDiv1 {
-  justify-content: center;
-  margin: auto 18% !important;
-}
 .headerText1 {
   text-align: center;
   justify-content: center;
@@ -120,10 +110,7 @@ tr {
     display: block;
   }
 }
-.overallDiv1 {
-  justify-content: center;
-  margin: auto 18% !important;
-}
+
 .headerText1 {
   text-align: center;
   justify-content: center;
@@ -162,10 +149,6 @@ tr {
 }
 .successButton {
   margin-left: 700px;
-}
-.overallDiv1 {
-  justify-content: center;
-  margin: auto 18% !important;
 }
 
 tbody,
