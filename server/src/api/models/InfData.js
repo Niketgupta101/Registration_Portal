@@ -56,105 +56,105 @@ const FiveYearIntegratedSchema = {
 };
 
 const TwoYearMtechSchema = {
-  FYI_Select_All: { type: Boolean, default: false },
-  FYI_Applied_Geology: { type: Boolean, default: false },
-  FYI_Applied_Geophysics: { type: Boolean, default: false },
-  FYI_Chemical_Engineering: { type: Boolean, default: false },
-  FYI_Civil_Engineering: { type: Boolean, default: false },
-  FYI_Computer_Science_and_Engineering: { type: Boolean, default: false },
-  FYI_Data_Analytics: { type: Boolean, default: false },
-  FYI_Electrical_Engineering: { type: Boolean, default: false },
-  FYI_Electronics_and_Communication_Engineering: {
+  TWM_Select_All: { type: Boolean, default: false },
+  TWM_Applied_Geology: { type: Boolean, default: false },
+  TWM_Applied_Geophysics: { type: Boolean, default: false },
+  TWM_Chemical_Engineering: { type: Boolean, default: false },
+  TWM_Civil_Engineering: { type: Boolean, default: false },
+  TWM_Computer_Science_and_Engineering: { type: Boolean, default: false },
+  TWM_Data_Analytics: { type: Boolean, default: false },
+  TWM_Electrical_Engineering: { type: Boolean, default: false },
+  TWM_Electronics_and_Communication_Engineering: {
     type: Boolean,
     default: false,
   },
-  FYI_Environmental_Engineering: { type: Boolean, default: false },
-  FYI_Industrial_Engineering_and_Management: {
+  TWM_Environmental_Engineering: { type: Boolean, default: false },
+  TWM_Industrial_Engineering_and_Management: {
     type: Boolean,
     default: false,
   },
-  Mechanical_Engineering: { type: Boolean, default: false },
-  Fuel_Minerals_and_Metallurgical_Engineering: {
+  TWM_Mechanical_Engineering: { type: Boolean, default: false },
+  TWM_Fuel_Minerals_and_Metallurgical_Engineering: {
     type: Boolean,
     default: false,
   },
-  Mining_Engineering: { type: Boolean, default: false },
-  Mining_Machinery_Engineering: { type: Boolean, default: false },
-  Petroleum_Engineering: { type: Boolean, default: false },
-  Pharmaceutical_Science_and_Engineering: {
+  TYM_Mining_Engineering: { type: Boolean, default: false },
+  TYM_Mining_Machinery_Engineering: { type: Boolean, default: false },
+  TYM_Petroleum_Engineering: { type: Boolean, default: false },
+  TYM_Pharmaceutical_Science_and_Engineering: {
     type: Boolean,
     default: false,
   },
 };
 
 const ThreeYearMscSchema = {
-  Select_All: { type: Boolean, default: false },
-  Applied_Geology: { type: Boolean, default: false },
-  Applied_Geophysics: { type: Boolean, default: false },
+  TYM_Select_All: { type: Boolean, default: false },
+  TYM_Applied_Geology: { type: Boolean, default: false },
+  TYM_Applied_Geophysics: { type: Boolean, default: false },
 };
 
 const TwoYearMBASchema = {
-  Select_All: { type: Boolean, default: false },
-  Business_Analytics: { type: Boolean, default: false },
-  Finance: { type: Boolean, default: false },
-  Human_Resources: { type: Boolean, default: false },
-  Marketing: { type: Boolean, default: false },
-  Operations: { type: Boolean, default: false },
+  TYMB_Select_All: { type: Boolean, default: false },
+  TYMB_Business_Analytics: { type: Boolean, default: false },
+  TYMB_Finance: { type: Boolean, default: false },
+  TYMB_Human_Resources: { type: Boolean, default: false },
+  TYMB_Marketing: { type: Boolean, default: false },
+  TYMB_Operations: { type: Boolean, default: false },
 };
 
 const DualDegreeSchema = {
-  Select_All: { type: Boolean, default: false },
-  Computer_Science_and_Engineering_Dual_Degree: {
+  DD_Select_All: { type: Boolean, default: false },
+  DD_Computer_Science_and_Engineering_Dual_Degree: {
     type: Boolean,
     default: false,
   },
-  Environmental_Science_and_Engineering_Dual_Degree: {
+  DD_Environmental_Science_and_Engineering_Dual_Degree: {
     type: Boolean,
     default: false,
   },
 };
 
 const DoubleMajorSchema = {
-  Select_All: { type: Boolean, default: false },
-  Computer_Science_and_Engineering_Double_Major: {
+  DM_Select_All: { type: Boolean, default: false },
+  DM_Computer_Science_and_Engineering_Double_Major: {
     type: Boolean,
     default: false,
   },
 };
 
 const SkillBasedSchema = {
-  C_Cpp_Java_Python_etc: { type: Boolean, default: false },
-  Full_Stack_Development_Frontend_or_Backend: {
+  SB_C_Cpp_Java_Python_etc: { type: Boolean, default: false },
+  SB_Full_Stack_Development_Frontend_or_Backend: {
     type: Boolean,
     default: false,
   },
-  Civil_Engineering: { type: Boolean, default: false },
-  AI_ML_DL_Data_Science: { type: Boolean, default: false },
-  Business_Data_Analytics_Product_Management: {
+  SB_Civil_Engineering: { type: Boolean, default: false },
+  SB_AI_ML_DL_Data_Science: { type: Boolean, default: false },
+  SB_Business_Data_Analytics_Product_Management: {
     type: Boolean,
     default: false,
   },
 };
 
 const SelectionProcedureSchema = {
-  Resume_Shortlisting: { type: Boolean, default: false },
-  Type_Of_Test: [String],
-  Other_Qualification_Rounds: [String],
-  Total_Number_Of_Rounds: { type: Number, default: 0 },
-  No_Of_Offers: { type: String, default: 'NA' },
-  Eligibility_Criteria: { type: String, default: 'NA' },
+  SPS_Resume_Shortlisting: { type: Boolean, default: false },
+  SPS_Type_Of_Test: [String],
+  SPS_Other_Qualification_Rounds: [String],
+  SPS_Total_Number_Of_Rounds: { type: Number, default: 0 },
+  SPS_No_Of_Offers: { type: String, default: 'NA' },
+  SPS_Eligibility_Criteria: { type: String, default: 'NA' },
 };
 
 const PrimaryHrSchema = {
-  Name: { type: String, default: '' },
-  Email: { type: String, default: '' },
-  Mobile: { type: String, default: '' },
+  PH_Name: { type: String, default: '' },
+  PH_Email: { type: String, default: '' },
+  PH_Mobile: { type: String, default: '' },
 };
 
 const SecondaryHrSchema = {
-  Name: { type: String, default: '' },
-  Email: { type: String, default: '' },
-  Mobile: { type: String, default: '' },
+  SH_Name: { type: String, default: '' },
+  SH_Email: { type: String, default: '' },
+  SH_Mobile: { type: String, default: '' },
 };
 
 // --------------------------------------------------------------------------------------------------
