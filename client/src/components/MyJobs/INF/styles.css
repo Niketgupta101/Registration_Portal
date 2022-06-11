@@ -1,6 +1,6 @@
 .overallDiv1 {
   justify-content: center;
-  margin: auto 18% !important;
+  margin: auto 10% !important;
 }
 .headerText {
   padding: 0.5rem;
@@ -48,14 +48,14 @@
 .upper {
   width: 100%;
   padding: 10px 0 10px 30px;
-  background-color: #c8e5fd;
+  /* background-color: #c8e5fd; */
   border-radius: 10px;
 }
 
 .lower {
   padding: 30px;
   border-radius: 0px 0px 10px 10px;
-  background-color: #e9edf18a;
+  /* background-color: #e9edf18a; */
   color: rgb(0, 0, 0);
 }
 
@@ -63,16 +63,6 @@
   color: #2999f5;
 }
 
-<<<<<<< HEAD
-.lower p:not(:first-child) {
-  /* margin-top: 40px; */
-}
-=======
-
->>>>>>> e254e0a9edf1ac772fcd6b9999f2138206b32baf
-.eligible-options {
-  background-color: #7ab4e41e;
-}
 .eligible-type {
   background-color: white;
   padding: 20px;
