@@ -38,11 +38,11 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
 
   function submitButton() {
     if (
-      infData.Intern_Profile.Job_Designation === '' ||
-      infData.Intern_Profile.Job_Description === '' ||
-      infData.Intern_Profile.Place_Of_Posting === '' ||
-      infData.Stipend_Details.Salary_Per_Month === '' ||
-      infData.Stipend_Details.CTC === ''
+      infData.Intern_Profile.IP_Job_Designation === '' ||
+      infData.Intern_Profile.IP_Job_Description === '' ||
+      infData.Intern_Profile.IP_Place_Of_Posting === '' ||
+      infData.Stipend_Details.SD_Salary_Per_Month === '' ||
+      infData.Stipend_Details.SD_CTC === ''
     ) {
       return (
         <button

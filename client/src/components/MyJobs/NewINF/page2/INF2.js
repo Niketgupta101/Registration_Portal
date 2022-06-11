@@ -24,26 +24,26 @@ export default function INF2({
   handleOnChange,
   handleUpdateInf,
 }) {
-  const [eligiblediv, setEligiblediv] = useState(false);
+  // const [eligiblediv, setEligiblediv] = useState(false);
   const [btechdiv, setBtechdiv] = useState(false);
   const [doublemajor, setDoubleMajor] = useState(false);
   const [dualdegree, setDualDegree] = useState(false);
   const [dual_mtechdiv, setdual_mtechdiv] = useState(false);
   const [mbadiv, setmbadiv] = useState(false);
-  const [msc2div, setmsc2div] = useState(false);
+  // const [msc2div, setmsc2div] = useState(false);
   const [msc3div, setmsc3div] = useState(false);
   const [mtechdiv, setmtechdiv] = useState(false);
   const [ugdiv, setUgdiv] = useState(false);
   const [pgdiv, setPgdiv] = useState(false);
-  const [phddiv, setphddiv] = useState(false);
+  // const [phddiv, setphddiv] = useState(false);
 
   const refbtech4year = useRef();
   const refdual_mtech = useRef();
   const refmba = useRef();
-  const refmsc2 = useRef();
+  // const refmsc2 = useRef();
   const refmsc3 = useRef();
   const refmtech = useRef();
-  const refphd = useRef();
+  // const refphd = useRef();
   const refdoublemajor = useRef();
   const refdualdegree = useRef();
 
@@ -328,7 +328,7 @@ export default function INF2({
                                   <tr>
                                     <td className='courseName'>
                                       {field.split('_').map((word) => (
-                                        <>{word !== 'FYI' && word + ' '}</>
+                                        <>{word !== 'DM' && word + ' '}</>
                                       ))}
                                     </td>
                                     <td className='courseCheckBox5year'>

@@ -3,7 +3,6 @@ import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,13 +14,68 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
 import './INF4.css';
 
+const ModeOfHiring = () => {
+  return (
+    <TableCell>
+      <FormControl>
+        <RadioGroup
+          aria-labelledby='demo-radio-buttons-group-label'
+          defaultValue='None'
+          name='radio-buttons-group'
+        >
+          <FormControlLabel
+            size='small'
+            value='Virtual'
+            control={<Radio size='small' />}
+            label=' Virtual'
+          />
+          <FormControlLabel
+            size='small'
+            value='Campus Visit'
+            control={<Radio size='small' />}
+            label=' Campus Visit'
+          />
+          <FormControlLabel
+            size='small'
+            value='Not Applicable'
+            control={<Radio size='small' />}
+            label=' Not Applicable'
+          />
+        </RadioGroup>
+      </FormControl>
+    </TableCell>
+  );
+};
+
+const PreferredDate = () => {
+  return (
+    <TableCell>
+      <div>
+        <TextField
+          label='DD-MM-YYYY'
+          id='outlined-size-small'
+          defaultValue=''
+          size='small'
+        />
+      </div>
+    </TableCell>
+  );
+};
+
+const ScheduleEntry = (Header, time) => {
+  return (
+    <TableRow key={Header}>
+      <TableCell component='th' scope='row'>
+        {Header}
+      </TableCell>
+      <TableCell> {time} </TableCell>
+      {ModeOfHiring()}
+      {PreferredDate()}
+    </TableRow>
+  );
+};
+
 const INF4 = ({ setPage, infData, handleOnChange, handleUpdateinf }) => {
-  const dates = [
-    "1st Dec to 10th Dec'22",
-    "11th Dec to 24th Dec'22",
-    "2nd Jan to 15th Jan'23",
-    "16th Jan to 31st Jan'23",
-  ];
   return (
     <div className='overallDiv1'>
       <Form onSubmit={handleUpdateinf}>
@@ -53,285 +107,12 @@ const INF4 = ({ setPage, infData, handleOnChange, handleUpdateinf }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow key='Pre-Placement-Talk'>
-                <TableCell component='th' scope='row'>
-                  Pre-Placement Talk
-                </TableCell>
-                <TableCell> 15-Jul-2022 onwards</TableCell>
-                <TableCell>
-                  <FormControl>
-                    {/* <FormLabel id="demo-radio-buttons-group-label">
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      aria-labelledby='demo-radio-buttons-group-label'
-                      defaultValue='None'
-                      name='radio-buttons-group'
-                    >
-                      <FormControlLabel
-                        size='small'
-                        value='Virtual'
-                        control={<Radio size='small' />}
-                        label=' Virtual'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Campus Visit'
-                        control={<Radio size='small' />}
-                        label=' Campus Visit'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Not Applicable'
-                        control={<Radio size='small' />}
-                        label=' Not Applicable'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <TextField
-                      label='DD-MM-YYYY'
-                      id='outlined-size-small'
-                      defaultValue=''
-                      size='small'
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow key='Resume-Shortlisting'>
-                <TableCell component='th' scope='row'>
-                  Resume Shortlisting
-                </TableCell>
-                <TableCell> 15-Jul-2022 onwards</TableCell>
-                <TableCell>
-                  <FormControl>
-                    {/* <FormLabel id="demo-radio-buttons-group-label">
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      aria-labelledby='demo-radio-buttons-group-label'
-                      defaultValue='None'
-                      name='radio-buttons-group'
-                    >
-                      <FormControlLabel
-                        size='small'
-                        value='Virtual'
-                        control={<Radio size='small' />}
-                        label=' Virtual'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Campus Visit'
-                        control={<Radio size='small' />}
-                        label=' Campus Visit'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Not Applicable'
-                        control={<Radio size='small' />}
-                        label=' Not Applicable'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <TextField
-                      label='DD-MM-YYYY'
-                      defaultValue=''
-                      size='small'
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow key='Online-Written-Test'>
-                <TableCell component='th' scope='row'>
-                  Online/Written Test
-                </TableCell>
-                <TableCell> 15-Jul-2022 onwards</TableCell>
-                <TableCell>
-                  <FormControl>
-                    {/* <FormLabel id="demo-radio-buttons-group-label">
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      aria-labelledby='demo-radio-buttons-group-label'
-                      defaultValue='None'
-                      name='radio-buttons-group'
-                    >
-                      <FormControlLabel
-                        size='small'
-                        value='Virtual'
-                        control={<Radio size='small' />}
-                        label=' Virtual'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Campus Visit'
-                        control={<Radio size='small' />}
-                        label=' Campus Visit'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Not Applicable'
-                        control={<Radio size='small' />}
-                        label=' Not Applicable'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <TextField
-                      label='DD-MM-YYYY'
-                      id='outlined-size-small'
-                      defaultValue=''
-                      size='small'
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow key='Group-Discussion'>
-                <TableCell component='th' scope='row'>
-                  Group Discussion
-                </TableCell>
-                <TableCell> 15-Jul-2022 onwards</TableCell>
-                <TableCell>
-                  <FormControl>
-                    {/* <FormLabel id="demo-radio-buttons-group-label">
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      aria-labelledby='demo-radio-buttons-group-label'
-                      defaultValue='None'
-                      name='radio-buttons-group'
-                    >
-                      <FormControlLabel
-                        size='small'
-                        value='Virtual'
-                        control={<Radio size='small' />}
-                        label=' Virtual'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Campus Visit'
-                        control={<Radio size='small' />}
-                        label=' Campus Visit'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Not Applicable'
-                        control={<Radio size='small' />}
-                        label=' Not Applicable'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <TextField
-                      label='DD-MM-YYYY'
-                      defaultValue=''
-                      size='small'
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow key='Personal-Interview'>
-                <TableCell component='th' scope='row'>
-                  Personal Interview
-                </TableCell>
-                <TableCell> 17-Aug-2022 onwards</TableCell>
-                <TableCell>
-                  <FormControl>
-                    {/* <FormLabel id="demo-radio-buttons-group-label">
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      aria-labelledby='demo-radio-buttons-group-label'
-                      defaultValue='None'
-                      name='radio-buttons-group'
-                    >
-                      <FormControlLabel
-                        size='small'
-                        value='Virtual'
-                        control={<Radio size='small' />}
-                        label=' Virtual'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Campus Visit'
-                        control={<Radio size='small' />}
-                        label=' Campus Visit'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Not Applicable'
-                        control={<Radio size='small' />}
-                        label=' Not Applicable'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <TextField
-                      label='DD-MM-YYYY'
-                      id='outlined-size-small'
-                      defaultValue=''
-                      size='small'
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-              <TableRow key='Any-other-rounds'>
-                <TableCell component='th' scope='row'>
-                  Any other rounds
-                </TableCell>
-                <TableCell> \</TableCell>
-                <TableCell>
-                  <FormControl>
-                    {/* <FormLabel id="demo-radio-buttons-group-label">
-                      Gender
-                    </FormLabel> */}
-                    <RadioGroup
-                      aria-labelledby='demo-radio-buttons-group-label'
-                      defaultValue='None'
-                      name='radio-buttons-group'
-                    >
-                      <FormControlLabel
-                        size='small'
-                        value='Virtual'
-                        control={<Radio size='small' />}
-                        label=' Virtual'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Campus Visit'
-                        control={<Radio size='small' />}
-                        label=' Campus Visit'
-                      />
-                      <FormControlLabel
-                        size='small'
-                        value='Not Applicable'
-                        control={<Radio size='small' />}
-                        label=' Not Applicable'
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </TableCell>
-                <TableCell>
-                  <div>
-                    <TextField
-                      label='DD-MM-YYYY'
-                      defaultValue=''
-                      size='small'
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
+              {ScheduleEntry('Pre-Placement Talk', '15-Jul-2022 onwards')}
+              {ScheduleEntry('Resume Shortlisting', '15-Jul-2022 onwards')}
+              {ScheduleEntry('Online/Written Test', '15-Jul-2022 onwards')}
+              {ScheduleEntry('Group Discussion', '15-Jul-2022 onwards')}
+              {ScheduleEntry('Personal Interview', '17-Aug-2022 onwards')}
+              {ScheduleEntry('Any other rounds', '-')}
               {/* <TableRow> */}
 
               {/* </TableRow> */}
