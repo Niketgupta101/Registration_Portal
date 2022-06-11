@@ -1,5 +1,6 @@
 const { NewInf } = require('../models/InfData');
 const ErrorResponse = require('../utils/errorResponse');
+const { createInfPdfForAdmin } = require('../utils/PdfService/createInfPdf');
 
 const ObjectId = require('mongoose').Schema.ObjectId;
 
@@ -62,8 +63,8 @@ const submitReviewedInf = async (req, res, next) => {
 
     if (!inf) return next(new ErrorResponse('No INF found with given id', 404));
 
-    // await createInfPdfForAdmin(inf);
-    // createInfPdfForStudent(inf);
+    await createInfPdfForAdmin(inf);
+    // crea/teInfPdfForStudent(inf);
 
     inf.set({ status: 'complete' });
 

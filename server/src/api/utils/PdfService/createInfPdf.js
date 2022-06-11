@@ -1,9 +1,27 @@
+const fs = require('fs');
+const path = require('path');
+
+const PizZip = require('pizzip');
+const Docxtemplater = require('docxtemplater');
+
+const { convert_client_id } = require('../../../config/vars');
+const { env } = require('../../../config/vars');
+const {
+  uploadFile,
+  generatePreviewUrl,
+  generateDownloadUrl,
+} = require('../service/PDFservice/upload');
+const { sendMailWithAttachment } = require('../service/email');
+const { convertDocToPdf } = require('./docToPdf');
+
+var converter = require('docx-pdf');
+
 let basePathname;
 
 if (env === 'production') {
   basePathname = '/root/src/api/utils/PDFservice';
 } else {
-  basePathname = '';
+  basePathname = '.';
 }
 
 const createInfPdfForAdmin = async (inf) => {
@@ -48,6 +66,21 @@ const createInfPdfForAdmin = async (inf) => {
     await result.saveFiles(__dirname);
   }
 
+  await convertDocToPdf('output.docx', 'output.pdf');
+
+  // converter(
+  //   './src/api/utils/PdfService/output.docx',
+  //   './src/api/utils/PdfService/output.pdf',
+  //   (err, result) => {
+  //     if (err) {
+  //       console.log(error);
+  //       return;
+  //     } else {
+  //       console.log(result);
+  //     }
+  //   }
+  // );
+
   let response = await uploadFile(
     path.resolve(__dirname, `${basePathname}/output.pdf`),
     'INF',
@@ -68,18 +101,19 @@ const createInfPdfForAdmin = async (inf) => {
     'niketgupta101@gmail.com',
   ];
 
-  if (inf.HR_Details.Alternate_Hr.email !== '') {
-    cc.push(inf.HR_Details.Alternate_Hr.email);
+  if (inf.Secondary_Hr.Email !== '') {
+    cc.push(inf.Secondary_Hr.Email);
   }
 
   sendMailWithAttachment(
-    inf.HR_Details.Primary_Hr.email,
+    inf.Secondary_Hr.Email,
     'Thank you for filling the notification form!',
-    AttachmentMailHtml(),
+    'Hi',
     cc,
-    inf.downloadLink
+    inf.adminDownloadLink
   );
-  await inf.save();
 };
 
 const createInfPdfForStudent = async (inf) => {};
+
+module.exports = { createInfPdfForAdmin, createInfPdfForStudent };

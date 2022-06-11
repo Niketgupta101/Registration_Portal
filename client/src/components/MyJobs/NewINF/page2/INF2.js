@@ -48,6 +48,13 @@ export default function INF2({
   const refdualdegree = useRef();
 
   const fourYearFields = extractFields(infData.Four_Year_Btech);
+  const fiveYearIntFields = extractFields(infData.Five_Year_Integrated);
+  const twoYearMtechFields = extractFields(infData.Two_Year_Mtech);
+  const threeYearMscFields = extractFields(infData.Three_Year_Msc);
+  const twoYearMbaFields = extractFields(infData.Two_Year_MBA);
+  const dualDegreeFields = extractFields(infData.Dual_Degree);
+  const doubleMajorFields = extractFields(infData.Double_Major);
+  const skillBasedFields = extractFields(infData.Skill_Based);
 
   function handleBackClick(refname) {
     refname.current.scrollIntoView({ behavior: 'smooth' });
@@ -225,75 +232,37 @@ export default function INF2({
                           </p>
                         </div>
                       </div>
-                      {/* {dual_mtechdiv === true ? (
+                      {dual_mtechdiv === true ? (
                         <div className='eligible-option'>
                           <table className='m-0'>
                             <tbody id='Five_Year'>
-                              <tr>
-                                <td className='courseName'>Select All</td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Select_All'
-                                    checked={fiveYearData.Select_All}
-                                    onChange={handleFiveYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Computer Science and Engineering (Dual Degree)
-                                </td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Computer_Science_and_Engineering'
-                                    checked={
-                                      fiveYearData.Computer_Science_and_Engineering
-                                    }
-                                    onChange={handleFiveYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Mathematics & Computing
-                                </td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Mathematics_and_Computing'
-                                    checked={
-                                      fiveYearData.Mathematics_and_Computing
-                                    }
-                                    onChange={handleFiveYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Applied Geology</td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Applied_Geology'
-                                    checked={fiveYearData.Applied_Geology}
-                                    onChange={handleFiveYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Applied Geophysics
-                                </td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Applied_Geophysics'
-                                    checked={fiveYearData.Applied_Geophysics}
-                                    onChange={handleFiveYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
+                              {fiveYearIntFields &&
+                                fiveYearIntFields.map((field) => (
+                                  <tr>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'FYI' && word + ' '}</>
+                                      ))}
+                                    </td>
+                                    <td className='courseCheckBox5year'>
+                                      <input
+                                        name={field}
+                                        checked={
+                                          infData.Five_Year_Integrated[field]
+                                        }
+                                        onChange={(e) =>
+                                          handleOnChange(
+                                            'Five_Year_Integrated',
+                                            e.target.name,
+                                            e.target.checked,
+                                            'FYI_Select_All'
+                                          )
+                                        }
+                                        type='checkbox'
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
                             </tbody>
                           </table>
                           <div className='collapse-div d-flex justify-content-end'>
@@ -317,7 +286,7 @@ export default function INF2({
                         </div>
                       ) : (
                         <div></div>
-                      )} */}
+                      )}
                     </div>
                     <div ref={refdoublemajor} className='eligible-type my-3'>
                       <div
@@ -350,37 +319,35 @@ export default function INF2({
                           </p>
                         </div>
                       </div>
-                      {/* {doublemajor === true ? (
+                      {doublemajor === true ? (
                         <div className='eligible-option'>
                           <table className='m-0'>
                             <tbody id='Five_Year'>
-                              <tr>
-                                <td className='courseName'>Select All</td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Select_All'
-                                    checked={doubleMajorData.Select_All}
-                                    onChange={handleDoubleMajorChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Computer Science and Engineering (Double
-                                  Major)
-                                </td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Computer_Science_and_Engineering_Double_Major'
-                                    checked={
-                                      doubleMajorData.Computer_Science_and_Engineering_Double_Major
-                                    }
-                                    onChange={handleDoubleMajorChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
+                              {doubleMajorFields &&
+                                doubleMajorFields.map((field) => (
+                                  <tr>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'FYI' && word + ' '}</>
+                                      ))}
+                                    </td>
+                                    <td className='courseCheckBox5year'>
+                                      <input
+                                        name={field}
+                                        checked={infData.Double_Major[field]}
+                                        onChange={(e) =>
+                                          handleOnChange(
+                                            'Double_Major',
+                                            e.target.name,
+                                            e.target.checked,
+                                            'DM_Select_All'
+                                          )
+                                        }
+                                        type='checkbox'
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
                             </tbody>
                           </table>
                           <div className='collapse-div d-flex justify-content-end'>
@@ -404,7 +371,7 @@ export default function INF2({
                         </div>
                       ) : (
                         <div></div>
-                      )} */}
+                      )}
                     </div>
                     <div ref={refdualdegree} className='eligible-type my-3'>
                       <div
@@ -437,53 +404,35 @@ export default function INF2({
                           </p>
                         </div>
                       </div>
-                      {/* {dualdegree === true ? (
+                      {dualdegree === true ? (
                         <div className='eligible-option'>
                           <table className='m-0'>
                             <tbody id='Five_Year'>
-                              <tr>
-                                <td className='courseName'>Select All</td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Select_All'
-                                    checked={dualDegreeData.Select_All}
-                                    onChange={handleDualDegreeChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Computer Science and Engineering (B.Tech and
-                                  M.Tech in Different Departments)
-                                </td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Computer_Science_and_Engineering_Dual_Degree'
-                                    checked={
-                                      dualDegreeData.Computer_Science_and_Engineering_Dual_Degree
-                                    }
-                                    onChange={handleDualDegreeChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Environmental Science and Engineering (B.Tech
-                                  and M.Tech in Same Different)
-                                </td>
-                                <td className='courseCheckBox5year'>
-                                  <input
-                                    name='Environmental_Science_and_Engineering_Dual_Degree'
-                                    checked={
-                                      dualDegreeData.Environmental_Science_and_Engineering_Dual_Degree
-                                    }
-                                    onChange={handleDualDegreeChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
+                              {dualDegreeFields &&
+                                dualDegreeFields.map((field) => (
+                                  <tr>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'DD' && word + ' '}</>
+                                      ))}
+                                    </td>
+                                    <td className='courseCheckBox5year'>
+                                      <input
+                                        name={field}
+                                        checked={infData.Dual_Degree[field]}
+                                        onChange={(e) =>
+                                          handleOnChange(
+                                            'Dual_Degree',
+                                            e.target.name,
+                                            e.target.checked,
+                                            'DD_Select_All'
+                                          )
+                                        }
+                                        type='checkbox'
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
                             </tbody>
                           </table>
                           <div className='collapse-div d-flex justify-content-end'>
@@ -507,7 +456,7 @@ export default function INF2({
                         </div>
                       ) : (
                         <div></div>
-                      )} */}
+                      )}
                     </div>
                   </div>
                 </div>
@@ -515,7 +464,7 @@ export default function INF2({
                 <div></div>
               )}
             </div>
-            {/* <div className='lower p-0 my-3 animate__animated animate__fadeInRight'>
+            <div className='lower p-0 my-3 animate__animated animate__fadeInRight'>
               <div
                 onClick={() => {
                   setTimeout(() => {
@@ -585,235 +534,31 @@ export default function INF2({
                         <div className='eligible-option'>
                           <table>
                             <tbody id='Two_Year'>
-                              <tr>
-                                <td className='courseName'>Select All</td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Select_All'
-                                    checked={twoYearData.Select_All}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Applied Geology</td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Applied_Geology'
-                                    checked={twoYearData.Applied_Geology}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Applied Geophysics
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Applied_Geophysics'
-                                    checked={twoYearData.Applied_Geophysics}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Chemical Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Chemical_Engineering'
-                                    checked={twoYearData.Chemical_Engineering}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Civil Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Civil_Engineering'
-                                    checked={twoYearData.Civil_Engineering}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Computer Science and Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Computer_Science_and_Engineering'
-                                    checked={
-                                      twoYearData.Computer_Science_and_Engineering
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Data Analytics</td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Data_Analytics'
-                                    checked={twoYearData.Data_Analytics}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Electrical Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Electrical_Engineering'
-                                    checked={twoYearData.Electrical_Engineering}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Electronics & Communication Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Electronics_and_Communication_Engineering'
-                                    checked={
-                                      twoYearData.Electronics_and_Communication_Engineering
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Environmental Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Environmental_Engineering'
-                                    checked={
-                                      twoYearData.Environmental_Engineering
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Industrial Engineering & Management
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Industrial_Engineering_and_Management'
-                                    checked={
-                                      twoYearData.Industrial_Engineering_and_Management
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Mechanical Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Mechanical_Engineering'
-                                    checked={twoYearData.Mechanical_Engineering}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Fuel, Minerals & Metallurgical Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Fuel_Minerals_and_Metallurgical_Engineering'
-                                    checked={
-                                      twoYearData.Fuel_Minerals_and_Metallurgical_Engineering
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Mining Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Mining_Engineering'
-                                    checked={twoYearData.Mining_Engineering}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Mining Machinery Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Mining_Machinery_Engineering'
-                                    checked={
-                                      twoYearData.Mining_Machinery_Engineering
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Petroleum Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Petroleum_Engineering'
-                                    checked={twoYearData.Petroleum_Engineering}
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Pharmaceutical Science & Engineering
-                                </td>
-                                <td className='courseCheckBox2MTech'>
-                                  <input
-                                    name='Pharmaceutical_Science_and_Engineering'
-                                    checked={
-                                      twoYearData.Pharmaceutical_Science_and_Engineering
-                                    }
-                                    onChange={handleTwoYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
+                              {twoYearMtechFields &&
+                                twoYearMtechFields.map((field) => (
+                                  <tr>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'TWM' && word + ' '}</>
+                                      ))}
+                                    </td>
+                                    <td className='courseCheckBox5year'>
+                                      <input
+                                        name={field}
+                                        checked={infData.Two_Year_Mtech[field]}
+                                        onChange={(e) =>
+                                          handleOnChange(
+                                            'Two_Year_Mtech',
+                                            e.target.name,
+                                            e.target.checked,
+                                            'TWM_Select_All'
+                                          )
+                                        }
+                                        type='checkbox'
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
                             </tbody>
                           </table>
                           <div className='collapse-div d-flex justify-content-end'>
@@ -874,74 +619,31 @@ export default function INF2({
                         <div className='eligible-option'>
                           <table>
                             <tbody id='Two_Year_Mba'>
-                              <tr>
-                                <td className='courseName'>Select All</td>
-                                <td className='courseCheckBoxmba'>
-                                  <input
-                                    name='Select_All'
-                                    checked={twoYearMbaData.Select_All}
-                                    onChange={handleTwoYearMbaChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Business Analytics
-                                </td>
-                                <td className='courseCheckBoxmba'>
-                                  <input
-                                    name='Business_Analytics'
-                                    checked={twoYearMbaData.Business_Analytics}
-                                    onChange={handleTwoYearMbaChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Finance</td>
-                                <td className='courseCheckBoxmba'>
-                                  <input
-                                    name='Finance'
-                                    checked={twoYearMbaData.Finance}
-                                    onChange={handleTwoYearMbaChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Human Resources</td>
-                                <td className='courseCheckBoxmba'>
-                                  <input
-                                    name='Human_Resources'
-                                    checked={twoYearMbaData.Human_Resources}
-                                    onChange={handleTwoYearMbaChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Marketing</td>
-                                <td className='courseCheckBoxmba'>
-                                  <input
-                                    name='Marketing'
-                                    checked={twoYearMbaData.Marketing}
-                                    onChange={handleTwoYearMbaChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Operations</td>
-                                <td className='courseCheckBoxmba'>
-                                  <input
-                                    name='Operations'
-                                    checked={twoYearMbaData.Operations}
-                                    onChange={handleTwoYearMbaChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
+                              {twoYearMbaFields &&
+                                twoYearMbaFields.map((field) => (
+                                  <tr>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'TYMB' && word + ' '}</>
+                                      ))}
+                                    </td>
+                                    <td className='courseCheckBox5year'>
+                                      <input
+                                        name={field}
+                                        checked={infData.Two_Year_MBA[field]}
+                                        onChange={(e) =>
+                                          handleOnChange(
+                                            'Two_Year_MBA',
+                                            e.target.name,
+                                            e.target.checked,
+                                            'TYMB_Select_All'
+                                          )
+                                        }
+                                        type='checkbox'
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
                             </tbody>
                           </table>
                           <div className='collapse-div d-flex justify-content-end'>
@@ -1002,41 +704,31 @@ export default function INF2({
                         <div className='eligible-option'>
                           <table>
                             <tbody id='Three_Year'>
-                              <tr>
-                                <td className='courseName'>Select All</td>
-                                <td className='courseCheckBox3MSc'>
-                                  <input
-                                    name='Select_All'
-                                    checked={threeYearData.Select_All}
-                                    onChange={handleThreeYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>Applied Geology</td>
-                                <td className='courseCheckBox3MSc'>
-                                  <input
-                                    name='Applied_Geology'
-                                    checked={threeYearData.Applied_Geology}
-                                    onChange={handleThreeYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td className='courseName'>
-                                  Applied Geophysics
-                                </td>
-                                <td className='courseCheckBox3MSc'>
-                                  <input
-                                    name='Applied_Geophysics'
-                                    checked={threeYearData.Applied_Geophysics}
-                                    onChange={handleThreeYearChange}
-                                    type='checkbox'
-                                  />
-                                </td>
-                              </tr>
+                              {threeYearMscFields &&
+                                threeYearMscFields.map((field) => (
+                                  <tr>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'TYM' && word + ' '}</>
+                                      ))}
+                                    </td>
+                                    <td className='courseCheckBox5year'>
+                                      <input
+                                        name={field}
+                                        checked={infData.Three_Year_Msc[field]}
+                                        onChange={(e) =>
+                                          handleOnChange(
+                                            'Three_Year_Msc',
+                                            e.target.name,
+                                            e.target.checked,
+                                            'TYM_Select_All'
+                                          )
+                                        }
+                                        type='checkbox'
+                                      />
+                                    </td>
+                                  </tr>
+                                ))}
                             </tbody>
                           </table>
                           <div className='collapse-div d-flex justify-content-end'>
@@ -1062,7 +754,7 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
-                    <div ref={refmsc2} className='eligible-type my-3'>
+                    {/* <div ref={refmsc2} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -1169,85 +861,51 @@ export default function INF2({
                       ) : (
                         <div></div>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ) : (
                 <div></div>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
 
         <div>
-          {/* <div className="startTextBold">Skill Based Hiring</div>
-          <div className="startTextBoldSmall">
+          <div className='startTextBold'>Skill Based Hiring</div>
+          <div className='startTextBoldSmall'>
             Students with certified technical expertise in the following skills
             (from Coursera, Udemy etc.)
           </div>
           <table>
-            <tbody id="Skill">
-              <tr>
-                <td className="courseName">C, C++, Java, Python etc.</td>
-                <td className="courseCheckBoxSkill">
-                  <input
-                    name="C_Cpp_Java_Python_etc"
-                    checked={skillData.C_Cpp_Java_Python_etc}
-                    onChange={handleSkillChange}
-                    type="checkbox"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="courseName">
-                  Full Stack Development (Frontend/Backend)
-                </td>
-                <td className="courseCheckBoxSkill">
-                  <input
-                    name="Full_Stack_Development_Frontend_or_Backend"
-                    checked={skillData.Full_Stack_Development_Frontend_or_Backend}
-                    onChange={handleSkillChange}
-                    type="checkbox"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="courseName">Civil Engineering</td>
-                <td className="courseCheckBoxSkill">
-                  <input
-                    name="Civil_Engineering"
-                    checked={skillData.Civil_Engineering}
-                    onChange={handleSkillChange}
-                    type="checkbox"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="courseName">AI/ML/DL, Data Science</td>
-                <td className="courseCheckBoxSkill">
-                  <input
-                    name="AI_ML_DL_Data_Science"
-                    checked={skillData.AI_ML_DL_Data_Science}
-                    onChange={handleSkillChange}
-                    type="checkbox"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td className="courseName">
-                  Business/Data Analytics, Product Management
-                </td>
-                <td className="courseCheckBoxSkill">
-                  <input
-                    name="Business_Data_Analytics_Product_Management"
-                    checked={skillData.Business_Data_Analytics_Product_Management}
-                    onChange={handleSkillChange}
-                    type="checkbox"
-                  />
-                </td>
-              </tr>
+            <tbody id='Skill'>
+              {skillBasedFields &&
+                skillBasedFields.map((field) => (
+                  <tr>
+                    <td className='courseName'>
+                      {field.split('_').map((word) => (
+                        <>{word !== 'SB' && word + ' '}</>
+                      ))}
+                    </td>
+                    <td className='courseCheckBox5year'>
+                      <input
+                        name={field}
+                        checked={infData.Skill_Based[field]}
+                        onChange={(e) =>
+                          handleOnChange(
+                            'Skill_Based',
+                            e.target.name,
+                            e.target.checked,
+                            'SB_Select_All'
+                          )
+                        }
+                        type='checkbox'
+                      />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
-          </table> */}
+          </table>
         </div>
         <div className='flex'>
           <button

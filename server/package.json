@@ -20,6 +20,7 @@
     "bcryptjs": "^2.4.3",
     "convertapi": "^1.11.1",
     "cors": "^2.8.5",
+    "docx-pdf": "^0.0.1",
     "docxtemplater": "^3.29.0",
     "dotenv-safe": "^8.2.0",
     "email-validator": "^2.0.4",
