@@ -8,7 +8,7 @@ import "./styles.css";
 import { postContactData } from "../../api";
 import cllgPhoto from "./../../Images/contact-us.png";
 import { Toast } from "reactstrap";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 const ContactUs = () => {
   const Navigate = useNavigate();
 
@@ -47,7 +47,6 @@ const ContactUs = () => {
     } catch (error) {
       Navigate("/badgateway");
     }
-    
   };
   return (
     <>
@@ -122,7 +121,7 @@ const ContactUs = () => {
                             type="submit"
                             className="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2 "
                           >
-                            <span > SUBMIT</span>
+                            <span> SUBMIT</span>
                           </button>
                         </div>
                       </div>
@@ -154,10 +153,7 @@ const ContactUs = () => {
                           </div>
                           <div className="ms-4">
                             <h6 className="font-weight-medium">Phone</h6>
-                            <p className="">
-                              251 546 9442
-                              <br /> 630 446 8851
-                            </p>
+                            <p>97714-90999</p>
                           </div>
                         </div>
                       </div>
@@ -168,7 +164,7 @@ const ContactUs = () => {
                           </div>
                           <div className="mx-3">
                             <h6 className="font-weight-medium">Email</h6>
-                            <p className="">
+                            <p>
                               cdc@iitism.ac.in
                               {/* <br /> 123@wrappixel.com */}
                             </p>
