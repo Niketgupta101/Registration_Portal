@@ -161,6 +161,10 @@ tr {
   margin: 1em 1em;
   /* border: 3px solid rgba(0, 0, 0, 0.08); */
 }
+.css-1ygcj2i-MuiTableCell-root {
+  font-size: 0.93rem !important;
+  font-weight: 600 !important;
+}
 
 @media (max-width: 400px) {
   .category h3 {
