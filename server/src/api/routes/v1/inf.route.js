@@ -64,7 +64,7 @@ router.post('/new', protect, createInf);
 
 router.put('/new/update', protect, updateInf);
 
-router.put('/new/submit/:infId', protect, submitReviewedInf);
+router.put('/new/submit/:infId', submitReviewedInf);
 
 router.delete('/new/delete/:infId', protect, removeInf);
 
