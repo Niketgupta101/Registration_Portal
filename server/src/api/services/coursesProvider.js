@@ -1,11 +1,23 @@
 const { readSheet } = require('../utils/service/GSheets');
 
-exports.readCoursesGSheets = async () => {
+exports.getPlacementData = async () => {
   try {
     const data = await readSheet(
       '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
-      'Courses',
-      'A2:K'
+      'Courses-Placement',
+      'A2:D91'
+    );
+    return { success: true, data: data };
+  } catch (error) {
+    return error;
+  }
+};
+exports.getInternshipData = async () => {
+  try {
+    const data = await readSheet(
+      '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+      'Courses-Internship',
+      'A2:D107'
     );
     return { success: true, data: data };
   } catch (error) {

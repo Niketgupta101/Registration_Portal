@@ -3,13 +3,18 @@ import { Save } from "@material-ui/icons";
 import React, { useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { resetPassword } from "../../api";
+import {
+  FaEyeSlash,
+  FaEye
+} from "react-icons/fa";
 
 import "./styles.css";
 
 const ResetPassword = () => {
     const [password, setPassword] = useState("");
     const Navigate = useNavigate();
-
+    const [showPass,setShowPass]=useState(false);
+    
     const {id} = useParams();
 
     const handleSubmit = async (e) => {
@@ -36,14 +41,17 @@ const ResetPassword = () => {
             <TextField
               name="password"
               label="New Password"
-              type="password"
+              type={showPass?"text":"password"}
               variant="filled"
               style={{ width: "100%"}}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               autoFocus
-            />
+            >
+           
+            </TextField>
+            {showPass?<FaEye style={{ fontSize: "1.5em" }} onClick={()=>setShowPass((prev)=>!prev) } />:<FaEyeSlash style={{ fontSize: "1.5em" }} onClick={()=>setShowPass((prev)=>!prev) }/>} 
             <Button
               endIcon={<Save />}
               style={{

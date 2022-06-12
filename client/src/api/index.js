@@ -229,7 +229,8 @@ export const searchJnfByPattern = (pattern) =>
 
 // ------------------------ Courses ------------------------------------
 
-export const getAllCourseData = () => API.get('/courses', setHeader());
+export const getInternshipData = () => API.get('/courses/internship', setHeader());
+export const getPlacementData  = () => API.get('/courses/placement', setHeader());
 
 export const getPlacedCount = () =>
   API.get('/courses/placed/count', setHeader());

@@ -3,6 +3,8 @@ import "./newStyle.css";
 import {
   FaArchway,
   FaUserAlt,
+  FaEyeSlash,
+  FaEye,
   FaLock,
   FaEnvelope,
   FaPhoneAlt,
@@ -22,6 +24,9 @@ export const Home2 = ({
   handleForgotPassword,
   handleCompanySubmit,
 }) => {
+   const [showPass,setShowPass]=useState(false);
+   const [showConfPass,setShowConfPass]=useState(false);
+
   return (
     <div className="w3layouts-main">
       <div className="bg-layer">
@@ -95,26 +100,34 @@ export const Home2 = ({
                       <FaLock />
                     </div>
                     <input
-                      type="password"
+                      type={showPass?"text":"password"}
                       name="password"
                       placeholder="Password *"
                       required=""
                       value={AuthData.password}
                       onChange={handleAuthChange}
                     />
+                    <div className="me-2">
+                     {showPass?<FaEye onClick={()=>setShowPass((prev)=>!prev) } />:<FaEyeSlash onClick={()=>setShowPass((prev)=>!prev) }/>} 
+
+                    </div>
                   </div>
                   <div className="icon1 d-flex my-2">
                     <div className="me-2">
                       <FaLock />
                     </div>
                     <input
-                      type="password"
+                      type={showConfPass?"text":"password"}
                       name="confirmPassword"
                       placeholder="Re-enter Password *"
                       required=""
                       value={AuthData.confirmPassword}
                       onChange={handleAuthChange}
                     />
+                    <div className="me-2">
+                     {showConfPass?<FaEye onClick={()=>setShowConfPass((prev)=>!prev) } />:<FaEyeSlash onClick={()=>setShowConfPass((prev)=>!prev) }/>} 
+
+                    </div>
                   </div>
 
                   <div className="bottom mb-2 mt-4">
@@ -158,13 +171,17 @@ export const Home2 = ({
                     <FaLock />
                   </div>
                   <input
-                    type="password"
+                   type={showPass?"text":"password"}
                     name="password"
                     placeholder="Password"
                     required=""
                     value={AuthData.password}
                     onChange={handleAuthChange}
                   />
+                   <div className="me-2">
+                     {showPass?<FaEye onClick={()=>setShowPass((prev)=>!prev) } />:<FaEyeSlash onClick={()=>setShowPass((prev)=>!prev) }/>} 
+
+                    </div>
                 </div>
 
                 <div className="bottom mb-2 mt-5">
