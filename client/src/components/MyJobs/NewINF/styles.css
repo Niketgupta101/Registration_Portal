@@ -5,6 +5,7 @@
   background-attachment: fixed;
   background-size: cover;
 }
+
 .overallDiv1 {
   justify-content: center;
   margin: auto 10% !important;
@@ -55,7 +56,6 @@
 .upper {
   width: 100%;
   padding: 10px 0 10px 30px;
-  /* background-color: #c8e5fd; */
   border-radius: 10px;
 }
 
@@ -64,17 +64,11 @@
   border-radius: 0px 0px 10px 10px;
   color: rgb(0, 0, 0);
 }
-.lower Label {
-  text-transform: capitalize;
-}
 
 .lower h4 {
   color: #2999f5;
 }
 
-.eligible-options {
-  background-color: #7ab4e41e;
-}
 .eligible-type {
   background-color: white;
   padding: 20px;

@@ -233,3 +233,21 @@ export const getAllCourseData = () => API.get('/courses', setHeader());
 
 export const getPlacedCount = () =>
   API.get('/courses/placed/count', setHeader());
+
+// -------------------------------------------
+
+export const fetchInf = (id) => API.get(`inf/new/fetch/${id}`, setHeader());
+export const createInf = (data) => API.post(`inf/new`, data, setHeader());
+export const updateInf = (data) => API.put('inf/new/update', data, setHeader());
+export const submitReviewedInf = (id) =>
+  API.put(`inf/new/submit/${id}`, setHeader());
+export const removeInf = (id) =>
+  API.delete(`inf/new/delete/${id}`, setHeader());
+export const fetchAllInf = (pageLimit, pageNo) =>
+  API.get(`inf/new/admin/${pageLimit}/${pageNo}`, setHeader());
+export const fetchAllInfForUser = (pageLimit, pageNo) =>
+  API.get(`inf/new/user/${pageLimit}/${pageNo}`, setHeader());
+export const fetchPendingInfForUser = (pageLimit, pageNo) =>
+  API.get(`inf/new/user/pending/${pageLimit}/${pageNo}`, setHeader());
+export const searchInf = (pattern, pageLimit, pageNo) =>
+  API.get(`inf/new/search/${pattern}/${pageLimit}/${pageNo}`, setHeader());

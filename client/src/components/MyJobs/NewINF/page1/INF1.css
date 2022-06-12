@@ -1,0 +1,22 @@
+.inputText {
+  height: 21px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  font-size: 17px !important;
+  line-height: 1.1 !important;
+}
+
+Form {
+  margin: 2rem auto;
+}
+
+@media (max-width: 600px) {
+  .overallDiv1 {
+    justify-content: center;
+    margin: auto 5% !important;
+  }
+}
+.css-qfz70r-MuiFormGroup-root {
+  justify-content: space-around;
+  margin-right: 30px;
+}

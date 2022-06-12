@@ -1,0 +1,91 @@
+.inputText {
+  height: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  align-items: center;
+}
+.fontText {
+  font-size: 19px;
+  justify-content: center;
+  color: rgb(0, 87, 168);
+  padding-top: 10px;
+  padding-bottom: 5px;
+  text-align: left;
+  margin: 0 !important;
+}
+.resume {
+  font-size: 19px;
+  margin-left: 132px;
+  text-align: center;
+}
+.type {
+  font-size: 19px;
+  margin-left: 150px;
+  text-align: center;
+}
+.round {
+  font-size: 19px;
+  margin-left: 72px;
+  text-align: center;
+}
+.resume2 {
+  font-size: 19px;
+  margin-left: 196px;
+  text-align: center;
+}
+.type2 {
+  font-size: 19px;
+  margin-left: 150px;
+  text-align: center;
+}
+.round2 {
+  font-size: 19px;
+  margin-left: 131px;
+  text-align: center;
+}
+.round3 {
+  font-size: 19px;
+  margin-left: 114px;
+  text-align: center;
+}
+.button {
+  padding-top: 30px;
+}
+.successButton {
+  margin-left: 999px;
+}
+.checkBox {
+  margin-left: 9px;
+}
+tr {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.align {
+  align-items: center;
+}
+.type,
+.resume,
+.round {
+  font-size: 16px !important;
+  margin: 0 !important;
+}
+.optionPriority {
+  font-size: larger;
+  padding: 1rem;
+}
+.MuiFormControlLabel-label {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.43 !important;
+  letter-spacing: 0.01071em !important;
+}
+
+@media (max-width: 600px) {
+  .overallDiv1 {
+    justify-content: center;
+    margin: auto 5% !important;
+  }
+}
