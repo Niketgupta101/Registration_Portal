@@ -95,6 +95,46 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
             </FormGroup>
           ))}
         <div>
+          <header className='headerText'>Primary Hr Details</header>
+        </div>
+        {primaryHrFields &&
+          primaryHrFields.map((field) => (
+            <FormGroup row style={style}>
+              <Label for='exampleText' sm={4} className='fontText'>
+                {field.split('_').map((word) => (
+                  <>{word !== 'PH' && word + ' '}</>
+                ))}
+              </Label>
+              <Col sm={8}>
+                <h1 className='inputText'>{infData.Primary_Hr[field]}</h1>
+              </Col>
+            </FormGroup>
+          ))}
+        {infData.Secondary_Hr.SH_Name !== '' ||
+        infData.Secondary_Hr.SH_Email !== '' ||
+        infData.Secondary_Hr.SH_Mobile !== '' ? (
+          <>
+            <div>
+              <header className='headerText'>Alternate Hr Details</header>
+            </div>
+            {secondaryHrFields &&
+              secondaryHrFields.map((field) => (
+                <FormGroup row style={style}>
+                  <Label for='exampleText' sm={4} className='fontText'>
+                    {field.split('_').map((word) => (
+                      <>{word !== 'SH' && word + ' '}</>
+                    ))}
+                  </Label>
+                  <Col sm={8}>
+                    <h1 className='inputText'>{infData.Secondary_Hr[field]}</h1>
+                  </Col>
+                </FormGroup>
+              ))}
+          </>
+        ) : (
+          <></>
+        )}
+        <div>
           <header className='headerText m-0'>
             Eligible courses and disciplines- Undergraduate
           </header>
@@ -356,6 +396,39 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                       <input
                         name={field}
                         checked={infData.Two_Year_Msc[field]}
+                        type='checkbox'
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <header className='headerText m-0 mt-4'>Skill Based Hiring</header>
+        </div>
+        <div className='startText mx-2 mb-2'>
+          <small className=' animate__animated animate__fadeIn'>
+            Students with certified technical expertise in the following skills
+            (from Coursera, Udemy etc.)
+          </small>
+        </div>
+        <div>
+          <table>
+            <tbody id='Three_Year'>
+              {skillBasedFields &&
+                skillBasedFields.map((field) => (
+                  <tr>
+                    <td className='courseName'>
+                      {field.split('_').map((word) => (
+                        <>{word !== 'SB' && word + ' '}</>
+                      ))}
+                    </td>
+                    <td className='courseCheckBoxBtech'>
+                      <input
+                        name={field}
+                        checked={infData.Skill_Based[field]}
                         type='checkbox'
                         readOnly
                       />

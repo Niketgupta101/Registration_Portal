@@ -13,6 +13,7 @@ const {
 } = require('../service/PDFservice/upload');
 const { sendMailWithAttachment } = require('../service/email');
 const { NewInf } = require('../../models/InfData');
+const { readSheet, updateSheet } = require('../service/GSheets');
 
 let basePathname;
 
@@ -186,6 +187,8 @@ const createInfPdfForStudent = async (infId, filename) => {
   });
 
   await inf.save();
+
+  await updateInfInGSheets(inf);
 };
 
 const getReleventData = ({ data }) => {
@@ -195,6 +198,34 @@ const getReleventData = ({ data }) => {
     else newData[field] = 'No';
   }
   return newData;
+};
+
+const updateInfInGSheets = async (inf) => {
+  let details = [
+    inf._id.valueOf(),
+    inf.userId,
+    inf.Company_Overview.CO_Name_Of_The_Company,
+    // ...getValues(inf.Intern_Profile),
+    inf.Intern_Profile.IP_Job_Designation,
+    // ...getValues(inf.Salary_Details),
+    inf.previewLink,
+    inf.downloadLink,
+    inf.createdAt,
+    inf.updatedAt,
+  ];
+
+  let data = await readSheet(
+    '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+    'INF',
+    'A1:J'
+  );
+  data.push(details);
+  await updateSheet(
+    '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
+    'INF',
+    data,
+    'A1:J'
+  );
 };
 
 module.exports = { createInfPdfForAdmin, createInfPdfForStudent };

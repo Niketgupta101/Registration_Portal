@@ -12,6 +12,9 @@ import {
   deleteInfById,
   deleteJnfById,
   createInf,
+  fetchAllInfForUser,
+  fetchPendingInfForUser,
+  removeInf,
 } from '../../api';
 import Loading from '../Loading/Loading';
 import Stack from '@mui/material/Stack';
@@ -55,26 +58,27 @@ const MyJobs = () => {
     setIsLoading(true);
     try {
       if (Filter === 'All Forms') {
-        let response = await getAllJobsForUser(pageNo);
+        let response = await fetchAllInfForUser(12, pageNo);
 
         setJobs(response.data.jobs);
       } else if (Filter === 'Internships') {
-        let response = await getAllInfForUser(user._id, pageNo);
+        let response = await fetchAllInfForUser(12, pageNo);
         setJobs(response.data.jobs);
       } else if (Filter === 'Jobs') {
-        let response = await getAllJnfForUser(user._id, pageNo);
+        let response = await getAllJnfForUser(12, pageNo);
         setJobs(response.data.jobs);
       } else if (Filter === 'Pending Forms') {
-        let response = await getAllPendingJobsForUser(pageNo);
+        let response = await fetchPendingInfForUser(12, pageNo);
         setJobs(response.data.jobs);
       }
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       setIsLoading(false);
-      Navigate('/badgateway');
+      // Navigate('/badgateway');
     }
   };
-
+  console.log({ Jobs });
   let companyData;
   if (company && company.length !== 0) {
     companyData = {
@@ -147,15 +151,16 @@ const MyJobs = () => {
     async function filterJobs() {
       try {
         for (let i in Jobs) {
-          if (Jobs[i].data.Company_Overview === undefined) {
-            if (Jobs[i].data.isIntern) {
-              await deleteInfById(Jobs[i].data._id);
+          if (Jobs[i].Company_Overview === undefined) {
+            if (Jobs[i].isIntern) {
+              await removeInf(Jobs[i]._id);
             } else {
               await deleteJnfById(Jobs[i].data._id);
             }
           }
         }
       } catch (error) {
+        console.log(error);
         Navigate('/badgateway');
       }
     }
@@ -231,7 +236,7 @@ const MyJobs = () => {
                 >
                   <option value='All Forms'>All Forms</option>
                   <option value='Internships'>Internships</option>
-                  <option value='Jobs'>Jobs</option>
+                  {/* <option value='Jobs'>Jobs</option> */}
                   <option value='Pending Forms'>Pending Forms</option>
                 </select>
               </div>
@@ -241,19 +246,16 @@ const MyJobs = () => {
               {Jobs &&
                 Jobs.map((job) => (
                   <div className='job_card' key={job._id}>
-                    {console.log(job)}
                     <div
                       className='badge'
-                      style={{ backgroundColor: !job.data?.isIntern && 'red' }}
+                      style={{ backgroundColor: !job?.isIntern && 'red' }}
                     >
-                      <h6>{job.data?.isIntern ? 'Intern' : 'JOB'}</h6>
+                      <h6>{job?.isIntern ? 'Intern' : 'JOB'}</h6>
                     </div>
 
                     <div className='card_content'>
                       <div className='content_heading'>
-                        <h4>
-                          {job.data?.Company_Overview?.Name_Of_The_Company}
-                        </h4>
+                        <h4>{job?.Company_Overview?.CO_Name_Of_The_Company}</h4>
                       </div>
                       <div
                         className='content_text'
@@ -261,48 +263,49 @@ const MyJobs = () => {
                       >
                         <h5>
                           <span>Duration: </span>
-                          {job.data?.Intern_Profile?.Internship_Duration}
+                          {job?.Intern_Profile?.IP_Internship_Duration}
                         </h5>
                         <h5>
-                          {job.data.isIntern ? (
+                          {job.isIntern ? (
                             <>
                               <span>Mode</span>:{' '}
-                              {job.data?.Intern_Profile?.Mode_Of_Internship}
+                              {job?.Intern_Profile?.IP_Mode_Of_Internship}
                             </>
                           ) : (
                             <>
                               <span>Place of posting</span>:{' '}
-                              {job.data?.Job_Details?.Place_Of_Posting}
+                              {job?.Job_Details?.JD_Place_Of_Posting}
                             </>
                           )}
                         </h5>
                         <h5>
-                          {job.data.isIntern ? (
+                          {job.isIntern ? (
                             <>
                               <span>Stipend</span>:{' '}
-                              {job.data?.Salary_Details?.Salary_Per_Month}
+                              {job?.Stipend_Details?.SD_Salary_Per_Month}
                             </>
                           ) : (
                             <>
-                              <span>CTC</span>: {job?.data?.Salary_Details?.CTC}
+                              <span>CTC</span>:{' '}
+                              {job?.data?.Salary_Details?.SD_CTC}
                             </>
                           )}
                         </h5>
-                        {job.progress === 'incomplete' ? (
+                        {job.status === 'incomplete' ? (
                           <h5>
                             <span>Form Status:</span>: Incomplete
                           </h5>
                         ) : (
                           <h5>
                             <span>Submitted On:</span>:{' '}
-                            {job.data.updatedAt.slice(8, 10) +
+                            {job.updatedAt.slice(8, 10) +
                               '/' +
-                              job.data.updatedAt.slice(5, 7) +
+                              job.updatedAt.slice(5, 7) +
                               '/' +
-                              job.data.updatedAt.slice(0, 4)}
+                              job.updatedAt.slice(0, 4)}
                           </h5>
                         )}
-                        {job.progress === 'incomplete' ? (
+                        {job.status === 'incomplete' ? (
                           <div
                             style={{
                               display: 'flex',
@@ -312,7 +315,7 @@ const MyJobs = () => {
                             <button
                               className='secondary_btn'
                               onClick={() =>
-                                handleEditJob(job.data._id, job.data.isIntern)
+                                handleEditJob(job._id, job.isIntern)
                               }
                             >
                               Continue
@@ -320,7 +323,7 @@ const MyJobs = () => {
                             <button
                               className='secondary_btn secondary_btn_delete'
                               onClick={() =>
-                                handleDelete([job.data._id, job.data.isIntern])
+                                handleDelete([job._id, job.isIntern])
                               }
                             >
                               Delete
@@ -335,7 +338,7 @@ const MyJobs = () => {
                           >
                             <button className='secondary_btn'>
                               <a
-                                href={job.data.previewLink}
+                                href={job.adminPreviewLink}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',
@@ -346,7 +349,7 @@ const MyJobs = () => {
                             </button>
                             <button className='secondary_btn'>
                               <a
-                                href={job.data.downloadLink}
+                                href={job.adminDownloadLink}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',

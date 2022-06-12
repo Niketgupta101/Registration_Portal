@@ -136,7 +136,7 @@ const Navbar = () => {
                 ) : (
                   <></>
                 )}
-                {user && user.role === 'Admin' ? (
+                {/* {user && user.role === 'Admin' ? (
                   <IconButton
                     size='medium'
                     edge='end'
@@ -152,7 +152,7 @@ const Navbar = () => {
                   </IconButton>
                 ) : (
                   <></>
-                )}
+                )} */}
                 {user && user.role === 'Admin' ? (
                   <IconButton
                     size='medium'

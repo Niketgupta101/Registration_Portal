@@ -49,7 +49,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
           className='submit_btn not-allowed-btn'
           disabled
           title='Kindly fill all necessary fields'
-          style={{ cursor: 'not-allowed', border: '1px solid red' }}
+          style={{ cursor: 'not-allowed' }}
         >
           Save and Continue
         </button>
@@ -115,7 +115,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
               <div className='p-2 mx-3 animate__animated animate__zoomIn'>
                 {companyFields &&
                   companyFields.map((field) => (
-                    <FormGroup row style={style}>
+                    <FormGroup row style={style} key={field}>
                       <Label for='exampleText' sm={3} className='fontText'>
                         {field.split('_').map((word) => (
                           <>{word !== 'CO' && word + ' '}</>
@@ -694,24 +694,6 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
             <div></div>
           )}
         </div>
-        {/* <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Internship Duration</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Are you sure you want to change the internship duration to{" "}
-            {duration}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={handleAgree}>
-              Yes
-            </Button>
-          </Modal.Footer>
-        </Modal> */}
-
         <div
           className='formFlex'
           style={{
