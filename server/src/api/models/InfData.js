@@ -196,6 +196,7 @@ const SelectionProcedureSchema = {
   SPS_Personal_Interview_Date: { type: String, default: '' },
   SPS_Any_Other_Rounds_Mode: { type: String, default: '' },
   SPS_Any_Other_Rounds_Date: { type: String, default: '' },
+  SPS_OtherInformation: { type: String, default: '' },
 };
 
 const PrimaryHrSchema = {

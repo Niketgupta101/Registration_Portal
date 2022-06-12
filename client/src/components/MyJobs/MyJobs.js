@@ -124,10 +124,11 @@ const MyJobs = () => {
       setIsLoading(true);
       if (deleteId[1]) {
         try {
-          await deleteInfById(deleteId[0]);
+          await removeInf(deleteId[0]);
         } catch (error) {
+          console.log(error);
           setIsLoading(false);
-          Navigate('/badgateway');
+          // Navigate('/badgateway');
         }
       } else {
         try {

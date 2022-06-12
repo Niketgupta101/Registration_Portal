@@ -11,8 +11,6 @@ const fetchInf = async (req, res, next) => {
   try {
     let inf = await NewInf.findOne({ _id: infId });
 
-    console.log({ infId, inf });
-
     if (!inf) return next(new ErrorResponse('No INF found with given id', 404));
 
     res.status(201).json({ success: true, job: inf });
@@ -148,7 +146,6 @@ const submitReviewedInf = async (req, res, next) => {
 
 const removeInf = async (req, res, next) => {
   let { infId } = req.params;
-
   try {
     let inf = await NewInf.findOne({ _id: infId });
 
@@ -158,6 +155,7 @@ const removeInf = async (req, res, next) => {
 
     res.status(201).json({ success: true });
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
