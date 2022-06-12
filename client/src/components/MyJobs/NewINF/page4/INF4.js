@@ -246,6 +246,27 @@ const INF4 = ({ setPage, infData, handleOnChange, handleUpdateInf }) => {
             />
           </Col>
         </FormGroup>
+        <FormGroup row>
+          <Label for='exampleText' sm={5} className='fontText'>
+            Other information related to Selection Process (if any)
+          </Label>
+          <Col sm={7}>
+            <Input
+              id='exampleText'
+              name='SPS_OtherInformation'
+              className='inputText'
+              type='text'
+              value={infData.Selection_Procedure.SPS_OtherInformation}
+              onChange={(e) =>
+                handleOnChange(
+                  'Selection_Procedure',
+                  e.target.name,
+                  e.target.value
+                )
+              }
+            />
+          </Col>
+        </FormGroup>
 
         {/* <table className="my-3">
           <tbody id="Selection_Procedure">

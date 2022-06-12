@@ -157,7 +157,6 @@ const submitInfById = async (id, next) => {
 
     return { success: true, message: 'Submitted Successfully', infStatus };
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };

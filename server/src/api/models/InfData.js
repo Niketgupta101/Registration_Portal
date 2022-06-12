@@ -19,7 +19,6 @@ const InternProfileSchema = {
 
 const StipendDetailsSchema = {
   SD_Salary_Per_Month: { type: String, default: '' },
-  SD_Salary_Unit: { type: String, default: '' },
   SD_PPO_provision_on_performance_basis: { type: String, default: 'Yes' },
   SD_CTC: { type: String, default: '' },
 };

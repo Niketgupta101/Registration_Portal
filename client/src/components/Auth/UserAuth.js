@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import validator from "validator";
-import Auth from "./Auth";
-import CompanyDetails from "../CompanyDetails/CompanyDetails";
-import VerifyEmail from "./VerifyEmail";
-import { login, postCompanyDetails, register } from "../../api";
-import { TabContext, TabPanel } from "@mui/lab";
-import { Home2 } from "./Home2";
-import Loading from "../Loading/Loading";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import validator from 'validator';
+import Auth from './Auth';
+import CompanyDetails from '../CompanyDetails/CompanyDetails';
+import VerifyEmail from './VerifyEmail';
+import { login, postCompanyDetails, register } from '../../api';
+import { TabContext, TabPanel } from '@mui/lab';
+import { Home2 } from './Home2';
+import Loading from '../Loading/Loading';
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const UserAuth = () => {
   const Navigate = useNavigate();
@@ -29,13 +29,13 @@ const UserAuth = () => {
   };
 
   const handleSuccessClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setSuccessOpen(false);
   };
   const handleErrorClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setErrorOpen(false);
@@ -46,12 +46,12 @@ const UserAuth = () => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   const [AuthData, setAuthData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    contactNo: "",
-    password: "",
-    confirmPassword: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    contactNo: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const switchMode = () => {
@@ -68,23 +68,23 @@ const UserAuth = () => {
   // ------------------------------------------------------------------ Company Data
 
   const [companyData, setCompanyData] = useState({
-    name: "",
-    website: "",
-    company_type: "",
-    about: "",
-    categoryData: "",
-    sectorData: "",
+    name: '',
+    website: '',
+    company_type: '',
+    about: '',
+    categoryData: '',
+    sectorData: '',
     primary_hr: {
-      name: "",
-      contactNo: "",
-      emailId: "",
+      name: '',
+      contactNo: '',
+      emailId: '',
     },
     secondary_hr: {
-      name: "",
-      contactNo: "",
-      emailId: "",
+      name: '',
+      contactNo: '',
+      emailId: '',
     },
-    consent: "",
+    consent: '',
   });
 
   const handleCompanyChange = (e) => {
@@ -96,26 +96,26 @@ const UserAuth = () => {
 
   // --------------------------------------------------------------------- handle form submit
 
-  const [page, setPage] = useState("auth");
+  const [page, setPage] = useState('auth');
 
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
     if (
-      AuthData.firstName === "" ||
-      AuthData.lastName === "" ||
-      AuthData.email === "" ||
-      AuthData.contactNo === "" ||
-      AuthData.password === "" ||
-      AuthData.confirmPassword === ""
+      AuthData.firstName === '' ||
+      AuthData.lastName === '' ||
+      AuthData.email === '' ||
+      AuthData.contactNo === '' ||
+      AuthData.password === '' ||
+      AuthData.confirmPassword === ''
     ) {
-      toast.warn("Please fill all the entries");
+      toast.warn('Please fill all the entries');
       return;
     }
     var re = /\S+@\S+\.\S+/;
     setIsLoading(true);
     let email_check;
     try {
-      email_check = await register({ ...AuthData, email_check: "true" });
+      email_check = await register({ ...AuthData, email_check: 'true' });
     } catch (error) {
       setIsLoading(false);
       toast.warn(error.response.data.error);
@@ -123,20 +123,20 @@ const UserAuth = () => {
     }
     setIsLoading(false);
     if (!validator.isMobilePhone(AuthData.contactNo)) {
-      toast.error("Invalid Mobile Number.");
+      toast.error('Invalid Mobile Number.');
     } else if (AuthData.password != AuthData.confirmPassword) {
-      toast.warn("Passwords do not match");
-      setAuthData({ ...AuthData, confirmPassword: "" });
+      toast.warn('Passwords do not match');
+      setAuthData({ ...AuthData, confirmPassword: '' });
     } else if (re.test(AuthData.email) === false) {
-      toast.error("Invalid Email Address");
+      toast.error('Invalid Email Address');
     } else if (
-      AuthData.email.split("@")[1] === "gmail.com" ||
-      AuthData.email.split("@")[1] === "yahoo.com" ||
-      AuthData.email.split("@")[1] === "rediff.com" ||
-      AuthData.email.split("@")[1] === "outlook.com"
+      AuthData.email.split('@')[1] === 'gmail.com' ||
+      AuthData.email.split('@')[1] === 'yahoo.com' ||
+      AuthData.email.split('@')[1] === 'rediff.com' ||
+      AuthData.email.split('@')[1] === 'outlook.com'
     ) {
-      toast.error("Only Work Emails are allowed.");
-    } else setPage("company");
+      toast.error('Only Work Emails are allowed.');
+    } else setPage('company');
   };
 
   const [isLoading, setIsLoading] = useState(false);
@@ -152,16 +152,16 @@ const UserAuth = () => {
           password: AuthData.password,
         });
 
-        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem('user', JSON.stringify(data.user));
         if (!data.user.isemailVerified) {
-          setPage("verify");
+          setPage('verify');
         } else {
-          localStorage.setItem("token", JSON.stringify(data.token));
-          localStorage.setItem("company", JSON.stringify(data.company));
+          localStorage.setItem('token', JSON.stringify(data.token));
+          localStorage.setItem('company', JSON.stringify(data.company));
 
           handleSuccessClick();
-          toast.success("Successfully Logged in");
-          Navigate("/");
+          toast.success('Successfully Logged in');
+          Navigate('/');
         }
       } catch (error) {
         toast.warn(error.response.data.error);
@@ -173,47 +173,33 @@ const UserAuth = () => {
       } else {
         try {
           setIsLoading(true);
-          let { data } = await register(AuthData);
-
-          if (data) {
-            try {
-              const response = await postCompanyDetails({
-                ...companyData,
-                userId: data.newUser._id,
-              });
-              localStorage.setItem("user", JSON.stringify(data.newUser));
-              localStorage.setItem("token", JSON.stringify(data.token));
-              localStorage.setItem(
-                "company",
-                JSON.stringify(response.data.company)
-              );
-
-              handleSuccessClick();
-
-              setPage("verify");
-            } catch (error) {
-              Navigate("/badgateway");
-              handleErrorClick();
-            }
-          }
+          let { data } = await register({
+            user: AuthData,
+            company: companyData,
+          });
+          localStorage.setItem('user', JSON.stringify(data.newUser));
+          localStorage.setItem('token', JSON.stringify(data.token));
+          localStorage.setItem('company', JSON.stringify(data.company));
+          setPage('verify');
+          setIsLoading(false);
         } catch (error) {
-          Navigate("/badgateway");
+          setIsLoading(false);
+          Navigate('/badgateway');
           handleErrorClick();
         }
-        setIsLoading(false);
       }
     }
   };
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
-    Navigate("/forgotPassword");
+    Navigate('/forgotPassword');
   };
 
   return (
     <>
       <TabContext value={page}>
-        <TabPanel value="auth" style={{ padding: "0px" }}>
+        <TabPanel value='auth' style={{ padding: '0px' }}>
           <Home2
             isSignIn={isSignIn}
             AuthData={AuthData}
@@ -228,7 +214,7 @@ const UserAuth = () => {
             handleCompanySubmit={handleCompanySubmit}
           />
         </TabPanel>
-        <TabPanel value={"company"} style={{ padding: "0px" }}>
+        <TabPanel value={'company'} style={{ padding: '0px' }}>
           <CompanyDetails
             companyData={companyData}
             handleCompanyChange={handleCompanyChange}
@@ -236,9 +222,9 @@ const UserAuth = () => {
             setCompanyData={setCompanyData}
           />
         </TabPanel>
-        <TabPanel value={"verify"} style={{ padding: "0px" }}>
+        <TabPanel value={'verify'} style={{ padding: '0px' }}>
           <VerifyEmail
-            email={JSON.parse(localStorage.getItem("user"))?.emailId}
+            email={JSON.parse(localStorage.getItem('user'))?.emailId}
             setIsSignIn={setIsSignIn}
             setPage={setPage}
           />
