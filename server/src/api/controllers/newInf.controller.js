@@ -3,6 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const {
   createInfPdfForAdmin,
   createInfPdfForStudent,
+  updateInfInGSheets,
 } = require('../utils/PdfService/createInfPdf');
 
 const fetchInf = async (req, res, next) => {
@@ -133,8 +134,10 @@ const submitReviewedInf = async (req, res, next) => {
     await inf.save();
 
     if (inf.Intern_Profile.IP_Internship_Duration === 'May-July 2023')
-      await createInfPdfForStudent(inf._id, 'INFstudent.docx');
-    else await createInfPdfForStudent(inf._id, 'INF_Dual_Student.docx');
+      createInfPdfForStudent(inf._id, 'INFstudent.docx');
+    else createInfPdfForStudent(inf._id, 'INF_Dual_Student.docx');
+
+    updateInfInGSheets(inf);
 
     res.status(201).json({ success: true });
   } catch (error) {

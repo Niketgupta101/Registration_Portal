@@ -187,8 +187,6 @@ const createInfPdfForStudent = async (infId, filename) => {
   });
 
   await inf.save();
-
-  await updateInfInGSheets(inf);
 };
 
 const getReleventData = ({ data }) => {
@@ -208,8 +206,8 @@ const updateInfInGSheets = async (inf) => {
     // ...getValues(inf.Intern_Profile),
     inf.Intern_Profile.IP_Job_Designation,
     // ...getValues(inf.Salary_Details),
-    inf.previewLink,
-    inf.downloadLink,
+    inf.adminPreviewLink,
+    inf.adminDownloadLink,
     inf.createdAt,
     inf.updatedAt,
   ];
@@ -228,4 +226,8 @@ const updateInfInGSheets = async (inf) => {
   );
 };
 
-module.exports = { createInfPdfForAdmin, createInfPdfForStudent };
+module.exports = {
+  createInfPdfForAdmin,
+  createInfPdfForStudent,
+  updateInfInGSheets,
+};

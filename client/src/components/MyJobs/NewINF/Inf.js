@@ -74,7 +74,7 @@ const Inf = () => {
     } catch (error) {
       console.log(error);
       setIsLoading(false);
-      // Navigate('/badgateway');
+      Navigate('/badgateway');
     }
   };
 
