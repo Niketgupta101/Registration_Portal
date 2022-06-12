@@ -19,7 +19,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
         </header>
       </div>
       <Form>
-        <FormGroup row style={style}>
+        {/* <FormGroup row style={style}>
           <Label for='exampleText' sm={4} className='fontText'>
             Name of the Company
           </Label>
@@ -624,7 +624,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
             </tr>
           </tbody>
         </table> */}
-        <div>
+        {/* <div>
           <header className='headerText m-0 mt-4'>
             Eligible courses and disciplines - Postgraduate
           </header>
@@ -1169,9 +1169,6 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
                 <TableCell>Virtual</TableCell>
                 <TableCell>10-06-2022</TableCell>
               </TableRow>
-              {/* <TableRow> */}
-
-              {/* </TableRow> */}
             </TableBody>
           </Table>
         </TableContainer>
@@ -1399,7 +1396,7 @@ const ReviewInf = ({ InfData, setPage, handleFormSubmit }) => {
               {InfData.Selection_Procedure.Eligibility_Criteria}
             </h1>
           </Col>
-        </FormGroup>
+        </FormGroup>  */}
 
         {/* <div>
           <header className="headerText">

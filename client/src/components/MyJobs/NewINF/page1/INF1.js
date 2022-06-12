@@ -185,12 +185,18 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   <Col sm={9}>
                     <Input
                       id='exampleSelect'
-                      name='Internship_Duration'
+                      name='IP_Internship_Duration'
                       required
                       type='select'
                       className='inputText'
-                      value={infData.Intern_Profile.Internship_Duration}
-                      onChange={handleOnChange}
+                      value={infData.Intern_Profile.IP_Internship_Duration}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Intern_Profile',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                     >
                       <option>May-July {Year}</option>
@@ -228,12 +234,18 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   <Col sm={9}>
                     <Input
                       id='exampleText'
-                      name='Job_Description'
+                      name='IP_Job_Description'
                       type='text'
                       required
                       className='inputText'
-                      value={infData.Intern_Profile.Job_Description}
-                      onChange={handleOnChange}
+                      value={infData.Intern_Profile.IP_Job_Description}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Intern_Profile',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                     />
                   </Col>
@@ -245,12 +257,18 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   <Col sm={9}>
                     <Input
                       id='exampleSelect'
-                      name='Mode_Of_Internship'
+                      name='IP_Mode_Of_Internship'
                       type='select'
                       required
                       className='inputText'
-                      value={infData.Intern_Profile.Mode_Of_Internship}
-                      onChange={handleOnChange}
+                      value={infData.Intern_Profile.IP_Mode_Of_Internship}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Intern_Profile',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                     >
                       <option>Virtual</option>
@@ -266,11 +284,17 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   <Col sm={9}>
                     <Input
                       id='exampleText'
-                      name='Place_Of_Posting'
+                      name='IP_Place_Of_Posting'
                       type='text'
                       className='inputText'
-                      value={infData.Intern_Profile.Place_Of_Posting}
-                      onChange={handleOnChange}
+                      value={infData.Intern_Profile.IP_Place_Of_Posting}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Intern_Profile',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                       required
                     />
@@ -325,11 +349,17 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                     <Input
                       id='exampleText'
                       required
-                      name='Salary_Per_Month'
+                      name='SD_Salary_Per_Month'
                       type='text'
                       className='inputText'
-                      value={infData.Stipend_Details.Salary_Per_Month}
-                      onChange={handleOnChange}
+                      value={infData.Stipend_Details.SD_Salary_Per_Month}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Stipend_Details',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                     />
                   </Col>
@@ -344,14 +374,26 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                         control={<Radio />}
                         label='per Month'
                         name='Salary_Unit'
-                        onChange={handleOnChange}
+                        onChange={(e) =>
+                          handleOnChange(
+                            'Stipend_Details',
+                            e.target.name,
+                            e.target.value
+                          )
+                        }
                       />
                       <FormControlLabel
                         value='Total '
                         control={<Radio />}
                         label='Total'
                         name='Salary_Unit'
-                        onChange={handleOnChange}
+                        onChange={(e) =>
+                          handleOnChange(
+                            'Stipend_Details',
+                            e.target.name,
+                            e.target.value
+                          )
+                        }
                       />
                     </RadioGroup>
                   </Col>
@@ -365,15 +407,21 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   <Col sm={9}>
                     <Input
                       id='exampleSelect'
-                      name='PPO_provision_on_performance_basis'
+                      name='SD_PPO_provision_on_performance_basis'
                       type='select'
                       required
                       className='inputText'
                       value={
                         infData.Stipend_Details
-                          .PPO_provision_on_performance_basis
+                          .SD_PPO_provision_on_performance_basis
                       }
-                      onChange={handleOnChange}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Stipend_Details',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                     >
                       <option value='' selected='selected' disabled hidden>
@@ -392,11 +440,17 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   <Col sm={9}>
                     <Input
                       id='exampleText'
-                      name='CTC'
+                      name='SD_CTC'
                       type='text'
                       className='inputText'
-                      value={infData.Stipend_Details.CTC}
-                      onChange={handleOnChange}
+                      value={infData.Stipend_Details.SD_CTC}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Stipend_Details',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       autoComplete='off'
                       required
                     />
@@ -448,9 +502,15 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                     <Input
                       id='exampleText'
                       required
-                      name='name'
-                      value={infData.Primary_Hr.name}
-                      onChange={handleOnChange}
+                      name='PH_Name'
+                      value={infData.Primary_Hr.PH_Name}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Primary_Hr',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       type='text'
                       className='inputText'
                       autoComplete='off'
@@ -470,9 +530,15 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                     <Input
                       id='exampleText'
                       required
-                      name='email'
-                      value={infData.Primary_Hr.email}
-                      onChange={handleOnChange}
+                      name='PH_Email'
+                      value={infData.Primary_Hr.PH_Email}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Primary_Hr',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       type='text'
                       className='inputText'
                       autoComplete='off'
@@ -492,9 +558,15 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                     <Input
                       id='exampleText'
                       required
-                      name='mobile'
-                      value={infData.Primary_Hr.mobile}
-                      onChange={handleOnChange}
+                      name='PH_Mobile'
+                      value={infData.Primary_Hr.PH_Mobile}
+                      onChange={(e) =>
+                        handleOnChange(
+                          'Primary_Hr',
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
                       type='text'
                       className='inputText'
                       autoComplete='off'
@@ -543,9 +615,15 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                         <Input
                           id='exampleText'
                           required
-                          name='name'
-                          value={infData.Alternate_Hr.name}
-                          onChange={handleOnChange}
+                          name='SH_Name'
+                          value={infData.Secondary_Hr.SH_Name}
+                          onChange={(e) =>
+                            handleOnChange(
+                              'Secondary_Hr',
+                              e.target.name,
+                              e.target.value
+                            )
+                          }
                           type='text'
                           className='inputText'
                           autoComplete='off'
@@ -565,9 +643,15 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                         <Input
                           id='exampleText'
                           required
-                          name='email'
-                          value={infData.Alternate_Hr.email}
-                          onChange={handleOnChange}
+                          name='SH_Email'
+                          value={infData.Secondary_Hr.SH_Email}
+                          onChange={(e) =>
+                            handleOnChange(
+                              'Secondary_Hr',
+                              e.target.name,
+                              e.target.value
+                            )
+                          }
                           type='text'
                           className='inputText'
                           autoComplete='off'
@@ -587,9 +671,15 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                         <Input
                           id='exampleText'
                           required
-                          name='mobile'
-                          value={infData.Alternate_Hr.mobile}
-                          onChange={handleOnChange}
+                          name='SH_Mobile'
+                          value={infData.Secondary_Hr.SH_Mobile}
+                          onChange={(e) =>
+                            handleOnChange(
+                              'Secondary_Hr',
+                              e.target.name,
+                              e.target.value
+                            )
+                          }
                           type='text'
                           className='inputText'
                           autoComplete='off'

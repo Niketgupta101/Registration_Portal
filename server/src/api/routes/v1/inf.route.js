@@ -53,7 +53,7 @@ router.delete('/delete/:id', protect, deleteInfById);
 
 // -----------------------------------------------------------------------------------
 
-router.get('/new/:infId', protect, fetchInf);
+router.get('/new/fetch/:infId', protect, fetchInf);
 router.post('/new', protect, createInf);
 
 router.put('/new/update', protect, updateInf);

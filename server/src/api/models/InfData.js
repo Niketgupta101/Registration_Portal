@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const CompanyOverviewSchema = {
   CO_Name_Of_The_Company: { type: String, default: '' },
-  CO_Category_Or_Sector: { type: String, default: '' },
   CO_Category: { type: String, default: '' },
   CO_Sector: { type: String, default: '' },
   CO_About: { type: String, default: '' },
@@ -77,7 +76,10 @@ const MinorSchema = {
   MINOR_Nanotechnology: { type: Boolean, default: false },
   MINOR_Petroleum_Production_Operations: { type: Boolean, default: false },
   MINOR_Robotics: { type: Boolean, default: false },
-  MINOR_Separation_and_Purification_Technology: { type: Boolean, default: false },
+  MINOR_Separation_and_Purification_Technology: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const TwoYearMtechSchema = {
@@ -112,13 +114,16 @@ const TwoYearMtechSchema = {
   },
   TYM_Geo_Exploration: { type: Boolean, default: false },
   TYM_Geomatics: { type: Boolean, default: false },
-  TYM_Tunneling_and_Underground_Space_Technology: { type: Boolean, default: false }
+  TYM_Tunneling_and_Underground_Space_Technology: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const ThreeYearMscSchema = {
-  TYM_Select_All: { type: Boolean, default: false },
-  TYM_Applied_Geology: { type: Boolean, default: false },
-  TYM_Applied_Geophysics: { type: Boolean, default: false },
+  TMS_Select_All: { type: Boolean, default: false },
+  TMS_Applied_Geology: { type: Boolean, default: false },
+  TMS_Applied_Geophysics: { type: Boolean, default: false },
 };
 
 const TwoYearMBASchema = {
@@ -144,7 +149,7 @@ const FiveYearDualDegreeSchema = {
   FYDD_Mechanical_Computer: { type: Boolean, default: false },
   FYDD_Environmental_Computer: { type: Boolean, default: false },
   FYDD_MNC_MBA: { type: Boolean, default: false },
-  FYDD_Civil_Computer: { type: Boolean, default: false }
+  FYDD_Civil_Computer: { type: Boolean, default: false },
 };
 
 const DoubleMajorSchema = {
@@ -157,37 +162,40 @@ const DoubleMajorSchema = {
 
 const SkillBasedSchema = {
   SB_C_Cpp_Java_Python_etc: { type: Boolean, default: false },
-  SB_Full_Stack_Development_Frontend_or_Backend: {type: Boolean, default: false},
+  SB_Full_Stack_Development_Frontend_or_Backend: {
+    type: Boolean,
+    default: false,
+  },
   SB_Civil_Engineering: { type: Boolean, default: false },
   SB_AI_ML_DL_Data_Science: { type: Boolean, default: false },
-  SB_Business_Data_Analytics_Product_Management: { type: Boolean, default: false},
-  SB_Cyber_Security: { type: Boolean, default: false},
-  SB_Ethical_Hacking: { type: Boolean, default: false},
-  SB_Mobile_Development: { type: Boolean, default: false},
-  SB_Product_Analyst: { type: Boolean, default: false},
-  SB_Quant_Researcher: { type: Boolean, default: false},
-  SB_Others: { type: Boolean, default: false}
+  SB_Business_Data_Analytics_Product_Management: {
+    type: Boolean,
+    default: false,
+  },
+  SB_Cyber_Security: { type: Boolean, default: false },
+  SB_Ethical_Hacking: { type: Boolean, default: false },
+  SB_Mobile_Development: { type: Boolean, default: false },
+  SB_Product_Analyst: { type: Boolean, default: false },
+  SB_Quant_Researcher: { type: Boolean, default: false },
+  SB_Others: { type: Boolean, default: false },
 };
 
 const SelectionProcedureSchema = {
-  SPS_Resume_Shortlisting: { type: Boolean, default: false },
-  SPS_Type_Of_Test: [String],
-  SPS_Other_Qualification_Rounds: [String],
   SPS_Total_Number_Of_Rounds: { type: Number, default: 0 },
   SPS_No_Of_Offers: { type: String, default: 'NA' },
   SPS_Eligibility_Criteria: { type: String, default: 'NA' },
-  SPS_Pre_Placement_Talk_Mode: { type: String, default: "" },
-  SPS_Pre_Placement_Talk_Date: { type: String, default: "" },
-  SPS_Resume_Shortlisting_Mode: { type: String, default: "" },
-  SPS_Resume_Shortlisting_Date: { type: String, default: "" },
-  SPS_Online_Written_Test_Mode: { type: String, default: "" },
-  SPS_Online_Written_Test_Date: { type: String, default: "" },
-  SPS_Group_Discussion_Mode: { type: String, default: "" },
-  SPS_Group_Discussion_Date: { type: String, default: "" },
-  SPS_Personal_Interview_Mode: { type: String, default: "" },
-  SPS_Personal_Interview_Date: { type: String, default: "" },
-  SPS_Any_Other_Rounds_Mode: { type: String, default: "" },
-  SPS_Any_Other_Rounds_Date: { type: String, default: "" }
+  SPS_Pre_Placement_Talk_Mode: { type: String, default: '' },
+  SPS_Pre_Placement_Talk_Date: { type: String, default: '' },
+  SPS_Resume_Shortlisting_Mode: { type: String, default: '' },
+  SPS_Resume_Shortlisting_Date: { type: String, default: '' },
+  SPS_Online_Written_Test_Mode: { type: String, default: '' },
+  SPS_Online_Written_Test_Date: { type: String, default: '' },
+  SPS_Group_Discussion_Mode: { type: String, default: '' },
+  SPS_Group_Discussion_Date: { type: String, default: '' },
+  SPS_Personal_Interview_Mode: { type: String, default: '' },
+  SPS_Personal_Interview_Date: { type: String, default: '' },
+  SPS_Any_Other_Rounds_Mode: { type: String, default: '' },
+  SPS_Any_Other_Rounds_Date: { type: String, default: '' },
 };
 
 const PrimaryHrSchema = {

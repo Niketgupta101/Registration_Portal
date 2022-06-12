@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
-import { Form } from "reactstrap";
-import "animate.css";
-import Fab from "@mui/material/Fab";
-import Box from "@mui/material/Box";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { FaAngleDoubleDown, FaAngleDoubleUp, FaAngleUp } from "react-icons/fa";
+import React, { useState, useRef } from 'react';
+import { Form } from 'reactstrap';
+import 'animate.css';
+import Fab from '@mui/material/Fab';
+import Box from '@mui/material/Box';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { FaAngleDoubleDown, FaAngleDoubleUp, FaAngleUp } from 'react-icons/fa';
 
-import "./INF2.css";
+import './INF2.css';
 
 const extractFields = (data) => {
   let fields = [];
@@ -53,28 +53,28 @@ export default function INF2({
   const twoYearMtechFields = extractFields(infData.Two_Year_Mtech);
   const threeYearMscFields = extractFields(infData.Three_Year_Msc);
   const twoYearMbaFields = extractFields(infData.Two_Year_MBA);
-  const dualDegreeFields = extractFields(infData.Dual_Degree);
+  const dualDegreeFields = extractFields(infData.Five_Year_Dual_Degree);
   const doubleMajorFields = extractFields(infData.Double_Major);
   const skillBasedFields = extractFields(infData.Skill_Based);
 
   function handleBackClick(refname) {
-    refname.current.scrollIntoView({ behavior: "smooth" });
+    refname.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   return (
-    <div className="overallDiv1">
+    <div className='overallDiv1'>
       <Form>
         <div>
-          <div className="container col-lg-12 col-md-12 category p-0 my-3  ">
-            <div className="upper py-1">
+          <div className='container col-lg-12 col-md-12 category p-0 my-3  '>
+            <div className='upper py-1'>
               <div>
-                <div className="category-heading ">
-                  <header className="headerText me-3">
+                <div className='category-heading '>
+                  <header className='headerText me-3'>
                     Eligible courses and disciplines
                   </header>
                 </div>
-                <div className="startText mx-2 mb-2">
-                  <small className=" animate__animated animate__fadeIn">
+                <div className='startText mx-2 mb-2'>
+                  <small className=' animate__animated animate__fadeIn'>
                     List of courses and disciplines offered at IIT (ISM) are
                     shown below. Please highlight or check by clicking as per
                     your requirement
@@ -82,7 +82,7 @@ export default function INF2({
                 </div>
               </div>
             </div>
-            <div className="lower p-0 my-3 animate__animated animate__fadeInLeft">
+            <div className='lower p-0 my-3 animate__animated animate__fadeInLeft'>
               <div
                 onClick={() => {
                   setTimeout(() => {
@@ -95,29 +95,29 @@ export default function INF2({
                 }}
               >
                 <div>
-                  <div className="ug-pg d-flex m-0 justify-content-center bg-transparent">
-                    <div className="flex-grow-1 ">
-                      <h1 className="ug-pg-h1">
+                  <div className='ug-pg d-flex m-0 justify-content-center bg-transparent'>
+                    <div className='flex-grow-1 '>
+                      <h1 className='ug-pg-h1'>
                         Undergraduate
-                        <span className="ug-pg-span">
-                          <b> Admitted through JEE(Advanced)</b>{" "}
+                        <span className='ug-pg-span'>
+                          <b> Admitted through JEE(Advanced)</b>{' '}
                         </span>
                       </h1>
                     </div>
-                    <div className="mx-4 p-2 align-self-center">
+                    <div className='mx-4 p-2 align-self-center'>
                       {ugdiv === true ? (
-                        <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
+                        <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                       ) : (
-                        <FaAngleDoubleDown size={30} color="rgb(60, 85, 165)" />
+                        <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
                       )}
                     </div>
                   </div>
                 </div>
               </div>
               {ugdiv === true ? (
-                <div className="lower ">
-                  <div className="animate__animated animate__zoomIn">
-                    <div ref={refbtech4year} className="eligible-type my-3">
+                <div className='lower '>
+                  <div className='animate__animated animate__zoomIn'>
+                    <div ref={refbtech4year} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -129,11 +129,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
                             4-Year B.Tech Programs
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {btechdiv === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -142,49 +142,49 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>JEE (Advanced)</b>
                           </p>
                         </div>
                       </div>
                       {btechdiv === true ? (
-                        <div className="eligible-option">
-                          <table className="m-0">
-                            <tbody id="Four_Year">
+                        <div className='eligible-option'>
+                          <table className='m-0'>
+                            <tbody id='Four_Year'>
                               {fourYearFields &&
                                 fourYearFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "FYB" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'FYB' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBoxBtech">
+                                    <td className='courseCheckBoxBtech'>
                                       <input
                                         name={field}
                                         checked={infData.Four_Year_Btech[field]}
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Four_Year_Btech",
+                                            'Four_Year_Btech',
                                             e.target.name,
                                             e.target.checked,
-                                            "FYB_Select_All"
+                                            'FYB_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {btechdiv === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setBtechdiv(false);
                                     handleBackClick(refbtech4year);
@@ -202,7 +202,7 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
-                    <div ref={refdual_mtech} className="eligible-type my-3">
+                    <div ref={refdual_mtech} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -214,11 +214,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
                             5-Year Dual Degree/ Integrated M.Tech Programs
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {dual_mtechdiv === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -227,25 +227,25 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>JEE (Advanced)</b>
                           </p>
                         </div>
                       </div>
                       {dual_mtechdiv === true ? (
-                        <div className="eligible-option">
-                          <table className="m-0">
-                            <tbody id="Five_Year">
+                        <div className='eligible-option'>
+                          <table className='m-0'>
+                            <tbody id='Five_Year'>
                               {fiveYearIntFields &&
                                 fiveYearIntFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "FYI" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'FYI' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBox5year">
+                                    <td className='courseCheckBox5year'>
                                       <input
                                         name={field}
                                         checked={
@@ -253,25 +253,25 @@ export default function INF2({
                                         }
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Five_Year_Integrated",
+                                            'Five_Year_Integrated',
                                             e.target.name,
                                             e.target.checked,
-                                            "FYI_Select_All"
+                                            'FYI_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {dual_mtechdiv === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setdual_mtechdiv(false);
                                     handleBackClick(refdual_mtech);
@@ -289,7 +289,7 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
-                    <div ref={refdoublemajor} className="eligible-type my-3">
+                    <div ref={refdoublemajor} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -301,11 +301,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
                             Double Major
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {doublemajor === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -314,49 +314,49 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>JEE (Advanced)</b>
                           </p>
                         </div>
                       </div>
                       {doublemajor === true ? (
-                        <div className="eligible-option">
-                          <table className="m-0">
-                            <tbody id="Five_Year">
+                        <div className='eligible-option'>
+                          <table className='m-0'>
+                            <tbody id='Five_Year'>
                               {doubleMajorFields &&
                                 doubleMajorFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "DM" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'DM' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBox5year">
+                                    <td className='courseCheckBox5year'>
                                       <input
                                         name={field}
                                         checked={infData.Double_Major[field]}
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Double_Major",
+                                            'Double_Major',
                                             e.target.name,
                                             e.target.checked,
-                                            "DM_Select_All"
+                                            'DM_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {doublemajor === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setDoubleMajor(false);
                                     handleBackClick(doublemajor);
@@ -374,7 +374,7 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
-                    <div ref={refdualdegree} className="eligible-type my-3">
+                    <div ref={refdualdegree} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -386,11 +386,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
                             Dual Degree
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {dualdegree === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -399,49 +399,51 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>JEE (Advanced)</b>
                           </p>
                         </div>
                       </div>
                       {dualdegree === true ? (
-                        <div className="eligible-option">
-                          <table className="m-0">
-                            <tbody id="Five_Year">
+                        <div className='eligible-option'>
+                          <table className='m-0'>
+                            <tbody id='Five_Year'>
                               {dualDegreeFields &&
                                 dualDegreeFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "DD" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'FYDD' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBox5year">
+                                    <td className='courseCheckBox5year'>
                                       <input
                                         name={field}
-                                        checked={infData.Dual_Degree[field]}
+                                        checked={
+                                          infData.Five_Year_Dual_Degree[field]
+                                        }
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Dual_Degree",
+                                            'Five_Year_Dual_Degree',
                                             e.target.name,
                                             e.target.checked,
-                                            "DD_Select_All"
+                                            'FYDD_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {dual_mtechdiv === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setdual_mtechdiv(false);
                                     handleBackClick(refdual_mtech);
@@ -465,7 +467,7 @@ export default function INF2({
                 <div></div>
               )}
             </div>
-            <div className="lower p-0 my-3 animate__animated animate__fadeInRight">
+            <div className='lower p-0 my-3 animate__animated animate__fadeInRight'>
               <div
                 onClick={() => {
                   setTimeout(() => {
@@ -478,29 +480,29 @@ export default function INF2({
                 }}
               >
                 <div>
-                  <div className="ug-pg d-flex m-0 justify-content-center bg-transparent">
-                    <div className="flex-grow-1 ">
-                      <h1 className="ug-pg-h1">
+                  <div className='ug-pg d-flex m-0 justify-content-center bg-transparent'>
+                    <div className='flex-grow-1 '>
+                      <h1 className='ug-pg-h1'>
                         Postgraduate
-                        <span className="ug-pg-span">
-                          <b> Admitted through gate, cat, jam</b>{" "}
+                        <span className='ug-pg-span'>
+                          <b> Admitted through gate, cat, jam</b>{' '}
                         </span>
                       </h1>
                     </div>
-                    <div className="mx-4 p-2 align-self-center">
+                    <div className='mx-4 p-2 align-self-center'>
                       {pgdiv === true ? (
-                        <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
+                        <FaAngleDoubleUp size={30} color='rgb(60, 85, 165)' />
                       ) : (
-                        <FaAngleDoubleDown size={30} color="rgb(60, 85, 165)" />
+                        <FaAngleDoubleDown size={30} color='rgb(60, 85, 165)' />
                       )}
                     </div>
                   </div>
                 </div>
               </div>
               {pgdiv === true ? (
-                <div className="lower ">
-                  <div className="animate__animated animate__zoomIn">
-                    <div ref={refmtech} className="eligible-type my-3">
+                <div className='lower '>
+                  <div className='animate__animated animate__zoomIn'>
+                    <div ref={refmtech} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -512,11 +514,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
-                            2-Year M.Tech Programs{" "}
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
+                            2-Year M.Tech Programs{' '}
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {mtechdiv === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -525,49 +527,49 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>GATE</b>
                           </p>
                         </div>
                       </div>
                       {mtechdiv === true ? (
-                        <div className="eligible-option">
+                        <div className='eligible-option'>
                           <table>
-                            <tbody id="Two_Year">
+                            <tbody id='Two_Year'>
                               {twoYearMtechFields &&
                                 twoYearMtechFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "TWM" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'TYM' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBox5year">
+                                    <td className='courseCheckBox5year'>
                                       <input
                                         name={field}
                                         checked={infData.Two_Year_Mtech[field]}
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Two_Year_Mtech",
+                                            'Two_Year_Mtech',
                                             e.target.name,
                                             e.target.checked,
-                                            "TWM_Select_All"
+                                            'TYM_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {mtechdiv === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setmtechdiv(false);
                                     handleBackClick(refmtech);
@@ -585,7 +587,7 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
-                    <div ref={refmba} className="eligible-type my-3">
+                    <div ref={refmba} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -597,11 +599,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
                             2-Year MBA Programs
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {mbadiv === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -610,49 +612,49 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>CAT</b>
                           </p>
                         </div>
                       </div>
                       {mbadiv === true ? (
-                        <div className="eligible-option">
+                        <div className='eligible-option'>
                           <table>
-                            <tbody id="Two_Year_Mba">
+                            <tbody id='Two_Year_Mba'>
                               {twoYearMbaFields &&
                                 twoYearMbaFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "TYMB" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'TYMB' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBox5year">
+                                    <td className='courseCheckBox5year'>
                                       <input
                                         name={field}
                                         checked={infData.Two_Year_MBA[field]}
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Two_Year_MBA",
+                                            'Two_Year_MBA',
                                             e.target.name,
                                             e.target.checked,
-                                            "TYMB_Select_All"
+                                            'TYMB_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {mbadiv === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setmbadiv(false);
                                     handleBackClick(refmba);
@@ -670,7 +672,7 @@ export default function INF2({
                         <div></div>
                       )}
                     </div>
-                    <div ref={refmsc3} className="eligible-type my-3">
+                    <div ref={refmsc3} className='eligible-type my-3'>
                       <div
                         onClick={() => {
                           setTimeout(() => {
@@ -682,11 +684,11 @@ export default function INF2({
                           }, 200);
                         }}
                       >
-                        <div className="eligible-heading d-flex ">
-                          <h3 className="flex-grow-1 align-self-center m-0">
-                            3-Year MSc.Tech Programs{" "}
+                        <div className='eligible-heading d-flex '>
+                          <h3 className='flex-grow-1 align-self-center m-0'>
+                            3-Year MSc.Tech Programs{' '}
                           </h3>
-                          <div className="p-2 align-self-center">
+                          <div className='p-2 align-self-center'>
                             {msc3div === true ? (
                               <FaAngleDoubleUp size={20} />
                             ) : (
@@ -695,49 +697,49 @@ export default function INF2({
                           </div>
                         </div>
 
-                        <div className="eligible-sub-heading">
-                          <p className="m-0">
+                        <div className='eligible-sub-heading'>
+                          <p className='m-0'>
                             Admitted through <b>JAM</b>
                           </p>
                         </div>
                       </div>
                       {msc3div === true ? (
-                        <div className="eligible-option">
+                        <div className='eligible-option'>
                           <table>
-                            <tbody id="Three_Year">
+                            <tbody id='Three_Year'>
                               {threeYearMscFields &&
                                 threeYearMscFields.map((field) => (
                                   <tr>
-                                    <td className="courseName">
-                                      {field.split("_").map((word) => (
-                                        <>{word !== "TYM" && word + " "}</>
+                                    <td className='courseName'>
+                                      {field.split('_').map((word) => (
+                                        <>{word !== 'TMS' && word + ' '}</>
                                       ))}
                                     </td>
-                                    <td className="courseCheckBox5year">
+                                    <td className='courseCheckBox5year'>
                                       <input
                                         name={field}
                                         checked={infData.Three_Year_Msc[field]}
                                         onChange={(e) =>
                                           handleOnChange(
-                                            "Three_Year_Msc",
+                                            'Three_Year_Msc',
                                             e.target.name,
                                             e.target.checked,
-                                            "TYM_Select_All"
+                                            'TMS_Select_All'
                                           )
                                         }
-                                        type="checkbox"
+                                        type='checkbox'
                                       />
                                     </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
-                          <div className="collapse-div d-flex justify-content-end">
+                          <div className='collapse-div d-flex justify-content-end'>
                             {msc3div === true ? (
-                              <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                              <Box sx={{ '& > :not(style)': { m: 1 } }}>
                                 <Fab
-                                  color="primary"
-                                  aria-label="add"
+                                  color='primary'
+                                  aria-label='add'
                                   onClick={() => {
                                     setmsc3div(false);
                                     handleBackClick(refmsc3);
@@ -873,43 +875,43 @@ export default function INF2({
         </div>
 
         <div>
-          <div className="upper py-1">
+          <div className='upper py-1'>
             <div>
-              <div className="category-heading ">
-                <header className="headerText me-3">Skill Based Hiring</header>
+              <div className='category-heading '>
+                <header className='headerText me-3'>Skill Based Hiring</header>
               </div>
-              <div className="startText mx-2 mb-2">
-                <small className=" animate__animated animate__fadeIn">
+              <div className='startText mx-2 mb-2'>
+                <small className=' animate__animated animate__fadeIn'>
                   Students with certified technical expertise in the following
                   skills (from Coursera, Udemy etc.)
                 </small>
               </div>
             </div>
           </div>
-          <div className="eligible-option">
+          <div className='eligible-option'>
             <table>
-              <tbody id="Skill">
+              <tbody id='Skill'>
                 {skillBasedFields &&
                   skillBasedFields.map((field) => (
                     <tr>
-                      <td className="courseName">
-                        {field.split("_").map((word) => (
-                          <>{word !== "SB" && word + " "}</>
+                      <td className='courseName'>
+                        {field.split('_').map((word) => (
+                          <>{word !== 'SB' && word + ' '}</>
                         ))}
                       </td>
-                      <td className="courseCheckBox5year">
+                      <td className='courseCheckBox5year'>
                         <input
                           name={field}
                           checked={infData.Skill_Based[field]}
                           onChange={(e) =>
                             handleOnChange(
-                              "Skill_Based",
+                              'Skill_Based',
                               e.target.name,
                               e.target.checked,
-                              "SB_Select_All"
+                              'SB_Select_All'
                             )
                           }
-                          type="checkbox"
+                          type='checkbox'
                         />
                       </td>
                     </tr>
@@ -918,14 +920,14 @@ export default function INF2({
             </table>
           </div>
         </div>
-        <div className="flex">
+        <div className='flex'>
           <button
-            className="submit_btn"
-            onClick={(e) => e.preventDefault() / setPage("1")}
+            className='submit_btn'
+            onClick={(e) => e.preventDefault() / setPage('1')}
           >
             Back
           </button>
-          <button className="submit_btn" onClick={handleUpdateInf}>
+          <button className='submit_btn' onClick={handleUpdateInf}>
             Save and Continue
           </button>
         </div>

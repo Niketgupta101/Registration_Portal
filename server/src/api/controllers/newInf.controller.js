@@ -1,6 +1,9 @@
 const { NewInf } = require('../models/InfData');
 const ErrorResponse = require('../utils/errorResponse');
-const { createInfPdfForAdmin } = require('../utils/PdfService/createInfPdf');
+const {
+  createInfPdfForAdmin,
+  createInfPdfForStudent,
+} = require('../utils/PdfService/createInfPdf');
 
 const ObjectId = require('mongoose').Schema.ObjectId;
 
@@ -9,7 +12,7 @@ const fetchInf = async (req, res, next) => {
   try {
     let inf = await NewInf.findOne({ _id: infId });
 
-    console.log(infId, inf);
+    console.log({ infId, inf });
 
     if (!inf) return next(new ErrorResponse('No INF found with given id', 404));
 
@@ -39,7 +42,7 @@ const createInf = async (req, res, next) => {
 
 const updateInf = async (req, res, next) => {
   const infData = req.body;
-  console.log(infData._id);
+  console.log('here');
   try {
     let inf = await NewInf.findOne({ _id: infData._id });
 
@@ -63,12 +66,17 @@ const submitReviewedInf = async (req, res, next) => {
 
     if (!inf) return next(new ErrorResponse('No INF found with given id', 404));
 
-    await createInfPdfForAdmin(inf);
-    // crea/teInfPdfForStudent(inf);
+    if (inf.Intern_Profile.IP_Internship_Duration === 'May-July 2023')
+      await createInfPdfForAdmin(inf, 'INF.docx');
+    else await createInfPdfForAdmin(inf, 'INF_Dual_Admin.docx');
 
     inf.set({ status: 'complete' });
 
     await inf.save();
+
+    if (inf.Intern_Profile.IP_Internship_Duration === 'May-July 2023')
+      await createInfPdfForStudent(inf._id, 'INF.docx');
+    else await createInfPdfForStudent(inf._id, 'INF_Dual_Admin.docx');
 
     res.status(201).json({ success: true });
   } catch (error) {

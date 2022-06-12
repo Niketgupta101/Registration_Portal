@@ -44,18 +44,23 @@ const Inf = () => {
   };
 
   useEffect(() => {
-    fetchFormData();
-  }, [Navigate]);
+    console.log('here');
+    if (!infData) fetchFormData();
+  }, [InfId]);
 
   const handleUpdateInf = async (e) => {
     e.preventDefault();
+    console.log('hear');
     setIsLoading(true);
     try {
+      console.log({ infData });
       await updateInf(infData);
 
       setIsLoading(false);
       setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmitInf = async (e) => {
@@ -133,29 +138,35 @@ const Inf = () => {
               />
             )}
           </TabPanel>
-          <TabPanel value={'2'}>
-            <INF2
-              setPage={setPage}
-              infData={infData}
-              handleOnChange={handleBranchOnChange}
-              handleUpdateInf={handleUpdateInf}
-            />
-          </TabPanel>
-          <TabPanel value={'3'}>
-            <INF4
-              setPage={setPage}
-              infData={infData}
-              handleOnChange={handleOnChange}
-              handleUpdateInf={handleUpdateInf}
-            />
-          </TabPanel>
-          <TabPanel value={'4'}>
-            <ReviewInf
-              setPage={setPage}
-              InfData={infData}
-              handleFormSubmit={handleSubmitInf}
-            />
-          </TabPanel>
+          {infData && (
+            <TabPanel value={'2'}>
+              <INF2
+                setPage={setPage}
+                infData={infData}
+                handleOnChange={handleBranchOnChange}
+                handleUpdateInf={handleUpdateInf}
+              />
+            </TabPanel>
+          )}
+          {infData && (
+            <TabPanel value={'3'}>
+              <INF4
+                setPage={setPage}
+                infData={infData}
+                handleOnChange={handleOnChange}
+                handleUpdateInf={handleUpdateInf}
+              />
+            </TabPanel>
+          )}
+          {infData && (
+            <TabPanel value={'4'}>
+              <ReviewInf
+                setPage={setPage}
+                InfData={infData}
+                handleFormSubmit={handleSubmitInf}
+              />
+            </TabPanel>
+          )}
         </TabContext>
       </div>
       {isLoading && <Loading />}
