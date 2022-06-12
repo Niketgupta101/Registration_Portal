@@ -7,6 +7,8 @@ const {
   sendEmailConfirmation,
 } = require('../services/authProvider');
 const emailValidator = require('email-validator');
+const { postCompanyDetails } = require('../services/companyProvider');
+const { response } = require('express');
 
 exports.register = async (req, res, next) => {
   if (Object.keys(req.body).includes('email_check')) {
@@ -25,10 +27,10 @@ exports.register = async (req, res, next) => {
       return next(error);
     }
   } else {
-    const user = req.body;
+    const { user, company } = req.body;
 
-    if (!emailValidator.validate(user.email))
-      return next(new ErrorResponse('Invalid Email-Id', 401));
+    // if (!emailValidator.validate(user.emailId))
+    //   return next(new ErrorResponse('Invalid Email-Id', 401));
 
     if (user.password !== user.confirmPassword)
       return next(new ErrorResponse("Passwords doesn't match", 402));
@@ -46,8 +48,18 @@ exports.register = async (req, res, next) => {
     try {
       const { newUser, token } = await registerUser(userDetails, next);
 
-      res.status(201).json({ success: true, newUser, token });
+      if (newUser) {
+        const response = await postCompanyDetails(
+          { ...company, userId: newUser._id },
+          next
+        );
+      }
+
+      res
+        .status(201)
+        .json({ success: true, newUser, token, company: response.company });
     } catch (error) {
+      console.log(error);
       return next(error);
     }
   }
@@ -62,14 +74,9 @@ exports.login = async (req, res, next) => {
     );
 
   try {
-    const loginResponse = await loginUser(
-      emailIdOrUsername,
-      password,
-      next
-    );
-    if(loginResponse!==undefined)
-    {
-     const { user, token, company }=loginResponse;
+    const loginResponse = await loginUser(emailIdOrUsername, password, next);
+    if (loginResponse !== undefined) {
+      const { user, token, company } = loginResponse;
       res.status(200).json({ success: true, user, token, company });
     }
   } catch (error) {
@@ -81,8 +88,7 @@ exports.forgotPassword = async (req, res, next) => {
   const { emailId } = req.body;
   try {
     const response = await forgotPassword(emailId, next);
-    if(response!==undefined)
-    res.status(201).json(response);
+    if (response !== undefined) res.status(201).json(response);
   } catch (error) {
     return next(error);
   }

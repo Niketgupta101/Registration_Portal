@@ -73,12 +73,10 @@ const MyJobs = () => {
       }
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
       setIsLoading(false);
-      // Navigate('/badgateway');
+      Navigate('/badgateway');
     }
   };
-  console.log({ Jobs });
   let companyData;
   if (company && company.length !== 0) {
     companyData = {
@@ -98,7 +96,6 @@ const MyJobs = () => {
 
       Navigate(`/create/inf/${response.data.jobId}`);
     } catch (error) {
-      console.log(error);
       Navigate('/badgateway');
     }
   };
@@ -126,9 +123,8 @@ const MyJobs = () => {
         try {
           await removeInf(deleteId[0]);
         } catch (error) {
-          console.log(error);
           setIsLoading(false);
-          // Navigate('/badgateway');
+          Navigate('/badgateway');
         }
       } else {
         try {
@@ -161,7 +157,6 @@ const MyJobs = () => {
           }
         }
       } catch (error) {
-        console.log(error);
         Navigate('/badgateway');
       }
     }

@@ -30,6 +30,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
   const [hrdetail, setHrdetail] = useState(false);
   const [althrdetail, setALtrdetail] = useState(false);
   const [Year, setYear] = useState(2023);
+  const [salaryUnit, setSalary_Unit] = useState('');
 
   function handleHrdetails(e) {
     if (e.target.value === 'YES') setALtrdetail(() => true);
@@ -83,7 +84,17 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
           INTERNSHIP NOTIFICATION FORM (2022-2023)
         </header>
       </div>
-      <Form onSubmit={handleUpdateInf}>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleOnChange(
+            'Stipend_Details',
+            'SD_Salary_Per_Month',
+            `${infData.Stipend_Details.SD_Salary_Per_Month} ${salaryUnit}`
+          );
+          handleUpdateInf(e);
+        }}
+      >
         <div className='animate__animated animate__fadeInLeft container col-lg-12 col-md-12 category p-0 my-3  '>
           <div
             className='upper'
@@ -374,26 +385,18 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                         control={<Radio />}
                         label='per Month'
                         name='Salary_Unit'
-                        onChange={(e) =>
-                          handleOnChange(
-                            'Stipend_Details',
-                            e.target.name,
-                            e.target.value
-                          )
-                        }
+                        onChange={(e) => {
+                          setSalary_Unit(e.target.value);
+                        }}
                       />
                       <FormControlLabel
                         value='Total '
                         control={<Radio />}
                         label='Total'
                         name='Salary_Unit'
-                        onChange={(e) =>
-                          handleOnChange(
-                            'Stipend_Details',
-                            e.target.name,
-                            e.target.value
-                          )
-                        }
+                        onChange={(e) => {
+                          setSalary_Unit(e.target.value);
+                        }}
                       />
                     </RadioGroup>
                   </Col>

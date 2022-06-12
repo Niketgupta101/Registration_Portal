@@ -15,7 +15,6 @@ const fetchInf = async (req, res, next) => {
 
     res.status(201).json({ success: true, job: inf });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -75,7 +74,6 @@ const fetchPendingInfForUser = async (req, res, next) => {
 
     res.status(201).json({ success: true, jobs: infList });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -91,15 +89,12 @@ const createInf = async (req, res, next) => {
 
     res.status(201).json({ success: true, jobId: newInf._id });
   } catch (error) {
-    console.log(error);
-
     return next(error);
   }
 };
 
 const updateInf = async (req, res, next) => {
   const infData = req.body;
-  console.log('here');
   try {
     let inf = await NewInf.findOne({ _id: infData._id });
 
@@ -111,7 +106,6 @@ const updateInf = async (req, res, next) => {
 
     res.status(201).json({ success: true });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -139,7 +133,6 @@ const submitReviewedInf = async (req, res, next) => {
 
     res.status(201).json({ success: true });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -155,7 +148,6 @@ const removeInf = async (req, res, next) => {
 
     res.status(201).json({ success: true });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };
@@ -199,7 +191,6 @@ const searchInf = async (req, res, next) => {
 
     res.status(201).json({ success: true, jobs: infList });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };

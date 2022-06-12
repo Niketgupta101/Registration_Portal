@@ -44,22 +44,19 @@ const Inf = () => {
   };
 
   useEffect(() => {
-    console.log('here');
     if (!infData) fetchFormData();
   }, [InfId]);
 
   const handleUpdateInf = async (e) => {
     e.preventDefault();
-    console.log('hear');
     setIsLoading(true);
     try {
-      console.log({ infData });
       await updateInf(infData);
 
       setIsLoading(false);
       setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
-      console.log(error);
+      Navigate('/badgateway');
     }
   };
 
@@ -72,7 +69,6 @@ const Inf = () => {
       setIsLoading(false);
       Navigate('/myjobs');
     } catch (error) {
-      console.log(error);
       setIsLoading(false);
       Navigate('/badgateway');
     }
@@ -86,9 +82,7 @@ const Inf = () => {
   };
 
   const handleBranchOnChange = async (header, field, value, selectAll) => {
-    console.log({ header, field, value, selectAll });
     if (field !== selectAll && infData[header].Select_All === true) {
-      console.log('here');
       setInfData((prevData) => ({
         ...prevData,
         [header]: {
@@ -119,8 +113,6 @@ const Inf = () => {
       }));
     }
   };
-
-  console.log({ infData });
 
   return (
     <>
