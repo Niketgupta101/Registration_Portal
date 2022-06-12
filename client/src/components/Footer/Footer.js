@@ -3,15 +3,8 @@ import { useNavigate } from "react-router-dom";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import WebAssetTwoToneIcon from "@mui/icons-material/WebAssetTwoTone";
 import ArticleIcon from "@mui/icons-material/Article";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
 import BookIcon from "@mui/icons-material/Book";
-import {
-  AccountCircle,
-  Close,
-  Email,
-  HomeOutlined,
-  MenuOutlined,
-} from "@material-ui/icons";
+import { Email, HomeOutlined } from "@material-ui/icons";
 import "./styles.css";
 
 const Footer = () => {
@@ -65,7 +58,7 @@ const Footer = () => {
           >
             <h5>
               <ArticleIcon sx={{ mx: 1 }} />
-              Plcaement Brochure
+              Placement Brochure
             </h5>
           </a>
         </div>
@@ -80,7 +73,7 @@ const Footer = () => {
               Contact Us
             </h5>
           </a>
-          <h6>+91-1234567890</h6>
+          <h6>+91-9771490999</h6>
           <h6>cdc@iitism.ac.in</h6>
           <h6>Dhanbad, Jharkhand</h6>
         </div>
