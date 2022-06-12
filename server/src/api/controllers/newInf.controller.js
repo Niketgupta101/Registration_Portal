@@ -5,8 +5,6 @@ const {
   createInfPdfForStudent,
 } = require('../utils/PdfService/createInfPdf');
 
-const ObjectId = require('mongoose').Schema.ObjectId;
-
 const fetchInf = async (req, res, next) => {
   const { infId } = req.params;
   try {
@@ -75,8 +73,8 @@ const submitReviewedInf = async (req, res, next) => {
     await inf.save();
 
     if (inf.Intern_Profile.IP_Internship_Duration === 'May-July 2023')
-      await createInfPdfForStudent(inf._id, 'INF.docx');
-    else await createInfPdfForStudent(inf._id, 'INF_Dual_Admin.docx');
+      await createInfPdfForStudent(inf._id, 'INFstudent.docx');
+    else await createInfPdfForStudent(inf._id, 'INF_Dual_Student.docx');
 
     res.status(201).json({ success: true });
   } catch (error) {

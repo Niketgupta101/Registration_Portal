@@ -72,8 +72,9 @@ const Inf = () => {
       setIsLoading(false);
       Navigate('/myjobs');
     } catch (error) {
+      console.log(error);
       setIsLoading(false);
-      Navigate('/badgateway');
+      // Navigate('/badgateway');
     }
   };
 
@@ -162,7 +163,7 @@ const Inf = () => {
             <TabPanel value={'4'}>
               <ReviewInf
                 setPage={setPage}
-                InfData={infData}
+                infData={infData}
                 handleFormSubmit={handleSubmitInf}
               />
             </TabPanel>
