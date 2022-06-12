@@ -185,23 +185,6 @@ const createInfPdfForStudent = async (infId, filename) => {
     status: 'complete',
   });
 
-  let cc = [
-    // 'mahapatraakash.19je0086@cse.iitism.ac.in',
-    'niketgupta101@gmail.com',
-  ];
-
-  if (inf.Secondary_Hr.Email !== '') {
-    cc.push(inf.Secondary_Hr.Email);
-  }
-
-  sendMailWithAttachment(
-    inf.Secondary_Hr.Email,
-    'Thank you for filling the notification form!',
-    'Hi',
-    cc,
-    inf.studentDownloadLink
-  );
-
   await inf.save();
 };
 

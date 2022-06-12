@@ -38,6 +38,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
   const dualDegreeFields = extractFields(infData.Five_Year_Dual_Degree);
   const doubleMajorFields = extractFields(infData.Double_Major);
   const twoYearMscFields = extractFields(infData.Two_Year_Msc);
+  const minorFields = extractFields(infData.Minor);
   const skillBasedFields = extractFields(infData.Skill_Based);
   return (
     <div className='overallDiv1'>
@@ -214,6 +215,35 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
           </tbody>
         </table>
         <div>
+          <div className='startTextBold' style={{ fontSize: '21px' }}>
+            Minor
+          </div>
+          <div className='startTextBoldSmall' style={{ fontSize: '18px' }}>
+            Admitted through JEE (Advanced)
+          </div>
+          <table>
+            <tbody id='Five_Year'>
+              {minorFields &&
+                minorFields.map((field) => (
+                  <tr>
+                    <td className='courseName'>
+                      {field.split('_').map((word) => (
+                        <>{word !== 'MINOR' && word + ' '}</>
+                      ))}
+                    </td>
+                    <td className='courseCheckBoxBtech'>
+                      <input
+                        name={field}
+                        checked={infData.Minor[field]}
+                        type='checkbox'
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div></div>
           <header className='headerText m-0 mt-4'>
             Eligible courses and disciplines - Postgraduate
           </header>
@@ -454,32 +484,6 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
             </h1>
           </Col>
         </FormGroup>
-
-        {/* <div>
-          <header className="headerText">
-            Tentative dates for test and interviews:
-          </header>
-        </div>
-        <FormGroup row style={style}>
-          <Label for="exampleSelect" sm={3} className="fontText">
-            Priority 1
-          </Label>
-          <Col sm={9}>
-            <h1 className="inputText">
-              {infData.Priority_Details.Priority_One}
-            </h1>
-          </Col>
-        </FormGroup>
-        <FormGroup row style={style}>
-          <Label for="exampleSelect" sm={3} className="fontText">
-            Priority 2
-          </Label>
-          <Col sm={9}>
-            <h1 className="inputText">
-              {infData.Priority_Details.Priority_Two}
-            </h1>
-          </Col>
-        </FormGroup> */}
         <div
           className='formFlex'
           style={{
@@ -507,22 +511,5 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
     </div>
   );
 };
-//export default ReviewInf;
-// class Example extends React.PureComponent {
-//   render() {
-//     return (
-//       <div>
-//         <ReactToPrint content={() => this.componentRef}>
-//           <PrintContextConsumer>
-//             {({ handlePrint }) => (
-//               <button onClick={handlePrint}>Print this out!</button>
-//             )}
-//           </PrintContextConsumer>
-//         </ReactToPrint>
-//         <ComponentToPrint ref={el => (this.componentRef = el)} />
-//       </div>
-//     );
-//   }
-// }
-// export default Example;
+
 export default ReviewInf;
