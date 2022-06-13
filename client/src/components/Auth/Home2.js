@@ -214,6 +214,27 @@ export const Home2 = ({
                   <div className="clear"></div>
                 </div>
               </form>
+              <div style={{ marginTop: "70px " }}>
+                <p className="">
+                  <div
+                    className="a-home"
+                    style={{ width: "100%", textAlign: "center" }}>
+                    For any queries,
+                    <br /> contact us at {"  "}
+                    <a
+                      href="mailto:cdc@iitism.ac.in"
+                      className="a-home"
+                      style={{ textTransform: "lowercase" }}>
+                      cdc@iitism.ac.in
+                    </a>{" "}
+                    or{"  "}
+                    <a href="tel:+91-9771490999" className="a-home">
+                      +91-9771490999
+                    </a>
+                  </div>
+                </p>
+                <div className="clear"></div>
+              </div>
             </div>
           )}
         </div>
