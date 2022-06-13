@@ -68,16 +68,18 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
         </div>
         {internProfileFields &&
           internProfileFields.map((field) => (
-            <FormGroup row style={style}>
-              <Label for='exampleText' sm={4} className='fontText'>
-                {field.split('_').map((word) => (
-                  <>{word !== 'IP' && word + ' '}</>
-                ))}
-              </Label>
-              <Col sm={8}>
-                <h1 className='inputText'>{infData.Intern_Profile[field]}</h1>
-              </Col>
-            </FormGroup>
+            <div>
+              <FormGroup row style={style}>
+                <Label for='exampleText' sm={4} className='fontText'>
+                  {field.split('_').map((word) => (
+                    <>{word !== 'IP' && word + ' '}</>
+                  ))}
+                </Label>
+                <Col sm={8}>
+                  <h6 className='inputText'>{infData.Intern_Profile[field]}</h6>
+                </Col>
+              </FormGroup>
+            </div>
           ))}
         <div>
           <header className='headerText'>STIPEND DETAILS</header>
