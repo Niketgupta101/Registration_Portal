@@ -1,26 +1,26 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const CompanyOverviewSchema = {
-  CO_Name_Of_The_Company: { type: String, default: '' },
-  CO_Category: { type: String, default: '' },
-  CO_Sector: { type: String, default: '' },
-  CO_About: { type: String, default: '' },
-  CO_Website: { type: String, default: '' },
+  CO_Name_Of_The_Company: { type: String, default: "" },
+  CO_Category: { type: String, default: "" },
+  CO_Sector: { type: String, default: "" },
+  CO_About: { type: String, default: "" },
+  CO_Website: { type: String, default: "" },
 };
 
 const InternProfileSchema = {
   IP_Internship_Duration: { type: String, default: `May-July 2023` },
-  IP_Job_Designation: { type: String, default: '' },
-  IP_Job_Description: { type: String, default: '' },
-  IP_Mode_Of_Internship: { type: String, default: 'Virtual' },
-  IP_Place_Of_Posting: { type: String, default: '' },
+  IP_Job_Designation: { type: String, default: "" },
+  IP_Job_Description: { type: String, default: "" },
+  IP_Mode_Of_Internship: { type: String, default: "Virtual" },
+  IP_Place_Of_Posting: { type: String, default: "" },
 };
 
 const StipendDetailsSchema = {
-  SD_Salary_Per_Month: { type: String, default: '' },
-  SD_PPO_provision_on_performance_basis: { type: String, default: 'Yes' },
-  SD_CTC: { type: String, default: '' },
+  SD_Salary_Per_Month: { type: String, default: "" },
+  SD_PPO_provision_on_performance_basis: { type: String, default: "Yes" },
+  SD_CTC: { type: String, default: "" },
 };
 
 const FourYearBtechSchema = {
@@ -47,7 +47,7 @@ const FourYearBtechSchema = {
 
 const FiveYearIntegratedSchema = {
   FYI_Select_All: { type: Boolean, default: false },
-  FYI_Computer_Science_and_Engineering: { type: Boolean, default: false },
+  // FYI_Computer_Science_and_Engineering: { type: Boolean, default: false },
   FYI_Mathematics_and_Computing: { type: Boolean, default: false },
   FYI_Applied_Geology: { type: Boolean, default: false },
   FYI_Applied_Geophysics: { type: Boolean, default: false },
@@ -83,7 +83,7 @@ const MinorSchema = {
 
 const TwoYearMtechSchema = {
   TYM_Select_All: { type: Boolean, default: false },
-  TYM_Applied_Geology: { type: Boolean, default: false },
+  TYM_Engineering_Geology: { type: Boolean, default: false },
   TYM_Applied_Geophysics: { type: Boolean, default: false },
   TYM_Chemical_Engineering: { type: Boolean, default: false },
   TYM_Civil_Engineering: { type: Boolean, default: false },
@@ -143,12 +143,26 @@ const TwoYearMscSchema = {
 
 const FiveYearDualDegreeSchema = {
   FYDD_Select_All: { type: Boolean, default: false },
-  FYDD_Environmental_Environmental: { type: Boolean, default: false },
-  FYDD_Chemical_Computer: { type: Boolean, default: false },
-  FYDD_Mechanical_Computer: { type: Boolean, default: false },
-  FYDD_Environmental_Computer: { type: Boolean, default: false },
-  FYDD_MNC_MBA: { type: Boolean, default: false },
-  FYDD_Civil_Computer: { type: Boolean, default: false },
+  FYDD_Environmental_Engineering_BTech_with_Environmental_Engineering_MTech: {
+    type: Boolean,
+    default: false,
+  },
+  FYDD_Chemical_Engineering_BTech_with_Computer_Science_and_Engineering_MTech: {
+    type: Boolean,
+    default: false,
+  },
+  FYDD_Mechanical_Engineering_BTech_with_Computer_Science_and_Engineering_MTech:
+    { type: Boolean, default: false },
+  FYDD_Environmental_Engineering_BTech_with_Computer_Science_and_Engineering_MTech:
+    { type: Boolean, default: false },
+  FYDD_Mathematics_and_Computing_Integrated_MTech_with_MBA: {
+    type: Boolean,
+    default: false,
+  },
+  FYDD_Civil_Engineering_BTech_with_Computer_Science_and_Engineering_MTech: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const DoubleMajorSchema = {
@@ -181,40 +195,40 @@ const SkillBasedSchema = {
 
 const SelectionProcedureSchema = {
   SPS_Total_Number_Of_Rounds: { type: Number, default: 0 },
-  SPS_No_Of_Offers: { type: String, default: 'NA' },
-  SPS_Eligibility_Criteria: { type: String, default: 'NA' },
-  SPS_Pre_Placement_Talk_Mode: { type: String, default: '' },
-  SPS_Pre_Placement_Talk_Date: { type: String, default: '' },
-  SPS_Resume_Shortlisting_Mode: { type: String, default: '' },
-  SPS_Resume_Shortlisting_Date: { type: String, default: '' },
-  SPS_Online_Written_Test_Mode: { type: String, default: '' },
-  SPS_Online_Written_Test_Date: { type: String, default: '' },
-  SPS_Group_Discussion_Mode: { type: String, default: '' },
-  SPS_Group_Discussion_Date: { type: String, default: '' },
-  SPS_Personal_Interview_Mode: { type: String, default: '' },
-  SPS_Personal_Interview_Date: { type: String, default: '' },
-  SPS_Any_Other_Rounds_Mode: { type: String, default: '' },
-  SPS_Any_Other_Rounds_Date: { type: String, default: '' },
-  SPS_OtherInformation: { type: String, default: '' },
+  SPS_No_Of_Offers: { type: String, default: "" },
+  SPS_Eligibility_Criteria: { type: String, default: "NA" },
+  SPS_Pre_Placement_Talk_Mode: { type: String, default: "" },
+  SPS_Pre_Placement_Talk_Date: { type: String, default: "" },
+  SPS_Resume_Shortlisting_Mode: { type: String, default: "" },
+  SPS_Resume_Shortlisting_Date: { type: String, default: "" },
+  SPS_Online_Written_Test_Mode: { type: String, default: "" },
+  SPS_Online_Written_Test_Date: { type: String, default: "" },
+  SPS_Group_Discussion_Mode: { type: String, default: "" },
+  SPS_Group_Discussion_Date: { type: String, default: "" },
+  SPS_Personal_Interview_Mode: { type: String, default: "" },
+  SPS_Personal_Interview_Date: { type: String, default: "" },
+  SPS_Any_Other_Rounds_Mode: { type: String, default: "" },
+  SPS_Any_Other_Rounds_Date: { type: String, default: "" },
+  SPS_OtherInformation: { type: String, default: "" },
 };
 
 const PrimaryHrSchema = {
-  PH_Name: { type: String, default: '' },
-  PH_Email: { type: String, default: '' },
-  PH_Mobile: { type: String, default: '' },
+  PH_Name: { type: String, default: "" },
+  PH_Email: { type: String, default: "" },
+  PH_Mobile: { type: String, default: "" },
 };
 
 const SecondaryHrSchema = {
-  SH_Name: { type: String, default: '' },
-  SH_Email: { type: String, default: '' },
-  SH_Mobile: { type: String, default: '' },
+  SH_Name: { type: String, default: "" },
+  SH_Email: { type: String, default: "" },
+  SH_Mobile: { type: String, default: "" },
 };
 
 // --------------------------------------------------------------------------------------------------
 
 const NewInfSchema = new Schema(
   {
-    userId: { type: Schema.ObjectId, ref: 'User' },
+    userId: { type: Schema.ObjectId, ref: "User" },
     Company_Overview: CompanyOverviewSchema,
     Intern_Profile: InternProfileSchema,
     Stipend_Details: StipendDetailsSchema,
@@ -236,7 +250,7 @@ const NewInfSchema = new Schema(
     adminDownloadLink: String,
     studentPreviewLink: String,
     studentDownloadLink: String,
-    status: { type: String, default: 'incomplete' },
+    status: { type: String, default: "incomplete" },
     isIntern: { type: Boolean, default: true },
   },
   {
@@ -246,7 +260,7 @@ const NewInfSchema = new Schema(
 
 // --------------------------------------------------------------------------------------------------
 
-const NewInf = mongoose.model('NewInf', NewInfSchema);
+const NewInf = mongoose.model("NewInf", NewInfSchema);
 
 // --------------------------------------------------------------------------------------------------
 
