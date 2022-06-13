@@ -195,7 +195,7 @@ const SkillBasedSchema = {
 
 const SelectionProcedureSchema = {
   SPS_Total_Number_Of_Rounds: { type: Number, default: 0 },
-  SPS_No_Of_Offers: { type: String, default: "" },
+  SPS_Number_Of_Offers: { type: String, default: "" },
   SPS_Eligibility_Criteria: { type: String, default: "NA" },
   SPS_Pre_Placement_Talk_Mode: { type: String, default: "" },
   SPS_Pre_Placement_Talk_Date: { type: String, default: "" },

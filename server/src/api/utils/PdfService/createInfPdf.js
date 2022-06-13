@@ -98,14 +98,14 @@ const createInfPdfForAdmin = async (inf, filename) => {
     'niketgupta101@gmail.com',
   ];
 
-  if (inf.Secondary_Hr.Email !== '') {
-    cc.push(inf.Secondary_Hr.Email);
+  if (inf.Secondary_Hr.SH_Email !== '') {
+    cc.push(inf.Secondary_Hr.SH_Email);
   }
 
   sendMailWithAttachment(
-    inf.Secondary_Hr.Email,
+    inf.Primary_Hr.PH_Email,
     'Thank you for filling the notification form!',
-    'Hi',
+    AttachmentMailHtml(),
     cc,
     inf.adminDownloadLink
   );
@@ -224,6 +224,128 @@ const updateInfInGSheets = async (inf) => {
     data,
     'A1:J'
   );
+};
+const AttachmentMailHtml = () => {
+  return `<div>
+  <div marginheight="0" topmargin="0" marginwidth="0" style="margin: 0px; background-color: #f2f3f8" leftmargin="0">
+    <!--100% body table-->
+    <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8" style="
+            @import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700);
+            font-family: 'Open Sans', sans-serif;
+          ">
+      <tr>
+        <td>
+          <table style="
+                  background-color: #f2f3f8;
+                  max-width: 670px;
+                  margin: 0 auto;
+                " width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="height: 80px">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="height: 20px">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" style="
+                        max-width: 670px;
+                        background: #fff;
+                        border-radius: 3px;
+                        text-align: center;
+                        -webkit-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                        -moz-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                        box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                      ">
+                  <tr>
+                    <td style="height: 40px">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0 35px">
+                      <div>
+                        <h1 style="
+                                color: #1e1e2d;
+                                font-weight: 500;
+                                margin: 10px 0;
+                                font-size: 30px;
+                                font-family: 'Rubik', sans-serif;
+                                letter-spacing: 2px;
+                              ">
+                          Thank you for filling the notification form!
+                        </h1>
+                      </div>
+
+                      <span style="
+                              display: inline-block;
+                              vertical-align: middle;
+                              margin: 29px 0 26px;
+                              border-bottom: 1px solid #cecece;
+                              width: 100px;
+                            "></span>
+                      <p style="
+                              color: #455056;
+                              font-size: 15px;
+                              line-height: 24px;
+                              margin: 0;
+                            ">
+                        This automatic reply is just to let you know that we have received your response.
+                        Attached below is the copy of your responses. For queries kindly email the Career and Develpment
+                        Cell of IIT(ISM) Dhanbad at
+                        <span style="color:blue; cursor:pointer;">cdc@iitism.ac.in</span>
+                      </p>
+                      <p>
+                      <div style="
+                          color: #455056;
+                          font-size: 13px;
+                          line-height: 24px;
+                          font-weight: 500;
+                          margin: 30px 0 0 0;
+                          letter-spacing: 1px;
+                        ">Thanks</div>
+                      <div style="
+                        color: #455056;
+                        font-size: 13px;
+                        line-height: 24px;
+                        font-weight: 500;
+                        margin: 0px 0 20px 0;
+                        letter-spacing: 1px;
+                      ">CDC, IIT(ISM) Dhanbad</div>
+                      </p>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px">&nbsp;</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="height: 20px">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">
+                <p style="
+                        font-size: 14px;
+                        color: rgba(69, 80, 86, 0.7411764705882353);
+                        line-height: 18px;
+                        margin: 0 0 0;
+                      ">
+                  <a target="_blank" href="https://cdc.iitism.ac.in/"><strong>https://cdc.iitism.ac.in/</strong></a>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 80px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <!--/100% body table-->
+  </div>
+</div>`;
 };
 
 module.exports = {

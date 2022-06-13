@@ -31,6 +31,7 @@ const ModeOfHiring = (mode, handleOnChange) => {
             onClick={(e) =>
               handleOnChange('Selection_Procedure', mode, e.target.value)
             }
+            required
           />
           <FormControlLabel
             size='small'
@@ -40,6 +41,7 @@ const ModeOfHiring = (mode, handleOnChange) => {
             onClick={(e) =>
               handleOnChange('Selection_Procedure', mode, e.target.value)
             }
+            required
           />
           <FormControlLabel
             size='small'
@@ -49,6 +51,7 @@ const ModeOfHiring = (mode, handleOnChange) => {
             onClick={(e) =>
               handleOnChange('Selection_Procedure', mode, e.target.value)
             }
+            required
           />
         </RadioGroup>
       </FormControl>
@@ -61,13 +64,15 @@ const PreferredDate = (date, handleOnChange) => {
     <TableCell>
       <div>
         <TextField
-          label='DD-MM-YYYY'
+         
           id='outlined-size-small'
           defaultValue=''
           size='small'
+          type="date"
           onChange={(e) =>
             handleOnChange('Selection_Procedure', date, e.target.value)
           }
+          required
         />
       </div>
     </TableCell>
@@ -209,7 +214,7 @@ const INF4 = ({ setPage, infData, handleOnChange, handleUpdateInf }) => {
           </Label>
           <Col sm={7}>
             <Input
-              id='exampleText'
+              id='exampleText2'
               name='SPS_Number_Of_Offers'
               required
               type='text'

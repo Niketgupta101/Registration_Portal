@@ -228,7 +228,7 @@ export default function INF2({
                       >
                         <div className='eligible-heading d-flex '>
                           <h3 className='flex-grow-1 align-self-center m-0'>
-                            5-Year Dual Degree/ Integrated M.Tech Programs
+                            5-Year Integrated M.Tech Programs
                           </h3>
                           <div className='p-2 align-self-center'>
                             {dual_mtechdiv === true ? (
@@ -323,7 +323,7 @@ export default function INF2({
                           >
                             <div className='eligible-heading d-flex '>
                               <h3 className='flex-grow-1 align-self-center m-0'>
-                                Double Major
+                                5-Year Dual Degree Programs
                               </h3>
                               <div className='p-2 align-self-center'>
                                 {doublemajor === true ? (
