@@ -229,26 +229,29 @@ export const searchJnfByPattern = (pattern) =>
 
 // ------------------------ Courses ------------------------------------
 
-export const getInternshipData = () => API.get('/courses/internship', setHeader());
-export const getPlacementData  = () => API.get('/courses/placement', setHeader());
+export const getInternshipData = () =>
+  API.get('/courses/internship', setHeader());
+export const getPlacementData = () =>
+  API.get('/courses/placement', setHeader());
 
 export const getPlacedCount = () =>
   API.get('/courses/placed/count', setHeader());
 
 // -------------------------------------------
 
-export const fetchInf = (id) => API.get(`inf/new/fetch/${id}`, setHeader());
-export const createInf = (data) => API.post(`inf/new`, data, setHeader());
-export const updateInf = (data) => API.put('inf/new/update', data, setHeader());
+export const fetchInf = (id) => API.get(`/inf/new/fetch/${id}`, setHeader());
+export const createInf = (data) => API.post(`/inf/new`, data, setHeader());
+export const updateInf = (data) =>
+  API.put('/inf/new/update', data, setHeader());
 export const submitReviewedInf = (id) =>
-  API.put(`inf/new/submit/${id}`, setHeader());
+  API.put(`/inf/new/submit/${id}`, setHeader());
 export const removeInf = (id) =>
-  API.delete(`inf/new/delete/${id}`, setHeader());
+  API.delete(`/inf/new/delete/${id}`, setHeader());
 export const fetchAllInf = (pageLimit, pageNo) =>
-  API.get(`inf/new/admin/${pageLimit}/${pageNo}`, setHeader());
+  API.get(`/inf/new/admin/${pageLimit}/${pageNo}`, setHeader());
 export const fetchAllInfForUser = (pageLimit, pageNo) =>
-  API.get(`inf/new/user/${pageLimit}/${pageNo}`, setHeader());
+  API.get(`/inf/new/user/${pageLimit}/${pageNo}`, setHeader());
 export const fetchPendingInfForUser = (pageLimit, pageNo) =>
-  API.get(`inf/new/user/pending/${pageLimit}/${pageNo}`, setHeader());
+  API.get(`/inf/new/user/pending/${pageLimit}/${pageNo}`, setHeader());
 export const searchInf = (pattern, pageLimit, pageNo) =>
-  API.get(`inf/new/search/${pattern}/${pageLimit}/${pageNo}`, setHeader());
+  API.get(`/inf/new/search/${pattern}/${pageLimit}/${pageNo}`, setHeader());
