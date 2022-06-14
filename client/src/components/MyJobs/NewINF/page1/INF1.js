@@ -30,7 +30,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
   const [hrdetail, setHrdetail] = useState(false);
   const [althrdetail, setALtrdetail] = useState(false);
   const [Year, setYear] = useState(2023);
-  const [salaryUnit, setSalary_Unit] = useState("");
+  const [salaryUnit, setSalary_Unit] = useState("per month");
 
   function handleHrdetails(e) {
     if (e.target.value === "YES") setALtrdetail(() => true);
