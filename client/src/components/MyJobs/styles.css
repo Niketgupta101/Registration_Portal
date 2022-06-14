@@ -170,15 +170,15 @@ select {
   background: #fff;
 }
 .jumbotron {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   text-align: center;
 }
 .company-dashboard-container {
-  /* background-image: url("https://ik.imagekit.io/hrgu22madpa/tuxpi.com.1646069744_Zn1263qKgTn1.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1646069759781"); */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-  /* background-attachment: fixed; */
-  /* background-size: cover; */
+  background-image: url("../../Images/bg-main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .main-heading-secondary {

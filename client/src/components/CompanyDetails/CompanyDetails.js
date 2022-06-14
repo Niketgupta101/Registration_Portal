@@ -7,6 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
 import "./styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CompanyDetails = ({
   companyData,
@@ -72,17 +74,6 @@ const CompanyDetails = ({
               </div>
             </div>
             <div className="formFlex">
-              {/* <div className="form-floating mb-3">
-                <label for="floatingInput"htmlFor="name">Company Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  required id="floatingInput"
-                  value={companyData.name}
-                  onChange={handleCompanyChange}
-                />
-              </div> */}
               <div className="form-floating mb-3">
                 <input
                   type="text"
@@ -112,20 +103,6 @@ const CompanyDetails = ({
                 </label>
               </div>
             </div>
-            {/* <div className="form-floating mb-3">
-              <input
-                className="form-control"
-                name="company_type"
-                type="text"
-                required
-                id="floatingInput"
-                value={companyData.company_type}
-                onChange={handleCompanyChange}
-              />
-              <label for="floatingInput" htmlFor="company_type">
-                Company Type / Sector <span style={{ color: "red" }}>*</span>
-              </label>
-            </div> */}
 
             <div className="form-floating mb-3">
               <textarea
@@ -473,6 +450,7 @@ const CompanyDetails = ({
               SUBMIT
             </button>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </>
