@@ -61,7 +61,7 @@ exports.sendEmail = async (to, subject, html) => {
     if (error) {
       return { success: false, message: 'Mail could not be sent' };
     } else {
-      return { success: true, message: 'Mail sent successfully' };
+    return { success: true, message: 'Mail sent successfully' };
     }
   });
 };
