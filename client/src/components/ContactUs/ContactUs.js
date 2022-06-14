@@ -9,6 +9,9 @@ import { postContactData } from "../../api";
 import cllgPhoto from "./../../Images/contact-us.png";
 import { Toast } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
+import addressicon from "../../Images/addressicon.jpg";
+import contacticon from "../../Images/contacticon.jpg";
+import emailicon from "../../Images/emailicon.jpg";
 const ContactUs = () => {
   const Navigate = useNavigate();
 
@@ -134,7 +137,7 @@ const ContactUs = () => {
                       <div className="col-lg-4 col-md-4">
                         <div className="card-body d-flex align-items-center c-detail pl-0">
                           <div className="mr-3 align-self-center">
-                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png" />
+                            <img src={addressicon} />
                           </div>
                           <div className="mx-3">
                             <h6 className="font-weight-medium">Address</h6>
@@ -149,7 +152,7 @@ const ContactUs = () => {
                       <div className="col-lg-4 col-md-4">
                         <div className="card-body d-flex align-items-center c-detail">
                           <div className="mr-3 align-self-center">
-                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png" />
+                            <img src={contacticon} />
                           </div>
                           <div className="ms-4">
                             <h6 className="font-weight-medium">Phone</h6>
@@ -160,7 +163,7 @@ const ContactUs = () => {
                       <div className="col-lg-4 col-md-4">
                         <div className="card-body d-flex align-items-center c-detail">
                           <div className="mr-3 align-self-center">
-                            <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png" />
+                            <img src={emailicon} />
                           </div>
                           <div className="mx-3">
                             <h6 className="font-weight-medium">Email</h6>
