@@ -1,44 +1,44 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
-import 'animate.css';
-import Loading from '../Loading/Loading';
-import './styles.css';
-import { CourseTable, CourseTable2 } from './CourseTable';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import "animate.css";
+import Loading from "../Loading/Loading";
+import "./styles.css";
+import { CourseTable, CourseTable2 } from "./CourseTable";
 
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 import {
   getAllCourseData,
   getInternshipData,
   getPlacementData,
-} from '../../api/index.js';
+} from "../../api/index.js";
 
 const courseName_Placement = [
-  'Bachelor of Technology',
-  'Dual Degree',
-  'Integrated Master of Technology',
-  'Master of Business Administration',
-  'Master of Business Administration(BA)',
-  'Master of Science',
-  'Master of Science and Technology',
-  'Master of Technology',
+  "Bachelor of Technology",
+  "Dual Degree",
+  "Integrated Master of Technology",
+  "Master of Business Administration",
+  "Master of Business Administration(BA)",
+  "Master of Science",
+  "Master of Science and Technology",
+  "Master of Technology",
 ];
 const courseName_Internship = [
-  'Bachelor of Technology',
-  'Integrated Master of Technology',
-  'Master of Business Administration',
-  'Master of Business Administration(BA)',
-  'Master of Science',
-  'Master of Science and Technology',
-  'Master of Technology',
+  "Bachelor of Technology",
+  "Integrated Master of Technology",
+  "Master of Business Administration",
+  "Master of Business Administration(BA)",
+  "Master of Science",
+  "Master of Science and Technology",
+  "Master of Technology",
 ];
-const courseName2_Internship = ['Dual Degree', 'Double Major'];
+const courseName2_Internship = ["Dual Degree", "Double Major"];
 
 const Courses = () => {
   const [coursesPlacement, setCoursesPlacement] = useState([]);
@@ -58,17 +58,17 @@ const Courses = () => {
 
   const Navigate = useNavigate();
 
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  let user = JSON.parse(localStorage.getItem('user'));
+  let user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     if (!user || user.isemailVerified === false) {
-      Navigate('/auth');
+      Navigate("/auth");
     }
   }, [Navigate, user]);
 
@@ -124,68 +124,79 @@ const Courses = () => {
 
   return (
     <>
-      <div className='course-page'>
-        <div className='courses-heading'>
-          <h2>COURSES</h2>
-        </div>
+      <div className="company-dashboard-container">
+        <div className="course-page">
+          <div class="ug-pg d-flex m-0 justify-content-start bg-transparent">
+            <div>
+              <h1 className="ug-pg-h1 prog-hover">
+                COURSES
+                <span className="ug-pg-span">
+                  <b>
+                    List of programs and courses offered by IIT(ISM) Dhanbad
+                  </b>
+                </span>
+              </h1>
+            </div>
+          </div>
 
-        <Box
-          sx={{ width: '100%', typography: 'body1' }}
-          className='box-container'
-        >
-          <TabContext value={value}>
-            <Box
-              sx={{ borderBottom: 1, borderColor: 'divider' }}
-              className='box-head'
-            >
-              <TabList
-                onChange={handleChange}
-                aria-label='lab API tabs example'
+          <Box
+            sx={{ width: "100%", typography: "body1" }}
+            className="box-container"
+          >
+            <TabContext value={value}>
+              <Box
+                sx={{ borderBottom: 1, borderColor: "divider" }}
+                className="box-head"
               >
-                <Tab label='INTERNSHIP' value='1' />
-                <Tab label='PLACEMENT' value='2' />
-              </TabList>
-            </Box>
-            <TabPanel value='1'>
-              <div className='internship'>
-                {dataInternship.map((item, i) => {
-                  return (
-                    <CourseTable
-                      key={i}
-                      data={dataInternship[i]}
-                      title={courseName_Internship[i]}
-                      className='course-table'
-                    />
-                  );
-                })}
-                {leftDataInternship.map((item, i) => {
-                  return (
-                    <CourseTable2
-                      key={i}
-                      data={leftDataInternship[i]}
-                      title={courseName2_Internship[i]}
-                      className='course-table'
-                    />
-                  );
-                })}
-              </div>
-            </TabPanel>
-            <TabPanel value='2'>
-              <div className='placement'>
-                {allDataPlacement.map((item, i) => {
-                  return (
-                    <CourseTable
-                      key={i}
-                      data={allDataPlacement[i]}
-                      title={courseName_Placement[i]}
-                      className='course-table'
-                    />
-                  );
-                })}
-              </div>
-            </TabPanel>
-          </TabContext>
-        </Box>
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                >
+                  <Tab label="INTERNSHIP" value="1" />
+                  <Tab label="PLACEMENT" value="2" />
+                </TabList>
+              </Box>
+              <TabPanel value="1">
+                <div className="internship">
+                  {dataInternship.map((item, i) => {
+                    return (
+                      <CourseTable
+                        key={i}
+                        data={dataInternship[i]}
+                        title={courseName_Internship[i]}
+                        className="course-table"
+                      />
+                    );
+                  })}
+                  {leftDataInternship.map((item, i) => {
+                    return (
+                      <CourseTable2
+                        key={i}
+                        data={leftDataInternship[i]}
+                        title={courseName2_Internship[i]}
+                        className="course-table"
+                      />
+                    );
+                  })}
+                </div>
+              </TabPanel>
+              <TabPanel value="2">
+                <div className="placement">
+                  {allDataPlacement.map((item, i) => {
+                    return (
+                      <CourseTable
+                        key={i}
+                        data={allDataPlacement[i]}
+                        title={courseName_Placement[i]}
+                        className="course-table"
+                      />
+                    );
+                  })}
+                </div>
+              </TabPanel>
+            </TabContext>
+          </Box>
+        </div>
       </div>
       {isLoading && <Loading />}
     </>
