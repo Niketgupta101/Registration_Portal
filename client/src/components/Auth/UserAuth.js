@@ -11,7 +11,6 @@ import Loading from "../Loading/Loading";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 
 const UserAuth = () => {
   const Navigate = useNavigate();
@@ -169,19 +168,19 @@ const UserAuth = () => {
         handleErrorClick();
       }
     } else {
-      if (companyData.consent !== "Agree") {
-        toast.error("Please click on Agree to submit", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "dark",
-        });
-        return;
-      }
+      // if (companyData.consent !== "Agree") {
+      //   toast.error("Please click on Agree to submit", {
+      //     position: "top-center",
+      //     autoClose: 5000,
+      //     hideProgressBar: true,
+      //     closeOnClick: true,
+      //     pauseOnHover: false,
+      //     draggable: false,
+      //     progress: undefined,
+      //     theme: "dark",
+      //   });
+      //   return;
+      // }
       if (AuthData.password !== AuthData.confirmPassword) {
         handleErrorClick();
       } else {

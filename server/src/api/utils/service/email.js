@@ -52,7 +52,7 @@ exports.sendEmail = async (to, subject, html) => {
     from: process.env.EMAIL_USERNAME,
     to: to,
     subject: subject,
-    cc: ['cooldangerouscoder@gmail.com', 'rg.19je0667@mech.iitism.ac.in'],
+    cc: ['cooldangerouscoder@gmail.com'],
     // text: text,
     html: html,
   };

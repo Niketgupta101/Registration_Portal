@@ -12,7 +12,7 @@ const protect = async (req, res, next) => {
 
   token = access_token || token;
 
-  console.log({ token, access_token });
+  // console.log({ token, access_token });
 
   if (!token) {
     return next(new ErrorResponse('Not authorized to access this route', 401));
