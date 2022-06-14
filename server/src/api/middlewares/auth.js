@@ -5,7 +5,7 @@ const { jwtSecret } = require('../../config/vars');
 
 const protect = async (req, res, next) => {
   let token;
-  let access_token = req.cookies;
+  let access_token = req.cookies.access_token;
   if (req.headers.authorization) {
     token = req.headers.authorization.split(' ')[1];
   }

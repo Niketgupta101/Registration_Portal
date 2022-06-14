@@ -485,7 +485,7 @@ export default function INF2({
                             <div></div>
                           )}
                         </div>
-                        <div ref={refminor} className="eligible-type my-3">
+                        {/* <div ref={refminor} className="eligible-type my-3">
                           <div
                             onClick={() => {
                               setTimeout(() => {
@@ -571,7 +571,7 @@ export default function INF2({
                           ) : (
                             <div></div>
                           )}
-                        </div>
+                        </div> */}
                       </>
                     )}
                   </div>
