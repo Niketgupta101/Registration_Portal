@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, FormGroup, Label, Col, Input } from 'reactstrap';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -72,7 +72,7 @@ const PreferredDate = (date, handleOnChange) => {
           onChange={(e) =>
             handleOnChange('Selection_Procedure', date, e.target.value)
           }
-          required
+          // required 
         />
       </div>
     </TableCell>

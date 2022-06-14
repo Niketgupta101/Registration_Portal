@@ -18,7 +18,7 @@ const { readSheet, updateSheet } = require('../service/GSheets');
 let basePathname;
 
 if (env === 'production') {
-  basePathname = '/root/src/api/utils/Pdfservice';
+  basePathname = '/root/src/api/utils/PdfService';
 } else {
   basePathname = '.';
 }
@@ -73,7 +73,7 @@ const createInfPdfForAdmin = async (inf, filename) => {
   );
 
   if (env === 'production') {
-    await result.saveFiles('/root/src/api/utils/Pdfservice/');
+    await result.saveFiles('/root/src/api/utils/PdfService/');
   } else {
     await result.saveFiles(__dirname);
   }
@@ -166,7 +166,7 @@ const createInfPdfForStudent = async (infId, filename) => {
   );
 
   if (env === 'production') {
-    await result.saveFiles('/root/src/api/utils/Pdfservice/');
+    await result.saveFiles('/root/src/api/utils/PdfService/');
   } else {
     await result.saveFiles(__dirname);
   }

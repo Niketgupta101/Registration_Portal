@@ -204,7 +204,9 @@ ol.gradient-list > li + li {
 .table-row {
   color: white;
   background-color: rgba(197, 247, 198, 1);
+  cursor: pointer;
 }
+
 .box-head {
   display: flex;
   justify-content: center;

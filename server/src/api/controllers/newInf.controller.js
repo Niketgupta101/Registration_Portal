@@ -79,12 +79,13 @@ const fetchPendingInfForUser = async (req, res, next) => {
 };
 
 const createInf = async (req, res, next) => {
-  const { Company_Overview } = req.body;
+  const { Company_Overview, Primary_Hr } = req.body;
   const userId = req.user._id;
   try {
     const newInf = await NewInf.create({
       userId,
       Company_Overview,
+      Primary_Hr,
     });
 
     res.status(201).json({ success: true, jobId: newInf._id });

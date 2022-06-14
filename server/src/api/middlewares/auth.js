@@ -5,9 +5,15 @@ const { jwtSecret } = require('../../config/vars');
 
 const protect = async (req, res, next) => {
   let token;
+  let access_token = req.cookies.access_token;
   if (req.headers.authorization) {
     token = req.headers.authorization.split(' ')[1];
   }
+
+  token = access_token || token;
+
+  // console.log({ token, access_token });
+
   if (!token) {
     return next(new ErrorResponse('Not authorized to access this route', 401));
   }

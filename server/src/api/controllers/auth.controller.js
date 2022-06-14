@@ -56,6 +56,10 @@ exports.register = async (req, res, next) => {
       }
 
       res
+        .cookie('access_token', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+        })
         .status(201)
         .json({ success: true, newUser, token, company: response.company });
     } catch (error) {
@@ -77,7 +81,13 @@ exports.login = async (req, res, next) => {
     const loginResponse = await loginUser(emailIdOrUsername, password, next);
     if (loginResponse !== undefined) {
       const { user, token, company } = loginResponse;
-      res.status(200).json({ success: true, user, token, company });
+      res
+        .cookie('access_token', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+        })
+        .status(200)
+        .json({ success: true, user, token, company });
     }
   } catch (error) {
     return next(error);

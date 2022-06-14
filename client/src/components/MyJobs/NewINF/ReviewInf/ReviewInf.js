@@ -278,7 +278,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
               </tbody>
             </table>
             <div>
-              <div className='startTextBold' style={{ fontSize: '21px' }}>
+              {/* <div className='startTextBold' style={{ fontSize: '21px' }}>
                 Minor
               </div>
               <div className='startTextBoldSmall' style={{ fontSize: '18px' }}>
@@ -305,7 +305,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                       </tr>
                     ))}
                 </tbody>
-              </table>
+              </table> */}
             </div>
           </>
         )}
