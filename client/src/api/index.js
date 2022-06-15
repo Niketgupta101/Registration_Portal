@@ -131,7 +131,7 @@ export const postCompanyDetails = (data) =>
   API.post(`/company`, data, setHeader());
 
 export const getCompanyDetailsById = (id) =>
-  API.get(`/acompany/${id}`, setHeader());
+  API.get(`/company/${id}`, setHeader());
 
 export const getAllCompanyDetails = (pageNo) =>
   API.get(`/company/all/${pageNo}/12`, setHeader());
@@ -188,10 +188,10 @@ export const postContactData = (data) =>
   API.post(`/contact`, data, setHeader());
 
 export const updateContactStatus = (id) =>
-  API.put(`contact/${id}`, setHeader());
+  API.put(`/contact/${id}`, setHeader());
 
 export const deleteContactById = (id) =>
-  API.delete(`contact/${id}`, setHeader());
+  API.delete(`/contact/${id}`, setHeader());
 
 // ------------------------ Jobs ------------------------------------
 
