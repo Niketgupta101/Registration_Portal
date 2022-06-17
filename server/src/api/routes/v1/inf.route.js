@@ -31,30 +31,30 @@ const {
 
 const router = express.Router();
 
-router.get('/:id', protect, getInfById);
+// router.get('/:id', protect, getInfById);
 
-router.get('/single/:id', protect, getInfById);
+// router.get('/single/:id', protect, getInfById);
 
-router.get('/user/:userId/:pageno/:pagelimit', protect, getAllInfForUser);
+// router.get('/user/:userId/:pageno/:pagelimit', protect, getAllInfForUser);
 
-router.get(
-  '/search/:pattern/:pageno/:pagelimit',
-  protect,
-  authorizeRoles,
-  searchInfByPattern
-);
+// router.get(
+//   '/search/:pattern/:pageno/:pagelimit',
+//   protect,
+//   authorizeRoles,
+//   searchInfByPattern
+// );
 
-router.get('/latest', protect, getLatestInfOfUser);
+// router.get('/latest', protect, getLatestInfOfUser);
 
-router.get('/admin/all/:pageno/:pagelimit', protect, getAllInf);
+// router.get('/admin/all/:pageno/:pagelimit', protect, getAllInf);
 
-router.post('/', protect, createNewInf);
+// router.post('/', protect, createNewInf);
 
-router.put('/:id', protect, updateInfById);
+// router.put('/:id', protect, updateInfById);
 
-// router.get('/submit/:id', protect, submitInf);
+// // router.get('/submit/:id', protect, submitInf);
 
-router.delete('/delete/:id', protect, deleteInfById);
+// router.delete('/delete/:id', protect, deleteInfById);
 
 // -----------------------------------------------------------------------------------
 

@@ -207,6 +207,10 @@ export const updateGraduationYear = (data) =>
   API.put('/jobs/year/admin', data, setHeader());
 
 export const getGraduationYear = () => API.get('/jobs/year', setHeader());
+export const getCompanyCount = () =>
+  API.get('/jobs/company/count', setHeader());
+export const getInfCount = () => API.get('/jobs/inf/count', setHeader());
+export const getJnfCount = () => API.get('/jobs/jnf/count', setHeader());
 //-------------------------Invites Companies...........................
 
 export const sendInvitationToAllCompanies = () =>
@@ -255,3 +259,24 @@ export const fetchPendingInfForUser = (pageLimit, pageNo) =>
   API.get(`/inf/new/user/pending/${pageLimit}/${pageNo}`, setHeader());
 export const searchInf = (pattern, pageLimit, pageNo) =>
   API.get(`/inf/new/search/${pattern}/${pageLimit}/${pageNo}`, setHeader());
+
+// ------------------------------------------------
+
+export const fetchJnf = (id) => API.get(`/jnf/new/fetch/${id}`, setHeader());
+export const createJnf = (data) => API.post(`/jnf/new`, data, setHeader());
+export const updateJnf = (data) =>
+  API.put('/jnf/new/update', data, setHeader());
+export const submitReviewedJnf = (id) =>
+  API.put(`/jnf/new/submit/${id}`, setHeader());
+export const removeJnf = (id) =>
+  API.delete(`/jnf/new/delete/${id}`, setHeader());
+export const fetchAllJnf = (pageLimit, pageNo) =>
+  API.get(`/jnf/new/admin/${pageLimit}/${pageNo}`, setHeader());
+export const fetchAllJnfForUser = (pageLimit, pageNo) =>
+  API.get(`/jnf/new/user/${pageLimit}/${pageNo}`, setHeader());
+export const fetchPendingJnfForUser = (pageLimit, pageNo) =>
+  API.get(`/jnf/new/user/pending/${pageLimit}/${pageNo}`, setHeader());
+export const searchJnf = (pattern, pageLimit, pageNo) =>
+  API.get(`/jnf/new/search/${pattern}/${pageLimit}/${pageNo}`, setHeader());
+
+// ----------------------------------------------------

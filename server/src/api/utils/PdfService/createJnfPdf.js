@@ -12,7 +12,7 @@ const {
   generateDownloadUrl,
 } = require('../service/PDFservice/upload');
 const { sendMailWithAttachment } = require('../service/email');
-const { NewInf } = require('../../models/InfData');
+const { NewJnf } = require('../../models/JnfData');
 const { readSheet, updateSheet } = require('../service/GSheets');
 
 let basePathname;
@@ -23,7 +23,7 @@ if (env === 'production') {
   basePathname = '.';
 }
 
-const createInfPdfForAdmin = async (inf, filename) => {
+const createJnfPdfForAdmin = async (jnf, filename) => {
   let content = fs.readFileSync(
     path.resolve(__dirname, `${basePathname}/${filename}`),
     'binary'
@@ -37,22 +37,23 @@ const createInfPdfForAdmin = async (inf, filename) => {
   });
 
   doc.render({
-    ...inf.Company_Overview,
-    ...inf.Intern_Profile,
-    ...inf.Stipend_Details,
-    ...getReleventData({ data: inf.Four_Year_Btech }),
-    ...getReleventData({ data: inf.Five_Year_Integrated }),
-    ...getReleventData({ data: inf.Two_Year_Mtech }),
-    ...getReleventData({ data: inf.Three_Year_Msc }),
-    ...getReleventData({ data: inf.Two_Year_MBA }),
-    ...getReleventData({ data: inf.Minor }),
-    ...getReleventData({ data: inf.Two_Year_Msc }),
-    ...getReleventData({ data: inf.Five_Year_Dual_Degree }),
-    ...getReleventData({ data: inf.Double_Major }),
-    ...getReleventData({ data: inf.Skill_Based }),
-    ...inf.Selection_Procedure,
-    ...inf.Primary_Hr,
-    ...inf.Secondary_Hr,
+    ...jnf.Company_Overview,
+    ...jnf.Job_Details,
+    ...jnf.Salary_Details,
+    ...getReleventData({ data: jnf.Four_Year_Btech }),
+    ...getReleventData({ data: jnf.Five_Year_Integrated }),
+    ...getReleventData({ data: jnf.Two_Year_Mtech }),
+    ...getReleventData({ data: jnf.Three_Year_Msc }),
+    ...getReleventData({ data: jnf.Two_Year_MBA }),
+    ...getReleventData({ data: jnf.Minor }),
+    ...getReleventData({ data: jnf.Phd }),
+    ...getReleventData({ data: jnf.Two_Year_Msc }),
+    ...getReleventData({ data: jnf.Five_Year_Dual_Degree }),
+    ...getReleventData({ data: jnf.Double_Major }),
+    ...getReleventData({ data: jnf.Skill_Based }),
+    ...jnf.Selection_Procedure,
+    ...jnf.Primary_Hr,
+    ...jnf.Secondary_Hr,
   });
 
   const buf = doc.getZip().generate({
@@ -80,14 +81,14 @@ const createInfPdfForAdmin = async (inf, filename) => {
 
   let response = await uploadFile(
     path.resolve(__dirname, `${basePathname}/output.pdf`),
-    'INF',
+    'JNF',
     'admin'
   );
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  inf.set({
+  jnf.set({
     adminPreviewLink: previewLink,
     adminDownloadLink: downloadLink,
     status: 'complete',
@@ -98,21 +99,21 @@ const createInfPdfForAdmin = async (inf, filename) => {
     // 'niketgupta101@gmail.com',
   ];
 
-  if (inf.Secondary_Hr.SH_Email !== '') {
-    cc.push(inf.Secondary_Hr.SH_Email);
+  if (jnf.Secondary_Hr.SH_Email !== '') {
+    cc.push(jnf.Secondary_Hr.SH_Email);
   }
 
   sendMailWithAttachment(
-    inf.Primary_Hr.PH_Email,
+    jnf.Primary_Hr.PH_Email,
     'Thank you for filling the notification form!',
     AttachmentMailHtml(),
     cc,
-    inf.adminDownloadLink
+    jnf.adminDownloadLink
   );
 };
 
-const createInfPdfForStudent = async (infId, filename) => {
-  let inf = await NewInf.findOne({ _id: infId });
+const createJnfPdfForStudent = async (jnfId, filename) => {
+  let jnf = await NewJnf.findOne({ _id: jnfId });
 
   let content = fs.readFileSync(
     path.resolve(__dirname, `${basePathname}/${filename}`),
@@ -127,22 +128,23 @@ const createInfPdfForStudent = async (infId, filename) => {
   });
 
   doc.render({
-    ...inf.Company_Overview,
-    ...inf.Intern_Profile,
-    ...inf.Stipend_Details,
-    ...getReleventData({ data: inf.Four_Year_Btech }),
-    ...getReleventData({ data: inf.Five_Year_Integrated }),
-    ...getReleventData({ data: inf.Two_Year_Mtech }),
-    ...getReleventData({ data: inf.Three_Year_Msc }),
-    ...getReleventData({ data: inf.Two_Year_MBA }),
-    ...getReleventData({ data: inf.Minor }),
-    ...getReleventData({ data: inf.Two_Year_Msc }),
-    ...getReleventData({ data: inf.Five_Year_Dual_Degree }),
-    ...getReleventData({ data: inf.Double_Major }),
-    ...getReleventData({ data: inf.Skill_Based }),
-    ...inf.Selection_Procedure,
-    ...inf.Primary_Hr,
-    ...inf.Secondary_Hr,
+    ...jnf.Company_Overview,
+    ...jnf.Job_Details,
+    ...jnf.Salary_Details,
+    ...getReleventData({ data: jnf.Four_Year_Btech }),
+    ...getReleventData({ data: jnf.Five_Year_Integrated }),
+    ...getReleventData({ data: jnf.Two_Year_Mtech }),
+    ...getReleventData({ data: jnf.Three_Year_Msc }),
+    ...getReleventData({ data: jnf.Two_Year_MBA }),
+    ...getReleventData({ data: jnf.Minor }),
+    ...getReleventData({ data: jnf.Phd }),
+    ...getReleventData({ data: jnf.Two_Year_Msc }),
+    ...getReleventData({ data: jnf.Five_Year_Dual_Degree }),
+    ...getReleventData({ data: jnf.Double_Major }),
+    ...getReleventData({ data: jnf.Skill_Based }),
+    ...jnf.Selection_Procedure,
+    ...jnf.Primary_Hr,
+    ...jnf.Secondary_Hr,
   });
 
   const buf = doc.getZip().generate({
@@ -173,20 +175,20 @@ const createInfPdfForStudent = async (infId, filename) => {
 
   let response = await uploadFile(
     path.resolve(__dirname, `${basePathname}/studentOutput.pdf`),
-    'INF',
+    'JNF',
     'student'
   );
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
   let { downloadLink } = await generateDownloadUrl(response.data.id);
 
-  inf.set({
+  jnf.set({
     studentPreviewLink: previewLink,
     studentDownloadLink: downloadLink,
     status: 'complete',
   });
 
-  await inf.save();
+  await jnf.save();
 };
 
 const getReleventData = ({ data }) => {
@@ -198,29 +200,29 @@ const getReleventData = ({ data }) => {
   return newData;
 };
 
-const updateInfInGSheets = async (inf) => {
+const updateInfInGSheets = async (jnf) => {
   let details = [
-    inf._id.valueOf(),
-    inf.userId,
-    inf.Company_Overview.CO_Name_Of_The_Company,
-    // ...getValues(inf.Intern_Profile),
-    inf.Intern_Profile.IP_Job_Designation,
-    // ...getValues(inf.Salary_Details),
-    inf.adminPreviewLink,
-    inf.adminDownloadLink,
-    inf.createdAt,
-    inf.updatedAt,
+    jnf._id.valueOf(),
+    jnf.userId,
+    jnf.Company_Overview.CO_Name_Of_The_Company,
+    // ...getValues(jnf.Intern_Profile),
+    jnf.Intern_Profile.IP_Job_Designation,
+    // ...getValues(jnf.Salary_Details),
+    jnf.adminPreviewLink,
+    jnf.adminDownloadLink,
+    jnf.createdAt,
+    jnf.updatedAt,
   ];
 
   let data = await readSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
-    'INF',
+    'JNF',
     'A1:J'
   );
   data.push(details);
   await updateSheet(
     '1bmb6ntvaoVa2h44clYS0gfvYFQLyDXmsEepiztPU_x4',
-    'INF',
+    'JNF',
     data,
     'A1:J'
   );
@@ -349,7 +351,7 @@ const AttachmentMailHtml = () => {
 };
 
 module.exports = {
-  createInfPdfForAdmin,
-  createInfPdfForStudent,
+  createJnfPdfForAdmin,
+  createJnfPdfForStudent,
   updateInfInGSheets,
 };
