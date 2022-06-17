@@ -318,7 +318,7 @@ exports.sendConfirmationMail = async (emailId, emailVerifyToken) => {
     const subject = 'Email Verification - CDC IIT(ISM) Dhanbad';
 
     const message = generateHtml(emailVerifyUrl);
-
+    
     await sendEmail(emailId, subject, message);
     return { success: true };
   } catch (error) {

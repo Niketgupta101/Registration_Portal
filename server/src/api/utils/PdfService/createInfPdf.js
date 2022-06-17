@@ -94,8 +94,8 @@ const createInfPdfForAdmin = async (inf, filename) => {
   });
 
   let cc = [
-    // 'mahapatraakash.19je0086@cse.iitism.ac.in',
-    'niketgupta101@gmail.com',
+    'mahapatraakash.19je0086@cse.iitism.ac.in',
+    // 'niketgupta101@gmail.com',
   ];
 
   if (inf.Secondary_Hr.SH_Email !== '') {

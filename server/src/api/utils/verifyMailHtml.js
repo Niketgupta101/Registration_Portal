@@ -1,4 +1,5 @@
 const verifyMailHtml = ({ subject, message }) => {
+  console.log(subject);
   return `<!DOCTYPE html>
 <html lang="en-US">
   <head>

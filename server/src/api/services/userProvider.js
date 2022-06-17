@@ -10,7 +10,7 @@ exports.verifyEmailService = async (emailVerifyToken, next) => {
     if (!user) return next(new ErrorResponse('Invalid verification Link', 400));
 
     user.set({ isemailVerified: true });
-    user.set({ emailVerifyToken: undefined });
+    // user.set({ emailVerifyToken: undefined });
     await user.save();
 
     return { success: true, data: 'Email Verified Successfully' };

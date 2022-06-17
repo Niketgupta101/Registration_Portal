@@ -47,21 +47,24 @@ exports.register = async (req, res, next) => {
 
     try {
       const { newUser, token } = await registerUser(userDetails, next);
-
+      let comp;
       if (newUser) {
         const response = await postCompanyDetails(
           { ...company, userId: newUser._id },
           next
         );
+        comp = response.company;
       }
-
+      console.log(comp);
+      console.log(newUser);
+      console.log(token);
       res
         .cookie('access_token', token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
         })
         .status(201)
-        .json({ success: true, newUser, token, company: response.company });
+        .json({ success: true, newUser, token, company:comp });
     } catch (error) {
       console.log(error);
       return next(error);
