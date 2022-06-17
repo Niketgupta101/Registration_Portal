@@ -174,7 +174,7 @@ const createInfPdfForStudent = async (infId, filename) => {
   let response = await uploadFile(
     path.resolve(__dirname, `${basePathname}/studentOutput.pdf`),
     'INF',
-    'admin'
+    'student'
   );
 
   let { previewLink } = await generatePreviewUrl(response.data.id);
