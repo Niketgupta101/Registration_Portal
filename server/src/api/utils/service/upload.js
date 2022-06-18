@@ -5,7 +5,7 @@ const {
   UploadClientSecret,
   UploadRedirectURI,
   UploadRefreshToken,
-} = require('../../../../config/vars');
+} = require('../../../config/vars');
 
 const oAuth2Client = new google.auth.OAuth2(
   UploadClientId,

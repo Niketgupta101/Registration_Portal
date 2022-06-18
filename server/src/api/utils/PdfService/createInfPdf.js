@@ -10,7 +10,7 @@ const {
   uploadFile,
   generatePreviewUrl,
   generateDownloadUrl,
-} = require('../service/PDFservice/upload');
+} = require('../service/upload');
 const { sendMailWithAttachment } = require('../service/email');
 const { NewInf } = require('../../models/InfData');
 const { readSheet, updateSheet } = require('../service/GSheets');
