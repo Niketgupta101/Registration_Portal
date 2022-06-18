@@ -197,7 +197,7 @@ const PhdSchema = {
   PHD_Mining_Engineering: { type: Boolean, default: false },
   PHD_Petroleum_Engineering: { type: Boolean, default: false },
 };
-
+0
 const SkillBasedSchema = {
   SB_C_or_CPP_or_Java_or_Python_etc: { type: Boolean, default: false },
   SB_Full_Stack_Development_Frontend_or_Backend: {
