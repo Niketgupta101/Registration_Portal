@@ -47,13 +47,13 @@ const createTransporter = async () => {
   return transporter;
 };
 
-exports.sendEmail = async (to, subject, html) => {
+exports.sendEmail = async (to, subject, html, text) => {
   var mailOptions = {
     from: process.env.EMAIL_USERNAME,
     to: to,
     subject: subject,
-    // text: text,
     html: html,
+    text: text,
   };
   let emailTransporter = await createTransporter();
   emailTransporter.sendMail(mailOptions, function (error, info) {
@@ -65,7 +65,7 @@ exports.sendEmail = async (to, subject, html) => {
   });
 };
 
-exports.sendMailWithAttachment = async (to, subject, html, cc, link) => {
+exports.sendMailWithAttachment = async (to, subject, html, text, cc, link) => {
   let emailTransporter = await createTransporter();
   emailTransporter.sendMail(
     {
@@ -73,6 +73,7 @@ exports.sendMailWithAttachment = async (to, subject, html, cc, link) => {
       to,
       subject,
       html,
+      text,
       cc,
       attachments: [
         {

@@ -318,8 +318,10 @@ exports.sendConfirmationMail = async (emailId, emailVerifyToken) => {
     const subject = 'Email Verification - CDC IIT(ISM) Dhanbad';
 
     const message = generateHtml(emailVerifyUrl);
-    
-    await sendEmail(emailId, subject, message);
+
+    const text = `This mail is intended to verify your email id. You can verify you mail by opening - ${emailVerifyUrl}`;
+
+    await sendEmail(emailId, subject, message, text);
     return { success: true };
   } catch (error) {
     return { success: false };
@@ -333,11 +335,9 @@ exports.sendResetPasswordMail = async (emailId, resetToken) => {
     const subject = 'Reset your Password';
 
     const message = htmlforgetpassword(resetUrl);
-    // const message = `<h1>You have requested a password reset</h1>
-    //             <p>Please go to this link to reset your password</p>
-    //             <a href=${resetUrl} clicktracking=off>here</a>`;
+    const text = `You have requested a password reset.Please open - ${resetUrl} this link to reset your password`;
 
-    await sendEmail(emailId, subject, message);
+    await sendEmail(emailId, subject, message, text);
 
     return { success: true };
   } catch (error) {
@@ -353,7 +353,9 @@ exports.sendInvitationMailToCompany = async (emailId, username, password) => {
     const message = `<h3>You are invited for the Internship/Placement Season of IIT(ISM) Dhanbad 2022-23</h3>
                         <h4>Proceed here to complete registration process - <a href=${clientUrl}>Link</a></h4>`;
 
-    await sendEmail(emailId, subject, message);
+    const text = `You are invited for the Internship/Placement Season of IIT(ISM) Dhanbad 2022-23. Proceed here to complete registration process - ${clientUrl}`;
+
+    await sendEmail(emailId, subject, message, text);
     return { success: true };
   } catch (error) {
     return { success: false };

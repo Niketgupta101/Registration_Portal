@@ -124,7 +124,6 @@ const AllInf = () => {
                 key={job._id}
                 style={{ display: 'inline-block' }}
               >
-                {console.log(job)}
                 <div
                   className='badge'
                   style={{ backgroundColor: !job.isIntern && 'red' }}

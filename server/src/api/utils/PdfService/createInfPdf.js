@@ -106,6 +106,7 @@ const createInfPdfForAdmin = async (inf, filename) => {
     inf.Primary_Hr.PH_Email,
     'Thank you for filling the notification form!',
     AttachmentMailHtml(),
+    'You have successfully filled the job notification form. The pdf of the same is attached herewith',
     cc,
     inf.adminDownloadLink
   );

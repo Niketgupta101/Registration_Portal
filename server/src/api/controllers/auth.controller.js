@@ -55,18 +55,14 @@ exports.register = async (req, res, next) => {
         );
         comp = response.company;
       }
-      console.log(comp);
-      console.log(newUser);
-      console.log(token);
       res
         .cookie('access_token', token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
         })
         .status(201)
-        .json({ success: true, newUser, token, company:comp });
+        .json({ success: true, newUser, token, company: comp });
     } catch (error) {
-      console.log(error);
       return next(error);
     }
   }

@@ -174,7 +174,16 @@ const UserAuth = () => {
           password: AuthData.password,
         });
 
-        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            Name: data.user.Name,
+            contactNo: data.user.contactNo,
+            emailId: data.user.emailId,
+            isemailVerified: data.user.isemailVerified,
+            role: data.user.role,
+          })
+        );
         if (!data.user.isemailVerified) {
           setPage('verify');
         } else {
@@ -212,7 +221,16 @@ const UserAuth = () => {
             user: AuthData,
             company: companyData,
           });
-          localStorage.setItem('user', JSON.stringify(data.newUser));
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              Name: data.newUser.Name,
+              contactNo: data.newUser.contactNo,
+              emailId: data.newUser.emailId,
+              isemailVerified: data.newUser.isemailVerified,
+              role: data.newUser.role,
+            })
+          );
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('company', JSON.stringify(data.company));
           setPage('verify');

@@ -1,27 +1,27 @@
-import { TabContext, TabPanel } from "@mui/lab";
-import React, { useEffect, useState } from "react";
-import { fetchJnf, updateJnf, submitReviewedJnf } from "../../../api";
-import { useNavigate, useParams } from "react-router-dom";
+import { TabContext, TabPanel } from '@mui/lab';
+import React, { useEffect, useState } from 'react';
+import { fetchJnf, updateJnf, submitReviewedJnf } from '../../../api';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import "./styles.css";
+import './styles.css';
 
-import JNF1 from "./page1/JNF1";
-import JNF2 from "./page2/JNF2";
-import JNF4 from "./page4/JNF4";
-import ReviewJnf from "./ReviewJnf/ReviewJnf";
+import JNF1 from './page1/JNF1';
+import JNF2 from './page2/JNF2';
+import JNF4 from './page4/JNF4';
+import ReviewJnf from './ReviewJnf/ReviewJnf';
 
-import Loading from "../../Loading/Loading";
+import Loading from '../../Loading/Loading';
 
 const Jnf = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState('1');
   const [jnfData, setJnfData] = useState();
   const Navigate = useNavigate();
 
   const { JnfId } = useParams();
 
-  let user = JSON.parse(localStorage.getItem("user"));
-  const company = JSON.parse(localStorage.getItem("company"));
+  let user = JSON.parse(localStorage.getItem('user'));
+  const company = JSON.parse(localStorage.getItem('company'));
 
   useEffect(() => {
     if (
@@ -30,7 +30,7 @@ const Jnf = () => {
       !company ||
       company.length === 0
     ) {
-      Navigate("/auth");
+      Navigate('/auth');
     }
   }, [Navigate, user, company]);
 
@@ -40,7 +40,7 @@ const Jnf = () => {
 
       setJnfData({ ...data.job });
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
@@ -57,7 +57,7 @@ const Jnf = () => {
       setIsLoading(false);
       setPage((prevPage) => `${JSON.parse(prevPage) + 1}`);
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
@@ -67,10 +67,10 @@ const Jnf = () => {
     try {
       await submitReviewedJnf(JnfId);
       setIsLoading(false);
-      Navigate("/myjobs");
+      Navigate('/myjobs');
     } catch (error) {
       setIsLoading(false);
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
@@ -116,13 +116,12 @@ const Jnf = () => {
 
   return (
     <>
-      <div className="INF">
+      <div className='INF'>
         <TabContext
           value={page}
-          style={{ padding: "0", margin: "0", boxSizing: "border-box" }}
+          style={{ padding: '0', margin: '0', boxSizing: 'border-box' }}
         >
-          <TabPanel value="1">
-            {console.log(jnfData)}
+          <TabPanel value='1'>
             {jnfData && (
               <JNF1
                 setPage={setPage}
@@ -133,7 +132,7 @@ const Jnf = () => {
             )}
           </TabPanel>
           {jnfData && (
-            <TabPanel value={"2"}>
+            <TabPanel value={'2'}>
               <JNF2
                 setPage={setPage}
                 jnfData={jnfData}
@@ -143,7 +142,7 @@ const Jnf = () => {
             </TabPanel>
           )}
           {jnfData && (
-            <TabPanel value={"3"}>
+            <TabPanel value={'3'}>
               <JNF4
                 setPage={setPage}
                 jnfData={jnfData}
@@ -153,7 +152,7 @@ const Jnf = () => {
             </TabPanel>
           )}
           {jnfData && (
-            <TabPanel value={"4"}>
+            <TabPanel value={'4'}>
               <ReviewJnf
                 setPage={setPage}
                 jnfData={jnfData}
