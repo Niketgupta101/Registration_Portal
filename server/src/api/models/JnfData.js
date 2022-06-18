@@ -199,14 +199,13 @@ const PhdSchema = {
 };
 
 const SkillBasedSchema = {
-  SB_C_Cpp_Java_Python_etc: { type: Boolean, default: false },
+  SB_C_or_CPP_or_Java_or_Python_etc: { type: Boolean, default: false },
   SB_Full_Stack_Development_Frontend_or_Backend: {
     type: Boolean,
     default: false,
   },
-  SB_Civil_Engineering: { type: Boolean, default: false },
-  SB_AI_ML_DL_Data_Science: { type: Boolean, default: false },
-  SB_Business_Data_Analytics_Product_Management: {
+  SB_AI_or_ML_or_DL_or_Data_Science: { type: Boolean, default: false },
+  SB_Business_or_Data_Analytics_or_Product_Management: {
     type: Boolean,
     default: false,
   },
@@ -214,8 +213,9 @@ const SkillBasedSchema = {
   SB_Ethical_Hacking: { type: Boolean, default: false },
   SB_Mobile_Development: { type: Boolean, default: false },
   SB_Product_Analyst: { type: Boolean, default: false },
-  SB_Quant_Researcher: { type: Boolean, default: false },
-  SB_Others: { type: Boolean, default: false },
+  SB_Quant_Researcher_or_Trading_or_Investment_and_portfolio_management_or_Company_Valuation_and_financial_modelling_or_Financial_Risk_management_or_Investment_Banking_etc:
+    { type: Boolean, default: false },
+  SB_Other_Skills: { type: Boolean, default: false },
 };
 
 const SelectionProcedureSchema = {

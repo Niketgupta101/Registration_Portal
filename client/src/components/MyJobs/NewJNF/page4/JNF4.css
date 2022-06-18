@@ -1,11 +1,13 @@
 .fontText {
-  font-size: 19px;
+  font-size: 20px;
   justify-content: center;
-  color: rgb(0, 87, 168);
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   padding-top: 10px;
   padding-bottom: 5px;
   text-align: left;
   margin: 0 !important;
+  letter-spacing: 0.5px;
 }
 .resume {
   font-size: 19px;
