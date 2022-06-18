@@ -30,6 +30,8 @@ const MyJobs = () => {
 
   const [Jobs, setJobs] = useState([]);
 
+  const [jobCount, setJobCount] = useState(0);
+
   const [reload, setReload] = useState(0);
 
   const [pageNo, setPageNo] = useState('1');
@@ -56,15 +58,19 @@ const MyJobs = () => {
         let response = await getAllJobsForUser(12, pageNo);
 
         setJobs(response.data.jobs);
+        setJobCount(response?.data?.count);
       } else if (Filter === 'Internships') {
         let response = await fetchAllInfForUser(12, pageNo);
         setJobs(response.data.jobs);
+        setJobCount(response?.data?.count);
       } else if (Filter === 'Jobs') {
         let response = await fetchAllJnfForUser(12, pageNo);
         setJobs(response.data.jobs);
+        setJobCount(response?.data?.count);
       } else if (Filter === 'Pending Forms') {
         let response = await getAllPendingJobsForUser(12, pageNo);
         setJobs(response.data.jobs);
+        setJobCount(response?.data?.count);
       }
       setIsLoading(false);
     } catch (error) {
@@ -382,7 +388,7 @@ const MyJobs = () => {
         </div>
         <Stack spacing={1}>
           <Pagination
-            count={10}
+            count={parseInt((jobCount + 12) / 12)}
             color='primary'
             style={{ margin: '3rem auto' }}
             onChange={handlePageChange}

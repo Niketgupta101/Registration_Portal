@@ -32,7 +32,9 @@ const fetchAllJnf = async (req, res, next) => {
       .limit(pageLimit)
       .skip(offset);
 
-    res.status(201).json({ success: true, jobs: jnfList });
+    let count = await NewJnf.find({ status: 'complete' }).count();
+
+    res.status(201).json({ success: true, jobs: jnfList, count });
   } catch (error) {
     return next(error);
   }
@@ -51,8 +53,9 @@ const fetchAllJnfForUser = async (req, res, next) => {
       .sort({ updatedAt: -1 })
       .skip(offset)
       .limit(pageLimit);
+    let count = await NewJnf.find({ userId }).count();
 
-    res.status(201).json({ success: true, jobs: jnfList });
+    res.status(201).json({ success: true, jobs: jnfList, count });
   } catch (error) {
     return next(error);
   }
@@ -72,7 +75,9 @@ const fetchPendingJnfForUser = async (req, res, next) => {
       .limit(pageLimit)
       .skip(offset);
 
-    res.status(201).json({ success: true, jobs: jnfList });
+    let count = await NewJnf.find({ userId, status: 'incomplete' }).count();
+
+    res.status(201).json({ success: true, jobs: jnfList, count });
   } catch (error) {
     return next(error);
   }
@@ -157,7 +162,7 @@ const searchJnf = async (req, res, next) => {
     pageNo = parseInt(pageNo);
     let offset = (pageNo - 1) * pageLimit;
 
-    let jnfList = await NewJnf.find({
+    let searchOptions = {
       $or: [
         {
           'Company_Overview.CO_Name_Of_The_Company': {
@@ -181,12 +186,16 @@ const searchJnf = async (req, res, next) => {
           status: 'complete',
         },
       ],
-    })
+    };
+
+    let jnfList = await NewJnf.find(searchOptions)
       .sort({ updatedAt: -1 })
       .limit(pageLimit)
       .skip(offset);
 
-    res.status(201).json({ success: true, jobs: jnfList });
+    let count = await NewJnf.find(searchOptions).count();
+
+    res.status(201).json({ success: true, jobs: jnfList, count });
   } catch (error) {
     return next(error);
   }

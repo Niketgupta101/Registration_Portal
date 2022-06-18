@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../../config/vars');
 const ErrorResponse = require('../utils/errorResponse');
 const mongoose = require('mongoose');
-const { verifyMailHtml } = require('../utils/verifyMailHtml');
+const { verifyMailHtml, unverifyMailHtml } = require('../utils/verifyMailHtml');
 
 const {
   verifyEmailService,
@@ -18,11 +18,16 @@ exports.verifyEmail = async (req, res, next) => {
   const emailVerifyToken = req.params.verifyToken;
 
   try {
-    const response = await verifyEmailService(emailVerifyToken, next);
+    const user = await User.findOne({ emailVerifyToken });
+    if (!user) return res.status(201).send(unverifyMailHtml());
 
-    res.status(201).send(verifyMailHtml(response));
+    user.set({ isemailVerified: true });
+    // user.set({ emailVerifyToken: undefined });
+    await user.save();
+
+    res.status(201).send(verifyMailHtml());
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
 

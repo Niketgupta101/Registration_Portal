@@ -16,6 +16,7 @@ import { fetchAllJnf, searchJnf } from '../../../api/index';
 
 const AllJnf = () => {
   const [jobs, setJobs] = useState([]);
+  const [jobCount, setJobCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const Navigate = useNavigate();
 
@@ -43,6 +44,7 @@ const AllJnf = () => {
       const response = await fetchAllJnf(12, pageNo);
       setIsLoading(false);
       setJobs(response.data.jobs);
+      setJobCount(response?.data?.count);
     } catch (error) {
       setIsLoading(false);
       Navigate('/badgateway');
@@ -77,6 +79,7 @@ const AllJnf = () => {
         }
       }
       setJobs(response.data.jobs);
+      setJobCount(response?.data?.count);
     }
     fetchJNFs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -157,7 +160,7 @@ const AllJnf = () => {
                         </>
                       ) : (
                         <>
-                          <span>CTC</span>: {job?.Salary_Details?.SD_CTC}
+                          <span>CTC</span>: {job?.Salary_Details?.SD_CTC_In_LPA}
                         </>
                       )}
                     </h5>
@@ -237,7 +240,7 @@ const AllJnf = () => {
         </div>
         <Stack spacing={1}>
           <Pagination
-            count={10}
+            count={parseInt((jobCount + 12) / 12)}
             color='primary'
             style={{ margin: '3rem auto' }}
             onChange={handlePageChange}

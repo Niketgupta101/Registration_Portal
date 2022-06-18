@@ -25,7 +25,9 @@ const getAllJobs = async (req, res, next) => {
       return dateB - dateA;
     });
     jobs = jobs.slice(offset, pagelimit + offset);
-    res.status(201).json({ success: true, jobs });
+    res
+      .status(201)
+      .json({ success: true, jobs, count: infList.length + jnfList.length });
   } catch (error) {
     return next(error);
   }
@@ -51,7 +53,9 @@ const getAllJobsForUser = async (req, res, next) => {
       return dateB - dateA;
     });
     jobs = jobs.slice(offset, pagelimit + offset);
-    res.status(201).json({ success: true, jobs });
+    res
+      .status(201)
+      .json({ success: true, jobs, count: infList.length + jnfList.length });
   } catch (error) {
     return next(error);
   }
@@ -108,7 +112,9 @@ const getPendingJobForms = async (req, res, next) => {
     });
     jobs = jobs.slice(offset, pagelimit + offset);
 
-    res.status(201).json({ success: true, jobs });
+    res
+      .status(201)
+      .json({ success: true, jobs, count: infs.length + jnfs.length });
   } catch (error) {
     return next(error);
   }

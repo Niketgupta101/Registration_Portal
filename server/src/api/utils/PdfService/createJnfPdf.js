@@ -200,13 +200,13 @@ const getReleventData = ({ data }) => {
   return newData;
 };
 
-const updateInfInGSheets = async (jnf) => {
+const updateJnfInGSheets = async (jnf) => {
   let details = [
     jnf._id.valueOf(),
     jnf.userId,
     jnf.Company_Overview.CO_Name_Of_The_Company,
     // ...getValues(jnf.Intern_Profile),
-    jnf.Intern_Profile.IP_Job_Designation,
+    jnf.Job_Details.JD_Job_Designation,
     // ...getValues(jnf.Salary_Details),
     jnf.adminPreviewLink,
     jnf.adminDownloadLink,
@@ -353,5 +353,5 @@ const AttachmentMailHtml = () => {
 module.exports = {
   createJnfPdfForAdmin,
   createJnfPdfForStudent,
-  updateInfInGSheets,
+  updateJnfInGSheets,
 };

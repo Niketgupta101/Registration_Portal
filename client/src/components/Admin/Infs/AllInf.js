@@ -16,6 +16,7 @@ import { fetchAllInf, searchInf } from '../../../api/index';
 
 const AllInf = () => {
   const [jobs, setJobs] = useState([]);
+  const [jobCount, setJobCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const [pageNo, setPageNo] = useState('1');
@@ -46,6 +47,7 @@ const AllInf = () => {
       setIsLoading(false);
 
       setJobs(response.data.jobs);
+      setJobCount(response?.data?.count);
     } catch (error) {
       setIsLoading(false);
       Navigate('/badgateway');
@@ -74,6 +76,7 @@ const AllInf = () => {
         }
       }
       setJobs(response.data.jobs);
+      setJobCount(response?.data?.count);
     }
     fetchINFs();
     // eslint-disable-next-line
@@ -214,7 +217,7 @@ const AllInf = () => {
         </div>
         <Stack spacing={1}>
           <Pagination
-            count={20}
+            count={parseInt((jobCount + 12) / 12)}
             color='primary'
             style={{ margin: '3rem auto' }}
             onChange={handlePageChange}

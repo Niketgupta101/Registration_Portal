@@ -31,8 +31,9 @@ const fetchAllInf = async (req, res, next) => {
       .sort({ updatedAt: -1 })
       .limit(pageLimit)
       .skip(offset);
+    let count = await NewInf.find({ status: 'complete' }).count();
 
-    res.status(201).json({ success: true, jobs: infList });
+    res.status(201).json({ success: true, jobs: infList, count });
   } catch (error) {
     return next(error);
   }
@@ -52,7 +53,9 @@ const fetchAllInfForUser = async (req, res, next) => {
       .skip(offset)
       .limit(pageLimit);
 
-    res.status(201).json({ success: true, jobs: infList });
+    let count = await NewInf.find({ userId }).count();
+
+    res.status(201).json({ success: true, jobs: infList, count });
   } catch (error) {
     return next(error);
   }
@@ -72,7 +75,9 @@ const fetchPendingInfForUser = async (req, res, next) => {
       .limit(pageLimit)
       .skip(offset);
 
-    res.status(201).json({ success: true, jobs: infList });
+    let count = await NewInf.find({ userId, status: 'incomplete' }).count();
+
+    res.status(201).json({ success: true, jobs: infList, count });
   } catch (error) {
     return next(error);
   }
@@ -161,7 +166,7 @@ const searchInf = async (req, res, next) => {
     pageNo = parseInt(pageNo);
     let offset = (pageNo - 1) * pageLimit;
 
-    let infList = await NewInf.find({
+    let searchOptions = {
       $or: [
         {
           'Company_Overview.CO_Name_Of_The_Company': {
@@ -185,12 +190,16 @@ const searchInf = async (req, res, next) => {
           status: 'complete',
         },
       ],
-    })
+    };
+
+    let infList = await NewInf.find(searchOptions)
       .sort({ updatedAt: -1 })
       .limit(pageLimit)
       .skip(offset);
 
-    res.status(201).json({ success: true, jobs: infList });
+    let count = await NewInf.find(searchOptions).count();
+
+    res.status(201).json({ success: true, jobs: infList, count });
   } catch (error) {
     return next(error);
   }
