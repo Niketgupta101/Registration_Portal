@@ -82,6 +82,7 @@ const MinorSchema = {
   },
 };
 
+
 const TwoYearMtechSchema = {
   TYM_Select_All: { type: Boolean, default: false },
   TYM_Engineering_Geology: { type: Boolean, default: false },
@@ -118,6 +119,7 @@ const TwoYearMtechSchema = {
     type: Boolean,
     default: false,
   },
+  TYM_Mathematics_and_Computing: { type: Boolean, default: false },
 };
 
 const ThreeYearMscSchema = {
@@ -186,10 +188,7 @@ const PhdSchema = {
   PHD_Computer_Science_and_Engineering: { type: Boolean, default: false },
   PHD_Electrical_Engineering: { type: Boolean, default: false },
   PHD_Electronics_Engineering: { type: Boolean, default: false },
-  PHD_Fuel_Minerals_and_Metallurgical_Engineering: {
-    type: Boolean,
-    default: false,
-  },
+  PHD_Fuel_Minerals_and_Metallurgical_Engineering: { type: Boolean, default: false },
   PHD_Environmental_Science_and_Engineering: { type: Boolean, default: false },
   PHD_Humanities_and_Social_Sciences: { type: Boolean, default: false },
   PHD_Management_Studies: { type: Boolean, default: false },
