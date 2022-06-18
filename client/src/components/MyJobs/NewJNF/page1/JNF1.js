@@ -1,36 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Form, FormGroup, Label, Col, Input } from "reactstrap";
-import Modal from "react-bootstrap/Modal";
-import Button from "@mui/material/Button";
-import "./INF1.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import "animate.css";
 import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
-
 import { getGraduationYear } from "../../../../api/index";
+import "./JNF1.css";
 
 const style = { alignItems: "center" };
 
 const extractFields = (data) => {
   let fields = [];
-
   for (let field in data) {
     fields.push(field);
   }
-
   return fields;
 };
 
-export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
+export default function JNF1({ jnfData, handleOnChange, handleUpdateJnf }) {
   const [companyoverview, setCompanyoverview] = useState(false);
   const [internprofile, setInternprofile] = useState(false);
   const [stipenddetail, setStipenddetail] = useState(false);
   const [hrdetail, setHrdetail] = useState(false);
   const [althrdetail, setALtrdetail] = useState(false);
   const [Year, setYear] = useState(2023);
-  const [salaryUnit, setSalary_Unit] = useState("per month");
 
   function handleHrdetails(e) {
     if (e.target.value === "YES") setALtrdetail(() => true);
@@ -39,11 +33,11 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
 
   function submitButton() {
     if (
-      infData.Intern_Profile.IP_Job_Designation === "" ||
-      infData.Intern_Profile.IP_Job_Description === "" ||
-      infData.Intern_Profile.IP_Place_Of_Posting === "" ||
-      infData.Stipend_Details.SD_Salary_Per_Month === "" ||
-      infData.Stipend_Details.SD_CTC === ""
+      jnfData.Job_Details.IP_Job_Designation === "" ||
+      jnfData.Job_Details.IP_Job_Description === "" ||
+      jnfData.Job_Details.IP_Place_Of_Posting === "" ||
+      jnfData.Salary_Details.SD_CTC_In_LPA === "" ||
+      jnfData.Salary_Details.SD_CTC === ""
     ) {
       return (
         <button
@@ -75,26 +69,16 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
     fetchGraduationYear();
   }, []);
 
-  let companyFields = extractFields(infData.Company_Overview);
+  let companyFields = extractFields(jnfData.Company_Overview);
 
   return (
     <div className="overallDiv1">
       <div>
         <header className="headerText1">
-          INTERNSHIP NOTIFICATION FORM (2022-2023)
+          JOB NOTIFICATION FORM (2022-2023)
         </header>
       </div>
-      <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleOnChange(
-            "Stipend_Details",
-            "SD_Salary_Per_Month",
-            `${infData.Stipend_Details.SD_Salary_Per_Month} ${salaryUnit}`
-          );
-          handleUpdateInf(e);
-        }}
-      >
+      <Form onSubmit={handleUpdateJnf}>
         <div className="animate__animated animate__fadeInLeft container col-lg-12 col-md-12 category p-0 my-3  ">
           <div
             className="upper"
@@ -140,8 +124,8 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                           name={field}
                           type="text"
                           className="inputText"
-                          style={{ lineHeight: "0.8" }}
-                          value={infData.Company_Overview[field]}
+                          // style={{ lineHeight: "0.8" }}
+                          value={jnfData.Company_Overview[field]}
                           disabled={true}
                           onChange={(e) =>
                             handleOnChange(
@@ -176,7 +160,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
             }}
           >
             <div className="category-heading d-flex">
-              <header className="headerText flex-grow-1">INTERN PROFILE</header>
+              <header className="headerText flex-grow-1">JOB DETAILS</header>
               <div className="mx-4 p-2 align-self-center">
                 {internprofile === true ? (
                   <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
@@ -190,32 +174,6 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
             <div className="lower p-2 ">
               <div className="p-2 mx-3 animate__animated animate__zoomIn">
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={3} className="fontText">
-                    Internship Duration<span style={{ color: "red" }}>*</span>
-                  </Label>
-                  <Col sm={9}>
-                    <Input
-                      id="exampleSelect"
-                      name="IP_Internship_Duration"
-                      required
-                      type="select"
-                      className="inputText"
-                      value={infData.Intern_Profile.IP_Internship_Duration}
-                      onChange={(e) =>
-                        handleOnChange(
-                          "Intern_Profile",
-                          e.target.name,
-                          e.target.value
-                        )
-                      }
-                      autoComplete="off"
-                    >
-                      <option>May-July {Year}</option>
-                      <option>July-Dec {Year}</option>
-                    </Input>
-                  </Col>
-                </FormGroup>
-                <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
                     Job Designation<span style={{ color: "red" }}>*</span>
                   </Label>
@@ -226,10 +184,10 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       required
                       className="inputText"
                       type="text"
-                      value={infData.Intern_Profile.IP_Job_Designation}
+                      value={jnfData.Job_Details.IP_Job_Designation}
                       onChange={(e) =>
                         handleOnChange(
-                          "Intern_Profile",
+                          "Job_Details",
                           e.target.name,
                           e.target.value
                         )
@@ -249,10 +207,10 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       type="text"
                       required
                       className="inputText"
-                      value={infData.Intern_Profile.IP_Job_Description}
+                      value={jnfData.Job_Details.IP_Job_Description}
                       onChange={(e) =>
                         handleOnChange(
-                          "Intern_Profile",
+                          "Job_Details",
                           e.target.name,
                           e.target.value
                         )
@@ -262,34 +220,8 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                   </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={3} className="fontText">
-                    Mode of Internship<span style={{ color: "red" }}>*</span>
-                  </Label>
-                  <Col sm={9}>
-                    <Input
-                      id="exampleSelect"
-                      name="IP_Mode_Of_Internship"
-                      type="select"
-                      required
-                      className="inputText"
-                      value={infData.Intern_Profile.IP_Mode_Of_Internship}
-                      onChange={(e) =>
-                        handleOnChange(
-                          "Intern_Profile",
-                          e.target.name,
-                          e.target.value
-                        )
-                      }
-                      autoComplete="off"
-                    >
-                      <option>Virtual</option>
-                      <option>Physical</option>
-                    </Input>
-                  </Col>
-                </FormGroup>
-                <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
-                    Place of posting (in case of Physical internship)
+                    Place of posting
                     <span style={{ color: "red" }}>*</span>
                   </Label>
                   <Col sm={9}>
@@ -298,10 +230,10 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       name="IP_Place_Of_Posting"
                       type="text"
                       className="inputText"
-                      value={infData.Intern_Profile.IP_Place_Of_Posting}
+                      value={jnfData.Job_Details.IP_Place_Of_Posting}
                       onChange={(e) =>
                         handleOnChange(
-                          "Intern_Profile",
+                          "Job_Details",
                           e.target.name,
                           e.target.value
                         )
@@ -332,9 +264,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
             }}
           >
             <div className="category-heading d-flex">
-              <header className="headerText flex-grow-1">
-                STIPEND DETAILS
-              </header>
+              <header className="headerText flex-grow-1">SALARY DETAILS</header>
               <div className="mx-4 p-2 align-self-center">
                 {stipenddetail === true ? (
                   <FaAngleDoubleUp size={30} color="rgb(60, 85, 165)" />
@@ -354,19 +284,19 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                     text-colour="blue"
                     className="fontText"
                   >
-                    Stipend <span style={{ color: "red" }}>*</span>
+                    CTC (in LPA) <span style={{ color: "red" }}>*</span>
                   </Label>
-                  <Col sm={4}>
+                  <Col sm={9}>
                     <Input
                       id="exampleText"
                       required
-                      name="SD_Salary_Per_Month"
+                      name="SD_CTC_In_LPA"
                       type="text"
                       className="inputText"
-                      value={infData.Stipend_Details.SD_Salary_Per_Month}
+                      value={jnfData.Salary_Details.SD_CTC_In_LPA}
                       onChange={(e) =>
                         handleOnChange(
-                          "Stipend_Details",
+                          "Salary_Details",
                           e.target.name,
                           e.target.value
                         )
@@ -374,83 +304,46 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       autoComplete="off"
                     />
                   </Col>
-                  <Col sm={5}>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                      defaultValue="per month"
-                    >
-                      <FormControlLabel
-                        value="per month"
-                        control={<Radio />}
-                        label="per month"
-                        name="Salary_Unit"
-                        onChange={(e) => {
-                          setSalary_Unit(e.target.value);
-                        }}
-                      />
-                      <FormControlLabel
-                        value="total "
-                        control={<Radio />}
-                        label="total"
-                        name="Salary_Unit"
-                        onChange={(e) => {
-                          setSalary_Unit(e.target.value);
-                        }}
-                      />
-                    </RadioGroup>
-                  </Col>
-                </FormGroup>
-
-                <FormGroup row style={style}>
-                  <Label for="exampleSelect" sm={3} className="fontText">
-                    PPO provision on performance basis
-                    <span style={{ color: "red" }}>*</span>
-                  </Label>
-                  <Col sm={9}>
-                    <Input
-                      id="exampleSelect"
-                      name="SD_PPO_provision_on_performance_basis"
-                      type="select"
-                      required
-                      className="inputText"
-                      value={
-                        infData.Stipend_Details
-                          .SD_PPO_provision_on_performance_basis
-                      }
-                      onChange={(e) =>
-                        handleOnChange(
-                          "Stipend_Details",
-                          e.target.name,
-                          e.target.value
-                        )
-                      }
-                      autoComplete="off"
-                    >
-                      <option value="" selected="selected" disabled hidden>
-                        Choose here
-                      </option>
-                      <option>Yes</option>
-                      <option>No</option>
-                    </Input>
-                  </Col>
                 </FormGroup>
                 <FormGroup row style={style}>
                   <Label for="exampleText" sm={3} className="fontText">
-                    CTC for PPO selects<span style={{ color: "red" }}>*</span>
+                    CTC breakup<span style={{ color: "red" }}>*</span>
                   </Label>
 
                   <Col sm={9}>
                     <Input
                       id="exampleText"
-                      name="SD_CTC"
+                      name="SD_CTC_Breakup"
                       type="text"
                       className="inputText"
-                      value={infData.Stipend_Details.SD_CTC}
+                      value={jnfData.Salary_Details.SD_CTC_Breakup}
                       onChange={(e) =>
                         handleOnChange(
-                          "Stipend_Details",
+                          "Salary_Details",
+                          e.target.name,
+                          e.target.value
+                        )
+                      }
+                      autoComplete="off"
+                      required
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row style={style}>
+                  <Label for="exampleText" sm={3} className="fontText">
+                    Bond Details<span style={{ color: "red" }}>*</span>
+                  </Label>
+
+                  <Col sm={9}>
+                    <Input
+                      id="exampleText"
+                      name="SD_Bond_Details"
+                      type="text"
+                      className="inputText"
+                      value={jnfData.Salary_Details.SD_Bond_Details}
+                      onChange={(e) =>
+                        handleOnChange(
+                          "Salary_Details",
                           e.target.name,
                           e.target.value
                         )
@@ -507,7 +400,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       id="exampleText"
                       required
                       name="PH_Name"
-                      value={infData.Primary_Hr.PH_Name}
+                      value={jnfData.Primary_Hr.PH_Name}
                       onChange={(e) =>
                         handleOnChange(
                           "Primary_Hr",
@@ -535,7 +428,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       id="exampleText"
                       required
                       name="PH_Email"
-                      value={infData.Primary_Hr.PH_Email}
+                      value={jnfData.Primary_Hr.PH_Email}
                       onChange={(e) =>
                         handleOnChange(
                           "Primary_Hr",
@@ -563,7 +456,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                       id="exampleText"
                       required
                       name="PH_Mobile"
-                      value={infData.Primary_Hr.PH_Mobile}
+                      value={jnfData.Primary_Hr.PH_Mobile}
                       onChange={(e) =>
                         handleOnChange(
                           "Primary_Hr",
@@ -620,7 +513,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                           id="exampleText"
                           required
                           name="SH_Name"
-                          value={infData.Secondary_Hr.SH_Name}
+                          value={jnfData.Secondary_Hr.SH_Name}
                           onChange={(e) =>
                             handleOnChange(
                               "Secondary_Hr",
@@ -648,7 +541,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                           id="exampleText"
                           required
                           name="SH_Email"
-                          value={infData.Secondary_Hr.SH_Email}
+                          value={jnfData.Secondary_Hr.SH_Email}
                           onChange={(e) =>
                             handleOnChange(
                               "Secondary_Hr",
@@ -676,7 +569,7 @@ export default function INF1({ infData, handleOnChange, handleUpdateInf }) {
                           id="exampleText"
                           required
                           name="SH_Mobile"
-                          value={infData.Secondary_Hr.SH_Mobile}
+                          value={jnfData.Secondary_Hr.SH_Mobile}
                           onChange={(e) =>
                             handleOnChange(
                               "Secondary_Hr",

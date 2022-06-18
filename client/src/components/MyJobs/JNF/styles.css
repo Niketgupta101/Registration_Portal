@@ -13,20 +13,12 @@
   color: rgb(60, 85, 165);
   margin: 1.5rem auto;
 }
-.inputText {
-  height: 40px !important;
-}
 
 .fontText {
   font-size: 16px !important;
   font-weight: 700;
 }
 
-.inputText {
-  height: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
 .fontText {
   font-size: 24px;
   color: rgba(0, 0, 0, 0.823) !important;
@@ -159,12 +151,6 @@ table {
   width: 100%;
 }
 
-.inputText {
-  height: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  align-items: center;
-}
 .fontText {
   font-size: 19px;
   justify-content: center;

@@ -1,14 +1,21 @@
 .INF {
-  background-image: url("../../../Images/bg-main2.jpg");
+  background-image: url("../../../Images/bg-main3.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
 }
 
 .overallDiv1 {
   justify-content: center;
   margin: auto 10% !important;
+}
+.startTextBold {
+  font-weight: 600;
+  margin-top: 20px;
+  text-decoration: underline;
 }
 .headerText {
   padding: 0.5rem;

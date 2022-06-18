@@ -4,10 +4,40 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  -webkit-filter: brightness(1.07);
+  filter: brightness(1.07);
 }
+
 .overallDiv1 {
   justify-content: center;
   margin: auto 10% !important;
+}
+.startTextBold {
+  font-weight: 600;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+.submit_btn {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: 2px solid #3f51b5;
+  border-radius: 3px;
+  color: #fff;
+  background: #3f51b5;
+
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 22px;
+  padding: 0.6rem 1.2rem;
+  text-align: center;
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.submit_btn:hover {
+  color: #3f51b5;
+  background: white;
 }
 .headerText {
   padding: 0.5rem;
@@ -55,7 +85,6 @@
 .upper {
   width: 100%;
   padding: 10px 0 10px 30px;
-  /* background-color: #c8e5fd; */
   border-radius: 10px;
 }
 
@@ -64,17 +93,11 @@
   border-radius: 0px 0px 10px 10px;
   color: rgb(0, 0, 0);
 }
-.lower Label {
-  text-transform: capitalize;
-}
 
 .lower h4 {
   color: #2999f5;
 }
 
-.eligible-options {
-  background-color: #7ab4e41e;
-}
 .eligible-type {
   background-color: white;
   padding: 20px;
@@ -166,6 +189,10 @@ tr {
   padding: 2em;
   margin: 1em 1em;
   /* border: 3px solid rgba(0, 0, 0, 0.08); */
+}
+.css-1ygcj2i-MuiTableCell-root {
+  font-size: 0.93rem !important;
+  font-weight: 600 !important;
 }
 
 @media (max-width: 400px) {

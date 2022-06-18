@@ -1240,7 +1240,7 @@ export default function INF2({
             </table>
           </div>
         </div>
-        <div className="flex">
+        <div className="d-flex justify-content-between">
           <button
             className="submit_btn"
             onClick={(e) => e.preventDefault() / setPage("1")}

@@ -111,7 +111,6 @@
   background-color: red;
 }
 select {
-  height: 30px;
   padding: auto 1rem;
   border: 1px solid rgb(60, 85, 165);
   outline: none;
@@ -220,7 +219,6 @@ select {
     justify-content: space-evenly;
   }
   select {
-    height: 30px;
     width: 130px;
     margin: 0;
     position: relative;

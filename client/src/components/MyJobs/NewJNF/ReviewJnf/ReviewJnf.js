@@ -20,22 +20,23 @@ const extractFields = (data) => {
   return fields;
 };
 
-const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
-  const companyFields = extractFields(infData.Company_Overview);
-  const internProfileFields = extractFields(infData.Intern_Profile);
-  const stipendFields = extractFields(infData.Stipend_Details);
-  const primaryHrFields = extractFields(infData.Primary_Hr);
-  const secondaryHrFields = extractFields(infData.Secondary_Hr);
-  const fourYearFields = extractFields(infData.Four_Year_Btech);
-  const fiveYearIntFields = extractFields(infData.Five_Year_Integrated);
-  const twoYearMtechFields = extractFields(infData.Two_Year_Mtech);
-  const threeYearMscFields = extractFields(infData.Three_Year_Msc);
-  const twoYearMbaFields = extractFields(infData.Two_Year_MBA);
-  const dualDegreeFields = extractFields(infData.Five_Year_Dual_Degree);
-  const doubleMajorFields = extractFields(infData.Double_Major);
-  const twoYearMscFields = extractFields(infData.Two_Year_Msc);
-  const minorFields = extractFields(infData.Minor);
-  const skillBasedFields = extractFields(infData.Skill_Based);
+const ReviewJnf = ({ jnfData, setPage, handleFormSubmit }) => {
+  const companyFields = extractFields(jnfData.Company_Overview);
+  const internProfileFields = extractFields(jnfData.Job_Details);
+  const stipendFields = extractFields(jnfData.Salary_Details);
+  const primaryHrFields = extractFields(jnfData.Primary_Hr);
+  const secondaryHrFields = extractFields(jnfData.Secondary_Hr);
+  const fourYearFields = extractFields(jnfData.Four_Year_Btech);
+  const fiveYearIntFields = extractFields(jnfData.Five_Year_Integrated);
+  const twoYearMtechFields = extractFields(jnfData.Two_Year_Mtech);
+  const threeYearMscFields = extractFields(jnfData.Three_Year_Msc);
+  const twoYearMbaFields = extractFields(jnfData.Two_Year_MBA);
+  // const dualDegreeFields = extractFields(jnfData.Five_Year_Dual_Degree);
+  // const doubleMajorFields = extractFields(jnfData.Double_Major);
+  const twoYearMscFields = extractFields(jnfData.Two_Year_Msc);
+  const minorFields = extractFields(jnfData.Minor);
+  const phdFields = extractFields(jnfData.Phd);
+  const skillBasedFields = extractFields(jnfData.Skill_Based);
   return (
     <div className="overallDiv1">
       <div>
@@ -54,13 +55,13 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                   ))}
                 </Label>
                 <Col sm={8}>
-                  <h6>{infData.Company_Overview[field]}</h6>
+                  <h6>{jnfData.Company_Overview[field]}</h6>
                 </Col>
               </FormGroup>
             </div>
           ))}
         <div>
-          <header className="headerText">INTERN PROFILE</header>
+          <header className="headerText">JOB DETAILS</header>
         </div>
         {internProfileFields &&
           internProfileFields.map((field) => (
@@ -72,13 +73,13 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                   ))}
                 </Label>
                 <Col sm={8}>
-                  <h6 className="inputText">{infData.Intern_Profile[field]}</h6>
+                  <h6 className="inputText">{jnfData.Job_Details[field]}</h6>
                 </Col>
               </FormGroup>
             </div>
           ))}
         <div>
-          <header className="headerText">STIPEND DETAILS</header>
+          <header className="headerText">SALARY DETAILS</header>
         </div>
         {stipendFields &&
           stipendFields.map((field) => (
@@ -89,7 +90,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 ))}
               </Label>
               <Col sm={8}>
-                <h6 className="inputText">{infData.Stipend_Details[field]}</h6>
+                <h6 className="inputText">{jnfData.Salary_Details[field]}</h6>
               </Col>
             </FormGroup>
           ))}
@@ -105,13 +106,13 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 ))}
               </Label>
               <Col sm={8}>
-                <h6 className="inputText">{infData.Primary_Hr[field]}</h6>
+                <h6 className="inputText">{jnfData.Primary_Hr[field]}</h6>
               </Col>
             </FormGroup>
           ))}
-        {infData.Secondary_Hr.SH_Name !== "" &&
-        infData.Secondary_Hr.SH_Email !== "" &&
-        infData.Secondary_Hr.SH_Mobile !== "" ? (
+        {jnfData.Secondary_Hr.SH_Name !== "" &&
+        jnfData.Secondary_Hr.SH_Email !== "" &&
+        jnfData.Secondary_Hr.SH_Mobile !== "" ? (
           <>
             <div>
               <header className="headerText">Alternate Hr Details</header>
@@ -125,7 +126,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                     ))}
                   </Label>
                   <Col sm={8}>
-                    <h6 className="inputText">{infData.Secondary_Hr[field]}</h6>
+                    <h6 className="inputText">{jnfData.Secondary_Hr[field]}</h6>
                   </Col>
                 </FormGroup>
               ))}
@@ -142,45 +143,39 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
           List of courses and disciplines offered at IIT (ISM) are shown below.
         </div>
 
-        {/* 4 btech */}
-        {infData.Intern_Profile.IP_Internship_Duration === "July-Dec 2023" ? (
-          <></>
-        ) : (
-          <div>
-            <div className="startTextBold" style={{ fontSize: "21px" }}>
-              4-Year B.Tech Programs
-            </div>
-            <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
-              Admitted through JEE (Advanced)
-            </div>
-            <table>
-              <tbody id="Four_Year">
-                {fourYearFields &&
-                  fourYearFields.map((field) => (
-                    <tr>
-                      <td className="courseName">
-                        {field.split("_").map((word) => (
-                          <>{word !== "FYB" && word + " "}</>
-                        ))}
-                      </td>
-                      <td className="courseCheckBoxBtech">
-                        <input
-                          name={field}
-                          checked={infData.Four_Year_Btech[field]}
-                          type="checkbox"
-                          readOnly
-                        />
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+        <div>
+          <div className="startTextBold" style={{ fontSize: "21px" }}>
+            4-Year B.Tech Programs
           </div>
-        )}
+          <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+            Admitted through JEE (Advanced)
+          </div>
+          <table>
+            <tbody id="Four_Year">
+              {fourYearFields &&
+                fourYearFields.map((field) => (
+                  <tr>
+                    <td className="courseName">
+                      {field.split("_").map((word) => (
+                        <>{word !== "FYB" && word + " "}</>
+                      ))}
+                    </td>
+                    <td className="courseCheckBoxBtech">
+                      <input
+                        name={field}
+                        checked={jnfData.Four_Year_Btech[field]}
+                        type="checkbox"
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* 5-Year Dual Degree/ Integrated M.Tech Programs */}
         <div>
-          {" "}
           <div className="startTextBold" style={{ fontSize: "21px" }}>
             5-Year Dual Degree/ Integrated M.Tech Programs
           </div>
@@ -200,7 +195,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                     <td className="courseCheckBoxBtech">
                       <input
                         name={field}
-                        checked={infData.Five_Year_Integrated[field]}
+                        checked={jnfData.Five_Year_Integrated[field]}
                         type="checkbox"
                         readOnly
                       />
@@ -210,71 +205,40 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
             </tbody>
           </table>
         </div>
-        {/* DoubleMajor */}
-        {infData.Intern_Profile.IP_Internship_Duration === "July-Dec 2023" ? (
-          <></>
-        ) : (
-          <>
-            <div>
-              <div className="startTextBold" style={{ fontSize: "21px" }}>
-                Double Majors
-              </div>
-              <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
-                Admitted through JEE (Advanced)
-              </div>
-              <table>
-                <tbody id="Five_Year">
-                  {doubleMajorFields &&
-                    doubleMajorFields.map((field) => (
-                      <tr>
-                        <td className="courseName">
-                          {field.split("_").map((word) => (
-                            <>{word !== "DM" && word + " "}</>
-                          ))}
-                        </td>
-                        <td className="courseCheckBoxBtech">
-                          <input
-                            name={field}
-                            checked={infData.Double_Major[field]}
-                            type="checkbox"
-                            readOnly
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="startTextBold" style={{ fontSize: "21px" }}>
-              Dual Degree
-            </div>
-            <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
-              Admitted through JEE (Advanced)
-            </div>
-            <table>
-              <tbody id="Five_Year">
-                {dualDegreeFields &&
-                  dualDegreeFields.map((field) => (
-                    <tr>
-                      <td className="courseName">
-                        {field.split("_").map((word) => (
-                          <>{word !== "FYDD" && word + " "}</>
-                        ))}
-                      </td>
-                      <td className="courseCheckBoxBtech">
-                        <input
-                          name={field}
-                          checked={infData.Five_Year_Dual_Degree[field]}
-                          type="checkbox"
-                          readOnly
-                        />
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-            <div>
-              {/* <div className='startTextBold' style={{ fontSize: '21px' }}>
+
+        {/* Monor */}
+        <div>
+          <div className="startTextBold" style={{ fontSize: "21px" }}>
+            Minor Programs{" "}
+          </div>
+          <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+            Admitted through JEE (Advanced)
+          </div>
+          <table>
+            <tbody id="Five_Year">
+              {minorFields &&
+                minorFields.map((field) => (
+                  <tr>
+                    <td className="courseName">
+                      {field.split("_").map((word) => (
+                        <>{word !== "MINOR" && word + " "}</>
+                      ))}
+                    </td>
+                    <td className="courseCheckBox5year">
+                      <input
+                        name={field}
+                        checked={jnfData.Minor[field]}
+                        type="checkbox"
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* <div className='startTextBold' style={{ fontSize: '21px' }}>
                 Minor
               </div>
               <div className='startTextBoldSmall' style={{ fontSize: '18px' }}>
@@ -293,7 +257,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                         <td className='courseCheckBoxBtech'>
                           <input
                             name={field}
-                            checked={infData.Minor[field]}
+                            checked={jnfData.Minor[field]}
                             type='checkbox'
                             readOnly
                           />
@@ -302,9 +266,6 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                     ))}
                 </tbody>
               </table> */}
-            </div>
-          </>
-        )}
 
         <div>
           <header className="headerText m-0 mt-4">
@@ -335,7 +296,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                       <td className="courseCheckBoxBtech">
                         <input
                           name={field}
-                          checked={infData.Two_Year_Mtech[field]}
+                          checked={jnfData.Two_Year_Mtech[field]}
                           type="checkbox"
                           readOnly
                         />
@@ -346,127 +307,120 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
             </table>
           </div>
 
-          {infData.Intern_Profile.IP_Internship_Duration === "July-Dec 2023" ? (
-            <>
-              <div className="startTextBold mt-5" style={{ fontSize: "21px" }}>
-                2-Year MBA Programs
-              </div>
-              <div
-                className="startTextBoldSmall p-0"
-                style={{ fontSize: "18px" }}
-              >
-                Admitted through <b>CAT</b>
-              </div>
-              <table>
-                <tbody id="Two_Year_Mba">
-                  {twoYearMbaFields[1] && (
+          <div className="startTextBold" style={{ fontSize: "21px" }}>
+            3-Year MSc.Tech Programs
+          </div>
+          <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+            Admitted through <b>JAM</b>
+          </div>
+          <table>
+            <tbody id="Three_Year">
+              {threeYearMscFields &&
+                threeYearMscFields.map((field) => (
+                  <tr>
+                    <td className="courseName">
+                      {field.split("_").map((word) => (
+                        <>{word !== "TMS" && word + " "}</>
+                      ))}
+                    </td>
+                    <td className="courseCheckBoxBtech">
+                      <input
+                        name={field}
+                        checked={jnfData.Three_Year_Msc[field]}
+                        type="checkbox"
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div className="startTextBold" style={{ fontSize: "21px" }}>
+            2-Year MBA Programs
+          </div>
+          <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+            Admitted through <b>CAT</b>
+          </div>
+          <table>
+            <tbody id="Two_Year_Mba">
+              {twoYearMbaFields &&
+                twoYearMbaFields.map((field) => (
+                  <tr>
+                    <td className="courseName">
+                      {field.split("_").map((word) => (
+                        <>{word !== "TYMB" && word + " "}</>
+                      ))}
+                    </td>
+                    <td className="courseCheckBoxBtech">
+                      <input
+                        name={field}
+                        checked={jnfData.Two_Year_MBA[field]}
+                        type="checkbox"
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div className="startTextBold" style={{ fontSize: "21px" }}>
+            2-Year M.Sc. Programs
+          </div>
+          <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+            Admitted through <b>JAM</b>
+          </div>
+          <table>
+            <tbody id="Two_Year_Msc">
+              {twoYearMscFields &&
+                twoYearMscFields.map((field) => (
+                  <tr>
+                    <td className="courseName">
+                      {field.split("_").map((word) => (
+                        <>{word !== "TYMSC" && word + " "}</>
+                      ))}
+                    </td>
+                    <td className="courseCheckBoxBtech">
+                      <input
+                        name={field}
+                        checked={jnfData.Two_Year_Msc[field]}
+                        type="checkbox"
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div>
+            <div className="startTextBold" style={{ fontSize: "21px" }}>
+              PhD Programs
+            </div>
+            <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
+              Admitted through <b>GATE, NET</b>
+            </div>
+            <table>
+              <tbody id="Two_Year_Msc">
+                {phdFields &&
+                  phdFields.map((field) => (
                     <tr>
                       <td className="courseName">
-                        {twoYearMbaFields[1].split("_").map((word) => (
-                          <>{word !== "TYMB" && word + " "}</>
+                        {field.split("_").map((word) => (
+                          <>{word !== "PHD" && word + " "}</>
                         ))}
                       </td>
-                      <td className="courseCheckBoxBtech">
+                      <td className="courseCheckBox5year">
                         <input
-                          name={twoYearMbaFields[1]}
-                          checked={infData.Two_Year_MBA[twoYearMbaFields[1]]}
+                          name={field}
+                          checked={jnfData.Phd[field]}
                           type="checkbox"
                           readOnly
                         />
                       </td>
                     </tr>
-                  )}
-                </tbody>
-              </table>
-            </>
-          ) : (
-            <>
-              <div className="startTextBold" style={{ fontSize: "21px" }}>
-                3-Year MSc.Tech Programs
-              </div>
-              <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
-                Admitted through <b>JAM</b>
-              </div>
-              <table>
-                <tbody id="Three_Year">
-                  {threeYearMscFields &&
-                    threeYearMscFields.map((field) => (
-                      <tr>
-                        <td className="courseName">
-                          {field.split("_").map((word) => (
-                            <>{word !== "TMS" && word + " "}</>
-                          ))}
-                        </td>
-                        <td className="courseCheckBoxBtech">
-                          <input
-                            name={field}
-                            checked={infData.Three_Year_Msc[field]}
-                            type="checkbox"
-                            readOnly
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-              <div className="startTextBold" style={{ fontSize: "21px" }}>
-                2-Year MBA Programs
-              </div>
-              <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
-                Admitted through <b>CAT</b>
-              </div>
-              <table>
-                <tbody id="Two_Year_Mba">
-                  {twoYearMbaFields &&
-                    twoYearMbaFields.map((field) => (
-                      <tr>
-                        <td className="courseName">
-                          {field.split("_").map((word) => (
-                            <>{word !== "TYMB" && word + " "}</>
-                          ))}
-                        </td>
-                        <td className="courseCheckBoxBtech">
-                          <input
-                            name={field}
-                            checked={infData.Two_Year_MBA[field]}
-                            type="checkbox"
-                            readOnly
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-              <div className="startTextBold" style={{ fontSize: "21px" }}>
-                2-Year M.Sc. Programs
-              </div>
-              <div className="startTextBoldSmall" style={{ fontSize: "18px" }}>
-                Admitted through <b>JAM</b>
-              </div>
-              <table>
-                <tbody id="Two_Year_Msc">
-                  {twoYearMscFields &&
-                    twoYearMscFields.map((field) => (
-                      <tr>
-                        <td className="courseName">
-                          {field.split("_").map((word) => (
-                            <>{word !== "TYMSC" && word + " "}</>
-                          ))}
-                        </td>
-                        <td className="courseCheckBoxBtech">
-                          <input
-                            name={field}
-                            checked={infData.Two_Year_Msc[field]}
-                            type="checkbox"
-                            readOnly
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </>
-          )}
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
         <div>
           <header className="headerText m-0 mt-4">Skill Based Hiring</header>
@@ -491,7 +445,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                     <td className="courseCheckBoxBtech">
                       <input
                         name={field}
-                        checked={infData.Skill_Based[field]}
+                        checked={jnfData.Skill_Based[field]}
                         type="checkbox"
                         readOnly
                       />
@@ -521,10 +475,10 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 </TableCell>
                 <TableCell> 15-Jul-2022 onwards</TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Pre_Placement_Talk_Mode}
+                  {jnfData.Selection_Procedure.SPS_Pre_Placement_Talk_Mode}
                 </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Pre_Placement_Talk_Date}
+                  {jnfData.Selection_Procedure.SPS_Pre_Placement_Talk_Date}
                 </TableCell>
               </TableRow>
               <TableRow key="Resume-Shortlisting">
@@ -533,10 +487,10 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 </TableCell>
                 <TableCell> 15-Jul-2022 onwards</TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Resume_Shortlisting_Mode}
+                  {jnfData.Selection_Procedure.SPS_Resume_Shortlisting_Mode}
                 </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Resume_Shortlisting_Date}
+                  {jnfData.Selection_Procedure.SPS_Resume_Shortlisting_Date}
                 </TableCell>
               </TableRow>
               <TableRow key="Online-Written-Test">
@@ -545,10 +499,10 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 </TableCell>
                 <TableCell> 15-Jul-2022 onwards</TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Online_Written_Test_Mode}
+                  {jnfData.Selection_Procedure.SPS_Online_Written_Test_Mode}
                 </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Online_Written_Test_Date}
+                  {jnfData.Selection_Procedure.SPS_Online_Written_Test_Date}
                 </TableCell>
               </TableRow>
               <TableRow key="Group-Discussion">
@@ -557,10 +511,10 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 </TableCell>
                 <TableCell> 15-Jul-2022 onwards</TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Group_Discussion_Mode}
+                  {jnfData.Selection_Procedure.SPS_Group_Discussion_Mode}
                 </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Group_Discussion_Date}
+                  {jnfData.Selection_Procedure.SPS_Group_Discussion_Date}
                 </TableCell>
               </TableRow>
               <TableRow key="Personal-Interview">
@@ -569,10 +523,10 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 </TableCell>
                 <TableCell> 17-Aug-2022 onwards</TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Personal_Interview_Mode}
+                  {jnfData.Selection_Procedure.SPS_Personal_Interview_Mode}
                 </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Personal_Interview_Date}
+                  {jnfData.Selection_Procedure.SPS_Personal_Interview_Date}
                 </TableCell>
               </TableRow>
               <TableRow key="Any-other-rounds">
@@ -581,10 +535,10 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
                 </TableCell>
                 <TableCell> </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Any_Other_Rounds_Mode}
+                  {jnfData.Selection_Procedure.SPS_Any_Other_Rounds_Mode}
                 </TableCell>
                 <TableCell>
-                  {infData.Selection_Procedure.SPS_Any_Other_Rounds_Date}
+                  {jnfData.Selection_Procedure.SPS_Any_Other_Rounds_Date}
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -596,7 +550,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={7}>
             <h6 className="inputText">
-              {infData.Selection_Procedure.SPS_Total_Number_Of_Rounds}
+              {jnfData.Selection_Procedure.SPS_Total_Number_Of_Rounds}
             </h6>
           </Col>
         </FormGroup>
@@ -606,7 +560,7 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={7}>
             <h6 className="inputText">
-              {infData.Selection_Procedure.SPS_Number_Of_Offers}
+              {jnfData.Selection_Procedure.SPS_Number_Of_Offers}
             </h6>
           </Col>
         </FormGroup>
@@ -616,17 +570,17 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
           </Label>
           <Col sm={7}>
             <h6 className="inputText">
-              {infData.Selection_Procedure.SPS_Eligibility_Criteria}
+              {jnfData.Selection_Procedure.SPS_Eligibility_Criteria}
             </h6>
           </Col>
         </FormGroup>
         <FormGroup row>
           <Label for="exampleText" sm={5} className="fontText">
-            Other information related to Selection Process (if any)
+            Other jnformation related to Selection Process (if any)
           </Label>
           <Col sm={7}>
             <h6 className="inputText">
-              {infData.Selection_Procedure.SPS_OtherInformation}
+              {jnfData.Selection_Procedure.SPS_OtherJnformation}
             </h6>
           </Col>
         </FormGroup>
@@ -651,4 +605,4 @@ const ReviewInf = ({ infData, setPage, handleFormSubmit }) => {
   );
 };
 
-export default ReviewInf;
+export default ReviewJnf;
