@@ -21,6 +21,7 @@ const getApiObject = function () {
         let resp = await req.json();
 
         if (!isRequestSuccessful(req.status)) {
+          // eslint-disable-next-line no-throw-literal
           throw { response: { data: resp } };
         }
 
@@ -41,6 +42,7 @@ const getApiObject = function () {
         let resp = await req.json();
 
         if (!isRequestSuccessful(req.status)) {
+          // eslint-disable-next-line no-throw-literal
           throw { response: { data: resp } };
         }
 
@@ -61,6 +63,7 @@ const getApiObject = function () {
         let resp = await req.json();
 
         if (!isRequestSuccessful(req.status)) {
+          // eslint-disable-next-line no-throw-literal
           throw { response: { data: resp } };
         }
 
@@ -80,6 +83,7 @@ const getApiObject = function () {
         let resp = await req.json();
 
         if (!isRequestSuccessful(req.status)) {
+          // eslint-disable-next-line no-throw-literal
           throw { response: { data: resp } };
         }
 
@@ -195,13 +199,14 @@ export const deleteContactById = (id) =>
 
 // ------------------------ Jobs ------------------------------------
 
-export const getAllJobs = () => API.get('/jobs/all/1/12', setHeader());
+export const getAllJobs = (pageLimit, pageNo) =>
+  API.get(`/jobs/all/${pageNo}/${pageLimit}`, setHeader());
 
-export const getAllJobsForUser = (pageNo) =>
-  API.get(`/jobs/user/all/${pageNo}/12`, setHeader());
+export const getAllJobsForUser = (pageLimit, pageNo) =>
+  API.get(`/jobs/user/all/${pageNo}/${pageLimit}`, setHeader());
 
-export const getAllPendingJobsForUser = (pageNo) =>
-  API.get(`/jobs/user/pending/${pageNo}/12`, setHeader());
+export const getAllPendingJobsForUser = (pageLimit, pageNo) =>
+  API.get(`/jobs/user/pending/${pageNo}/${pageLimit}`, setHeader());
 
 export const updateGraduationYear = (data) =>
   API.put('/jobs/year/admin', data, setHeader());
@@ -223,13 +228,13 @@ export const sendCustomEmail = (data) =>
 //-------------------------Invites Companies...........................
 
 export const searchCompanyByPattern = (pattern) =>
-  API.get(`/company/search/${pattern}/1/5`, setHeader());
+  API.get(`/company/search/${pattern}/1/12`, setHeader());
 
 export const searchInfByPattern = (pattern) =>
-  API.get(`/inf/search/${pattern}/1/5`, setHeader());
+  API.get(`/inf/search/${pattern}/1/12`, setHeader());
 
 export const searchJnfByPattern = (pattern) =>
-  API.get(`/jnf/search/${pattern}/1/5`, setHeader());
+  API.get(`/jnf/search/${pattern}/1/12`, setHeader());
 
 // ------------------------ Courses ------------------------------------
 

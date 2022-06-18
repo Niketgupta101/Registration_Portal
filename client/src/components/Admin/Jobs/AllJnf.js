@@ -12,12 +12,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Loading from '../../Loading/Loading';
 import './styles.css';
-import {
-  getAllInf,
-  getAllJnf,
-  getAllJobs,
-  searchJnfByPattern,
-} from '../../../api/index';
+import { fetchAllJnf, searchJnf } from '../../../api/index';
 
 const AllJnf = () => {
   const [jobs, setJobs] = useState([]);
@@ -40,18 +35,19 @@ const AllJnf = () => {
     setSearch(e.target.value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     setIsLoading(true);
 
     try {
-      const response = await getAllJnf(pageNo);
-    setIsLoading(false);
-    setJobs(response.data.jobs);
+      const response = await fetchAllJnf(12, pageNo);
+      setIsLoading(false);
+      setJobs(response.data.jobs);
     } catch (error) {
       setIsLoading(false);
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNo]);
 
   const [dropdownOpen, setDropdownOpen] = useState('');
@@ -68,24 +64,22 @@ const AllJnf = () => {
     async function fetchJNFs() {
       var response;
       if (!search) {
-        try{
-          response = await getAllJnf(pageNo);
-        }catch(error)
-        {
+        try {
+          response = await fetchAllJnf(12, pageNo);
+        } catch (error) {
           Navigate('/badgateway');
         }
-        
       } else {
-        try{
-          response = await searchJnfByPattern(search);
-        }catch(error)
-        {
-          Navigate('/badgateway')
+        try {
+          response = await searchJnf(search, 12, pageNo);
+        } catch (error) {
+          Navigate('/badgateway');
         }
       }
       setJobs(response.data.jobs);
     }
     fetchJNFs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   const handlePageChange = (event, value) => {
@@ -133,25 +127,25 @@ const AllJnf = () => {
                 </div>
                 <div className='card_content'>
                   <div className='content_heading'>
-                    <h4>{job?.Company_Overview?.Name_Of_The_Company}</h4>
+                    <h4>{job?.Company_Overview?.CO_Name_Of_The_Company}</h4>
                   </div>
                   <div className='content_text'>
                     <h5>
                       <span>Designation: </span>:{' '}
                       {job?.isIntern
-                        ? job?.Intern_Profile?.Job_Designation
-                        : job?.Job_Details?.Job_Designation}
+                        ? job?.Intern_Profile?.IP_Job_Designation
+                        : job?.Job_Details?.JD_Job_Designation}
                     </h5>
                     <h5>
                       {job.isIntern ? (
                         <>
                           <span>Mode</span>:{' '}
-                          {job?.Intern_Profile?.Mode_Of_Internship}
+                          {job?.Intern_Profile?.IP_Mode_Of_Internship}
                         </>
                       ) : (
                         <>
                           <span>Place of posting</span>:{' '}
-                          {job?.Job_Details?.Place_Of_Posting}
+                          {job?.Job_Details?.JD_Place_Of_Posting}
                         </>
                       )}
                     </h5>
@@ -159,11 +153,11 @@ const AllJnf = () => {
                       {job.isIntern ? (
                         <>
                           <span>Stipend</span>:{' '}
-                          {job?.Salary_Details?.Salary_Per_Month}
+                          {job?.Salary_Details?.SD_Salary_Per_Month}
                         </>
                       ) : (
                         <>
-                          <span>CTC</span>: {job?.Salary_Details?.CTC}
+                          <span>CTC</span>: {job?.Salary_Details?.SD_CTC}
                         </>
                       )}
                     </h5>
@@ -201,7 +195,7 @@ const AllJnf = () => {
                           <DropdownMenu>
                             <DropdownItem>
                               <a
-                                href={job.studentDownload}
+                                href={job.studentDownloadLink}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',
@@ -213,7 +207,7 @@ const AllJnf = () => {
                             <DropdownItem divider />
                             <DropdownItem>
                               <a
-                                href={job.downloadLink}
+                                href={job.adminDownloadLink}
                                 style={{
                                   textDecoration: 'none',
                                   color: 'inherit',

@@ -13,6 +13,7 @@ const Company = () => {
   const [IsLoading, setIsLoading] = useState(false);
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [Companies, setCompanies] = useState();
+  const [CompanyCount, setCompanyCount] = useState(0);
   const [search, setSearch] = useState();
 
   const [pageNo, setPageNo] = useState('1');
@@ -34,53 +35,46 @@ const Company = () => {
   };
 
   async function fetchAllCompanies() {
-    // if (!user) Navigate('/auth');
-    // else {
-    // setUser(localStorage.getItem('user'));
     setIsLoading(true);
 
-    try{
+    try {
       const response = await getAllCompanyDetails(pageNo);
-    setIsLoading(false);
-    setCompanies(response.data.companyList);
-    }catch(error)
-    {
       setIsLoading(false);
-      Navigate("/badgateway");
+      setCompanies(response.data.companyList);
+      setCompanyCount(response?.data?.companyCount);
+    } catch (error) {
+      setIsLoading(false);
+      Navigate('/badgateway');
     }
-
-
-
-  
-    // }
   }
 
   useEffect(() => {
     fetchAllCompanies();
-  }, [pageNo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     async function fetchCompanies() {
       var response;
       if (!search) {
         try {
-          response = await getAllCompanyDetails();
+          response = await getAllCompanyDetails(pageNo);
         } catch (error) {
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
-        
       } else {
         try {
           response = await searchCompanyByPattern(search);
         } catch (error) {
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
-       
       }
       setCompanies(response.data.companyList);
+      setCompanyCount(response.data.companyCount);
     }
     fetchCompanies();
-  }, [search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, pageNo]);
 
   return (
     <>
@@ -109,8 +103,7 @@ const Company = () => {
         </div>
         <small className=' h6 admin_company_header_small'>
           {' '}
-          Total Registered Companies:{' '}
-          {Companies !== undefined ? Companies.length : 0}
+          Total Registered Companies: {CompanyCount}
         </small>
 
         <div className='company_items'>
@@ -181,7 +174,7 @@ const Company = () => {
         </div>
         <Stack spacing={2}>
           <Pagination
-            count={10}
+            count={parseInt((CompanyCount + 12) / 12)}
             color='primary'
             style={{ margin: '3rem auto' }}
             onChange={handlePageChange}

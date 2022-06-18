@@ -1,39 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from "reactstrap";
-import { Button } from "@mui/material";
-import { FaSearch } from "react-icons/fa";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import Loading from "../../Loading/Loading";
-import "./../Jobs/styles.css";
-import {
-  fetchAllInf,
-  getAllInf,
-  getAllJobs,
-  searchInf,
-  searchInfByPattern,
-} from "../../../api/index";
+} from 'reactstrap';
+import { Button } from '@mui/material';
+import { FaSearch } from 'react-icons/fa';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import Loading from '../../Loading/Loading';
+import './../Jobs/styles.css';
+import { fetchAllInf, searchInf } from '../../../api/index';
 
 const AllInf = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [pageNo, setPageNo] = useState("1");
+  const [pageNo, setPageNo] = useState('1');
 
   const [search, setSearch] = useState();
   const Navigate = useNavigate();
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    if (!user || user.isemailVerified === false || user.role !== "Admin") {
-      Navigate("/auth");
+    if (!user || user.isemailVerified === false || user.role !== 'Admin') {
+      Navigate('/auth');
     }
   }, [Navigate, user]);
 
@@ -54,12 +48,13 @@ const AllInf = () => {
       setJobs(response.data.jobs);
     } catch (error) {
       setIsLoading(false);
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, [pageNo]);
 
   useEffect(() => {
@@ -69,24 +64,25 @@ const AllInf = () => {
         try {
           response = await fetchAllInf(12, pageNo);
         } catch (error) {
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
       } else {
         try {
           response = await searchInf(search, 12, pageNo);
         } catch (error) {
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
       }
       setJobs(response.data.jobs);
     }
     fetchINFs();
+    // eslint-disable-next-line
   }, [search]);
 
-  const [dropdownOpen, setDropdownOpen] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState('');
   const handletoggle = (id) => () => {
     if (dropdownOpen === id) {
-      setDropdownOpen(() => "");
+      setDropdownOpen(() => '');
     } else {
       setDropdownOpen(() => id);
     }
@@ -94,49 +90,49 @@ const AllInf = () => {
 
   return (
     <>
-      <div className="admin_company">
-        <div className="admin_company_header d-flex  justify-content-between">
+      <div className='admin_company'>
+        <div className='admin_company_header d-flex  justify-content-between'>
           <h1>All INF</h1>
           <div>
-            <div className="input-group d-flex">
-              <div className="form-outline">
+            <div className='input-group d-flex'>
+              <div className='form-outline'>
                 <input
-                  type="search"
-                  id="form1"
-                  className="form-control"
-                  placeholder="Type Company Name"
-                  name="search"
+                  type='search'
+                  id='form1'
+                  className='form-control'
+                  placeholder='Type Company Name'
+                  name='search'
                   value={search}
                   onChange={handleOnChange}
                 />
               </div>
-              <Button variant="contained">
+              <Button variant='contained'>
                 <FaSearch />
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="job_items">
+        <div className='job_items'>
           {jobs &&
             jobs.map((job) => (
               <div
-                className="job_card"
+                className='job_card'
                 key={job._id}
-                style={{ display: "inline-block" }}
+                style={{ display: 'inline-block' }}
               >
                 {console.log(job)}
                 <div
-                  className="badge"
-                  style={{ backgroundColor: !job.isIntern && "red" }}
+                  className='badge'
+                  style={{ backgroundColor: !job.isIntern && 'red' }}
                 >
-                  <h6>{job.isIntern ? "Intern" : "FTE"}</h6>
+                  <h6>{job.isIntern ? 'Intern' : 'FTE'}</h6>
                 </div>
-                <div className="card_content  ps-2">
-                  <div className="content_heading">
+                <div className='card_content  ps-2'>
+                  <div className='content_heading'>
                     <h4>{job?.Company_Overview?.CO_Name_Of_The_Company}</h4>
                   </div>
-                  <div className="content_text">
+                  <div className='content_text'>
                     <h5>
                       <span>Duration: </span>
                       {job?.Intern_Profile?.IP_Internship_Duration}
@@ -148,7 +144,7 @@ const AllInf = () => {
                     <h5>
                       {job.isIntern ? (
                         <>
-                          <span>Stipend</span>:{" "}
+                          <span>Stipend</span>:{' '}
                           {job?.Stipend_Details?.SD_Salary_Per_Month}
                         </>
                       ) : (
@@ -158,26 +154,26 @@ const AllInf = () => {
                       )}
                     </h5>
                     <h5>
-                      <span>Submitted On:</span>:{" "}
+                      <span>Submitted On:</span>:{' '}
                       {job.updatedAt.slice(8, 10) +
-                        "/" +
+                        '/' +
                         job.updatedAt.slice(5, 7) +
-                        "/" +
+                        '/' +
                         job.updatedAt.slice(0, 4)}
                     </h5>
 
-                    <div className="d-flex align-items-center">
+                    <div className='d-flex align-items-center'>
                       <div>
-                        <button className="secondary_btn py-1">
+                        <button className='secondary_btn py-1'>
                           <a
                             href={job.adminPreviewLink}
-                            style={{ textDecoration: "none", color: "inherit" }}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
                           >
                             View Job
                           </a>
                         </button>
                       </div>
-                      <div className="my-2 ms-3 ps-2">
+                      <div className='my-2 ms-3 ps-2'>
                         <Dropdown
                           isOpen={dropdownOpen === job._id}
                           toggle={handletoggle(job._id)}
@@ -188,8 +184,8 @@ const AllInf = () => {
                               <a
                                 href={job.studentDownloadLink}
                                 style={{
-                                  textDecoration: "none",
-                                  color: "inherit",
+                                  textDecoration: 'none',
+                                  color: 'inherit',
                                 }}
                               >
                                 For Student
@@ -200,8 +196,8 @@ const AllInf = () => {
                               <a
                                 href={job.adminDownloadLink}
                                 style={{
-                                  textDecoration: "none",
-                                  color: "inherit",
+                                  textDecoration: 'none',
+                                  color: 'inherit',
                                 }}
                               >
                                 For Admin
@@ -219,8 +215,8 @@ const AllInf = () => {
         <Stack spacing={1}>
           <Pagination
             count={20}
-            color="primary"
-            style={{ margin: "3rem auto" }}
+            color='primary'
+            style={{ margin: '3rem auto' }}
             onChange={handlePageChange}
           />
         </Stack>

@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { FaFilter } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import { FaFilter } from 'react-icons/fa';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import {
   createJnf,
   fetchAllJnfForUser,
-  fetchPendingJnfForUser,
   removeJnf,
   createInf,
   fetchAllInfForUser,
-  fetchPendingInfForUser,
   removeInf,
-} from "../../api";
-import Loading from "../Loading/Loading";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import "animate.css";
+  getAllJobsForUser,
+  getAllPendingJobsForUser,
+} from '../../api';
+import Loading from '../Loading/Loading';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import 'animate.css';
 
-import "./styles.css";
-import { Pagination } from "@mui/material";
+import './styles.css';
+import { Pagination } from '@mui/material';
 
 const MyJobs = () => {
   const [IsLoading, setIsLoading] = useState(false);
 
-  const [Filter, setFilter] = useState("All Forms");
+  const [Filter, setFilter] = useState('All Forms');
   const Navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const [Jobs, setJobs] = useState([]);
 
   const [reload, setReload] = useState(0);
 
-  const [pageNo, setPageNo] = useState("1");
+  const [pageNo, setPageNo] = useState('1');
 
-  const company = JSON.parse(localStorage.getItem("company"));
+  const company = JSON.parse(localStorage.getItem('company'));
 
   useEffect(() => {
     if (
@@ -43,37 +43,33 @@ const MyJobs = () => {
       !company ||
       company.length === 0
     ) {
-      Navigate("/auth");
+      Navigate('/auth');
     }
   }, [Navigate, user, company]);
   const handlePageChange = (event, value) => {
     setPageNo(value);
   };
-  const [toReload, setToReload] = useState(true);
   const fetchJobs = async (Filter) => {
     setIsLoading(true);
     try {
-      if (Filter === "All Forms") {
-        let response = await fetchAllInfForUser(12, pageNo);
+      if (Filter === 'All Forms') {
+        let response = await getAllJobsForUser(12, pageNo);
 
         setJobs(response.data.jobs);
-      } else if (Filter === "Internships") {
+      } else if (Filter === 'Internships') {
         let response = await fetchAllInfForUser(12, pageNo);
         setJobs(response.data.jobs);
-      } else if (Filter === "Jobs") {
+      } else if (Filter === 'Jobs') {
         let response = await fetchAllJnfForUser(12, pageNo);
         setJobs(response.data.jobs);
-      } else if (Filter === "Pending Forms") {
-        let response = await fetchPendingInfForUser(12, pageNo);
-        setJobs(response.data.jobs);
-      } else if (Filter === "Pending Forms JNF") {
-        let response = await fetchPendingJnfForUser(12, pageNo);
+      } else if (Filter === 'Pending Forms') {
+        let response = await getAllPendingJobsForUser(12, pageNo);
         setJobs(response.data.jobs);
       }
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
   let companyData, primaryHrData;
@@ -100,7 +96,7 @@ const MyJobs = () => {
 
       Navigate(`/create/inf/${response.data.jobId}`);
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
@@ -112,7 +108,7 @@ const MyJobs = () => {
       });
       Navigate(`/create/jnf/${response.data.jobId}`);
     } catch (error) {
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
@@ -129,14 +125,14 @@ const MyJobs = () => {
           await removeInf(deleteId[0]);
         } catch (error) {
           setIsLoading(false);
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
       } else {
         try {
           await removeJnf(deleteId[0]);
         } catch (error) {
           setIsLoading(false);
-          Navigate("/badgateway");
+          Navigate('/badgateway');
         }
       }
 
@@ -144,12 +140,12 @@ const MyJobs = () => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      Navigate("/badgateway");
+      Navigate('/badgateway');
     }
   };
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("token"))) fetchJobs(Filter);
+    if (JSON.parse(localStorage.getItem('token'))) fetchJobs(Filter);
     async function filterJobs() {
       try {
         for (let i in Jobs) {
@@ -162,119 +158,122 @@ const MyJobs = () => {
           }
         }
       } catch (error) {
-        Navigate("/badgateway");
+        Navigate('/badgateway');
       }
     }
     filterJobs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Filter, pageNo, reload]);
 
   return (
     <>
-      <div className="company-dashboard-container">
-        <div className="jumbotron jumbotron-fluid p-2">
+      <div className='company-dashboard-container'>
+        <div className='jumbotron jumbotron-fluid p-2'>
           <div
-            className="m-2 hero-content-container mx-auto"
+            className='m-2 hero-content-container mx-auto'
             style={{ maxWidth: 1000 }}
           >
-            <div className="p-2 pt-5 container">
+            <div className='p-2 pt-5 container'>
               <h1
-                className="display-1 fw-bold pt-5 animate__animated animate__fadeInDownBig"
+                className='display-1 fw-bold pt-5 animate__animated animate__fadeInDownBig'
                 style={{ letterSpacing: -3 }}
               >
                 Career Development Center
               </h1>
-              <p className="main-heading-secondary animate__animated animate__fadeInUpBig">
+              <p className='main-heading-secondary animate__animated animate__fadeInUpBig'>
                 Welcome to the Career Development Centre Portal of Indian
                 Institute of Technology. <br /> Click the suitable option below
                 to fill the Notification Form.
               </p>
-              <Stack spacing={2} className="pt-5 " direction="column">
-                <div className="bt animate__animated animate__fadeInLeft my-1">
+              <Stack spacing={2} className='pt-5 ' direction='column'>
+                <div className='bt animate__animated animate__fadeInLeft my-1'>
                   <Button
-                    variant="outlined"
+                    variant='outlined'
                     style={{
-                      maxWidth: "320px",
-                      minWidth: "320px",
-                      backgroundColor: "white",
+                      maxWidth: '320px',
+                      minWidth: '320px',
+                      backgroundColor: 'white',
                     }}
                     onClick={handleFillInf}
                   >
-                    <div className="courses-button">FILL INTERNSHIP FORM</div>
+                    <div className='courses-button'>FILL INTERNSHIP FORM</div>
                   </Button>
                 </div>
-                <div className="bt animate__animated animate__fadeInRight my-2">
+                <div className='bt animate__animated animate__fadeInRight my-2'>
                   <Button
-                    variant="outlined"
+                    variant='outlined'
                     style={{
-                      maxWidth: "320px",
-                      minWidth: "320px",
-                      backgroundColor: "white",
+                      maxWidth: '320px',
+                      minWidth: '320px',
+                      backgroundColor: 'white',
                     }}
                     onClick={handleFillJnf}
                   >
-                    <div className="courses-button">FILL JOB FORM</div>
+                    <div className='courses-button'>FILL JOB FORM</div>
                   </Button>
                 </div>
               </Stack>
             </div>
           </div>
         </div>
-        <div className="myJobs_container">
-          <div className="job_container">
-            <div className="job_header">
+        <div className='myJobs_container'>
+          <div className='job_container'>
+            <div className='job_header'>
               <h1>{Filter}</h1>
 
-              <div className="jobFilter my-0 d-flex align-items-end justify-content-end">
-                <span style={{ color: "grey" }} className="px-2 mt-1">
+              <div className='jobFilter my-0 d-flex align-items-end justify-content-end'>
+                <span style={{ color: 'grey' }} className='px-2 mt-1'>
                   <FaFilter size={28} />
                 </span>
                 <select
-                  name="Job Filter"
-                  id=""
-                  className="filter_select"
+                  name='Job Filter'
+                  id=''
+                  className='filter_select'
                   onChange={(e) => setFilter(e.target.value)}
-                  style={{ height: "35px" }}
+                  style={{ height: '35px' }}
                 >
-                  <option value="All Forms">All Forms</option>
-                  <option value="Internships">Internships</option>
-                  {/* <option value='Jobs'>Jobs</option> */}
-                  <option value="Pending Forms">Pending Forms</option>
+                  <option value='All Forms'>All Forms</option>
+                  <option value='Internships'>Internships</option>
+                  <option value='Jobs'>Jobs</option>
+                  <option value='Pending Forms'>Pending Forms</option>
                 </select>
               </div>
             </div>
 
-            <div className="jobs_content">
+            <div className='jobs_content'>
               {Jobs &&
                 Jobs.map((job) => (
-                  <div className="job_card" key={job._id}>
+                  <div className='job_card' key={job._id}>
                     <div
-                      className="badge"
-                      style={{ backgroundColor: !job?.isIntern && "red" }}
+                      className='badge'
+                      style={{ backgroundColor: !job?.isIntern && 'red' }}
                     >
-                      <h6>{job?.isIntern ? "Intern" : "JOB"}</h6>
+                      <h6>{job?.isIntern ? 'Intern' : 'JOB'}</h6>
                     </div>
 
-                    <div className="card_content">
-                      <div className="content_heading">
+                    <div className='card_content'>
+                      <div className='content_heading'>
                         <h4>{job?.Company_Overview?.CO_Name_Of_The_Company}</h4>
                       </div>
                       <div
-                        className="content_text"
-                        style={{ fontWeight: "500" }}
+                        className='content_text'
+                        style={{ fontWeight: '500' }}
                       >
-                        <h5>
-                          <span>Duration: </span>
-                          {job?.Intern_Profile?.IP_Internship_Duration}
-                        </h5>
+                        {job.isIntern && (
+                          <h5>
+                            <span>Duration: </span>
+                            {job?.Intern_Profile?.IP_Internship_Duration}
+                          </h5>
+                        )}
                         <h5>
                           {job.isIntern ? (
                             <>
-                              <span>Mode</span>:{" "}
+                              <span>Mode</span>:{' '}
                               {job?.Intern_Profile?.IP_Mode_Of_Internship}
                             </>
                           ) : (
                             <>
-                              <span>Place of posting</span>:{" "}
+                              <span>Place of posting</span>:{' '}
                               {job?.Job_Details?.JD_Place_Of_Posting}
                             </>
                           )}
@@ -282,39 +281,45 @@ const MyJobs = () => {
                         <h5>
                           {job.isIntern ? (
                             <>
-                              <span>Stipend</span>:{" "}
+                              <span>Stipend</span>:{' '}
                               {job?.Stipend_Details?.SD_Salary_Per_Month}
                             </>
                           ) : (
                             <>
-                              <span>CTC</span>:{" "}
-                              {job?.data?.Salary_Details?.SD_CTC}
+                              <span>CTC</span>:{' '}
+                              {job?.Salary_Details?.SD_CTC_In_LPA}
                             </>
                           )}
                         </h5>
-                        {job.status === "incomplete" ? (
+                        {!job.isIntern && (
+                          <h5>
+                            <span>CTC Breakup: </span>
+                            {job?.Salary_Details?.SD_CTC_Breakup}
+                          </h5>
+                        )}
+                        {job.status === 'incomplete' ? (
                           <h5>
                             <span>Form Status:</span>: Incomplete
                           </h5>
                         ) : (
                           <h5>
-                            <span>Submitted On:</span>:{" "}
+                            <span>Submitted On:</span>:{' '}
                             {job.updatedAt.slice(8, 10) +
-                              "/" +
+                              '/' +
                               job.updatedAt.slice(5, 7) +
-                              "/" +
+                              '/' +
                               job.updatedAt.slice(0, 4)}
                           </h5>
                         )}
-                        {job.status === "incomplete" ? (
+                        {job.status === 'incomplete' ? (
                           <div
                             style={{
-                              display: "flex",
-                              justifyContent: "center",
+                              display: 'flex',
+                              justifyContent: 'center',
                             }}
                           >
                             <button
-                              className="secondary_btn"
+                              className='secondary_btn'
                               onClick={() =>
                                 handleEditJob(job._id, job.isIntern)
                               }
@@ -322,7 +327,7 @@ const MyJobs = () => {
                               Continue
                             </button>
                             <button
-                              className="secondary_btn secondary_btn_delete"
+                              className='secondary_btn secondary_btn_delete'
                               onClick={() =>
                                 handleDelete([job._id, job.isIntern])
                               }
@@ -333,27 +338,27 @@ const MyJobs = () => {
                         ) : (
                           <div
                             style={{
-                              display: "flex",
-                              justifyContent: "center",
+                              display: 'flex',
+                              justifyContent: 'center',
                             }}
                           >
-                            <button className="secondary_btn">
+                            <button className='secondary_btn'>
                               <a
                                 href={job.adminPreviewLink}
                                 style={{
-                                  textDecoration: "none",
-                                  color: "inherit",
+                                  textDecoration: 'none',
+                                  color: 'inherit',
                                 }}
                               >
                                 View Job
                               </a>
                             </button>
-                            <button className="secondary_btn">
+                            <button className='secondary_btn'>
                               <a
                                 href={job.adminDownloadLink}
                                 style={{
-                                  textDecoration: "none",
-                                  color: "inherit",
+                                  textDecoration: 'none',
+                                  color: 'inherit',
                                 }}
                               >
                                 Download
@@ -378,8 +383,8 @@ const MyJobs = () => {
         <Stack spacing={1}>
           <Pagination
             count={10}
-            color="primary"
-            style={{ margin: "3rem auto" }}
+            color='primary'
+            style={{ margin: '3rem auto' }}
             onChange={handlePageChange}
           />
         </Stack>

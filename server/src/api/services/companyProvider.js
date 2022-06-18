@@ -41,7 +41,9 @@ const fetchAllCompanies = async (offset, pagelimit, next) => {
       .skip(parseInt(offset))
       .limit(parseInt(pagelimit));
 
-    return { success: true, companyList };
+    let companyCount = await Company.find().count();
+
+    return { success: true, companyList, companyCount };
   } catch (error) {
     return next(error);
   }
@@ -140,7 +142,11 @@ const searchCompany = async (pattern, offset, pagelimit, next) => {
       .sort({ updatedAt: -1 })
       .skip(offset)
       .limit(pagelimit);
-    return { success: true, companyList };
+
+    let companyCount = await Company.find({
+      name: { $regex: pattern, $options: 'im' },
+    }).count();
+    return { success: true, companyList, companyCount };
   } catch (error) {
     return next(error);
   }

@@ -1,24 +1,24 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CompanyOverviewSchema = {
-  CO_Name_Of_The_Company: { type: String, default: "" },
-  CO_Category: { type: String, default: "" },
-  CO_Sector: { type: String, default: "" },
-  CO_About: { type: String, default: "" },
-  CO_Website: { type: String, default: "" },
+  CO_Name_Of_The_Company: { type: String, default: '' },
+  CO_Category: { type: String, default: '' },
+  CO_Sector: { type: String, default: '' },
+  CO_About: { type: String, default: '' },
+  CO_Website: { type: String, default: '' },
 };
 
 const JobDetailsSchema = {
-  IP_Job_Designation: { type: String, default: "" },
-  IP_Job_Description: { type: String, default: "" },
-  IP_Place_Of_Posting: { type: String, default: "" },
+  JD_Job_Designation: { type: String, default: '' },
+  JD_Job_Description: { type: String, default: '' },
+  JD_Place_Of_Posting: { type: String, default: '' },
 };
 
 const SalaryDetailsSchema = {
-  SD_CTC_In_LPA: { type: String, default: "" },
-  SD_CTC_Breakup: { type: String, default: "" },
-  SD_Bond_Details: { type: String, default: "" },
+  SD_CTC_In_LPA: { type: String, default: '' },
+  SD_CTC_Breakup: { type: String, default: '' },
+  SD_Bond_Details: { type: String, default: '' },
 };
 
 const FourYearBtechSchema = {
@@ -221,40 +221,40 @@ const SkillBasedSchema = {
 
 const SelectionProcedureSchema = {
   SPS_Total_Number_Of_Rounds: { type: Number, default: 0 },
-  SPS_Number_Of_Offers: { type: String, default: "" },
-  SPS_Eligibility_Criteria: { type: String, default: "NA" },
-  SPS_Pre_Placement_Talk_Mode: { type: String, default: "" },
-  SPS_Pre_Placement_Talk_Date: { type: String, default: "" },
-  SPS_Resume_Shortlisting_Mode: { type: String, default: "" },
-  SPS_Resume_Shortlisting_Date: { type: String, default: "" },
-  SPS_Online_Written_Test_Mode: { type: String, default: "" },
-  SPS_Online_Written_Test_Date: { type: String, default: "" },
-  SPS_Group_Discussion_Mode: { type: String, default: "" },
-  SPS_Group_Discussion_Date: { type: String, default: "" },
-  SPS_Personal_Interview_Mode: { type: String, default: "" },
-  SPS_Personal_Interview_Date: { type: String, default: "" },
-  SPS_Any_Other_Rounds_Mode: { type: String, default: "" },
-  SPS_Any_Other_Rounds_Date: { type: String, default: "" },
-  SPS_OtherInformation: { type: String, default: "NA" },
+  SPS_Number_Of_Offers: { type: String, default: '' },
+  SPS_Eligibility_Criteria: { type: String, default: 'NA' },
+  SPS_Pre_Placement_Talk_Mode: { type: String, default: '' },
+  SPS_Pre_Placement_Talk_Date: { type: String, default: '' },
+  SPS_Resume_Shortlisting_Mode: { type: String, default: '' },
+  SPS_Resume_Shortlisting_Date: { type: String, default: '' },
+  SPS_Online_Written_Test_Mode: { type: String, default: '' },
+  SPS_Online_Written_Test_Date: { type: String, default: '' },
+  SPS_Group_Discussion_Mode: { type: String, default: '' },
+  SPS_Group_Discussion_Date: { type: String, default: '' },
+  SPS_Personal_Interview_Mode: { type: String, default: '' },
+  SPS_Personal_Interview_Date: { type: String, default: '' },
+  SPS_Any_Other_Rounds_Mode: { type: String, default: '' },
+  SPS_Any_Other_Rounds_Date: { type: String, default: '' },
+  SPS_OtherInformation: { type: String, default: 'NA' },
 };
 
 const PrimaryHrSchema = {
-  PH_Name: { type: String, default: "" },
-  PH_Email: { type: String, default: "" },
-  PH_Mobile: { type: String, default: "" },
+  PH_Name: { type: String, default: '' },
+  PH_Email: { type: String, default: '' },
+  PH_Mobile: { type: String, default: '' },
 };
 
 const SecondaryHrSchema = {
-  SH_Name: { type: String, default: "" },
-  SH_Email: { type: String, default: "" },
-  SH_Mobile: { type: String, default: "" },
+  SH_Name: { type: String, default: '' },
+  SH_Email: { type: String, default: '' },
+  SH_Mobile: { type: String, default: '' },
 };
 
 // --------------------------------------------------------------------------------------------------
 
 const NewJnfSchema = new Schema(
   {
-    userId: { type: Schema.ObjectId, ref: "User" },
+    userId: { type: Schema.ObjectId, ref: 'User' },
     Company_Overview: CompanyOverviewSchema,
     Job_Details: JobDetailsSchema,
     Salary_Details: SalaryDetailsSchema,
@@ -277,8 +277,8 @@ const NewJnfSchema = new Schema(
     adminDownloadLink: String,
     studentPreviewLink: String,
     studentDownloadLink: String,
-    status: { type: String, default: "incomplete" },
-    isIntern: { type: Boolean, default: true },
+    status: { type: String, default: 'incomplete' },
+    isIntern: { type: Boolean, default: false },
   },
   {
     timestamps: true,
@@ -287,7 +287,7 @@ const NewJnfSchema = new Schema(
 
 // --------------------------------------------------------------------------------------------------
 
-const NewJnf = mongoose.model("NewJnf", NewJnfSchema);
+const NewJnf = mongoose.model('NewJnf', NewJnfSchema);
 
 // --------------------------------------------------------------------------------------------------
 

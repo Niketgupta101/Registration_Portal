@@ -33,6 +33,8 @@ const {
   companiesCount,
   infCount,
   jnfCount,
+  infCountForUser,
+  jnfCountForUser,
 } = require('../../controllers/newJob.controller');
 
 router.get('/all/:pageno/:pagelimit', protect, getAllJobs);
@@ -47,6 +49,8 @@ router.get('/user/pending/:pageno/:pagelimit', protect, getPendingJobForms);
 
 router.get('/company/count', protect, companiesCount);
 router.get('/inf/count', protect, infCount);
+router.get('/user/inf/count', protect, infCountForUser);
 router.get('/jnf/count', protect, jnfCount);
+router.get('/user/jnf/count', protect, jnfCountForUser);
 
 module.exports = router;

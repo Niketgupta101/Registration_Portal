@@ -1,6 +1,6 @@
 const Year = require('../models/GraduationYear');
-const { InfData } = require('../models/InfData');
-const { JnfData } = require('../models/JnfData');
+const { NewInf } = require('../models/InfData');
+const { NewJnf } = require('../models/JnfData');
 const Company = require('../models/company_details');
 
 const getAllJobs = async (req, res, next) => {
@@ -10,27 +10,21 @@ const getAllJobs = async (req, res, next) => {
     pageNo = parseInt(pageno) || 1;
     let offset = pagelimit * (pageno - 1);
 
-    let infList = await InfData.find({ status: 'complete' })
-      .sort({
-        updatedAt: -1,
-      })
-      .skip(offset)
-      .limit(pagelimit);
-    let jnfList = await JnfData.find({ status: 'complete' })
-      .sort({
-        updatedAt: -1,
-      })
-      .skip(offset)
-      .limit(pagelimit);
+    let infList = await NewInf.find({ status: 'complete' }).sort({
+      updatedAt: -1,
+    });
+    let jnfList = await NewJnf.find({ status: 'complete' }).sort({
+      updatedAt: -1,
+    });
 
     let jobs = [...infList, ...jnfList];
 
     jobs.sort(function (a, b) {
-      let dateA = Date(a.data.updatedAt);
-      let dateB = Date(b.data.updatedAt);
+      let dateA = Date(a.updatedAt);
+      let dateB = Date(b.updatedAt);
       return dateB - dateA;
     });
-
+    jobs = jobs.slice(offset, pagelimit + offset);
     res.status(201).json({ success: true, jobs });
   } catch (error) {
     return next(error);
@@ -45,24 +39,18 @@ const getAllJobsForUser = async (req, res, next) => {
     pageNo = parseInt(pageno) || 1;
     let offset = pagelimit * (pageno - 1);
 
-    let infList = await InfData.find({ userId })
-      .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
+    let infList = await NewInf.find({ userId }).sort({ updatedAt: -1 });
 
-    let jnfList = await JnfData.find({ userId })
-      .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
+    let jnfList = await NewJnf.find({ userId }).sort({ updatedAt: -1 });
 
     let jobs = [...infList, ...jnfList];
 
     jobs.sort(function (a, b) {
-      let dateA = a.data.updatedAt;
-      let dateB = b.data.updatedAt;
+      let dateA = a.updatedAt;
+      let dateB = b.updatedAt;
       return dateB - dateA;
     });
-
+    jobs = jobs.slice(offset, pagelimit + offset);
     res.status(201).json({ success: true, jobs });
   } catch (error) {
     return next(error);
@@ -102,28 +90,23 @@ const getPendingJobForms = async (req, res, next) => {
     pageNo = parseInt(pageno) || 1;
     let offset = pagelimit * (pageno - 1);
 
-    let infs = await InfData.find({
-      status: 'complete',
+    let infs = await NewInf.find({
+      status: 'incomplete',
       userId,
-    })
-      .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
-    let jnfs = await JnfData.find({
-      status: 'complete',
+    }).sort({ updatedAt: -1 });
+    let jnfs = await NewJnf.find({
+      status: 'incomplete',
       userId,
-    })
-      .sort({ updatedAt: -1 })
-      .skip(offset)
-      .limit(pagelimit);
+    }).sort({ updatedAt: -1 });
 
     let jobs = [...infs, ...jnfs];
 
     jobs.sort(function (a, b) {
-      let dateA = a.data.updatedAt;
-      let dateB = b.data.updatedAt;
+      let dateA = a.updatedAt;
+      let dateB = b.updatedAt;
       return dateB - dateA;
     });
+    jobs = jobs.slice(offset, pagelimit + offset);
 
     res.status(201).json({ success: true, jobs });
   } catch (error) {
@@ -143,7 +126,17 @@ const companiesCount = async (req, res, next) => {
 
 const infCount = async (req, res, next) => {
   try {
-    let infCount = await InfData.find({}).count();
+    let infCount = await NewInf.find({}).count();
+
+    res.status(201).json({ success: true, infCount });
+  } catch (error) {
+    return next(error);
+  }
+};
+const infCountForUser = async (req, res, next) => {
+  let userId = req.user._id;
+  try {
+    let infCount = await NewInf.find({ userId }).count();
 
     res.status(201).json({ success: true, infCount });
   } catch (error) {
@@ -153,7 +146,17 @@ const infCount = async (req, res, next) => {
 
 const jnfCount = async (req, res, next) => {
   try {
-    let jnfCount = await JnfData.find({}).count();
+    let jnfCount = await NewJnf.find({}).count();
+
+    res.status(201).json({ success: true, jnfCount });
+  } catch (error) {
+    return next(error);
+  }
+};
+const jnfCountForUser = async (req, res, next) => {
+  let userId = req.user._id;
+  try {
+    let jnfCount = await NewJnf.find({}).count();
 
     res.status(201).json({ success: true, jnfCount });
   } catch (error) {
@@ -170,4 +173,6 @@ module.exports = {
   companiesCount,
   infCount,
   jnfCount,
+  infCountForUser,
+  jnfCountForUser,
 };
