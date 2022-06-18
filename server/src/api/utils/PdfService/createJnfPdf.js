@@ -24,7 +24,6 @@ if (env === 'production') {
 }
 
 const createJnfPdfForAdmin = async (jnf, filename) => {
-  console.log(jnf);
   let content = fs.readFileSync(
     path.resolve(__dirname, `${basePathname}/${filename}`),
     'binary'
