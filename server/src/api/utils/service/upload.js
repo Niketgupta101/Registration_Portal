@@ -20,10 +20,10 @@ const drive = google.drive({
   auth: oAuth2Client,
 });
 const parents = [
-  '17doTuc9S7wgT-0Ai0lholyxSCLhI_IUT', //intern student
-  '1XKRrnIU7c0j7c3JAvwqHEpJ1APaS5hRy', //intern cdc
-  '1gDsSe46277uV2IIUF6CE3TgS66niCGyD', //job cdc
-  '1O4roOPxvu4rSwcy25LDm56kWLGg3HjqH', //job students
+  '1ADxisnnvOwSHXKZg61jZ_0MQzA7v0kGU', //intern student
+  '1F3Vv-7tI6djoYKqiuMSLhrsksKRIIIS-', //intern cdc
+  '1cYV1Nbg-MIfl4ipVQHJGMCa9K9PBUQMR', //job cdc
+  '1JYDBumRjdHVatHzPXnlMzjGF8B-MHI6O', //job students
 ];
 
 exports.uploadFile = async (filePath, type, viewer) => {
